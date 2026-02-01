@@ -490,14 +490,15 @@ copilot --agent frontend
 
 **When to use**: When you need specialized domain expertise.
 
-### Skills (Chapter 05): Add New COMMANDS
+### Skills (Chapter 05): Automatic Task Instructions
 
-Skills are reusable command sequences stored in `~/.copilot/skills/`. Each skill becomes a slash command.
+Skills are folders of instructions stored in `~/.copilot/skills/`. Copilot **automatically loads** them when your prompt matches the skill's description.
 
 ```bash
-# Use a custom skill (the skill name IS the command)
-> /my-code-review
-> /generate-tests
+# Just ask naturally - Copilot loads matching skills automatically
+> Review this code for security issues
+# Copilot detects this matches your "security-audit" skill
+# and applies its checklist automatically
 ```
 
 **When to use**: For repetitive tasks that need consistent behavior.

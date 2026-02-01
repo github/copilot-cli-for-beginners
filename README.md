@@ -25,7 +25,7 @@ This hands-on course takes you from zero to productive with GitHub Copilot CLI. 
 | 02 | 🔍 [Context and Conversations](./02-context-conversations/README.md) | Multi-file project analysis |
 | 03 | ⚡ [Development Workflows](./03-development-workflows/README.md) | Code review, debug, test generation |
 | 04 | 🤖 [Agents and Custom Instructions](./04-agents-custom-instructions/README.md) | Specialized AI assistants |
-| 05 | 🛠️ [Skills System](./05-skills/README.md) | Reusable CLI commands |
+| 05 | 🛠️ [Skills System](./05-skills/README.md) | Auto-loaded task instructions |
 | 06 | 🔌 [MCP Servers](./06-mcp-servers/README.md) | Connect to GitHub, databases, APIs |
 | 07 | 🎯 [Putting It All Together](./07-putting-it-together/README.md) | Complete feature workflows |
 

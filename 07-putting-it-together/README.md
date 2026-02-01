@@ -122,7 +122,7 @@ Here's the mental model for combining everything:
 |     Switch to security agent for review                      |
 |                                                              |
 |  3. EXECUTE (Skills + Manual)                                |
-|     /generate-tests for test creation                        |
+|     Ask naturally - skills load automatically                |
 |     Implement the fix                                        |
 |                                                              |
 |  4. COMPLETE (MCP)                                           |
@@ -430,8 +430,8 @@ Always gather context before asking for analysis:
 # Select security
 > Review this authentication code
 
-# Skill executes
-> /generate-tests
+# Skill executes (automatically triggered by your prompt)
+> Generate comprehensive tests for this code
 ```
 
 ### 3. Keep Sessions Focused

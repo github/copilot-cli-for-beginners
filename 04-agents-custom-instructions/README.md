@@ -860,7 +860,7 @@ In **[Chapter 05: Skills System](../05-skills/README.md)**, you'll learn:
 
 - Installing community skills
 - Creating custom skills
-- Skill commands and handlers
+- How skills auto-trigger from prompts
 - When to use skills vs agents
 
 ---
