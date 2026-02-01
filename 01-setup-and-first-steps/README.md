@@ -1,4 +1,4 @@
-# Chapter 01: First Steps
+![Chapter 01: First Steps](images/chapter-header.png)
 
 > **Watch AI find bugs instantly, explain confusing code, and generate working scripts. Then learn three different ways to use Copilot.**
 

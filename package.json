@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "GitHub Copilot CLI for Beginners - Course Materials",
   "scripts": {
+    "generate:headers": "python3 scripts/generate-chapter-headers.py",
     "update:reference": "node scripts/update-quick-reference.js",
     "generate:pdf": "npx md-to-pdf QUICK-REFERENCE.md --config-file .md-to-pdf.json",
     "scan:demos": "node scripts/scan-demos.js",

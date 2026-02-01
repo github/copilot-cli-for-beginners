@@ -1,4 +1,4 @@
-# Chapter 00: Quick Start
+![Chapter 00: Quick Start](images/chapter-header.png)
 
 Welcome! In this chapter, you'll get GitHub Copilot CLI (Command Line Interface) installed, authenticated with your GitHub account, and verified that everything works. This is a quick setup chapter. Once you're up and running, the real demos start in Chapter 01!
 

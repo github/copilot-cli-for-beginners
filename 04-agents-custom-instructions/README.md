@@ -1,4 +1,4 @@
-# Chapter 04: Agents and Custom Instructions
+![Chapter 04: Agents and Custom Instructions](images/chapter-header.png)
 
 > **What if you could hire a frontend expert, backend expert, and security expert... all in one tool?**
 

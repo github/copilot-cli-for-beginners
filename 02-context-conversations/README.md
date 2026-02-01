@@ -1,4 +1,4 @@
-# Chapter 02: Context and Conversations
+![Chapter 02: Context and Conversations](images/chapter-header.png)
 
 > **What if AI could see your entire codebase, not just one file at a time?**
 
