@@ -640,6 +640,8 @@ Check your terminal configuration. Some terminals don't handle interactive sessi
 4. **Slash commands** (`/help`, `/clear`, `/model`, `/exit`) control your sessions
 5. **Agents, Skills, and MCP** extend Copilot's capabilities - you'll learn each in upcoming chapters
 
+> 📋 **Quick Reference**: See the [Command Cheat Sheet](../QUICK-REFERENCE.md) for a complete list of commands and shortcuts.
+
 ---
 
 ## What's Next

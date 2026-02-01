@@ -741,6 +741,8 @@ Ask Copilot directly:
 4. **Cross-platform**: Same skill format works in Copilot CLI, VS Code, and Claude Code
 5. **Description is key**: Write descriptions that match how you naturally ask questions
 
+> 📋 **Quick Reference**: See the [Command Cheat Sheet](../QUICK-REFERENCE.md) for a complete list of commands and shortcuts.
+
 ---
 
 ## What's Next

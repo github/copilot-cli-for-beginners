@@ -44,7 +44,7 @@ Choose the method that works for your system:
 ### All Platforms (npm)
 
 ```bash
-a
+npm install -g @github/copilot
 ```
 
 ### macOS/Linux (Homebrew)
@@ -178,6 +178,8 @@ copilot
 1. **Multiple installation methods** - Choose what works for your system (Homebrew, WinGet, npm, or install script)
 2. **One-time authentication** - Login persists until token expires
 3. **Quick verification** - Use `-p` flag for instant testing
+
+> 📋 **Quick Reference**: See the [Command Cheat Sheet](../QUICK-REFERENCE.md) for a complete list of commands and shortcuts.
 
 ---
 

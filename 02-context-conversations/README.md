@@ -809,6 +809,8 @@ copilot --add-dir /path/to/directory
 5. **Permission flags** (`--add-dir`, `--allow-all-paths`) control multi-directory access
 6. **Image references** (`@screenshot.png`) help debug UI issues visually
 
+> 📋 **Quick Reference**: See the [Command Cheat Sheet](../QUICK-REFERENCE.md) for a complete list of commands and shortcuts.
+
 ---
 
 ## What's Next

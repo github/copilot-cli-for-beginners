@@ -644,6 +644,8 @@ copilot
 4. **Test generation** should include edge cases and error scenarios
 5. **Git integration** automates commit messages and PR descriptions
 
+> 📋 **Quick Reference**: See the [Command Cheat Sheet](../QUICK-REFERENCE.md) for a complete list of commands and shortcuts.
+
 ---
 
 ## What's Next
