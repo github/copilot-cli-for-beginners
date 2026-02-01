@@ -140,6 +140,8 @@ Reloaded 3 skills from ~/.copilot/skills/
 
 ## From 5 Minutes to 5 Seconds
 
+> 💡 **Why show benefits first?** Before diving into how to create skills, let's see *why* they're worth learning. Once you see the time savings, the "how" will make more sense.
+
 ### Before Skills: The /commit Struggle
 
 Every commit, you think:

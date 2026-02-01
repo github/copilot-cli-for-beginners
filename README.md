@@ -125,6 +125,28 @@ npm run update:reference  # Uses Copilot CLI to scan docs and update content
 npm run generate:pdf      # Generates PDF from markdown
 ```
 
+## Glossary
+
+Quick reference for technical terms used throughout this course:
+
+| Term | Definition |
+|------|------------|
+| **Agent** | A specialized AI personality with domain expertise (e.g., frontend, security). Defined in `.agent.md` files. |
+| **API** | Application Programming Interface - a way for programs to communicate with each other. |
+| **CI/CD** | Continuous Integration/Continuous Deployment - automated testing and deployment pipelines. |
+| **CLI** | Command Line Interface - a text-based way to interact with software (like this tool!). |
+| **Context Window** | The amount of text an AI can consider at once. Like a desk that can only hold so much. |
+| **Glob Pattern** | A pattern using wildcards to match file paths (e.g., `*.js` matches all JavaScript files). |
+| **JWT** | JSON Web Token - a secure way to transmit authentication information between systems. |
+| **MCP** | Model Context Protocol - a standard for connecting AI assistants to external data sources. |
+| **OWASP** | Open Web Application Security Project - organization that publishes security best practices. |
+| **Programmatic Mode** | Running Copilot with `-p` flag for single commands without interaction. |
+| **Session** | A conversation with Copilot that maintains context and can be resumed later. |
+| **Skill** | A reusable prompt packaged as a slash command (e.g., `/my-code-review`). |
+| **Slash Command** | Commands starting with `/` that control Copilot (e.g., `/help`, `/clear`, `/model`). |
+| **Token** | A unit of text that AI models process. Roughly 4 characters or 0.75 words. |
+| **WCAG** | Web Content Accessibility Guidelines - standards for making web content accessible. |
+
 ## Getting Help
 
 - **Stuck on a concept?** Each chapter has a troubleshooting section
@@ -137,6 +159,3 @@ Ready? Let's see what GitHub Copilot CLI can do.
 
 **[Begin with Chapter 00: Quick Start →](./00-quick-start/README.md)**
 
----
-
-*Course created by Dan Wahlin. Contributions welcome.*

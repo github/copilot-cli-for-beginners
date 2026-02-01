@@ -2,7 +2,9 @@
 
 > **Watch AI find bugs instantly, explain confusing code, and generate working scripts. Then learn three different ways to use Copilot.**
 
-This chapter is where the magic happens! You'll experience firsthand why developers call Copilot CLI "having a senior engineer on speed dial." You'll watch AI find security bugs in seconds, get complex code explained in plain English, and generate working scripts instantly. Then you'll master the three interaction modes (Interactive, Plan, and Programmatic) so you know exactly which one to use for any task.
+This chapter is where the magic happens! You'll experience firsthand why developers describe Copilot CLI as having a senior engineer on speed dial. You'll watch AI find security bugs in seconds, get complex code explained in plain English, and generate working scripts instantly. Then you'll master the three interaction modes (Interactive, Plan, and Programmatic) so you know exactly which one to use for any task.
+
+> ⚠️ **Prerequisites**: Make sure you've completed **[Chapter 00: Quick Start](../00-quick-start/README.md)** first. You'll need GitHub Copilot CLI installed and authenticated before running the demos below.
 
 ## Learning Objectives
 
@@ -64,7 +66,7 @@ HIGH: Hardcoded Secret (line 59)
 Summary: 8 issues found (4 critical/high, 4 medium)
 ```
 
-**The takeaway**: A professional security audit in 5 seconds. Manual review would take 30+ minutes.
+**The takeaway**: A professional security audit in 5 seconds. Manual review would take...well...more time than that!
 
 ---
 
@@ -130,7 +132,7 @@ copilot -p "Write a bash script that finds all files over 100MB and lists them b
 
 ---
 
-Now let's understand HOW to use these capabilities effectively.
+You've just seen what Copilot CLI can do. Now let's understand *how* to use these capabilities effectively. The key is knowing which of the three interaction modes to use for different situations.
 
 ---
 

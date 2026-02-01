@@ -126,7 +126,7 @@ Cross-Module Security Analysis
    userService.js:34 logs the full user object including password hash
    paymentProcessor.js:45 logs transaction details referencing user data
 
-   Combined: Password hashes could appear in payment logs!
+   Impact: When these modules interact, password hashes from userService may be exposed in paymentProcessor's transaction logs!
 
 3. SHARED HARDCODED KEY (Both Files)
    userService.js:8      const API_KEY = "sk_live_abc123"
