@@ -28,7 +28,8 @@
 | `/exit` | End the session |
 | `/plan` | Create implementation plan before coding |
 | `/review` | Run code-review agent on staged/unstaged changes |
-| `/delegate` | Generate a PR with AI-suggested changes |
+| `/delegate` | Hand off task to Copilot coding agent on GitHub |
+| `/diff` | Review changes made in current directory (experimental) |
 
 ### Session Management
 
@@ -56,6 +57,13 @@
 | `/add-dir <path>` | Add a directory to allowed list |
 | `/list-dirs` | Show all allowed directories |
 | `/cwd` or `/cd` | View or change working directory |
+
+### Authentication
+
+| Command | Description |
+|---------|-------------|
+| `/login` | Log in to GitHub Copilot |
+| `/logout` | Log out of GitHub Copilot |
 
 ### Configuration
 
@@ -96,12 +104,16 @@
 
 ## Built-in Agents
 
-| Agent | Command | Purpose |
-|-------|---------|---------|
-| **Explore** | `/explore` | Fast codebase analysis |
-| **Task** | `/task` | Execute commands (tests, builds) |
-| **Plan** | `/plan` | Step-by-step implementation plans |
-| **Code-review** | `/review` | Focused code review |
+| Agent | How to Invoke | Purpose |
+|-------|---------------|---------|
+| **Plan** | `/plan` or `Shift+Tab` | Step-by-step implementation plans |
+| **Code-review** | `/review` | Focused review of staged/unstaged changes |
+| **Explore** | *Automatic* | Codebase analysis (used internally) |
+| **Task** | *Automatic* | Tests, builds, lints (success = brief summary, failure = full details) |
+
+Use `/agent` to browse and select from your custom agents.
+
+📚 [Agents Documentation](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
 
 ### Custom Agents
 
@@ -124,10 +136,27 @@ You are a frontend specialist with expertise in React and TypeScript.
 
 ### Using Skills
 
+Skills are **automatically triggered** based on your prompt matching the skill's description:
+
 ```bash
-> /my-skill-name          # Invoke a skill
-> /generate-tests         # Example skill
+> Review this code for security issues
+# Your "security-audit" skill activates automatically
+
+> Generate tests for the login function
+# Your "generate-tests" skill activates automatically
 ```
+
+### Managing Installed Skills
+
+| Command | Purpose |
+|---------|---------|
+| `/skills list` | Show all installed skills |
+| `/skills info <name>` | Get skill details |
+| `/skills add <name>` | Enable a skill |
+| `/skills remove <name>` | Disable a skill |
+| `/skills reload` | Reload after editing |
+
+> Skills trigger automatically when your prompt matches their description - no manual activation needed.
 
 ### Creating Skills
 
@@ -163,6 +192,18 @@ Instructions for the skill...
 > List open PRs                   # Uses GitHub MCP
 > Create a PR for this branch     # Uses GitHub MCP
 ```
+
+---
+
+## Plugins
+
+Extend Copilot CLI with community plugins:
+
+| Command | Purpose |
+|---------|---------|
+| `/plugin list` | See installed plugins |
+| `/plugin marketplace` | Browse available plugins |
+| `/plugin install <name>` | Install a plugin |
 
 ---
 
@@ -280,6 +321,8 @@ done
 |----------|--------|
 | `Shift+Tab` | Toggle Plan Mode |
 | `Ctrl+C` | Cancel current operation |
+| `Esc` | Cancel current input or exit menus |
+| `Ctrl+L` | Clear the screen |
 | `!command` | Run shell command directly (e.g., `!git status`) |
 
 ---

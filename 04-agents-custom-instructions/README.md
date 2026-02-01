@@ -8,11 +8,32 @@ In this chapter, you'll transform Copilot from a generalist into a team of speci
 
 By the end of this chapter, you'll be able to:
 
-- Use built-in agents like `/explore`, `/task`, `/plan`, and `/review`
+- Use built-in agents: Plan (`/plan`), Code-review (`/review`), and understand automatic agents (Explore, Task)
 - Create specialized agents using agent files (`.agent.md`)
 - Use agents for domain-specific tasks
 - Delegate work across multiple agents
 - Write custom instruction files for project-specific standards
+
+---
+
+## 🚀 Start Here: Your First 5 Minutes with Agents
+
+**New to agents?** Here's the quickest path to understanding them:
+
+1. **Try a built-in agent right now:**
+   ```bash
+   copilot
+   > /plan Add user authentication to my Express app
+   ```
+   This invokes the Plan agent to create a step-by-step implementation plan.
+
+2. **Understand the core concept:** Agents are like hiring a specialist instead of asking a generalist. A "frontend agent" automatically thinks about accessibility, TypeScript, and React patterns - you don't have to remind it.
+
+3. **Two ways to use custom agents:**
+   - **`/agent`** - Select an agent interactively *inside* a session
+   - **`copilot --agent frontend`** - Start a session *with* a specific agent
+
+Once you've tried the built-in agents, read on to create your own custom agents.
 
 ---
 
@@ -36,34 +57,55 @@ Agents work the same way. Instead of a generic AI, you get specialists who under
 
 ## Built-in Agents
 
-Copilot CLI includes four powerful built-in agents ready to use immediately:
+Copilot CLI includes four built-in agents:
 
-| Agent | Command | What It Does |
-|-------|---------|--------------|
-| **Explore** | `/explore` | Fast codebase analysis without cluttering your main context |
-| **Task** | `/task` | Executes commands like tests, builds, and scripts |
-| **Plan** | `/plan` | Generates step-by-step implementation plans before coding |
-| **Code-review** | `/review` | Reviews changes with focused, high signal-to-noise output |
+| Agent | How to Invoke | What It Does |
+|-------|---------------|--------------|
+| **Plan** | `/plan` or `Shift+Tab` | Creates step-by-step implementation plans before coding |
+| **Code-review** | `/review` | Reviews staged/unstaged changes with focused, actionable feedback |
+| **Explore** | *Automatic* | Used internally when you ask Copilot to explore or analyze the codebase |
+| **Task** | *Automatic* | Executes commands like tests, builds, lints, and dependency installs |
 
 ### Using Built-in Agents
 
 ```bash
 copilot
 
-# Explore the codebase quickly
-> /explore How is authentication handled in this project?
+# Invoke the Plan agent to create an implementation plan
+> /plan Add user authentication to my Express app
 
-# Run tests in the background
-> /task Run the test suite and report any failures
-
-# Create an implementation plan
-> /plan Add user profile picture upload functionality
-
-# Review your staged changes
+# Invoke the Code-review agent on your changes
 > /review
+
+# Explore and Task agents are invoked automatically when relevant:
+> Run the test suite        # Uses Task agent
+> Explore how auth works    # Uses Explore agent
 ```
 
-**Why built-in agents matter**: These agents run with optimized prompts and can work in the background, keeping your main conversation context clean. They're designed for specific tasks and produce focused output.
+**Key insight**: You directly invoke Plan and Code-review with slash commands. Explore and Task work behind the scenes. Copilot uses them automatically when appropriate.
+
+### Understanding the Task Agent
+
+The Task agent deserves special attention because of its smart output handling:
+
+| Outcome | What You See |
+|---------|--------------|
+| ✅ **Success** | Brief summary (e.g., "All 247 tests passed", "Build succeeded") |
+| ❌ **Failure** | Full output with stack traces, compiler errors, and detailed logs |
+
+**Why this design?** It keeps your conversation context clean. You don't need 500 lines of passing test output - you just need to know it worked. But when something breaks, you get all the details needed to debug.
+
+**Example prompts that use the Task agent:**
+```bash
+> Run the tests
+> Build the project
+> Install the dependencies
+> Run the linter on src/
+```
+
+The Task agent uses a faster model since it's focused on command execution rather than complex reasoning.
+
+> 📚 **Official Documentation**: [GitHub Copilot CLI Agents](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
 
 ---
 
@@ -77,14 +119,45 @@ Agents can be defined in several locations. Choose based on your use case:
 | `.github/agents/` | Project-specific | Team-shared agents with project conventions |
 | `*.agent.md` files | Single-file | Quick experiments, VS Code compatibility |
 
-**Quick decision guide:**
-- **Personal agent** (code reviewer, documentation helper) → `~/.copilot/agents/`
-- **Team standard** (company style guide, security checklist) → `.github/agents/`
-- **Trying something out** → `*.agent.md` in current directory
+### Which Location Should I Use?
+
+```
+Are you just experimenting?
+    └─ YES → Create `my-agent.agent.md` in your current folder
+    └─ NO ↓
+
+Will your team use this agent?
+    └─ YES → Create in `.github/agents/` (gets version controlled)
+    └─ NO ↓
+
+Do you want this agent everywhere?
+    └─ YES → Create in `~/.copilot/agents/` (your personal agents)
+```
+
+**Start simple:** Create a single `*.agent.md` file in your project folder. Move it to a permanent location once you're happy with it.
 
 ### Agent File Structure
 
-Create `~/.copilot/agents/frontend.agent.md`:
+Let's start with a **minimal agent** to understand the format:
+
+Create `my-reviewer.agent.md` in your project folder:
+
+```markdown
+# Code Reviewer
+
+You are a code reviewer focused on finding bugs and security issues.
+
+When reviewing code, always check for:
+- SQL injection vulnerabilities
+- Missing error handling
+- Hardcoded secrets
+```
+
+That's it! Just 8 lines. Now Copilot applies these checks whenever you use this agent.
+
+### A More Complete Example
+
+Once you're comfortable, here's a more comprehensive agent. Create `~/.copilot/agents/frontend.agent.md`:
 
 ```markdown
 # Frontend Agent
@@ -92,7 +165,7 @@ Create `~/.copilot/agents/frontend.agent.md`:
 You are a frontend development specialist with expertise in React, TypeScript, and modern CSS.
 
 **Your focus areas:**
-- Component architecture using atomic design
+- Component architecture using atomic design (organizing components from small to large: atoms → molecules → organisms)
 - Performance optimization (lazy loading, memoization)
 - Accessibility (WCAG 2.1 AA compliance - Web Content Accessibility Guidelines)
 - Responsive design patterns
@@ -135,7 +208,14 @@ copilot --agent frontend
 
 Create separate agent files for different specialties. Here's a comprehensive set:
 
-> 💡 **Note for beginners**: The example below shows multiple agents in one file for reference. Start with just one agent (like frontend or backend) and add more as you get comfortable. You don't need all of these to get started!
+> 💡 **Note for beginners**: The examples below use specific libraries and tools. Don't worry if you don't know them all - **replace them with whatever your project uses**. The important thing is the *structure* of the agent, not the specific technologies.
+>
+> **Common terms you'll see:**
+> - **Zustand** - A simple state management library for React (like Redux but simpler)
+> - **Zod** - A TypeScript library for validating data shapes
+> - **React Query** - A library for fetching and caching server data
+> - **MSW** - Mock Service Worker, for faking API calls in tests
+> - **Prisma** - A database toolkit that makes database queries type-safe
 
 **`~/.copilot/agents/frontend.agent.md`**:
 
@@ -755,7 +835,7 @@ copilot  # This loads custom instructions by default
 
 ## Key Takeaways
 
-1. **Built-in agents** (`/explore`, `/task`, `/plan`, `/review`) handle common tasks efficiently
+1. **Built-in agents**: `/plan` and `/review` are directly invoked; Explore and Task work automatically
 2. **Custom agents** are specialists defined in `.agent.md` files
 3. **Good agents** have clear expertise, standards, and output formats
 4. **Multi-agent collaboration** solves complex problems by combining expertise

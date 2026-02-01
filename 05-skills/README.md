@@ -36,7 +36,7 @@ Skills work the same way. They're specialized tools that extend what Copilot can
 
 ## Understanding Skills
 
-Agent Skills are folders containing instructions, scripts, and resources that Copilot **automatically loads when relevant** to your task. Unlike slash commands that you invoke explicitly, skills work behind the scenes. Copilot reads your prompt, checks if any skills match, and applies the relevant instructions automatically.
+Agent Skills are folders containing instructions, scripts, and resources that Copilot **automatically loads when relevant** to your task. Copilot reads your prompt, checks if any skills match, and applies the relevant instructions automatically.
 
 ```bash
 copilot
@@ -54,7 +54,18 @@ copilot
 # and checks against your team's standards
 ```
 
-> 💡 **Key Insight**: You don't type `/skill-name`. Instead, Copilot reads your skill descriptions and decides when to use them based on your prompt. This is why good skill descriptions are critical.
+> 💡 **Key Insight**: Skills are **automatically triggered** based on your prompt matching the skill's description. You don't need to type a special command - just ask naturally, and Copilot applies relevant skills behind the scenes.
+
+### How Do I Know a Skill Was Used?
+
+You can ask Copilot directly:
+
+```bash
+> What skills did you use for that response?
+
+# Or before asking:
+> What skills do you have available for security reviews?
+```
 
 ### Skills vs Agents vs MCP
 
@@ -295,6 +306,53 @@ Skills are discovered from multiple locations. Project-specific skills take prio
 | `~/.claude/skills/` | Global | Lowest | Claude Code personal skills |
 
 **Pro tip**: Create project-specific skills in `.github/skills/` to share them with your team via git. They'll be version-controlled and available to everyone who clones the repo.
+
+---
+
+## Managing Skills with /skills
+
+Use the `/skills` command to manage your installed skills:
+
+| Command | What It Does |
+|---------|--------------|
+| `/skills list` | Show all installed skills |
+| `/skills info <name>` | Get details about a specific skill |
+| `/skills add <name>` | Enable a skill (from a repository or marketplace) |
+| `/skills remove <name>` | Disable or uninstall a skill |
+| `/skills reload` | Reload skills after editing SKILL.md files |
+
+> 💡 **Remember**: You don't need to "activate" skills for each prompt. Once installed, skills are **automatically triggered** when your prompt matches their description. These commands are for managing which skills are available, not for using them.
+
+### Example: View Your Skills
+
+```bash
+copilot
+
+> /skills list
+
+Available skills:
+- security-audit: Security-focused code review checking OWASP Top 10
+- generate-tests: Generate comprehensive unit tests with edge cases
+- code-review: Team-standard code review checklist
+...
+
+> /skills info security-audit
+
+Name: security-audit
+Description: Security-focused code review checking OWASP Top 10 vulnerabilities
+Location: ~/.copilot/skills/security-audit/
+```
+
+### When to Use /skills reload
+
+After creating or editing a skill's SKILL.md file, run `/skills reload` to pick up the changes without restarting Copilot:
+
+```bash
+# Edit your skill file
+# Then in Copilot:
+> /skills reload
+Skills reloaded successfully.
+```
 
 ---
 
@@ -655,6 +713,20 @@ Ask Copilot directly:
 > What skills do you have available for code review?
 # Copilot will describe relevant skills it found
 ```
+
+### How do I know my skill is actually working?
+
+1. **Check the output format**: If your skill specifies an output format (like `[CRITICAL]` tags), look for that in the response
+2. **Ask directly**: After getting a response, ask "Did you use any skills for that?"
+3. **Compare with/without**: Try the same prompt with `--no-custom-instructions` to see the difference:
+   ```bash
+   # With skills
+   copilot -p "Review @file.js for security issues"
+
+   # Without skills (baseline comparison)
+   copilot -p "Review @file.js for security issues" --no-custom-instructions
+   ```
+4. **Check for specific checks**: If your skill includes specific checks (like "functions over 50 lines"), see if those appear in the output
 
 ---
 

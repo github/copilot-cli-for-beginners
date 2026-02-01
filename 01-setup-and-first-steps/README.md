@@ -152,6 +152,17 @@ Just like driving, you'll naturally learn when each mode feels right.
 
 *Choose your gear based on the task: Interactive for exploration, Plan for structured work, Programmatic for automation*
 
+### Which Mode Should I Start With?
+
+**Start with Interactive mode.** It's the most forgiving and helps you learn:
+- You can experiment and ask follow-up questions
+- Context builds naturally through conversation
+- Mistakes are easy to correct with `/clear`
+
+Once you're comfortable, try:
+- **Programmatic mode** (`-p`) for quick, one-off questions
+- **Plan mode** (`/plan`) when you need to think before coding
+
 ---
 
 ## The Three Modes
@@ -317,9 +328,20 @@ copilot -p "Security review of @src/ - list critical issues only"
 
 ## Essential Slash Commands
 
-These commands work in interactive mode:
+These commands work in interactive mode.
 
-### Core Commands
+### 🚀 Start With These 4 Commands
+
+Master these first - they cover 90% of daily use:
+
+| Command | What It Does | Example |
+|---------|--------------|---------|
+| `/help` | Show all available commands | When you forget a command |
+| `/clear` | Clear conversation and start fresh | When switching topics |
+| `/plan` | Preview steps before coding | For complex features |
+| `/exit` | End the session | When you're done |
+
+### All Core Commands
 
 | Command | What It Does | When to Use |
 |---------|--------------|-------------|
@@ -328,7 +350,8 @@ These commands work in interactive mode:
 | `/model` | Show or switch AI model | Testing different models |
 | `/exit` | End the session | When you're done |
 | `/plan` | Create implementation plan before coding | Complex features needing structure |
-| `/delegate` | Generate a PR with AI-suggested changes | Automating small changes |
+| `/review` | Run code-review agent | Before committing changes |
+| `/delegate` | Hand off task to Copilot coding agent | Background work on GitHub |
 
 ### Session Commands
 
@@ -360,6 +383,16 @@ These commands work in interactive mode:
 | `/feedback` | Submit feedback to GitHub |
 | `/init` | Initialize Copilot instructions for your repository |
 
+### Skills Management
+
+| Command | What It Does |
+|---------|--------------|
+| `/skills list` | Show all available skills |
+| `/skills info <name>` | Get details about a specific skill |
+| `/skills reload` | Reload skills after editing |
+
+> 💡 Skills are covered in detail in [Chapter 05](../05-skills/README.md).
+
 ### Permissions
 
 | Command | What It Does |
@@ -385,15 +418,24 @@ copilot
 
 ### The /delegate Command
 
-The `/delegate` command is powerful for quick changes:
+The `/delegate` command hands off tasks to the Copilot coding agent on GitHub:
 
 ```bash
 copilot
 
-> /delegate Add error handling to the login function
+> /delegate Complete the API integration tests and fix any failing edge cases
 
-# Copilot analyzes the code, makes changes, and creates a PR
+# Or use the & prefix shortcut:
+> & Add error handling to the login function
+
+# Copilot:
+# 1. Commits your changes to a new branch
+# 2. Opens a draft pull request
+# 3. Works on the task in the background
+# 4. Requests your review when done
 ```
+
+This is useful for tasks you want Copilot to complete independently while you work on something else.
 
 ### Switching Models
 

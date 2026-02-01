@@ -16,6 +16,23 @@ By the end of this chapter, you'll be able to:
 
 ---
 
+## 🚀 Start Here: MCP in 30 Seconds
+
+**What is MCP?** It connects Copilot to external services (GitHub, databases, APIs) so it can read real data instead of just analyzing files.
+
+**Quickest way to see it work:** The GitHub MCP is included by default. Try this:
+
+```bash
+copilot
+> List my recent pull requests
+```
+
+If it works, MCP is already set up! If not, this chapter shows you how.
+
+**Time estimate:** Basic setup takes ~10-15 minutes. Most time is spent getting a GitHub token.
+
+---
+
 ## Real-World Analogy: Browser Extensions
 
 Think of MCP servers like browser extensions:
@@ -63,26 +80,29 @@ MCP makes Copilot aware of your actual development environment.
 
 Use the `/mcp` command to manage MCP servers:
 
+| Command | What It Does |
+|---------|--------------|
+| `/mcp show` | Show all configured MCP servers and their status |
+| `/mcp add` | Interactive setup for adding a new server |
+| `/mcp edit <server-name>` | Edit an existing server configuration |
+| `/mcp enable <server-name>` | Enable a disabled server |
+| `/mcp disable <server-name>` | Temporarily disable a server |
+| `/mcp delete <server-name>` | Remove a server permanently |
+
+### Example: Check Your MCP Servers
+
 ```bash
 copilot
 
 > /mcp show
-# Shows all configured MCP servers
 
-> /mcp add
-# Interactive setup for adding a new server
+MCP Servers:
+✓ github (enabled) - GitHub integration
+✓ filesystem (enabled) - File system access
+✗ postgres (disabled) - PostgreSQL database
 
-> /mcp edit server-name
-# Edit an existing server configuration
-
-> /mcp enable server-name
-# Enable a disabled server
-
-> /mcp disable server-name
-# Temporarily disable a server
-
-> /mcp delete server-name
-# Remove a server
+> /mcp enable postgres
+Server 'postgres' enabled.
 ```
 
 <details>
@@ -98,7 +118,9 @@ copilot
 
 MCP servers are configured in `~/.copilot/mcp-config.json` (global) or `.copilot/mcp-config.json` (project).
 
-### Basic Configuration Structure
+### Understanding the JSON Format
+
+> 💡 **New to JSON?** JSON is just a way to write configuration data. Here's what each part means:
 
 ```json
 {
@@ -112,6 +134,20 @@ MCP servers are configured in `~/.copilot/mcp-config.json` (global) or `.copilot
   }
 }
 ```
+
+| Field | What It Means |
+|-------|---------------|
+| `"mcpServers"` | Container for all your MCP server configurations |
+| `"server-name"` | A name you choose (e.g., "github", "filesystem") |
+| `"type": "local"` | The server runs on your machine |
+| `"command": "npx"` | The program to run (npx runs npm packages) |
+| `"args": [...]` | Arguments passed to the command |
+| `"tools": ["*"]` | Allow all tools from this server |
+
+**Important JSON rules:**
+- Use double quotes `"` for strings (not single quotes)
+- No trailing commas after the last item
+- File must be valid JSON (use a [JSON validator](https://jsonlint.com/) if unsure)
 
 ---
 
@@ -170,71 +206,19 @@ Found 8 TODO comments:
 
 ## MCP Server 2: GitHub
 
-Connect to GitHub for issues, PRs, and repository information.
+The GitHub MCP server is **built-in** - if you logged into Copilot (which you did during initial setup), it already works. No configuration needed!
 
-> 💡 **Note**: The GitHub MCP server is included by default in Copilot CLI. The configuration below is for reference or if you need to customize settings.
+> 💡 **Not working?** Run `/login` to re-authenticate with GitHub.
 
-### Additional GitHub MCP Features
+### What You Can Do
 
-The GitHub MCP server also provides access to:
-- **Copilot Spaces**: Collaborative workspaces for team projects
-- **Code search**: Search across repositories
-- **Actions**: Query workflow runs and status
-
-### Configuration
-
-```json
-{
-  "mcpServers": {
-    "github": {
-      "type": "local",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "tools": ["*"],
-      "env": {
-        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
-      }
-    }
-  }
-}
-```
-
-### Setting Up Your Token
-
-Get a personal access token from [github.com/settings/tokens](https://github.com/settings/tokens):
-
-1. Click **"Generate new token (classic)"**
-2. Give it a descriptive name: `Copilot CLI MCP`
-3. Set expiration (90 days recommended for security)
-4. Select these scopes:
-   - `repo` - Full repository access (for private repos)
-   - `read:org` - Read organization membership
-   - `read:user` - Read user profile (optional)
-5. Click **"Generate token"**
-6. **Copy immediately** - you won't see it again!
-
-Set it as an environment variable:
-
-```bash
-# Add to ~/.bashrc (Linux) or ~/.zshrc (macOS)
-export GITHUB_TOKEN="ghp_your_token_here"
-
-# Then reload your shell
-source ~/.zshrc  # or source ~/.bashrc
-```
-
-**Windows (PowerShell):**
-```powershell
-# Add to your PowerShell profile
-$env:GITHUB_TOKEN = "ghp_your_token_here"
-
-# Or set permanently via System Properties > Environment Variables
-```
-
-**Security tips:**
-- Never commit tokens to git (add to `.gitignore`)
-- Use 90-day expiration and rotate regularly
-- Use fine-grained tokens for even better security
+| Feature | Examples |
+|---------|----------|
+| **Issues** | List, create, search, and comment on issues |
+| **Pull requests** | View PRs, diffs, create PRs, check status |
+| **Code search** | Search across repositories |
+| **Actions** | Query workflow runs and status |
+| **Copilot Spaces** | Access collaborative workspaces |
 
 ### Usage
 
@@ -301,7 +285,13 @@ Context7 gives Copilot access to up-to-date documentation for popular frameworks
 }
 ```
 
-**No API key required** - Context7 works out of the box.
+### Setup Requirements
+
+✅ **No API key required** - Context7 works out of the box
+✅ **No account needed** - Just add the configuration
+✅ **Automatic updates** - Documentation is fetched in real-time
+
+**That's it!** Once configured, Copilot automatically uses Context7 when you ask about frameworks or libraries.
 
 ### Usage
 
@@ -502,7 +492,9 @@ copilot
 
 ## Complete Configuration File
 
-Here's a full `mcp-config.json` with all three servers:
+Here's a full `mcp-config.json` with filesystem and Context7 servers:
+
+> 💡 **Note:** GitHub MCP is built-in - you don't need to add it to your config file. It uses your `/login` authentication automatically.
 
 ```json
 {
@@ -512,15 +504,6 @@ Here's a full `mcp-config.json` with all three servers:
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "."],
       "tools": ["*"]
-    },
-    "github": {
-      "type": "local",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "tools": ["*"],
-      "env": {
-        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
-      }
     },
     "context7": {
       "type": "local",
@@ -565,9 +548,16 @@ copilot
 
 ---
 
-## Building a Custom MCP Server (Advanced)
+## Building a Custom MCP Server (Advanced - Optional)
 
-> ⚠️ **Advanced Section**: This section requires familiarity with TypeScript and Node.js development. Feel free to skip this on your first read-through and return when you need to connect Copilot to custom APIs.
+> ⚠️ **This section is completely optional.** You can be highly productive with Copilot CLI using only the pre-built MCP servers (GitHub, filesystem, Context7). This section is for developers who want to connect Copilot to custom internal APIs.
+>
+> **Prerequisites for this section:**
+> - Comfortable with TypeScript
+> - Experience with Node.js
+> - Understanding of async/await patterns
+>
+> **Skip this section if:** You're new to Copilot CLI or just want to use the standard servers.
 
 Want to connect Copilot to your own APIs? Here's how to build a simple MCP server.
 
@@ -696,11 +686,11 @@ After completing the demos, try these variations:
 
 ### Main Challenge: Configure and Use MCP
 
-1. Set up `mcp-config.json` with at least filesystem and GitHub servers
-2. Get your GitHub token and configure it
+1. Verify GitHub MCP works (it's built-in): run `copilot` then `List my open PRs`
+2. Set up `mcp-config.json` with the filesystem server
 3. Use MCP to:
-   - List files in your project
-   - Get information about an issue or PR
+   - List files in your project using the filesystem server
+   - Get information about an issue or PR using the GitHub server
    - Create a workflow that uses both servers
 
 **Success criteria**: You can seamlessly access GitHub and filesystem data from within Copilot.
@@ -727,15 +717,14 @@ Use `/mcp show` to see the current configuration.
 
 ### "GitHub authentication failed"
 
-Verify your token is set:
+The built-in GitHub MCP uses your `/login` credentials. Try:
+
 ```bash
-echo $GITHUB_TOKEN  # Should show your token
+copilot
+> /login
 ```
 
-If empty, set it in your shell profile (~/.bashrc or ~/.zshrc):
-```bash
-export GITHUB_TOKEN="ghp_your_token_here"
-```
+This will re-authenticate you with GitHub. If issues persist, check that your GitHub account has the necessary permissions for the repository you're accessing.
 
 ### "MCP server failed to start"
 
@@ -760,6 +749,22 @@ copilot
 
 ---
 
+## 🔮 Also Available: Plugins
+
+Copilot CLI also supports a **plugin system** for installing community extensions:
+
+| Command | Purpose |
+|---------|---------|
+| `/plugin list` | See installed plugins |
+| `/plugin marketplace` | Browse available plugins |
+| `/plugin install <name>` | Install a plugin |
+| `/plugin uninstall <name>` | Remove a plugin |
+| `/plugin update` | Update installed plugins |
+
+As the plugin ecosystem grows, this will become another way to extend Copilot's capabilities. For now, MCP servers cover most extensibility needs.
+
+---
+
 ## Key Takeaways
 
 1. **MCP** connects Copilot to external services
@@ -768,6 +773,7 @@ copilot
 4. **Multi-server workflows** combine data from multiple sources
 5. **Custom servers** let you connect any API
 6. **Manage servers** with the `/mcp` command
+7. **Plugins** provide another way to extend Copilot (emerging feature)
 
 ---
 

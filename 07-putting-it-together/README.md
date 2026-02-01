@@ -9,7 +9,7 @@ In this chapter, you'll bring together everything you've learned into complete w
 > - **[Chapter 05: Skills](../05-skills/README.md)** - Creating skills like `generate-tests`
 > - **[Chapter 06: MCP Servers](../06-mcp-servers/README.md)** - Configuring GitHub MCP for PR creation
 >
-> The examples below use agents and skills created in those chapters. If you're jumping directly here, review those chapters first or adapt the examples to use Copilot's built-in capabilities.
+> **Don't have agents/skills set up yet?** No problem! See the "Minimal Workflow" section below that uses only built-in features.
 
 ## Learning Objectives
 
@@ -131,6 +131,45 @@ Here's the mental model for combining everything:
 |                                                              |
 +-------------------------------------------------------------+
 ```
+
+---
+
+## Minimal Workflow (No Custom Setup Required)
+
+**Don't have agents or skills configured?** You can still be highly productive with just the built-in features from Chapters 01-03:
+
+```bash
+copilot
+
+# 1. Understand the task
+> I need to add input validation to the login form. What's the best approach?
+
+# 2. Review existing code
+> @src/components/LoginForm.js What validation does this currently have?
+
+# 3. Plan the implementation
+> /plan Add email format validation and password strength checking
+
+# 4. Implement (after reviewing the plan)
+> Add email format validation using a regex pattern
+
+# 5. Generate tests
+> @src/components/LoginForm.js Generate Jest tests for the validation logic
+
+# 6. Review your changes
+> /review
+
+# 7. Generate commit message
+copilot -p "Generate commit message for: $(git diff --staged)"
+```
+
+**This workflow uses only:**
+- Interactive mode (Chapter 01)
+- The `@` syntax for context (Chapter 02)
+- Built-in `/plan` and `/review` commands (Chapters 01 & 03)
+- Programmatic mode for commit messages (Chapter 01)
+
+Once comfortable, explore agents, skills, and MCP for even more power.
 
 ---
 
@@ -447,7 +486,9 @@ $COMMITS
 Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 ```
 
-### CI/CD Integration
+### CI/CD Integration (Advanced - Optional)
+
+> ⚠️ **This section is for teams with existing CI/CD pipelines.** Skip this if you're new to GitHub Actions or CI/CD concepts. The pre-commit hook above is a simpler starting point.
 
 > 💡 **Tip**: Use `--silent` flag in CI/CD to suppress stats and progress output for cleaner logs.
 

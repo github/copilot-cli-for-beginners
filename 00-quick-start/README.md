@@ -35,6 +35,10 @@ If you see "You don't have access to GitHub Copilot," you'll need to subscribe o
 
 ## Installation
 
+> ⏱️ **Time estimate**: Installation takes 2-5 minutes. Authentication adds another 1-2 minutes.
+
+> 🚀 **Want zero setup?** Use [GitHub Codespaces](https://github.com/codespaces) - Copilot CLI is pre-installed! Just open any repository in a Codespace and run `copilot` to start.
+
 Choose the method that works for your system:
 
 ### macOS/Linux (Homebrew) - Recommended

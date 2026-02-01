@@ -112,6 +112,17 @@ copilot
 # Run review with specific focus area
 ```
 
+> 💡 **What are staged and unstaged changes?**
+> - **Staged changes**: Files you've marked for the next commit with `git add`
+> - **Unstaged changes**: Files you've modified but haven't added yet
+>
+> To see your changes:
+> ```bash
+> git status           # Shows both staged and unstaged
+> git diff             # Shows unstaged changes
+> git diff --staged    # Shows staged changes
+> ```
+
 > 💡 **Tip**: The code-review agent works best when you have pending changes. Stage your files with `git add` for more focused reviews.
 
 ---
@@ -217,6 +228,12 @@ Recommend: Add transaction locking or use database transactions.
 ```
 
 **Why this matters**: You asked about one bug, and Copilot found **another critical bug** you didn't know existed. The AI reads the whole file and spots related issues.
+
+> 💡 **Common security terms you'll encounter:**
+> - **SQL Injection**: When user input is put directly into a database query, allowing attackers to run malicious commands
+> - **Parameterized queries**: The safe alternative - placeholders (`?`) separate user data from SQL commands
+> - **Race condition**: When two operations happen at the same time and interfere with each other
+> - **XSS (Cross-Site Scripting)**: When attackers inject malicious scripts into web pages
 
 ---
 
@@ -422,24 +439,26 @@ copilot -p "Review these changes for issues before I push:
 $(git diff main..HEAD)"
 ```
 
-### Using /delegate for Quick PRs
+### Using /delegate for Background Tasks
 
-The `/delegate` command is a powerful shortcut for making changes and creating PRs:
+The `/delegate` command hands off work to the Copilot coding agent on GitHub:
 
 ```bash
 copilot
 
 > /delegate Add input validation to the login form
 
+# Or use the & prefix shortcut:
+> & Fix the typo in the README header
+
 # Copilot:
-# 1. Analyzes the codebase
-# 2. Makes the necessary changes
-# 3. Creates a pull request with the changes
-
-> /delegate Fix the typo in the README header
-
-# Great for small, well-defined changes
+# 1. Commits your changes to a new branch
+# 2. Opens a draft pull request
+# 3. Works in the background on GitHub
+# 4. Requests your review when done
 ```
+
+This is great for well-defined tasks you want completed while you focus on other work.
 
 ### Using /diff to Review Session Changes
 
@@ -487,6 +506,16 @@ copilot -p "Generate commit message for: $(git diff --staged)"
 
 # Output: "fix(auth): handle special characters in password validation"
 ```
+
+### Bug Fix Workflow Summary
+
+| Step | Action | Copilot Command |
+|------|--------|-----------------|
+| 1 | Understand the bug | `> [describe bug] @relevant-file.js Analyze the likely cause` |
+| 2 | Get detailed analysis | `> Show me line X and explain the issue` |
+| 3 | Implement the fix | `> Fix the [specific issue]` |
+| 4 | Generate tests | `> Generate tests for [specific scenarios]` |
+| 5 | Commit | `copilot -p "Generate commit message for: $(git diff --staged)"` |
 
 ---
 

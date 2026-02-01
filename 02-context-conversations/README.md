@@ -466,10 +466,13 @@ Not all files are equal when it comes to context. Here's how to choose wisely:
 | Large (500+ lines) | 7,500+ tokens | Be selective, use specific files |
 | Very Large (1000+ lines) | 15,000+ tokens | Consider splitting or targeting sections |
 
-**Rule of thumb**: A typical 128K token context window can hold approximately:
-- ~30-50 medium files, OR
-- ~10-15 large files, OR
-- A mix of files plus substantial conversation
+**Concrete examples:**
+- A typical React component (200 lines) ≈ 3,000 tokens
+- A Node.js API file (400 lines) ≈ 6,000 tokens
+- Your package.json ≈ 200-500 tokens
+- A short prompt + response ≈ 500-1,500 tokens
+
+> 💡 **Quick estimate for code:** Multiply lines of code by ~15 to get approximate tokens. Keep in mind this is only an estimate.
 
 ### What to Include vs. Exclude
 
