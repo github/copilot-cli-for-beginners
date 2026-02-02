@@ -97,7 +97,7 @@ Quick reference for technical terms used throughout this course:
 
 | Term | Definition |
 |------|------------|
-| **Agent** | A specialized AI personality with domain expertise (e.g., frontend, security). Defined in `.agent.md` files. |
+| **Agent** | A specialized AI personality with domain expertise (e.g., frontend, security). Defined in `.agent.md` files with YAML frontmatter containing at minimum a `description` field. |
 | **API** | Application Programming Interface - a way for programs to communicate with each other. |
 | **CI/CD** | Continuous Integration/Continuous Deployment - automated testing and deployment pipelines. |
 | **CLI** | Command Line Interface - a text-based way to interact with software (like this tool!). |

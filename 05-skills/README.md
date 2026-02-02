@@ -100,7 +100,7 @@ You can ask Copilot directly:
 
 **Quick rule**: Use agents for broad expertise, skills for specific task instructions, and MCP for external data.
 
-> 📚 **Learn More**: See the [GitHub Copilot Skills documentation](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md) for the complete reference on skill formats and best practices.
+> 📚 **Learn More**: See the official [About Agent Skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) documentation for the complete reference on skill formats and best practices.
 
 ---
 
@@ -383,11 +383,19 @@ Skills are stored in `~/.copilot/skills/` (global) or `.github/skills/` (project
 
 ### Skill Structure
 
+Each skill lives in its own folder with a `SKILL.md` file. You can optionally include scripts, examples, or other resources:
+
 ```
 ~/.copilot/skills/
 └── my-skill/
-    └── SKILL.md      # Skill definition and instructions
+    ├── SKILL.md           # Required: Skill definition and instructions
+    ├── examples/          # Optional: Example files Copilot can reference
+    │   └── sample.ts
+    └── scripts/           # Optional: Scripts the skill can use
+        └── validate.sh
 ```
+
+> 💡 **Tip**: The directory name should match the `name` in your SKILL.md frontmatter (lowercase with hyphens).
 
 ### SKILL.md Format
 
@@ -429,6 +437,16 @@ Provide issues as a numbered list with severity:
 - [MEDIUM] - Should address soon
 - [LOW] - Nice to have
 ```
+
+**YAML Properties:**
+
+| Property | Required | Description |
+|----------|----------|-------------|
+| `name` | **Yes** | Unique identifier (lowercase, hyphens for spaces) |
+| `description` | **Yes** | What the skill does and when Copilot should use it |
+| `license` | No | License that applies to this skill |
+
+> 📖 **Official docs**: [About Agent Skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
 
 ### Creating Your First Skill
 

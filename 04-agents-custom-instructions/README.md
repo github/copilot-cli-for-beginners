@@ -143,6 +143,10 @@ Let's start with a **minimal agent** to understand the format:
 Create `my-reviewer.agent.md` in your project folder:
 
 ```markdown
+---
+description: Code reviewer focused on bugs and security issues
+---
+
 # Code Reviewer
 
 You are a code reviewer focused on finding bugs and security issues.
@@ -153,13 +157,21 @@ When reviewing code, always check for:
 - Hardcoded secrets
 ```
 
-That's it! Just 8 lines. Now Copilot applies these checks whenever you use this agent.
+That's it! The YAML frontmatter (between `---` markers) provides metadata, and the markdown below is your agent's instructions.
+
+> 💡 **Required vs Optional**: The `description` field is required. Other fields like `name`, `tools`, and `model` are optional.
 
 ### A More Complete Example
 
 Once you're comfortable, here's a more comprehensive agent. Create `~/.copilot/agents/frontend.agent.md`:
 
 ```markdown
+---
+name: frontend
+description: Frontend development specialist for React and TypeScript projects
+tools: ["read", "edit", "search", "execute"]
+---
+
 # Frontend Agent
 
 You are a frontend development specialist with expertise in React, TypeScript, and modern CSS.
@@ -182,6 +194,28 @@ You are a frontend development specialist with expertise in React, TypeScript, a
 - Keyboard navigation
 - Screen reader compatibility
 ```
+
+### Agent YAML Properties
+
+| Property | Required | Description |
+|----------|----------|-------------|
+| `name` | No | Display name (defaults to filename) |
+| `description` | **Yes** | What the agent does - helps Copilot understand when to suggest it |
+| `tools` | No | List of allowed tools (omit = all tools available). See tool aliases below. |
+| `target` | No | Limit to `vscode` or `github-copilot` only |
+| `infer` | No | If `false`, agent must be manually selected (defaults to `true`) |
+
+**Tool Aliases**: Use these names in the `tools` list:
+- `read` - Read file contents
+- `edit` - Edit files
+- `search` - Search files (grep/glob)
+- `execute` - Run shell commands (also: `shell`, `Bash`)
+- `web` - Fetch web content
+- `agent` - Invoke other custom agents
+
+> 💡 **Note**: The `model` property works in VS Code but is not yet supported in Copilot CLI. Unrecognized properties are ignored for compatibility.
+>
+> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration)
 
 ### Using the Agent
 
@@ -220,6 +254,11 @@ Create separate agent files for different specialties. Here are examples for a c
 **`~/.copilot/agents/frontend.agent.md`**:
 
 ```markdown
+---
+description: Frontend specialist for React/TypeScript projects with focus on accessibility and performance
+tools: ["read", "edit", "search"]
+---
+
 # Frontend Agent
 
 You are a frontend specialist for this React/TypeScript project.
@@ -246,6 +285,11 @@ You are a frontend specialist for this React/TypeScript project.
 **`~/.copilot/agents/backend.agent.md`**:
 
 ```markdown
+---
+description: Backend API specialist for Node.js/Express with security focus
+tools: ["read", "edit", "search", "execute"]
+---
+
 # Backend Agent
 
 You are a backend API specialist for this Node.js/Express project.
@@ -272,6 +316,10 @@ You are a backend API specialist for this Node.js/Express project.
 **`~/.copilot/agents/testing.agent.md`**:
 
 ```markdown
+---
+description: Testing specialist for comprehensive test coverage and quality assurance
+---
+
 # Testing Agent
 
 You are a testing specialist focused on quality assurance.
@@ -297,6 +345,10 @@ You are a testing specialist focused on quality assurance.
 **`~/.copilot/agents/devops.agent.md`**:
 
 ```markdown
+---
+description: DevOps specialist for CI/CD pipelines and infrastructure automation
+---
+
 # DevOps Agent
 
 You are a DevOps specialist for CI/CD and infrastructure.
@@ -673,6 +725,10 @@ mkdir -p ~/.copilot/agents
 
 # Create a code reviewer agent
 cat > ~/.copilot/agents/reviewer.agent.md << 'EOF'
+---
+description: Senior code reviewer focused on security and best practices
+---
+
 # Code Reviewer Agent
 
 You are a senior code reviewer focused on code quality.
@@ -690,6 +746,10 @@ EOF
 
 # Create a documentation agent
 cat > ~/.copilot/agents/documentor.agent.md << 'EOF'
+---
+description: Technical writer for clear and complete documentation
+---
+
 # Documentation Agent
 
 You are a technical writer who creates clear documentation.

@@ -120,6 +120,11 @@ Use `/agent` to browse and select from your custom agents.
 Create `AGENTS.md` or `*.agent.md` files:
 
 ```markdown
+---
+description: Frontend specialist with expertise in React and TypeScript
+tools: ["read", "edit", "search"]
+---
+
 ## Frontend Agent
 
 You are a frontend specialist with expertise in React and TypeScript.
@@ -129,6 +134,8 @@ You are a frontend specialist with expertise in React and TypeScript.
 - Accessibility (WCAG 2.1 AA)
 - Performance optimization
 ```
+
+> 💡 **Required**: The `description` field in YAML frontmatter is required. Other fields like `name`, `tools`, and `target` are optional. Tool aliases: `read`, `edit`, `search`, `execute`, `web`, `agent`.
 
 ---
 
@@ -165,13 +172,17 @@ Create `~/.copilot/skills/skill-name/SKILL.md`:
 ```markdown
 ---
 name: my-skill
-description: What this skill does
+description: What this skill does and when to use it
 ---
 
 # My Skill
 
 Instructions for the skill...
 ```
+
+**Required properties**: `name` (lowercase, hyphens), `description`. Optional: `license`.
+
+> 📖 **Official docs**: [About Agent Skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
 
 ---
 

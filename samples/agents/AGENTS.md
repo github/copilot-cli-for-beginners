@@ -2,6 +2,35 @@
 
 This folder shows how to define specialized agents for GitHub Copilot CLI.
 
+## Agent File Format
+
+Each agent file requires YAML frontmatter with at least a `description` field:
+
+```markdown
+---
+description: Brief description of what this agent does
+tools: ["read", "edit", "search"]  # Optional: limit available tools
+---
+
+# Agent Name
+
+Agent instructions go here...
+```
+
+**Available YAML Properties:**
+
+| Property | Required | Description |
+|----------|----------|-------------|
+| `description` | **Yes** | What the agent does |
+| `name` | No | Display name (defaults to filename) |
+| `tools` | No | List of allowed tools (omit = all). See aliases below. |
+| `target` | No | Limit to `vscode` or `github-copilot` only |
+| `infer` | No | If `false`, must be manually selected (default: `true`) |
+
+**Tool Aliases**: `read`, `edit`, `search`, `execute` (shell), `web`, `agent`
+
+> 💡 **Note**: The `model` property works in VS Code but is not yet supported in Copilot CLI.
+
 ## Agent File Locations
 
 Agents can be stored in:
@@ -20,6 +49,11 @@ Each agent is a separate file with the `.agent.md` extension.
 Save as `~/.copilot/agents/frontend.agent.md`:
 
 ```markdown
+---
+description: Frontend development specialist with React and TypeScript expertise
+tools: ["read", "edit", "search"]
+---
+
 # Frontend Agent
 
 You are a frontend development specialist with deep expertise in React and TypeScript.
@@ -55,6 +89,11 @@ You are a frontend development specialist with deep expertise in React and TypeS
 Save as `~/.copilot/agents/backend.agent.md`:
 
 ```markdown
+---
+description: Backend API specialist focused on Node.js and security
+tools: ["read", "edit", "search", "execute"]
+---
+
 # Backend Agent
 
 You are a backend API specialist focused on Node.js and security.
@@ -92,6 +131,10 @@ You are a backend API specialist focused on Node.js and security.
 Save as `~/.copilot/agents/testing.agent.md`:
 
 ```markdown
+---
+description: Quality assurance specialist focused on comprehensive testing
+---
+
 # Testing Agent
 
 You are a quality assurance specialist focused on comprehensive testing.
@@ -125,6 +168,10 @@ You are a quality assurance specialist focused on comprehensive testing.
 Save as `~/.copilot/agents/devops.agent.md`:
 
 ```markdown
+---
+description: DevOps and infrastructure specialist for CI/CD and cloud automation
+---
+
 # DevOps Agent
 
 You are a DevOps and infrastructure specialist.
@@ -179,9 +226,10 @@ copilot
 ## Creating Your Own Agents
 
 1. Create a new file in `~/.copilot/agents/` with `.agent.md` extension
-2. Add a descriptive header (e.g., `# Security Agent`)
-3. Define the agent's expertise, standards, and behaviors
-4. Use the agent with `/agent` or `--agent <name>`
+2. Add YAML frontmatter with at least a `description` field
+3. Add a descriptive header (e.g., `# Security Agent`)
+4. Define the agent's expertise, standards, and behaviors
+5. Use the agent with `/agent` or `--agent <name>`
 
 **Tips for effective agents:**
 - Be specific about expertise areas
