@@ -31,6 +31,8 @@ This course focuses on **GitHub Copilot CLI**, bringing AI assistance directly t
 
 ## Course Structure
 
+![GitHub Copilot CLI Learning Path](images/learning-path.png)
+
 | Chapter | Title | What You'll Build |
 |:-------:|-------|-------------------|
 | 00 | 🚀 [Quick Start](./00-quick-start/README.md) | Installation and verification |
