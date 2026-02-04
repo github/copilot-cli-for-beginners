@@ -14,13 +14,13 @@ This hands-on course takes you from zero to productive with GitHub Copilot CLI. 
 
 **No AI experience required.** If you can use a terminal, you can learn this.
 
-**Perfect for:** Developers, students, and anyone who has some software knowledge and uses a terminal daily.
+**Perfect for:** Developers, students, and anyone who has experience with software development.
 
 ## Who This Course Is For
 
 This course is designed for:
 
-- **Developers** who want to use AI from the command line
+- **Software Developers** who want to use AI from the command line
 - **Terminal users** who prefer keyboard-driven workflows over IDE integrations
 - **Teams looking to standardize** AI-assisted code review and development practices
 
@@ -28,7 +28,7 @@ This course is designed for:
 
 ## What Is GitHub Copilot CLI?
 
-**GitHub Copilot CLI brings AI assistance directly to your terminal.** Instead of switching to a browser or IDE, you can ask questions, review code, generate tests, and debug issues without leaving your command line.
+**GitHub Copilot CLI brings AI assistance directly to your terminal.** Instead of switching to a browser or code editor, you can ask questions, review code, generate tests, and debug issues without leaving your command line.
 
 Think of it as having a knowledgeable colleague available 24/7 who can read your code, explain confusing patterns, and help you work faster.
 
@@ -67,8 +67,7 @@ This course focuses on **GitHub Copilot CLI**, bringing AI assistance directly t
 Before starting, ensure you have:
 
 - [ ] **GitHub account**: [Create one free](https://github.com/signup)
-- [ ] **GitHub Copilot access**: [Free for students/teachers](https://education.github.com/pack), get started with the [Free option](https://github.com/features/copilot/plans), or [Monthly subscription](https://github.com/features/copilot/plans)
-- [ ] **Node.js LTS**: [Download here](https://nodejs.org/) (for npm installation)
+- [ ] **GitHub Copilot access**: [Monthly subscription](https://github.com/features/copilot/plans) or [Free for students/teachers](https://education.github.com/pack)
 - [ ] **Terminal basics**: Comfortable with `cd`, `ls`, running commands
 
 ## Quick Start
