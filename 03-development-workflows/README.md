@@ -30,6 +30,10 @@ A master carpenter doesn't just know how to use tools - they have *workflows* fo
 
 Similarly, developers have workflows for different tasks. Copilot CLI enhances each one.
 
+> 💡 **Important**: The workflows below are **independent tools**, not a mandatory sequence. Use whichever workflow fits your current task. You might do code review without debugging, or jump straight to test generation. There's no "correct" order.
+>
+> **Test-first developers**: If you practice TDD (Test-Driven Development), you'd typically start with Workflow 4 (Test Generation), then implement code, then use Workflow 1 (Code Review).
+
 <img src="images/craftsman-workshop-analogy.png" alt="Specialized Workflows for Every Task" width="800"/>
 
 *The right tool for every development task: Code Review, Refactoring, Debugging, Testing, and Git Integration*
@@ -220,16 +224,11 @@ Fix: Use integer cents internally, convert for display only:
 - Store amounts as cents (1020, 510)
 - Calculate: 1020 + 510 = 1530
 - Display: (1530 / 100).toFixed(2) = "$15.30"
-
-ADDITIONAL ISSUE FOUND:
-Line 28-34 has a race condition in the withdraw() function.
-Multiple concurrent withdrawals could overdraw the account
-because the balance check and update aren't atomic.
-
-Recommend: Add transaction locking or use database transactions.
 ```
 
-**Why this matters**: You asked about one bug, and Copilot found **another critical bug** you didn't know existed. The AI reads the whole file and spots related issues.
+**Why this matters**: Copilot reads the whole file, understands the context of your bug report, and gives you a specific fix with a clear explanation.
+
+> 💡 **Bonus**: Because Copilot analyzes the entire file, it often discovers *other* issues you didn't ask about. Try it - you might be surprised what else it finds!
 
 > 💡 **Common security terms you'll encounter:**
 > - **SQL Injection**: When user input is put directly into a database query, allowing attackers to run malicious commands
@@ -402,7 +401,7 @@ copilot
 # See what changed
 git diff --staged
 
-# Generate commit message
+# Generate commit message (see [Conventional Commit](../GLOSSARY.md#conventional-commit) format)
 copilot -p "Generate a conventional commit message for: $(git diff --staged)"
 
 # Output: "feat(auth): add JWT refresh token rotation

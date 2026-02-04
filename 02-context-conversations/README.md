@@ -10,7 +10,7 @@ By the end of this chapter, you'll be able to:
 
 - Use the `@` syntax to reference files, directories, and images
 - Resume previous sessions with `--resume` and `--continue`
-- Understand how context windows work
+- Understand how [context windows](../GLOSSARY.md#context-window) work
 - Write effective multi-turn conversations
 - Manage directory permissions for multi-project workflows
 
@@ -35,27 +35,30 @@ GitHub Copilot CLI works the same way. The `@` syntax is how you point Copilot a
 
 ---
 
+# Essential: Basic Context
+
+This section covers everything you need to work effectively with context. Master these basics first.
+
+---
+
 ## The @ Syntax
 
-The `@` symbol references files and directories in your prompts.
+The `@` symbol references files and directories in your prompts. Here are the patterns you'll use most often:
 
-### @ Syntax Quick Reference
+### Basic @ Patterns
 
-| Pattern | What It Does | When to Use |
+| Pattern | What It Does | Example Use |
 |---------|--------------|-------------|
-| `@file.js` | Single file | Focused review, specific questions |
-| `@folder/` | Entire directory | Architecture review, pattern detection |
-| `@folder/*.js` | All .js files in folder | Language-specific analysis |
-| `@**/*.test.js` | Recursive glob pattern | Find all test files anywhere |
-| `@file1.js @file2.js` | Multiple specific files | Cross-file comparison, dependencies |
-| `@image.png` | Image file | UI review, visual debugging |
+| `@file.js` | Reference a single file | `Review @samples/src/app.js` |
+| `@folder/` | Reference all files in a directory | `Review @samples/src/api/` |
+| `@file1.js @file2.js` | Reference multiple files | `Compare @login.js @register.js` |
 
 ### Reference a Single File
 
 ```bash
 copilot
 
-> Explain what @src/utils/helpers.js does
+> Explain what @samples/src/utils/helpers.js does
 ```
 
 <details>
@@ -70,7 +73,7 @@ copilot
 ```bash
 copilot
 
-> Compare @src/auth/login.js and @src/auth/register.js for consistency
+> Compare @samples/src/auth/login.js and @samples/src/auth/register.js for consistency
 ```
 
 ### Reference an Entire Directory
@@ -78,15 +81,7 @@ copilot
 ```bash
 copilot
 
-> Review all files in @src/api/ for error handling
-```
-
-### Reference with Glob Patterns
-
-```bash
-copilot
-
-> Find all TODO comments in @src/**/*.js
+> Review all files in @samples/src/api/ for error handling
 ```
 
 ---
@@ -181,13 +176,13 @@ Priority fix: Add a validation middleware and centralized auth before any new fe
 ```bash
 copilot
 
-> @src/api/users.js Review this file for security issues
+> @samples/src/api/users.js Review this file for security issues
 
 # Copilot now has the full file content and can give specific feedback:
 # "Line 23: SQL query is vulnerable to injection..."
 # "Line 45: Password is stored in plain text..."
 
-> What about @src/api/auth.js?
+> What about @samples/src/api/auth.js?
 
 # Now reviewing auth.js, but still aware of users.js context
 ```
@@ -201,7 +196,7 @@ copilot
 
 # Copilot reads package.json and understands dependencies
 
-> @src/ Give me an overview of the code structure
+> @samples/src/ Give me an overview of the code structure
 
 # Copilot scans the directory and summarizes
 
@@ -215,7 +210,7 @@ copilot
 ```bash
 copilot
 
-> @src/services/userService.js @src/services/productService.js
+> @samples/src/services/userService.js @samples/src/services/productService.js
 > These services have duplicated error handling. Extract a common pattern.
 
 # Copilot sees both files and can suggest a shared abstraction
@@ -234,7 +229,7 @@ Every conversation is automatically saved. Just exit normally:
 ```bash
 copilot
 
-> @src/services/ Let's refactor these services to use async/await
+> @samples/src/services/ Let's refactor these services to use async/await
 
 [... do some work ...]
 
@@ -310,6 +305,34 @@ No re-explaining. No re-reading files. Just continue working.
 
 ---
 
+**🎉 You now know the essentials!** The `@` syntax for referencing files, and `--continue`/`--resume` for session management, are enough to be highly productive. Everything below is optional - return to it when you're ready.
+
+---
+
+# Optional: Advanced Context
+
+> 💡 **For beginners**: The sections below are optional. Return to these once you're comfortable with the basics above. You can be very productive with just the basic @ syntax and session management covered earlier.
+
+---
+
+## Advanced @ Patterns
+
+For power users, Copilot supports glob patterns and image references:
+
+| Pattern | What It Does |
+|---------|--------------|
+| `@folder/*.js` | All .js files in folder |
+| `@**/*.test.js` | Recursive glob - find all test files anywhere |
+| `@image.png` | Image file for UI review |
+
+```bash
+copilot
+
+> Find all TODO comments in @samples/src/**/*.js
+```
+
+---
+
 ### Switch Sessions While Working
 
 Inside an interactive session, use the `/resume` command:
@@ -365,7 +388,7 @@ The magic happens when you have multi-turn conversations that build on each othe
 ```bash
 copilot
 
-> @src/components/Button.jsx Review this React component
+> @samples/src/components/Button.jsx Review this React component
 
 Copilot: "The component looks good, but I notice:
 1. No PropTypes or TypeScript types
@@ -448,7 +471,7 @@ Context limit reached. Older context will be summarized.
 
 ### Best Practices for Large Codebases
 
-1. **Be specific**: `@src/auth/login.js` instead of `@src/`
+1. **Be specific**: `@samples/src/auth/login.js` instead of `@samples/src/`
 2. **Clear between topics**: Use `/clear` when switching focus
 3. **Use `/compact`**: Summarize conversation to free up context
 4. **Use multiple sessions**: One session per feature or topic
@@ -461,7 +484,7 @@ Not all files are equal when it comes to context. Here's how to choose wisely:
 
 ### File Size Considerations
 
-| File Size | Approximate Tokens | Strategy |
+| File Size | Approximate [Tokens](../GLOSSARY.md#token) | Strategy |
 |-----------|-------------------|----------|
 | Small (<100 lines) | ~500-1,500 tokens | Reference freely |
 | Medium (100-500 lines) | ~1,500-7,500 tokens | Reference specific files |
@@ -495,18 +518,18 @@ Not all files are equal when it comes to context. Here's how to choose wisely:
 
 ```
 Less specific ────────────────────────► More specific
-@src/                                   @src/auth/login.js:23-45
+@samples/src/                                   @samples/src/auth/login.js:23-45
      │                                       │
      └─ Scans everything                     └─ Just what you need
         (uses more context)                      (preserves context)
 ```
 
-**When to go broad** (`@src/`):
+**When to go broad** (`@samples/src/`):
 - Initial codebase exploration
 - Finding patterns across many files
 - Architecture reviews
 
-**When to go specific** (`@src/auth/login.js`):
+**When to go specific** (`@samples/src/auth/login.js`):
 - Debugging a particular issue
 - Code review of a specific file
 - Asking about a single function
@@ -520,13 +543,13 @@ copilot
 > @package.json What frameworks does this project use?
 
 # Step 2: Narrow based on answer
-> @src/api/ Show me the API structure
+> @samples/src/api/ Show me the API structure
 
 # Step 3: Focus on what matters
-> @src/api/users.js Review this specific endpoint
+> @samples/src/api/users.js Review this specific endpoint
 
 # Step 4: Add related files only as needed
-> @src/api/users.js @src/models/User.js How does this endpoint use the User model?
+> @samples/src/api/users.js @samples/src/models/User.js How does this endpoint use the User model?
 ```
 
 This staged approach keeps context focused and efficient.
@@ -570,10 +593,10 @@ copilot
 
 ```bash
 # Allow all permissions for non-interactive scripts
-copilot -p "Review @src/" --allow-all
+copilot -p "Review @samples/src/" --allow-all
 
 # Or use the memorable alias
-copilot -p "Review @src/" --yolo
+copilot -p "Review @samples/src/" --yolo
 ```
 
 ---
@@ -639,7 +662,7 @@ Images become even more powerful when combined with code context:
 ```bash
 copilot
 
-> @screenshot-of-bug.png @src/components/Header.jsx
+> @screenshot-of-bug.png @samples/src/components/Header.jsx
 > The header looks wrong in the screenshot. What's causing it in the code?
 ```
 
@@ -694,7 +717,7 @@ Now review it:
 cd sample-project
 copilot
 
-> @src/ Give me a security and code quality review of this project
+> @samples/src/ Give me a security and code quality review of this project
 
 # Copilot will identify:
 # - SQL injection in index.js
@@ -708,12 +731,12 @@ copilot
 copilot
 
 > /rename project-review
-> @src/index.js Let's fix the SQL injection vulnerability
+> @samples/src/index.js Let's fix the SQL injection vulnerability
 
 [Copilot suggests parameterized queries]
 
 > Implement that fix
-> Now update @src/utils.js to have proper email validation
+> Now update @samples/src/utils.js to have proper email validation
 > /exit
 
 # Later - resume where you left off
@@ -750,7 +773,7 @@ After completing the demos, try these variations:
 1. Clone or create a project with at least 3 source files
 2. Start an interactive session
 3. Use `@` to review each file individually
-4. Ask Copilot to find patterns across all files: "What patterns are repeated across @src/?"
+4. Ask Copilot to find patterns across all files: "What patterns are repeated across @samples/src/?"
 5. Ask for a refactoring suggestion that affects multiple files
 6. Rename the session: `/rename review-session`
 7. Exit, then resume with `copilot --continue` and continue where you left off
@@ -794,7 +817,7 @@ Then resume with: `copilot --continue`
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
-| Forgetting `@` before filenames | Copilot treats "src/index.js" as plain text | Use `@src/index.js` to reference files |
+| Forgetting `@` before filenames | Copilot treats "src/index.js" as plain text | Use `@samples/src/index.js` to reference files |
 | Expecting sessions to persist automatically | Starting `copilot` fresh loses all previous context | Use `--continue` (last session) or `--resume` (pick a session) |
 | Referencing files outside current directory | "Permission denied" or "File not found" errors | Use `/add-dir /path/to/directory` to grant access |
 | Not using `/clear` when switching topics | Old context confuses responses about the new topic | Run `/clear` before starting a different task |
@@ -814,7 +837,7 @@ ls   # List files
 # Then start copilot and use relative paths
 copilot
 
-> Review @src/index.js
+> Review @samples/src/index.js
 ```
 
 ### "Permission denied"

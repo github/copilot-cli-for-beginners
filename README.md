@@ -14,7 +14,25 @@ This hands-on course takes you from zero to productive with GitHub Copilot CLI. 
 
 **No AI experience required.** If you can use a terminal, you can learn this.
 
-**Perfect for:** Developers, students, and anyone who uses a terminal daily.
+**Perfect for:** Developers, students, and anyone who has some software knowledge and uses a terminal daily.
+
+## Who This Course Is For
+
+This course is designed for:
+
+- **Developers** who want to use AI from the command line
+- **Terminal users** who prefer keyboard-driven workflows over IDE integrations
+- **Teams looking to standardize** AI-assisted code review and development practices
+
+---
+
+## What Is GitHub Copilot CLI?
+
+**GitHub Copilot CLI brings AI assistance directly to your terminal.** Instead of switching to a browser or IDE, you can ask questions, review code, generate tests, and debug issues without leaving your command line.
+
+Think of it as having a knowledgeable colleague available 24/7 who can read your code, explain confusing patterns, and help you work faster.
+
+---
 
 ## Understanding the GitHub Copilot Family
 
@@ -39,9 +57,9 @@ This course focuses on **GitHub Copilot CLI**, bringing AI assistance directly t
 | 01 | 👋 [First Steps](./01-setup-and-first-steps/README.md) | Live demos + three interaction modes |
 | 02 | 🔍 [Context and Conversations](./02-context-conversations/README.md) | Multi-file project analysis |
 | 03 | ⚡ [Development Workflows](./03-development-workflows/README.md) | Code review, debug, test generation |
-| 04 | 🤖 [Agents and Custom Instructions](./04-agents-custom-instructions/README.md) | Specialized AI assistants |
-| 05 | 🛠️ [Skills System](./05-skills/README.md) | Auto-loaded task instructions |
-| 06 | 🔌 [MCP Servers](./06-mcp-servers/README.md) | Connect to GitHub, databases, APIs |
+| 04 | 🤖 [Create Specialized AI Assistants](./04-agents-custom-instructions/README.md) | Custom agents for your workflow |
+| 05 | 🛠️ [Automate Repetitive Tasks](./05-skills/README.md) | Skills that load automatically |
+| 06 | 🔌 [Connect to GitHub, Databases & APIs](./06-mcp-servers/README.md) | MCP server integration |
 | 07 | 🎯 [Putting It All Together](./07-putting-it-together/README.md) | Complete feature workflows |
 
 ## Prerequisites
@@ -106,28 +124,6 @@ npm run update:reference  # Uses Copilot CLI to scan docs and update content
 npm run generate:pdf      # Generates PDF from markdown
 ```
 
-## Glossary
-
-Quick reference for technical terms used throughout this course:
-
-| Term | Definition |
-|------|------------|
-| **Agent** | A specialized AI personality with domain expertise (e.g., frontend, security). Defined in `.agent.md` files with YAML frontmatter containing at minimum a `description` field. |
-| **API** | Application Programming Interface - a way for programs to communicate with each other. |
-| **CI/CD** | Continuous Integration/Continuous Deployment - automated testing and deployment pipelines. |
-| **CLI** | Command Line Interface - a text-based way to interact with software (like this tool!). |
-| **Context Window** | The amount of text an AI can consider at once. Like a desk that can only hold so much. |
-| **Glob Pattern** | A pattern using wildcards to match file paths (e.g., `*.js` matches all JavaScript files). |
-| **JWT** | JSON Web Token - a secure way to transmit authentication information between systems. |
-| **MCP** | Model Context Protocol - a standard for connecting AI assistants to external data sources. |
-| **OWASP** | Open Web Application Security Project - organization that publishes security best practices. |
-| **Programmatic Mode** | Running Copilot with `-p` flag for single commands without interaction. |
-| **Session** | A conversation with Copilot that maintains context and can be resumed later. |
-| **Skill** | A folder with instructions that Copilot automatically loads when relevant to your prompt. |
-| **Slash Command** | Commands starting with `/` that control Copilot (e.g., `/help`, `/clear`, `/model`). |
-| **Token** | A unit of text that AI models process. Roughly 4 characters or 0.75 words. |
-| **WCAG** | Web Content Accessibility Guidelines - standards for making web content accessible. |
-
 ## Getting Help
 
 - 💬 **Questions?** [Start a Discussion](https://github.com/microsoft/github-copilot-cli-for-beginners/discussions)
@@ -140,4 +136,14 @@ Quick reference for technical terms used throughout this course:
 Ready? Let's see what GitHub Copilot CLI can do!
 
 **[Begin with Chapter 00: Quick Start →](./00-quick-start/README.md)**
+
+---
+
+## Glossary
+
+Quick reference for technical terms used throughout this course. Don't worry about memorizing these now - refer back as needed.
+
+**[View Full Glossary →](./GLOSSARY.md)**
+
+Key terms: [Agent](./GLOSSARY.md#agent) | [Context Window](./GLOSSARY.md#context-window) | [Token](./GLOSSARY.md#token) | [MCP](./GLOSSARY.md#mcp) | [Skill](./GLOSSARY.md#skill) | [OWASP](./GLOSSARY.md#owasp) | [WCAG](./GLOSSARY.md#wcag)
 

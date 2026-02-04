@@ -4,6 +4,8 @@
 
 In this chapter, you'll learn about Agent Skills: folders of instructions that Copilot automatically loads when relevant to your task. While agents change *how* Copilot thinks, skills teach Copilot *specific ways to complete tasks*. You'll create a security audit skill that Copilot applies whenever you ask about security, build team-standard review criteria that ensure consistent code quality, and learn how skills work across Copilot CLI, VS Code, and the Copilot coding agent.
 
+> 💡 **Skills are optional.** You can use GitHub Copilot CLI effectively without ever creating a skill. Skills are most valuable when you find yourself typing the same detailed prompts repeatedly, or when your team needs consistent code review criteria. If you're just getting started, feel free to skim this chapter and return when you have a repetitive task to automate.
+
 ## Learning Objectives
 
 By the end of this chapter, you'll be able to:
@@ -45,7 +47,7 @@ copilot
 
 > Review src/api/users.js for security issues
 # Copilot detects this matches your "security-audit" skill
-# and automatically applies its OWASP checklist
+# and automatically applies its [OWASP](../GLOSSARY.md#owasp) checklist
 
 > Generate tests for the login function
 # Copilot loads your "generate-tests" skill

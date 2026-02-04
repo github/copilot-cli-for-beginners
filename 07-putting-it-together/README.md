@@ -4,12 +4,7 @@
 
 In this chapter, you'll bring together everything you've learned into complete workflows. You'll build features using multi-agent collaboration, set up pre-commit hooks that catch security issues before they're committed, integrate Copilot into CI/CD pipelines, and go from feature idea to merged PR in a single terminal session. This is where Copilot CLI becomes a genuine force multiplier.
 
-> ⚠️ **Prerequisites**: This chapter assumes you've completed or are familiar with:
-> - **[Chapter 04: Agents](../04-agents-custom-instructions/README.md)** - Creating custom agents like `frontend` and `backend`
-> - **[Chapter 05: Skills](../05-skills/README.md)** - Creating skills like `generate-tests`
-> - **[Chapter 06: MCP Servers](../06-mcp-servers/README.md)** - Using GitHub MCP (built-in) for PR creation
->
-> **Don't have agents/skills set up yet?** No problem! See the "Minimal Workflow" section below that uses only built-in features.
+> 💡 **Note**: This chapter shows how to combine everything you've learned. **You don't need agents, skills, or MCP to be productive.** If you only completed Chapters 00-03, start with the "Minimal Workflow" section - it covers a complete feature workflow using only built-in features.
 
 ## Learning Objectives
 
@@ -106,39 +101,9 @@ That's what this chapter teaches: conducting your tools into a unified workflow.
 
 ---
 
-## The Integration Pattern
+## Start Here: Minimal Workflow (No Custom Setup Required)
 
-Here's the mental model for combining everything:
-
-```
-+-------------------------------------------------------------+
-|                     YOUR WORKFLOW                            |
-+-------------------------------------------------------------+
-|                                                              |
-|  1. GATHER CONTEXT (MCP)                                     |
-|     Get issue details from GitHub                            |
-|     Read relevant code files                                 |
-|                                                              |
-|  2. ANALYZE & PLAN (Agents)                                  |
-|     Switch to backend agent for analysis                     |
-|     Switch to security agent for review                      |
-|                                                              |
-|  3. EXECUTE (Skills + Manual)                                |
-|     Ask naturally - skills load automatically                |
-|     Implement the fix                                        |
-|                                                              |
-|  4. COMPLETE (MCP)                                           |
-|     Create PR via GitHub                                     |
-|     Request review                                           |
-|                                                              |
-+-------------------------------------------------------------+
-```
-
----
-
-## Minimal Workflow (No Custom Setup Required)
-
-**Don't have agents or skills configured?** You can still be highly productive with just the built-in features from Chapters 01-03:
+**This is the most important section.** You can build complete features using just the built-in features from Chapters 01-03:
 
 ```bash
 copilot
@@ -171,11 +136,41 @@ copilot -p "Generate commit message for: $(git diff --staged)"
 - Built-in `/plan` and `/review` commands (Chapters 01 & 03)
 - Programmatic mode for commit messages (Chapter 01)
 
-Once comfortable, explore agents, skills, and MCP for even more power.
+**That's a complete feature workflow!** Everything below shows how to enhance this with agents, skills, and MCP - but you're already productive without them.
 
 ---
 
-## Workflow 1: Complete Feature Development
+## The Integration Pattern (For Advanced Users)
+
+Here's the mental model for combining everything:
+
+```
++-------------------------------------------------------------+
+|                     YOUR WORKFLOW                            |
++-------------------------------------------------------------+
+|                                                              |
+|  1. GATHER CONTEXT (MCP)                                     |
+|     Get issue details from GitHub                            |
+|     Read relevant code files                                 |
+|                                                              |
+|  2. ANALYZE & PLAN (Agents)                                  |
+|     Switch to backend agent for analysis                     |
+|     Switch to security agent for review                      |
+|                                                              |
+|  3. EXECUTE (Skills + Manual)                                |
+|     Ask naturally - skills load automatically                |
+|     Implement the fix                                        |
+|                                                              |
+|  4. COMPLETE (MCP)                                           |
+|     Create PR via GitHub                                     |
+|     Request review                                           |
+|                                                              |
++-------------------------------------------------------------+
+```
+
+---
+
+## Workflow 1: Complete Feature Development (With Agents)
 
 Let's build a "user favorites" feature from start to finish. This example uses React + Node.js/Express, but adapt the prompts to your tech stack.
 
@@ -271,7 +266,9 @@ copilot
 
 ---
 
-## Workflow 3: Code Review Automation
+## Workflow 3: Code Review Automation (Optional - Advanced)
+
+> 💡 **This section is optional.** Pre-commit hooks are useful for teams but not required to be productive. Skip this if you're just getting started.
 
 Set up automated code review on your commits:
 
@@ -332,46 +329,33 @@ git commit -m "Update user endpoint"
 
 ## Workflow 4: Multi-Agent Feature Planning
 
-For complex features, use multiple agents in sequence:
+For features that touch both frontend and backend, use multiple agents:
 
 ```bash
 copilot
 
-> I need to build a real-time notification system for our React + Node.js application
+> I need to add a "contact us" form to my application
 
-# Get architecture from backend agent
-> /agent
-# Select "backend"
-
-> Design the notification service architecture:
-> - WebSocket connection management
-> - Event types and payloads
-> - Scaling considerations
-
-# Get UI from frontend agent
+# Get UI design from frontend agent
 > /agent
 # Select "frontend"
 
-> Design notification UI components:
-> - NotificationBell (header icon with count)
-> - NotificationPanel (dropdown list)
-> - NotificationItem (individual notification)
-> - Toast notifications for real-time alerts
+> Design a contact form component:
+> - Name, email, and message fields
+> - Validation and error display
+> - Submit button with loading state
 
-# Get data model
+# Get API design from backend agent
 > /agent
 # Select "backend"
 
-> Design the database schema:
-> - notifications table
-> - user_notification_preferences table
-> - notification_read_status table
+> Design the contact form API:
+> - What endpoint do we need?
+> - How should we validate input?
+> - How should we handle errors?
 
 # Synthesize into implementation plan
-> Combine these designs into a phased implementation plan with:
-> - Execution order
-> - Dependencies between components
-> - Testing strategy
+> Create a step-by-step implementation plan that connects the form to the API
 ```
 
 ---
@@ -575,60 +559,49 @@ After completing the demos, try these variations:
 
 ### Main Challenge: End-to-End Feature
 
-Build a complete feature using the integration pattern:
+Build a complete feature using what you've learned:
 
-1. Choose a feature to build (or use: "Add a dark mode toggle")
-2. Gather context about your codebase
-3. Design with agents (frontend and backend)
-4. Implement the components
-5. Generate tests with a skill
-6. Create a PR
+1. Choose a simple feature (suggestions: "Add a 404 page", "Add a back-to-top button", or "Add a simple contact form")
+2. Gather context about your codebase with `@`
+3. Plan your implementation with `/plan`
+4. Implement the feature
+5. Generate tests
+6. Review with `/review`
+7. Generate a commit message
 
 Document your workflow as you go.
 
-**Success criteria**: You've completed a feature using at least 2 agents and 1 skill.
+**Success criteria**: You've completed a feature from idea to commit using Copilot CLI.
+
+> 💡 **Bonus**: If you have agents set up, try using `/agent` to get specialized help during design and implementation.
 
 <details>
 <summary>💡 Hints (click to expand)</summary>
 
-**Guided walkthrough using "Add a dark mode toggle":**
+**Guided walkthrough using "Add a back-to-top button":**
 
 ```bash
 # STEP 1: Start and gather context
 copilot
 > @src/ What UI framework does this project use?
-> @package.json What dependencies are installed?
 
-# STEP 2: Design with frontend agent
-> /agent
-# Select "frontend" (or create one if you don't have it)
-> Design a dark mode toggle component with these requirements:
-> - Toggle button in the header
-> - Save preference to localStorage
-> - Apply CSS class to body element
+# STEP 2: Plan the feature
+> /plan Add a "back to top" button that appears when the user scrolls down
 
-# STEP 3: Design with backend agent (if applicable)
-> /agent
-# Select "backend"
-> Do I need any API changes to persist dark mode preference per user?
+# STEP 3: Implement (after reviewing the plan)
+> Implement the back-to-top button component
 
-# STEP 4: Implement
-> Implement the DarkModeToggle component based on your design
+# STEP 4: Generate tests
+> Generate tests for the back-to-top button
 
-# STEP 5: Generate tests
-> Generate tests for the dark mode toggle
-# If you have a test-generation skill, it auto-triggers here
+# STEP 5: Review
+> /review
 
-# STEP 6: Create PR
-> Create a pull request for the dark mode feature
+# STEP 6: Generate commit message
+copilot -p "Generate commit message for: $(git diff --staged)"
 ```
 
-**Don't have agents set up?** You can still complete this exercise:
-- Skip the `/agent` steps
-- Ask Copilot directly: "Design a dark mode toggle as a frontend expert"
-- The key is practicing the full workflow from design → implementation → tests → PR
-
-**Simpler alternative:** If dark mode feels complex, try "Add a 'Back to Top' button" instead - it's a single-file feature that still exercises the full workflow.
+**The key is practicing the full workflow** from idea → context → plan → implement → test → commit. The specific feature doesn't matter.
 
 </details>
 

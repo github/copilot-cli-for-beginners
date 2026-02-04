@@ -18,15 +18,17 @@ By the end of this chapter, you'll have:
 
 - **GitHub Account** with Copilot access
   - Students/Teachers: [Free via GitHub Education](https://education.github.com/pack)
-  - Everyone else: [$10/month or $100/year](https://github.com/features/copilot)
-- **Terminal/Command line** basics (cd, ls, etc.)
-- **Node.js LTS** (only required if using npm installation method - not needed for Homebrew, WinGet, or install script)
+  - Everyone else: [See pricing options](https://github.com/features/copilot/plans)
+- **Terminal basics**: Comfortable with commands like `cd` and `ls`
+- **Node.js LTS** (only needed for npm installation - not required for Homebrew, WinGet, or install script)
+
+> ⚠️ **Important**: The **free tier of GitHub Copilot does NOT include CLI access**. You need a paid Copilot Individual subscription, Copilot Business, Copilot Enterprise, or GitHub Education access. Check your access at [github.com/settings/copilot](https://github.com/settings/copilot).
 
 ### What "Copilot Access" Means
 
 GitHub Copilot CLI requires an active Copilot subscription. You can check your status at [github.com/settings/copilot](https://github.com/settings/copilot). You should see one of:
 
-- **Copilot Individual** - Personal subscription ($10/month)
+- **Copilot Individual** - Personal subscription
 - **Copilot Business** - Through your organization
 - **Copilot Enterprise** - Through your enterprise
 - **GitHub Education** - Free for verified students/teachers

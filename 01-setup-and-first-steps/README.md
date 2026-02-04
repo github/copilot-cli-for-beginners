@@ -13,15 +13,40 @@ By the end of this chapter, you'll be able to:
 - Experience why developers call this "having a senior engineer on speed dial"
 - Choose the right mode (Interactive, Plan, or Programmatic) for any task
 - Use essential slash commands to control your sessions
-- Understand how Agents, Skills, and MCP extend GitHub Copilot CLI
 
 > ⏱️ **Estimated Time**: ~45 minutes (20 min reading + 25 min hands-on)
 
 ---
 
+## Getting Comfortable: Your First Prompts
+
+Before diving into the impressive demos, let's start with some simple prompts you can try right now. **No code repository needed**! Just open a terminal and start Copilot:
+
+```bash
+copilot
+```
+
+Try these beginner-friendly prompts:
+
+```
+> Explain what a REST API is in simple terms
+
+> Write a function that reverses a string in Python
+
+> What's the difference between let and const in JavaScript?
+
+> Give me 5 best practices for writing clean code
+```
+
+Notice how natural it feels. Just ask questions like you would to a colleague. When you're done exploring, type `/exit` to leave the session.
+
+**The key insight**: Copilot CLI is conversational. You don't need special syntax to get started. Just ask questions in plain English.
+
+---
+
 ## See It In Action
 
-Before we learn the theory, let's see why developers are calling this "having a senior engineer on speed dial."
+Now let's see why developers are calling this "having a senior engineer on speed dial."
 
 > 📖 **Reading the Examples**: Lines starting with `>` are prompts you type inside an interactive Copilot session. Lines without a prefix are shell commands you run in your terminal.
 
@@ -43,6 +68,8 @@ Once inside the interactive session:
 ```
 > Review @samples/buggy-code/js/userService.js for security vulnerabilities
 ```
+
+> 💡 **What's the `@`?** The `@` symbol tells Copilot to read a file. You'll learn all about this in Chapter 02 - for now, just copy the command exactly as shown.
 
 <details>
 <summary>🎬 See it in action!</summary>
@@ -339,30 +366,27 @@ copilot -p "Security review of @src/ - list critical issues only"
 
 ## Essential Slash Commands
 
-These commands work in interactive mode.
-
-### 🚀 Start With These 4 Commands
-
-Master these first - they cover 90% of daily use:
-
-| Command | What It Does | Example |
-|---------|--------------|---------|
-| `/help` | Show all available commands | When you forget a command |
-| `/clear` | Clear conversation and start fresh | When switching topics |
-| `/plan` | Preview steps before coding | For complex features |
-| `/exit` | End the session | When you're done |
-
-### All Core Commands
+These commands work in interactive mode. **Start with just these four** - they cover 90% of daily use:
 
 | Command | What It Does | When to Use |
 |---------|--------------|-------------|
-| `/help` | Show available commands | When you're unsure what's possible |
-| `/clear` | Clear conversation history | Starting a new topic in same session |
-| `/model` | Show or switch AI model | Testing different models |
+| `/help` | Show all available commands | When you forget a command |
+| `/clear` | Clear conversation and start fresh | When switching topics |
+| `/plan` | Plan your work out before coding | For more complex features |
 | `/exit` | End the session | When you're done |
-| `/plan` | Create implementation plan before coding | Complex features needing structure |
-| `/review` | Run code-review agent | Before committing changes |
-| `/delegate` | Hand off task to Copilot coding agent | Background work on GitHub |
+
+That's it for getting started! As you become comfortable, you can explore additional commands.
+
+<details>
+<summary>📚 <strong>Additional Commands</strong> (click to expand)</summary>
+
+### Core Commands
+
+| Command | What It Does |
+|---------|--------------|
+| `/model` | Show or switch AI model |
+| `/review` | Run the code-review agent |
+| `/delegate` | Hand off task to Copilot coding agent on GitHub (agent in the cloud) |
 
 ### Session Commands
 
@@ -388,9 +412,9 @@ Master these first - they cover 90% of daily use:
 
 | Command | What It Does |
 |---------|--------------|
-| `/theme` | View or set terminal theme (auto/dark/light/GitHub Dark/GitHub Light) |
+| `/theme` | View or set terminal theme |
 | `/terminal-setup` | Enable multiline input support |
-| `/user` | Manage GitHub accounts (show/list/switch) |
+| `/user` | Manage GitHub accounts |
 | `/feedback` | Submit feedback to GitHub |
 | `/init` | Initialize Copilot instructions for your repository |
 
@@ -411,7 +435,7 @@ Master these first - they cover 90% of daily use:
 | `/allow-all` | Auto-approve all permission prompts for this session |
 | `/yolo` | Alias for `/allow-all` (same behavior) |
 
-> ⚠️ **Use with caution**: `/allow-all` and `/yolo` skip confirmation prompts. Great for trusted projects, but be careful with untrusted code.
+> ⚠️ **Use with caution**: These skip confirmation prompts. Great for trusted projects, but be careful with untrusted code.
 
 ### Quick Shell Commands
 
@@ -438,109 +462,18 @@ copilot
 
 # Or use the & prefix shortcut:
 > & Add error handling to the login function
-
-# Copilot:
-# 1. Commits your changes to a new branch
-# 2. Opens a draft pull request
-# 3. Works on the task in the background
-# 4. Requests your review when done
 ```
 
-This is useful for tasks you want Copilot to complete independently while you work on something else.
-
 ### Switching Models
-
-Different AI models have different strengths:
 
 ```bash
 copilot
 > /model
 
-# Example output (your available models will vary):
-Available models:
-  - Claude Sonnet 4.5 (default)
-  - Claude Opus 4.5
-  - Gemini 3 Pro
-  - GPT-5.2 Codex
-  - GPT-5.1-Codex-Mini
-  - More ...
+# Shows available models - these vary by subscription and region
 ```
 
-> ⚠️ **Important**: The models shown above are examples only. Available models change frequently and vary based on your subscription, region, and GitHub Copilot updates. Always run `/model` to see your current options.
-
-```bash
-# Switch to a specific model
-> /model gpt-5.2-codex
-Model switched to gpt-5.2-codex
-
-# Now use the new model
-> Write a creative story opening about a space explorer
-```
-
-**Tips**:
-- Try the same prompt with different models to see how their outputs differ
-- Use `/model` to see currently available models (availability changes frequently)
-
----
-
-## Preview: Three Ways to Extend Copilot CLI
-
-Before we continue, let's understand the three extension mechanisms you'll learn in this course. This mental model will help everything make sense.
-
-### Agents (Chapter 04): Change HOW the AI Thinks
-
-Agents are specialized AI personalities with specific expertise. You define them in agent files and invoke them with the `/agent` command.
-
-```bash
-# Select an agent interactively
-> /agent
-
-# Or start with a specific agent
-copilot --agent frontend
-```
-
-**When to use**: When you need specialized domain expertise.
-
-### Skills (Chapter 05): Automatic Task Instructions
-
-Skills are folders of instructions stored in `~/.copilot/skills/`. Copilot **automatically loads** them when your prompt matches the skill's description.
-
-```bash
-# Just ask naturally - Copilot loads matching skills automatically
-> Review this code for security issues
-# Copilot detects this matches your "security-audit" skill
-# and applies its checklist automatically
-```
-
-**When to use**: For repetitive tasks that need consistent behavior.
-
-### MCP Servers (Chapter 06): Connect to EXTERNAL Services
-
-MCP (Model Context Protocol) connects Copilot to external data sources. Configure servers, then their tools become available.
-
-```bash
-# Configure MCP servers
-> /mcp add
-
-# Once configured, the tools are available to Copilot
-# and it can use them automatically when relevant
-```
-
-**When to use**: When you need live data from external systems like GitHub, databases, or APIs.
-
-### How They Work Together (Chapter 07)
-
-```bash
-# A complete workflow combining extensions
-copilot --agent backend
-
-# Copilot (with backend expertise) can now:
-# - Access GitHub issues via MCP
-# - Use your custom skills
-# - Apply backend best practices
-```
-
-This is the power of GitHub Copilot CLI - and you'll master all of it by Chapter 07.
+</details>
 
 ---
 
@@ -673,8 +606,7 @@ Wait a few minutes and try again. Consider using programmatic mode for batch ope
 1. **Interactive mode** is for exploration and iteration - context carries forward
 2. **Plan mode** is for complex tasks - review before implementation
 3. **Programmatic mode** is for automation - no interaction needed
-4. **Slash commands** (`/help`, `/clear`, `/model`, `/exit`) control your sessions
-5. **Agents, Skills, and MCP** extend Copilot's capabilities - you'll learn more about each of them in upcoming chapters
+4. **Four essential commands** (`/help`, `/clear`, `/plan`, `/exit`) cover most daily use
 
 > 📋 **Quick Reference**: See the [Command Cheat Sheet](../QUICK-REFERENCE.md) for a complete list of commands and shortcuts.
 

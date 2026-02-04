@@ -1,0 +1,7 @@
+{
+  "name": "GitHub Copilot CLI for Beginners",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "npm install -g @githubnext/github-copilot-cli && gh extension install github/gh-copilot"
+}

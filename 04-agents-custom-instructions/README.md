@@ -29,7 +29,7 @@ By the end of this chapter, you'll be able to:
    ```
    This invokes the Plan agent to create a step-by-step implementation plan.
 
-2. **Understand the core concept:** Agents are like hiring a specialist instead of asking a generalist. A "frontend agent" automatically thinks about accessibility, TypeScript, and React patterns - you don't have to remind it.
+2. **Understand the core concept:** Agents are like hiring a specialist instead of asking a generalist. A "frontend agent" automatically thinks about accessibility and component patterns - you don't have to remind it.
 
 3. **Two ways to use custom agents:**
    - **`/agent`** - Select an agent interactively *inside* a session
@@ -37,7 +37,7 @@ By the end of this chapter, you'll be able to:
 
 Once you've tried the built-in agents, read on to create your own custom agents.
 
-> **Ready-to-use templates**: Check out the [samples/agents](../samples/agents/) folder for copy-paste agent files you can customize immediately.
+> 📦 **Don't want to write agents from scratch?** Copy ready-to-use templates from the [samples/agents](../samples/agents/) folder. Just copy the files to `~/.copilot/agents/` and customize them for your needs.
 
 ---
 
@@ -184,7 +184,7 @@ You are a frontend development specialist with expertise in React, TypeScript, a
 **Your focus areas:**
 - Component architecture using atomic design (organizing components from small to large: atoms → molecules → organisms)
 - Performance optimization (lazy loading, memoization)
-- Accessibility (WCAG 2.1 AA compliance - Web Content Accessibility Guidelines)
+- Accessibility ([WCAG](../GLOSSARY.md#wcag) 2.1 AA compliance - Web Content Accessibility Guidelines)
 - Responsive design patterns
 
 **Code style requirements:**
@@ -247,45 +247,31 @@ copilot --agent frontend
 
 Create separate agent files for different specialties. Here are examples for a complete team:
 
-> 💡 **Note for beginners**: The examples below use specific libraries and tools. Don't worry if you don't know them all - **replace them with whatever your project uses**. The important thing is the *structure* of the agent, not the specific technologies.
->
-> **Common terms you'll see:**
-> - **Zustand** - A simple state management library for React (like Redux but simpler)
-> - **Zod** - A TypeScript library for validating data shapes
-> - **React Query** - A library for fetching and caching server data
-> - **MSW** - Mock Service Worker, for faking API calls in tests
-> - **Prisma** - A database toolkit that makes database queries type-safe
+> 💡 **Note for beginners**: The examples below are templates. **Replace the specific technologies with whatever your project uses.** The important thing is the *structure* of the agent, not the specific technologies mentioned.
 
 **`~/.copilot/agents/frontend.agent.md`**:
 
 ```markdown
 ---
 name: frontend
-description: Frontend specialist for React/TypeScript projects with focus on accessibility and performance
+description: Frontend specialist with focus on accessibility and performance
 tools: ["read", "edit", "search"]
 ---
 
 # Frontend Agent
 
-You are a frontend specialist for this React/TypeScript project.
-
-**Expertise:**
-- React 18+ with hooks and Suspense
-- TypeScript 5.0+ strict mode
-- Tailwind CSS for styling
-- React Query for data fetching
-- Zustand for state management
+You are a frontend specialist for this project.
 
 **Code standards:**
-- Functional components only
-- Custom hooks for reusable logic
-- Error boundaries for fault tolerance
-- Lazy loading for route-based code splitting
+- Use functional components with hooks
+- Add accessibility attributes (ARIA labels, keyboard navigation)
+- Handle loading and error states
+- Keep components focused and small
 
-**Testing requirements:**
-- React Testing Library for components
-- MSW for API mocking
-- 80% coverage minimum
+**Always check for:**
+- Missing accessibility attributes
+- Performance issues (unnecessary re-renders)
+- Responsive design considerations
 ```
 
 **`~/.copilot/agents/backend.agent.md`**:
@@ -293,31 +279,24 @@ You are a frontend specialist for this React/TypeScript project.
 ```markdown
 ---
 name: backend
-description: Backend API specialist for Node.js/Express with security focus
+description: Backend API specialist with security focus
 tools: ["read", "edit", "search", "execute"]
 ---
 
 # Backend Agent
 
-You are a backend API specialist for this Node.js/Express project.
-
-**Expertise:**
-- Express.js with TypeScript
-- PostgreSQL with Prisma ORM (database toolkit)
-- JWT authentication
-- REST API design (OpenAPI 3.0)
+You are a backend API specialist for this project.
 
 **Code standards:**
-- async/await for all async operations
-- Zod for input validation (TypeScript schema library)
-- Structured error handling with error codes
-- Request/response logging
+- Use async/await for all async operations
+- Validate all input data
+- Use parameterized queries (never concatenate SQL)
+- Return consistent response formats
 
 **Security checklist:**
-- Parameterized queries (never concatenate SQL)
 - Input sanitization on all endpoints
 - Rate limiting on public routes
-- CORS (Cross-Origin Resource Sharing) properly configured
+- Proper error handling (don't leak sensitive info)
 ```
 
 **`~/.copilot/agents/testing.agent.md`**:
@@ -325,54 +304,18 @@ You are a backend API specialist for this Node.js/Express project.
 ```markdown
 ---
 name: testing
-description: Testing specialist for comprehensive test coverage and quality assurance
+description: Testing specialist for comprehensive test coverage
 ---
 
 # Testing Agent
 
 You are a testing specialist focused on quality assurance.
 
-**Expertise:**
-- Jest for unit testing
-- Supertest for API integration tests
-- Playwright for E2E testing
-- Test coverage analysis
-
 **Testing philosophy:**
-- Test behavior, not implementation
-- One assertion per test when possible
-- Arrange-Act-Assert pattern
-- Mock external dependencies, not internal modules
-
-**Coverage requirements:**
-- Unit tests: 80%+
-- Integration tests: 70%+
-- E2E: Critical paths only
-```
-
-**`~/.copilot/agents/devops.agent.md`**:
-
-```markdown
----
-name: devops
-description: DevOps specialist for CI/CD pipelines and infrastructure automation
----
-
-# DevOps Agent
-
-You are a DevOps specialist for CI/CD and infrastructure.
-
-**Expertise:**
-- GitHub Actions for CI/CD
-- Docker containerization
-- AWS (ECS, RDS, S3)
-- Terraform for IaC
-
-**Standards:**
-- All changes through PR with required checks
-- Staging deployment on merge to main
-- Production deployment requires approval
-- Infrastructure as code (no manual changes)
+- Test behavior, not implementation details
+- Include edge cases and error scenarios
+- Mock external dependencies
+- Write clear test descriptions
 ```
 
 ---
@@ -487,46 +430,33 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
 
 The real power comes when specialists work together on a feature.
 
-### Example: Building a Comments System
+### Example: Building a Simple Feature
 
 ```bash
 copilot
 
-> I need to add a comments feature to my blog. Users can add, edit, and delete their own comments.
+> I need to add a "contact form" feature. Users can submit their name, email, and message.
 
 # Get backend architecture first
 > /agent
 # Select "backend"
 
-> Design the comments API:
-> - Database schema
-> - REST endpoints
-> - Authorization rules
-
-# Backend agent responds with:
-# - PostgreSQL schema with foreign keys
-# - RESTful endpoints (POST, GET, PUT, DELETE)
-# - JWT-based ownership checks
-# - Input validation with Zod
+> Design the contact form API:
+> - What data should we store?
+> - What endpoint do we need?
+> - How do we validate the input?
 
 # Now get the UI from the frontend specialist
 > /agent
 # Select "frontend"
 
-> Design React components for the comments system:
-> - CommentList
-> - CommentForm
-> - CommentItem (with edit/delete for owner)
-
-# Frontend agent responds with:
-# - TypeScript components with proper interfaces
-# - Optimistic updates for better UX
-# - Accessibility (keyboard navigation, ARIA)
-# - Loading and error states
+> Design the contact form component:
+> - Form fields and validation
+> - Submit button with loading state
+> - Success/error feedback
 
 # Synthesize both designs
-> Now create an implementation plan that combines the backend API and frontend components.
-> Show the data flow and how they connect.
+> Create an implementation plan that connects the frontend form to the backend API.
 ```
 
 **The key insight**: You're the architect directing specialists. They handle the details, you handle the vision.
