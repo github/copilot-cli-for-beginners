@@ -14,7 +14,7 @@ By the end of this chapter, you'll be able to:
 - Choose the right mode (Interactive, Plan, or Programmatic) for any task
 - Use essential slash commands to control your sessions
 
-> ⏱️ **Estimated Time**: ~45 minutes (20 min reading + 25 min hands-on)
+> ⏱️ **Estimated Time**: ~50 minutes (20 min reading + 30 min hands-on)
 
 ---
 

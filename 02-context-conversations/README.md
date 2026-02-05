@@ -14,7 +14,7 @@ By the end of this chapter, you'll be able to:
 - Write effective multi-turn conversations
 - Manage directory permissions for multi-project workflows
 
-> ⏱️ **Estimated Time**: ~45 minutes (20 min reading + 25 min hands-on)
+> ⏱️ **Estimated Time**: ~50 minutes (20 min reading + 30 min hands-on)
 
 ---
 
