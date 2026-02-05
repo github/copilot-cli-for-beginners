@@ -806,10 +806,10 @@ The remaining chapters cover additional features that extend Copilot's capabilit
 
 In **[Chapter 04: Agents and Custom Instructions](../04-agents-custom-instructions/README.md)**, you'll learn:
 
-- Creating specialized agents (frontend expert, security auditor)
-- AGENTS.md file format
-- Agent delegation patterns
-- Custom instruction files
+- Using built-in agents (`/plan`, `/review`)
+- Creating specialized agents (frontend expert, security auditor) with `.agent.md` files
+- Multi-agent collaboration patterns
+- Custom instruction files for project standards
 
 ---
 

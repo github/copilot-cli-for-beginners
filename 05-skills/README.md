@@ -870,7 +870,7 @@ Skills extend what Copilot can do with auto-loaded instructions. But what about 
 In **[Chapter 06: MCP Servers](../06-mcp-servers/README.md)**, you'll learn:
 
 - What MCP (Model Context Protocol) is
-- Connecting to GitHub, databases, and APIs
+- Connecting to GitHub, filesystem, and documentation services
 - Configuring MCP servers
 - Multi-server workflows
 
