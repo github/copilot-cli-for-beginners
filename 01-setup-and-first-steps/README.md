@@ -358,6 +358,8 @@ These commands work in interactive mode. **Start with just these four** - they c
 
 That's it for getting started! As you become comfortable, you can explore additional commands.
 
+> 📚 **Official Documentation**: [CLI command reference](https://docs.github.com/copilot/reference/cli-command-reference) for the complete list of commands and flags.
+
 <details>
 <summary>📚 <strong>Additional Commands</strong> (click to expand)</summary>
 

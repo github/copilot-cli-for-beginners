@@ -739,6 +739,8 @@ copilot
 
 There's no single "right" way to use GitHub Copilot CLI. Teams and individuals develop their own patterns over time. Here's how to build yours:
 
+> 📚 **Official Documentation**: [Copilot CLI best practices](https://docs.github.com/copilot/how-tos/copilot-cli/cli-best-practices) for recommended workflows and tips from GitHub.
+
 ### Start with Plan Mode
 
 For anything non-trivial, start with `/plan` and refine it before execution:

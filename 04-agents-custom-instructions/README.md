@@ -111,7 +111,7 @@ The Task agent deserves special attention because of its smart output handling:
 
 The Task agent uses a faster model since it's focused on command execution rather than complex reasoning.
 
-> 📚 **Official Documentation**: [GitHub Copilot CLI Agents](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
+> 📚 **Official Documentation**: [GitHub Copilot CLI Agents](https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
 
 ---
 
@@ -224,10 +224,9 @@ You are a frontend development specialist with expertise in React, TypeScript, a
 - `edit` - Edit files
 - `search` - Search files (grep/glob)
 - `execute` - Run shell commands (also: `shell`, `Bash`)
-- `web` - Fetch web content
 - `agent` - Invoke other custom agents
 
-> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration)
+> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/copilot/reference/custom-agents-configuration)
 >
 > ⚠️ **VS Code Only**: The `model` property (for selecting AI models) works in VS Code but is not supported in GitHub Copilot CLI. You can safely include it for cross-platform agent files. GitHub Copilot CLI will ignore it.
 

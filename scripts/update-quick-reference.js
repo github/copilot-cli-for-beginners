@@ -18,8 +18,8 @@ const CONFIG = {
   outputFile: path.join(__dirname, '..', 'QUICK-REFERENCE.md'),
   templateFile: path.join(__dirname, 'quick-reference-template.md'),
   docsUrls: [
-    'https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line',
-    'https://docs.github.com/en/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot'
+    'https://docs.github.com/copilot/using-github-copilot/using-github-copilot-in-the-command-line',
+    'https://docs.github.com/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot'
   ]
 };
 

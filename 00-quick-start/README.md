@@ -170,7 +170,7 @@ copilot
 
 ### Still stuck?
 
-- Check the [GitHub Copilot CLI documentation](https://docs.github.com/en/copilot)
+- Check the [GitHub Copilot CLI documentation](https://docs.github.com/copilot)
 - Search [GitHub Issues](https://github.com/github/copilot-cli/issues)
 
 ---
@@ -180,6 +180,8 @@ copilot
 1. **Multiple installation methods** - Choose what works for your system (Homebrew, WinGet, npm, or install script)
 2. **One-time authentication** - Login persists until token expires
 3. **Quick verification** - Use `-p` flag for instant testing
+
+> 📚 **Official Documentation**: [Install Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli/cli-getting-started) for installation options and requirements.
 
 > 📋 **Quick Reference**: See the [Command Cheat Sheet](../QUICK-REFERENCE.md) for a complete list of commands and shortcuts.
 

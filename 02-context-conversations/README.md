@@ -799,6 +799,8 @@ copilot --add-dir /path/to/directory
 5. **Permission flags** (`--add-dir`, `--allow-all-paths`) control multi-directory access
 6. **Image references** (`@screenshot.png`) help debug UI issues visually
 
+> 📚 **Official Documentation**: [Use Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli) for the complete reference on context, sessions, and working with files.
+
 > 📋 **Quick Reference**: See the [Command Cheat Sheet](../QUICK-REFERENCE.md) for a complete list of commands and shortcuts.
 
 ---

@@ -41,7 +41,7 @@ GitHub Copilot has evolved into a family of AI-powered tools. Here's where each 
 | Product | Where It Runs | Description |
 |---------|---------------|----------|
 | [**GitHub Copilot CLI**](https://docs.github.com/copilot/how-tos/copilot-cli/cli-getting-started)<br>(this course) | Your terminal |  Terminal-native AI coding assistant  |
-| [**GitHub Copilot**](https://docs.github.com/en/copilot) | VS Code, Visual Studio, JetBrains, etc. | Agent mode, chat, inline suggestions  |
+| [**GitHub Copilot**](https://docs.github.com/copilot) | VS Code, Visual Studio, JetBrains, etc. | Agent mode, chat, inline suggestions  |
 | [**Copilot on GitHub.com**](https://github.com/copilot) | GitHub | Immersive chat about your repos, create agents, and more |
 | [**GitHub Copilot coding agent**](https://docs.github.com/copilot/using-github-copilot/using-copilot-coding-agent-to-work-on-tasks) | GitHub  | Assign issues to agents, get PRs back |
 
@@ -127,7 +127,7 @@ npm run generate:pdf      # Generates PDF from markdown
 
 - 🐛 **Found a bug?** [Open an Issue](https://github.com/github/github-copilot-cli-for-beginners/issues)
 - 🤝 **Want to contribute?** PRs welcome!
-- 📚 **Official Docs:** [GitHub Copilot CLI Documentation](https://docs.github.com/en/copilot)
+- 📚 **Official Docs:** [GitHub Copilot CLI Documentation](https://docs.github.com/copilot)
 
 ## Start Learning
 

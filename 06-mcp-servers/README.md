@@ -76,6 +76,8 @@ Description: Users report that passwords containing...
 
 MCP makes Copilot aware of your actual development environment.
 
+> 📚 **Official Documentation**: [About MCP](https://docs.github.com/copilot/concepts/context/mcp) for a deeper look at how MCP works with GitHub Copilot.
+
 ---
 
 ## Managing MCP Servers

@@ -310,6 +310,8 @@ EOF
 chmod +x .git/hooks/pre-commit
 ```
 
+> 📚 **Official Documentation**: [Use hooks](https://docs.github.com/copilot/how-tos/copilot-cli/use-hooks) and [Hooks configuration reference](https://docs.github.com/copilot/reference/hooks-configuration) for the complete hooks API.
+
 Now every commit gets a quick security review:
 
 ```bash
@@ -598,7 +600,7 @@ Your learning doesn't stop here:
 
 ### Resources
 
-- [GitHub Copilot CLI Documentation](https://docs.github.com/en/copilot)
+- [GitHub Copilot CLI Documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)
 - [MCP Server Registry](https://github.com/modelcontextprotocol/servers)
 - [Community Skills](https://github.com/topics/copilot-skill)
 

@@ -115,7 +115,7 @@
 
 Use `/agent` to browse and select from your custom agents.
 
-📚 [Agents Documentation](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
+📚 [Agents Documentation](https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
 
 ### Custom Agents
 
@@ -140,7 +140,7 @@ You are a frontend specialist with expertise in React and TypeScript.
 
 > 💡 **Required**: The `description` field in YAML frontmatter is required. Other fields like `name`, `tools`, and `target` are optional. Tool aliases: `read`, `edit`, `search`, `execute`, `web`, `agent`.
 >
-> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration)
+> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/copilot/reference/custom-agents-configuration)
 
 ---
 
@@ -200,7 +200,7 @@ Instructions for the skill...
 
 **Required properties**: `name` (lowercase, hyphens), `description`. Optional: `license`.
 
-> 📖 **Official docs**: [About Agent Skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+> 📖 **Official docs**: [About Agent Skills](https://docs.github.com/copilot/concepts/agents/about-agent-skills)
 
 ---
 
@@ -359,7 +359,7 @@ done
 ## Resources
 
 - [GitHub Copilot CLI for Beginners Course Repository](https://github.com/github/github-copilot-cli-for-beginners)
-- [GitHub Copilot CLI Docs](https://docs.github.com/en/copilot)
+- [GitHub Copilot CLI Docs](https://docs.github.com/copilot/how-tos/copilot-cli/cli-getting-started)
 - [MCP Server Registry](https://github.com/modelcontextprotocol/servers)
 
 ---

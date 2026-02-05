@@ -55,7 +55,7 @@ Agent instructions go here...
 
 > 💡 **Note**: The `model` property works in VS Code but is not yet supported in Copilot CLI.
 >
-> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration)
+> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/copilot/reference/custom-agents-configuration)
 
 ## Agent File Locations
 

@@ -112,7 +112,7 @@ You can ask Copilot directly:
 
 **Quick rule**: Use agents for broad expertise, skills for specific task instructions, and MCP for external data.
 
-> 📚 **Learn More**: See the official [About Agent Skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) documentation for the complete reference on skill formats and best practices.
+> 📚 **Learn More**: See the official [About Agent Skills](https://docs.github.com/copilot/concepts/agents/about-agent-skills) documentation for the complete reference on skill formats and best practices.
 
 ---
 
@@ -446,7 +446,7 @@ Provide issues as a numbered list with severity:
 | `description` | **Yes** | What the skill does and when Copilot should use it |
 | `license` | No | License that applies to this skill |
 
-> 📖 **Official docs**: [About Agent Skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+> 📖 **Official docs**: [About Agent Skills](https://docs.github.com/copilot/concepts/agents/about-agent-skills)
 
 ### Creating Your First Skill
 
