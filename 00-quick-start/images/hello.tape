@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "What does @samples/book-app-project/book_app.py do? Summarize in 2-3 sentences."
+Sleep 2s
 Enter
 
 # Wait for response

@@ -1,7 +1,7 @@
-# 05-skills: Available Skills
+# 05-skills: Copilot detects this matches your "code-review" skill demo
 # Auto-generated from demos.json - Real copilot execution
 
-Output list-skills-demo.gif
+Output skills-demo.gif
 
 Set FontSize 18
 Set Width 1000
@@ -23,12 +23,12 @@ Enter
 Sleep 5s
 
 # Execute the prompt
-Type "What slash commands and skills are available? List the main ones."
+Type "Review @file.py for security issues"
 Sleep 2s
 Enter
 
 # Wait for response
-Sleep 15s
+Sleep 25s
 
 # Exit cleanly
 Ctrl+C

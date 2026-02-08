@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "Review @samples/book-app-project/books.py for code quality issues"
+Sleep 2s
 Enter
 
 # Wait for response

@@ -316,21 +316,6 @@ copilot --agent python-reviewer
 
 ---
 
-## Skill Locations
-
-Skills are discovered from multiple locations. Project-specific skills take priority over global ones:
-
-| Location | Scope | Use Case |
-|----------|-------|----------|
-| `.github/skills/` | Project | Team standards, shared via git |
-| `.claude/skills/` | Project | Claude Code compatible skills |
-| `~/.copilot/skills/` | Global | Personal skills across all projects |
-| `~/.claude/skills/` | Global | Claude Code personal skills |
-
-**Pro tip**: Create project-specific skills in `.github/skills/` to share them with your team via git. They'll be version-controlled and available to everyone who clones the repo.
-
----
-
 ## Managing Skills with the `/skills` Command
 
 Use the `/skills` command to manage your installed skills:

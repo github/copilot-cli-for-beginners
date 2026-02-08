@@ -1,7 +1,7 @@
-# 05-skills: Available Skills
+# 07-putting-it-together: Copilot creates high-level plan... demo
 # Auto-generated from demos.json - Real copilot execution
 
-Output list-skills-demo.gif
+Output putting-it-together-demo.gif
 
 Set FontSize 18
 Set Width 1000
@@ -23,12 +23,12 @@ Enter
 Sleep 5s
 
 # Execute the prompt
-Type "What slash commands and skills are available? List the main ones."
+Type "Generate commit message for: $(git diff --staged)"
 Sleep 2s
 Enter
 
 # Wait for response
-Sleep 15s
+Sleep 25s
 
 # Exit cleanly
 Ctrl+C

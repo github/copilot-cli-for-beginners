@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "Review @samples/book-app-project/ for all code quality issues. Prioritize by severity."
+Sleep 2s
 Enter
 
 # Wait for response

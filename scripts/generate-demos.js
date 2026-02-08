@@ -10,14 +10,30 @@
  *
  * Requirements:
  *   - VHS: brew install vhs
- *   - gifsicle: brew install gifsicle
  */
 
 const { execSync } = require('child_process');
-const { readdirSync, statSync, existsSync, readFileSync, renameSync } = require('fs');
+const { readdirSync, statSync, existsSync, readFileSync, renameSync, writeFileSync, chmodSync, mkdirSync, rmSync } = require('fs');
 const { join, basename, relative, dirname } = require('path');
 
 const rootDir = join(__dirname, '..');
+
+// Create a wrapper script that injects --yolo and --allow-all-paths so copilot
+// runs non-interactively. The tape just types "copilot" which looks clean in
+// the recording, but the wrapper adds flags behind the scenes.
+const wrapperDir = join(rootDir, '.vhs-wrapper');
+function setupCopilotWrapper() {
+  const realCopilot = execSync('which copilot', { encoding: 'utf8' }).trim();
+  mkdirSync(wrapperDir, { recursive: true });
+  const wrapperPath = join(wrapperDir, 'copilot');
+  writeFileSync(wrapperPath, `#!/bin/bash\nexec "${realCopilot}" --yolo --allow-all-paths "$@"\n`);
+  chmodSync(wrapperPath, '755');
+  return `${wrapperDir}:${process.env.PATH}`;
+}
+
+function cleanupCopilotWrapper() {
+  try { rmSync(wrapperDir, { recursive: true }); } catch (e) { /* ignore */ }
+}
 
 // Find all .tape files in [chapter]/images/ folders
 function findTapeFiles(dir) {
@@ -72,6 +88,10 @@ console.log(`Found ${tapeFiles.length} tape file(s):\n`);
 tapeFiles.forEach(f => console.log('  - ' + relative(rootDir, f)));
 console.log('');
 
+// Set up copilot wrapper so --yolo is injected transparently
+const wrappedPath = setupCopilotWrapper();
+console.log('Copilot wrapper: --yolo injected via PATH\n');
+
 let success = 0;
 let failed = 0;
 
@@ -83,11 +103,13 @@ for (const tapeFile of tapeFiles) {
   console.log(`Processing: ${relativePath}`);
 
   try {
-    // Run VHS from project root so @file references resolve correctly
+    // Run VHS from project root so @file references resolve correctly.
+    // PATH is modified so "copilot" resolves to the wrapper (adds --yolo).
     execSync(`vhs ${relativePath}`, {
       cwd: rootDir,
       stdio: 'inherit',
-      timeout: 180000 // 3 minute timeout per demo (real copilot takes longer)
+      timeout: 180000, // 3 minute timeout per demo (real copilot takes longer)
+      env: { ...process.env, PATH: wrappedPath }
     });
 
     // Move generated GIF to the images folder if it was created in root
@@ -100,18 +122,6 @@ for (const tapeFile of tapeFiles) {
       }
     }
 
-    // Apply no-loop to all GIFs in the images directory
-    const gifFiles = readdirSync(imagesDir).filter(f => f.endsWith('.gif'));
-    for (const gifFile of gifFiles) {
-      const gifPath = join(imagesDir, gifFile);
-      try {
-        execSync(`gifsicle --no-loopcount "${gifPath}" -o "${gifPath}"`, { stdio: 'pipe' });
-        console.log(`   ✓ Set no-loop: ${gifFile}`);
-      } catch (e) {
-        console.log(`   ⚠ gifsicle failed for ${gifFile}`);
-      }
-    }
-
     success++;
     console.log('');
   } catch (e) {
@@ -119,6 +129,8 @@ for (const tapeFile of tapeFiles) {
     failed++;
   }
 }
+
+cleanupCopilotWrapper();
 
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 console.log(`✓ Success: ${success}`);

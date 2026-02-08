@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "Compare @samples/book-app-project/book_app.py and @samples/book-app-project/books.py - how do they work together? What's the data flow?"
+Sleep 2s
 Enter
 
 # Wait for response

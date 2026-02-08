@@ -67,6 +67,10 @@ class BookCollection:
             return True
         return False
 
+    def get_unread_books(self) -> List[Book]:
+        """Return all books that have not been read."""
+        return [b for b in self.books if not b.read]
+
     def find_by_author(self, author: str) -> List[Book]:
         """Find all books by a given author."""
         return [b for b in self.books if author.lower() in b.author.lower()]

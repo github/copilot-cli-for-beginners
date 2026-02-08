@@ -24,6 +24,7 @@ Sleep 5s
 
 # Prompt 1
 Type "@samples/book-app-project/ Give me an overview of this project"
+Sleep 2s
 Enter
 
 # Wait for response
@@ -31,6 +32,7 @@ Sleep 25s
 
 # Prompt 2
 Type "What are the main code quality issues?"
+Sleep 2s
 Enter
 
 # Wait for response
@@ -38,6 +40,7 @@ Sleep 25s
 
 # Prompt 3
 Type "Which issue should I fix first and show me how?"
+Sleep 2s
 Enter
 
 # Wait for response

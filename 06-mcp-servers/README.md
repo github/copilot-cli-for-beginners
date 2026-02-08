@@ -184,9 +184,9 @@ copilot
 > How many Python files are in the book-app-project directory?
 
 Found 3 Python files in samples/book-app-project/:
+- book_app.py
 - books.py
-- main.py
-- test_books.py
+- utils.py
 
 > What's the total size of the data.json file?
 
@@ -195,8 +195,8 @@ samples/book-app-project/data.json: 2.4 KB
 > Find all functions that don't have type hints in the book app
 
 Found 2 functions without type hints:
-- samples/book-app-project/books.py:45 - search_books()
-- samples/book-app-project/main.py:12 - display_menu()
+- samples/book-app-project/utils.py:10 - get_user_choice()
+- samples/book-app-project/utils.py:14 - get_book_details()
 ```
 
 ---
@@ -466,7 +466,7 @@ Repository Health Report
 ========================
 
 📝 Technical Debt:
-- TODO comments: 5 (samples/book-app-project/books.py: 3, main.py: 2)
+- TODO comments: 3 (samples/book-app-project/books.py: 2, utils.py: 1)
 - FIXME comments: 1 (in data validation)
 
 🐛 Open Issues: 4
@@ -475,19 +475,19 @@ Repository Health Report
 - Low: 1
 
 🧪 Test Coverage:
-- Test files: 1 (test_books.py)
-- Functions tested: 8/10 (80%)
-- Missing tests: display_menu, format_output
+- Test files: 0
+- Functions tested: 0/12 (0%)
+- Missing tests: all public functions need coverage
 
 📊 Largest Files:
-1. samples/book-app-project/books.py (234 lines)
-2. samples/book-app-project/main.py (156 lines)
-3. samples/book-app-project/test_books.py (189 lines)
+1. samples/book-app-project/book_app.py (99 lines)
+2. samples/book-app-project/books.py (89 lines)
+3. samples/book-app-project/utils.py (37 lines)
 
 Recommendations:
 - Address issue #1 for better user experience
-- Add tests for display_menu and format_output functions
-- All files well-sized (<250 lines) - good structure!
+- Add test coverage for BookCollection methods
+- All files well-sized (<100 lines) - good structure!
 ```
 
 **The result**: Multiple data sources aggregated in 30 seconds. Manual process: 1+ hour of clicking around GitHub, running grep, counting lines.

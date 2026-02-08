@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "@samples/book-app-buggy/books_buggy.py Users report that searching for 'The Hobbit' returns no results even though it's in the data. Debug why."
+Sleep 2s
 Enter
 
 # Wait for response

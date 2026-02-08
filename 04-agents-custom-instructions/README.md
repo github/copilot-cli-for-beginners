@@ -579,39 +579,43 @@ For more granular control, create instruction files in `.github/instructions/`:
 ```
 .github/
 └── instructions/
-    ├── typescript-standards.instructions.md
+    ├── python-standards.instructions.md
     ├── security-checklist.instructions.md
     └── api-design.instructions.md
 ```
 
-**Example: `.github/instructions/typescript-standards.instructions.md`**
+**Example: `.github/instructions/python-standards.instructions.md`**
+
+> 💡 **Note**: Instruction files work with any language. This example uses Python to match our course project, but you can create similar files for TypeScript, Go, Rust, or any technology your team uses.
 
 ```markdown
-# TypeScript Standards
+# Python Standards
 
-Apply these standards to all TypeScript files in this project.
+Apply these standards to all Python files in this project.
 
 ## Type Safety
-- Enable strict mode in tsconfig.json
-- Avoid `any` type; use `unknown` when type is truly unknown
-- Use type guards for runtime type checking
-- Prefer interfaces over type aliases for object shapes
+- Add type hints to all function signatures
+- Use `Optional[T]` for parameters that can be None
+- Use `typing` module for complex types (List, Dict, Tuple)
+- Prefer dataclasses for structured data
 
 ## Naming Conventions
-- PascalCase for types, interfaces, and classes
-- camelCase for variables, functions, and methods
+- snake_case for functions, methods, and variables
+- PascalCase for classes
 - SCREAMING_SNAKE_CASE for constants
-- Prefix interfaces with `I` only when needed to distinguish from classes
+- Prefix private methods with underscore
 
 ## Error Handling
-- Use custom error classes extending Error
-- Always include error codes for API errors
-- Type catch blocks with `unknown`, then narrow
+- Use specific exception types (ValueError, TypeError, etc.)
+- Never use bare `except:` clauses
+- Include descriptive error messages
+- Use context managers for resource cleanup
 
-## Async Patterns
-- Use async/await over .then() chains
-- Handle all promise rejections
-- Use Promise.all for concurrent operations
+## Code Quality
+- Follow PEP 8 style guidelines
+- Keep functions under 50 lines
+- Use list comprehensions where readable
+- Add docstrings with Args/Returns/Raises sections
 ```
 
 **Finding community instruction files**: Browse [github/awesome-copilot](https://github.com/github/awesome-copilot) for pre-made instruction files covering .NET, Angular, Azure, Python, Docker, and many more technologies.

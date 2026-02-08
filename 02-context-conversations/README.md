@@ -122,7 +122,7 @@ copilot
 > How do these files work together? What's the data flow?
 ```
 
-> 💡 **Advanced Option**: For security-focused cross-file analysis, try the buggy-code examples:
+> 💡 **Advanced Option**: For security-focused cross-file analysis, try the buggy-code examples (these are JavaScript files - a different language, but the cross-file analysis technique works the same way):
 > ```bash
 > > @samples/buggy-code/js/userService.js @samples/buggy-code/js/paymentProcessor.js
 > > Find security vulnerabilities that span BOTH files

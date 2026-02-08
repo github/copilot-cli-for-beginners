@@ -23,6 +23,7 @@ function generatePromptBlock(entry, defaultWait, index) {
 
   return `# ${label}
 Type "${text}"
+Sleep 2s
 Enter
 
 # Wait for response

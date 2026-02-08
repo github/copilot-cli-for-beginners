@@ -24,6 +24,7 @@ Sleep 5s
 
 # Prompt 1
 Type "List open issues on this repository"
+Sleep 2s
 Enter
 
 # Wait for response
@@ -31,6 +32,7 @@ Sleep 25s
 
 # Prompt 2
 Type "@samples/book-app-project/books.py What code handles the search functionality?"
+Sleep 2s
 Enter
 
 # Wait for response
@@ -38,6 +40,7 @@ Sleep 20s
 
 # Prompt 3
 Type "Based on the code, suggest improvements for the search feature"
+Sleep 2s
 Enter
 
 # Wait for response

@@ -696,6 +696,8 @@ copilot
 
 ### Bonus Challenge: Create an application with the Copilot CLI
 
+> 💡 **Note**: This GitHub Skills exercise uses **Node.js** (not Python). It's included because the CLI techniques you'll practice - creating issues, generating code, and collaborating from the terminal - apply to any language.
+
 This quick exercise shows developers how to use GitHub Copilot CLI to create issues, generate code, and collaborate from the terminal while building a Node.js calculator app. You will install the CLI, use templates and agents, and practice iterative, command-line driven development in under an hour.
 
 ##### <img src="../images/github-skills-logo.png" width="28" align="center" /> [Start the "Create applications with the Copilot CLI" Skills Exercise](https://github.com/skills/create-applications-with-the-copilot-cli)

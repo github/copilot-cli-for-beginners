@@ -58,7 +58,7 @@ copilot
 # IMPLEMENT
 > Add a get_unread_books method to BookCollection in books.py
 > Add a "list unread" command option in book_app.py
-> Update the menu in utils.py
+> Update the help text in the show_help function
 
 # TEST
 > Generate comprehensive tests for the new feature
@@ -101,41 +101,18 @@ That's what this chapter teaches: conducting your tools into a unified workflow.
 
 ## Start Here: Minimal Workflow (No Custom Setup Required)
 
-**This is the most important section.** You can build complete features using just the built-in features from Chapters 01-03:
+**This is the most important section.** The ["Idea to Merged PR"](#idea-to-merged-pr-in-one-session) example above uses agents and MCP for maximum power. But you can achieve the same result using just built-in features from Chapters 01-03:
 
-```bash
-copilot
-
-# 1. Understand the task
-> I need to add a "list unread" command to the book app that shows only
-> books where read is False. What files need to change?
-
-# 2. Review existing code
-> @samples/book-app-project/books.py What methods already exist for
-> filtering books?
-
-# 3. Plan the implementation
-> /plan Add a "list unread" command that filters books by read status
-
-# 4. Implement (after reviewing the plan)
-> Add a get_unread_books method to BookCollection in books.py
-> Add a "list unread" command option in book_app.py
-
-# 5. Generate tests
-> @samples/book-app-project/books.py Generate pytest tests for get_unread_books
-
-# 6. Review your changes
-> /review
-
-# 7. Generate commit message
-copilot -p "Generate commit message for: $(git diff --staged)"
+```
+1. Understand   →  Describe requirements, review existing code with @
+2. Plan         →  Use /plan to outline the approach
+3. Implement    →  Build the feature in interactive mode
+4. Test         →  Generate tests with a prompt
+5. Review       →  Use /review to check your changes
+6. Ship         →  Generate commit message with -p
 ```
 
-**This workflow uses only:**
-- Interactive mode (Chapter 01)
-- The `@` syntax for context (Chapter 02)
-- Built-in `/plan` and `/review` commands (Chapters 01 & 03)
-- Programmatic mode for commit messages (Chapter 01)
+**This uses only:** Interactive mode (Ch 01), `@` syntax (Ch 02), `/plan` and `/review` (Ch 01 & 03), and `-p` mode (Ch 01).
 
 **That's a complete feature workflow!** Everything below shows how to enhance this with agents, skills, and MCP - but you're already productive without them.
 
@@ -496,8 +473,8 @@ Build the "list unread books" feature using what you've learned:
 2. Gather context about existing methods with `@samples/book-app-project/books.py`
 3. Plan your implementation with `/plan`
 4. Implement the `get_unread_books()` method in `books.py`
-5. Add the "list unread" command to `book_app.py`
-6. Generate tests with `@samples/book-app-project/tests/test_books.py`
+5. Add the "list unread" command to `book_app.py` and update the help text
+6. Generate tests with `@samples/book-app-project/books.py`
 7. Review with `/review`
 8. Generate a commit message
 
@@ -510,30 +487,14 @@ Document your workflow as you go.
 <details>
 <summary>💡 Hints (click to expand)</summary>
 
-**Guided walkthrough for "list unread books":**
+**Follow the pattern from the ["Idea to Merged PR"](#idea-to-merged-pr-in-one-session) example** at the top of this chapter. The key steps are:
 
-```bash
-# STEP 1: Start and gather context
-copilot
-> @samples/book-app-project/books.py What methods already exist for filtering books?
-
-# STEP 2: Plan the feature
-> /plan Add a "list unread" command that filters books by read status
-
-# STEP 3: Implement (after reviewing the plan)
-> Add a get_unread_books method to BookCollection in books.py
-> Add a "list unread" command option in book_app.py
-> Update the menu in utils.py to show the new option
-
-# STEP 4: Generate tests
-> @samples/book-app-project/tests/test_books.py Generate pytest tests for get_unread_books
-
-# STEP 5: Review
-> /review
-
-# STEP 6: Generate commit message
-copilot -p "Generate commit message for: $(git diff --staged)"
-```
+1. Gather context with `@samples/book-app-project/books.py`
+2. Plan with `/plan`
+3. Implement the method and command handler
+4. Generate tests
+5. Review with `/review`
+6. Generate commit message with `-p`
 
 **The key is practicing the full workflow** from idea → context → plan → implement → test → commit. The specific feature doesn't matter.
 

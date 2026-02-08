@@ -12,113 +12,33 @@
   "demos": [
     {
       "chapter": "00-quick-start",
-      "name": "hello-demo",
-      "description": "Quick Start - First taste",
-      "prompt": "What does @samples/book-app-project/book_app.py do? Summarize in 2-3 sentences."
+      "name": "quick-start-demo",
+      "description": "If you have Node.js installed, this is a quick way to get the CLI demo",
+      "prompt": "Say hello and tell me what you can help with"
     },
     {
       "chapter": "01-setup-and-first-steps",
-      "name": "code-review-demo",
-      "description": "Code Review in Seconds",
-      "prompt": "Review @samples/book-app-project/book_app.py for code quality issues and suggest improvements"
-    },
-    {
-      "chapter": "01-setup-and-first-steps",
-      "name": "explain-code-demo",
-      "description": "Explain Code",
-      "prompt": "Explain what @samples/book-app-project/books.py does in simple terms"
-    },
-    {
-      "chapter": "01-setup-and-first-steps",
-      "name": "generate-code-demo",
-      "description": "Generate Working Code",
-      "prompt": "Write a Python function that takes a list of books and returns statistics: total count, number read, number unread, oldest and newest book"
-    },
-    {
-      "chapter": "02-context-conversations",
-      "name": "file-context-demo",
-      "description": "File Context with @",
-      "prompt": "What does @samples/book-app-project/utils.py do? Summarize briefly."
-    },
-    {
-      "chapter": "02-context-conversations",
-      "name": "multi-file-demo",
-      "description": "Multi-file Context",
-      "prompt": "Compare @samples/book-app-project/book_app.py and @samples/book-app-project/books.py - how do they work together? What's the data flow?"
-    },
-    {
-      "chapter": "02-context-conversations",
-      "name": "multi-turn-demo",
-      "description": "Multi-Turn Conversation",
-      "prompts": [
-        "@samples/book-app-project/ Give me an overview of this project",
-        "What are the main code quality issues?",
-        { "text": "Which issue should I fix first and show me how?", "responseWait": 30 }
-      ]
+      "name": "setup-and-first-steps-demo",
+      "description": "Clone the course repository (if you haven't already) demo",
+      "prompt": "List all functions in @samples/book-app-project/book_app.py"
     },
     {
       "chapter": "03-development-workflows",
-      "name": "fix-bug-demo",
-      "description": "Fix a Bug",
-      "prompt": "@samples/book-app-buggy/books_buggy.py Users report that searching for 'The Hobbit' returns no results even though it's in the data. Debug why."
-    },
-    {
-      "chapter": "03-development-workflows",
-      "name": "refactor-demo",
-      "description": "Refactor Code",
-      "prompt": "@samples/book-app-project/book_app.py Refactor the command handling to use a dictionary dispatch pattern instead of if/elif chains"
-    },
-    {
-      "chapter": "04-agents-custom-instructions",
-      "name": "python-reviewer-demo",
-      "description": "Python Reviewer Agent",
-      "prompt": "As a Python code quality expert, review @samples/book-app-project/books.py for type hints, error handling, and PEP 8 compliance"
+      "name": "development-workflows-demo",
+      "description": "Copilot provides detailed review demo",
+      "prompt": "Generate a conventional commit message for: $(git diff --staged)"
     },
     {
       "chapter": "05-skills",
-      "name": "list-skills-demo",
-      "description": "Available Skills",
-      "prompt": "What slash commands and skills are available? List the main ones.",
-      "responseWait": 15
-    },
-    {
-      "chapter": "05-skills",
-      "name": "skill-trigger-demo",
-      "description": "Skill Auto-Trigger",
-      "prompt": "Review @samples/book-app-project/books.py for code quality issues"
-    },
-    {
-      "chapter": "06-mcp-servers",
-      "name": "mcp-status-demo",
-      "description": "MCP Server Status",
-      "prompt": "What MCP servers and tools are connected? List them.",
-      "responseWait": 15
-    },
-    {
-      "chapter": "06-mcp-servers",
-      "name": "mcp-workflow-demo",
-      "description": "MCP Issue-to-Fix Workflow",
-      "prompts": [
-        "List open issues on this repository",
-        { "text": "@samples/book-app-project/books.py What code handles the search functionality?", "responseWait": 20 },
-        { "text": "Based on the code, suggest improvements for the search feature", "responseWait": 30 }
-      ]
+      "name": "skills-demo",
+      "description": "Copilot detects this matches your \"code-review\" skill demo",
+      "prompt": "Review @file.py for security issues"
     },
     {
       "chapter": "07-putting-it-together",
-      "name": "minimal-workflow-demo",
-      "description": "Minimal Feature Workflow",
-      "prompts": [
-        "@samples/book-app-project/books.py What methods already exist for filtering books?",
-        { "text": "Add a get_unread_books method to BookCollection that returns only books where read is False", "responseWait": 30 },
-        { "text": "@samples/book-app-project/books.py Generate pytest tests for the get_unread_books method", "responseWait": 30 }
-      ]
-    },
-    {
-      "chapter": "07-putting-it-together",
-      "name": "full-review-demo",
-      "description": "Full Project Review",
-      "prompt": "Review @samples/book-app-project/ for all code quality issues. Prioritize by severity."
+      "name": "putting-it-together-demo",
+      "description": "Copilot creates high-level plan... demo",
+      "prompt": "Generate commit message for: $(git diff --staged)"
     }
   ]
 }

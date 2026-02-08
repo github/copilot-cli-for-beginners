@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "@samples/book-app-project/book_app.py Refactor the command handling to use a dictionary dispatch pattern instead of if/elif chains"
+Sleep 2s
 Enter
 
 # Wait for response

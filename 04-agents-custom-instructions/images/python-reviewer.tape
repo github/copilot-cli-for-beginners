@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "As a Python code quality expert, review @samples/book-app-project/books.py for type hints, error handling, and PEP 8 compliance"
+Sleep 2s
 Enter
 
 # Wait for response

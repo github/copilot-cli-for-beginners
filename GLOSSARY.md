@@ -68,19 +68,19 @@ JSON Web Token. A secure way to transmit authentication information between syst
 
 ---
 
-## N
-
-### npx
-
-A Node.js tool that runs npm packages without installing them globally. Used in MCP server configurations to launch servers (e.g., `npx @modelcontextprotocol/server-filesystem`).
-
----
-
 ## M
 
 ### MCP
 
 Model Context Protocol. A standard for connecting AI assistants to external data sources.
+
+---
+
+## N
+
+### npx
+
+A Node.js tool that runs npm packages without installing them globally. Used in MCP server configurations to launch servers (e.g., `npx @modelcontextprotocol/server-filesystem`).
 
 ---
 
@@ -148,16 +148,16 @@ Python annotations that indicate the expected types of function parameters and r
 
 ---
 
-## Y
-
-### YAML
-
-YAML Ain't Markup Language. A human-readable data format used for configuration. In this course, YAML appears in agent and skill frontmatter (the `---` delimited block at the top of `.agent.md` and `SKILL.md` files).
-
----
-
 ## W
 
 ### WCAG
 
 Web Content Accessibility Guidelines. Standards published by W3C for making web content accessible to people with disabilities. WCAG 2.1 AA is a common compliance target.
+
+---
+
+## Y
+
+### YAML
+
+YAML Ain't Markup Language. A human-readable data format used for configuration. In this course, YAML appears in agent and skill frontmatter (the `---` delimited block at the top of `.agent.md` and `SKILL.md` files).

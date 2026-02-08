@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "Explain what @samples/book-app-project/books.py does in simple terms"
+Sleep 2s
 Enter
 
 # Wait for response

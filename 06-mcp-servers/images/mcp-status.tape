@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "What MCP servers and tools are connected? List them."
+Sleep 2s
 Enter
 
 # Wait for response

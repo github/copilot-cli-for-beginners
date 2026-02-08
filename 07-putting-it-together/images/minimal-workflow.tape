@@ -24,6 +24,7 @@ Sleep 5s
 
 # Prompt 1
 Type "@samples/book-app-project/books.py What methods already exist for filtering books?"
+Sleep 2s
 Enter
 
 # Wait for response
@@ -31,6 +32,7 @@ Sleep 25s
 
 # Prompt 2
 Type "Add a get_unread_books method to BookCollection that returns only books where read is False"
+Sleep 2s
 Enter
 
 # Wait for response
@@ -38,6 +40,7 @@ Sleep 30s
 
 # Prompt 3
 Type "@samples/book-app-project/books.py Generate pytest tests for the get_unread_books method"
+Sleep 2s
 Enter
 
 # Wait for response

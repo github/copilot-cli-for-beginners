@@ -24,6 +24,7 @@ Sleep 5s
 
 # Execute the prompt
 Type "Write a Python function that takes a list of books and returns statistics: total count, number read, number unread, oldest and newest book"
+Sleep 2s
 Enter
 
 # Wait for response
