@@ -827,7 +827,7 @@ There's no single "right" way to use GitHub Copilot CLI. Here are a few tips as 
 | Context | Ch 02 | Reference files with `@`, manage sessions, understand context windows |
 | Workflows | Ch 03 | Review code, refactor, debug, generate tests, integrate with git |
 
-**You can stop here and be highly effective.** Chapters 04-06 cover additional features that add even more power and are worthwhile to learn, but aren't required for daily use.
+Chapters 04-06 cover additional features that add even more power and are worthwhile to learn.
 
 ---
 
