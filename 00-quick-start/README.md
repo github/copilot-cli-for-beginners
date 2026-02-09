@@ -127,7 +127,7 @@ copilot
 
 ### Step 2: Run the Sample Book App
 
-This course uses a Python book collection app throughout all chapters. Verify it works:
+We have provided a sample app that we explore and improve throughout the course using the CLI *(You can see the code for this in /samples/book_app_project)*. Check that the *Python book collection terminal app* works before you get started:
 
 ```bash
 cd samples/book-app-project
