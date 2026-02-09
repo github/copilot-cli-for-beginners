@@ -659,61 +659,23 @@ After completing the demos, try these variations:
 
 ---
 
-## Sample Files for Practice
-
-The `samples/book-app-project/` folder contains the main book collection app, while `samples/book-app-buggy/` has intentionally buggy versions. Use these to practice the workflows:
-
-### Book App Examples
-
-```bash
-copilot
-
-# Review the main app
-> @samples/book-app-project/book_app.py Review for code quality and suggest improvements
-
-# Review the data layer
-> @samples/book-app-project/books.py Review for potential bugs and edge cases
-
-# Debug the buggy version
-> @samples/book-app-buggy/books_buggy.py Find all bugs in this file
-```
-
-### Optional Security Exercises
-
-The `samples/buggy-code/` folder contains real-world security examples:
-
-```bash
-copilot
-
-# Security audit on user service (demonstrates production security patterns)
-> @samples/buggy-code/python/user_service.py Perform a security audit
-
-# Review payment processor (includes Python-specific issues like pickle, eval, yaml)
-> @samples/buggy-code/python/payment_processor.py Find all bugs
-```
-
-The Python security examples include language-specific vulnerabilities like:
-- Pickle deserialization attacks
-- `eval()` code injection
-- Insecure `yaml.load()`
-- Shell injection via `os.system()`
-- Weak MD5 password hashing
-
----
-
 ## Assignment
 
-### Main Challenge: Complete Development Workflow
+### Main Challenge: Refactor, Test, and Ship
 
-Using the book app (`samples/book-app-project/` and `samples/book-app-buggy/`):
+The hands-on examples focused on `find_book_by_title` and code reviews. Now practice the same workflow skills on different functions in `book-app-project`:
 
-1. **Review**: Run a comprehensive review of the book app project
-2. **Identify**: Create a prioritized list of issues in the buggy version
-3. **Fix**: Debug and fix the case-sensitivity bug in `find_book_by_title`
-4. **Test**: Generate tests for the fixed code
-5. **Commit**: Generate a proper commit message
-
-Document each step and the Copilot output.
+1. **Review**: Ask Copilot to review `remove_book()` in `books.py` for edge cases and potential issues:
+   `@samples/book-app-project/books.py Review the remove_book() function. What happens if the title partially matches another book (e.g., "Dune" vs "Dune Messiah")? Are there any edge cases not handled?`
+2. **Refactor**: Ask Copilot to improve `remove_book()` to handle edge cases like case-insensitive matching and returning useful feedback when a book isn't found
+3. **Test**: Generate pytest tests specifically for the improved `remove_book()` function, covering:
+   - Removing a book that exists
+   - Case-insensitive title matching
+   - A book that doesn't exist returns appropriate feedback
+   - Removing from an empty collection
+4. **Review**: Stage your changes and run `/review` to check for any remaining issues
+5. **Commit**: Generate a conventional commit message:
+   `copilot -p "Generate a conventional commit message for: $(git diff --staged)"`
 
 <details>
 <summary>💡 Hints (click to expand)</summary>
@@ -724,34 +686,26 @@ Document each step and the Copilot output.
 copilot
 
 # Step 1: Review
-> @samples/book-app-project/ Review this entire project for code quality and potential issues
+> @samples/book-app-project/books.py Review the remove_book() function. What edge cases are not handled?
 
-# Step 2: Identify
-> @samples/book-app-buggy/books_buggy.py Find all bugs in this file and create a prioritized list. Rank by severity (critical, high, medium, low)
+# Step 2: Refactor
+> Improve remove_book() to use case-insensitive matching and return a clear message when the book isn't found. Show me the before and after code.
 
-# Step 3: Fix
-> Fix the find_book_by_title function to handle case-insensitive searches. Show me the before and after code.
+# Step 3: Test
+> Generate pytest tests for the improved remove_book() function, including:
+> - Removing a book that exists
+> - Case-insensitive matching ("dune" should remove "Dune")
+> - Book not found returns appropriate response
+> - Removing from an empty collection
 
-# Step 4: Test
-> Generate pytest tests for the fixed find_book_by_title function, including tests for:
-> - Exact case match
-> - Different case variations
-> - Partial matches (should not match)
-> - Non-existent books
+# Step 4: Review
+> /review
 
 # Step 5: Commit
-> Generate a commit message for this bug fix
+> Generate a conventional commit message for this refactor
 ```
 
-**Expected findings in the buggy file:**
-- Case-sensitive title search (high)
-- File handle leak in save_books (medium)
-- Missing year validation (medium)
-- Incorrect partial match in remove_book (high)
-- Mark all books as read bug (critical)
-- Exact match in find_by_author (high)
-
-**Tip:** If you want to save your fixed file, ask: "Write the fixed code to a new file called books_fixed.py"
+**Tip:** After improving `remove_book()`, try asking Copilot: "Are there any other functions in this file that could benefit from the same improvements?" — it may suggest similar changes to `find_book_by_title()` or `find_by_author()`.
 
 </details>
 

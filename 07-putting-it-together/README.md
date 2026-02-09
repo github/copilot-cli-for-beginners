@@ -475,22 +475,22 @@ After completing the demos, try these variations:
 
 ### Main Challenge: End-to-End Feature
 
-Build the "list unread books" feature using what you've learned:
+The hands-on examples walked through building a "list unread books" feature. Now practice the full workflow on a different feature — **search books by year range**:
 
-1. Start Copilot and gather context about the book app
-2. Gather context about existing methods with `@samples/book-app-project/books.py`
-3. Plan your implementation with `/plan`
-4. Implement the `get_unread_books()` method in `books.py`
-5. Add the "list unread" command to `book_app.py` and update the help text
-6. Generate tests with `@samples/book-app-project/books.py`
-7. Review with `/review`
+1. Start Copilot and gather context: `@samples/book-app-project/books.py`
+2. Plan with `/plan Add a "search by year" command that lets users find books published between two years`
+3. Implement a `find_by_year_range(start_year, end_year)` method in `BookCollection`
+4. Add a `handle_search_year()` function in `book_app.py` that prompts the user for start and end years
+5. Generate tests: `@samples/book-app-project/books.py @samples/book-app-project/tests/test_books.py Generate tests for find_by_year_range() including edge cases like invalid years, reversed range, and no results.`
+6. Review with `/review`
+7. Update the README: `@samples/book-app-project/README.md Add documentation for the new "search by year" command.`
 8. Generate a commit message
 
 Document your workflow as you go.
 
-**Success criteria**: You've completed the feature from idea to commit using Copilot CLI.
+**Success criteria**: You've completed the feature from idea to commit using Copilot CLI, including planning, implementation, tests, documentation, and review.
 
-> 💡 **Bonus**: If you have agents set up, try using `/agent` to switch to `python-reviewer` for design help and `pytest-helper` for test planning.
+> 💡 **Bonus**: If you have agents set up from Chapter 04, try using `/agent` to switch to your error-handler agent for implementation review and your doc-writer agent for the README update.
 
 <details>
 <summary>💡 Hints (click to expand)</summary>
@@ -498,13 +498,19 @@ Document your workflow as you go.
 **Follow the pattern from the ["Idea to Merged PR"](#idea-to-merged-pr-in-one-session) example** at the top of this chapter. The key steps are:
 
 1. Gather context with `@samples/book-app-project/books.py`
-2. Plan with `/plan`
+2. Plan with `/plan Add a "search by year" command`
 3. Implement the method and command handler
-4. Generate tests
+4. Generate tests with edge cases (invalid input, empty results, reversed range)
 5. Review with `/review`
-6. Generate commit message with `-p`
+6. Update README with `@samples/book-app-project/README.md`
+7. Generate commit message with `-p`
 
-**The key is practicing the full workflow** from idea → context → plan → implement → test → commit. The specific feature doesn't matter.
+**Edge cases to think about:**
+- What if the user enters "2000" and "1990" (reversed range)?
+- What if no books match the range?
+- What if the user enters non-numeric input?
+
+**The key is practicing the full workflow** from idea → context → plan → implement → test → document → commit.
 
 </details>
 

@@ -626,55 +626,55 @@ After completing the demos, try these variations:
 
 ## Assignment
 
-### Main Challenge: Create Your Own Skill
+### Main Challenge: Build a Book Summary Skill
+
+The hands-on examples created `pytest-gen` and `pr-review` skills. Now practice creating a completely different kind of skill — one for generating formatted output from data:
 
 1. List your current skills: `ls ~/.copilot/skills/`
-2. Create a skill that solves a repetitive task you do
+2. Create a `book-summary` skill at `~/.copilot/skills/book-summary/SKILL.md` that generates a formatted markdown summary of the book collection
 3. Your skill should have:
    - Clear name and description (description is crucial for matching!)
-   - Specific instructions for the task
-   - Expected output format
-4. Test the skill by asking Copilot a question that should trigger it
+   - Specific formatting rules (e.g., markdown table with title, author, year, read status)
+   - Output conventions (e.g., use ✅/❌ for read status, sort by year)
+4. Test the skill: `@samples/book-app-project/data.json Summarize the books in this collection`
+5. Verify the skill auto-triggers by checking `/skills list`
 
-**Success criteria**: You have a working custom skill that Copilot automatically applies when relevant.
+**Success criteria**: You have a working `book-summary` skill that Copilot automatically applies when you ask about the book collection.
 
 <details>
 <summary>💡 Hints (click to expand)</summary>
 
-**Not sure what to automate?** Here are beginner-friendly skill ideas:
-- **pytest-gen**: Generate consistent pytest tests
-- **code-review**: Check code against Python best practices
-- **commit-message**: Generate consistent commit messages
-
-**Starter template** - Create `~/.copilot/skills/commit-message/SKILL.md`:
+**Starter template** — Create `~/.copilot/skills/book-summary/SKILL.md`:
 
 ```markdown
 ---
-name: commit-message
-description: Generate a commit message for staged changes
+name: book-summary
+description: Generate a formatted markdown summary of a book collection
 ---
 
-# Commit Message Generator
+# Book Summary Generator
 
-Generate a commit message following these rules:
+Generate a summary of the book collection following these rules:
 
-1. Use conventional commit format: type(scope): description
-2. Types: feat, fix, docs, style, refactor, test, chore
-3. Keep the first line under 72 characters
-4. Add a blank line then bullet points for details if needed
+1. Output a markdown table with columns: Title, Author, Year, Status
+2. Use ✅ for read books and ❌ for unread books
+3. Sort by year (oldest first)
+4. Include a total count at the bottom
+5. Flag any data issues (missing authors, invalid years)
 
 Example:
-feat(auth): add password reset functionality
+| Title | Author | Year | Status |
+|-------|--------|------|--------|
+| 1984 | George Orwell | 1949 | ✅ |
+| Dune | Frank Herbert | 1965 | ❌ |
 
-- Add forgot password form
-- Send reset email via SendGrid
-- Add token expiration (24 hours)
+**Total: 2 books (1 read, 1 unread)**
 ```
 
 **Test it:**
 ```bash
 copilot
-> Generate a commit message for my staged changes
+> @samples/book-app-project/data.json Summarize the books in this collection
 # The skill should auto-trigger based on the description match
 ```
 
@@ -682,11 +682,11 @@ copilot
 
 </details>
 
-### Bonus Challenge: Share Your Skill
+### Bonus Challenge: Commit Message Skill
 
-1. Document your skill with examples
-2. Create a GitHub repo with the `copilot-skill` or `agent-skill` topic
-3. Include a README explaining what prompts trigger the skill
+1. Create a `commit-message` skill that generates conventional commit messages with a consistent format
+2. Test it by staging a change and asking: "Generate a commit message for my staged changes"
+3. Document your skill and share it on GitHub with the `copilot-skill` topic
 
 ---
 

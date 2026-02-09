@@ -764,67 +764,73 @@ For more community agents, see [github/awesome-copilot](https://github.com/githu
 
 ## Assignment
 
-### Main Challenge: Build Your Team
+### Main Challenge: Build a Specialized Agent Team
 
-1. Create at least 3 agents relevant to a project you work on. You can either:
-   - Create individual `.agent.md` files (one per agent, as shown earlier in the chapter), **or**
+The hands-on examples used the `reviewer` and `documentor` agents to design a book rating feature. Now practice creating and using agents for a different task — improving data validation in the book app:
+
+1. Create 3 agents tailored to the book app. You can either:
+   - Create individual `.agent.md` files (one per agent), **or**
    - Define them all in a single `AGENTS.md` file (see the hint below for a template)
-2. Each agent should have:
-   - Clear expertise area
-   - Specific code standards
-   - Output format preferences
-3. Use each agent to complete a task
-4. Have agents collaborate on a feature
+2. Your agents:
+   - **data-validator**: checks `data.json` for missing or malformed data (empty authors, year=0, missing fields)
+   - **error-handler**: reviews Python code for inconsistent error handling and suggests a unified approach
+   - **doc-writer**: generates or updates docstrings and README content
+3. Use each agent on the book app:
+   - `data-validator` → audit `@samples/book-app-project/data.json`
+   - `error-handler` → review `@samples/book-app-project/books.py` and `@samples/book-app-project/utils.py`
+   - `doc-writer` → add docstrings to `@samples/book-app-project/books.py`
+4. Collaborate: use `error-handler` to identify error-handling gaps, then `doc-writer` to document the improved approach
 
-**Success criteria**: You have agents that improve your workflow and produce consistent, high-quality output.
+**Success criteria**: You have 3 working agents that produce consistent, high-quality output and you can switch between them with `/agent`.
 
 <details>
 <summary>💡 Hints (click to expand)</summary>
 
-**Starter template** - Copy this to `AGENTS.md` in your project root:
+**Starter template** — Copy this to `AGENTS.md` in your project root:
 
 ```markdown
 ---
-name: project-team
-description: A team of specialized agents for this project
+name: book-app-team
+description: A team of specialized agents for the book app project
 ---
 
-## Python Reviewer
+## Data Validator
 
-You are a Python specialist focused on code quality and best practices.
-
-**Standards:**
-- Use Python 3.10+ features (dataclasses, type hints)
-- Follow PEP 8 naming conventions
-- Add comprehensive docstrings
-- Use proper error handling
-
-## Pytest Helper
-
-You are a testing specialist focused on pytest best practices.
-
-**Standards:**
-- Test behavior, not implementation
-- Use descriptive test names
-- Use fixtures for shared setup
-- Parametrize tests for multiple scenarios
-
-## Code Reviewer
-
-You analyze code without making changes.
+You analyze JSON data files for missing or malformed entries.
 
 **Focus areas:**
-- Security vulnerabilities
-- Performance issues
-- Code maintainability
+- Empty or missing author fields
+- Invalid years (year=0, future years, negative years)
+- Missing required fields (title, author, year, read)
+- Duplicate entries
+
+## Error Handler
+
+You review Python code for error handling consistency.
+
+**Standards:**
+- No bare except clauses
+- Use custom exceptions where appropriate
+- All file operations use context managers
+- Consistent return types for success/failure
+
+## Doc Writer
+
+You are a technical writer who creates clear Python documentation.
+
+**Standards:**
+- Google-style docstrings
+- Include parameter types and return values
+- Add usage examples for public methods
+- Note any exceptions raised
 ```
 
 **Testing your agents:**
 ```bash
 copilot
 > /agent
-# Select "Python Reviewer" from the list
-> Add a function to search books by title in @samples/book-app-project/books.py
+# Select "Data Validator" from the list
+> @samples/book-app-project/data.json Check for books with empty author fields or invalid years
 ```
 
 **Tip:** The `description` field in the YAML frontmatter is required for agents to work.
@@ -834,11 +840,11 @@ copilot
 ### Bonus Challenge: Instruction Library
 
 Create a `.github/instructions/` folder with at least 3 instruction files:
-- `security-audit.md` for security reviews
-- `api-documentation.md` for documenting APIs
-- `migration-guide.md` for planning migrations
+- `python-style.md` for enforcing PEP 8 and type hint conventions
+- `test-standards.md` for enforcing pytest conventions in test files
+- `data-quality.md` for validating JSON data entries
 
-Test each instruction file on real code in your project.
+Test each instruction file on the book app code.
 
 ---
 

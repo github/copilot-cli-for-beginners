@@ -695,28 +695,32 @@ After completing the demos, try these variations:
 
 ## Assignment
 
-### Main Challenge: Multi-File Review
+### Main Challenge: Trace the Data Flow
 
-1. Clone or create a Python project with at least 3 source files
-2. Start an interactive session
-3. Use `@` to review each file individually
-4. Ask Copilot to find patterns across all files: "What patterns are repeated across @samples/book-app-project/?"
-5. Ask for a refactoring suggestion that affects multiple files
-6. Rename the session: `/rename review-session`
-7. Exit, then resume with `copilot --continue` and continue where you left off
+The hands-on examples focused on code quality reviews and input validation. Now practice the same context skills on a different task — tracing how data moves through the app:
 
-**Success criteria**: You should be able to resume a session with context spanning multiple files.
+1. Start an interactive session: `copilot`
+2. Reference `books.py` and `book_app.py` together:
+   `@samples/book-app-project/books.py @samples/book-app-project/book_app.py Trace how a book goes from user input to being saved in data.json. What functions are involved at each step?`
+3. Bring in the data file for additional context:
+   `@samples/book-app-project/data.json What happens if this JSON file is missing or corrupted? Which functions would fail?`
+4. Ask for a cross-file improvement:
+   `@samples/book-app-project/books.py @samples/book-app-project/utils.py Suggest a consistent error-handling strategy that works across both files.`
+5. Rename the session: `/rename data-flow-analysis`
+6. Exit with `/exit`, then resume with `copilot --continue` and ask a follow-up question about the data flow
+
+**Success criteria**: You can trace data across multiple files, resume a named session, and get cross-file suggestions.
 
 <details>
 <summary>💡 Hints (click to expand)</summary>
 
-**Don't have a project?** Use this course repo! Try:
+**Getting started:**
 ```bash
 cd /path/to/github-copilot-cli-for-beginners
 copilot
-> @samples/book-app-project/ Review these files for code quality issues
-> What patterns do you see across these files?
-> /rename book-app-quality-review
+> @samples/book-app-project/books.py @samples/book-app-project/book_app.py Trace how a book goes from user input to being saved in data.json.
+> @samples/book-app-project/data.json What happens if this file is missing or corrupted?
+> /rename data-flow-analysis
 > /exit
 ```
 
@@ -732,11 +736,11 @@ Then resume with: `copilot --continue`
 
 ### Bonus Challenge: Context Limits
 
-1. Find (or create) a large codebase
-2. Start a session and reference multiple large files
-3. Run `/context` to see usage
-4. Approach the limit and observe how Copilot handles it
-5. Practice clearing context and being more specific with file references
+1. Reference all the book app files at once with `@samples/book-app-project/`
+2. Ask several detailed questions about different files (`books.py`, `utils.py`, `book_app.py`, `data.json`)
+3. Run `/context` to see usage — how quickly does it fill up?
+4. Practice using `/compact` to reclaim space, then continue the conversation
+5. Try being more specific with file references (e.g., `@samples/book-app-project/books.py` instead of the whole folder) and see how it affects context usage
 
 ---
 

@@ -614,16 +614,18 @@ After completing the demos, try these variations:
 
 ## Assignment
 
-### Main Challenge: Configure and Use MCP
+### Main Challenge: Explore the Book App with MCP
+
+The hands-on examples focused on listing PRs and working through an issue. Now practice MCP on different operations:
 
 1. Verify GitHub MCP works (it's built-in): run `copilot` then `List my open PRs`
-2. Set up `mcp-config.json` with the filesystem server
-3. Use MCP to:
-   - List Python files in the book-app-project using the filesystem server
-   - Get information about an issue or PR using the GitHub server
-   - Create a workflow that uses both servers (e.g., find book app files and create an issue)
+2. Set up `mcp-config.json` with the filesystem server (if not already done)
+3. Use MCP to explore the book app:
+   - Use the filesystem server to read the contents of `samples/book-app-project/data.json` and describe what books are in the collection
+   - Use GitHub MCP to list recent commits that modified any file in `samples/book-app-project/`
+   - Combine both: ask Copilot to use the filesystem server to check what test coverage exists, then use GitHub MCP to create an issue titled "Improve test coverage for BookCollection" with a description listing the missing test cases
 
-**Success criteria**: You can seamlessly access GitHub and filesystem data from within Copilot.
+**Success criteria**: You can seamlessly combine filesystem and GitHub MCP data in a single Copilot session.
 
 <details>
 <summary>💡 Hints (click to expand)</summary>
@@ -658,17 +660,20 @@ Create `~/.copilot/mcp-config.json` (or use `/mcp add`):
 - No trailing commas after the last item
 - Validate at [jsonlint.com](https://jsonlint.com/) if you get errors
 
-**Step 3: Test the workflow**
+**Step 3: Test the combined workflow**
 ```bash
 copilot
 > /mcp show
 # Should show filesystem as enabled
 
-> List all Python files in the book-app-project directory
+> Read samples/book-app-project/data.json and describe the books
 # Uses filesystem MCP
 
-> What issues are assigned to me?
+> List recent commits that modified files in samples/book-app-project/
 # Uses GitHub MCP
+
+> Check what tests exist in samples/book-app-project/tests/ and create an issue for missing test coverage
+# Combines both servers
 ```
 
 **If MCP isn't working:** Restart Copilot after editing the config file.
