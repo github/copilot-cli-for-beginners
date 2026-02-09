@@ -80,7 +80,7 @@ Once inside the interactive session:
 
 ![Code Review Demo](images/code-review-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 
@@ -105,7 +105,7 @@ Ever stared at code wondering what it does? Try this in your Copilot session:
 
 ![Explain Code Demo](images/explain-code-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 
@@ -161,7 +161,7 @@ Need a function you'd otherwise spend 15 minutes googling? Still in your session
 
 ![Generate Code Demo](images/generate-code-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 
@@ -528,14 +528,14 @@ After completing the demos, try these variations:
 
 ### Main Challenge: Improve the Book App Utilities
 
-The hands-on examples focused on reviewing and refactoring `book_app.py`. Now practice the same skills on a different file — `utils.py`:
+The hands-on examples focused on reviewing and refactoring `book_app.py`. Now practice the same skills on a different file, `utils.py`:
 
 1. Start an interactive session: `copilot`
 2. Ask Copilot to summarize the file: `@samples/book-app-project/utils.py What does each function in this file do?`
 3. Ask it to add input validation: "Add validation to `get_user_choice()` so it handles empty input and non-numeric entries"
 4. Ask it to improve error handling: "What happens if `get_book_details()` receives an empty string for the title? Add guards for that."
 5. Ask for a docstring: "Add a comprehensive docstring to `get_book_details()` with parameter descriptions and return values"
-6. Observe how context carries between prompts — each improvement builds on the last
+6. Observe how context carries between prompts. Each improvement builds on the last
 7. Exit with `/exit`
 
 **Success criteria**: You should have an improved `utils.py` with input validation, error handling, and a docstring, all built through a multi-turn conversation.
@@ -560,7 +560,7 @@ The hands-on examples focused on reviewing and refactoring `book_app.py`. Now pr
 
 ### Bonus Challenge: Compare the Modes
 
-The examples used `/plan` for a search feature and `-p` for batch reviews. Now try all three modes on a single new task — adding a `list_by_year()` method to the `BookCollection` class:
+The examples used `/plan` for a search feature and `-p` for batch reviews. Now try all three modes on a single new task: adding a `list_by_year()` method to the `BookCollection` class:
 
 1. **Interactive**: `copilot` → ask it to design and build the method step by step
 2. **Plan**: `/plan Add a list_by_year(start, end) method to BookCollection that filters books by publication year range`

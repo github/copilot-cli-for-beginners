@@ -46,7 +46,7 @@ This chapter covers five workflows that developers typically use. However, you d
 
 <a id="workflow-1-code-review"></a>
 <details>
-<summary><strong>Workflow 1: Code Review</strong> — Review files, use the /review agent, create severity checklists</summary>
+<summary><strong>Workflow 1: Code Review</strong> - Review files, use the /review agent, create severity checklists</summary>
 
 <img src="images/code-review-swimlane-single.png" alt="Code review workflow: review, identify issues, prioritize, generate checklist." width="800"/>
 
@@ -62,7 +62,7 @@ copilot
 
 ### Input Validation Review
 
-Ask Copilot to focus its review on a specific concern — here, input validation — by listing the categories you care about in the prompt.
+Ask Copilot to focus its review on a specific concern (here, input validation) by listing the categories you care about in the prompt.
 
 ```text
 copilot
@@ -106,7 +106,7 @@ copilot
 
 ### Review Checklist Template
 
-Ask Copilot to structure its output in a specific format — here, a severity-categorized markdown checklist you can paste into an issue.
+Ask Copilot to structure its output in a specific format (here, a severity-categorized markdown checklist you can paste into an issue).
 
 ```bash
 copilot
@@ -158,7 +158,7 @@ copilot
 
 <a id="workflow-2-refactoring"></a>
 <details>
-<summary><strong>Workflow 2: Refactoring</strong> — Restructure code, separate concerns, improve error handling</summary>
+<summary><strong>Workflow 2: Refactoring</strong> - Restructure code, separate concerns, improve error handling</summary>
 
 <img src="images/refactoring-swimlane-single.png" alt="Refactoring workflow: assess code, plan changes, implement, verifiy behavrior." width="800"/>
 
@@ -194,7 +194,7 @@ copilot
 
 ![Refactor Demo](images/refactor-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 
@@ -247,7 +247,7 @@ copilot
 
 <a id="workflow-3-debugging"></a>
 <details>
-<summary><strong>Workflow 3: Debugging</strong> — Track down bugs, security audits, trace issues across files</summary>
+<summary><strong>Workflow 3: Debugging</strong> - Track down bugs, security audits, trace issues across files</summary>
 
 <img src="images/debugging-swimlane-single.png" alt="Debugging workflow: understand error, locate root cause, fix, test." width="800"/>
 
@@ -290,7 +290,7 @@ copilot
 
 ![Fix Bug Demo](images/fix-bug-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 
@@ -387,7 +387,7 @@ copilot
 
 <a id="workflow-4-test-generation"></a>
 <details>
-<summary><strong>Workflow 4: Test Generation</strong> — Generate comprehensive tests and edge cases automatically</summary>
+<summary><strong>Workflow 4: Test Generation</strong> - Generate comprehensive tests and edge cases automatically</summary>
 
 <img src="images/test-gen-swimlane-single.png" alt="Test Generationg workflow: analyze function, generate tests, include edge cases, run." width="800"/>
 
@@ -525,7 +525,7 @@ copilot
 
 <a id="workflow-5-git-integration"></a>
 <details>
-<summary><strong>Workflow 5: Git Integration</strong> — Commit messages, PR descriptions, /delegate, and /diff</summary>
+<summary><strong>Workflow 5: Git Integration</strong> - Commit messages, PR descriptions, /delegate, and /diff</summary>
 
 <img src="images/git-integration-swimlane-single.png" alt="Git Integreation workflow: stage changes, generate message, commit, create PR." width="800"/>
 
@@ -729,7 +729,7 @@ copilot
 > Generate a conventional commit message for this refactor
 ```
 
-**Tip:** After improving `remove_book()`, try asking Copilot: "Are there any other functions in this file that could benefit from the same improvements?" — it may suggest similar changes to `find_book_by_title()` or `find_by_author()`.
+**Tip:** After improving `remove_book()`, try asking Copilot: "Are there any other functions in this file that could benefit from the same improvements?". It may suggest similar changes to `find_book_by_title()` or `find_by_author()`.
 
 </details>
 

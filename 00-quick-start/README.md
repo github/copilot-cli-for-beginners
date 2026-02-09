@@ -117,7 +117,7 @@ copilot
 
 ![Hello Demo](images/hello-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 

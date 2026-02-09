@@ -89,7 +89,7 @@ copilot
 
 ![File Context Demo](images/file-context-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 
@@ -140,7 +140,7 @@ copilot
 
 ![Multi-File Demo](images/multi-file-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 
@@ -249,7 +249,7 @@ copilot
 
 ![Multi-Turn Demo](images/multi-turn-demo.gif)
 
-*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
 </details>
 
@@ -697,7 +697,7 @@ After completing the demos, try these variations:
 
 ### Main Challenge: Trace the Data Flow
 
-The hands-on examples focused on code quality reviews and input validation. Now practice the same context skills on a different task — tracing how data moves through the app:
+The hands-on examples focused on code quality reviews and input validation. Now practice the same context skills on a different task, tracing how data moves through the app:
 
 1. Start an interactive session: `copilot`
 2. Reference `books.py` and `book_app.py` together:
@@ -738,7 +738,7 @@ Then resume with: `copilot --continue`
 
 1. Reference all the book app files at once with `@samples/book-app-project/`
 2. Ask several detailed questions about different files (`books.py`, `utils.py`, `book_app.py`, `data.json`)
-3. Run `/context` to see usage — how quickly does it fill up?
+3. Run `/context` to see usage. How quickly does it fill up?
 4. Practice using `/compact` to reclaim space, then continue the conversation
 5. Try being more specific with file references (e.g., `@samples/book-app-project/books.py` instead of the whole folder) and see how it affects context usage
 
