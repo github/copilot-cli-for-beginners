@@ -782,7 +782,7 @@ copilot --add-dir /path/to/directory
 2. **Multi-turn conversations** build on each other as context accumulates
 3. **Sessions auto-save**: use `--continue` or `--resume` to pick up where you left off
 4. **Context windows** have limits: manage them with `/context`, `/clear`, and `/compact`
-5. **Permission flags** (`--add-dir`, `--allow-all-paths`) control multi-directory access
+5. **Permission flags** (`--add-dir`, `--allow-all`) control multi-directory access. Use them wisely!
 6. **Image references** (`@screenshot.png`) help debug UI issues visually
 
 > 📚 **Official Documentation**: [Use Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli) for the complete reference on context, sessions, and working with files.

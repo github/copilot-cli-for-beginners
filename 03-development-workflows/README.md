@@ -823,7 +823,7 @@ There's no single "right" way to use GitHub Copilot CLI. Here are a few tips as 
 
 | Skill | Chapter | You Can Now... |
 |-------|---------|----------------|
-| Basic Commands | Ch 01 | Use `-p`, interactive mode, and slash commands |
+| Basic Commands | Ch 01 | Use interactive mode, plan mode, interactive mode (-p), and slash commands |
 | Context | Ch 02 | Reference files with `@`, manage sessions, understand context windows |
 | Workflows | Ch 03 | Review code, refactor, debug, generate tests, integrate with git |
 
