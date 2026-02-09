@@ -197,32 +197,32 @@ You've just seen what Copilot CLI can do. Now let's understand *how* to use thes
 
 ---
 
-## Real-World Analogy: Learning to Drive
+## Real-World Analogy: Dining Out
 
-Think of GitHub Copilot CLI like a car with three driving modes:
+Think of using GitHub Copilot CLI like going out to eat - from planning the trip to placing your order, different situations call for different approaches:
 
-| Mode | Car Analogy | When to Use |
-|------|-------------|-------------|
-| **Interactive** | Rally driver with co-driver | Exploring, iterating, real-time guidance as you go |
-| **Plan** | GPS navigation | Complex tasks where you want to see the route first |
-| **Programmatic** | Self-driving car | Automation, scripts, CI/CD - set the destination and let it run |
+| Mode | Dining Analogy | When to Use |
+|------|----------------|-------------|
+| **Plan** | GPS route to the restaurant | Complex tasks - map out the route, review stops, agree on the plan, then drive |
+| **Interactive** | Talking to the waiter | Exploration and iteration - ask questions, customize, get real-time feedback |
+| **Programmatic** | Drive-through ordering | Quick, specific tasks - stay in your environment, get a result fast |
 
-Just like driving, you'll naturally learn when each mode feels right.
+Just like dining out, you'll naturally learn when each approach feels right.
 
-<img src="images/learning-to-drive-analogy.png" alt="Three Modes of GitHub Copilot CLI" width="800"/>
+<img src="images/ordering-food-analogy.png" alt="Three Ways to Use GitHub Copilot CLI - Plan Mode (GPS route to restaurant), Interactive Mode (talking to waiter), Programmatic Mode (drive-through)" width="800"/>
 
-*Choose your mode based on the task: Interactive for real-time collaboration, Plan for seeing the route first, Programmatic for hands-off automation*
+*Choose your mode based on the task: Plan for mapping it out first, Interactive for back-and-forth collaboration, Programmatic for quick one-shot results*
 
 ### Which Mode Should I Start With?
 
-**Start with Interactive mode.** It's the most forgiving and helps you learn:
+**Start with Interactive mode.** It's the most flexible and helps you learn:
 - You can experiment and ask follow-up questions
 - Context builds naturally through conversation
 - Mistakes are easy to correct with `/clear`
 
 Once you're comfortable, try:
 - **Programmatic mode** (`-p`) for quick, one-off questions
-- **Plan mode** (`/plan`) when you need to think before coding
+- **Plan mode** (`/plan`) when you need to plan things out in more detail before coding
 
 ---
 
