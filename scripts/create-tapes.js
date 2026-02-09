@@ -82,7 +82,7 @@ let created = 0;
 
 for (const demo of config.demos) {
   const imagesDir = join(rootDir, demo.chapter, 'images');
-  const tapePath = join(imagesDir, `${demo.name.replace('-demo', '')}.tape`);
+  const tapePath = join(imagesDir, `${demo.name}.tape`);
 
   // Ensure images directory exists
   if (!existsSync(imagesDir)) {
@@ -95,7 +95,7 @@ for (const demo of config.demos) {
 
   // Write tape file
   writeFileSync(tapePath, content);
-  console.log(`  ✓ ${demo.chapter}/images/${demo.name.replace('-demo', '')}.tape`);
+  console.log(`  ✓ ${demo.chapter}/images/${demo.name}.tape`);
   created++;
 }
 

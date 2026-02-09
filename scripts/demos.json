@@ -11,12 +11,6 @@
   },
   "demos": [
     {
-      "chapter": "00-quick-start",
-      "name": "quick-start-demo",
-      "description": "If you have Node.js installed, this is a quick way to get the CLI demo",
-      "prompt": "Say hello and tell me what you can help with"
-    },
-    {
       "chapter": "01-setup-and-first-steps",
       "name": "setup-and-first-steps-demo",
       "description": "Clone the course repository (if you haven't already) demo",

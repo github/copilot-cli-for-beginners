@@ -16,9 +16,7 @@ By the end of this chapter, you'll have:
 
 ## Prerequisites
 
-- **GitHub Account** with Copilot access
-  - Students/Teachers: [Free via GitHub Education](https://education.github.com/pack)
-  - Everyone else: [See pricing options](https://github.com/features/copilot/plans)
+- **GitHub Account** with Copilot access. [See subscription options](https://github.com/features/copilot/plans)). Students/Teachers can access copilot [free via GitHub Education](https://education.github.com/pack).
 - **Terminal basics**: Comfortable with commands like `cd` and `ls`
 - **[Python 3.10+](https://www.python.org/downloads/)**: Used to run the sample book app used throughout this course. If you don't have Python, the Codespaces option below includes it pre-installed.
 
@@ -41,12 +39,12 @@ If you see "You don't have access to GitHub Copilot," you'll need to use the fre
 
 ### Recommended: GitHub Codespaces (Zero Setup)
 
-If you don't want to install any of the prerequisites, you can use GitHub Codespaces, which pre-installs Python 3.13, pytest, GitHub CLI, and GitHub Copilot CLI.
+If you don't want to install any of the prerequisites, you can use GitHub Codespaces, which has the GitHub Copilot CLI ready to go (you'll need to sign in), pre-installs Python 3.13, pytest, and the GitHub CLI.
 
 1. [Fork this repository](https://github.com/github/github-copilot-cli-for-beginners/fork) to your GitHub account
 2. Click **Code** > **Codespaces** > **Create codespace on main**
 3. Wait for the container to build (~2 minutes)
-4. You're ready! Everything is pre-installed.
+4. You're ready to go! The terminal will open automatically in the Codespace environment.
 
 > 💡 **Verify in Codespace**: Run `cd samples/book-app-project && python book_app.py help` to confirm Python and the sample app are working.
 
@@ -79,15 +77,11 @@ winget install GitHub.Copilot
 curl -fsSL https://gh.io/copilot-install | bash
 ```
 
-### GitHub Codespaces
-
-If you're using GitHub Codespaces, **GitHub Copilot CLI is already installed** and ready to use. Just run `copilot` to get started.
-
 ---
 
 ## Authentication
 
-Start the CLI and log in:
+Open a terminal window, start the CLI, and sign in using the `/login` command:
 
 ```bash
 copilot
@@ -102,7 +96,7 @@ copilot
 4. Click "Authorize" to grant GitHub Copilot CLI access
 5. Return to your terminal - you're now signed in!
 
-**Tip**: The sign-in persists across sessions. You only need to do this once unless your token expires or you explicitly log out.
+**Tip**: The sign-in persists across sessions. You only need to do this once unless your token expires or you explicitly sign out.
 
 ---
 
@@ -111,7 +105,9 @@ copilot
 ### Step 1: Test Copilot CLI
 
 ```bash
-copilot -p "Say hello and tell me what you can help with"
+copilot
+> Say hello and tell me what you can help with
+> /exit
 ```
 
 <details>
@@ -141,8 +137,10 @@ python book_app.py list
 Navigate back to the repository root first (if you ran Step 2):
 
 ```bash
-cd ..   # Back to the repository root
-copilot -p "What does @samples/book-app-project/book_app.py do?"
+cd ..   # Back to the repository root if needed
+copilot 
+> What does @samples/book-app-project/book_app.py do?
+> /exit
 ```
 
 **Expected output**: A summary of the book app's main functions and commands.
@@ -180,7 +178,7 @@ curl -fsSL https://gh.io/copilot-install | bash
 ### "You don't have access to GitHub Copilot"
 
 1. Verify you have a Copilot subscription at [github.com/settings/copilot](https://github.com/settings/copilot)
-2. Check that your organization permits CLI access (if using a work account)
+2. Check that your organization permits CLI access if using a work account
 
 ### "Authentication failed"
 
@@ -197,7 +195,7 @@ Manually visit [github.com/login/device](https://github.com/login/device) and en
 
 ### Token expired
 
-Tokens typically last 8 hours. Simply run `/login` again:
+Simply run `/login` again:
 
 ```bash
 copilot
@@ -213,7 +211,7 @@ copilot
 
 ## Key Takeaways
 
-1. **Codespace is the fastest start** - Zero setup with Python, pytest, and Copilot CLI pre-installed
+1. **A GitHub Codespace is a quick way to get started** - Zero setup with Python, pytest, and GitHub Copilot CLI are all pre-installed
 2. **Multiple installation methods** - Choose what works for your system (Homebrew, WinGet, npm, or install script)
 3. **One-time authentication** - Login persists until token expires
 4. **Quick verification** - Use `-p` flag for instant testing

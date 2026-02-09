@@ -23,7 +23,7 @@ Enter
 Sleep 5s
 
 # Execute the prompt
-Type "What does @samples/book-app-project/book_app.py do? Summarize in 2-3 sentences."
+Type "Say hello and tell me what you can help with"
 Sleep 2s
 Enter
 
@@ -31,5 +31,6 @@ Enter
 Sleep 25s
 
 # Exit cleanly
-Ctrl+C
+Type "/exit"
+Enter
 Sleep 2s
