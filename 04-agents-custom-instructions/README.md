@@ -4,7 +4,7 @@
 
 In Chapter 03, you mastered the essential workflows: code review, refactoring, debugging, test generation, and git integration. Those skills make you highly productive with GitHub Copilot CLI. Now, let's take it further.
 
-In this chapter, you'll transform Copilot from a generalist into a team of specialists. You'll create agents with deep domain expertise: a Python code reviewer who automatically adds type hints and follows PEP 8, a testing specialist who knows pytest best practices, and more. You'll see how the same prompt produces dramatically better results when a specialist handles it, and learn to orchestrate multiple agents collaborating on a single feature.
+So far, you've been using Copilot CLI as a general-purpose assistant, but by leveraging agents we can leverage specific skills sets when they are needed. In this chapter, you'll set up specialized agents, such as a code reviewer that enforces type hints and PEP 8 and a testing helper that writes pytest cases. You will get to see how the same prompt gets noticeably better results when a handled by an agent with specific, targetted instructions.
 
 ## Learning Objectives
 
@@ -20,26 +20,61 @@ By the end of this chapter, you'll be able to:
 
 ---
 
-## 🚀 Start Here: Your First 5 Minutes with Agents
+## *New to agents?* Start Here!
+Never used or made an agent? Here's all you need to know to get started for this course.
 
-**New to agents?** Here's the quickest path to understanding them:
-
-1. **Try a built-in agent right now:**
+1. **Try a *built-in* agent right now:**
    ```bash
    copilot
    > /plan Add input validation for book year in the book app
    ```
    This invokes the Plan agent to create a step-by-step implementation plan.
 
-2. **Understand the core concept:** Agents are like hiring a specialist instead of asking a generalist. A "frontend agent" automatically thinks about accessibility and component patterns - you don't have to remind it.
+2. **See one of our custom agent examples:** It's simple to define an agent's instructions, look at our provided [python-reviewer.agent.md](../samples/agents/python-reviewer.agent.md) file to see the pattern.
 
-3. **Two ways to use custom agents:**
-   - **`/agent`** - Select an agent interactively *inside* a session
-   - **`copilot --agent frontend`** - Start a session *with* a specific agent
+3. **Understand the core concept:** Agents are like consulting a specialist instead of a generalist. A "frontend agent" will focus on accessibility and component patterns automatically, you don't have to remind it because it is already specified in teh agent's instructions.
 
-Once you've tried the built-in agents, read on to create your own custom agents.
 
-> 📦 **Don't want to write agents from scratch?** Copy ready-to-use templates from the [samples/agents](../samples/agents/) folder. Just copy the files to `~/.copilot/agents/` and customize them for your needs.
+## Using agents with Copilot CLI
+
+### 🗂️ Add your agents 
+
+**Put some agent files into folder named `.github/agents/` folder of this project**. 
+<br>You can write your own, or copy/customize our ready-to-use templates from the [samples/agents](../samples/agents/) folder.
+
+*Agents are only detected in a limited number of locations in your repo. <br>You can also use the `~/.copilot/agents/` location to store agents you want available for *all* projects.*
+
+
+### 🚀 Two ways to use custom agents
+
+**1️⃣ Interactive mode**
+Inside interactive mode, list agents using `/agent` and select to agent to start working with. 
+<br>Select an agent to continue your conversation with.
+
+```bash
+copilot
+> /agent
+```
+
+To change to a different agent, or to return to default mode, use the `/agent` command again. 
+
+<details>
+<summary>🎬 See it in action!</summary>
+<!-- TODO -->
+❌ TODO see it in action - add a gif
+
+*Demo output varies — your model, tools, and responses will differ from what's shown here.*
+</details> <br>
+
+
+**2️⃣ Straight from your terminal**
+
+Launch straight into a new session with an agent.
+
+```bash
+copilot --agent python-reviewer
+> Review @samples/book-app-project/books.py
+```
 
 ---
 
@@ -53,22 +88,22 @@ When you need help with your house, you don't call one "general helper." You cal
 | Rewiring | Electrician | Understands safety requirements, up to code |
 | New roof | Roofer | Knows materials, local weather considerations |
 
-Agents work the same way. Instead of a generic AI, you get specialists who understand specific domains deeply.
-
+Agents work the same way. Instead of a generic AI, use agents that focus on specific tasks and know the right process to follow.
 <img src="images/hiring-specialists-analogy.png" alt="Specialized Agents for Every Domain" width="800"/>
 
-*Direct specialists, don't do everything yourself: Frontend, Backend, Security, and Testing experts at your command*
+Set up the instructions once, then reuse them whenever you need that specialty; code review, testing, security, documentation.
 
 ---
 
 ## Built-in Agents
 
-GitHub Copilot CLI includes four built-in agents:
+You've already used some of these in Chapter 03 Development Workflow! `/plan` and `/review` are actually built-in agents. Now you know what's happening under the hood. Here's the full list:
 
 | Agent | How to Invoke | What It Does |
 |-------|---------------|--------------|
 | **Plan** | `/plan` or `Shift+Tab` | Creates step-by-step implementation plans before coding |
 | **Code-review** | `/review` | Reviews staged/unstaged changes with focused, actionable feedback |
+| **Init** | `/init` | Generates project configuration files (instructions, agents) |
 | **Explore** | *Automatic* | Used internally when you ask Copilot to explore or analyze the codebase |
 | **Task** | *Automatic* | Executes commands like tests, builds, lints, and dependency installs |
 
