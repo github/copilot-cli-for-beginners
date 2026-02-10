@@ -1,4 +1,4 @@
-# 01-setup-and-first-steps: Explain Code
+# 01-setup-and-first-steps: Explain what a Python file does in simple terms
 # Auto-generated from demos.json - Real copilot execution
 
 Output explain-code-demo.gif

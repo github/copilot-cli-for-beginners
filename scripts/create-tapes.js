@@ -21,10 +21,17 @@ function generatePromptBlock(entry, defaultWait, index) {
   const wait = (typeof entry === 'object' && entry.responseWait) || defaultWait;
   const label = index != null ? `Prompt ${index + 1}` : 'Execute the prompt';
 
+  // If prompt ends with a file reference (@path), the file picker will be open.
+  // Need an extra Enter to select the file before submitting the prompt.
+  const endsWithFileRef = /@\S+$/.test(text);
+  const enterBlock = endsWithFileRef
+    ? 'Enter\nSleep 1s\nEnter'
+    : 'Enter';
+
   return `# ${label}
 Type "${text}"
 Sleep 2s
-Enter
+${enterBlock}
 
 # Wait for response
 Sleep ${wait}s`;

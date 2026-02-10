@@ -1,4 +1,4 @@
-# 06-mcp-servers: MCP Issue-to-Fix Workflow
+# 06-mcp-servers: Multi-step MCP workflow with issues and code analysis
 # Auto-generated from demos.json - Real copilot execution
 
 Output mcp-workflow-demo.gif

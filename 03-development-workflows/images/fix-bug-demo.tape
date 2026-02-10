@@ -1,4 +1,4 @@
-# 03-development-workflows: Fix a Bug
+# 03-development-workflows: Workflow 3: Debugging - debug a search issue
 # Auto-generated from demos.json - Real copilot execution
 
 Output fix-bug-demo.gif
@@ -28,7 +28,7 @@ Sleep 2s
 Enter
 
 # Wait for response
-Sleep 25s
+Sleep 30s
 
 # Exit cleanly
 Ctrl+C

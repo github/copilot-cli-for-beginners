@@ -1,4 +1,4 @@
-# 00-quick-start: Quick Start - First taste
+# 00-quick-start: Say hello to Copilot and explore what it can help with
 # Auto-generated from demos.json - Real copilot execution
 
 Output hello-demo.gif
@@ -31,6 +31,5 @@ Enter
 Sleep 25s
 
 # Exit cleanly
-Type "/exit"
-Enter
+Ctrl+C
 Sleep 2s

@@ -1,4 +1,4 @@
-# 07-putting-it-together: Minimal Feature Workflow
+# 07-putting-it-together: Minimal workflow: explore, implement, test
 # Auto-generated from demos.json - Real copilot execution
 
 Output minimal-workflow-demo.gif

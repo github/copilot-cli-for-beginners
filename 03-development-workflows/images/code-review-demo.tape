@@ -1,7 +1,7 @@
-# 01-setup-and-first-steps: Clone the course repository (if you haven't already) demo
+# 03-development-workflows: Workflow 1: Code Review - review a file for code quality
 # Auto-generated from demos.json - Real copilot execution
 
-Output setup-and-first-steps-demo.gif
+Output code-review-demo.gif
 
 Set FontSize 18
 Set Width 1000
@@ -23,12 +23,12 @@ Enter
 Sleep 5s
 
 # Execute the prompt
-Type "List all functions in @samples/book-app-project/book_app.py"
+Type "Review @samples/book-app-project/book_app.py for code quality"
 Sleep 2s
 Enter
 
 # Wait for response
-Sleep 25s
+Sleep 30s
 
 # Exit cleanly
 Ctrl+C

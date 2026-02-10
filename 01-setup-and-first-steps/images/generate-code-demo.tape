@@ -1,4 +1,4 @@
-# 01-setup-and-first-steps: Generate Working Code
+# 01-setup-and-first-steps: Generate a Python function from a natural language description
 # Auto-generated from demos.json - Real copilot execution
 
 Output generate-code-demo.gif
@@ -28,7 +28,7 @@ Sleep 2s
 Enter
 
 # Wait for response
-Sleep 25s
+Sleep 35s
 
 # Exit cleanly
 Ctrl+C

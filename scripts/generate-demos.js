@@ -6,17 +6,34 @@
  * to generate GIFs. VHS is run from the project root so that @file references
  * in prompts resolve correctly.
  *
- * Usage: npm run generate:vhs
+ * Usage:
+ *   npm run generate:vhs                          # all chapters, 5 concurrent
+ *   npm run generate:vhs -- --chapter 03          # only chapter 03
+ *   npm run generate:vhs -- --chapter 03 --chapter 05
+ *   npm run generate:vhs -- --concurrency 3       # limit to 3 at a time
  *
  * Requirements:
  *   - VHS: brew install vhs
  */
 
-const { execSync } = require('child_process');
+const { exec, execSync } = require('child_process');
 const { readdirSync, statSync, existsSync, readFileSync, renameSync, writeFileSync, chmodSync, mkdirSync, rmSync } = require('fs');
-const { join, basename, relative, dirname } = require('path');
+const { join, relative, dirname } = require('path');
 
 const rootDir = join(__dirname, '..');
+
+// Parse CLI args
+const args = process.argv.slice(2);
+const chapters = [];
+let concurrency = 5;
+
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--chapter' && args[i + 1]) {
+    chapters.push(args[++i]);
+  } else if (args[i] === '--concurrency' && args[i + 1]) {
+    concurrency = parseInt(args[++i], 10);
+  }
+}
 
 // Create a wrapper script that injects --yolo and --allow-all-paths so copilot
 // runs non-interactively. The tape just types "copilot" which looks clean in
@@ -36,7 +53,7 @@ function cleanupCopilotWrapper() {
 }
 
 // Find all .tape files in [chapter]/images/ folders
-function findTapeFiles(dir) {
+function findTapeFiles(dir, chapterFilter) {
   const tapeFiles = [];
 
   const entries = readdirSync(dir);
@@ -45,7 +62,12 @@ function findTapeFiles(dir) {
     const stat = statSync(fullPath);
 
     if (stat.isDirectory() && !entry.startsWith('.') && entry !== 'node_modules' && entry !== 'scripts') {
-      // Check for images subfolder
+      // Apply chapter filter if specified
+      if (chapterFilter.length > 0) {
+        const matches = chapterFilter.some(ch => entry.startsWith(ch) || entry.includes(ch));
+        if (!matches) continue;
+      }
+
       const imagesDir = join(fullPath, 'images');
       if (existsSync(imagesDir)) {
         try {
@@ -72,69 +94,116 @@ function getOutputFilename(tapeFilePath) {
   return match ? match[1] : null;
 }
 
-// Main
-console.log('🎬 Generating course demos...\n');
-console.log('Working directory:', rootDir);
-console.log('');
-
-const tapeFiles = findTapeFiles(rootDir);
-
-if (tapeFiles.length === 0) {
-  console.log('No .tape files found in [chapter]/images/ folders');
-  process.exit(0);
-}
-
-console.log(`Found ${tapeFiles.length} tape file(s):\n`);
-tapeFiles.forEach(f => console.log('  - ' + relative(rootDir, f)));
-console.log('');
-
-// Set up copilot wrapper so --yolo is injected transparently
-const wrappedPath = setupCopilotWrapper();
-console.log('Copilot wrapper: --yolo injected via PATH\n');
-
-let success = 0;
-let failed = 0;
-
-for (const tapeFile of tapeFiles) {
+// Run a single VHS recording and return a promise
+function runVhs(tapeFile, wrappedPath) {
   const relativePath = relative(rootDir, tapeFile);
   const imagesDir = dirname(tapeFile);
   const outputFilename = getOutputFilename(tapeFile);
 
-  console.log(`Processing: ${relativePath}`);
+  return new Promise((resolve) => {
+    const startTime = Date.now();
 
-  try {
-    // Run VHS from project root so @file references resolve correctly.
-    // PATH is modified so "copilot" resolves to the wrapper (adds --yolo).
-    execSync(`vhs ${relativePath}`, {
+    exec(`vhs ${relativePath}`, {
       cwd: rootDir,
-      stdio: 'inherit',
-      timeout: 180000, // 3 minute timeout per demo (real copilot takes longer)
+      timeout: 180000,
       env: { ...process.env, PATH: wrappedPath }
-    });
+    }, (error) => {
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
 
-    // Move generated GIF to the images folder if it was created in root
-    if (outputFilename) {
-      const generatedPath = join(rootDir, outputFilename);
-      const targetPath = join(imagesDir, outputFilename);
-      if (existsSync(generatedPath) && generatedPath !== targetPath) {
-        renameSync(generatedPath, targetPath);
-        console.log(`   → Moved to: ${relative(rootDir, targetPath)}`);
+      if (error) {
+        console.log(`  ✗ ${relativePath} (${elapsed}s) - ${error.message}`);
+        resolve({ success: false, path: relativePath });
+        return;
       }
+
+      // Move generated GIF to the images folder if it was created in root
+      if (outputFilename) {
+        const generatedPath = join(rootDir, outputFilename);
+        const targetPath = join(imagesDir, outputFilename);
+        if (existsSync(generatedPath) && generatedPath !== targetPath) {
+          renameSync(generatedPath, targetPath);
+        }
+      }
+
+      console.log(`  ✓ ${relativePath} (${elapsed}s)`);
+      resolve({ success: true, path: relativePath });
+    });
+  });
+}
+
+// Run tasks with concurrency limit
+async function runWithConcurrency(tasks, limit) {
+  const results = [];
+  const executing = new Set();
+
+  for (const task of tasks) {
+    const promise = task().then(result => {
+      executing.delete(promise);
+      return result;
+    });
+    executing.add(promise);
+    results.push(promise);
+
+    if (executing.size >= limit) {
+      await Promise.race(executing);
     }
-
-    success++;
-    console.log('');
-  } catch (e) {
-    console.log(`   ✗ Failed: ${e.message}\n`);
-    failed++;
   }
+
+  return Promise.all(results);
 }
 
-cleanupCopilotWrapper();
+// Main
+async function main() {
+  console.log('🎬 Generating course demos...\n');
 
-console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-console.log(`✓ Success: ${success}`);
-if (failed > 0) {
-  console.log(`✗ Failed:  ${failed}`);
+  if (chapters.length > 0) {
+    console.log(`Chapters: ${chapters.join(', ')}`);
+  }
+  console.log(`Concurrency: ${concurrency}`);
+  console.log('');
+
+  const tapeFiles = findTapeFiles(rootDir, chapters);
+
+  if (tapeFiles.length === 0) {
+    console.log('No .tape files found');
+    process.exit(0);
+  }
+
+  console.log(`Found ${tapeFiles.length} tape file(s):\n`);
+  tapeFiles.forEach(f => console.log('  - ' + relative(rootDir, f)));
+  console.log('');
+
+  // Set up copilot wrapper so --yolo is injected transparently
+  const wrappedPath = setupCopilotWrapper();
+  console.log('Copilot wrapper: --yolo injected via PATH');
+  console.log(`Recording ${tapeFiles.length} demos (${concurrency} at a time)...\n`);
+
+  const startTime = Date.now();
+
+  // Build task functions
+  const tasks = tapeFiles.map(tapeFile => () => runVhs(tapeFile, wrappedPath));
+
+  // Run with concurrency limit
+  const results = await runWithConcurrency(tasks, concurrency);
+
+  cleanupCopilotWrapper();
+
+  const succeeded = results.filter(r => r.success).length;
+  const failedResults = results.filter(r => !r.success);
+  const totalTime = ((Date.now() - startTime) / 1000).toFixed(0);
+
+  console.log(`\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
+  console.log(`✓ Success: ${succeeded}`);
+  if (failedResults.length > 0) {
+    console.log(`✗ Failed:  ${failedResults.length}`);
+    failedResults.forEach(r => console.log(`  - ${r.path}`));
+  }
+  console.log(`⏱ Total:   ${totalTime}s`);
+  console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
 }
-console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+main().catch(e => {
+  console.error(e);
+  cleanupCopilotWrapper();
+  process.exit(1);
+});

@@ -1,4 +1,4 @@
-# 02-context-conversations: File Context with @
+# 02-context-conversations: Use @file to ask about a specific file
 # Auto-generated from demos.json - Real copilot execution
 
 Output file-context-demo.gif

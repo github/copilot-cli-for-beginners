@@ -1,4 +1,4 @@
-# 01-setup-and-first-steps: Code Review in Seconds
+# 01-setup-and-first-steps: Review a file for code quality issues and suggest improvements
 # Auto-generated from demos.json - Real copilot execution
 
 Output code-review-demo.gif

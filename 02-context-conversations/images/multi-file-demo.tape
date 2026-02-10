@@ -1,4 +1,4 @@
-# 02-context-conversations: Multi-file Context
+# 02-context-conversations: Reference multiple files to understand data flow
 # Auto-generated from demos.json - Real copilot execution
 
 Output multi-file-demo.gif

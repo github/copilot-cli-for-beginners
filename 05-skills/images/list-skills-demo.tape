@@ -1,4 +1,4 @@
-# 05-skills: Available Skills
+# 05-skills: List available slash commands and skills
 # Auto-generated from demos.json - Real copilot execution
 
 Output list-skills-demo.gif

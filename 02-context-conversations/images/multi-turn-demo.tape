@@ -1,4 +1,4 @@
-# 02-context-conversations: Multi-Turn Conversation
+# 02-context-conversations: Multi-turn conversation building on previous context
 # Auto-generated from demos.json - Real copilot execution
 
 Output multi-turn-demo.gif
@@ -44,7 +44,7 @@ Sleep 2s
 Enter
 
 # Wait for response
-Sleep 30s
+Sleep 45s
 
 # Exit cleanly
 Ctrl+C

@@ -1,7 +1,7 @@
-# 07-putting-it-together: Copilot creates high-level plan... demo
+# 03-development-workflows: Workflow 5: Git Integration - generate a conventional commit message
 # Auto-generated from demos.json - Real copilot execution
 
-Output putting-it-together-demo.gif
+Output git-integration-demo.gif
 
 Set FontSize 18
 Set Width 1000
@@ -23,12 +23,12 @@ Enter
 Sleep 5s
 
 # Execute the prompt
-Type "Generate commit message for: $(git diff --staged)"
+Type "Generate a conventional commit message for: $(git diff --staged)"
 Sleep 2s
 Enter
 
 # Wait for response
-Sleep 25s
+Sleep 30s
 
 # Exit cleanly
 Ctrl+C

@@ -60,6 +60,19 @@ copilot
 > Review @samples/book-app-project/book_app.py for code quality
 ```
 
+---
+
+<details>
+<summary>🎬 See it in action!</summary>
+
+![Code Review Demo](images/code-review-demo.gif)
+
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
+
+</details>
+
+---
+
 ### Input Validation Review
 
 Ask Copilot to focus its review on a specific concern (here, input validation) by listing the categories you care about in the prompt.
@@ -170,22 +183,13 @@ Start with straightforward improvements. Try these on the book app. Each prompt 
 copilot
 
 > @samples/book-app-project/book_app.py The command handling uses if/elif chains. Refactor it to use a dictionary dispatch pattern.
+
 > @samples/book-app-project/utils.py Add type hints to all functions
+
 > @samples/book-app-project/book_app.py Extract the book display logic into utils.py for better separation of concerns
 ```
 
 > 💡 **New to refactoring?** Start with simple requests like adding type hints or improving variable names before tackling complex transformations.
-
-### Separate Concerns
-
-Reference multiple files with `@` in a single prompt so Copilot can move code between them as part of the refactor.
-
-```bash
-copilot
-
-> @samples/book-app-project/utils.py @samples/book-app-project/book_app.py
-> The utils.py file has print statements mixed with logic. Refactor to separate display functions from data processing.
-```
 
 ---
 
@@ -199,6 +203,17 @@ copilot
 </details>
 
 ---
+
+### Separate Concerns
+
+Reference multiple files with `@` in a single prompt so Copilot can move code between them as part of the refactor.
+
+```bash
+copilot
+
+> @samples/book-app-project/utils.py @samples/book-app-project/book_app.py
+> The utils.py file has print statements mixed with logic. Refactor to separate display functions from data processing.
+```
 
 ### Improve Error Handling
 
@@ -270,19 +285,6 @@ copilot
 
 > 💡 **Debugging tip**: Describe the *symptom* (what you see) and the *expectation* (what should happen). Copilot figures out the rest.
 
-### The "Bug Detective" - AI Finds RELATED Bugs
-
-This is where context-aware debugging shines. Try this scenario with the buggy book app. Provide the whole file via `@` and describe only the user-reported symptom. Copilot will trace the root cause and may spot additional bugs nearby.
-
-```bash
-copilot
-
-> @samples/book-app-buggy/books_buggy.py
->
-> Users report: "Finding books by author name doesn't work for partial names"
-> Debug why this happens
-```
-
 ---
 
 <details>
@@ -295,6 +297,19 @@ copilot
 </details>
 
 ---
+
+### The "Bug Detective" - AI Finds RELATED Bugs
+
+This is where context-aware debugging shines. Try this scenario with the buggy book app. Provide the whole file via `@` and describe only the user-reported symptom. Copilot will trace the root cause and may spot additional bugs nearby.
+
+```bash
+copilot
+
+> @samples/book-app-buggy/books_buggy.py
+>
+> Users report: "Finding books by author name doesn't work for partial names"
+> Debug why this happens
+```
 
 **What Copilot does**:
 ```
@@ -411,6 +426,19 @@ copilot
 > - Marking as read
 > - Edge cases with empty data
 ```
+
+---
+
+<details>
+<summary>🎬 See it in action!</summary>
+
+![Test Generation Demo](images/test-gen-demo.gif)
+
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
+
+</details>
+
+---
 
 **What you get**: 15+ comprehensive tests including:
 
@@ -548,6 +576,19 @@ copilot -p "Generate a conventional commit message for: $(git diff --staged)"
 # - Add case-insensitive comparison
 # - Improve user experience when searching authors"
 ```
+
+---
+
+<details>
+<summary>🎬 See it in action!</summary>
+
+![Git Integration Demo](images/git-integration-demo.gif)
+
+*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
+
+</details>
+
+---
 
 ### Explain Changes
 

@@ -1,4 +1,4 @@
-# 05-skills: Skill Auto-Trigger
+# 05-skills: Copilot detects and triggers a matching skill
 # Auto-generated from demos.json - Real copilot execution
 
 Output skill-trigger-demo.gif
@@ -28,6 +28,8 @@ Sleep 2s
 Enter
 
 # Wait for response
-Sleep 30s
+Sleep 45s
 
-# Recording ends here - GIF stops after the response
+# Exit cleanly
+Ctrl+C
+Sleep 2s

@@ -1,4 +1,4 @@
-# 07-putting-it-together: Full Project Review
+# 07-putting-it-together: Full project review prioritized by severity
 # Auto-generated from demos.json - Real copilot execution
 
 Output full-review-demo.gif
@@ -28,7 +28,7 @@ Sleep 2s
 Enter
 
 # Wait for response
-Sleep 25s
+Sleep 50s
 
 # Exit cleanly
 Ctrl+C

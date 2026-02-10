@@ -1,4 +1,4 @@
-# 04-agents-custom-instructions: Python Reviewer Agent
+# 04-agents-custom-instructions: Agent-based Python code review for type hints, error handling, and PEP 8
 # Auto-generated from demos.json - Real copilot execution
 
 Output python-reviewer-demo.gif

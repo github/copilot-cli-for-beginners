@@ -1,7 +1,7 @@
-# 03-development-workflows: Copilot provides detailed review demo
+# 03-development-workflows: Workflow 4: Test Generation - generate comprehensive pytest tests
 # Auto-generated from demos.json - Real copilot execution
 
-Output development-workflows-demo.gif
+Output test-gen-demo.gif
 
 Set FontSize 18
 Set Width 1000
@@ -23,12 +23,12 @@ Enter
 Sleep 5s
 
 # Execute the prompt
-Type "Generate a conventional commit message for: $(git diff --staged)"
+Type "@samples/book-app-project/books.py Generate comprehensive pytest tests. Include tests for: Adding books, Removing books, Finding by title, Finding by author, Marking as read, Edge cases with empty data"
 Sleep 2s
 Enter
 
 # Wait for response
-Sleep 25s
+Sleep 60s
 
 # Exit cleanly
 Ctrl+C

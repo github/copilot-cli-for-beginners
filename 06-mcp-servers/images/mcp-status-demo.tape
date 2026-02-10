@@ -1,4 +1,4 @@
-# 06-mcp-servers: MCP Server Status
+# 06-mcp-servers: Check connected MCP servers and tools
 # Auto-generated from demos.json - Real copilot execution
 
 Output mcp-status-demo.gif
@@ -28,7 +28,7 @@ Sleep 2s
 Enter
 
 # Wait for response
-Sleep 15s
+Sleep 25s
 
 # Exit cleanly
 Ctrl+C

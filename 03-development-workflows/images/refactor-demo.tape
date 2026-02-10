@@ -1,4 +1,4 @@
-# 03-development-workflows: Refactor Code
+# 03-development-workflows: Workflow 2: Refactoring - refactor command handling to dictionary dispatch
 # Auto-generated from demos.json - Real copilot execution
 
 Output refactor-demo.gif
@@ -28,7 +28,7 @@ Sleep 2s
 Enter
 
 # Wait for response
-Sleep 25s
+Sleep 30s
 
 # Exit cleanly
 Ctrl+C
