@@ -20,6 +20,24 @@ By the end of this chapter, you'll be able to:
 
 ---
 
+## Real-World Analogy: Hiring Specialists
+
+When you need help with your house, you don't call one "general helper." You call specialists:
+
+| Problem | Specialist | Why |
+|---------|------------|-----|
+| Leaky pipe | Plumber | Knows plumbing codes, has specialized tools |
+| Rewiring | Electrician | Understands safety requirements, up to code |
+| New roof | Roofer | Knows materials, local weather considerations |
+
+Agents work the same way. Instead of a generic AI, use agents that focus on specific tasks and know the right process to follow.
+
+<img src="images/hiring-specialists-analogy.png" alt="Specialized Agents for Every Domain" width="800"/>
+
+Set up the instructions once, then reuse them whenever you need that specialty; code review, testing, security, documentation.
+
+---
+
 ## *New to agents?* Start Here!
 Never used or made an agent? Here's all you need to know to get started for this course.
 
@@ -39,8 +57,30 @@ Never used or made an agent? Here's all you need to know to get started for this
 
 ### 🗂️ Add your agents 
 
-**Put some agent files into folder named `.github/agents/` folder of this project**. 
+**Put some agent files into the `.github/agents/` folder of this project**. 
 <br>You can write your own, or copy/customize our ready-to-use templates from the [samples/agents](../samples/agents/) folder.
+
+<details>
+<summary>📂 See the sample agents we provide</summary>
+
+| File | Description |
+|------|-------------|
+| `hello-world.agent.md` | Minimal example — start here |
+| `python-reviewer.agent.md` | Python code quality reviewer |
+| `pytest-helper.agent.md` | Pytest testing specialist |
+
+```bash
+# Copy all sample agents into your project
+cp samples/agents/*.agent.md .github/agents/
+
+# Or copy one to your personal agents folder (available in every project)
+cp samples/agents/python-reviewer.agent.md ~/.copilot/agents/
+```
+
+For more community agents, see [github/awesome-copilot](https://github.com/github/awesome-copilot)
+
+</details><br>
+
 
 *Agents are only detected in a limited number of locations in your repo. <br>You can also use the `~/.copilot/agents/` location to store agents you want available for *all* projects.*
 
@@ -56,7 +96,7 @@ copilot
 > /agent
 ```
 
-To change to a different agent, or to return to default mode, use the `/agent` command again. 
+To change to a different agent, or to return to default mode, use the `/agent` command again.
 
 <details>
 <summary>🎬 See it in action!</summary>
@@ -78,26 +118,10 @@ copilot --agent python-reviewer
 
 ---
 
-## Real-World Analogy: Hiring Specialists
-
-When you need help with your house, you don't call one "general helper." You call specialists:
-
-| Problem | Specialist | Why |
-|---------|------------|-----|
-| Leaky pipe | Plumber | Knows plumbing codes, has specialized tools |
-| Rewiring | Electrician | Understands safety requirements, up to code |
-| New roof | Roofer | Knows materials, local weather considerations |
-
-Agents work the same way. Instead of a generic AI, use agents that focus on specific tasks and know the right process to follow.
-<img src="images/hiring-specialists-analogy.png" alt="Specialized Agents for Every Domain" width="800"/>
-
-Set up the instructions once, then reuse them whenever you need that specialty; code review, testing, security, documentation.
-
----
-
 ## Built-in Agents
 
-You've already used some of these in Chapter 03 Development Workflow! `/plan` and `/review` are actually built-in agents. Now you know what's happening under the hood. Here's the full list:
+**You've already used some built-in agents in Chapter 03 Development Workflow!**
+<br>`/plan` and `/review` are actually built-in agents. Now you know what's happening under the hood. Here's the full list:
 
 | Agent | How to Invoke | What It Does |
 |-------|---------------|--------------|
@@ -107,7 +131,8 @@ You've already used some of these in Chapter 03 Development Workflow! `/plan` an
 | **Explore** | *Automatic* | Used internally when you ask Copilot to explore or analyze the codebase |
 | **Task** | *Automatic* | Executes commands like tests, builds, lints, and dependency installs |
 
-### Using Built-in Agents
+<br><details>
+<summary><strong>Using Built-in Agents</strong> - Examples of invoking Plan, Code-review, Explore, and Task</summary>
 
 ```bash
 copilot
@@ -125,9 +150,13 @@ copilot
 
 **Key insight**: You directly invoke Plan and Code-review with slash commands. Explore and Task work behind the scenes. Copilot uses them automatically when appropriate.
 
-### Understanding the Task Agent
+</details><br>
 
-The Task agent deserves special attention because of its smart output handling:
+<details>
+<summary><strong>Understanding the Task Agent</strong> - Smart output handling for commands</summary>
+
+The Task agent runs shell commands on your behalf — tests, builds, linters, installs. It's the agent that actually *executes* things, and it's smart about what it shows you:
+
 
 | Outcome | What You See |
 |---------|--------------|
@@ -148,13 +177,29 @@ The Task agent uses a faster model since it's focused on command execution rathe
 
 > 📚 **Official Documentation**: [GitHub Copilot CLI Agents](https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
 
+</details><br>
+
 ---
 
-# Part 2: Creating Custom Agents
+# Creating Custom Agents
 
 > 💡 **This section is optional.** The built-in agents (`/plan`, `/review`) are powerful enough for most workflows. Create custom agents when you need specialized expertise that's consistently applied across your work.
 
+Each topic below is self-contained. **Pick what interests you — you don't need to read them all at once.**
+
+| I want to... | Jump to |
+|---|---|
+| Create my first agent file | [Your First Agent](#creating-your-first-agent) |
+| See why agents beat generic prompts | [Generic vs Specialist](#generic-vs-specialist-see-the-difference) |
+| Collaborate with multiple agents | [Multi-Agent Collaboration & Usage](#multi-agent-collaboration) |
+| Learn naming conventions | [Agent Naming Best Practices](#agent-naming-best-practices) |
+| Set up project-wide instructions | [Project-Level Instructions](#project-level-instructions) |
+
 ---
+
+<a id="creating-your-first-agent"></a>
+<details>
+<summary><strong>Your First Agent</strong> - File locations, structure, YAML properties, and usage</summary>
 
 ## Creating Your First Agent
 
@@ -447,7 +492,13 @@ def search_by_year_range(
 
 **The difference**: Same prompt, dramatically better output. The agent brings expertise you'd forget to ask for.
 
+</details>
+
 ---
+
+<a id="multi-agent-collaboration"></a>
+<details>
+<summary><strong>Multi-Agent Collaboration & Usage</strong> - Combine agents, switch mid-session, delegate tasks</summary>
 
 ## Multi-Agent Collaboration
 
@@ -479,28 +530,6 @@ copilot
 
 **The key insight**: You're the architect directing specialists. They handle the details, you handle the vision.
 
----
-
-## Using Agents in Practice
-
-### Single Agent Tasks
-
-```bash
-# Start Copilot with the python-reviewer agent
-copilot --agent python-reviewer
-
-> Create a function to filter books by genre in the book app.
-> It should:
-> - Accept a list of books and a genre
-> - Return matching books
-> - Handle case-insensitive searches
-> - Validate inputs
-
-# The python-reviewer agent applies all its specialized standards
-```
-
----
-
 <details>
 <summary>🎬 See it in action!</summary>
 
@@ -510,31 +539,17 @@ copilot --agent python-reviewer
 
 </details>
 
----
-
-### Switching Agents Mid-Session
-
-```bash
-copilot
-
-> I need to add a "favorites" feature to the book app where users can mark books as favorites.
-
-# Switch to python-reviewer agent for implementation design
-> /agent
-# Select "python-reviewer" from the list
-> Design the methods needed for managing favorite books
-
-# Switch to pytest-helper agent for testing
-> /agent
-# Select "pytest-helper"
-> Design comprehensive tests for the favorites feature
-```
-
 ### Agent as Tools
 
 When agents are configured, Copilot can also call them as tools during complex tasks. If you ask for a full-stack feature, Copilot may automatically delegate parts to the appropriate specialist agents.
 
+</details>
+
 ---
+
+<a id="agent-naming-best-practices"></a>
+<details>
+<summary><strong>Agent Naming Best Practices</strong> - Conventions for clear, discoverable agent names</summary>
 
 ## Agent Naming Best Practices
 
@@ -553,7 +568,13 @@ Good agent names are short, descriptive, and indicate the specialty:
 - Include the domain: `frontend`, `backend`, `devops`, `security`
 - Be specific when needed: `react-typescript` vs just `frontend`
 
+</details>
+
 ---
+
+<a id="project-level-instructions"></a>
+<details>
+<summary><strong>Project-Level Instructions</strong> - AGENTS.md, instruction files, and /init setup</summary>
 
 ## Project-Level Instructions
 
@@ -669,37 +690,11 @@ If you want Copilot to ignore project-specific configurations:
 copilot --no-custom-instructions
 ```
 
----
-
-## 🎯 Try It Yourself
-
-After completing the demos, try these variations:
-
-1. **Agent Comparison Challenge**: Ask for the same thing with and without an agent:
-   ```bash
-   # Without agent
-   copilot
-   > Add a function to find books by author in the book app
-
-   # With python-reviewer agent
-   copilot
-   > /agent
-   # Select "python-reviewer" from the list
-   > Add a function to find books by author in the book app
-   ```
-   Compare the outputs. What did the agent add that generic Copilot missed?
-
-2. **Multi-Agent Challenge**: Design a "book rating" feature using python-reviewer agent for implementation, pytest-helper agent for testing. Can you synthesize them into one implementation plan?
-
-3. **Create Your Own Agent**: Create a simple agent file at `~/.copilot/agents/my-agent.agent.md` with just 5 lines of instructions. Test it with `/agent` and select "my-agent".
-
-**Self-Check**: You understand agents when you can explain why having a "security agent" review code is better than just asking "check for security issues."
+</details>
 
 ---
 
-## Hands-On Examples
-
-### Example 1: Create Your Own Agent
+## Hands-On Example: Create and Use Your Own Agents
 
 ```bash
 
@@ -757,51 +752,13 @@ copilot
 > Document @samples/book-app-project/books.py
 ```
 
-### Example 2: Agent-Driven Feature Development
-
-```bash
-
-# Start with python-reviewer expertise
-copilot --agent python-reviewer
-
-> I need to add a book rating system. Users can rate books from 1-5 stars.
-> Design the methods and data structures needed
-
-# Switch to pytest-helper for testing
-> /agent
-# Select "pytest-helper"
-> Design comprehensive tests for the rating system
-
-# Let Copilot synthesize everything
-> Create an implementation plan that includes both the implementation and tests
-```
-
----
-
-## Sample Files
-
-Ready-to-use agent templates are available in the [samples/agents/](../samples/agents/) folder:
-
-| File | Description |
-|------|-------------|
-| `hello-world.agent.md` | Minimal example - start here |
-| `python-reviewer.agent.md` | Python code quality reviewer |
-| `pytest-helper.agent.md` | Pytest testing specialist |
-
-```bash
-# Quick install: copy an agent to your personal folder
-cp samples/agents/python-reviewer.agent.md ~/.copilot/agents/
-```
-
-For more community agents, see [github/awesome-copilot](https://github.com/github/awesome-copilot)
-
 ---
 
 ## Assignment
 
 ### Main Challenge: Build a Specialized Agent Team
 
-The hands-on examples used the `reviewer` and `documentor` agents to design a book rating feature. Now practice creating and using agents for a different task — improving data validation in the book app:
+The hands-on example created `reviewer` and `documentor` agents. Now practice creating and using agents for a different task — improving data validation in the book app:
 
 1. Create 3 agents tailored to the book app. You can either:
    - Create individual `.agent.md` files (one per agent), **or**
