@@ -4,13 +4,12 @@
 
 In this chapter, you'll learn about Agent Skills: folders of instructions that Copilot automatically loads when relevant to your task. While agents change *how* Copilot thinks, skills teach Copilot *specific ways to complete tasks*. You'll create a security audit skill that Copilot applies whenever you ask about security, build team-standard review criteria that ensure consistent code quality, and learn how skills work across Copilot CLI, VS Code, and the Copilot coding agent.
 
-> 💡 **Skills are optional.** You can use GitHub Copilot CLI effectively without ever creating a skill. Skills are most valuable when you find yourself typing the same detailed prompts repeatedly, or when your team needs consistent code review criteria. If you're just getting started, feel free to skim this chapter and return when you have a repetitive task to automate.
 
 ## Learning Objectives
 
 By the end of this chapter, you'll be able to:
 
-- Understand how Agent Skills work (automatic loading, not manual commands)
+- Understand how Agent Skills work and when to use them
 - Create custom skills with SKILL.md files
 - Use community skills from shared repositories
 - Know when to use skills vs agents vs MCP
@@ -21,16 +20,14 @@ By the end of this chapter, you'll be able to:
 
 ## Real-World Analogy: Power Tools
 
-A general-purpose drill is useful, but specialized attachments make it powerful:
+A general-purpose drill is useful, but specialized attachments make it powerful. Skills work the same way. Just like swapping drill bits for different jobs, you can add skills to Copilot for different tasks:
 
-| Attachment | Purpose |
+| Skill Attachment | Purpose |
 |------------|---------|
-| Screwdriver bit | Drive screws quickly |
-| Hole saw | Cut perfect circles |
-| Sanding disc | Smooth surfaces |
-| Wire brush | Remove rust |
-
-Skills work the same way. They're specialized tools that extend what Copilot can do.
+| `commit` | Generate consistent commit messages |
+| `security-audit` | Check for OWASP vulnerabilities |
+| `generate-tests` | Create comprehensive pytest tests |
+| `code-review` | Apply team code quality standards |
 
 <img src="images/power-tools-analogy.png" alt="Power Tools - Skills Extend Copilot's Capabilities" width="800"/>
 
@@ -58,18 +55,19 @@ copilot
 # and checks against your team's standards
 ```
 
-> 💡 **Key Insight**: Skills are **automatically triggered** based on your prompt matching the skill's description. You don't need to type a special command - just ask naturally, and Copilot applies relevant skills behind the scenes.
+> 💡 **Key Insight**: Skills are **automatically triggered** based on your prompt matching the skill's description. You don't need to type a special command. Just ask naturally and Copilot applies relevant skills behind the scenes.
 
-> **Ready-to-use templates**: Check out the [samples/skills](../samples/skills/) folder for copy-paste skills you can use immediately.
+> 🧰 **Ready-to-use templates**: Check out the [samples/skills](../samples/skills/) folder for simple copy-paste skills you can try out immediately.
 
 ### Direct Slash Command Invocation
 
 While auto-triggering is the primary way skills work, you can also **invoke skills directly** using their name as a slash command:
 
 ```bash
-# Invoke a skill directly by name with your prompt
 > /generate-tests Create tests for the user authentication module
+
 > /code-review Check books.py for code quality issues
+
 > /security-audit Review the API endpoints
 ```
 
@@ -88,23 +86,24 @@ You can ask Copilot directly:
 ```bash
 > What skills did you use for that response?
 
-# Or before asking:
 > What skills do you have available for security reviews?
 ```
 
 ### Skills vs Agents vs MCP
 
-<img src="images/skills-agents-mcp-comparison.png" alt="Comparison diagram showing the differences between Agents, Skills, and MCP Servers and how they combine into your workflow" width="800"/>
+Skills are just one piece of GitHub Copilot's extensibility model. Here's how they compare to agents and MCP servers.
 
-*Three ways to extend GitHub Copilot CLI: Agents change how it thinks, Skills provide task-specific instructions, MCP connects to external services*
+> *Don't worry about MCP yet - we'll cover it in [Chapter 06](../06-mcp/). It's included here so you can see how skills fit into the overall picture.*
+
+<img src="images/skills-agents-mcp-comparison.png" alt="Comparison diagram showing the differences between Agents, Skills, and MCP Servers and how they combine into your workflow" width="800"/>
 
 | Feature | What It Does | When to Use |
 |---------|--------------|-------------|
 | **Agents** | Changes how AI thinks | Need specialized expertise across many tasks |
-| **Skills** | Provides task-specific instructions (auto-loaded) | Specific, repeatable tasks with detailed steps |
+| **Skills** | Provides task-specific instructions | Specific, repeatable tasks with detailed steps |
 | **MCP** | Connects external services | Need live data from APIs |
 
-**Quick rule**: Use agents for broad expertise, skills for specific task instructions, and MCP for external data.
+Use agents for broad expertise, skills for specific task instructions, and MCP for external data. An agent can use one or more skills during a conversation. For example, when you ask a code review agent to review your code, it might apply both a `security-audit` skill and a `style-guide` skill automatically.
 
 > 📚 **Learn More**: See the official [About Agent Skills](https://docs.github.com/copilot/concepts/agents/about-agent-skills) documentation for the complete reference on skill formats and best practices.
 
@@ -112,7 +111,7 @@ You can ask Copilot directly:
 
 ## From Manual Prompts to Automatic Expertise
 
-> 💡 **Why show benefits first?** Before diving into how to create skills, let's see *why* they're worth learning. Once you see the consistency gains, the "how" will make more sense.
+Before diving into how to create skills, let's see *why* they're worth learning. Once you see the consistency gains, the "how" will make more sense.
 
 ### Before Skills: Inconsistent Reviews
 
@@ -148,26 +147,31 @@ copilot
 **What happens behind the scenes**:
 1. Copilot sees "review" and "issues" in your prompt
 2. Checks skill descriptions, finds your `code-review` skill matches
-3. Automatically loads your team's Python quality checklist
+3. Automatically loads your team's quality checklist
 4. Applies all checks without you listing them
 
 **Output**:
 ```
-Code Review: books.py
+## Code Review: books.py
 
-[CRITICAL] Bare except clause (line 23)
-  Catching all exceptions hides bugs
-  Fix: Catch specific exceptions like FileNotFoundError
+### Code Quality
+- [PASS] All functions have type hints
+- [PASS] No bare except clauses
+- [PASS] No mutable default arguments
+- [PASS] Context managers used for file I/O
+- [PASS] Functions are under 50 lines
+- [PASS] Variable and function names follow PEP 8
 
-[HIGH] Missing type hints (line 45)
-  Public function lacks type annotations
-  Fix: Add type hints: def load_books(self) -> List[Book]:
+### Input Validation
+- [FAIL] User input is not validated - add_book() accepts any year value
+- [FAIL] Edge cases not fully handled - empty strings accepted for title/author
+- [PASS] Error messages are clear and helpful
 
-[MEDIUM] Print statement in production code (line 67)
-  Debug statement should be removed or use logging
+### Testing
+- [FAIL] No corresponding pytest tests found
 
-✅ Context managers: File I/O uses proper with statements
-✅ Function length: All functions under 50 lines
+### Summary
+3 items need attention before merge
 ```
 
 **The difference**: Your team's standards are applied automatically, every time, without typing them out.
@@ -175,7 +179,7 @@ Code Review: books.py
 ---
 
 <details>
-<summary>🎬 See skill auto-triggering in action!</summary>
+<summary>🎬 See it in action!</summary>
 
 ![Skill Trigger Demo](images/skill-trigger-demo.gif)
 
