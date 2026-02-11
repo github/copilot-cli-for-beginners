@@ -8,7 +8,7 @@
 
 > **✨ Learn to supercharge your development workflow with AI-powered command-line assistance.**
 
-GitHub Copilot CLI brings AI assistance directly to your terminal. Instead of switching to a browser or code editor, you can ask questions, review code, generate tests, and debug issues without leaving your command line.
+GitHub Copilot CLI brings AI assistance directly to your terminal. Instead of switching to a browser or code editor, you can ask questions, generate full-featured applications, review code, generate tests, and debug issues without leaving your command line.
 
 Think of it as having a knowledgeable colleague available 24/7 who can read your code, explain confusing patterns, and help you work faster!
 
