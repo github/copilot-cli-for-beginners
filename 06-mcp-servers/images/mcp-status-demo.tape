@@ -1,4 +1,4 @@
-# 06-mcp-servers: Check connected MCP servers and tools
+# 06-mcp-servers: Check connected MCP servers with /mcp show
 # Auto-generated from demos.json - Real copilot execution
 
 Output mcp-status-demo.gif
@@ -23,12 +23,12 @@ Enter
 Sleep 5s
 
 # Execute the prompt
-Type "What MCP servers and tools are connected? List them."
+Type "/mcp show"
 Sleep 2s
 Enter
 
 # Wait for response
-Sleep 25s
+Sleep 15s
 
 # Exit cleanly
 Ctrl+C

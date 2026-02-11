@@ -115,9 +115,9 @@
     {
       "chapter": "06-mcp-servers",
       "name": "mcp-status-demo",
-      "description": "Check connected MCP servers and tools",
-      "responseWait": 25,
-      "prompt": "What MCP servers and tools are connected? List them."
+      "description": "Check connected MCP servers with /mcp show",
+      "responseWait": 15,
+      "prompt": "/mcp show"
     },
     {
       "chapter": "06-mcp-servers",
