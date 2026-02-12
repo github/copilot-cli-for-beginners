@@ -50,6 +50,8 @@ If you don't want to install any of the prerequisites, you can use GitHub Codesp
 
 ### Alternative: Local Installation
 
+> 💡 **Not sure which to pick?** Use `npm` if you have Node.js installed. Otherwise, choose the option that matches your system.
+
 Choose the method that works for your system:
 
 ### All Platforms (npm)
@@ -90,7 +92,7 @@ copilot
 
 **What happens next:**
 
-1. Copilot displays a one-time code (like `ABCD-1234`)
+1. Copilot CLI displays a one-time code (like `ABCD-1234`)
 2. Your browser opens to GitHub's device authorization page
 3. Enter the code when prompted
 4. Click "Authorize" to grant GitHub Copilot CLI access
@@ -98,7 +100,7 @@ copilot
 
 <img src="images/auth-device-flow.png" alt="Device Authorization Flow - showing the 5-step process from terminal login to signed-in confirmation" width="800"/>
 
-*The device authorization flow: your terminal generates a code, you verify it in the browser, and Copilot is authenticated.*
+*The device authorization flow: your terminal generates a code, you verify it in the browser, and Copilot CLI is authenticated.*
 
 **Tip**: The sign-in persists across sessions. You only need to do this once unless your token expires or you explicitly sign out.
 
@@ -127,7 +129,7 @@ copilot
 
 ---
 
-**Expected output**: A friendly response listing Copilot's capabilities.
+**Expected output**: A friendly response listing Copilot CLI's capabilities.
 
 ### Step 2: Run the Sample Book App
 
@@ -140,7 +142,7 @@ python book_app.py list
 
 **Expected output**: A list of 5 books including "The Hobbit", "1984", and "Dune".
 
-### Step 3: Try Copilot with the Book App
+### Step 3: Try Copilot CLI with the Book App
 
 Navigate back to the repository root first (if you ran Step 2):
 
@@ -162,7 +164,7 @@ If you see an error, check the [troubleshooting section](#troubleshooting) below
 That's it for installation. The real fun starts in Chapter 01, where you'll:
 
 - Watch AI review the book app and find code quality issues instantly
-- Learn three different ways to use Copilot
+- Learn three different ways to use Copilot CLI
 - Generate working code from plain English
 
 **[Continue to Chapter 01: First Steps →](../01-setup-and-first-steps/README.md)**

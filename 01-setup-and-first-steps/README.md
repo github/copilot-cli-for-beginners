@@ -1,8 +1,8 @@
 ![Chapter 01: First Steps](images/chapter-header.png)
 
-> **Watch AI find bugs instantly, explain confusing code, and generate working scripts. Then learn three different ways to use Copilot.**
+> **Watch AI find bugs instantly, explain confusing code, and generate working scripts. Then learn three different ways to use GitHub Copilot CLI.**
 
-This chapter is where the magic starts! You'll experience firsthand why developers describe Copilot CLI as having a senior engineer on speed dial. You'll watch AI find security bugs in seconds, get complex code explained in plain English, and generate working scripts instantly. Then you'll master the three interaction modes (Interactive, Plan, and Programmatic) so you know exactly which one to use for any task.
+This chapter is where the magic starts! You'll experience firsthand why developers describe GitHub Copilot CLI as having a senior engineer on speed dial. You'll watch AI find security bugs in seconds, get complex code explained in plain English, and generate working scripts instantly. Then you'll master the three interaction modes (Interactive, Plan, and Programmatic) so you know exactly which one to use for any task.
 
 > ⚠️ **Prerequisites**: Make sure you've completed **[Chapter 00: Quick Start](../00-quick-start/README.md)** first. You'll need GitHub Copilot CLI installed and authenticated before running the demos below.
 
@@ -28,7 +28,7 @@ Jump right in and see what Copilot CLI can do.
 
 ## Getting Comfortable: Your First Prompts
 
-Before diving into the impressive demos, let's start with some simple prompts you can try right now. **No code repository needed**! Just open a terminal and start Copilot:
+Before diving into the impressive demos, let's start with some simple prompts you can try right now. **No code repository needed**! Just open a terminal and start Copilot CLI:
 
 ```bash
 copilot
@@ -56,9 +56,9 @@ Notice how natural it feels. Just ask questions like you would to a colleague. W
 
 Now let's see why developers are calling this "having a senior engineer on speed dial."
 
-> 📖 **Reading the Examples**: Lines starting with `>` are prompts you type inside an interactive Copilot session. Lines without a `>` prefix are shell commands you run in your terminal.
+> 📖 **Reading the Examples**: Lines starting with `>` are prompts you type inside an interactive Copilot CLI session. Lines without a `>` prefix are shell commands you run in your terminal.
 
-> 💡 **About Example Outputs**: The sample outputs shown throughout this course are illustrative. Because Copilot's responses vary each time, your results will differ in wording, formatting, and detail. Focus on the *type* of information returned, not the exact text.
+> 💡 **About Example Outputs**: The sample outputs shown throughout this course are illustrative. Because Copilot CLI's responses vary each time, your results will differ in wording, formatting, and detail. Focus on the *type* of information returned, not the exact text.
 
 ### Demo 1: Code Review in Seconds
 
@@ -79,7 +79,7 @@ Once inside the interactive session:
 > Review @samples/book-app-project/book_app.py for code quality issues and suggest improvements
 ```
 
-> 💡 **What's the `@`?** The `@` symbol tells Copilot to read a file. You'll learn all about this in Chapter 02. For now, just copy the command exactly as shown.
+> 💡 **What's the `@`?** The `@` symbol tells Copilot CLI to read a file. You'll learn all about this in Chapter 02. For now, just copy the command exactly as shown.
 
 ---
 
@@ -100,7 +100,7 @@ Once inside the interactive session:
 
 ### Demo 2: Explain Confusing Code
 
-Ever stared at code wondering what it does? Try this in your Copilot session:
+Ever stared at code wondering what it does? Try this in your Copilot CLI session:
 
 ```
 > Explain what @samples/book-app-project/books.py does in simple terms
@@ -119,7 +119,7 @@ Ever stared at code wondering what it does? Try this in your Copilot session:
 
 ---
 
-**What happens**: (your output will differ) Copilot reads the file, understands the code, and explains it in plain English.
+**What happens**: (your output will differ) Copilot CLI reads the file, understands the code, and explains it in plain English.
 
 ```
 This is a book collection management module using Python dataclasses.
@@ -306,7 +306,7 @@ Step 4: Test the flow
 Proceed with implementation? [Y/n]
 ```
 
-**Key insight**: Plan mode lets you review and modify the approach before any code is written. Once a plan is complete, you can even tell Copilot to save it to a file for later reference. For example, "Save this plan to `mark_as_read_plan.md`" would create a markdown file with the plan details.
+**Key insight**: Plan mode lets you review and modify the approach before any code is written. Once a plan is complete, you can even tell Copilot CLI to save it to a file for later reference. For example, "Save this plan to `mark_as_read_plan.md`" would create a markdown file with the plan details.
 
 > 💡 **Want something more complex?** Try: `/plan Add search and filter capabilities to the book app`. Plan mode scales from simple features to full applications.
 
@@ -345,7 +345,7 @@ git commit -m "$COMMIT_MSG"
 # Review a file
 copilot --allow-all -p "Review @myfile.py for issues"
 ```
-> ⚠️ **About `--allow-all`**: This flag skips all permission prompts, letting Copilot read files, run commands, and access URLs without asking first. This is necessary for programmatic mode (`-p`) since there's no interactive session to approve actions. Only use `--allow-all` with prompts you've written yourself and in directories you trust. Never use it with untrusted input or in sensitive directories.
+> ⚠️ **About `--allow-all`**: This flag skips all permission prompts, letting Copilot CLI read files, run commands, and access URLs without asking first. This is necessary for programmatic mode (`-p`) since there's no interactive session to approve actions. Only use `--allow-all` with prompts you've written yourself and in directories you trust. Never use it with untrusted input or in sensitive directories.
 
 </details>
 
@@ -360,6 +360,7 @@ These commands work in interactive mode. **Start with just these four** - they c
 | `/help` | Show all available commands | When you forget a command |
 | `/clear` | Clear conversation and start fresh | When switching topics |
 | `/plan` | Plan your work out before coding | For more complex features |
+| `/model` | Show or switch AI model | When you want to change the AI model |
 | `/exit` | End the session | When you're done |
 
 That's it for getting started! As you become comfortable, you can explore additional commands.
@@ -369,11 +370,12 @@ That's it for getting started! As you become comfortable, you can explore additi
 <details>
 <summary>📚 <strong>Additional Commands</strong> (click to expand)</summary>
 
+> 💡 The five commands above cover a lot of what you'll do on a daily use. This reference is here for when you're ready to explore more.
+
 ### Core Commands
 
 | Command | What It Does |
 |---------|--------------|
-| `/model` | Show or switch AI model |
 | `/review` | Run the code-review agent |
 | `/delegate` | Hand off task to Copilot coding agent on GitHub (agent in the cloud) |
 
@@ -441,26 +443,15 @@ copilot
 # Runs pytest directly
 ```
 
-### The /delegate Command
-
-The `/delegate` command hands off tasks to the [Copilot coding agent on GitHub](https://docs.github.com/copilot/using-github-copilot/using-copilot-coding-agent-to-work-on-tasks). This is a powerful way to get work done in the cloud without leaving your terminal.
-
-```bash
-copilot
-
-> /delegate Complete the API integration tests and fix any failing edge cases
-
-# Or use the & prefix shortcut:
-> & Add error handling to the login function
-```
-
 ### Switching Models
+
+Copilot CLI supports multiple AI models from OpenAI, Anthropic, Google, and others. The models available to you depend on your subscription level and region. Use `/model` to see your options and switch between them:
 
 ```bash
 copilot
 > /model
 
-# Shows available models - these vary by subscription and region
+# Shows available models and lets you pick one
 ```
 
 </details>
@@ -495,7 +486,7 @@ copilot
 
 ### Plan a Feature
 
-Use `/plan` to have Copilot map out an implementation before writing any code:
+Use `/plan` to have Copilot CLI map out an implementation before writing any code:
 
 ```bash
 copilot
@@ -509,7 +500,7 @@ copilot
 
 ### Automate with Programmatic Mode
 
-The `-p` flag lets you run Copilot directly from your terminal without entering interactive mode. Copy and paste the following script into your terminal (not inside Copilot) from the repository root to review all Python files in the book app.
+The `-p` flag lets you run Copilot CLI directly from your terminal without entering interactive mode. Copy and paste the following script into your terminal (not inside Copilot) from the repository root to review all Python files in the book app.
 
 ```bash
 # Review all Python files in the book app
@@ -549,7 +540,7 @@ After completing the demos, try these variations:
 The hands-on examples focused on reviewing and refactoring `book_app.py`. Now practice the same skills on a different file, `utils.py`:
 
 1. Start an interactive session: `copilot`
-2. Ask Copilot to summarize the file: `@samples/book-app-project/utils.py What does each function in this file do?`
+2. Ask Copilot CLI to summarize the file: `@samples/book-app-project/utils.py What does each function in this file do?`
 3. Ask it to add input validation: "Add validation to `get_user_choice()` so it handles empty input and non-numeric entries"
 4. Ask it to improve error handling: "What happens if `get_book_details()` receives an empty string for the title? Add guards for that."
 5. Ask for a docstring: "Add a comprehensive docstring to `get_book_details()` with parameter descriptions and return values"
@@ -570,7 +561,7 @@ The hands-on examples focused on reviewing and refactoring `book_app.py`. Now pr
 ```
 
 **Common issues:**
-- If Copilot asks clarifying questions, just answer them naturally
+- If Copilot CLI asks clarifying questions, just answer them naturally
 - The context carries forward, so each prompt builds on the previous
 - Use `/clear` if you want to start over
 
@@ -595,9 +586,9 @@ The examples used `/plan` for a search feature and `-p` for batch reviews. Now t
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
-| Typing `exit` instead of `/exit` | Copilot treats "exit" as a prompt, not a command | Slash commands always start with `/` |
+| Typing `exit` instead of `/exit` | Copilot CLI treats "exit" as a prompt, not a command | Slash commands always start with `/` |
 | Using `-p` for multi-turn conversations | Each `-p` call is isolated with no memory of previous calls | Use interactive mode (`copilot`) for conversations that build on context |
-| Forgetting quotes around prompts with `$` or `!` | Shell interprets special characters before Copilot sees them | Wrap prompts in quotes: `copilot -p "What does $HOME mean?"` |
+| Forgetting quotes around prompts with `$` or `!` | Shell interprets special characters before Copilot CLI sees them | Wrap prompts in quotes: `copilot -p "What does $HOME mean?"` |
 
 ### Troubleshooting
 
@@ -626,13 +617,13 @@ The examples used `/plan` for a search feature and `-p` for batch reviews. Now t
 
 ## ➡️ What's Next
 
-Now that you understand the three modes, let's learn how to give Copilot context about your code.
+Now that you understand the three modes, let's learn how to give Copilot CLI context about your code.
 
 In **[Chapter 02: Context and Conversations](../02-context-conversations/README.md)**, you'll learn:
 
 - The `@` syntax for referencing files and directories
 - Session management with `--resume` and `--continue`
-- How context management makes Copilot truly powerful
+- How context management makes Copilot CLI truly powerful
 
 ---
 

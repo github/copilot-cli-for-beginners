@@ -2,7 +2,7 @@
 
 > **What if AI could see your entire codebase, not just one file at a time?**
 
-In this chapter, you'll unlock the real power of GitHub Copilot CLI: context. You'll learn to use the `@` syntax to reference files and directories, giving Copilot deep understanding of your codebase. You'll discover how to maintain conversations across sessions, resume work days later exactly where you left off, and see how cross-file analysis catches bugs that single-file reviews miss entirely.
+In this chapter, you'll unlock the real power of GitHub Copilot CLI: context. You'll learn to use the `@` syntax to reference files and directories, giving Copilot CLI deep understanding of your codebase. You'll discover how to maintain conversations across sessions, resume work days later exactly where you left off, and see how cross-file analysis catches bugs that single-file reviews miss entirely.
 
 ## 🎯 Learning Objectives
 
@@ -30,13 +30,13 @@ Imagine explaining a bug to a colleague:
 
 > **With context**: "Look at `books.py`, especially the `find_book_by_title` function. It's not doing case-insensitive matching."
 
-To provide context to Copilot CLI use *the `@` syntax* to point Copilot at specific files.
+To provide context to Copilot CLI use *the `@` syntax* to point Copilot CLI at specific files.
 
 ---
 
 # Essential: Basic Context
 
-<img src="images/essential-basic-context.png" alt="Glowing code blocks connected by light trails representing how context flows through Copilot conversations" width="800"/>
+<img src="images/essential-basic-context.png" alt="Glowing code blocks connected by light trails representing how context flows through Copilot CLI conversations" width="800"/>
 
 This section covers everything you need to work effectively with context. Master these basics first.
 
@@ -44,7 +44,7 @@ This section covers everything you need to work effectively with context. Master
 
 ## The @ Syntax
 
-The `@` symbol references files and directories in your prompts. It's how you tell Copilot "look at this file."
+The `@` symbol references files and directories in your prompts. It's how you tell Copilot CLI "look at this file."
 
 > 💡 **Note**: All examples in this course use the `samples/` folder included in this repository, so you can try every command directly.
 
@@ -150,7 +150,7 @@ copilot
 
 ---
 
-**What Copilot discovers**:
+**What Copilot CLI discovers**:
 
 ```
 Cross-Module Analysis
@@ -187,7 +187,7 @@ Cross-Module Analysis
 
 <img src="images/codebase-understanding.png" alt="Split-screen comparison showing manual code review taking 1 hour versus AI-assisted analysis taking 10 seconds" width="800" />
 
-New to a project? Learn about it quickly using Copilot.
+New to a project? Learn about it quickly using Copilot CLI.
 
 ```bash
 copilot
@@ -223,7 +223,7 @@ copilot
 
 > @samples/book-app-project/books.py Review this file for potential bugs
 
-# Copilot now has the full file content and can give specific feedback:
+# Copilot CLI now has the full file content and can give specific feedback:
 # "Line 49: Case-sensitive comparison may miss books..."
 # "Line 29: JSON decode errors are caught but data corruption isn't logged..."
 
@@ -239,15 +239,15 @@ copilot
 
 > @samples/book-app-project/books.py What does this module do?
 
-# Copilot reads books.py and understands the BookCollection class
+# Copilot CLI reads books.py and understands the BookCollection class
 
 > @samples/book-app-project/ Give me an overview of the code structure
 
-# Copilot scans the directory and summarizes
+# Copilot CLI scans the directory and summarizes
 
 > How does the app save and load books?
 
-# Copilot can trace through the code it's already seen
+# Copilot CLI can trace through the code it's already seen
 ```
 
 <details>
@@ -267,7 +267,7 @@ copilot
 > @samples/book-app-project/book_app.py @samples/book-app-project/utils.py
 > I see duplicate display functions: show_books() and print_books(). Help me consolidate these.
 
-# Copilot sees both files and can suggest how to merge the duplicate code
+# Copilot CLI sees both files and can suggest how to merge the duplicate code
 ```
 
 ---
@@ -320,7 +320,7 @@ copilot
 
 ### Check and Manage Context
 
-As you add files and conversation, Copilot's [context window](../GLOSSARY.md#context-window) fills up. Two commands help you stay in control:
+As you add files and conversation, Copilot CLI's [context window](../GLOSSARY.md#context-window) fills up. Two commands help you stay in control:
 
 ```bash
 copilot
@@ -382,7 +382,7 @@ Issue #1 (duplicate functions) was fixed on Monday.
 > Let's tackle issue #2 next
 ```
 
-**What makes this powerful**: Days later, Copilot remembers:
+**What makes this powerful**: Days later, Copilot CLI remembers:
 - The exact file you were working on
 - The numbered list of issues
 - Which ones you've already addressed
@@ -416,7 +416,7 @@ These topics build on the essentials above. **Pick what interests you, or skip a
 
 ### Additional @ Patterns
 
-For power users, Copilot supports wildcard patterns and image references:
+For power users, Copilot CLI supports wildcard patterns and image references:
 
 | Pattern | What It Does |
 |---------|--------------|
@@ -482,24 +482,24 @@ copilot
 
 > @samples/book-app-project/books.py Review the BookCollection class
 
-Copilot: "The class looks functional, but I notice:
+Copilot CLI: "The class looks functional, but I notice:
 1. Missing type hints on some methods
 2. No validation for empty title/author
 3. Could benefit from better error handling"
 
 > Add type hints to all methods
 
-Copilot: "Here's the class with complete type hints..."
+Copilot CLI: "Here's the class with complete type hints..."
 [Shows typed version]
 
 > Now improve error handling
 
-Copilot: "Building on the typed version, here's improved error handling..."
+Copilot CLI: "Building on the typed version, here's improved error handling..."
 [Adds validation and proper exceptions]
 
 > Generate tests for this final version
 
-Copilot: "Based on the class with types and error handling..."
+Copilot CLI: "Based on the class with types and error handling..."
 [Generates comprehensive tests]
 ```
 
@@ -663,14 +663,14 @@ This staged approach keeps context focused and efficient.
 
 ### Working with Images
 
-You can include images in your conversations using the `@` syntax, or simply **paste from your clipboard** (Cmd+V / Ctrl+V). Copilot can analyze screenshots, mockups, and diagrams to help with UI debugging, design implementation, and error analysis.
+You can include images in your conversations using the `@` syntax, or simply **paste from your clipboard** (Cmd+V / Ctrl+V). Copilot CLI can analyze screenshots, mockups, and diagrams to help with UI debugging, design implementation, and error analysis.
 
 ```bash
 copilot
 
-> @screenshot.png What is happening in this UI?
+> @images/screenshot.png What is happening in this image?
 
-> @mockup.png Write the HTML and CSS to match this design
+> @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
 > 📖 **Learn more**: See [Additional Context Features](../appendices/additional-context.md#working-with-images) for supported formats, practical use cases, and tips for combining images with code.
@@ -698,7 +698,7 @@ copilot
 
 > @samples/book-app-project/ Give me a code quality review of this project
 
-# Copilot will identify issues like:
+# Copilot CLI will identify issues like:
 # - Duplicate display functions
 # - Missing input validation
 # - Inconsistent error handling
@@ -714,7 +714,7 @@ copilot
 > /rename book-app-review
 > @samples/book-app-project/books.py Let's add input validation for empty titles
 
-[Copilot suggests validation approach]
+[Copilot CLI suggests validation approach]
 
 > Implement that fix
 > Now consolidate the duplicate display functions in @samples/book-app-project/
@@ -803,7 +803,7 @@ Then resume with: `copilot --continue`
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
-| Forgetting `@` before filenames | Copilot treats "books.py" as plain text | Use `@samples/book-app-project/books.py` to reference files |
+| Forgetting `@` before filenames | Copilot CLI treats "books.py" as plain text | Use `@samples/book-app-project/books.py` to reference files |
 | Expecting sessions to persist automatically | Starting `copilot` fresh loses all previous context | Use `--continue` (last session) or `--resume` (pick a session) |
 | Referencing files outside current directory | "Permission denied" or "File not found" errors | Use `/add-dir /path/to/directory` to grant access |
 | Not using `/clear` when switching topics | Old context confuses responses about the new topic | Run `/clear` before starting a different task |
@@ -844,7 +844,7 @@ copilot --add-dir /path/to/directory
 
 ## 🔑 Key Takeaways
 
-1. **`@` syntax** gives Copilot context about files, directories, and images
+1. **`@` syntax** gives Copilot CLI context about files, directories, and images
 2. **Multi-turn conversations** build on each other as context accumulates
 3. **Sessions auto-save**: use `--continue` or `--resume` to pick up where you left off
 4. **Context windows** have limits: manage them with `/context`, `/clear`, and `/compact`
@@ -859,7 +859,7 @@ copilot --add-dir /path/to/directory
 
 ## ➡️ What's Next
 
-Now that you can give Copilot context, let's put it to work on real development tasks. The context techniques you just learned (file references, cross-file analysis, and session management) are the foundation for the powerful workflows in the next chapter.
+Now that you can give Copilot CLI context, let's put it to work on real development tasks. The context techniques you just learned (file references, cross-file analysis, and session management) are the foundation for the powerful workflows in the next chapter.
 
 In **[Chapter 03: Development Workflows](../03-development-workflows/README.md)**, you'll learn:
 
