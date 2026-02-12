@@ -4,7 +4,7 @@
 
 In this chapter, you'll bring together everything you've learned into complete workflows. You'll build features using multi-agent collaboration, set up pre-commit hooks that catch security issues before they're committed, integrate Copilot into CI/CD pipelines, and go from feature idea to merged PR in a single terminal session. This is where GitHub Copilot CLI becomes a genuine force multiplier.
 
-> 💡 **Note**: This chapter shows how to combine everything you've learned. **You don't need agents, skills, or MCP to be productive (although they can be very helpful).** If you only completed Chapters 00-03, start with the [Minimal Workflow](#start-here-minimal-workflow-no-custom-setup-required) section - it covers a complete feature workflow using only built-in features.
+> 💡 **Note**: This chapter shows how to combine everything you've learned. **You don't need agents, skills, or MCP to be productive (although they can be very helpful).** The core workflow — describe, plan, implement, test, review, ship — works with just the built-in features from Chapters 00-03.
 
 ## 🎯 Learning Objectives
 
@@ -20,6 +20,7 @@ By the end of this chapter, you'll be able to:
 ---
 
 ## 🧩 Real-World Analogy: The Orchestra
+
 <img src="images/orchestra-analogy.png" alt="Orchestra Analogy - Unified Workflow" width="800"/>
 
 A symphony orchestra has many sections:
@@ -33,11 +34,13 @@ Individually, each section sounds limited. Together, conducted well, they create
 **That's what this chapter teaches!**<br>
 *Like a conductor with an orchestra, you orchestrate agents, skills, and MCP into unified workflows*
 
+Let's start by walking through a scenario that modifies code, generates tests, reviews it, and creates a PR - all in one session.
+
 ---
 
 ## Idea to Merged PR in One Session
 
-This is the culmination of everything you've learned. Instead of switching between your editor, terminal, test runner, and GitHub UI and losing context each time, you can combine all your tools in one terminal session. We'll break down this pattern in the [Integration Pattern](#the-integration-pattern-for-power-users) section below.
+Instead of switching between your editor, terminal, test runner, and GitHub UI and losing context each time, you can combine all your tools in one terminal session. We'll break down this pattern in the [Integration Pattern](#the-integration-pattern-for-power-users) section below.
 
 ```bash
 # Start Copilot in interactive mode
@@ -53,7 +56,7 @@ copilot
 # Select "python-reviewer"
 
 > @samples/book-app-project/books.py Design a get_unread_books method.
-> What's the best approach?
+> What is the best approach?
 
 # Python-reviewer agent produces:
 # - Method signature and return type
@@ -80,10 +83,22 @@ copilot
 # TEST
 > Generate comprehensive tests for the new feature
 
-# SHIP (uses GitHub MCP from Chapter 06)
+# Multiple tests are generated similar to the following:
+# - Happy path (3 tests) — filters correctly, excludes read, includes unread
+# - Edge cases (4 tests) — empty collection, all read, none read, single book
+# - Parametrized (5 cases) — varying read/unread ratios via @pytest.mark.parametrize
+# - Integration (4 tests) — interplay with mark_as_read, remove_book, add_book, and data integrity
+
+# Review the changes
 > /review
+
+# If review passes, generate a PR (uses GitHub MCP covered earlier in the course)
 > Create a pull request titled "Feature: Add list unread books command"
 ```
+
+**Traditional approach**: Switching between editor, terminal, test runner, docs, and GitHub UI. Each switch causes context loss and friction.
+
+**The key insight**: You directed specialists like an architect. They handled the details. You handled the vision.
 
 ---
 
@@ -98,95 +113,21 @@ copilot
 
 ---
 
-**Traditional approach**: Switching between editor, terminal, test runner, docs, and GitHub UI. Each switch causes context loss and friction.
-
-**The key insight**: You directed specialists like an architect. They handled the details. You handled the vision.
-
----
-
-# Combined Workflows
+# Advanced Workflows
 
 <img src="images/combined-workflows.png" alt="People assembling a colorful giant jigsaw puzzle with gears, representing how agents, skills, and MCP combine into unified workflows" width="800"/>
 
-From minimal to advanced, these workflows show how to combine everything you've learned.
+For power users who completed Chapters 04-06, these workflows show how agents, skills, and MCP multiply your effectiveness.
 
----
-
-## Start Here: Minimal Workflow (No Custom Setup Required)
-
-**This is the most important section.** The ["Idea to Merged PR"](#idea-to-merged-pr-in-one-session) example above uses agents and MCP for maximum power. But you can achieve the same result using just built-in features from Chapters 01-03:
-
-```
-1. Understand   →  Describe requirements, review existing code with @
-2. Plan         →  Use /plan to outline the approach
-3. Implement    →  Build the feature in interactive mode
-4. Test         →  Generate tests with a prompt
-5. Review       →  Use /review to check your changes
-6. Ship         →  Generate commit message with -p
-```
-
-**This uses only:** Interactive mode (Ch 01), `@` syntax (Ch 02), `/plan` and `/review` (Ch 01 & 03), and `-p` mode (Ch 01).
-
-**That's a complete feature workflow!** Everything below shows how to enhance this with agents, skills, and MCP - but you're already productive without them.
-
-<details>
-<summary>🎬 See the minimal workflow in action!</summary>
-
-![Minimal Workflow Demo](images/minimal-workflow-demo.gif)
-
-*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
-
-</details>
-
----
-
-## The Integration Pattern (For Power Users)
+## The Integration Pattern
 
 Here's the mental model for combining everything:
 
-```
-+-------------------------------------------------------------+
-|                     YOUR WORKFLOW                            |
-+-------------------------------------------------------------+
-|                                                              |
-|  1. GATHER CONTEXT (MCP)                                     |
-|     Get issue details from GitHub                            |
-|     Read relevant code files                                 |
-|                                                              |
-|  2. ANALYZE & PLAN (Agents)                                  |
-|     Switch to backend agent for analysis                     |
-|     Switch to security agent for review                      |
-|                                                              |
-|  3. EXECUTE (Skills + Manual)                                |
-|     Ask naturally - skills load automatically                |
-|     Implement the fix                                        |
-|                                                              |
-|  4. COMPLETE (MCP)                                           |
-|     Create PR via GitHub                                     |
-|     Request review                                           |
-|                                                              |
-+-------------------------------------------------------------+
-```
+<img src="images/integration-pattern.png" alt="The Integration Pattern - A 4-phase workflow: Gather Context (MCP), Analyze and Plan (Agents), Execute (Skills + Manual), Complete (MCP)" width="800"/>
 
 ---
 
-## Workflow 1: Complete Feature Development (With Agents)
-
-The ["Idea to Merged PR"](#idea-to-merged-pr-in-one-session) example at the top of this chapter demonstrates the full pattern. Here's a breakdown of the phases it follows - apply this to any feature:
-
-| Phase | What You Do | Tools Used |
-|-------|-------------|------------|
-| 1. **Understand** | Describe requirements, check existing code | Interactive mode, `@` syntax |
-| 2. **Design** | Switch to specialized agents for design and test planning | `/agent` (python-reviewer, pytest-helper) |
-| 3. **Implement** | Build the feature with agent guidance | Interactive mode |
-| 4. **Test** | Generate comprehensive tests | Skills (auto-triggered) |
-| 5. **Ship** | Create PR with descriptive summary | MCP (GitHub) |
-
-Adapt the prompts to your tech stack - the phased approach works whether you're building in Python, JavaScript, Go, or anything else.
-
----
-
-## Workflow 2: Bug Investigation and Fix
+## Workflow 1: Bug Investigation and Fix
 
 Real-world bug fixing with full tool integration:
 
@@ -230,7 +171,7 @@ copilot
 
 ---
 
-## Workflow 3: Code Review Automation (Optional)
+## Workflow 2: Code Review Automation (Optional)
 
 > 💡 **This section is optional.** Pre-commit hooks are useful for teams but not required to be productive. Skip this if you're just getting started.
 >
@@ -239,7 +180,6 @@ copilot
 A **git hook** is a script that Git runs automatically at certain points, For example, right before a commit. You can use this to run automated checks on your code. Here's how to set up an automated Copilot review on your commits:
 
 ```bash
-
 # Create a pre-commit hook
 cat > .git/hooks/pre-commit << 'EOF'
 #!/bin/bash
@@ -301,50 +241,7 @@ git commit -m "Update book collection methods"
 
 ---
 
-## Workflow 4: Multi-Agent Feature Planning
-
-For features that require design and testing, use multiple agents:
-
-```bash
-copilot
-
-> I need to add an "export to CSV" feature to the book app
-
-# Get design from python-reviewer agent
-> /agent
-# Select "python-reviewer"
-
-> Design the export feature:
-> - File format and structure
-> - Error handling for file I/O
-> - Edge cases (empty collection, special characters)
-
-# Python-reviewer agent produces:
-# - CSV structure with headers
-# - Using csv.DictWriter for safety
-# - Exception handling recommendations
-
-# Get test design from pytest-helper agent
-> /agent
-# Select "pytest-helper"
-
-> Design test cases for the CSV export feature:
-> - What should we test?
-> - What fixtures do we need?
-> - What edge cases should we cover?
-
-# Pytest-helper agent produces:
-# - Test cases for successful export
-# - Test cases for empty collections
-# - Test cases for file write errors
-
-# Synthesize into implementation plan
-> Create a step-by-step implementation plan for the export feature
-```
-
----
-
-## Workflow 5: Onboarding to a New Codebase
+## Workflow 3: Onboarding to a New Codebase
 
 When joining a new project, combine context, agents, and MCP to ramp up fast:
 
@@ -364,7 +261,7 @@ copilot
 # Select "python-reviewer"
 
 > @samples/book-app-project/books.py Are there any design issues,
-> missing error handling, or improvements you'd recommend?
+> missing error handling, or improvements you would recommend?
 
 # PHASE 4: Find something to work on (MCP provides GitHub access)
 > List open issues labeled "good first issue"
@@ -373,7 +270,7 @@ copilot
 > Pick the simplest open issue and outline a plan to fix it
 ```
 
-This workflow combines `@` context (Ch 02), agents (Ch 04), and MCP (Ch 06) into a single onboarding session, exactly the integration pattern from earlier in this chapter.
+This workflow combines `@` context, agents, and MCP into a single onboarding session, exactly the integration pattern from earlier in this chapter.
 
 ---
 
@@ -403,17 +300,26 @@ Always gather context before asking for analysis:
 # Agent doesn't have issue context
 ```
 
-### 2. Use Agents for Analysis, Skills for Execution
+### 2. Know the Difference: Agents, Skills, and Custom Instructions
+
+Each tool has a sweet spot:
 
 ```bash
-# Agent analyzes
+# Agents: Specialized personas you explicitly activate
 > /agent
 # Select python-reviewer
-> Review this authentication code
+> Review this authentication code for security issues
 
-# Skill executes (automatically triggered by your prompt)
+# Skills: Modular capabilities that auto-activate when your prompt
+# matches the skill's description (you must create them first — see Ch 05)
 > Generate comprehensive tests for this code
+# If you have a testing skill configured, it activates automatically
+
+# Custom instructions (.github/copilot-instructions.md): Always-on
+# guidance that applies to every session without switching or triggering
 ```
+
+> 💡 **Key point**: Agents and skills can both analyze AND generate code. The real difference is **how they activate** — agents are explicit (`/agent`), skills are automatic (prompt-matched), and custom instructions are always on.
 
 ### 3. Keep Sessions Focused
 
@@ -433,21 +339,16 @@ copilot
 # Less effective: Everything in one long session
 ```
 
-### 4. Create Reusable Workflows
+### 4. Make Workflows Reusable with Copilot
 
-Document your workflows so you can repeat them:
+Instead of just documenting workflows in a wiki, encode them directly in your repo where Copilot can use them:
 
-```markdown
-## Bug Fix Workflow
+- **Custom instructions** (`.github/copilot-instructions.md`): Always-on guidance for coding standards, architecture rules, and build/test/deploy steps. Every session follows them automatically.
+- **Prompt files** (`.github/prompts/`): Reusable, parameterized prompts your team can share — like templates for code reviews, component generation, or PR descriptions.
+- **Custom agents** (`.github/agents/`): Encode specialized personas (e.g., a security reviewer or a docs writer) that anyone on the team can activate with `/agent`.
+- **Custom skills** (`.github/skills/`): Package step-by-step workflow instructions that auto-activate when relevant.
 
-1. Get issue details from GitHub
-2. Search for related code
-3. Switch to python-reviewer agent for analysis
-4. Implement fix
-5. Switch to pytest-helper agent for test design
-6. Generate tests
-7. Create PR
-```
+> 💡 **The payoff**: New team members get your workflows for free — they're built into the repo, not locked in someone's head.
 
 ---
 
@@ -548,12 +449,6 @@ Document your workflow as you go.
 
 </details>
 
-### Bonus Challenge: Workflow Automation
-
-1. Create a pre-commit hook that runs Copilot review
-2. Set up a custom shell function for your most common workflow
-3. Document your workflow in a team-shareable format
-
 ---
 
 <details>
@@ -563,7 +458,7 @@ Document your workflow as you go.
 |---------|--------------|-----|
 | Jumping straight to implementation | Miss design issues that are costly to fix later | Use `/plan` first to think through the approach |
 | Using one tool when multiple would help | Slower, less thorough results | Combine: Agent for analysis → Skill for execution → MCP for integration |
-| Not reviewing before committing | Security issues or bugs slip through | Always run `/review` or use a [pre-commit hook](#workflow-3-code-review-automation) |
+| Not reviewing before committing | Security issues or bugs slip through | Always run `/review` or use a [pre-commit hook](#workflow-2-code-review-automation-optional) |
 | Forgetting to share workflows with team | Each person reinvents the wheel | Document patterns in shared agents, skills, and instructions |
 
 </details>
@@ -575,7 +470,7 @@ Document your workflow as you go.
 ## 🔑 Key Takeaways
 
 1. **Integration > Isolation**: Combine tools for maximum impact
-2. **Context first**: Always gather context before analysis
+2. **Context first**: Always gather required context before analysis
 3. **Agents analyze, Skills execute**: Use the right tool for the job
 4. **Automate repetition**: Hooks and scripts multiply your effectiveness
 5. **Document workflows**: Shareable patterns benefit the whole team
@@ -588,9 +483,9 @@ Document your workflow as you go.
 
 Congratulations! You've learned:
 
-| Chapter | What You Mastered |
+| Chapter | What You Learned |
 |---------|-------------------|
-| 00 | Instant value with quick start |
+| 00 | Copilot CLI installation and Quick Start |
 | 01 | Three modes of interaction |
 | 02 | Context management with @ syntax |
 | 03 | Development workflows |
@@ -618,6 +513,6 @@ Your learning doesn't stop here:
 
 ---
 
-**You did it! Now go build something amazing.**
+**Great job! Now go build something amazing.**
 
 **[← Back to Chapter 06](../06-mcp-servers/README.md)** | **[Return to Course Home →](../README.md)**

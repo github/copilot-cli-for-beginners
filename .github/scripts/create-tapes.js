@@ -19,7 +19,25 @@ const config = require('./demos.json');
 function generatePromptBlock(entry, defaultWait, index) {
   const text = typeof entry === 'string' ? entry : entry.text;
   const wait = (typeof entry === 'object' && entry.responseWait) || defaultWait;
+  const agentSelect = typeof entry === 'object' && entry.agentSelect;
   const label = index != null ? `Prompt ${index + 1}` : 'Execute the prompt';
+
+  // Agent selection: type /agent, wait for picker, arrow down to agent, select
+  if (agentSelect) {
+    const arrowDown = (typeof entry === 'object' && entry.arrowDown) || 0;
+    const arrowBlock = arrowDown > 0 ? `Down ${arrowDown}\nSleep 1s\n` : '';
+    return `# ${label} - Select ${agentSelect} agent
+Type "${text}"
+Sleep 1s
+Enter
+
+# Wait for agent picker
+Sleep 3s
+${arrowBlock}Enter
+
+# Wait for agent to load
+Sleep ${wait}s`;
+  }
 
   // If prompt ends with a file reference (@path), the file picker will be open.
   // Need an extra Enter to select the file before submitting the prompt.
@@ -63,6 +81,7 @@ Set Padding 20
 Set BorderRadius 8
 Set Margin 10
 Set MarginFill "#282a36"
+Set Framerate ${s.framerate}
 
 # Human typing speed
 Set TypingSpeed ${s.typingSpeed}

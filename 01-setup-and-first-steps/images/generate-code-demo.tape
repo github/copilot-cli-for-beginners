@@ -11,6 +11,7 @@ Set Padding 20
 Set BorderRadius 8
 Set Margin 10
 Set MarginFill "#282a36"
+Set Framerate 10
 
 # Human typing speed
 Set TypingSpeed 60ms
