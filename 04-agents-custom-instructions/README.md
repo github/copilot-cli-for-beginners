@@ -32,7 +32,7 @@ When you need help with your house, you don't call one "general helper." You cal
 
 Agents work the same way. Instead of a generic AI, use agents that focus on specific tasks and know the right process to follow. Set up the instructions once, then reuse them whenever you need that specialty: code review, testing, security, documentation.
 
-<!-- TODO: Replace with an image matching the house-repair analogy -->
+<img src="images/hiring-specialists-analogy.png" alt="Hiring Specialists Analogy - Just as you call specialized tradespeople for house repairs, AI agents are specialized for specific tasks like code review, testing, security, and documentation" width="800" />
 
 ---
 
@@ -44,7 +44,7 @@ Get started with built-in and custom agents right away.
 
 ---
 
-## *New to agents?* Start Here!
+## *New to Agents?* Start Here!
 Never used or made an agent? Here's all you need to know to get started for this course.
 
 1. **Try a *built-in* agent right now:**
@@ -87,6 +87,7 @@ copilot
 
 # Explore and Task agents are invoked automatically when relevant:
 > Run the test suite        # Uses Task agent
+
 > Explore how book data is loaded    # Uses Explore agent
 ```
 
@@ -213,6 +214,8 @@ Each topic below is self-contained. **Pick what interests you - you don't need t
 | Organize, name, and share agents | [Organizing & Sharing Agents](#organizing--sharing-agents) |
 | Set up always-on project context | [Configuring Your Project for Copilot](#configuring-your-project-for-copilot) |
 | Look up YAML properties and tools | [Agent File Reference](#agent-file-reference) |
+
+Click a scenario below to expand it.
 
 ---
 

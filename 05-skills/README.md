@@ -47,7 +47,7 @@ Learn what skills are, why they matter, and how they differ from agents and MCP.
 
 ---
 
-## *New to skills?* Start Here!
+## *New to Skills?* Start Here!
 
 1. **See what skills are already available:**
    ```bash
@@ -455,6 +455,8 @@ copilot --agent code-reviewer
 # Managing and Sharing Skills
 
 Discover installed skills, find community skills, and share your own.
+
+<img src="images/managing-sharing-skills.png" alt="Managing and Sharing Skills - showing the discover, use, create, and share cycle for CLI skills" width="800" />
 
 ---
 
