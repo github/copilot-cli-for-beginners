@@ -51,37 +51,3 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
-
-
-def test_get_unread_books_empty_collection():
-    collection = BookCollection()
-    unread = collection.get_unread_books()
-    assert unread == []
-
-
-def test_get_unread_books_all_unread():
-    collection = BookCollection()
-    collection.add_book("1984", "George Orwell", 1949)
-    collection.add_book("Dune", "Frank Herbert", 1965)
-    unread = collection.get_unread_books()
-    assert len(unread) == 2
-
-
-def test_get_unread_books_some_read():
-    collection = BookCollection()
-    collection.add_book("1984", "George Orwell", 1949)
-    collection.add_book("Dune", "Frank Herbert", 1965)
-    collection.mark_as_read("Dune")
-    unread = collection.get_unread_books()
-    assert len(unread) == 1
-    assert unread[0].title == "1984"
-
-
-def test_get_unread_books_all_read():
-    collection = BookCollection()
-    collection.add_book("1984", "George Orwell", 1949)
-    collection.add_book("Dune", "Frank Herbert", 1965)
-    collection.mark_as_read("1984")
-    collection.mark_as_read("Dune")
-    unread = collection.get_unread_books()
-    assert len(unread) == 0

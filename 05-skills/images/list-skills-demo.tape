@@ -11,6 +11,7 @@ Set Padding 20
 Set BorderRadius 8
 Set Margin 10
 Set MarginFill "#282a36"
+Set Framerate 10
 
 # Human typing speed
 Set TypingSpeed 60ms
@@ -28,7 +29,7 @@ Sleep 2s
 Enter
 
 # Wait for response
-Sleep 15s
+Sleep 25s
 
 # Exit cleanly
 Ctrl+C

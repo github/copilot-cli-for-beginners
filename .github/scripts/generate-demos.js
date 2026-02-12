@@ -10,6 +10,7 @@
  *   npm run generate:vhs                          # all chapters, 5 concurrent
  *   npm run generate:vhs -- --chapter 03          # only chapter 03
  *   npm run generate:vhs -- --chapter 03 --chapter 05
+ *   npm run generate:vhs -- --file path/to/demo.tape  # single tape file
  *   npm run generate:vhs -- --concurrency 3       # limit to 3 at a time
  *
  * Requirements:
@@ -21,46 +22,97 @@ const { readdirSync, statSync, existsSync, readFileSync, renameSync, writeFileSy
 const { join, relative, dirname } = require('path');
 
 const rootDir = join(__dirname, '..', '..');
-const copilotConfigPath = join(require('os').homedir(), '.copilot', 'config.json');
+const homeDir = require('os').homedir();
+const copilotConfigPath = join(homeDir, '.copilot', 'config.json');
+// Personal agents live in both ~/.copilot/agents and ~/.claude/agents
+const personalAgentsDirs = [
+  { dir: join(homeDir, '.copilot', 'agents'), backup: join(homeDir, '.copilot', 'agents.recording-bak') },
+  { dir: join(homeDir, '.claude', 'agents'), backup: join(homeDir, '.claude', 'agents.recording-bak') }
+];
 
-// Ensure on-air mode is enabled so recordings don't show model names or quota
-function enableOnAirMode() {
+// Ensure streamer mode is enabled so recordings don't show model names or quota
+function enableStreamerMode() {
   try {
     const config = JSON.parse(readFileSync(copilotConfigPath, 'utf8'));
-    if (!config.on_air_mode) {
-      config.on_air_mode = true;
-      writeFileSync(copilotConfigPath, JSON.stringify(config, null, 2) + '\n');
-      console.log('🔴 On-air mode: enabled (was off)');
-      return false; // was off, we turned it on
-    }
-    console.log('🔴 On-air mode: already enabled');
-    return true; // was already on
+    const wasOn = config.streamer_mode || false;
+    config.streamer_mode = true;
+    delete config.on_air_mode;
+    writeFileSync(copilotConfigPath, JSON.stringify(config, null, 2) + '\n');
+    console.log(`🔴 Streamer mode: ${wasOn ? 'already enabled' : 'enabled'}`);
+    return { wasOn };
   } catch (e) {
-    console.warn('⚠ Could not read copilot config, on-air mode not verified');
+    console.warn('⚠ Could not read copilot config, streamer mode not verified');
     return null;
   }
 }
 
-// Restore on-air mode to its original state
-function restoreOnAirMode(wasAlreadyOn) {
-  if (wasAlreadyOn === false) {
+// Restore streamer mode to its original state
+function restoreStreamerMode(state) {
+  if (state && !state.wasOn) {
     try {
       const config = JSON.parse(readFileSync(copilotConfigPath, 'utf8'));
-      config.on_air_mode = false;
+      config.streamer_mode = false;
       writeFileSync(copilotConfigPath, JSON.stringify(config, null, 2) + '\n');
-      console.log('🔴 On-air mode: restored to off');
+      console.log('🔴 Streamer mode: restored to off');
     } catch (e) { /* ignore */ }
   }
+}
+
+// Hide personal agents so only course agents appear in /agent picker
+function hidePersonalAgents() {
+  const hidden = [];
+  for (const { dir, backup } of personalAgentsDirs) {
+    try {
+      // Restore stale backup from a previous interrupted run
+      if (!existsSync(dir) && existsSync(backup)) {
+        renameSync(backup, dir);
+        console.log(`👤 Restored stale backup: ${backup}`);
+      }
+      if (existsSync(dir)) {
+        renameSync(dir, backup);
+        hidden.push({ dir, backup });
+      }
+    } catch (e) {
+      console.warn(`⚠ Could not hide ${dir}:`, e.message);
+    }
+  }
+  if (hidden.length > 0) {
+    console.log(`👤 Personal agents: hidden (${hidden.length} location(s))`);
+  }
+  return hidden;
+}
+
+// Restore personal agents to their original locations
+function restorePersonalAgents(hidden) {
+  if (!hidden || hidden.length === 0) return;
+  for (const { dir, backup } of hidden) {
+    try {
+      if (existsSync(backup)) {
+        // Copilot may recreate the agents dir during recording - remove it first
+        if (existsSync(dir)) {
+          rmSync(dir, { recursive: true });
+        }
+        renameSync(backup, dir);
+      }
+    } catch (e) {
+      console.warn(`⚠ Could not restore ${dir}:`, e.message);
+      console.warn(`  Manual fix: mv "${backup}" "${dir}"`);
+    }
+  }
+  console.log(`👤 Personal agents: restored (${hidden.length} location(s))`);
 }
 
 // Parse CLI args
 const args = process.argv.slice(2);
 const chapters = [];
+const files = [];
 let concurrency = 5;
 
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--chapter' && args[i + 1]) {
     chapters.push(args[++i]);
+  } else if (args[i] === '--file' && args[i + 1]) {
+    files.push(args[++i]);
   } else if (args[i] === '--concurrency' && args[i + 1]) {
     concurrency = parseInt(args[++i], 10);
   }
@@ -136,24 +188,26 @@ function runVhs(tapeFile, wrappedPath) {
 
     exec(`vhs ${relativePath}`, {
       cwd: rootDir,
-      timeout: 180000,
+      timeout: 600000,
       env: { ...process.env, PATH: wrappedPath }
     }, (error) => {
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
 
-      if (error) {
-        console.log(`  ✗ ${relativePath} (${elapsed}s) - ${error.message}`);
-        resolve({ success: false, path: relativePath });
-        return;
-      }
-
-      // Move generated GIF to the images folder if it was created in root
+      // Always move GIF if it was created, even if VHS exited non-zero
+      let gifCreated = false;
       if (outputFilename) {
         const generatedPath = join(rootDir, outputFilename);
         const targetPath = join(imagesDir, outputFilename);
         if (existsSync(generatedPath) && generatedPath !== targetPath) {
           renameSync(generatedPath, targetPath);
+          gifCreated = true;
         }
+      }
+
+      if (error && !gifCreated) {
+        console.log(`  ✗ ${relativePath} (${elapsed}s) - ${error.message}`);
+        resolve({ success: false, path: relativePath });
+        return;
       }
 
       console.log(`  ✓ ${relativePath} (${elapsed}s)`);
@@ -187,17 +241,33 @@ async function runWithConcurrency(tasks, limit) {
 async function main() {
   console.log('🎬 Generating course demos...\n');
 
-  if (chapters.length > 0) {
+  if (files.length > 0) {
+    console.log(`Files: ${files.join(', ')}`);
+  } else if (chapters.length > 0) {
     console.log(`Chapters: ${chapters.join(', ')}`);
   }
   console.log(`Concurrency: ${concurrency}`);
   console.log('');
 
-  // Enable on-air mode before recording
-  const wasAlreadyOn = enableOnAirMode();
+  // Enable streamer mode and hide personal agents before recording
+  const streamerState = enableStreamerMode();
+  const agentsWereHidden = hidePersonalAgents();
   console.log('');
 
-  const tapeFiles = findTapeFiles(rootDir, chapters);
+  // Resolve tape files: explicit --file paths take priority over chapter scan
+  let tapeFiles;
+  if (files.length > 0) {
+    const { resolve } = require('path');
+    tapeFiles = files.map(f => resolve(rootDir, f)).filter(f => {
+      if (!existsSync(f)) {
+        console.log(`  ⚠ File not found: ${f}`);
+        return false;
+      }
+      return true;
+    });
+  } else {
+    tapeFiles = findTapeFiles(rootDir, chapters);
+  }
 
   if (tapeFiles.length === 0) {
     console.log('No .tape files found');
@@ -222,7 +292,8 @@ async function main() {
   const results = await runWithConcurrency(tasks, concurrency);
 
   cleanupCopilotWrapper();
-  restoreOnAirMode(wasAlreadyOn);
+  restorePersonalAgents(agentsWereHidden);
+  restoreStreamerMode(streamerState);
 
   const succeeded = results.filter(r => r.success).length;
   const failedResults = results.filter(r => !r.success);
@@ -241,6 +312,7 @@ async function main() {
 main().catch(e => {
   console.error(e);
   cleanupCopilotWrapper();
-  restoreOnAirMode(false); // restore on-air to off on error
+  restorePersonalAgents(personalAgentsDirs); // always try to restore on error
+  restoreStreamerMode({ wasOn: false });
   process.exit(1);
 });

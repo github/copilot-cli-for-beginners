@@ -5,6 +5,7 @@
     "height": 600,
     "theme": "Dracula",
     "typingSpeed": "60ms",
+    "framerate": 10,
     "startupWait": 5,
     "responseWait": 25,
     "exitWait": 2
@@ -102,7 +103,7 @@
       "chapter": "05-skills",
       "name": "list-skills-demo",
       "description": "List available slash commands and skills",
-      "responseWait": 15,
+      "responseWait": 25,
       "prompt": "What slash commands and skills are available? List the main ones."
     },
     {
@@ -116,7 +117,7 @@
       "chapter": "06-mcp-servers",
       "name": "mcp-status-demo",
       "description": "Check connected MCP servers with /mcp show",
-      "responseWait": 15,
+      "responseWait": 25,
       "prompt": "/mcp show"
     },
     {
@@ -132,18 +133,17 @@
     {
       "chapter": "07-putting-it-together",
       "name": "full-review-demo",
-      "description": "Full project review prioritized by severity",
-      "responseWait": 50,
-      "prompt": "Review @samples/book-app-project/ for all code quality issues. Prioritize by severity."
-    },
-    {
-      "chapter": "07-putting-it-together",
-      "name": "minimal-workflow-demo",
-      "description": "Minimal workflow: explore, implement, test",
+      "description": "Idea to merged PR: plan, implement, test a new feature",
       "prompts": [
-        "@samples/book-app-project/books.py What methods already exist for filtering books?",
-        { "text": "Add a get_unread_books method to BookCollection that returns only books where read is False", "responseWait": 30 },
-        { "text": "@samples/book-app-project/books.py Generate pytest tests for the get_unread_books method", "responseWait": 30 }
+        { "text": "I need to add a 'list unread' command to the book app that shows only books where read is False. What files need to change?", "responseWait": 25 },
+        { "text": "/agent", "agentSelect": "python-reviewer", "arrowDown": 3, "responseWait": 3 },
+        { "text": "@samples/book-app-project/books.py Design a get_unread_books method. What is the best approach?", "responseWait": 30 },
+        { "text": "/agent", "agentSelect": "pytest-helper", "arrowDown": 2, "responseWait": 3 },
+        { "text": "@samples/book-app-project/tests/test_books.py Design test cases for filtering unread books.", "responseWait": 30 },
+        { "text": "Add a get_unread_books method to BookCollection in books.py. Add a 'list unread' command option in book_app.py. Update the help text in the show_help function.", "responseWait": 30 },
+        { "text": "Generate comprehensive tests for the new feature", "responseWait": 35 },
+        { "text": "/review", "responseWait": 25 },
+        { "text": "Create a pull request titled 'Feature: Add list unread books command'", "responseWait": 25 }
       ]
     }
   ]
