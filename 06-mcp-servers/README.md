@@ -304,6 +304,8 @@ Save this as `~/.copilot/mcp-config.json` for global access or `.copilot/mcp-con
 
 Now that you have MCP servers configured, let's see what they can do.
 
+<img src="images/using-mcp-servers.png" alt="Using MCP Servers - Hub-and-spoke diagram showing a Developer CLI connected to GitHub, Filesystem, Context7, and Custom/Web Fetch servers" width="800" />
+
 ---
 
 ## Server Usage Examples

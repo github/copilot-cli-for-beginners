@@ -184,7 +184,7 @@ copilot
 <details>
 <summary><strong>Workflow 2: Refactoring</strong> - Restructure code, separate concerns, improve error handling</summary>
 
-<img src="images/refactoring-swimlane-single.png" alt="Refactoring workflow: assess code, plan changes, implement, verifiy behavrior." width="800"/>
+<img src="images/refactoring-swimlane-single.png" alt="Refactoring workflow: assess code, plan changes, implement, verify behavior." width="800"/>
 
 ### Simple Refactoring
 
@@ -415,7 +415,7 @@ copilot
 <details>
 <summary><strong>Workflow 4: Test Generation</strong> - Generate comprehensive tests and edge cases automatically</summary>
 
-<img src="images/test-gen-swimlane-single.png" alt="Test Generationg workflow: analyze function, generate tests, include edge cases, run." width="800"/>
+<img src="images/test-gen-swimlane-single.png" alt="Test Generation workflow: analyze function, generate tests, include edge cases, run." width="800"/>
 
 ### The "Test Explosion" - 2 Tests vs 15+ Tests
 
@@ -566,7 +566,7 @@ copilot
 <details>
 <summary><strong>Workflow 5: Git Integration</strong> - Commit messages, PR descriptions, /delegate, and /diff</summary>
 
-<img src="images/git-integration-swimlane-single.png" alt="Git Integreation workflow: stage changes, generate message, commit, create PR." width="800"/>
+<img src="images/git-integration-swimlane-single.png" alt="Git Integration workflow: stage changes, generate message, commit, create PR." width="800"/>
 
 ### Generate Commit Messages
 
@@ -871,7 +871,7 @@ copilot
 
 | Skill | Chapter | You Can Now... |
 |-------|---------|----------------|
-| Basic Commands | Ch 01 | Use interactive mode, plan mode, interactive mode (-p), and slash commands |
+| Basic Commands | Ch 01 | Use interactive mode, plan mode, programmatic mode (-p), and slash commands |
 | Context | Ch 02 | Reference files with `@`, manage sessions, understand context windows |
 | Workflows | Ch 03 | Review code, refactor, debug, generate tests, integrate with git |
 

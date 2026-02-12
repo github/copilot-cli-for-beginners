@@ -22,7 +22,7 @@ By the end of this chapter, you'll be able to:
 
 <img src="images/colleague-context-analogy.png" alt="Context Makes the Difference - Without vs With Context" width="800"/>
 
-*Just like your colleagues, Copilot CLI isn't a mind reader. Providing more informaiton helps humans and Copilot alike provide targetted support!*
+*Just like your colleagues, Copilot CLI isn't a mind reader. Providing more information helps humans and Copilot alike provide targeted support!*
 
 Imagine explaining a bug to a colleague:
 
@@ -30,7 +30,7 @@ Imagine explaining a bug to a colleague:
 
 > **With context**: "Look at `books.py`, especially the `find_book_by_title` function. It's not doing case-insensitive matching."
 
-To privde context to Copilot CLI use *the `@` syntax* to point Copilot at specific files.
+To provide context to Copilot CLI use *the `@` syntax* to point Copilot at specific files.
 
 ---
 
@@ -119,6 +119,8 @@ copilot
 
 This is where context becomes a superpower. Single-file analysis is useful. Cross-file analysis is transformative.
 
+<img src="images/cross-file-intelligence.png" alt="Cross-File Intelligence - comparing single-file vs cross-file analysis showing how analyzing files together reveals bugs, data flow, and patterns invisible in isolation" width="800"/>
+
 ### Demo: Find Bugs That Span Multiple Files
 
 ```bash
@@ -183,7 +185,9 @@ Cross-Module Analysis
 
 ### Demo: Understand a Codebase in 60 Seconds
 
-New to a project? Skip the hour of reading code:
+<img src="images/codebase-understanding.png" alt="Split-screen comparison showing manual code review taking 1 hour versus AI-assisted analysis taking 10 seconds" width="800" />
+
+New to a project? Learn about it quickly using Copilot.
 
 ```bash
 copilot
