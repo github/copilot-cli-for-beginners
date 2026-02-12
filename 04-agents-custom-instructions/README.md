@@ -13,7 +13,7 @@ By the end of this chapter, you'll be able to:
 - Use built-in agents: Plan (`/plan`), Code-review (`/review`), and understand automatic agents (Explore, Task)
 - Create specialized agents using agent files (`.agent.md`)
 - Use agents for domain-specific tasks
-- Delegate work across multiple agents
+- Switch between agents using `/agent` and `--agent`
 - Write custom instruction files for project-specific standards
 
 > ⏱️ **Estimated Time**: ~60 minutes (25 min reading + 35 min hands-on)
@@ -30,11 +30,9 @@ When you need help with your house, you don't call one "general helper." You cal
 | Rewiring | Electrician | Understands safety requirements, up to code |
 | New roof | Roofer | Knows materials, local weather considerations |
 
-Agents work the same way. Instead of a generic AI, use agents that focus on specific tasks and know the right process to follow.
+Agents work the same way. Instead of a generic AI, use agents that focus on specific tasks and know the right process to follow. Set up the instructions once, then reuse them whenever you need that specialty: code review, testing, security, documentation.
 
-<img src="images/hiring-specialists-analogy.png" alt="Specialized Agents for Every Domain" width="800"/>
-
-Set up the instructions once, then reuse them whenever you need that specialty; code review, testing, security, documentation.
+<!-- TODO: Replace with an image matching the house-repair analogy -->
 
 ---
 
@@ -60,68 +58,6 @@ Never used or made an agent? Here's all you need to know to get started for this
 
 3. **Understand the core concept:** Agents are like consulting a specialist instead of a generalist. A "frontend agent" will focus on accessibility and component patterns automatically, you don't have to remind it because it is already specified in the agent's instructions.
 
-
-## Using agents with Copilot CLI
-
-### 🗂️ Add your agents 
-
-**This project includes sample agent files in the [.github/agents/](../.github/agents/) folder**.
-<br>You can write your own, or customize the ones already provided.
-
-<details>
-<summary>📂 See the sample agents we provide</summary>
-
-| File | Description |
-|------|-------------|
-| `hello-world.agent.md` | Minimal example - start here |
-| `python-reviewer.agent.md` | Python code quality reviewer |
-| `pytest-helper.agent.md` | Pytest testing specialist |
-
-```bash
-# Or copy one to your personal agents folder (available in every project)
-cp .github/agents/python-reviewer.agent.md ~/.copilot/agents/
-```
-
-For more community agents, see [github/awesome-copilot](https://github.com/github/awesome-copilot)
-
-</details><br>
-
-
-*Agents are only detected in a limited number of locations in your repo. <br>You can also use the `~/.copilot/agents/` location to store agents you want available for *all* projects.*
-
-
-### 🚀 Two ways to use custom agents
-
-**1️⃣ Interactive mode**
-Inside interactive mode, list agents using `/agent` and select to agent to start working with. 
-<br>Select an agent to continue your conversation with.
-
-```bash
-copilot
-> /agent
-```
-
-To change to a different agent, or to return to default mode, use the `/agent` command again.
-
-<details>
-<summary>🎬 See it in action!</summary>
-<!-- TODO -->
-❌ TODO see it in action - add a gif
-
-*Demo output varies - your model, tools, and responses will differ from what's shown here.*
-</details> <br>
-
-
-**2️⃣ Straight from your terminal**
-
-Launch straight into a new session with an agent.
-
-```bash
-copilot --agent python-reviewer
-> Review @samples/book-app-project/books.py
-```
-
----
 
 ## Built-in Agents
 
@@ -154,7 +90,7 @@ copilot
 > Explore how book data is loaded    # Uses Explore agent
 ```
 
-Where is the Task Agent in this? It works behind the scenes to manage and track what is going on and to report back in a clean and clear format:
+What about the Task Agent? It works behind the scenes to manage and track what is going on and to report back in a clean and clear format:
 
 | Outcome | What You See |
 |---------|--------------|
@@ -164,66 +100,22 @@ Where is the Task Agent in this? It works behind the scenes to manage and track 
 
 > 📚 **Official Documentation**: [GitHub Copilot CLI Agents](https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
 
-
----
-<br>
-
-# Creating Custom Agents
-
-<img src="images/creating-custom-agents.png" alt="Robot being assembled on a workbench surrounded by components and tools representing custom agent creation" width="800"/>
-
-> 💡 **This section is optional.** The built-in agents (`/plan`, `/review`) are powerful enough for most workflows. Create custom agents when you need specialized expertise that's consistently applied across your work.
-
-Each topic below is self-contained. **Pick what interests you - you don't need to read them all at once.**
-
-| I want to... | Jump to |
-|---|---|
-| Create my first agent file | [Your First Agent](#creating-your-first-agent) |
-| See why agents beat generic prompts | [Generic vs Specialist](#generic-vs-specialist-see-the-difference) |
-| Collaborate with multiple agents | [Multi-Agent Collaboration & Usage](#multi-agent-collaboration) |
-| Learn naming conventions | [Agent Naming Best Practices](#agent-naming-best-practices) |
-| Set up project-wide instructions | [Project-Level Instructions](#project-level-instructions) |
-
 ---
 
-<a id="creating-your-first-agent"></a>
-<details>
-<summary><strong>Your First Agent</strong> - File locations, structure, YAML properties, and usage</summary>
+# Adding Agents to Copilot CLI
 
-## Creating Your First Agent
+You can simply define your own agents to be part of your workflow! Define once, then direct!
 
-Agents can be defined in several locations. Choose based on your use case:
+<img src="images/hiring-specialists-analogy.png" alt="Diagram showing You at the center directing four specialists: Frontend, Backend, Testing, and DevOps, with the caption Direct specialists, do not do everything yourself" width="800"/>
 
-| Location | Scope | Best For |
-|----------|-------|----------|
-| `~/.copilot/agents/` | Global (all projects) | Personal productivity agents you use everywhere |
-| `.github/agents/` | Project-specific | Team-shared agents with project conventions |
-| `*.agent.md` files | Single-file | Quick experiments, VS Code compatibility |
 
-### Which Location Should I Use?
+## 🗂️ Add your agents 
 
-```
-Are you just experimenting?
-    └─ YES → Create `my-agent.agent.md` in your current folder
-    └─ NO ↓
+Agent files are markdown files with a `.agent.md` extension. They have two parts: YAML frontmatter (metadata) and markdown instructions.
 
-Will your team use this agent?
-    └─ YES → Create in `.github/agents/` (gets version controlled)
-    └─ NO ↓
+> 💡 **New to YAML frontmatter?** It's a small block of settings at the top of the file, surrounded by `---` markers. YAML is just `key: value` pairs. The rest of the file is regular markdown.
 
-Do you want this agent everywhere?
-    └─ YES → Create in `~/.copilot/agents/` (your personal agents)
-```
-
-**Start simple:** Create a single `*.agent.md` file in your project folder. Move it to a permanent location once you're happy with it.
-
-### Agent File Structure
-
-Let's start with a **minimal agent** to understand the format.
-
-> 💡 **New to YAML frontmatter?** Agent files use a format common in many tools: a small block of configuration data (called "frontmatter") at the top of the file, surrounded by `---` markers. This uses YAML syntax, which is just a simple way to write settings as `key: value` pairs. The rest of the file is regular markdown with your instructions.
-
-Create `my-reviewer.agent.md` in your project folder:
+Here's a minimal agent:
 
 ```markdown
 ---
@@ -241,162 +133,94 @@ When reviewing code, always check for:
 - Hardcoded secrets
 ```
 
-That's it! The YAML frontmatter (between `---` markers) provides metadata, and the markdown below is your agent's instructions.
-
 > 💡 **Required vs Optional**: The `description` field is required. Other fields like `name`, `tools`, and `model` are optional.
 
-### A More Complete Example
+## Where to put agent files
 
-Once you're comfortable, here's a more comprehensive agent. Create `~/.copilot/agents/python-reviewer.agent.md`:
+| Location | Scope | Best For |
+|----------|-------|----------|
+| `.github/agents/` | Project-specific | Team-shared agents with project conventions |
+| `~/.copilot/agents/` | Global (all projects) | Personal agents you use everywhere |
 
-```markdown
----
-name: python-reviewer
-description: Python code quality specialist for reviewing Python projects
-tools: ["read", "edit", "search", "execute"]
----
+**This project includes sample agent files in the [.github/agents/](../.github/agents/) folder**. You can write your own, or customize the ones already provided.
 
-# Python Code Reviewer
+<details>
+<summary>📂 See the sample agents we provide</summary>
 
-You are a Python specialist focused on code quality and best practices.
-
-**Your focus areas:**
-- Code quality (PEP 8, type hints, docstrings)
-- Performance optimization (list comprehensions, generators)
-- Error handling (proper exception handling)
-- Maintainability (DRY principles, clear naming)
-
-**Code style requirements:**
-- Use Python 3.10+ features (dataclasses, type hints, pattern matching)
-- Follow PEP 8 naming conventions
-- Use context managers for file I/O
-- All functions must have type hints and docstrings
-
-**When reviewing code, always check:**
-- Missing type hints on function signatures
-- Mutable default arguments
-- Proper error handling (no bare except)
-- Input validation completeness
-```
-
-### Agent YAML Properties
-
-| Property | Required | Description |
-|----------|----------|-------------|
-| `name` | No | Display name (defaults to filename) |
-| `description` | **Yes** | What the agent does - helps Copilot understand when to suggest it |
-| `tools` | No | List of allowed tools (omit = all tools available). See tool aliases below. |
-| `target` | No | Limit to `vscode` or `github-copilot` only |
-
-**Tool Aliases**: Use these names in the `tools` list:
-- `read` - Read file contents
-- `edit` - Edit files
-- `search` - Search files (grep/glob)
-- `execute` - Run shell commands (also: `shell`, `Bash`)
-- `agent` - Invoke other custom agents
-
-> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/copilot/reference/custom-agents-configuration)
->
-> ⚠️ **VS Code Only**: The `model` property (for selecting AI models) works in VS Code but is not supported in GitHub Copilot CLI. You can safely include it for cross-platform agent files. GitHub Copilot CLI will ignore it.
-
-### Using the Agent
-
-Select an agent interactively or via command line:
+| File | Description |
+|------|-------------|
+| `hello-world.agent.md` | Minimal example - start here |
+| `python-reviewer.agent.md` | Python code quality reviewer |
+| `pytest-helper.agent.md` | Pytest testing specialist |
 
 ```bash
-# Select from available agents interactively
+# Or copy one to your personal agents folder (available in every project)
+cp .github/agents/python-reviewer.agent.md ~/.copilot/agents/
+```
+
+For more community agents, see [github/awesome-copilot](https://github.com/github/awesome-copilot)
+
+</details>
+
+
+## 🚀 Two ways to use custom agents
+
+### Interactive mode
+Inside interactive mode, list agents using `/agent` and select the agent to start working with. 
+Select an agent to continue your conversation with.
+
+```bash
 copilot
 > /agent
+```
 
-# Start with a specific agent
+To change to a different agent, or to return to default mode, use the `/agent` command again.
+
+<details>
+<summary>🎬 See it in action!</summary>
+<!-- TODO -->
+❌ TODO see it in action - add a gif
+
+*Demo output varies - your model, tools, and responses will differ from what's shown here.*
+</details> 
+
+
+### Straight from your terminal
+
+Launch straight into a new session with an agent.
+
+```bash
 copilot --agent python-reviewer
-
-# The python-reviewer agent knows to:
-# - Add type hints to all functions
-# - Follow PEP 8 naming conventions
-# - Use proper error handling patterns
-# - Validate input data
+> Review @samples/book-app-project/books.py
 ```
 
----
-
-## Multiple Agent Files
-
-Create separate agent files for different specialties. Here are examples for a complete team:
-
-> 💡 **Note for beginners**: The examples below are templates. **Replace the specific technologies with whatever your project uses.** The important thing is the *structure* of the agent, not the specific technologies mentioned.
-
-**`~/.copilot/agents/python-reviewer.agent.md`**:
-
-```markdown
----
-name: python-reviewer
-description: Python code quality specialist for reviewing Python projects
-tools: ["read", "edit", "search"]
----
-
-# Python Code Reviewer
-
-You are a Python specialist focused on code quality and best practices.
-
-**Code standards:**
-- Use Python 3.10+ features (dataclasses, type hints)
-- Follow PEP 8 naming conventions
-- Proper error handling (no bare except)
-- Use context managers for file I/O
-
-**Always check for:**
-- Missing type hints on function signatures
-- Mutable default arguments
-- Input validation completeness
-```
-
-**`~/.copilot/agents/pytest-helper.agent.md`**:
-
-```markdown
----
-name: pytest-helper
-description: Testing specialist for Python projects using pytest
-tools: ["read", "edit", "search", "execute"]
----
-
-# Pytest Testing Specialist
-
-You are a testing expert focused on pytest best practices.
-
-**Testing philosophy:**
-- Test behavior, not implementation
-- Use descriptive test names: test_<what>_<condition>_<expected>
-- Use fixtures for shared setup
-- Always test: happy path, edge cases, error cases
-
-**Code standards:**
-- Use pytest fixtures instead of setup/teardown
-- Parametrize tests for multiple scenarios
-- Use clear assertion messages
-- Mock external dependencies properly
-```
-
-**`~/.copilot/agents/hello-world.agent.md`**:
-
-```markdown
----
-name: hello-world
-description: Minimal example agent for learning
----
-
-# Hello World Agent
-
-You are a friendly assistant who always says hello.
-
-**Your behavior:**
-- Start responses with a greeting
-- Keep explanations simple
-```
+> 💡 **Switching agents**: You can switch to a different agent at any time by using `/agent` or `--agent` again. To return to the standard Copilot CLI experience, use `/agent` and select **no agent**.
 
 ---
 
-## Generic vs Specialist: See the Difference
+# Going Deeper with Agents
+
+<img src="images/creating-custom-agents.png" alt="Robot being assembled on a workbench surrounded by components and tools representing custom agent creation" width="800"/>
+
+> 💡 **This section is optional.** The built-in agents (`/plan`, `/review`) are powerful enough for most workflows. Create custom agents when you need specialized expertise that's consistently applied across your work.
+
+Each topic below is self-contained. **Pick what interests you - you don't need to read them all at once.**
+
+| I want to... | Jump to |
+|---|---|
+| See why agents beat generic prompts | [Specialist vs Generic](#specialist-vs-generic-see-the-difference) |
+| Combine agents on a feature | [Working with Multiple Agents](#working-with-multiple-agents) |
+| Organize, name, and share agents | [Organizing & Sharing Agents](#organizing--sharing-agents) |
+| Set up always-on project context | [Configuring Your Project for Copilot](#configuring-your-project-for-copilot) |
+| Look up YAML properties and tools | [Agent File Reference](#agent-file-reference) |
+
+---
+
+<a id="specialist-vs-generic-see-the-difference"></a>
+<details>
+<summary><strong>Specialist vs Generic: See the Difference</strong> - Why agents produce better output than generic prompts</summary>
+
+## Specialist vs Generic: See the Difference
 
 This is where agents prove their value. Watch the difference:
 
@@ -485,11 +309,11 @@ def search_by_year_range(
 
 ---
 
-<a id="multi-agent-collaboration"></a>
+<a id="working-with-multiple-agents"></a>
 <details>
-<summary><strong>Multi-Agent Collaboration & Usage</strong> - Combine agents, switch mid-session, delegate tasks</summary>
+<summary><strong>Working with Multiple Agents</strong> - Combine specialists, switch mid-session, agent-as-tools</summary>
 
-## Multi-Agent Collaboration
+## Working with Multiple Agents
 
 The real power comes when specialists work together on a feature.
 
@@ -536,13 +360,15 @@ When agents are configured, Copilot can also call them as tools during complex t
 
 ---
 
-<a id="agent-naming-best-practices"></a>
+<a id="organizing--sharing-agents"></a>
 <details>
-<summary><strong>Agent Naming Best Practices</strong> - Conventions for clear, discoverable agent names</summary>
+<summary><strong>Organizing & Sharing Agents</strong> - Naming, file placement, instruction files, and team sharing</summary>
 
-## Agent Naming Best Practices
+## Organizing & Sharing Agents
 
-Good agent names are short, descriptive, and indicate the specialty:
+### Naming Your Agents
+
+When you create agent files, the name matters — it's what you'll type after `/agent` or `--agent`, and what your teammates will see in the agent list.
 
 | ✅ Good Names | ❌ Avoid |
 |--------------|----------|
@@ -557,75 +383,80 @@ Good agent names are short, descriptive, and indicate the specialty:
 - Include the domain: `frontend`, `backend`, `devops`, `security`
 - Be specific when needed: `react-typescript` vs just `frontend`
 
+---
+
+### Sharing with Your Team
+
+Place agent files in `.github/agents/` and they're version controlled — push to your repo and every team member gets them automatically. But agents are just one type of file Copilot reads from your project. It also supports **instruction files** that apply automatically to every session, without anyone needing to run `/agent`.
+
+Think of it this way: agents are specialists you call on, and instruction files are team rules that are always active.
+
+### Where to Put Your Files
+
+You already know the two main locations (see [Where to put agent files](#where-to-put-agent-files) above). Use this decision tree to choose:
+
+<!-- TODO: Replace decision tree with a visual diagram -->
+
+```
+Are you just experimenting?
+    └─ YES → Create `my-agent.agent.md` in your current folder
+    └─ NO ↓
+
+Will your team use this agent?
+    └─ YES → Create in `.github/agents/` (gets version controlled)
+    └─ NO ↓
+
+Do you want this agent everywhere?
+    └─ YES → Create in `~/.copilot/agents/` (your personal agents)
+```
+
+**Start simple:** Create a single `*.agent.md` file in your project folder. Move it to a permanent location once you're happy with it.
+
+Beyond agent files, Copilot also reads **project-level instruction files** automatically — no `/agent` needed. See [Configuring Your Project for Copilot](#configuring-your-project-for-copilot) below for `AGENTS.md`, `.instructions.md`, and `/init`.
+
 </details>
 
 ---
 
-<a id="project-level-instructions"></a>
+<a id="configuring-your-project-for-copilot"></a>
 <details>
-<summary><strong>Project-Level Instructions</strong> - AGENTS.md, instruction files, and /init setup</summary>
+<summary><strong>Configuring Your Project for Copilot</strong> - AGENTS.md, instruction files, and /init setup</summary>
 
-## Project-Level Instructions
+## Configuring Your Project for Copilot
 
-So far, you've learned how to create **agents** - specialized AI personalities you invoke with `/agent`. Now let's look at a related concept: **custom instructions** that apply automatically to every Copilot session in a project, without needing to invoke them. Think of agents as specialists you call on, and custom instructions as team standards that are always active.
-
-### Instruction File Formats
-
-Copilot supports multiple instruction file formats for cross-platform compatibility:
-
-| File | Scope | Notes |
-|------|-------|-------|
-| `AGENTS.md` | Project root or nested | **Cross-platform standard** - works with Copilot and other AI assistants |
-| `.github/copilot-instructions.md` | Project | GitHub Copilot specific |
-| `.github/instructions/*.instructions.md` | Project | Granular, topic-specific instructions |
-| `*.agent.md` | Anywhere | Individual agent definitions |
-| `CLAUDE.md`, `GEMINI.md` | Project root | Supported for compatibility |
-
-> 🎯 **Just getting started?** Use `*.agent.md` files for agents and `AGENTS.md` for project instructions. You can explore the other formats later as needed.
-
-> 💡 **Cross-Platform Tip**: If you want your instructions to work across multiple AI coding tools, use `AGENTS.md`. It's an [open standard](https://agents.md/) supported by GitHub Copilot and many others.
+Agents are specialists you invoke on demand. **Project configuration files** are different — Copilot reads them automatically in every session to understand your project's conventions, tech stack, and rules. No one needs to run `/agent`; the context is always active for everyone working in the repo.
 
 ### Quick Setup with /init
 
-Use `/init` to create instructions for your repository:
+The fastest way to get started — let Copilot generate configuration files for you:
 
 ```bash
 copilot
 > /init
 ```
 
-This generates configuration files that customize Copilot's behavior for your project.
+Copilot will scan your project and create tailored instruction files. You can edit them afterwards.
 
-### AGENTS.md File (Recommended)
+### Instruction File Formats
 
-Create an `AGENTS.md` file in your repository root. This is the recommended approach because it works across multiple AI coding tools:
+| File | Scope | Notes |
+|------|-------|-------|
+| `AGENTS.md` | Project root or nested | **Cross-platform standard** - works with Copilot and other AI assistants |
+| `.github/copilot-instructions.md` | Project | GitHub Copilot specific |
+| `.github/instructions/*.instructions.md` | Project | Granular, topic-specific instructions |
+| `CLAUDE.md`, `GEMINI.md` | Project root | Supported for compatibility |
 
-```markdown
-# Project Instructions
+> 🎯 **Just getting started?** Use `AGENTS.md` for project instructions. You can explore the other formats later as needed.
 
-## Project Context
-This is a Python CLI book management application.
+### AGENTS.md
 
-## Code Style
-- Use Python 3.10+ features (dataclasses, type hints)
-- Follow PEP 8 naming conventions
-- Use pytest for all testing
-- Handle all file I/O with context managers
+`AGENTS.md` is the recommended format — it's an [open standard](https://agents.md/) that works across Copilot and other AI coding tools. Place it in your repository root and Copilot reads it automatically. This project's own [AGENTS.md](../AGENTS.md) is a working example.
 
-## Security Requirements
-- Validate all user input
-- Use proper exception handling
-- Never expose sensitive file paths in error messages
-
-## Testing Standards
-- Minimum 80% coverage for new code
-- Use pytest fixtures for shared setup
-- Test happy path, edge cases, and error conditions
-```
+A typical `AGENTS.md` describes your project context, code style, security requirements, and testing standards. Use `/init` to generate one, or write your own following the pattern in our example file.
 
 ### Custom Instruction Files (.instructions.md)
 
-For more granular control, create instruction files in `.github/instructions/`:
+For teams that want more granular control, split instructions into topic-specific files. Each file covers one concern and applies automatically:
 
 ```
 .github/
@@ -635,49 +466,94 @@ For more granular control, create instruction files in `.github/instructions/`:
     └── api-design.instructions.md
 ```
 
-**Example: `.github/instructions/python-standards.instructions.md`**
-
 > 💡 **Note**: Instruction files work with any language. This example uses Python to match our course project, but you can create similar files for TypeScript, Go, Rust, or any technology your team uses.
-
-```markdown
-# Python Standards
-
-Apply these standards to all Python files in this project.
-
-## Type Safety
-- Add type hints to all function signatures
-- Use `Optional[T]` for parameters that can be None
-- Use `typing` module for complex types (List, Dict, Tuple)
-- Prefer dataclasses for structured data
-
-## Naming Conventions
-- snake_case for functions, methods, and variables
-- PascalCase for classes
-- SCREAMING_SNAKE_CASE for constants
-- Prefix private methods with underscore
-
-## Error Handling
-- Use specific exception types (ValueError, TypeError, etc.)
-- Never use bare `except:` clauses
-- Include descriptive error messages
-- Use context managers for resource cleanup
-
-## Code Quality
-- Follow PEP 8 style guidelines
-- Keep functions under 50 lines
-- Use list comprehensions where readable
-- Add docstrings with Args/Returns/Raises sections
-```
 
 **Finding community instruction files**: Browse [github/awesome-copilot](https://github.com/github/awesome-copilot) for pre-made instruction files covering .NET, Angular, Azure, Python, Docker, and many more technologies.
 
 ### Disabling Custom Instructions
 
-If you want Copilot to ignore project-specific configurations:
+If you need Copilot to ignore all project-specific configurations (useful for debugging or comparing behavior):
 
 ```bash
 copilot --no-custom-instructions
 ```
+
+</details>
+
+---
+
+<a id="agent-file-reference"></a>
+<details>
+<summary><strong>Agent File Reference</strong> - YAML properties, tool aliases, and complete examples</summary>
+
+## Agent File Reference
+
+### A More Complete Example
+
+You've seen the [minimal agent format](#-add-your-agents) above. Here's a more comprehensive agent that uses the `tools` property. Create `~/.copilot/agents/python-reviewer.agent.md`:
+
+```markdown
+---
+name: python-reviewer
+description: Python code quality specialist for reviewing Python projects
+tools: ["read", "edit", "search", "execute"]
+---
+
+# Python Code Reviewer
+
+You are a Python specialist focused on code quality and best practices.
+
+**Your focus areas:**
+- Code quality (PEP 8, type hints, docstrings)
+- Performance optimization (list comprehensions, generators)
+- Error handling (proper exception handling)
+- Maintainability (DRY principles, clear naming)
+
+**Code style requirements:**
+- Use Python 3.10+ features (dataclasses, type hints, pattern matching)
+- Follow PEP 8 naming conventions
+- Use context managers for file I/O
+- All functions must have type hints and docstrings
+
+**When reviewing code, always check:**
+- Missing type hints on function signatures
+- Mutable default arguments
+- Proper error handling (no bare except)
+- Input validation completeness
+```
+
+### YAML Properties
+
+| Property | Required | Description |
+|----------|----------|-------------|
+| `name` | No | Display name (defaults to filename) |
+| `description` | **Yes** | What the agent does - helps Copilot understand when to suggest it |
+| `tools` | No | List of allowed tools (omit = all tools available). See tool aliases below. |
+| `target` | No | Limit to `vscode` or `github-copilot` only |
+
+### Tool Aliases
+
+Use these names in the `tools` list:
+- `read` - Read file contents
+- `edit` - Edit files
+- `search` - Search files (grep/glob)
+- `execute` - Run shell commands (also: `shell`, `Bash`)
+- `agent` - Invoke other custom agents
+
+> 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/copilot/reference/custom-agents-configuration)
+>
+> ⚠️ **VS Code Only**: The `model` property (for selecting AI models) works in VS Code but is not supported in GitHub Copilot CLI. You can safely include it for cross-platform agent files. GitHub Copilot CLI will ignore it.
+
+### More Agent Templates
+
+> 💡 **Note for beginners**: The examples below are templates. **Replace the specific technologies with whatever your project uses.** The important thing is the *structure* of the agent, not the specific technologies mentioned.
+
+This project includes working examples in the [.github/agents/](../.github/agents/) folder:
+- [hello-world.agent.md](../.github/agents/hello-world.agent.md) — Minimal example, start here
+- [python-reviewer.agent.md](../.github/agents/python-reviewer.agent.md) — Python code quality reviewer
+- [pytest-helper.agent.md](../.github/agents/pytest-helper.agent.md) — Pytest testing specialist
+
+For community agents, see [github/awesome-copilot](https://github.com/github/awesome-copilot).
 
 </details>
 
@@ -757,9 +633,7 @@ copilot
 
 The hands-on example created `reviewer` and `documentor` agents. Now practice creating and using agents for a different task - improving data validation in the book app:
 
-1. Create 3 agents tailored to the book app. You can either:
-   - Create individual `.agent.md` files (one per agent), **or**
-   - Define them all in a single `AGENTS.md` file (see the hint below for a template)
+1. Create 3 agent files (`.agent.md`) tailored to the book app — one per agent, placed in `.github/agents/`
 2. Your agents:
    - **data-validator**: checks `data.json` for missing or malformed data (empty authors, year=0, missing fields)
    - **error-handler**: reviews Python code for inconsistent error handling and suggests a unified approach
@@ -775,15 +649,13 @@ The hands-on example created `reviewer` and `documentor` agents. Now practice cr
 <details>
 <summary>💡 Hints (click to expand)</summary>
 
-**Starter template** - Copy this to `AGENTS.md` in your project root:
+**Starter templates** — create one file per agent in `.github/agents/`:
 
+`data-validator.agent.md`:
 ```markdown
 ---
-name: book-app-team
-description: A team of specialized agents for the book app project
+description: Analyzes JSON data files for missing or malformed entries
 ---
-
-## Data Validator
 
 You analyze JSON data files for missing or malformed entries.
 
@@ -792,8 +664,13 @@ You analyze JSON data files for missing or malformed entries.
 - Invalid years (year=0, future years, negative years)
 - Missing required fields (title, author, year, read)
 - Duplicate entries
+```
 
-## Error Handler
+`error-handler.agent.md`:
+```markdown
+---
+description: Reviews Python code for error handling consistency
+---
 
 You review Python code for error handling consistency.
 
@@ -802,8 +679,13 @@ You review Python code for error handling consistency.
 - Use custom exceptions where appropriate
 - All file operations use context managers
 - Consistent return types for success/failure
+```
 
-## Doc Writer
+`doc-writer.agent.md`:
+```markdown
+---
+description: Technical writer for clear Python documentation
+---
 
 You are a technical writer who creates clear Python documentation.
 
@@ -818,7 +700,7 @@ You are a technical writer who creates clear Python documentation.
 ```bash
 copilot
 > /agent
-# Select "Data Validator" from the list
+# Select "data-validator" from the list
 > @samples/book-app-project/data.json Check for books with empty author fields or invalid years
 ```
 
@@ -828,10 +710,12 @@ copilot
 
 ### Bonus Challenge: Instruction Library
 
+You've built agents you invoke on demand. Now try the other side — **instruction files** that Copilot reads automatically in every session, no `/agent` needed.
+
 Create a `.github/instructions/` folder with at least 3 instruction files:
-- `python-style.md` for enforcing PEP 8 and type hint conventions
-- `test-standards.md` for enforcing pytest conventions in test files
-- `data-quality.md` for validating JSON data entries
+- `python-style.instructions.md` for enforcing PEP 8 and type hint conventions
+- `test-standards.instructions.md` for enforcing pytest conventions in test files
+- `data-quality.instructions.md` for validating JSON data entries
 
 Test each instruction file on the book app code.
 
