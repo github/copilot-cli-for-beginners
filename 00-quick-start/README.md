@@ -42,7 +42,7 @@ If you don't want to install any of the prerequisites, you can use GitHub Codesp
 
 1. [Fork this repository](https://github.com/github/github-copilot-cli-for-beginners/fork) to your GitHub account
 2. Click **Code** > **Codespaces** > **Create codespace on main**
-3. Wait for the container to build (~2 minutes)
+3. Wait a few minutes for the container to build
 4. You're ready to go! The terminal will open automatically in the Codespace environment.
 
 > 💡 **Verify in Codespace**: Run `cd samples/book-app-project && python book_app.py help` to confirm Python and the sample app are working.
@@ -84,17 +84,26 @@ curl -fsSL https://gh.io/copilot-install | bash
 
 ## Authentication
 
-Open a terminal window, start the CLI, and sign in using the `/login` command:
+Open a terminal window at the root of the `github-copilot-cli-for-beginners` repository, start the CLI and allow access to the folder.
 
 ```bash
 copilot
+```
+
+You'll be asked to trust the folder containing the repository (if you haven't already). You can trust it one time or across all future sessions.
+
+<img src="images/copilot-trust.png" alt="Trusting files in a folder with the Copilot CLI" width="800"/>
+
+After trusting the folder, you can sign in with your GitHub account.
+
+```
 > /login
 ```
 
 **What happens next:**
 
 1. Copilot CLI displays a one-time code (like `ABCD-1234`)
-2. Your browser opens to GitHub's device authorization page
+2. Your browser opens to GitHub's device authorization page. Sign in to GitHub if you haven't already.
 3. Enter the code when prompted
 4. Click "Authorize" to grant GitHub Copilot CLI access
 5. Return to your terminal - you're now signed in!
@@ -111,9 +120,15 @@ copilot
 
 ### Step 1: Test Copilot CLI
 
+Now that you're signed in, let's verify that Copilot CLI is working for you. In the terminal, start the CLI if you haven't already:
+
 ```bash
-copilot
 > Say hello and tell me what you can help with
+```
+
+After you receive a response, you can exit the CLI:
+
+```bash
 > /exit
 ```
 
@@ -151,12 +166,17 @@ Navigate back to the repository root first (if you ran Step 2):
 cd ../..   # Back to the repository root if needed
 copilot 
 > What does @samples/book-app-project/book_app.py do?
-> /exit
 ```
 
 **Expected output**: A summary of the book app's main functions and commands.
 
 If you see an error, check the [troubleshooting section](#troubleshooting) below.
+
+Once you're done you can exit the Copilot CLI:
+
+```bash
+> /exit
+```
 
 ---
 
