@@ -203,7 +203,7 @@ Each topic below is self-contained. **Pick what interests you - you don't need t
 | Set up always-on project context | [Configuring Your Project for Copilot](#configuring-your-project-for-copilot) |
 | Look up YAML properties and tools | [Agent File Reference](#agent-file-reference) |
 
-Click a scenario below to expand it.
+Select a scenario below to expand it.
 
 ---
 

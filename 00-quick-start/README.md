@@ -41,7 +41,7 @@ If you see "You don't have access to GitHub Copilot," you'll need to use the fre
 If you don't want to install any of the prerequisites, you can use GitHub Codespaces, which has the GitHub Copilot CLI ready to go (you'll need to sign in), pre-installs Python 3.13, pytest, and the GitHub CLI.
 
 1. [Fork this repository](https://github.com/github/github-copilot-cli-for-beginners/fork) to your GitHub account
-2. Click **Code** > **Codespaces** > **Create codespace on main**
+2. Select **Code** > **Codespaces** > **Create codespace on main**
 3. Wait a few minutes for the container to build
 4. You're ready to go! The terminal will open automatically in the Codespace environment.
 
@@ -105,7 +105,7 @@ After trusting the folder, you can sign in with your GitHub account.
 1. Copilot CLI displays a one-time code (like `ABCD-1234`)
 2. Your browser opens to GitHub's device authorization page. Sign in to GitHub if you haven't already.
 3. Enter the code when prompted
-4. Click "Authorize" to grant GitHub Copilot CLI access
+4. Select "Authorize" to grant GitHub Copilot CLI access
 5. Return to your terminal - you're now signed in!
 
 <img src="images/auth-device-flow.png" alt="Device Authorization Flow - showing the 5-step process from terminal login to signed-in confirmation" width="800"/>
