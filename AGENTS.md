@@ -8,6 +8,8 @@ Beginner-friendly course teaching GitHub Copilot CLI. Educational content, not s
 |------|---------|
 | `00-07/` | Chapters: analogy → concepts → hands-on → assignment → next |
 | `samples/book-app-project/` | **Primary sample**: Python CLI book collection app used throughout all chapters |
+| `samples/book-app-project-cs/` | C# version of the book collection app |
+| `samples/book-app-project-js/` | JavaScript version of the book collection app |
 | `samples/book-app-buggy/` | **Intentional bugs** for debugging exercises (Ch 03) |
 | `samples/agents/` | Agent template examples (python-reviewer, pytest-helper, hello-world) |
 | `samples/skills/` | Skill template examples (code-checklist, pytest-gen, commit-message, hello-world) |
