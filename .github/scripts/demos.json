@@ -1,0 +1,150 @@
+{
+  "settings": {
+    "fontSize": 18,
+    "width": 1000,
+    "height": 600,
+    "theme": "Dracula",
+    "typingSpeed": "60ms",
+    "framerate": 10,
+    "startupWait": 5,
+    "responseWait": 25,
+    "exitWait": 2
+  },
+  "demos": [
+    {
+      "chapter": "00-quick-start",
+      "name": "hello-demo",
+      "description": "Say hello to Copilot and explore what it can help with",
+      "prompt": "Say hello and tell me what you can help with"
+    },
+    {
+      "chapter": "01-setup-and-first-steps",
+      "name": "code-review-demo",
+      "description": "Review a file for code quality issues and suggest improvements",
+      "prompt": "Review @samples/book-app-project/book_app.py for code quality issues and suggest improvements"
+    },
+    {
+      "chapter": "01-setup-and-first-steps",
+      "name": "explain-code-demo",
+      "description": "Explain what a Python file does in simple terms",
+      "prompt": "Explain what @samples/book-app-project/books.py does in simple terms"
+    },
+    {
+      "chapter": "01-setup-and-first-steps",
+      "name": "generate-code-demo",
+      "description": "Generate a Python function from a natural language description",
+      "responseWait": 35,
+      "prompt": "Write a Python function that takes a list of books and returns statistics: total count, number read, number unread, oldest and newest book"
+    },
+    {
+      "chapter": "02-context-conversations",
+      "name": "file-context-demo",
+      "description": "Use @file to ask about a specific file",
+      "prompt": "What does @samples/book-app-project/utils.py do? Summarize briefly."
+    },
+    {
+      "chapter": "02-context-conversations",
+      "name": "multi-file-demo",
+      "description": "Reference multiple files to understand data flow",
+      "prompt": "Compare @samples/book-app-project/book_app.py and @samples/book-app-project/books.py - how do they work together? What's the data flow?"
+    },
+    {
+      "chapter": "02-context-conversations",
+      "name": "multi-turn-demo",
+      "description": "Multi-turn conversation building on previous context",
+      "prompts": [
+        "@samples/book-app-project/ Give me an overview of this project",
+        "What are the main code quality issues?",
+        { "text": "Which issue should I fix first and show me how?", "responseWait": 45 }
+      ]
+    },
+    {
+      "chapter": "03-development-workflows",
+      "name": "code-review-demo",
+      "description": "Workflow 1: Code Review - review a file for code quality",
+      "responseWait": 30,
+      "prompt": "Review @samples/book-app-project/book_app.py for code quality"
+    },
+    {
+      "chapter": "03-development-workflows",
+      "name": "refactor-demo",
+      "description": "Workflow 2: Refactoring - refactor command handling to dictionary dispatch",
+      "responseWait": 30,
+      "prompt": "@samples/book-app-project/book_app.py Refactor the command handling to use a dictionary dispatch pattern instead of if/elif chains"
+    },
+    {
+      "chapter": "03-development-workflows",
+      "name": "fix-bug-demo",
+      "description": "Workflow 3: Debugging - debug a search issue",
+      "responseWait": 30,
+      "prompt": "@samples/book-app-buggy/books_buggy.py Users report that searching for 'The Hobbit' returns no results even though it's in the data. Debug why."
+    },
+    {
+      "chapter": "03-development-workflows",
+      "name": "test-gen-demo",
+      "description": "Workflow 4: Test Generation - generate comprehensive pytest tests",
+      "responseWait": 60,
+      "prompt": "@samples/book-app-project/books.py Generate comprehensive pytest tests. Include tests for: Adding books, Removing books, Finding by title, Finding by author, Marking as read, Edge cases with empty data"
+    },
+    {
+      "chapter": "03-development-workflows",
+      "name": "git-integration-demo",
+      "description": "Workflow 5: Git Integration - generate a conventional commit message",
+      "responseWait": 30,
+      "prompt": "Generate a conventional commit message for: $(git diff --staged)"
+    },
+    {
+      "chapter": "04-agents-custom-instructions",
+      "name": "python-reviewer-demo",
+      "description": "Agent-based Python code review for type hints, error handling, and PEP 8",
+      "prompt": "As a Python code quality expert, review @samples/book-app-project/books.py for type hints, error handling, and PEP 8 compliance"
+    },
+    {
+      "chapter": "05-skills",
+      "name": "list-skills-demo",
+      "description": "List available slash commands and skills",
+      "responseWait": 25,
+      "prompt": "What slash commands and skills are available? List the main ones."
+    },
+    {
+      "chapter": "05-skills",
+      "name": "skill-trigger-demo",
+      "description": "Copilot detects and triggers a matching skill",
+      "responseWait": 45,
+      "prompt": "Review the book collection code for issues"
+    },
+    {
+      "chapter": "06-mcp-servers",
+      "name": "mcp-status-demo",
+      "description": "Check connected MCP servers with /mcp show",
+      "responseWait": 25,
+      "prompt": "/mcp show"
+    },
+    {
+      "chapter": "06-mcp-servers",
+      "name": "mcp-workflow-demo",
+      "description": "Multi-step MCP workflow with issues and code analysis",
+      "prompts": [
+        "List open issues on this repository",
+        { "text": "@samples/book-app-project/books.py What code handles the search functionality?", "responseWait": 20 },
+        { "text": "Based on the code, suggest improvements for the search feature", "responseWait": 30 }
+      ]
+    },
+    {
+      "chapter": "07-putting-it-together",
+      "name": "full-review-demo",
+      "description": "Idea to merged PR: plan, implement, test a new feature",
+      "prompts": [
+        { "text": "I need to add a 'list unread' command to the book app that shows only books where read is False. What files need to change?", "responseWait": 25 },
+        { "text": "/agent", "agentSelect": "python-reviewer", "arrowDown": 3, "responseWait": 3 },
+        { "text": "@samples/book-app-project/books.py Design a get_unread_books method. What is the best approach?", "responseWait": 30 },
+        { "text": "/agent", "agentSelect": "pytest-helper", "arrowDown": 2, "responseWait": 3 },
+        { "text": "@samples/book-app-project/tests/test_books.py Design test cases for filtering unread books.", "responseWait": 30 },
+        { "text": "Add a get_unread_books method to BookCollection in books.py. Add a 'list unread' command option in book_app.py. Update the help text in the show_help function.", "responseWait": 30 },
+        { "text": "Generate comprehensive tests for the new feature", "responseWait": 35 },
+        { "text": "/review", "responseWait": 25 },
+        { "text": "Create a pull request titled 'Feature: Add list unread books command'", "responseWait": 25 }
+      ]
+    }
+  ]
+}

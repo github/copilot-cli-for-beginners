@@ -1,0 +1,17 @@
+{
+  "name": "GitHub Copilot CLI for Beginners",
+  "image": "mcr.microsoft.com/devcontainers/python:2-3.13-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  },
+  "postCreateCommand": "pip install pytest && npm install -g @github/copilot && gh extension install github/gh-copilot",
+  "postStartCommand": "echo '✅ Python, pytest, GitHub CLI, and Copilot CLI are ready. Run: cd samples/book-app-project && python book_app.py help'"
+}

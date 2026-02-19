@@ -1,0 +1,66 @@
+name: Generate Course Assets
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    # Only run on commits starting with "release:" or manual dispatch
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      startsWith(github.event.head_commit.message, 'release:')
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip3 install Pillow
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install VHS dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ttyd ffmpeg fonts-dejavu tesseract-ocr
+
+      - name: Install VHS
+        run: |
+          wget https://github.com/charmbracelet/vhs/releases/latest/download/vhs_Linux_x86_64.tar.gz
+          tar -xzf vhs_Linux_x86_64.tar.gz
+          sudo mv vhs /usr/local/bin/
+          vhs --version
+
+      - name: Install asciinema
+        run: pip3 install asciinema
+
+      - name: Run release build
+        run: npm run release
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit generated files
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config user.name "Release Bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: Update generated assets [skip ci]"
+          git push

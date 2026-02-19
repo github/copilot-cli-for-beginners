@@ -1,0 +1,23 @@
+{
+  "name": "github-copilot-cli-course",
+  "version": "1.0.0",
+  "description": "GitHub Copilot CLI for Beginners - Course Materials",
+  "scripts": {
+    "generate:headers": "python3 .github/scripts/generate-chapter-headers.py",
+    "scan:demos": "node .github/scripts/scan-demos.js",
+    "create:tapes": "node .github/scripts/create-tapes.js",
+    "generate:vhs": "node .github/scripts/generate-demos.js",
+    "verify:gifs": "node .github/scripts/verify-gifs.js",
+    "generate:demos": "npm run scan:demos && npm run create:tapes && npm run generate:vhs && npm run verify:gifs",
+    "release": "npm run generate:demos",
+    "release:ci": "npm run generate:headers"
+  },
+  "keywords": [
+    "github-copilot",
+    "cli",
+    "tutorial",
+    "course"
+  ],
+  "author": "Microsoft Corporation",
+  "license": "MIT"
+}
