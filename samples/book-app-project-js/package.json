@@ -1,0 +1,10 @@
+{
+  "name": "book-app",
+  "version": "0.1.0",
+  "description": "A JavaScript CLI app for managing a book collection",
+  "main": "book_app.js",
+  "scripts": {
+    "start": "node book_app.js",
+    "test": "node --test tests/test_books.js"
+  }
+}

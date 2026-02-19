@@ -44,6 +44,12 @@ __pycache__/
 *.pyc
 *.pyo
 
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
 # Testing
 coverage/
 .nyc_output/
