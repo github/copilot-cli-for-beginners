@@ -40,7 +40,7 @@ If you see "You don't have access to GitHub Copilot," you'll need to use the fre
 
 If you don't want to install any of the prerequisites, you can use GitHub Codespaces, which has the GitHub Copilot CLI ready to go (you'll need to sign in), pre-installs Python 3.13, pytest, and the GitHub CLI.
 
-1. [Fork this repository](https://github.com/github/github-copilot-cli-for-beginners/fork) to your GitHub account
+1. [Fork this repository](https://github.com/github/copilot-cli-for-beginners/fork) to your GitHub account
 2. Select **Code** > **Codespaces** > **Create codespace on main**
 3. Wait a few minutes for the container to build
 4. You're ready to go! The terminal will open automatically in the Codespace environment.
@@ -52,6 +52,8 @@ If you don't want to install any of the prerequisites, you can use GitHub Codesp
 > 💡 **Not sure which to pick?** Use `npm` if you have Node.js installed. Otherwise, choose the option that matches your system.
 
 > 💡 **Python required for demos**: The course uses a Python sample app. If you're working locally, install [Python 3.10+](https://www.python.org/downloads/) before starting the demos.
+
+> **Note:** While the primary examples shown throughout the course use Python (`samples/book-app-project`), JavaScript (`samples/book-app-project-js`) and C# (`samples/book-app-project-cs`) versions are also available if you prefer to work with those languages. Each sample has a README with instructions for running the app in that language.
 
 Choose the method that works for your system:
 
@@ -84,7 +86,7 @@ curl -fsSL https://gh.io/copilot-install | bash
 
 ## Authentication
 
-Open a terminal window at the root of the `github-copilot-cli-for-beginners` repository, start the CLI and allow access to the folder.
+Open a terminal window at the root of the `copilot-cli-for-beginners` repository, start the CLI and allow access to the folder.
 
 ```bash
 copilot
@@ -151,7 +153,7 @@ After you receive a response, you can exit the CLI:
 
 The course provides a sample app that you'll explore and improve throughout the course using the CLI *(You can see the code for this in /samples/book-app-project)*. Check that the *Python book collection terminal app* works before you get started. Run `python` or `python3` depending on your system.
 
-> **Note:** The primary examples use Python (`samples/book-app-project`), but JavaScript (`samples/book-app-project-js`) and C# (`samples/book-app-project-cs`) versions are also available if you prefer to work in those languages.
+> **Note:** While the primary examples shown throughout the course use Python (`samples/book-app-project`), JavaScript (`samples/book-app-project-js`) and C# (`samples/book-app-project-cs`) versions are also available if you prefer to work with those languages. Each sample has a README with instructions for running the app in that language.
 
 ```bash
 cd samples/book-app-project

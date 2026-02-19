@@ -768,7 +768,7 @@ The hands-on examples focused on code quality reviews and input validation. Now 
 
 **Getting started:**
 ```bash
-cd /path/to/github-copilot-cli-for-beginners
+cd /path/to/copilot-cli-for-beginners
 copilot
 > @samples/book-app-project/books.py @samples/book-app-project/book_app.py Trace how a book goes from user input to being saved in data.json.
 > @samples/book-app-project/data.json What happens if this file is missing or corrupted?

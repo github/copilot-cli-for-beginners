@@ -1,7 +1,7 @@
 ![GitHub Copilot CLI for Beginners](./images/copilot-banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)&ensp;
-[![Open project in GitHub Codespaces](https://img.shields.io/badge/Codespaces-Open-blue?style=flat-square&logo=github)](https://codespaces.new/github/github-copilot-cli-for-beginners?hide_repo_select=true&ref=main&quickstart=true)&ensp;
+[![Open project in GitHub Codespaces](https://img.shields.io/badge/Codespaces-Open-blue?style=flat-square&logo=github)](https://codespaces.new/github/copilot-cli-for-beginners?hide_repo_select=true&ref=main&quickstart=true)&ensp;
 [![Official Copilot CLI documentation](https://img.shields.io/badge/GitHub-CLI_Documentation-00a3ee?style=flat-square&logo=github)](https://docs.github.com/en/copilot/how-tos/copilot-cli)&ensp;
 [![Join AI Foundry Discord](https://img.shields.io/badge/Discord-AI_Community-blue?style=flat-square&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
 
@@ -83,7 +83,7 @@ The **[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/
 
 ## 🙋 Getting Help
 
-- 🐛 **Found a bug?** [Open an Issue](https://github.com/github/github-copilot-cli-for-beginners/issues)
+- 🐛 **Found a bug?** [Open an Issue](https://github.com/github/copilot-cli-for-beginners/issues)
 - 🤝 **Want to contribute?** PRs welcome!
 - 📚 **Official Docs:** [GitHub Copilot CLI Documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)
 
