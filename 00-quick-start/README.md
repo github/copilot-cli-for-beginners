@@ -151,6 +151,8 @@ After you receive a response, you can exit the CLI:
 
 The course provides a sample app that you'll explore and improve throughout the course using the CLI *(You can see the code for this in /samples/book-app-project)*. Check that the *Python book collection terminal app* works before you get started. Run `python` or `python3` depending on your system.
 
+> **Note:** The primary examples use Python (`samples/book-app-project`), but JavaScript (`samples/book-app-project-js`) and C# (`samples/book-app-project-cs`) versions are also available if you prefer to work in those languages.
+
 ```bash
 cd samples/book-app-project
 python book_app.py list
