@@ -372,62 +372,65 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 > 💡 The five commands above cover a lot of what you'll do on a daily use. This reference is here for when you're ready to explore more.
 
-### Core Commands
+### Agent Environment
 
 | Command | What It Does |
 |---------|--------------|
-| `/review` | Run the code-review agent |
+| `/init` | Initialize Copilot instructions for your repository |
+| `/agent` | Browse and select from available agents |
+| `/skills` | Manage skills for enhanced capabilities |
+| `/mcp` | Manage MCP server configuration |
+
+> 💡 Skills are covered in detail in [Chapter 05](../05-skills/README.md). MCP servers are covered in [Chapter 06](../06-mcp-servers/README.md).
+
+### Models and Subagents
+
+| Command | What It Does |
+|---------|--------------|
+| `/model` | Show or switch AI model |
 | `/delegate` | Hand off task to Copilot coding agent on GitHub (agent in the cloud) |
-
-### Session Commands
-
-| Command | What It Does |
-|---------|--------------|
-| `/session` | Show session info and workspace summary |
-| `/usage` | Display session usage metrics and statistics |
-| `/context` | Show context window token usage |
-| `/compact` | Summarize conversation to reduce context usage |
-| `/share` | Export session as markdown file or GitHub gist |
-| `/rename` | Rename the current session |
-| `/resume` | Switch to a different session |
+| `/fleet` | Enable fleet mode for parallel subagent execution |
 | `/tasks` | View background subagents and detached shell sessions |
 
-### Directory Access
+### Code
 
 | Command | What It Does |
 |---------|--------------|
-| `/add-dir <directory>` | Add a directory to allowed list |
-| `/list-dirs` | Show all allowed directories |
-| `/cwd`, `/cd [directory]` | View or change working directory |
-
-### Configuration
-
-| Command | What It Does |
-|---------|--------------|
-| `/theme` | View or set terminal theme |
-| `/terminal-setup` | Enable multiline input support |
-| `/user` | Manage GitHub accounts |
-| `/feedback` | Submit feedback to GitHub |
-| `/init` | Initialize Copilot instructions for your repository |
-
-### Skills Management
-
-| Command | What It Does |
-|---------|--------------|
-| `/skills list` | Show all available skills |
-| `/skills info <name>` | Get details about a specific skill |
-| `/skills reload` | Reload skills after editing |
-
-> 💡 Skills are covered in detail in [Chapter 05](../05-skills/README.md).
+| `/diff` | Review the changes made in the current directory |
+| `/review` | Run the code-review agent to analyze changes |
+| `/terminal-setup` | Enable multiline input support (shift+enter and ctrl+enter) |
 
 ### Permissions
 
 | Command | What It Does |
 |---------|--------------|
 | `/allow-all` | Auto-approve all permission prompts for this session |
-| `/yolo` | Alias for `/allow-all` (same behavior) |
+| `/add-dir <directory>` | Add a directory to allowed list |
+| `/list-dirs` | Show all allowed directories |
+| `/cwd`, `/cd [directory]` | View or change working directory |
 
-> ⚠️ **Use with caution**: These skip confirmation prompts. Great for trusted projects, but be careful with untrusted code.
+> ⚠️ **Use with caution**: `/allow-all` skips confirmation prompts. Great for trusted projects, but be careful with untrusted code.
+
+### Session
+
+| Command | What It Does |
+|---------|--------------|
+| `/resume` | Switch to a different session (optionally specify session ID) |
+| `/rename` | Rename the current session |
+| `/context` | Show context window token usage and visualization |
+| `/usage` | Display session usage metrics and statistics |
+| `/session` | Show session info and workspace summary |
+| `/compact` | Summarize conversation to reduce context usage |
+| `/share` | Export session as markdown file or GitHub gist |
+
+### Help and Feedback
+
+| Command | What It Does |
+|---------|--------------|
+| `/help` | Show all available commands |
+| `/changelog` | Display changelog for CLI versions |
+| `/feedback` | Submit feedback to GitHub |
+| `/theme` | View or set terminal theme |
 
 ### Quick Shell Commands
 
