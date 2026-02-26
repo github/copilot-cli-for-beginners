@@ -19,6 +19,7 @@ out/
 .playwright-mcp/
 .ai-repo-adventures/
 output.json
+*.sln
 
 # Environment files
 .env
