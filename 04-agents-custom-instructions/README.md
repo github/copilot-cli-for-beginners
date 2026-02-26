@@ -64,7 +64,7 @@ Never used or made an agent? Here's all you need to know to get started for this
 
 | Agent | How to Invoke | What It Does |
 |-------|---------------|--------------|
-| **Plan** | `/plan` or `Shift+Tab` | Creates step-by-step implementation plans before coding |
+| **Plan** | `/plan` or `Shift+Tab` (cycle modes) | Creates step-by-step implementation plans before coding |
 | **Code-review** | `/review` | Reviews staged/unstaged changes with focused, actionable feedback |
 | **Init** | `/init` | Generates project configuration files (instructions, agents) |
 | **Explore** | *Automatic* | Used internally when you ask Copilot to explore or analyze the codebase |

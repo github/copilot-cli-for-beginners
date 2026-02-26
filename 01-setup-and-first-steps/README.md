@@ -193,6 +193,8 @@ When you're done exploring, exit the session:
 
 You've just seen what Copilot CLI can do. Now let's understand *how* to use these capabilities effectively. The key is knowing which of the three interaction modes to use for different situations.
 
+> 💡 **Note**: Copilot CLI also has an **Autopilot** mode where it works through tasks without waiting for your input. It's powerful but requires granting full permissions and uses premium requests autonomously. This course focuses on the three modes below. We'll point you to Autopilot once you're comfortable with the basics.
+
 ---
 
 ## 🧩 Real-World Analogy: Dining Out
@@ -270,9 +272,9 @@ Notice how each prompt builds on the previous answer. You're having a conversati
 
 **Best for**: Complex tasks where you want to review the approach before execution. Similar to planning a route before a trip using GPS.
 
-Plan mode helps you create a step-by-step plan before writing any code. Use the `/plan` command or press **Shift+Tab** to toggle Plan Mode:
+Plan mode helps you create a step-by-step plan before writing any code. Use the `/plan` command or press **Shift+Tab** to cycle into Plan Mode:
 
-> 💡 **Tip**: **Shift+Tab** is a keyboard shortcut that toggles between regular mode and plan mode. Press it anytime during an interactive session to switch modes without typing a command.
+> 💡 **Tip**: **Shift+Tab** cycles between modes: Interactive → Plan → Autopilot. Press it anytime during an interactive session to switch modes without typing a command.
 
 ```bash
 copilot
@@ -309,6 +311,8 @@ Proceed with implementation? [Y/n]
 **Key insight**: Plan mode lets you review and modify the approach before any code is written. Once a plan is complete, you can even tell Copilot CLI to save it to a file for later reference. For example, "Save this plan to `mark_as_read_plan.md`" would create a markdown file with the plan details.
 
 > 💡 **Want something more complex?** Try: `/plan Add search and filter capabilities to the book app`. Plan mode scales from simple features to full applications.
+
+> 📚 **Autopilot mode**: You may have noticed Shift+Tab cycles through a third mode called **Autopilot**. In autopilot mode, Copilot works through an entire plan without waiting for your input after each step — like handing a task to a colleague and saying "let me know when you're finished." The typical workflow is plan → accept → autopilot, which means you need to be good at writing plans first. Get comfortable with Interactive and Plan modes, then see the [official docs](https://docs.github.com/copilot/concepts/agents/copilot-cli/autopilot) when you're ready.
 
 ---
 
@@ -390,7 +394,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 |---------|--------------|
 | `/model` | Show or switch AI model |
 | `/delegate` | Hand off task to Copilot coding agent on GitHub (agent in the cloud) |
-| `/fleet` | Enable fleet mode for parallel subagent execution |
+| `/fleet` | Split a complex task into parallel subtasks for faster completion |
 | `/tasks` | View background subagents and detached shell sessions |
 
 ### Code
