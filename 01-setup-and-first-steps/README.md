@@ -390,7 +390,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 |---------|--------------|
 | `/model` | Show or switch AI model |
 | `/delegate` | Hand off task to Copilot coding agent on GitHub (agent in the cloud) |
-| `/fleet` | Enable fleet mode for parallel subagent execution |
+| `/fleet` | Split a complex task into parallel subtasks for faster completion |
 | `/tasks` | View background subagents and detached shell sessions |
 
 ### Code
