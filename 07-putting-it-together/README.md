@@ -139,19 +139,19 @@ copilot
 
 # Learn: "find_by_author doesn't work with partial names"
 
-# PHASE 2: Find related code
+# PHASE 2: Research best practice (deep research with web + GitHub sources)
+> /research Best practices for Python case-insensitive string matching
+
+# PHASE 3: Find related code
 > @samples/book-app-project/books.py Show me the find_by_author method
 
-# PHASE 3: Get expert analysis
+# PHASE 4: Get expert analysis
 > /agent
 # Select "python-reviewer"
 
 > Analyze this method for issues with partial name matching
 
 # Agent identifies: Method uses exact equality instead of substring matching
-
-# PHASE 4: Research best practice
-> What are the best practices for Python case-insensitive string matching?
 
 # PHASE 5: Fix with agent guidance
 > Implement the fix using lowercase comparison and 'in' operator
