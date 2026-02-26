@@ -49,6 +49,7 @@ This chapter covers five workflows that developers typically use. **However, you
 | Track down and fix a bug | [Workflow 3: Debugging](#workflow-3-debugging) |
 | Generate tests for my code | [Workflow 4: Test Generation](#workflow-4-test-generation) |
 | Write better commits and PRs | [Workflow 5: Git Integration](#workflow-5-git-integration) |
+| Research before coding | [Quick Tip: Research Before You Plan or Code](#quick-tip-research-before-you-plan-or-code) |
 | See a full bug-fix workflow end to end | [Putting It All Together](#putting-it-all-together-bug-fix-workflow) |
 
 **Select a workflow below to expand it** and see how GitHub Copilot CLI can enhance your development process in that area. 
@@ -682,6 +683,22 @@ copilot
 ```
 
 </details>
+
+---
+
+## Quick Tip: Research Before You Plan or Code
+
+When you need to investigate a library, understand best practices, or explore an unfamiliar topic, use `/research` to run a deep research investigation before writing any code:
+
+```bash
+copilot
+
+> /research What are the best Python libraries for validating user input in CLI apps?
+```
+
+Copilot searches GitHub repositories and web sources, then returns a summary with references. This is useful when you're about to start a new feature and want to make informed decisions first. You can share the results using `/share`.
+
+> 💡 **Tip**: `/research` works well *before* `/plan`. Research the approach, then plan the implementation.
 
 ---
 

@@ -360,6 +360,7 @@ These commands work in interactive mode. **Start with just these four** - they c
 | `/help` | Show all available commands | When you forget a command |
 | `/clear` | Clear conversation and start fresh | When switching topics |
 | `/plan` | Plan your work out before coding | For more complex features |
+| `/research` | Deep research using GitHub and web sources | When you need to investigate a topic before coding |
 | `/model` | Show or switch AI model | When you want to change the AI model |
 | `/exit` | End the session | When you're done |
 
@@ -398,6 +399,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 |---------|--------------|
 | `/diff` | Review the changes made in the current directory |
 | `/review` | Run the code-review agent to analyze changes |
+| `/research` | Run deep research investigation using GitHub and web sources |
 | `/terminal-setup` | Enable multiline input support (shift+enter and ctrl+enter) |
 
 ### Permissions
