@@ -100,6 +100,8 @@ copilot
 
 **The key insight**: You directed specialists like an architect. They handled the details. You handled the vision.
 
+> 💡 **Going further**: For large multi-step plans like this, try `/fleet` to let Copilot run independent subtasks in parallel. See the [official docs](https://docs.github.com/copilot/concepts/agents/copilot-cli/fleet) for details.
+
 ---
 
 <details>
