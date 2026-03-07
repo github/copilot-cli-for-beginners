@@ -27,6 +27,7 @@ const defaultSettings = {
   height: 600,
   theme: "Dracula",
   typingSpeed: "60ms",
+  framerate: 15,
   startupWait: 5,
   responseWait: 25,
   exitWait: 2

@@ -104,17 +104,6 @@ copilot
 
 ---
 
-<details>
-<summary>🎬 See it in action!</summary>
-
-![Full Review Demo](images/full-review-demo.gif)
-
-*Demo output varies. Your model, tools, and responses will differ from what's shown here.*
-
-</details>
-
----
-
 # Additional Workflows
 
 <img src="images/combined-workflows.png" alt="People assembling a colorful giant jigsaw puzzle with gears, representing how agents, skills, and MCP combine into unified workflows" width="800"/>

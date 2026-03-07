@@ -46,13 +46,37 @@ Sleep ${wait}s`;
     ? 'Enter\nSleep 1s\nEnter'
     : 'Enter';
 
+  // VHS Type command must be single-line; split multi-line prompts
+  const lines = text.split('\n');
+  let typeBlock;
+  if (lines.length > 1) {
+    typeBlock = lines
+      .map((line, i) => i < lines.length - 1 ? `Type "${line}"\nEnter` : `Type "${line}"`)
+      .join('\n');
+  } else {
+    typeBlock = `Type "${text}"`;
+  }
+
+  // Break response wait into chunks with periodic hidden nudges.
+  // A hidden space+backspace forces copilot's TUI to scroll to the input area.
+  const nudgeInterval = 3;
+  let waitBlock = '';
+  let remaining = wait;
+  while (remaining > nudgeInterval) {
+    waitBlock += `Sleep ${nudgeInterval}s\nHide\nType " "\nBackspace\nShow\n`;
+    remaining -= nudgeInterval;
+  }
+  if (remaining > 0) {
+    waitBlock += `Sleep ${remaining}s`;
+  }
+
   return `# ${label}
-Type "${text}"
+${typeBlock}
 Sleep 2s
 ${enterBlock}
 
-# Wait for response
-Sleep ${wait}s`;
+# Wait for response (with periodic nudges to keep input visible)
+${waitBlock}`;
 }
 
 function generateTapeContent(demo, settings) {
@@ -95,9 +119,14 @@ Sleep ${s.startupWait}s
 
 ${promptBlocks}
 
+# Nudge TUI to scroll to input area
+Type " "
+Backspace
+Sleep ${s.exitWait}s
+
 # Exit cleanly
 Ctrl+C
-Sleep ${s.exitWait}s
+Sleep 1s
 `;
 }
 

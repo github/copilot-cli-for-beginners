@@ -28,9 +28,69 @@ Type "Write a Python function that takes a list of books and returns statistics:
 Sleep 2s
 Enter
 
-# Wait for response
-Sleep 35s
+# Wait for response (with periodic nudges to keep input visible)
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 2s
+
+# Nudge TUI to scroll to input area
+Type " "
+Backspace
+Sleep 3s
 
 # Exit cleanly
 Ctrl+C
-Sleep 2s
+Sleep 1s

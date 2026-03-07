@@ -28,25 +28,170 @@ Type "List open issues on this repository"
 Sleep 2s
 Enter
 
-# Wait for response
-Sleep 25s
+# Wait for response (with periodic nudges to keep input visible)
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 1s
 
 # Prompt 2
 Type "@samples/book-app-project/books.py What code handles the search functionality?"
 Sleep 2s
 Enter
 
-# Wait for response
-Sleep 20s
+# Wait for response (with periodic nudges to keep input visible)
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 2s
 
 # Prompt 3
 Type "Based on the code, suggest improvements for the search feature"
 Sleep 2s
 Enter
 
-# Wait for response
-Sleep 30s
+# Wait for response (with periodic nudges to keep input visible)
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+
+# Nudge TUI to scroll to input area
+Type " "
+Backspace
+Sleep 3s
 
 # Exit cleanly
 Ctrl+C
-Sleep 2s
+Sleep 1s

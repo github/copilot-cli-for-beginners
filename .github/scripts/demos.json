@@ -7,8 +7,8 @@
     "typingSpeed": "60ms",
     "framerate": 10,
     "startupWait": 5,
-    "responseWait": 25,
-    "exitWait": 2
+    "responseWait": 40,
+    "exitWait": 3
   },
   "demos": [
     {
@@ -69,14 +69,14 @@
       "chapter": "03-development-workflows",
       "name": "refactor-demo",
       "description": "Workflow 2: Refactoring - refactor command handling to dictionary dispatch",
-      "responseWait": 30,
+      "responseWait": 60,
       "prompt": "@samples/book-app-project/book_app.py Refactor the command handling to use a dictionary dispatch pattern instead of if/elif chains"
     },
     {
       "chapter": "03-development-workflows",
       "name": "fix-bug-demo",
       "description": "Workflow 3: Debugging - debug a search issue",
-      "responseWait": 30,
+      "responseWait": 60,
       "prompt": "@samples/book-app-buggy/books_buggy.py Users report that searching for 'The Hobbit' returns no results even though it's in the data. Debug why."
     },
     {
@@ -110,8 +110,8 @@
       "chapter": "05-skills",
       "name": "skill-trigger-demo",
       "description": "Copilot detects and triggers a matching skill",
-      "responseWait": 45,
-      "prompt": "Review the book collection code for issues"
+      "responseWait": 120,
+      "prompt": "Check the book collection code for quality issues"
     },
     {
       "chapter": "06-mcp-servers",
@@ -128,22 +128,6 @@
         "List open issues on this repository",
         { "text": "@samples/book-app-project/books.py What code handles the search functionality?", "responseWait": 20 },
         { "text": "Based on the code, suggest improvements for the search feature", "responseWait": 30 }
-      ]
-    },
-    {
-      "chapter": "07-putting-it-together",
-      "name": "full-review-demo",
-      "description": "Idea to merged PR: plan, implement, test a new feature",
-      "prompts": [
-        { "text": "I need to add a 'list unread' command to the book app that shows only books where read is False. What files need to change?", "responseWait": 25 },
-        { "text": "/agent", "agentSelect": "python-reviewer", "arrowDown": 3, "responseWait": 3 },
-        { "text": "@samples/book-app-project/books.py Design a get_unread_books method. What is the best approach?", "responseWait": 30 },
-        { "text": "/agent", "agentSelect": "pytest-helper", "arrowDown": 2, "responseWait": 3 },
-        { "text": "@samples/book-app-project/tests/test_books.py Design test cases for filtering unread books.", "responseWait": 30 },
-        { "text": "Add a get_unread_books method to BookCollection in books.py. Add a 'list unread' command option in book_app.py. Update the help text in the show_help function.", "responseWait": 30 },
-        { "text": "Generate comprehensive tests for the new feature", "responseWait": 35 },
-        { "text": "/review", "responseWait": 25 },
-        { "text": "Create a pull request titled 'Feature: Add list unread books command'", "responseWait": 25 }
       ]
     }
   ]

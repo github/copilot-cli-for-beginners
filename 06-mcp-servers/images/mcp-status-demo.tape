@@ -28,9 +28,54 @@ Type "/mcp show"
 Sleep 2s
 Enter
 
-# Wait for response
-Sleep 25s
+# Wait for response (with periodic nudges to keep input visible)
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 1s
+
+# Nudge TUI to scroll to input area
+Type " "
+Backspace
+Sleep 3s
 
 # Exit cleanly
 Ctrl+C
-Sleep 2s
+Sleep 1s
