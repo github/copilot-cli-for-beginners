@@ -19,6 +19,9 @@
             --blue: #58a6ff;
             --green: #3fb950;
             --orange: #e3b341;
+            --gold: #f2cc60;
+            --rose: #ff7aa2;
+            --teal: #35c2a1;
             --text: #f0f6fc;
             --text-muted: #8b949e;
             --text-secondary: #c9d1d9;
@@ -266,6 +269,192 @@
             padding: 1.5rem;
             color: #f85149;
             margin: 2rem 0;
+        }
+
+        /* ── Completion screen ── */
+        .completion-shell {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(242,204,96,0.18);
+            border-radius: 24px;
+            background:
+                radial-gradient(circle at top left, rgba(242,204,96,0.16), transparent 32%),
+                radial-gradient(circle at top right, rgba(53,194,161,0.14), transparent 30%),
+                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+                var(--bg-card);
+            padding: 2rem;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.28);
+        }
+
+        .completion-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.875rem;
+            border-radius: 999px;
+            border: 1px solid rgba(242,204,96,0.28);
+            background: rgba(242,204,96,0.1);
+            color: var(--gold);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .completion-title {
+            margin: 1rem 0 0.75rem;
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            line-height: 1.05;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .completion-lead {
+            max-width: 640px;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .completion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.75rem 0 2rem;
+        }
+
+        .completion-card {
+            background: rgba(13,17,23,0.72);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .completion-card strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .completion-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .resource-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.875rem;
+            margin-top: 1.5rem;
+        }
+
+        .resource-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 1rem 1.125rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: rgba(13,17,23,0.78);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .resource-link:hover {
+            transform: translateY(-2px);
+            border-color: rgba(53,194,161,0.55);
+            background: rgba(53,194,161,0.08);
+        }
+
+        .resource-link strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .resource-link span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .completion-actions {
+            display: flex;
+            gap: 0.875rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .completion-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .completion-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .completion-btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--rose));
+            color: #111;
+            box-shadow: 0 12px 32px rgba(242,204,96,0.22);
+        }
+
+        .completion-btn-secondary {
+            background: transparent;
+            border-color: var(--border);
+            color: var(--text);
+        }
+
+        .completion-btn-secondary:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .confetti-layer {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 150;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            top: -10vh;
+            width: 10px;
+            height: 18px;
+            border-radius: 2px;
+            opacity: 0.9;
+            animation: confetti-fall linear forwards;
+            will-change: transform, opacity;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translate3d(0, 0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate3d(var(--confetti-drift), 115vh, 0) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         /* ── Markdown Rendering ── */
@@ -581,6 +770,11 @@
             .nav-footer-center {
                 order: -1;
             }
+
+            .completion-shell {
+                padding: 1.25rem;
+                border-radius: 18px;
+            }
         }
     </style>
 </head>
@@ -629,7 +823,7 @@
 
     <script>
         // ── Chapter manifest ──────────────────────────────────────────────
-        const REPO = 'jamesmontemagno/copilot-cli-for-beginners';
+        const REPO = 'github/copilot-cli-for-beginners';
         const BRANCH = 'main';
 
         const chapters = [
@@ -641,6 +835,7 @@
             { id: '05-skills',                   num: '05', title: 'Automate Repetitive Tasks',              emoji: '🛠️' },
             { id: '06-mcp-servers',              num: '06', title: 'Connect to GitHub, Databases & APIs',   emoji: '🔌' },
             { id: '07-putting-it-together',      num: '07', title: 'Putting It All Together',               emoji: '🎯' },
+            { id: 'complete',                    num: '✓',  title: 'Complete',                               emoji: '🎉', isComplete: true },
         ];
 
         // ── State ─────────────────────────────────────────────────────────
@@ -660,6 +855,141 @@
         function getChapterIndex(id) {
             const idx = chapters.findIndex(c => c.id === id);
             return idx >= 0 ? idx : 0;
+        }
+
+        function resolveRelativePath(baseDir, relativePath) {
+            const stack = baseDir.split('/').filter(Boolean);
+            const parts = relativePath.split('/');
+
+            parts.forEach(part => {
+                if (!part || part === '.') {
+                    return;
+                }
+
+                if (part === '..') {
+                    stack.pop();
+                    return;
+                }
+
+                stack.push(part);
+            });
+
+            return stack.join('/');
+        }
+
+        function toRawGitHubUrl(path) {
+            return `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${path}`;
+        }
+
+        function toBlobGitHubUrl(path) {
+            return `https://github.com/${REPO}/blob/${BRANCH}/${path}`;
+        }
+
+        function getCompletionMarkup() {
+            return `
+                <section class="completion-shell">
+                    <div class="completion-badge">Course Complete</div>
+                    <h1 class="completion-title">You finished GitHub Copilot CLI for Beginners.</h1>
+                    <p class="completion-lead">
+                        You worked through the full path from setup to real workflows, custom agents, skills, MCP servers,
+                        and an end-to-end feature flow. This screen is the finish line and the launch point.
+                    </p>
+
+                    <div class="completion-grid">
+                        <div class="completion-card">
+                            <strong>Built a working mental model</strong>
+                            <p>You covered interactive prompts, planning, automation, and when each mode fits best.</p>
+                        </div>
+                        <div class="completion-card">
+                            <strong>Used practical workflows</strong>
+                            <p>You saw code review, debugging, test generation, and repo-aware prompting in context.</p>
+                        </div>
+                        <div class="completion-card">
+                            <strong>Extended the system</strong>
+                            <p>You explored custom agents, reusable skills, and MCP integrations for real data.</p>
+                        </div>
+                    </div>
+
+                    <h2>Resources to keep going</h2>
+                    <div class="resource-list">
+                        <a class="resource-link" href="index.html">
+                            <strong>Course Home</strong>
+                            <span>Jump back to the overview, prerequisites, and chapter list.</span>
+                        </a>
+                        <a class="resource-link" href="https://github.com/github/copilot-cli-for-beginners" target="_blank" rel="noopener">
+                            <strong>Repository</strong>
+                            <span>Browse the source, sample apps, exercises, and open issues.</span>
+                        </a>
+                        <a class="resource-link" href="https://docs.github.com/en/copilot/how-tos/copilot-cli" target="_blank" rel="noopener">
+                            <strong>Official CLI Docs</strong>
+                            <span>Use the product docs for setup, concepts, and supported workflows.</span>
+                        </a>
+                        <a class="resource-link" href="https://docs.github.com/en/copilot/reference/cli-command-reference" target="_blank" rel="noopener">
+                            <strong>Command Reference</strong>
+                            <span>Keep the full command and shortcut list close while you practice.</span>
+                        </a>
+                        <a class="resource-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/GLOSSARY.md" target="_blank" rel="noopener">
+                            <strong>Glossary</strong>
+                            <span>Review terms like context window, tokens, MCP, and agentic workflows.</span>
+                        </a>
+                        <a class="resource-link" href="https://github.com/github/copilot-cli-for-beginners/tree/main/appendices" target="_blank" rel="noopener">
+                            <strong>Appendices</strong>
+                            <span>Go deeper on additional context features and CI/CD integration.</span>
+                        </a>
+                        <a class="resource-link" href="https://aka.ms/foundry/discord" target="_blank" rel="noopener">
+                            <strong>Community Discord</strong>
+                            <span>Join the broader AI community and keep experimenting with others.</span>
+                        </a>
+                    </div>
+
+                    <div class="completion-actions">
+                        <a class="completion-btn completion-btn-primary" href="https://github.com/github/copilot-cli-for-beginners" target="_blank" rel="noopener">Explore the Repo</a>
+                        <a class="completion-btn completion-btn-secondary" href="step.html?chapter=00-quick-start">Restart the Course</a>
+                    </div>
+                </section>
+            `;
+        }
+
+        function clearConfetti() {
+            const layer = document.getElementById('confettiLayer');
+            if (layer) {
+                layer.remove();
+            }
+        }
+
+        function launchConfetti() {
+            clearConfetti();
+
+            const layer = document.createElement('div');
+            layer.id = 'confettiLayer';
+            layer.className = 'confetti-layer';
+
+            const colors = ['#f2cc60', '#ff7aa2', '#35c2a1', '#58a6ff', '#a371f7'];
+            const pieceCount = 120;
+
+            for (let i = 0; i < pieceCount; i += 1) {
+                const piece = document.createElement('span');
+                piece.className = 'confetti-piece';
+                piece.style.left = `${Math.random() * 100}%`;
+                piece.style.background = colors[i % colors.length];
+                piece.style.animationDuration = `${4 + Math.random() * 2.5}s`;
+                piece.style.animationDelay = `${Math.random() * 0.8}s`;
+                piece.style.setProperty('--confetti-drift', `${(Math.random() - 0.5) * 240}px`);
+
+                if (Math.random() > 0.5) {
+                    piece.style.width = '8px';
+                    piece.style.height = '8px';
+                    piece.style.borderRadius = '50%';
+                }
+
+                layer.appendChild(piece);
+            }
+
+            document.body.appendChild(layer);
+
+            window.setTimeout(() => {
+                clearConfetti();
+            }, 7000);
         }
 
         // ── Build sidebar nav ─────────────────────────────────────────────
@@ -696,6 +1026,7 @@
             const prevFooter = document.getElementById('prevFooter');
             const nextFooter = document.getElementById('nextFooter');
             const indicator = document.getElementById('chapterIndicator');
+            const chapter = chapters[index];
 
             const hasPrev = index > 0;
             const hasNext = index < chapters.length - 1;
@@ -703,8 +1034,14 @@
             prevBtn.disabled = !hasPrev;
             nextBtn.disabled = !hasNext;
 
+            prevBtn.textContent = chapter.isComplete ? '← Chapter 07' : '← Prev';
+            nextBtn.textContent = hasNext && chapters[index + 1].isComplete ? 'Complete →' : 'Next →';
+
             prevFooter.classList.toggle('disabled', !hasPrev);
             nextFooter.classList.toggle('disabled', !hasNext);
+
+            prevFooter.textContent = chapter.isComplete ? '← Chapter 07' : '← Previous';
+            nextFooter.textContent = hasNext && chapters[index + 1].isComplete ? 'Complete →' : 'Next →';
 
             indicator.textContent = `${index + 1} / ${chapters.length}`;
         }
@@ -758,17 +1095,62 @@
                 breaks: false,
             });
 
-            // Custom renderer for task list items (marked.js v9+ API)
-            const renderer = new marked.Renderer();
-            renderer.listitem = function(item) {
-                if (item.task) {
-                    const checked = item.checked ? ' checked' : '';
-                    return `<li><input type="checkbox"${checked} disabled> ${item.text}</li>`;
-                }
-                return `<li>${item.text}</li>`;
-            };
+            return marked.parse(processed);
+        }
 
-            return marked.parse(processed, { renderer });
+        function normalizeRenderedContent(container, chapterId) {
+            container.querySelectorAll('img[src]').forEach(img => {
+                const src = img.getAttribute('src');
+                if (!src || /^(https?:|data:)/i.test(src)) {
+                    return;
+                }
+
+                img.src = toRawGitHubUrl(resolveRelativePath(chapterId, src));
+            });
+
+            container.querySelectorAll('a[href]').forEach(anchor => {
+                const href = anchor.getAttribute('href');
+                if (!href || /^(https?:|mailto:|#)/i.test(href)) {
+                    return;
+                }
+
+                const [pathPart, hashPart] = href.split('#');
+                const resolvedPath = resolveRelativePath(chapterId, pathPart);
+                const hash = hashPart ? `#${hashPart}` : '';
+
+                if (/\/README\.md$/i.test(resolvedPath)) {
+                    const targetId = resolvedPath.replace(/\/README\.md$/i, '');
+                    const targetIdx = chapters.findIndex(ch => ch.id === targetId);
+
+                    if (targetIdx >= 0) {
+                        anchor.href = `?chapter=${targetId}${hash}`;
+                        anchor.addEventListener('click', event => {
+                            event.preventDefault();
+                            loadChapter(targetIdx);
+                        });
+                        return;
+                    }
+                }
+
+                if (/\.md$/i.test(pathPart)) {
+                    anchor.href = `${toBlobGitHubUrl(resolvedPath)}${hash}`;
+                    anchor.target = '_blank';
+                    anchor.rel = 'noopener';
+                }
+            });
+
+            container.querySelectorAll('p').forEach(paragraph => {
+                const linkTexts = Array.from(paragraph.querySelectorAll('a')).map(anchor => anchor.textContent.trim());
+                const normalizedText = paragraph.textContent.replace(/\s+/g, ' ').trim();
+                const isDuplicateChapterNav =
+                    linkTexts.length > 0 &&
+                    linkTexts.every(text => /^(←\s*)?Back to|^Continue to|^Return to/i.test(text)) &&
+                    /^(←\s*)?Back to|^Continue to|^Return to/i.test(normalizedText);
+
+                if (isDuplicateChapterNav) {
+                    paragraph.remove();
+                }
+            });
         }
 
         // ── Load chapter content ──────────────────────────────────────────
@@ -795,8 +1177,16 @@
                     <span>Loading chapter…</span>
                 </div>`;
 
+            clearConfetti();
+
             // Scroll to top
             window.scrollTo({ top: 0 });
+
+            if (chapter.isComplete) {
+                contentEl.innerHTML = getCompletionMarkup();
+                launchConfetti();
+                return;
+            }
 
             try {
                 const url = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${chapter.id}/README.md`;
@@ -804,23 +1194,10 @@
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const raw = await res.text();
                 contentEl.innerHTML = renderMarkdown(raw, chapter.id);
-
-                // Make inline cross-chapter links work
-                contentEl.querySelectorAll('a[href*="README.md"]').forEach(a => {
-                    const href = a.getAttribute('href');
-                    const match = href && href.match(/\.\.\/([^/]+)\/README\.md/);
-                    if (match) {
-                        const targetId = match[1];
-                        const targetIdx = chapters.findIndex(c => c.id === targetId);
-                        if (targetIdx >= 0) {
-                            a.href = '#';
-                            a.addEventListener('click', e => {
-                                e.preventDefault();
-                                loadChapter(targetIdx);
-                            });
-                        }
-                    }
+                contentEl.querySelectorAll('input[type="checkbox"]').forEach(input => {
+                    input.disabled = true;
                 });
+                normalizeRenderedContent(contentEl, chapter.id);
             } catch (err) {
                 const errDiv = document.createElement('div');
                 errDiv.className = 'error-state';
