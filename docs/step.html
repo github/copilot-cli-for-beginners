@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Copilot CLI for Beginners</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-card: #161b22;
+            --bg-code: #1c2128;
+            --border: #30363d;
+            --purple: #6e40c9;
+            --purple-light: #a371f7;
+            --blue: #58a6ff;
+            --green: #3fb950;
+            --orange: #e3b341;
+            --text: #f0f6fc;
+            --text-muted: #8b949e;
+            --text-secondary: #c9d1d9;
+            --gradient: linear-gradient(135deg, #6e40c9, #58a6ff);
+            --header-height: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: var(--header-height);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .header-brand:hover {
+            color: var(--purple-light);
+        }
+
+        .header-brand svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--purple-light);
+            flex-shrink: 0;
+        }
+
+        .header-title-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.4rem 0.875rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            border-color: var(--purple-light);
+            color: var(--purple-light);
+            background: rgba(163,113,247,0.08);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        /* ── Layout ── */
+        .layout {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 268px;
+            flex-shrink: 0;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            height: calc(100vh - var(--header-height));
+            position: sticky;
+            top: var(--header-height);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        .sidebar-section {
+            padding: 1.25rem 0.875rem;
+        }
+
+        .sidebar-label {
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            font-weight: 600;
+            padding: 0 0.5rem;
+            margin-bottom: 0.625rem;
+        }
+
+        .chapter-link {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.5rem 0.625rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            transition: all 0.15s ease;
+            margin-bottom: 0.125rem;
+            cursor: pointer;
+        }
+
+        .chapter-link:hover {
+            background: rgba(110,64,201,0.12);
+            color: var(--text);
+        }
+
+        .chapter-link.active {
+            background: linear-gradient(135deg, rgba(110,64,201,0.25), rgba(88,166,255,0.15));
+            color: var(--text);
+            border-left: 2px solid var(--purple-light);
+            padding-left: calc(0.625rem - 2px);
+        }
+
+        .chapter-badge {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--border);
+            border-radius: 5px;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            flex-shrink: 0;
+            color: var(--text-secondary);
+        }
+
+        .chapter-link.active .chapter-badge {
+            background: var(--gradient);
+            color: #fff;
+        }
+
+        .chapter-name {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ── Main Content ── */
+        .main {
+            flex: 1;
+            min-width: 0;
+            padding: 2.5rem 3rem 4rem;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ── Loading Spinner ── */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 260px;
+            color: var(--text-muted);
+            gap: 1rem;
+        }
+
+        .spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid var(--border);
+            border-top-color: var(--purple-light);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ── Error State ── */
+        .error-state {
+            background: rgba(248,81,73,0.1);
+            border: 1px solid rgba(248,81,73,0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            color: #f85149;
+            margin: 2rem 0;
+        }
+
+        /* ── Markdown Rendering ── */
+        .markdown h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
+            padding-top: 0.5rem;
+        }
+
+        .markdown h2 {
+            font-size: 1.375rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--blue);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .markdown h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem;
+            color: var(--purple-light);
+        }
+
+        .markdown h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--text);
+        }
+
+        .markdown p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .markdown a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .markdown a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .markdown em {
+            color: var(--text-secondary);
+        }
+
+        .markdown ul, .markdown ol {
+            margin: 0.75rem 0 1.25rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .markdown li {
+            margin-bottom: 0.4rem;
+        }
+
+        .markdown li::marker {
+            color: var(--purple-light);
+        }
+
+        .markdown ul li ul,
+        .markdown ul li ol {
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Blockquotes / tips */
+        .markdown blockquote {
+            background: rgba(88,166,255,0.07);
+            border-left: 3px solid var(--blue);
+            border-radius: 0 6px 6px 0;
+            padding: 0.875rem 1.125rem;
+            margin: 1.5rem 0;
+        }
+
+        .markdown blockquote p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        /* Code */
+        .markdown code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        .markdown :not(pre) > code {
+            background: var(--bg-code);
+            padding: 0.15em 0.45em;
+            border-radius: 4px;
+            color: var(--orange);
+            border: 1px solid var(--border);
+        }
+
+        .markdown pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+            overflow-x: auto;
+            margin: 1.25rem 0;
+            position: relative;
+        }
+
+        .markdown pre code {
+            color: var(--text);
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: 0.875em;
+            line-height: 1.7;
+        }
+
+        /* Images */
+        .markdown img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin: 1.25rem 0;
+            display: block;
+        }
+
+        /* Tables */
+        .markdown table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .markdown th, .markdown td {
+            padding: 0.625rem 1rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .markdown th {
+            background: var(--bg-card);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.8125rem;
+        }
+
+        .markdown td {
+            color: var(--text-secondary);
+        }
+
+        .markdown tr:hover td {
+            background: rgba(110,64,201,0.04);
+        }
+
+        /* HR */
+        .markdown hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        /* Details/summary */
+        .markdown details {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.875rem 1.125rem;
+            margin: 1.25rem 0;
+        }
+
+        .markdown summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text);
+            user-select: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .markdown summary::before {
+            content: '▶';
+            font-size: 0.75em;
+            color: var(--purple-light);
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .markdown details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .markdown details > *:not(summary) {
+            margin-top: 0.875rem;
+        }
+
+        /* Checkboxes (task lists) */
+        .markdown input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .markdown input[type="checkbox"]:checked {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .markdown input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            color: var(--bg);
+            font-size: 11px;
+            font-weight: 700;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Chapter header image hide (decorative banner) */
+        .markdown img[alt*="Chapter"] {
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── Footer navigation ── */
+        .nav-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            gap: 1rem;
+        }
+
+        .nav-footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .nav-footer-btn:hover:not(.disabled) {
+            border-color: var(--purple-light);
+            color: var(--purple-light);
+            transform: translateY(-1px);
+        }
+
+        .nav-footer-btn.disabled {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .nav-footer-center {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                padding: 1.75rem 1.25rem 3rem;
+            }
+
+            .header-title-text {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-footer {
+                flex-direction: column;
+            }
+
+            .nav-footer-center {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                <span class="header-title-text">GitHub Copilot CLI for Beginners</span>
+            </a>
+            <nav class="header-nav">
+                <button class="nav-btn" id="prevBtn" disabled>← Prev</button>
+                <button class="nav-btn" id="nextBtn">Next →</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Chapters</div>
+                <nav id="chapterNav"></nav>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="main">
+            <article class="content">
+                <div id="content" class="markdown">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <span>Loading chapter…</span>
+                    </div>
+                </div>
+                <nav class="nav-footer">
+                    <button class="nav-footer-btn disabled" id="prevFooter">← Previous</button>
+                    <span class="nav-footer-center" id="chapterIndicator"></span>
+                    <button class="nav-footer-btn" id="nextFooter">Next →</button>
+                </nav>
+            </article>
+        </main>
+    </div>
+
+    <script>
+        // ── Chapter manifest ──────────────────────────────────────────────
+        const REPO = 'jamesmontemagno/copilot-cli-for-beginners';
+        const BRANCH = 'main';
+
+        const chapters = [
+            { id: '00-quick-start',              num: '00', title: 'Quick Start',                            emoji: '🚀' },
+            { id: '01-setup-and-first-steps',    num: '01', title: 'First Steps',                            emoji: '👋' },
+            { id: '02-context-conversations',    num: '02', title: 'Context and Conversations',              emoji: '🔍' },
+            { id: '03-development-workflows',    num: '03', title: 'Development Workflows',                  emoji: '⚡' },
+            { id: '04-agents-custom-instructions', num: '04', title: 'Specialized AI Assistants',           emoji: '🤖' },
+            { id: '05-skills',                   num: '05', title: 'Automate Repetitive Tasks',              emoji: '🛠️' },
+            { id: '06-mcp-servers',              num: '06', title: 'Connect to GitHub, Databases & APIs',   emoji: '🔌' },
+            { id: '07-putting-it-together',      num: '07', title: 'Putting It All Together',               emoji: '🎯' },
+        ];
+
+        // ── State ─────────────────────────────────────────────────────────
+        let currentIndex = 0;
+
+        function getChapterParam() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('chapter') || chapters[0].id;
+        }
+
+        function setChapterParam(id) {
+            const url = new URL(window.location);
+            url.searchParams.set('chapter', id);
+            window.history.pushState({}, '', url);
+        }
+
+        function getChapterIndex(id) {
+            const idx = chapters.findIndex(c => c.id === id);
+            return idx >= 0 ? idx : 0;
+        }
+
+        // ── Build sidebar nav ─────────────────────────────────────────────
+        function buildNav() {
+            const nav = document.getElementById('chapterNav');
+            nav.innerHTML = chapters.map((ch, i) => `
+                <a class="chapter-link" data-index="${i}" href="?chapter=${ch.id}">
+                    <span class="chapter-badge">${ch.num}</span>
+                    <span class="chapter-name">${ch.emoji} ${ch.title}</span>
+                </a>
+            `).join('');
+
+            nav.addEventListener('click', e => {
+                const link = e.target.closest('[data-index]');
+                if (!link) return;
+                e.preventDefault();
+                loadChapter(parseInt(link.dataset.index, 10));
+            });
+        }
+
+        function updateNav(index) {
+            document.querySelectorAll('.chapter-link').forEach((el, i) => {
+                el.classList.toggle('active', i === index);
+            });
+            // Scroll active item into view in sidebar
+            const active = document.querySelector('.chapter-link.active');
+            if (active) active.scrollIntoView({ block: 'nearest' });
+        }
+
+        // ── Navigation buttons ────────────────────────────────────────────
+        function updateButtons(index) {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevFooter = document.getElementById('prevFooter');
+            const nextFooter = document.getElementById('nextFooter');
+            const indicator = document.getElementById('chapterIndicator');
+
+            const hasPrev = index > 0;
+            const hasNext = index < chapters.length - 1;
+
+            prevBtn.disabled = !hasPrev;
+            nextBtn.disabled = !hasNext;
+
+            prevFooter.classList.toggle('disabled', !hasPrev);
+            nextFooter.classList.toggle('disabled', !hasNext);
+
+            indicator.textContent = `${index + 1} / ${chapters.length}`;
+        }
+
+        function wireButtons(index) {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevFooter = document.getElementById('prevFooter');
+            const nextFooter = document.getElementById('nextFooter');
+
+            // Clone to remove old listeners
+            [prevBtn, nextBtn, prevFooter, nextFooter].forEach(btn => {
+                const clone = btn.cloneNode(true);
+                btn.parentNode.replaceChild(clone, btn);
+            });
+
+            const newPrevBtn = document.getElementById('prevBtn');
+            const newNextBtn = document.getElementById('nextBtn');
+            const newPrevFooter = document.getElementById('prevFooter');
+            const newNextFooter = document.getElementById('nextFooter');
+
+            if (index > 0) {
+                newPrevBtn.addEventListener('click', () => loadChapter(index - 1));
+                newPrevFooter.addEventListener('click', () => loadChapter(index - 1));
+            }
+            if (index < chapters.length - 1) {
+                newNextBtn.addEventListener('click', () => loadChapter(index + 1));
+                newNextFooter.addEventListener('click', () => loadChapter(index + 1));
+            }
+        }
+
+        // ── Markdown image path fixer ─────────────────────────────────────
+        function fixImagePaths(markdown, chapterId) {
+            // Replace relative image paths with raw GitHub URLs
+            const rawBase = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${chapterId}`;
+            return markdown.replace(
+                /!\[([^\]]*)\]\((?!https?:\/\/)([^)]+)\)/g,
+                (match, alt, src) => {
+                    const cleanSrc = src.startsWith('./') ? src.slice(2) : src;
+                    return `![${alt}](${rawBase}/${cleanSrc})`;
+                }
+            );
+        }
+
+        // ── Render markdown ───────────────────────────────────────────────
+        function renderMarkdown(raw, chapterId) {
+            const processed = fixImagePaths(raw, chapterId);
+
+            marked.setOptions({
+                gfm: true,
+                breaks: false,
+            });
+
+            // Custom renderer for task list items (marked.js v9+ API)
+            const renderer = new marked.Renderer();
+            renderer.listitem = function(item) {
+                if (item.task) {
+                    const checked = item.checked ? ' checked' : '';
+                    return `<li><input type="checkbox"${checked} disabled> ${item.text}</li>`;
+                }
+                return `<li>${item.text}</li>`;
+            };
+
+            return marked.parse(processed, { renderer });
+        }
+
+        // ── Load chapter content ──────────────────────────────────────────
+        async function loadChapter(index) {
+            currentIndex = index;
+            const chapter = chapters[index];
+
+            // Update URL
+            setChapterParam(chapter.id);
+
+            // Update UI state
+            updateNav(index);
+            updateButtons(index);
+            wireButtons(index);
+
+            // Update page title
+            document.title = `${chapter.emoji} ${chapter.title} · GitHub Copilot CLI for Beginners`;
+
+            // Show loading
+            const contentEl = document.getElementById('content');
+            contentEl.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <span>Loading chapter…</span>
+                </div>`;
+
+            // Scroll to top
+            window.scrollTo({ top: 0 });
+
+            try {
+                const url = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${chapter.id}/README.md`;
+                const res = await fetch(url);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const raw = await res.text();
+                contentEl.innerHTML = renderMarkdown(raw, chapter.id);
+
+                // Make inline cross-chapter links work
+                contentEl.querySelectorAll('a[href*="README.md"]').forEach(a => {
+                    const href = a.getAttribute('href');
+                    const match = href && href.match(/\.\.\/([^/]+)\/README\.md/);
+                    if (match) {
+                        const targetId = match[1];
+                        const targetIdx = chapters.findIndex(c => c.id === targetId);
+                        if (targetIdx >= 0) {
+                            a.href = '#';
+                            a.addEventListener('click', e => {
+                                e.preventDefault();
+                                loadChapter(targetIdx);
+                            });
+                        }
+                    }
+                });
+            } catch (err) {
+                const errDiv = document.createElement('div');
+                errDiv.className = 'error-state';
+
+                const strong = document.createElement('strong');
+                strong.textContent = '⚠️ Could not load chapter content.';
+                errDiv.appendChild(strong);
+
+                const br = document.createElement('br');
+                errDiv.appendChild(br);
+
+                const small = document.createElement('small');
+                small.style.marginTop = '0.5rem';
+                small.style.display = 'block';
+                small.textContent = err.message + ' ';
+
+                const link = document.createElement('a');
+                link.href = `https://github.com/${REPO}/tree/${BRANCH}/${chapter.id}`;
+                link.style.color = '#f85149';
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.textContent = 'View on GitHub →';
+                small.appendChild(link);
+
+                errDiv.appendChild(small);
+                contentEl.innerHTML = '';
+                contentEl.appendChild(errDiv);
+            }
+        }
+
+        // ── Browser back/forward support ──────────────────────────────────
+        window.addEventListener('popstate', () => {
+            const id = getChapterParam();
+            const index = getChapterIndex(id);
+            loadChapter(index);
+        });
+
+        // ── Init ──────────────────────────────────────────────────────────
+        buildNav();
+        const initialId = getChapterParam();
+        const initialIndex = getChapterIndex(initialId);
+        loadChapter(initialIndex);
+    </script>
+
+</body>
+</html>
