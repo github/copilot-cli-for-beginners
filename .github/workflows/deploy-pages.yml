@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - swa
     paths:
       - 'docs/**'
       - '*/README.md'
