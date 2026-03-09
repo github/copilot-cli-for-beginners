@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Copilot CLI for Beginners</title>
+    <meta name="description" content="Learn to supercharge your development workflow with AI-powered command-line assistance. A hands-on course covering GitHub Copilot CLI from setup to advanced workflows.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-card: #161b22;
+            --bg-card-hover: #1c2128;
+            --border: #30363d;
+            --border-hover: #6e40c9;
+            --purple: #6e40c9;
+            --purple-light: #a371f7;
+            --blue: #58a6ff;
+            --green: #3fb950;
+            --text: #f0f6fc;
+            --text-muted: #8b949e;
+            --text-secondary: #c9d1d9;
+            --gradient: linear-gradient(135deg, #6e40c9, #58a6ff);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(90deg, rgba(110,64,201,0.04) 1px, transparent 1px),
+                linear-gradient(rgba(110,64,201,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ── Nav ── */
+        nav {
+            border-bottom: 1px solid var(--border);
+            background: rgba(13,17,23,0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .nav-logo svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--purple-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            background: var(--bg-card);
+        }
+
+        .nav-links .btn-nav {
+            background: var(--gradient);
+            color: #fff;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+        }
+
+        .nav-links .btn-nav:hover {
+            opacity: 0.9;
+            color: #fff;
+            background: var(--gradient);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 5rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.875rem;
+            background: rgba(110,64,201,0.15);
+            border: 1px solid rgba(110,64,201,0.4);
+            border-radius: 50px;
+            font-size: 0.8125rem;
+            color: var(--purple-light);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 1.75rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 0.875rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px rgba(110,64,201,0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--purple-light);
+            color: var(--purple-light);
+            background: rgba(110,64,201,0.08);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0;
+        }
+
+        /* ── Sections ── */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-heading {
+            font-size: 1.625rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ── Features grid ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--purple);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.875rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* ── Chapters ── */
+        .chapters-section {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .chapters-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .chapter-card {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .chapter-card:hover {
+            border-color: var(--purple-light);
+            background: rgba(110,64,201,0.06);
+            transform: translateX(4px);
+        }
+
+        .chapter-num {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .chapter-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .chapter-title {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .chapter-desc {
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+        }
+
+        .chapter-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .chapter-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8125rem;
+            color: var(--blue);
+            background: rgba(88,166,255,0.1);
+            padding: 0.25rem 0.625rem;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .chapter-arrow {
+            color: var(--text-muted);
+            font-size: 1rem;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .chapter-card:hover .chapter-arrow {
+            color: var(--purple-light);
+            transform: translateX(3px);
+        }
+
+        /* ── Prerequisites ── */
+        .prereqs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.875rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .prereq-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.875rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+        }
+
+        .prereq-check {
+            color: var(--green);
+            font-size: 1rem;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        .prereq-text {
+            font-size: 0.875rem;
+        }
+
+        .prereq-text strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .prereq-text span {
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+        }
+
+        .prereq-text a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .prereq-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--purple-light);
+        }
+
+        .footer-credit {
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3.5rem 0 3rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .chapter-card {
+                flex-wrap: wrap;
+            }
+
+            .chapter-meta {
+                width: 100%;
+            }
+
+            .nav-links .btn-nav span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub Copilot CLI for Beginners
+            </a>
+            <div class="nav-links">
+                <a href="https://github.com/jamesmontemagno/copilot-cli-for-beginners">Repo</a>
+                <a href="https://docs.github.com/en/copilot/how-tos/copilot-cli">Docs</a>
+                <a href="step.html?chapter=00-quick-start" class="btn-nav">🚀 <span>Start Course</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">✨ terminal-native AI coding assistant</div>
+            <h1>GitHub Copilot CLI<br>for Beginners</h1>
+            <p class="hero-subtitle">
+                Learn to supercharge your development workflow with AI-powered command-line assistance.
+                Review code, generate tests, debug issues, and automate workflows — all from your terminal.
+            </p>
+            <div class="hero-cta">
+                <a href="step.html?chapter=00-quick-start" class="btn btn-primary">🚀 Start the Course</a>
+                <a href="https://github.com/jamesmontemagno/copilot-cli-for-beginners" class="btn btn-secondary">📦 GitHub Repo</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Chapters</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">~2h</div>
+                    <div class="stat-label">Duration</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">AI Experience Needed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- What You'll Learn -->
+    <section>
+        <div class="container">
+            <h2 class="section-heading">What You'll Learn</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>Three Interaction Modes</h3>
+                    <p>Master inline suggestions, chat-based Q&A, and agentic workflows directly in your terminal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Context &amp; Conversations</h3>
+                    <p>Analyze multi-file projects by feeding the right context to get accurate, useful AI responses.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Development Workflows</h3>
+                    <p>Automate code review, debugging, and test generation using AI from the command line.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Custom AI Agents</h3>
+                    <p>Build specialized AI assistants tailored to your codebase and coding style.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>Skills &amp; Automation</h3>
+                    <p>Create reusable skills that load automatically and handle repetitive tasks for you.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>MCP Server Integration</h3>
+                    <p>Connect Copilot CLI to GitHub, databases, and external APIs via the Model Context Protocol.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapters -->
+    <section class="chapters-section">
+        <div class="container">
+            <h2 class="section-heading">Course Chapters</h2>
+            <div class="chapters-list">
+                <a href="step.html?chapter=00-quick-start" class="chapter-card">
+                    <div class="chapter-num">00</div>
+                    <div class="chapter-body">
+                        <div class="chapter-title">🚀 Quick Start</div>
+                        <div class="chapter-desc">Install GitHub Copilot CLI, sign in with your GitHub account, and verify everything works.</div>
+                    </div>
+                    <div class="chapter-meta">
+                        <span class="chapter-time">~10 min</span>
+                        <span class="chapter-arrow">→</span>
+                    </div>
+                </a>
+                <a href="step.html?chapter=01-setup-and-first-steps" class="chapter-card">
+                    <div class="chapter-num">01</div>
+                    <div class="chapter-body">
+                        <div class="chapter-title">👋 First Steps</div>
+                        <div class="chapter-desc">Watch live demos and master three interaction modes for AI-powered terminal workflows.</div>
+                    </div>
+                    <div class="chapter-meta">
+                        <span class="chapter-time">~20 min</span>
+                        <span class="chapter-arrow">→</span>
+                    </div>
+                </a>
+                <a href="step.html?chapter=02-context-conversations" class="chapter-card">
+                    <div class="chapter-num">02</div>
+                    <div class="chapter-body">
+                        <div class="chapter-title">🔍 Context and Conversations</div>
+                        <div class="chapter-desc">Provide the right context for multi-file project analysis and meaningful AI responses.</div>
+                    </div>
+                    <div class="chapter-meta">
+                        <span class="chapter-time">~20 min</span>
+                        <span class="chapter-arrow">→</span>
+                    </div>
+                </a>
+                <a href="step.html?chapter=03-development-workflows" class="chapter-card">
+                    <div class="chapter-num">03</div>
+                    <div class="chapter-body">
+                        <div class="chapter-title">⚡ Development Workflows</div>
+                        <div class="chapter-desc">Use Copilot CLI for AI-assisted code review, debugging, and automated test generation.</div>
+                    </div>
+                    <div class="chapter-meta">
+                        <span class="chapter-time">~25 min</span>
+                        <span class="chapter-arrow">→</span>
+                    </div>
+                </a>
+                <a href="step.html?chapter=04-agents-custom-instructions" class="chapter-card">
+                    <div class="chapter-num">04</div>
+                    <div class="chapter-body">
+                        <div class="chapter-title">🤖 Create Specialized AI Assistants</div>
+                        <div class="chapter-desc">Build custom agents with tailored instructions for your specific development workflows.</div>
+                    </div>
+                    <div class="chapter-meta">
+                        <span class="chapter-time">~20 min</span>
+                        <span class="chapter-arrow">→</span>
+                    </div>
+                </a>
+                <a href="step.html?chapter=05-skills" class="chapter-card">
+                    <div class="chapter-num">05</div>
+                    <div class="chapter-body">
+                        <div class="chapter-title">🛠️ Automate Repetitive Tasks</div>
+                        <div class="chapter-desc">Create skills that automatically load and handle recurring tasks in your workflow.</div>
+                    </div>
+                    <div class="chapter-meta">
+                        <span class="chapter-time">~20 min</span>
+                        <span class="chapter-arrow">→</span>
+                    </div>
+                </a>
+                <a href="step.html?chapter=06-mcp-servers" class="chapter-card">
+                    <div class="chapter-num">06</div>
+                    <div class="chapter-body">
+                        <div class="chapter-title">🔌 Connect to GitHub, Databases &amp; APIs</div>
+                        <div class="chapter-desc">Extend Copilot CLI with MCP servers to query real data and integrate external services.</div>
+                    </div>
+                    <div class="chapter-meta">
+                        <span class="chapter-time">~20 min</span>
+                        <span class="chapter-arrow">→</span>
+                    </div>
+                </a>
+                <a href="step.html?chapter=07-putting-it-together" class="chapter-card">
+                    <div class="chapter-num">07</div>
+                    <div class="chapter-body">
+                        <div class="chapter-title">🎯 Putting It All Together</div>
+                        <div class="chapter-desc">Combine all skills in a complete feature workflow from concept to tested, reviewed code.</div>
+                    </div>
+                    <div class="chapter-meta">
+                        <span class="chapter-time">~30 min</span>
+                        <span class="chapter-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prerequisites -->
+    <section>
+        <div class="container">
+            <h2 class="section-heading">Prerequisites</h2>
+            <div class="prereqs-grid">
+                <div class="prereq-item">
+                    <span class="prereq-check">✓</span>
+                    <div class="prereq-text">
+                        <strong>GitHub Account</strong>
+                        <span>With <a href="https://github.com/features/copilot/plans">Copilot access</a> (free plan, paid, or via GitHub Education)</span>
+                    </div>
+                </div>
+                <div class="prereq-item">
+                    <span class="prereq-check">✓</span>
+                    <div class="prereq-text">
+                        <strong>Terminal basics</strong>
+                        <span>Comfortable with <code>cd</code>, <code>ls</code>, and running commands</span>
+                    </div>
+                </div>
+                <div class="prereq-item">
+                    <span class="prereq-check">✓</span>
+                    <div class="prereq-text">
+                        <strong>Python (optional)</strong>
+                        <span>For running the sample book app used in demos</span>
+                    </div>
+                </div>
+                <div class="prereq-item">
+                    <span class="prereq-check">✓</span>
+                    <div class="prereq-text">
+                        <strong>No AI experience needed</strong>
+                        <span>This course starts from the very beginning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/jamesmontemagno/copilot-cli-for-beginners">GitHub Repository</a>
+                <a href="https://docs.github.com/en/copilot/how-tos/copilot-cli">Official CLI Docs</a>
+                <a href="https://docs.github.com/en/copilot/reference/cli-command-reference">CLI Command Reference</a>
+                <a href="https://aka.ms/foundry/discord">AI Community Discord</a>
+                <a href="https://github.com/features/copilot/plans">Get Copilot Access</a>
+            </div>
+            <p class="footer-credit">GitHub Copilot CLI for Beginners · MIT License</p>
+        </div>
+    </footer>
+
+</body>
+</html>
