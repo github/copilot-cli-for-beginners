@@ -4,7 +4,7 @@
 [![Open project in GitHub Codespaces](https://img.shields.io/badge/Codespaces-Open-blue?style=flat-square&logo=github)](https://codespaces.new/github/copilot-cli-for-beginners?hide_repo_select=true&ref=main&quickstart=true)&ensp;
 [![Official Copilot CLI documentation](https://img.shields.io/badge/GitHub-CLI_Documentation-00a3ee?style=flat-square&logo=github)](https://docs.github.com/en/copilot/how-tos/copilot-cli)&ensp;
 [![Join AI Foundry Discord](https://img.shields.io/badge/Discord-AI_Community-blue?style=flat-square&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)&ensp;
-[![View Course Website](https://img.shields.io/badge/Website-Course_Guide-6e40c9?style=flat-square&logo=github)](https://jamesmontemagno.github.io/copilot-cli-for-beginners/)
+[![View Course Website](https://img.shields.io/badge/Website-Course_Guide-6e40c9?style=flat-square&logo=github)](https://github.github.io/copilot-cli-for-beginners/)
 
 🎯 [What You'll Learn](#what-youll-learn) &ensp; ✅ [Prerequisites](#prerequisites) &ensp; 🤖 [Copilot Family](#understanding-the-github-copilot-family) &ensp; 📚 [Course Structure](#course-structure) &ensp; 📋 [Command Reference](#-github-copilot-cli-command-reference)
 
