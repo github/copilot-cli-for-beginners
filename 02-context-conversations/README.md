@@ -307,6 +307,16 @@ copilot --resume
 copilot --resume abc123
 ```
 
+> 💡 **How do I find a session ID?** You don't need to memorize them. Running `copilot --resume` without an ID shows an interactive list of your previous sessions, their names, IDs, and when they were last active. Just pick the one you want.
+>
+> **What about multiple terminals?** Each terminal window is its own session with its own context. If you have Copilot CLI open in three terminals, that's three separate sessions. Running `--resume` from any terminal lets you browse all of them. The `--continue` flag grabs whichever session was closed most recently, no matter which terminal it was in.
+>
+> **Can I switch sessions without restarting?** Yes. Use the `/resume` slash command from inside an active session:
+> ```
+> > /resume
+> # Shows a list of sessions to switch to
+> ```
+
 ### Organize Your Sessions
 
 Give sessions meaningful names so you can find them later:
@@ -428,17 +438,6 @@ For power users, Copilot CLI supports wildcard patterns and image references:
 copilot
 
 > Find all TODO comments in @samples/book-app-project/**/*.py
-```
-
-### Switch Sessions While Working
-
-Inside an interactive session, use the `/resume` command:
-
-```bash
-copilot
-
-> /resume
-# Shows a list of sessions to switch to
 ```
 
 ### View Session Info
