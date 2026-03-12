@@ -1,8 +1,8 @@
 # CI/CD 集成
 
-> 📖 **前置要求**: 阅读本附录前，请先完成 [第 07 章: 综合实战](../07-putting-it-together/README.md)。
+> 📖 **前置要求**: 阅读本附录前，请先完成 [第 07 章: 综合实战](../07-putting-it-together/README.zh-CN.md)。
 >
-> ⚠️ **本附录适用于已有 CI/CD 流水线的团队。** 如果你刚接触 GitHub Actions 或 CI/CD 概念，请先从第 07 章 [代码评审自动化](../07-putting-it-together/README.md#workflow-3-code-review-automation-optional) 中更简单的 pre-commit hook 方案开始。
+> ⚠️ **本附录适用于已有 CI/CD 流水线的团队。** 如果你刚接触 GitHub Actions 或 CI/CD 概念，请先从第 07 章 [代码评审自动化](../07-putting-it-together/README.zh-CN.md#workflow-2-code-review-automation-optional) 中更简单的 pre-commit hook 方案开始。
 
 本附录展示如何将 GitHub Copilot CLI 集成到 CI/CD 流水线中，以便在 Pull Request 上自动执行代码评审。
 
