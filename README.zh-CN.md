@@ -7,7 +7,7 @@
 
 🎯 [你将学到什么](#what-youll-learn) &ensp; ✅ [先决条件](#prerequisites) &ensp; 🤖 [Copilot 家族](#understanding-the-github-copilot-family) &ensp; 📚 [课程结构](#course-structure) &ensp; 📋 [命令参考](#github-copilot-cli-command-reference)
 
-· [English](./README.md) · 简体中文·
+· [English](./README.md) · [简体中文](./README.zh-CN.md) ·
 
 # GitHub Copilot CLI 初学者教程
 
