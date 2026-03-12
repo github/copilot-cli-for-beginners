@@ -7,6 +7,8 @@
 
 🎯 [What You'll Learn](#what-youll-learn) &ensp; ✅ [Prerequisites](#prerequisites) &ensp; 🤖 [Copilot Family](#understanding-the-github-copilot-family) &ensp; 📚 [Course Structure](#course-structure) &ensp; 📋 [Command Reference](#-github-copilot-cli-command-reference)
 
+· English · [简体中文](./README.zh-CN.md) ·
+
 # GitHub Copilot CLI for Beginners
 
 > **✨ Learn to supercharge your development workflow with AI-powered command-line assistance.**
