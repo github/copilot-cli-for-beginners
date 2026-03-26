@@ -1,4 +1,8 @@
-def print_menu():
+def print_menu() -> None:
+    """Display the interactive menu options.
+
+    Used for the interactive menu mode (alternative to CLI arguments).
+    """
     print("\n📚 Book Collection App")
     print("1. Add a book")
     print("2. List books")
@@ -8,6 +12,13 @@ def print_menu():
 
 
 def get_user_choice() -> str:
+    """Prompt the user to select a menu option (1-5) with validation.
+
+    Used for the interactive menu mode (alternative to CLI arguments).
+
+    Returns:
+        A string representing the user's valid choice ('1' through '5').
+    """
     while True:
         choice = input("Choose an option (1-5): ").strip()
         if not choice:
@@ -68,7 +79,8 @@ def get_book_details() -> tuple[str, str, int]:
     return title, author, year
 
 
-def print_books(books):
+def print_books(books: list) -> None:
+    """Display a list of books in a formatted output with read status."""
     if not books:
         print("No books in your collection.")
         return

@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 import json
 from dataclasses import dataclass, asdict
-from typing import List, Optional
+
 
 DATA_FILE = "data.json"
 
@@ -14,31 +16,39 @@ class Book:
 
 
 class BookCollection:
-    def __init__(self):
-        self.books: List[Book] = []
+    def __init__(self, data_file: str = DATA_FILE) -> None:
+        self.data_file = data_file
+        self.books: list[Book] = []
         self.load_books()
 
-    def load_books(self):
+    def load_books(self) -> None:
         """Load books from the JSON file if it exists."""
         try:
-            with open(DATA_FILE, "r") as f:
+            with open(self.data_file, "r") as f:
                 data = json.load(f)
                 self.books = [Book(**b) for b in data]
         except FileNotFoundError:
             self.books = []
-        except json.JSONDecodeError:
-            print("Warning: data.json is corrupted. Starting with empty collection.")
+        except (json.JSONDecodeError, TypeError):
+            print(f"Warning: {self.data_file} is corrupted. Starting with empty collection.")
             self.books = []
 
-    def save_books(self):
-        """Save the current book collection to JSON."""
-        try:
-            with open(DATA_FILE, "w") as f:
-                json.dump([asdict(b) for b in self.books], f, indent=2)
-        except OSError as e:
-            print(f"Warning: Could not save to {DATA_FILE}: {e}")
+    def save_books(self) -> None:
+        """Save the current book collection to JSON.
+
+        Raises:
+            OSError: If the file cannot be written.
+        """
+        with open(self.data_file, "w") as f:
+            json.dump([asdict(b) for b in self.books], f, indent=2)
 
     def add_book(self, title: str, author: str, year: int) -> Book:
+        """Add a new book to the collection.
+
+        Raises:
+            ValueError: If title or author is empty.
+            OSError: If the collection cannot be saved.
+        """
         if not title.strip():
             raise ValueError("Title cannot be empty")
         if not author.strip():
@@ -48,17 +58,24 @@ class BookCollection:
         self.save_books()
         return book
 
-    def list_books(self) -> List[Book]:
+    def list_books(self) -> list[Book]:
+        """Return all books in the collection."""
         return self.books
 
-    def find_book_by_title(self, title: str) -> Optional[Book]:
+    def find_by_title(self, title: str) -> Book | None:
+        """Find a book by its title (case-insensitive)."""
         for book in self.books:
             if book.title.lower() == title.lower():
                 return book
         return None
 
     def mark_as_read(self, title: str) -> bool:
-        book = self.find_book_by_title(title)
+        """Mark a book as read by title.
+
+        Raises:
+            OSError: If the collection cannot be saved.
+        """
+        book = self.find_by_title(title)
         if book:
             book.read = True
             self.save_books()
@@ -66,19 +83,23 @@ class BookCollection:
         return False
 
     def remove_book(self, title: str) -> bool:
-        """Remove a book by title."""
-        book = self.find_book_by_title(title)
+        """Remove a book by title.
+
+        Raises:
+            OSError: If the collection cannot be saved.
+        """
+        book = self.find_by_title(title)
         if book:
             self.books.remove(book)
             self.save_books()
             return True
         return False
 
-    def find_by_author(self, author: str) -> List[Book]:
-        """Find all books by a given author."""
+    def find_by_author(self, author: str) -> list[Book]:
+        """Find all books by a given author (case-insensitive)."""
         return [b for b in self.books if b.author.lower() == author.lower()]
 
-    def list_by_year(self, start: int, end: int) -> List[Book]:
+    def list_by_year(self, start: int, end: int) -> list[Book]:
         """Filter books by publication year range (inclusive).
 
         Args:

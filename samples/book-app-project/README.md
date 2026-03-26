@@ -1,17 +1,16 @@
 # Book Collection App
 
-*(This README is intentionally rough so you can improve it with GitHub Copilot CLI)*
-
-A Python app for managing books you have or want to read.
-It can add, remove, and list books. Also mark them as read.
+A Python CLI app for managing your book collection.
+Add, remove, search, and track books you've read.
 
 ---
 
-## Current Features
+## Features
 
-* Reads books from a JSON file (our database)
-* Input checking is weak in some areas
-* Some tests exist but probably not enough
+* Store books in a JSON file with title, author, year, and read status
+* Input validation on all user-facing commands
+* Search by author or year range
+* Mark books as read
 
 ---
 
@@ -21,7 +20,8 @@ It can add, remove, and list books. Also mark them as read.
 * `books.py` - BookCollection class with data logic
 * `utils.py` - Helper functions for UI and input
 * `data.json` - Sample book data
-* `tests/test_books.py` - Starter pytest tests
+* `tests/test_books.py` - Unit tests for BookCollection
+* `test_book_app.py` - Unit tests for CLI handlers
 
 ---
 
@@ -30,21 +30,23 @@ It can add, remove, and list books. Also mark them as read.
 ```bash
 python book_app.py list
 python book_app.py add
-python book_app.py find
 python book_app.py remove
+python book_app.py find
+python book_app.py find-title
+python book_app.py mark-read
+python book_app.py search-year
 python book_app.py help
 ```
 
 ## Running Tests
 
 ```bash
-python -m pytest tests/
+python -m pytest
 ```
 
 ---
 
 ## Notes
 
-* Not production-ready (obviously)
-* Some code could be improved
-* Could add more commands later
+* This is a teaching sample for the GitHub Copilot CLI course
+* Intentionally kept simple for learning purposes

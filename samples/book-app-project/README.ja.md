@@ -1,17 +1,16 @@
 # Book Collection App
 
-*（このREADMEは意図的に粗削りです。GitHub Copilot CLIで改善してみましょう）*
-
-読みたい本や持っている本を管理するPythonアプリです。
-本の追加、削除、一覧表示ができます。また、既読マークも付けられます。
+蔵書を管理するPython CLIアプリです。
+本の追加・削除・検索・既読管理ができます。
 
 ---
 
-## 現在の機能
+## 機能
 
-* JSONファイルから本を読み込む（データベースとして使用）
-* 一部のエリアで入力チェックが弱い
-* テストは存在するが、おそらく十分ではない
+* JSONファイルに書籍データを保存（タイトル、著者、出版年、既読状態）
+* すべてのコマンドで入力バリデーション
+* 著者名や出版年範囲での検索
+* 既読マーク機能
 
 ---
 
@@ -21,7 +20,8 @@
 * `books.py` - BookCollectionクラス（データロジック）
 * `utils.py` - UI・入力用ヘルパー関数
 * `data.json` - サンプル書籍データ
-* `tests/test_books.py` - 初期pytestテスト
+* `tests/test_books.py` - BookCollectionのユニットテスト
+* `test_book_app.py` - CLIハンドラーのユニットテスト
 
 ---
 
@@ -30,21 +30,23 @@
 ```bash
 python book_app.py list
 python book_app.py add
-python book_app.py find
 python book_app.py remove
+python book_app.py find
+python book_app.py find-title
+python book_app.py mark-read
+python book_app.py search-year
 python book_app.py help
 ```
 
 ## テストの実行
 
 ```bash
-python -m pytest tests/
+python -m pytest
 ```
 
 ---
 
 ## 注意
 
-* 本番環境用ではない（当然ながら）
-* コードの改善の余地がある
-* 後でコマンドを追加できる
+* GitHub Copilot CLIコースの教材用サンプルです
+* 学習目的のためシンプルな構成にしています
