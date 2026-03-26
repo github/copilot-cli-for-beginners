@@ -1,29 +1,15 @@
 import sys
 from books import BookCollection
+from utils import print_books
 
 
 # Global collection instance
 collection = BookCollection()
 
 
-def show_books(books):
-    """Display books in a user-friendly format."""
-    if not books:
-        print("No books found.")
-        return
-
-    print("\nYour Book Collection:\n")
-
-    for index, book in enumerate(books, start=1):
-        status = "✓" if book.read else " "
-        print(f"{index}. [{status}] {book.title} by {book.author} ({book.year})")
-
-    print()
-
-
 def handle_list():
     books = collection.list_books()
-    show_books(books)
+    print_books(books)
 
 
 def handle_add():
@@ -45,9 +31,12 @@ def handle_remove():
     print("\nRemove a Book\n")
 
     title = input("Enter the title of the book to remove: ").strip()
-    collection.remove_book(title)
+    removed = collection.remove_book(title)
 
-    print("\nBook removed if it existed.\n")
+    if removed:
+        print("\nBook removed.\n")
+    else:
+        print("\nBook not found.\n")
 
 
 def handle_find():
@@ -56,7 +45,7 @@ def handle_find():
     author = input("Author name: ").strip()
     books = collection.find_by_author(author)
 
-    show_books(books)
+    print_books(books)
 
 
 def handle_search_year():
@@ -69,7 +58,7 @@ def handle_search_year():
         start = int(start_str)
         end = int(end_str)
         books = collection.list_by_year(start, end)
-        show_books(books)
+        print_books(books)
     except ValueError as e:
         print(f"\nError: {e}\n")
 

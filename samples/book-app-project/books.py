@@ -32,10 +32,17 @@ class BookCollection:
 
     def save_books(self):
         """Save the current book collection to JSON."""
-        with open(DATA_FILE, "w") as f:
-            json.dump([asdict(b) for b in self.books], f, indent=2)
+        try:
+            with open(DATA_FILE, "w") as f:
+                json.dump([asdict(b) for b in self.books], f, indent=2)
+        except OSError as e:
+            print(f"Warning: Could not save to {DATA_FILE}: {e}")
 
     def add_book(self, title: str, author: str, year: int) -> Book:
+        if not title.strip():
+            raise ValueError("Title cannot be empty")
+        if not author.strip():
+            raise ValueError("Author cannot be empty")
         book = Book(title=title, author=author, year=year)
         self.books.append(book)
         self.save_books()
