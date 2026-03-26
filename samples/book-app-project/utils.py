@@ -16,7 +16,8 @@ def print_menu() -> None:
     print("2. List books")
     print("3. Mark book as read")
     print("4. Remove a book")
-    print("5. Exit")
+    print("5. Search by year range")
+    print("6. Exit")
 
 
 def print_books(books: list[Book]) -> None:
@@ -92,30 +93,30 @@ def validate_year_input(year_str: str) -> int:
 
 
 def validate_menu_choice(choice: str) -> None:
-    """Validate a menu choice is a digit between 1-5.
+    """Validate a menu choice is a digit between 1-6.
 
     Raises:
         BookValidationError: If the choice is invalid.
     """
     if not choice:
-        raise BookValidationError("Input cannot be empty. Please enter a number between 1 and 5.")
-    if not choice.isdigit() or not 1 <= int(choice) <= 5:
-        raise BookValidationError(f"Invalid choice: '{choice}'. Please enter a number between 1 and 5.")
+        raise BookValidationError("Input cannot be empty. Please enter a number between 1 and 6.")
+    if not choice.isdigit() or not 1 <= int(choice) <= 6:
+        raise BookValidationError(f"Invalid choice: '{choice}'. Please enter a number between 1 and 6.")
 
 
 # --- Input Functions (combine validation + display) ---
 
 
 def get_user_choice() -> str:
-    """Prompt the user to select a menu option (1-5) with validation.
+    """Prompt the user to select a menu option (1-6) with validation.
 
     Used for the interactive menu mode (alternative to CLI arguments).
 
     Returns:
-        A string representing the user's valid choice ('1' through '5').
+        A string representing the user's valid choice ('1' through '6').
     """
     while True:
-        choice = input("Choose an option (1-5): ").strip()
+        choice = input("Choose an option (1-6): ").strip()
         try:
             validate_menu_choice(choice)
         except BookValidationError as e:
