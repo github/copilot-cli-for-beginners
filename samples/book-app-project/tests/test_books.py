@@ -359,7 +359,7 @@ def test_save_raises_storage_error_on_open_failure(tmp_path):
     c = BookCollection(data_file=str(temp_file))
     c.books.append(Book(title="X", author="Y", year=2000))
 
-    with patch("builtins.open", side_effect=OSError("disk full")):
+    with patch("tempfile.mkstemp", side_effect=OSError("disk full")):
         with pytest.raises(StorageError):
             c.save_books()
 

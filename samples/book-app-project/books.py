@@ -1,8 +1,13 @@
 from __future__ import annotations
 
 import json
+import logging
+import os
+import tempfile
 from dataclasses import dataclass, asdict
 from datetime import datetime
+
+logger = logging.getLogger(__name__)
 
 
 DATA_FILE = "data.json"
@@ -86,7 +91,7 @@ class BookCollection:
         except FileNotFoundError:
             self.books = []
         except (json.JSONDecodeError, TypeError, OSError):
-            print(f"Warning: {self.data_file} is corrupted. Starting with empty collection.")
+            logger.warning("Data file is corrupted. Starting with empty collection.")
             self.books = []
 
     def save_books(self) -> None:
@@ -119,7 +124,7 @@ class BookCollection:
             json.JSONDecodeError: If the file contains invalid JSON.
             OSError: If the file cannot be read.
         """
-        with open(self.data_file, "r") as f:
+        with open(self.data_file, "r", encoding="utf-8") as f:
             return json.load(f)
 
     def _write_json(self, data: list[dict]) -> None:
@@ -135,10 +140,17 @@ class BookCollection:
             OSError: If the file cannot be written.
         """
         import os
-        tmp_file = self.data_file + ".tmp"
-        with open(tmp_file, "w") as f:
-            json.dump(data, f, indent=2)
-        os.replace(tmp_file, self.data_file)
+        tmp_fd, tmp_file = tempfile.mkstemp(
+            dir=os.path.dirname(self.data_file) or ".",
+            suffix=".tmp",
+        )
+        try:
+            with os.fdopen(tmp_fd, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2)
+            os.replace(tmp_file, self.data_file)
+        except BaseException:
+            os.unlink(tmp_file)
+            raise
 
     def add_book(self, title: str, author: str, year: int) -> Book:
         """Add a new book to the collection and persist the change.
