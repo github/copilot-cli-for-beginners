@@ -62,7 +62,7 @@ Now let's see why developers are calling this "having a senior engineer on speed
 
 ### Demo 1: Code Review in Seconds
 
-The course includes sample files with intentional code quality issues. Let's review one:
+The course includes sample files with intentional code quality issues. If you're working on your local machine and haven't already cloned the repo, please run the `git clone` command below, navigate to the `copilot-cli-for-beginners` folder, and then run the `copilot` command.
 
 ```bash
 # Clone the course repository if you're working locally and haven't already
@@ -73,13 +73,13 @@ cd copilot-cli-for-beginners
 copilot
 ```
 
-Once inside the interactive session:
+Once inside the interactive Copilot CLI session, run the following:
 
 ```
 > Review @samples/book-app-project/book_app.py for code quality issues and suggest improvements
 ```
 
-> 💡 **What's the `@`?** The `@` symbol tells Copilot CLI to read a file. You'll learn all about this in Chapter 02. For now, just copy the command exactly as shown.
+> 💡 **What's the `@` symbol used for?** The `@` symbol tells Copilot CLI to read a file. You'll learn all about this in Chapter 02. For now, just copy the command exactly as shown.
 
 ---
 
