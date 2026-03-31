@@ -280,7 +280,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 # Command dispatcher mapping to improve maintainability
-_COMMAND_MAP = {
+HandlerType = Callable[[BookCollection, argparse.Namespace], None]
+
+_COMMAND_MAP: Dict[str, HandlerType] = {
     "list": lambda coll, a: handle_list(coll),
     "add": lambda coll, a: handle_add(coll, title=getattr(a, "title", None), author=getattr(a, "author", None), year=getattr(a, "year", None)),
     "remove": lambda coll, a: handle_remove(coll, title=getattr(a, "title", None)),
@@ -296,7 +298,7 @@ def main(argv: Optional[List[str]] = None, collection: Optional[BookCollection] 
         argv = sys.argv[1:]
 
     parser = build_parser()
-    args = parser.parse_args(argv)
+    args: argparse.Namespace = parser.parse_args(argv)
 
     # Configure default collection
     if collection is None:
@@ -308,8 +310,8 @@ def main(argv: Optional[List[str]] = None, collection: Optional[BookCollection] 
         parser.print_help()
         return 0
 
-    handler = _COMMAND_MAP.get(cmd)
-    if not handler:
+    handler: Optional[HandlerType] = _COMMAND_MAP.get(cmd)
+    if handler is None:
         logging.error("Unknown command: %s", cmd)
         parser.print_help()
         return 2
