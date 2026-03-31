@@ -570,13 +570,13 @@ copilot
 | Went down wrong path | `/rewind` | Roll back to any earlier point |
 | Long conversation | `/compact` | Summarizes history, frees tokens |
 | Need specific file | `@file.py` not `@folder/` | Loads only what you need |
-| Hitting limits | Start new session | Fresh 128K context |
+| Hitting limits | `/new` or `/clear` | Fresh context |
 | Multiple topics | Use `/rename` per topic | Easy to resume right session |
 
 #### Best Practices for Large Codebases
 
 1. **Be specific**: `@samples/book-app-project/books.py` instead of `@samples/book-app-project/`
-2. **Clear between topics**: Use `/clear` when switching focus
+2. **Clear context between topics**: Use `/new` or `/clear` when switching focus
 3. **Use `/compact`**: Summarize conversation to free up context
 4. **Use multiple sessions**: One session per feature or topic
 
