@@ -336,18 +336,21 @@ As you add files and conversation, Copilot CLI's [context window](../GLOSSARY.md
 copilot
 
 > /context
-Context usage: 45,000 / 128,000 tokens (35%)
+Context usage: 62k/200k tokens (31%)
 
 > /clear
-# Wipes context and starts fresh. Use when switching topics
+# Abandons the current session (no history saved) and starts a fresh conversation
+
+> /new
+# Ends the current session (saving it to history for search/resume) and starts a fresh conversation
 
 > /rewind
-# Opens a timeline picker — roll back to any earlier point in your conversation
+# Opens a timeline picker allowing you to roll back to an earlier point in your conversation
 ```
 
-> 💡 **When to use `/clear`**: If you've been reviewing `books.py` and want to switch to discussing `utils.py`, run `/clear` first. Otherwise stale context from the old topic may confuse responses.
+> 💡 **When to use `/clear` or `/new`**: If you've been reviewing books.py and want to switch to discussing utils.py, run /new first (or /clear if you don't need the session history). Otherwise stale context from the old topic may confuse responses.
 
-> 💡 **Made a mistake or want to try a different approach?** Use `/rewind` (or press Esc twice) to open a **timeline picker** that lets you roll back to any earlier point in your conversation — not just the most recent one. This is handy when you went down the wrong path and want to backtrack without starting over entirely.
+> 💡 **Made a mistake or want to try a different approach?** Use `/rewind` (or press Esc twice) to open a **timeline picker** that lets you roll back to any earlier point in your conversation, not just the most recent one. This is useful when you went down the wrong path and want to backtrack without starting over entirely.
 
 ---
 
