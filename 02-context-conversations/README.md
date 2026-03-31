@@ -330,7 +330,7 @@ copilot
 
 ### Check and Manage Context
 
-As you add files and conversation, Copilot CLI's [context window](../GLOSSARY.md#context-window) fills up. Two commands help you stay in control:
+As you add files and conversation, Copilot CLI's [context window](../GLOSSARY.md#context-window) fills up. Three commands help you stay in control:
 
 ```bash
 copilot
@@ -340,9 +340,14 @@ Context usage: 45,000 / 128,000 tokens (35%)
 
 > /clear
 # Wipes context and starts fresh. Use when switching topics
+
+> /rewind
+# Opens a timeline picker — roll back to any earlier point in your conversation
 ```
 
 > 💡 **When to use `/clear`**: If you've been reviewing `books.py` and want to switch to discussing `utils.py`, run `/clear` first. Otherwise stale context from the old topic may confuse responses.
+
+> 💡 **Made a mistake or want to try a different approach?** Use `/rewind` (or press Esc twice) to open a **timeline picker** that lets you roll back to any earlier point in your conversation — not just the most recent one. This is handy when you went down the wrong path and want to backtrack without starting over entirely.
 
 ---
 
@@ -559,6 +564,7 @@ copilot
 | Situation | Action | Why |
 |-----------|--------|-----|
 | Starting new topic | `/clear` | Removes irrelevant context |
+| Went down wrong path | `/rewind` | Roll back to any earlier point |
 | Long conversation | `/compact` | Summarizes history, frees tokens |
 | Need specific file | `@file.py` not `@folder/` | Loads only what you need |
 | Hitting limits | Start new session | Fresh 128K context |
@@ -846,7 +852,7 @@ copilot --add-dir /path/to/directory
 1. **`@` syntax** gives Copilot CLI context about files, directories, and images
 2. **Multi-turn conversations** build on each other as context accumulates
 3. **Sessions auto-save**: use `--continue` or `--resume` to pick up where you left off
-4. **Context windows** have limits: manage them with `/context`, `/clear`, and `/compact`
+4. **Context windows** have limits: manage them with `/context`, `/clear`, `/rewind`, and `/compact`
 5. **Permission flags** (`--add-dir`, `--allow-all`) control multi-directory access. Use them wisely!
 6. **Image references** (`@screenshot.png`) help debug UI issues visually
 

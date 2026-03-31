@@ -411,7 +411,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 | Command | What It Does |
 |---------|--------------|
-| `/allow-all` | Auto-approve all permission prompts for this session |
+| `/allow-all [on\|off\|show]` | Auto-approve all permission prompts; use `on` to enable, `off` to disable, `show` to check current status |
 | `/add-dir <directory>` | Add a directory to allowed list |
 | `/list-dirs` | Show all allowed directories |
 | `/cwd`, `/cd [directory]` | View or change working directory |
@@ -423,7 +423,8 @@ That's it for getting started! As you become comfortable, you can explore additi
 | Command | What It Does |
 |---------|--------------|
 | `/resume` | Switch to a different session (optionally specify session ID) |
-| `/rename` | Rename the current session |
+| `/rename` | Rename the current session (omit the name to auto-generate one) |
+| `/rewind` | Open a timeline picker to roll back to any earlier point in the conversation |
 | `/context` | Show context window token usage and visualization |
 | `/usage` | Display session usage metrics and statistics |
 | `/session` | Show session info and workspace summary |
