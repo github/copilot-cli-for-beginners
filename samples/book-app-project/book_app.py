@@ -101,8 +101,67 @@ Commands:
   add      - Add a new book
   remove   - Remove a book by title
   find     - Find books by author
+  stats    - Show collection statistics (total, read/unread, oldest/newest)
   help     - Show this help message
 """)
+
+
+def books_stats(books: List[Book]) -> dict:
+    """Return statistics for a list of Book objects.
+
+    Returns a dict with keys: total, read, unread, oldest, newest
+    Oldest/newest are Book instances or None.
+    """
+    total = len(books)
+    read_count = sum(1 for b in books if getattr(b, "read", False))
+    unread_count = total - read_count
+
+    # Collect books with a valid year (non-zero, non-None)
+    year_pairs = []  # list of (year, book)
+    for b in books:
+        y = getattr(b, "year", None)
+        try:
+            if y is None:
+                continue
+            y_int = int(y)
+        except Exception:
+            continue
+        if y_int == 0:
+            continue
+        year_pairs.append((y_int, b))
+
+    oldest = min(year_pairs, key=lambda t: t[0])[1] if year_pairs else None
+    newest = max(year_pairs, key=lambda t: t[0])[1] if year_pairs else None
+
+    return {
+        "total": total,
+        "read": read_count,
+        "unread": unread_count,
+        "oldest": oldest,
+        "newest": newest,
+    }
+
+
+def handle_stats() -> None:
+    """Display collection statistics on the command line."""
+    books = collection.list_books()
+    stats = books_stats(books)
+
+    print(f"\nTotal books: {stats['total']}")
+    print(f"Read: {stats['read']}")
+    print(f"Unread: {stats['unread']}")
+
+    if stats["oldest"]:
+        b = stats["oldest"]
+        print(f"Oldest: {b.title} by {b.author} ({b.year})")
+    else:
+        print("Oldest: N/A")
+
+    if stats["newest"]:
+        b = stats["newest"]
+        print(f"Newest: {b.title} by {b.author} ({b.year})")
+    else:
+        print("Newest: N/A")
 
 
 def main() -> None:
@@ -121,6 +180,8 @@ def main() -> None:
         handle_remove()
     elif command == "find":
         handle_find()
+    elif command == "stats":
+        handle_stats()
     elif command == "help":
         show_help()
     else:
