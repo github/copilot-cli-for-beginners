@@ -330,7 +330,7 @@ copilot
 
 ### Check and Manage Context
 
-As you add files and conversation, Copilot CLI's [context window](../GLOSSARY.md#context-window) fills up. Three commands help you stay in control:
+As you add files and conversation, Copilot CLI's [context window](../GLOSSARY.md#context-window) fills up. Several commands are available to help you stay in control:
 
 ```bash
 copilot
