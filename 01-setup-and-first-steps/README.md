@@ -361,11 +361,11 @@ These commands work in interactive mode. **Start with just these six** - they co
 
 | Command | What It Does | When to Use |
 |---------|--------------|-------------|
-| `/help` | Show all available commands | When you forget a command |
 | `/clear` | Clear conversation and start fresh | When switching topics |
+| `/help` | Show all available commands | When you forget a command |
+| `/model` | Show or switch AI model | When you want to change the AI model |
 | `/plan` | Plan your work out before coding | For more complex features |
 | `/research` | Deep research using GitHub and web sources | When you need to investigate a topic before coding |
-| `/model` | Show or switch AI model | When you want to change the AI model |
 | `/exit` | End the session | When you're done |
 
 That's it for getting started! As you become comfortable, you can explore additional commands.
@@ -381,10 +381,10 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 | Command | What It Does |
 |---------|--------------|
-| `/init` | Initialize Copilot instructions for your repository |
 | `/agent` | Browse and select from available agents |
-| `/skills` | Manage skills for enhanced capabilities |
+| `/init` | Initialize Copilot instructions for your repository |
 | `/mcp` | Manage MCP server configuration |
+| `/skills` | Manage skills for enhanced capabilities |
 
 > 💡 Agents are covered in [Chapter 04](../04-agents-custom-instructions/README.md), skills are covered in [Chapter 05](../05-skills/README.md), and MCP servers are covered in [Chapter 06](../06-mcp-servers/README.md).
 
@@ -392,9 +392,9 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 | Command | What It Does |
 |---------|--------------|
-| `/model` | Show or switch AI model |
 | `/delegate` | Hand off task to Copilot coding agent on GitHub (agent in the cloud) |
 | `/fleet` | Split a complex task into parallel subtasks for faster completion |
+| `/model` | Show or switch AI model |
 | `/tasks` | View background subagents and detached shell sessions |
 
 ### Code
@@ -403,18 +403,18 @@ That's it for getting started! As you become comfortable, you can explore additi
 |---------|--------------|
 | `/diff` | Review the changes made in the current directory |
 | `/pr` | Operate on pull requests for the current branch |
-| `/review` | Run the code-review agent to analyze changes |
 | `/research` | Run deep research investigation using GitHub and web sources |
+| `/review` | Run the code-review agent to analyze changes |
 | `/terminal-setup` | Enable multiline input support (shift+enter and ctrl+enter) |
 
 ### Permissions
 
 | Command | What It Does |
 |---------|--------------|
-| `/allow-all [on\|off\|show]` | Auto-approve all permission prompts; use `on` to enable, `off` to disable, `show` to check current status |
 | `/add-dir <directory>` | Add a directory to allowed list |
-| `/list-dirs` | Show all allowed directories |
+| `/allow-all [on\|off\|show]` | Auto-approve all permission prompts; use `on` to enable, `off` to disable, `show` to check current status |
 | `/cwd`, `/cd [directory]` | View or change working directory |
+| `/list-dirs` | Show all allowed directories |
 
 > ⚠️ **Use with caution**: `/allow-all` skips confirmation prompts. Great for trusted projects, but be careful with untrusted code.
 
@@ -422,22 +422,24 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 | Command | What It Does |
 |---------|--------------|
+| `/clear` | Abandons the current session (no history saved) and starts a fresh conversation |
+| `/compact` | Summarize conversation to reduce context usage |
+| `/context` | Show context window token usage and visualization |
+| `/new` | Ends the current session (saving it to history for search/resume) and starts a fresh conversation. |
 | `/resume` | Switch to a different session (optionally specify session ID) |
 | `/rename` | Rename the current session (omit the name to auto-generate one) |
 | `/rewind` | Open a timeline picker to roll back to any earlier point in the conversation |
-| `/context` | Show context window token usage and visualization |
 | `/usage` | Display session usage metrics and statistics |
 | `/session` | Show session info and workspace summary |
-| `/compact` | Summarize conversation to reduce context usage |
 | `/share` | Export session as markdown file or GitHub gist |
 
 ### Help and Feedback
 
 | Command | What It Does |
 |---------|--------------|
-| `/help` | Show all available commands |
 | `/changelog` | Display changelog for CLI versions |
 | `/feedback` | Submit feedback to GitHub |
+| `/help` | Show all available commands |
 | `/theme` | View or set terminal theme |
 
 ### Quick Shell Commands
