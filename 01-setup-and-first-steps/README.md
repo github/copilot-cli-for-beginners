@@ -469,7 +469,7 @@ copilot
 
 > 💡 **Tip**: Some models cost more "premium requests" than others. Models marked **1x** (like Claude Sonnet 4.5) are a great default. They're capable and efficient. Higher-multiplier models use your premium request quota faster, so save those for when you really need them.
 
-> 💡 **Reasoning effort**: Inside the model picker, use the ← and → arrow keys to adjust the **reasoning effort** for the selected model (if supported). Lower effort is faster; higher effort is more thorough. The current effort level is shown next to the model name in the session header (e.g., `claude-sonnet-4.5 (high)`). Start with the default and raise it only when you need deeper analysis.
+> 💡 **Reasoning effort**: Inside the model picker, use the ← and → arrow keys to adjust the **reasoning effort** for the selected model (when supported). Lower effort is faster; higher effort is more thorough. The current effort level is shown next to the model name in the session header (e.g., `claude-sonnet-4.5 (high)`). Start with the default and raise it only when you need deeper analysis.
 
 </details>
 
