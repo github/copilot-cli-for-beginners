@@ -423,8 +423,26 @@ Copilot will scan your project and create tailored instruction files. You can ed
 | `.github/copilot-instructions.md` | Project | GitHub Copilot specific |
 | `.github/instructions/*.instructions.md` | Project | Granular, topic-specific instructions |
 | `CLAUDE.md`, `GEMINI.md` | Project root | Supported for compatibility |
+| `.claude/settings.json` | Project | Project-level behavior settings (committed, shared with team) |
+| `.claude/settings.local.json` | Project | Personal settings override (not committed, stays on your machine) |
 
 > 🎯 **Just getting started?** Use `AGENTS.md` for project instructions. You can explore the other formats later as needed.
+
+### Settings Files (.claude/settings.json)
+
+In addition to instruction files, Copilot reads **settings files** from your project's `.claude/` folder. These control *how* Copilot behaves rather than *what it knows* about your project. Think of instruction files as "here's our coding standards" and settings files as "here's how the tool should behave."
+
+- **`.claude/settings.json`** — Project settings committed to your repo, shared with the whole team.
+- **`.claude/settings.local.json`** — Your personal overrides, not committed (add it to `.gitignore`).
+
+```
+your-project/
+└── .claude/
+    ├── settings.json        # committed — everyone gets these defaults
+    └── settings.local.json  # NOT committed — personal overrides
+```
+
+> 💡 **Tip**: Both files are optional. Start with `AGENTS.md` for instructions, and only add a `settings.json` when you need to tune Copilot's behavior for the whole team.
 
 ### AGENTS.md
 
