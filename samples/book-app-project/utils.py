@@ -60,18 +60,6 @@ def get_book_details():
     return title, author, year
 
 
-def print_books(books):
-    if not books:
-        print("No books in your collection.")
-        return
-
-    print("\nYour Books:")
-    for index, book in enumerate(books, start=1):
-        status = "✅ Read" if book.read else "📖 Unread"
-        rating_str = format_rating(getattr(book, "rating", None))
-        print(f"{index}. {book.title} by {book.author} ({book.year}) - {status} {rating_str}")
-
-
 def format_rating(rating) -> str:
     """Format a rating (1-5) as stars or text representation.
     
