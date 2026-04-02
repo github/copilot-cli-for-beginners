@@ -47,6 +47,7 @@ Without extensions, your browser is still useful, but with them, it becomes a po
 # Quick Start: MCP in 30 Seconds
 
 ## Get started with the built-in GitHub MCP server
+
 Let's see MCP in action right now, before configuring anything.
 The GitHub MCP server is included by default. Try this:
 
@@ -93,6 +94,7 @@ MCP Servers:
 Here's the difference MCP makes in practice:
 
 **Without MCP:**
+
 ```bash
 > What's in GitHub issue #42?
 
@@ -100,6 +102,7 @@ Here's the difference MCP makes in practice:
 ```
 
 **With MCP:**
+
 ```bash
 > What's in GitHub issue #42 of this repository?
 
@@ -125,7 +128,7 @@ Now that you've seen MCP in action, let's set up additional servers. This sectio
 
 ## MCP Configuration File
 
-MCP servers are configured in `~/.copilot/mcp-config.json` (user-level, applies to all projects) or `.vscode/mcp.json` (project-level, applies to just the current workspace). 
+MCP servers are configured in `~/.copilot/mcp-config.json` (user-level, applies to all projects) or `.vscode/mcp.json` (project-level, applies to just the current workspace).
 
 ```json
 {
@@ -155,6 +158,7 @@ MCP servers are configured in `~/.copilot/mcp-config.json` (user-level, applies 
 | `"tools": ["*"]` | Allow all tools from this server |
 
 **Important JSON rules:**
+
 - Use double quotes `"` for strings (not single quotes)
 - No trailing commas after the last item
 - File must be valid JSON (use a [JSON validator](https://jsonlint.com/) if unsure)
@@ -219,8 +223,8 @@ Context7 gives Copilot access to up-to-date documentation for popular frameworks
 }
 ```
 
-- ✅ **No API key required** 
-- ✅ **No account needed** 
+- ✅ **No API key required**
+- ✅ **No account needed**
 - ✅ **Your code stays local**
 
 Add this to your `~/.copilot/mcp-config.json` and restart Copilot.
@@ -239,8 +243,8 @@ Every MCP server you've seen so far (filesystem, Context7) runs locally on your 
 
 The [Microsoft Learn MCP Server](https://github.com/microsoftdocs/mcp) is a good example. It gives Copilot CLI direct access to official Microsoft documentation (Azure, Microsoft Foundry and other AI topics, .NET, Microsoft 365, and much more) so it can search docs, fetch full pages, and find official code samples instead of relying on a model's training data.
 
-- ✅ **No API key required** 
-- ✅ **No account needed** 
+- ✅ **No API key required**
+- ✅ **No account needed**
 - ✅ **No local install required**
 
 **Quick install with `/plugin install`:**
@@ -260,6 +264,7 @@ This adds the server and its associated agent skills automatically. The skills i
 - **microsoft-skill-creator**: A meta-skill for generating custom skills about Microsoft technologies
 
 **Usage:**
+
 ```bash
 copilot
 
@@ -290,6 +295,7 @@ You can control which URLs are accessible via `~/.copilot/config.json` (general 
 ```
 
 **Usage:**
+
 ```bash
 copilot
 
@@ -373,6 +379,7 @@ The GitHub MCP server is **built-in**. If you logged into Copilot (which you did
 - **Local dev container (Docker)**: Run `gh auth login` after the container starts, then restart Copilot.
 
 **Troubleshooting authentication:**
+
 ```bash
 # Check if you're authenticated
 gh auth status
@@ -794,6 +801,7 @@ Practice using MCP servers together on the book app project. Complete these step
 <summary>💡 Hints (click to expand)</summary>
 
 **Step 1: Verify MCP**
+
 ```bash
 copilot
 > /mcp show
@@ -808,6 +816,7 @@ Use the JSON from the [Complete Configuration](#complete-configuration-file) sec
 **Step 3: Data quality issue to look for**
 
 The last book in `data.json` is:
+
 ```json
 {
   "title": "Mysterious Book",
@@ -816,6 +825,7 @@ The last book in `data.json` is:
   "read": false
 }
 ```
+
 An empty author and year of 0. That's the data quality issue!
 
 **Step 5: Test coverage comparison**
@@ -847,6 +857,7 @@ Ready to go deeper? Follow the [Custom MCP Server Guide](mcp-custom-server.md) t
 ### Troubleshooting
 
 **"MCP server not found"** - Check that:
+
 1. The npm package exists: `npm view @modelcontextprotocol/server-github`
 2. Your configuration is valid JSON
 3. The server name matches your config
@@ -863,12 +874,14 @@ copilot
 This will re-authenticate you with GitHub. If issues persist, check that your GitHub account has the necessary permissions for the repository you're accessing.
 
 **"MCP server failed to start"** - Check the server logs:
+
 ```bash
 # Run the server command manually to see errors
 npx -y @modelcontextprotocol/server-github
 ```
 
 **MCP tools not available** - Make sure the server is enabled:
+
 ```bash
 copilot
 
