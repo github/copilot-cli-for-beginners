@@ -10,6 +10,17 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Book:
+    """Represents a single book in the collection.
+
+    Attributes:
+        title: Book title (non-empty string).
+        author: Book author (non-empty string).
+        year: Publication year (1000–2100, or 0 for unknown).
+        read: Whether the book has been read.
+        rating: Optional rating from 1 to 5.
+        review: Optional review text.
+    """
+
     title: str
     author: str
     year: int
@@ -18,7 +29,12 @@ class Book:
     review: Optional[str] = None
 
     def __post_init__(self) -> None:
-        """Validate book data on creation."""
+        """Validate and normalise book fields after initialisation.
+
+        Raises:
+            ValueError: If title or author is empty, year is out of range,
+                rating is not between 1 and 5, or review is not a string.
+        """
         if not isinstance(self.title, str) or not self.title.strip():
             raise ValueError("Title must be a non-empty string")
         if not isinstance(self.author, str) or not self.author.strip():
@@ -38,12 +54,24 @@ class Book:
 
 
 class BookCollection:
+    """Manages a collection of books backed by a JSON file.
+
+    Books are loaded from data.json on initialisation and saved back
+    after every mutating operation.
+    """
+
     def __init__(self) -> None:
+        """Initialise an empty collection and load books from disk."""
         self.books: List[Book] = []
         self.load_books()
 
     def load_books(self) -> None:
-        """Load books from the JSON file if it exists."""
+        """Load books from the JSON file into memory.
+
+        If the file does not exist, the collection starts empty. If the
+        file is corrupted, a warning is logged and the collection starts
+        empty. Invalid individual records are skipped with a warning.
+        """
         try:
             with open(DATA_FILE, "r") as f:
                 data = json.load(f)
@@ -80,9 +108,9 @@ class BookCollection:
         """Add a new book to the collection.
         
         Args:
-            title: Book title (non-empty string)
-            author: Book author (non-empty string)
-            year: Publication year (1000-2100)
+            title: Book title (non-empty string).
+            author: Book author (non-empty string).
+            year: Publication year (1000–2100).
             
         Returns:
             The created Book object
@@ -153,15 +181,16 @@ class BookCollection:
         """Set or update a book's rating and optional review.
 
         Args:
-            title: The title of the book to rate
-            rating: Rating value (1-5)
-            review: Optional review text
+            title: The title of the book to rate.
+            rating: Rating value (1–5).
+            review: Optional review text.
 
         Returns:
-            True if book was found and rated, False otherwise
+            True if book was found and rated, False otherwise.
 
         Raises:
-            ValueError: If rating is invalid
+            ValueError: If rating is not between 1 and 5.
+            ValueError: If review is not a string.
         """
         if not isinstance(rating, int) or rating < 1 or rating > 5:
             raise ValueError("Rating must be an integer between 1 and 5")
@@ -201,7 +230,7 @@ class BookCollection:
         return book.review if book else None
 
     def find_by_author(self, author: str) -> List[Book]:
-        """Find all books by a given author (case-insensitive).
+        """Find all books whose author field contains the given string (case-insensitive).
         
         Args:
             author: The author name to search for
