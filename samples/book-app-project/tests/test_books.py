@@ -284,6 +284,7 @@ class TestMarkAsRead:
         populated_collection.mark_as_read("1984")
         reloaded = BookCollection()
         book = reloaded.find_book_by_title("1984")
+        assert book is not None
         assert book.read is True
 
     def test_mark_already_read_book_stays_read(self, populated_collection):
@@ -450,3 +451,173 @@ class TestListByYear:
     def test_invalid_end_year_raises(self, populated_collection, bad_year):
         with pytest.raises(ValueError):
             populated_collection.list_by_year(1000, bad_year)
+
+
+# ---------------------------------------------------------------------------
+# Duplicate books
+# ---------------------------------------------------------------------------
+
+class TestDuplicateBooks:
+    """Tests for adding books with the same title and/or author."""
+
+    def test_add_duplicate_title_and_author_allowed(self, collection):
+        """BookCollection does not enforce uniqueness — duplicates are permitted."""
+        collection.add_book("1984", "George Orwell", 1949)
+        collection.add_book("1984", "George Orwell", 1949)
+        assert len(collection.books) == 2
+
+    def test_add_duplicate_title_different_author(self, collection):
+        collection.add_book("Hamlet", "William Shakespeare", 1603)
+        collection.add_book("Hamlet", "No Fear Shakespeare", 2003)
+        assert len(collection.books) == 2
+
+    def test_add_duplicate_author_different_title(self, collection):
+        collection.add_book("1984", "George Orwell", 1949)
+        collection.add_book("Animal Farm", "George Orwell", 1945)
+        assert len(collection.books) == 2
+
+    def test_find_by_title_returns_first_duplicate(self, collection):
+        """find_book_by_title returns the first match when duplicates exist."""
+        collection.add_book("1984", "George Orwell", 1949)
+        collection.add_book("1984", "Another Author", 2000)
+        book = collection.find_book_by_title("1984")
+        assert book is not None
+        assert book.author == "George Orwell"
+
+    def test_remove_duplicate_removes_only_first(self, collection):
+        """remove_book removes the first match, leaving the second duplicate intact."""
+        collection.add_book("1984", "George Orwell", 1949)
+        collection.add_book("1984", "George Orwell", 1949)
+        collection.remove_book("1984")
+        assert len(collection.books) == 1
+
+    def test_duplicate_persists_to_disk(self, collection):
+        collection.add_book("1984", "George Orwell", 1949)
+        collection.add_book("1984", "George Orwell", 1949)
+        reloaded = BookCollection()
+        assert len(reloaded.books) == 2
+
+
+# ---------------------------------------------------------------------------
+# Partial title removal
+# ---------------------------------------------------------------------------
+
+class TestRemoveByPartialTitle:
+    """remove_book uses exact (case-insensitive) matching — partial titles do not match."""
+
+    def test_partial_title_does_not_remove_book(self, populated_collection):
+        result = populated_collection.remove_book("Hobb")      # partial of "The Hobbit"
+        assert result is False
+
+    def test_partial_title_book_still_exists(self, populated_collection):
+        populated_collection.remove_book("Hobb")
+        assert populated_collection.find_book_by_title("The Hobbit") is not None
+
+    def test_substring_of_title_does_not_match(self, populated_collection):
+        result = populated_collection.remove_book("Orwell")    # author, not title
+        assert result is False
+
+    def test_exact_title_still_removes(self, populated_collection):
+        result = populated_collection.remove_book("The Hobbit")
+        assert result is True
+
+    def test_partial_case_insensitive_does_not_match(self, populated_collection):
+        result = populated_collection.remove_book("the hob")
+        assert result is False
+
+
+# ---------------------------------------------------------------------------
+# File permission errors during save
+# ---------------------------------------------------------------------------
+
+class TestSavePermissionError:
+    """Tests for IOError/PermissionError raised during save_books."""
+
+    def test_save_books_raises_on_permission_error(self, collection, monkeypatch):
+        collection.add_book("1984", "George Orwell", 1949)
+
+        def mock_open(*args, **kwargs):
+            raise PermissionError("Permission denied")
+
+        monkeypatch.setattr("builtins.open", mock_open)
+        with pytest.raises((IOError, OSError, PermissionError)):
+            collection.save_books()
+
+    def test_add_book_raises_when_save_fails(self, collection, monkeypatch):
+        """add_book propagates IOError from save_books."""
+        original_open = open
+        call_count = {"n": 0}
+
+        def mock_open(*args, **kwargs):
+            call_count["n"] += 1
+            if "w" in args[1] if len(args) > 1 else kwargs.get("mode", "r"):
+                raise PermissionError("Permission denied")
+            return original_open(*args, **kwargs)
+
+        monkeypatch.setattr("builtins.open", mock_open)
+        with pytest.raises((IOError, OSError, PermissionError)):
+            collection.add_book("1984", "George Orwell", 1949)
+
+    def test_collection_unchanged_in_memory_after_failed_save(self, collection, monkeypatch):
+        """Even if save fails, the in-memory collection reflects the attempted add."""
+        def mock_open(*args, **kwargs):
+            raise PermissionError("Permission denied")
+
+        monkeypatch.setattr("builtins.open", mock_open)
+        try:
+            collection.add_book("1984", "George Orwell", 1949)
+        except (IOError, OSError, PermissionError):
+            pass
+        assert len(collection.books) == 1
+
+
+# ---------------------------------------------------------------------------
+# Concurrent access
+# ---------------------------------------------------------------------------
+
+class TestConcurrentAccess:
+    """Basic thread-safety tests for BookCollection."""
+
+    def test_concurrent_reads_are_safe(self, populated_collection):
+        """Multiple threads reading simultaneously should not raise."""
+        import threading
+        errors = []
+
+        def read():
+            try:
+                populated_collection.list_books()
+                populated_collection.find_book_by_title("Dune")
+                populated_collection.find_by_author("Orwell")
+            except Exception as e:
+                errors.append(e)
+
+        threads = [threading.Thread(target=read) for _ in range(10)]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+
+        assert errors == [], f"Concurrent reads raised: {errors}"
+
+    def test_concurrent_adds_result_in_all_books_present(self, collection):
+        """All books added across threads should appear in the collection."""
+        import threading
+
+        titles = [f"Book {i}" for i in range(10)]
+        errors = []
+
+        def add(title):
+            try:
+                collection.add_book(title, "Author", 2000)
+            except Exception as e:
+                errors.append(e)
+
+        threads = [threading.Thread(target=add, args=(t,)) for t in titles]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+
+        assert errors == [], f"Concurrent adds raised: {errors}"
+        actual_titles = {b.title for b in collection.books}
+        assert actual_titles == set(titles)
