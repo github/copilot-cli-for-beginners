@@ -381,6 +381,43 @@ def handle_rate(
         print_func(f"\nError: {e}")
 
 
+def handle_year_range(
+    collection: BookCollection,
+    input_func: InputFunc = input,
+    print_func: PrintFunc = print,
+    start: Optional[str] = None,
+    end: Optional[str] = None,
+) -> None:
+    """Find and display books published within a year range (inclusive).
+
+    Args:
+        collection: The BookCollection to search.
+        input_func: Callable for reading user input; defaults to built-in input.
+        print_func: Callable used for output; defaults to built-in print.
+        start: Start year string; prompts interactively if None.
+        end: End year string; prompts interactively if None.
+    """
+    print_func("\nFind Books by Year Range\n")
+
+    if start is None:
+        start = input_func("Start year: ").strip()
+    if end is None:
+        end = input_func("End year: ").strip()
+
+    try:
+        start_int = parse_year(start)
+        end_int = parse_year(end)
+        if start_int == 0 or end_int == 0:
+            print_func("\nStart and end year are required.")
+            return
+        books = collection.list_by_year(start_int, end_int)
+    except ValueError as exc:
+        print_func(f"\nError: {exc}")
+        return
+
+    show_books(books, print_func=print_func)
+
+
 def handle_view_review(
     collection: BookCollection,
     input_func: InputFunc = input,
@@ -458,6 +495,10 @@ def build_parser() -> argparse.ArgumentParser:
     view_p = sub.add_parser("view-review", help="View a book's rating and review")
     view_p.add_argument("--title", help="Book title (exact or substring)")
 
+    year_p = sub.add_parser("year-range", help="Find books published within a year range")
+    year_p.add_argument("--start", help="Start year (inclusive)")
+    year_p.add_argument("--end", help="End year (inclusive)")
+
     sub.add_parser("stats", help="Show collection statistics")
 
     return parser
@@ -474,6 +515,7 @@ _COMMAND_MAP: Dict[str, HandlerType] = {
     "mark": lambda coll, a: handle_mark(coll, title=getattr(a, "title", None)),
     "rate": lambda coll, a: handle_rate(coll, title=getattr(a, "title", None), rating=getattr(a, "rating", None)),
     "view-review": lambda coll, a: handle_view_review(coll, title=getattr(a, "title", None)),
+    "year-range": lambda coll, a: handle_year_range(coll, start=getattr(a, "start", None), end=getattr(a, "end", None)),
     "stats": lambda coll, _: handle_stats(coll),
 }
 

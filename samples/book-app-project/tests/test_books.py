@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
 import books
 from books import Book, BookCollection
+from book_app import handle_year_range, main
 
 
 # ---------------------------------------------------------------------------
@@ -524,6 +525,59 @@ class TestRemoveByPartialTitle:
     def test_partial_case_insensitive_does_not_match(self, populated_collection):
         result = populated_collection.remove_book("the hob")
         assert result is False
+
+
+# ---------------------------------------------------------------------------
+# handle_year_range CLI handler
+# ---------------------------------------------------------------------------
+
+class TestHandleYearRange:
+    """Tests for the handle_year_range CLI handler."""
+
+    def _out(self):
+        output = []
+        return output, output.append
+
+    def test_returns_books_in_range(self, populated_collection):
+        output, printer = self._out()
+        handle_year_range(populated_collection, print_func=printer, start="1940", end="1970")
+        combined = "\n".join(output)
+        assert "1984" in combined
+        assert "Dune" in combined
+        assert "The Hobbit" not in combined
+
+    def test_inclusive_single_year(self, populated_collection):
+        output, printer = self._out()
+        handle_year_range(populated_collection, print_func=printer, start="1937", end="1937")
+        combined = "\n".join(output)
+        assert "The Hobbit" in combined
+
+    def test_no_results_message(self, populated_collection):
+        output, printer = self._out()
+        handle_year_range(populated_collection, print_func=printer, start="2000", end="2010")
+        combined = "\n".join(output)
+        assert "No books" in combined or combined.strip().endswith("Year Range")
+
+    def test_start_greater_than_end_prints_error(self, populated_collection):
+        output, printer = self._out()
+        handle_year_range(populated_collection, print_func=printer, start="2000", end="1999")
+        assert any("Error" in line for line in output)
+
+    def test_invalid_year_string_prints_error(self, populated_collection):
+        output, printer = self._out()
+        handle_year_range(populated_collection, print_func=printer, start="abc", end="2000")
+        assert any("Error" in line for line in output)
+
+    def test_zero_start_year_prints_error(self, populated_collection):
+        output, printer = self._out()
+        handle_year_range(populated_collection, print_func=printer, start="", end="2000")
+        assert any("required" in line.lower() or "Error" in line for line in output)
+
+    def test_cli_year_range_subcommand(self, populated_collection):
+        output, printer = self._out()
+        main(["year-range", "--start", "1940", "--end", "1970"], collection=populated_collection)
+
+
 
 
 # ---------------------------------------------------------------------------
