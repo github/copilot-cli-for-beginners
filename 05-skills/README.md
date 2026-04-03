@@ -267,7 +267,7 @@ Build your own skills from SKILL.md files.
 
 ## Skill Locations
 
-Skills are stored in `.github/skills/` (project-specific) or `~/.copilot/skills/` (user level).
+Skills are stored in `.github/skills/` (project-specific), `~/.copilot/skills/` (user level), or come **built-in** with the CLI itself.
 
 ### How Copilot Finds Skills
 
@@ -275,8 +275,11 @@ Copilot automatically scans these locations for skills:
 
 | Location | Scope |
 |----------|-------|
+| Built-in (ships with CLI) | Available to everyone, no setup needed |
 | `.github/skills/` | Project-specific (shared with team via git) |
 | `~/.copilot/skills/` | User-specific (your personal skills) |
+
+> 💡 **Built-in skills**: Starting with v1.0.17, GitHub Copilot CLI ships with skills pre-installed. For example, the `customizing-copilot-cloud-agents-environment` skill provides a guide for setting up the Copilot cloud agent environment. Run `/skills list` to see all available skills, including built-in ones.
 
 ### Skill Structure
 
@@ -841,7 +844,7 @@ Run `/skills reload` after creating or editing skills to ensure changes are pick
 1. **Skills are automatic**: Copilot loads them when your prompt matches the skill's description
 2. **Direct invocation**: You can also invoke skills directly with `/skill-name` as a slash command
 3. **SKILL.md format**: YAML frontmatter (name, description, optional license) plus markdown instructions
-4. **Location matters**: `.github/skills/` for project/team sharing, `~/.copilot/skills/` for personal use
+4. **Location matters**: Built-in skills ship with the CLI; `.github/skills/` for project/team sharing; `~/.copilot/skills/` for personal use
 5. **Description is key**: Write descriptions that match how you naturally ask questions
 
 > 📋 **Quick Reference**: See the [GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference) for a complete list of commands and shortcuts.

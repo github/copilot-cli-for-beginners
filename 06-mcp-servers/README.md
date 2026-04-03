@@ -896,6 +896,8 @@ Beyond `/mcp show`, there are several other commands for managing your MCP serve
 | `/mcp enable <server-name>` | Enable a disabled server |
 | `/mcp disable <server-name>` | Temporarily disable a server |
 | `/mcp delete <server-name>` | Remove a server permanently |
+| `/mcp reload` | Reload MCP server configuration without restarting Copilot |
+| `/mcp auth <server-name>` | Authenticate or re-authenticate an MCP server that uses OAuth |
 
 For most of this course, `/mcp show` is all you need. The other commands become useful as you manage more servers over time.
 

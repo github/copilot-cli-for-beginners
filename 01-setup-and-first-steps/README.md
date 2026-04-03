@@ -431,7 +431,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 | `/rewind` | Open a timeline picker to roll back to any earlier point in the conversation |
 | `/usage` | Display session usage metrics and statistics |
 | `/session` | Show session info and workspace summary |
-| `/share` | Export session as markdown file or GitHub gist |
+| `/share` | Export session as markdown file, GitHub gist, or self-contained HTML file |
 
 ### Help and Feedback
 
