@@ -65,6 +65,19 @@ fun handleFind(collection: BookCollection) {
     showBooks(books)
 }
 
+fun handleRead(collection: BookCollection) {
+    println("\nMark a Book as Read\n")
+
+    print("Enter the title of the book: ")
+    val title = readlnOrNull()?.trim() ?: ""
+    
+    if (collection.markAsRead(title)) {
+        println("\nBook marked as read.\n")
+    } else {
+        println("\nBook not found.\n")
+    }
+}
+
 fun showHelp() {
     println(
         """
@@ -74,6 +87,7 @@ fun showHelp() {
     Commands:
       list     - Show all books
       add      - Add a new book
+      read     - Mark a book as read
       remove   - Remove a book by title
       find     - Find books by author
       help     - Show this help message
@@ -92,6 +106,7 @@ fun main(args: Array<String>) {
     when (args[0].lowercase()) {
         "list"   -> handleList(collection)
         "add"    -> handleAdd(collection)
+        "read"   -> handleRead(collection)
         "remove" -> handleRemove(collection)
         "find"   -> handleFind(collection)
         "help"   -> showHelp()
