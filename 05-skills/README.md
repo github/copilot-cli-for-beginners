@@ -277,6 +277,7 @@ Copilot automatically scans these locations for skills:
 |----------|-------|
 | `.github/skills/` | Project-specific (shared with team via git) |
 | `~/.copilot/skills/` | User-specific (your personal skills) |
+| Built into the CLI | Bundled with the CLI itself (e.g., a guide for customizing the Copilot cloud agent environment) |
 
 ### Skill Structure
 
