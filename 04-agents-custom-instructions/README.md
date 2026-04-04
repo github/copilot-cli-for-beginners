@@ -69,6 +69,7 @@ Never used or made an agent? Here's all you need to know to get started for this
 | **Init** | `/init` | Generates project configuration files (instructions, agents) |
 | **Explore** | *Automatic* | Used internally when you ask Copilot to explore or analyze the codebase |
 | **Task** | *Automatic* | Executes commands like tests, builds, lints, and dependency installs |
+| **Critic** | *Automatic (experimental)* | Automatically reviews plans and complex implementations using a complementary model to catch errors early. Available when using Claude models. |
 
 <br>
 
