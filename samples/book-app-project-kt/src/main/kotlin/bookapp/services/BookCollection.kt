@@ -1,6 +1,7 @@
 package bookapp.services
 
 import bookapp.models.Book
+import bookapp.models.BookStats
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -71,5 +72,15 @@ class BookCollection(dataFile: String? = null) {
 
     fun findByAuthor(author: String): List<Book> {
         return books.filter { it.author.equals(author, ignoreCase = true) }
+    }
+
+    fun getStatistics(bookList: List<Book> = books): BookStats {
+        return BookStats(
+            totalCount = bookList.size,
+            readCount = bookList.count { it.read },
+            unreadCount = bookList.count { !it.read },
+            oldestBook = bookList.minByOrNull { it.year },
+            newestBook = bookList.maxByOrNull { it.year }
+        )
     }
 }

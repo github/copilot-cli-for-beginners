@@ -64,4 +64,55 @@ class BookCollectionTest {
         val result = collection.removeBook("Nonexistent Book")
         assertFalse(result)
     }
+
+    @Test
+    fun `getStatistics should return correct counts`() {
+        collection.addBook("1984", "George Orwell", 1949)
+        collection.addBook("Dune", "Frank Herbert", 1965)
+        collection.addBook("Neuromancer", "William Gibson", 1984)
+        collection.markAsRead("Dune")
+
+        val stats = collection.getStatistics()
+
+        assertEquals(3, stats.totalCount)
+        assertEquals(1, stats.readCount)
+        assertEquals(2, stats.unreadCount)
+    }
+
+    @Test
+    fun `getStatistics should find oldest and newest books`() {
+        collection.addBook("1984", "George Orwell", 1949)
+        collection.addBook("Dune", "Frank Herbert", 1965)
+        collection.addBook("Neuromancer", "William Gibson", 1984)
+
+        val stats = collection.getStatistics()
+
+        assertEquals("1984", stats.oldestBook?.title)
+        assertEquals("Neuromancer", stats.newestBook?.title)
+    }
+
+    @Test
+    fun `getStatistics on empty list should return zeros and nulls`() {
+        val stats = collection.getStatistics()
+
+        assertEquals(0, stats.totalCount)
+        assertEquals(0, stats.readCount)
+        assertEquals(0, stats.unreadCount)
+        assertNull(stats.oldestBook)
+        assertNull(stats.newestBook)
+    }
+
+    @Test
+    fun `getStatistics should accept custom book list`() {
+        collection.addBook("1984", "George Orwell", 1949)
+        collection.addBook("Dune", "Frank Herbert", 1965)
+        collection.addBook("Neuromancer", "William Gibson", 1984)
+
+        val subset = collection.findByAuthor("Frank Herbert")
+        val stats = collection.getStatistics(subset)
+
+        assertEquals(1, stats.totalCount)
+        assertEquals("Dune", stats.oldestBook?.title)
+        assertEquals("Dune", stats.newestBook?.title)
+    }
 }
