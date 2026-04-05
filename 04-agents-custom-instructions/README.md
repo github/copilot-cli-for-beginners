@@ -67,6 +67,7 @@ Never used or made an agent? Here's all you need to know to get started for this
 | **Plan** | `/plan` or `Shift+Tab` (cycle modes) | Creates step-by-step implementation plans before coding |
 | **Code-review** | `/review` | Reviews staged/unstaged changes with focused, actionable feedback |
 | **Init** | `/init` | Generates project configuration files (instructions, agents) |
+| **Critic** | *Automatic (experimental)* | Automatically reviews plans and complex implementations using a complementary model to catch errors early. Available when using Claude models with experimental mode enabled (`--experimental`). |
 | **Explore** | *Automatic* | Used internally when you ask Copilot to explore or analyze the codebase |
 | **Task** | *Automatic* | Executes commands like tests, builds, lints, and dependency installs |
 

@@ -54,7 +54,9 @@ Learn what skills are, why they matter, and how they differ from agents and MCP.
    copilot
    > /skills list
    ```
-   This shows all skills Copilot can find in your project and personal folders.
+   This shows all skills Copilot can find — including **built-in skills that ship with the CLI** as well as any project or personal skills you've created.
+
+   > 💡 **Built-in skills**: Starting with v1.0.17, the Copilot CLI includes built-in skills out of the box. The first built-in skill is a guide for customizing the Copilot cloud agent's environment (e.g., pre-installing tools and dependencies via `copilot-setup-steps.yml`). You'll see it listed as `customizing-copilot-cloud-agents-environment` when you run `/skills list`. These built-in skills are always available without any setup needed.
 
 2. **Look at a real skill file:** Check out our provided [code-checklist SKILL.md](../.github/skills/code-checklist/SKILL.md) to see the pattern. It's just YAML frontmatter plus markdown instructions.
 
@@ -267,7 +269,7 @@ Build your own skills from SKILL.md files.
 
 ## Skill Locations
 
-Skills are stored in `.github/skills/` (project-specific) or `~/.copilot/skills/` (user level).
+Skills are stored in `.github/skills/` (project-specific) or `~/.copilot/skills/` (user level). The CLI also includes **built-in skills** that are always available without any setup.
 
 ### How Copilot Finds Skills
 
@@ -275,6 +277,7 @@ Copilot automatically scans these locations for skills:
 
 | Location | Scope |
 |----------|-------|
+| **Built-in** | Included with the CLI — always available, no setup needed |
 | `.github/skills/` | Project-specific (shared with team via git) |
 | `~/.copilot/skills/` | User-specific (your personal skills) |
 
