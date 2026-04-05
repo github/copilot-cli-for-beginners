@@ -1,6 +1,7 @@
 package bookapp
 
 import bookapp.models.Book
+import bookapp.models.SearchCriteria
 import bookapp.services.BookCollection
 
 fun showBooks(books: List<Book>) {
@@ -19,9 +20,58 @@ fun showBooks(books: List<Book>) {
     println()
 }
 
-fun handleList(collection: BookCollection) {
-    val books = collection.listBooks()
+fun handleList(collection: BookCollection, args: Array<String>) {
+    val criteria = parseSearchCriteria(args)
+    val books = collection.searchBooks(criteria)
     showBooks(books)
+}
+
+fun parseSearchCriteria(args: Array<String>): SearchCriteria {
+    var searchText: String? = null
+    var yearFrom: Int? = null
+    var yearTo: Int? = null
+    var readStatus: Boolean? = null
+    
+    var i = 1 // Skip the "list" command itself
+    while (i < args.size) {
+        when (args[i]) {
+            "--text" -> {
+                if (i + 1 < args.size) {
+                    searchText = args[i + 1]
+                    i += 2
+                } else {
+                    i++
+                }
+            }
+            "--year-from" -> {
+                if (i + 1 < args.size) {
+                    yearFrom = args[i + 1].toIntOrNull()
+                    i += 2
+                } else {
+                    i++
+                }
+            }
+            "--year-to" -> {
+                if (i + 1 < args.size) {
+                    yearTo = args[i + 1].toIntOrNull()
+                    i += 2
+                } else {
+                    i++
+                }
+            }
+            "--read" -> {
+                readStatus = true
+                i++
+            }
+            "--unread" -> {
+                readStatus = false
+                i++
+            }
+            else -> i++
+        }
+    }
+    
+    return SearchCriteria(searchText, yearFrom, yearTo, readStatus)
 }
 
 fun handleAdd(collection: BookCollection) {
@@ -85,12 +135,22 @@ fun showHelp() {
     Book Collection Helper
 
     Commands:
-      list     - Show all books
-      add      - Add a new book
-      read     - Mark a book as read
-      remove   - Remove a book by title
-      find     - Find books by author
-      help     - Show this help message
+      list                           - Show all books
+      list --text <query>            - Search books by title or author
+      list --year-from <year>        - Filter books from year onwards
+      list --year-to <year>          - Filter books up to year
+      list --read                    - Show only read books
+      list --unread                  - Show only unread books
+      add                            - Add a new book
+      read                           - Mark a book as read
+      remove                         - Remove a book by title
+      find                           - Find books by author
+      help                           - Show this help message
+      
+    Examples:
+      list --text Tolkien                    - Find books with "Tolkien" in title or author
+      list --year-from 2000 --unread         - Unread books from 2000 onwards
+      list --text Harry --year-to 2010       - Books with "Harry" published up to 2010
         """.trimEnd()
     )
 }
@@ -104,7 +164,7 @@ fun main(args: Array<String>) {
     }
 
     when (args[0].lowercase()) {
-        "list"   -> handleList(collection)
+        "list"   -> handleList(collection, args)
         "add"    -> handleAdd(collection)
         "read"   -> handleRead(collection)
         "remove" -> handleRemove(collection)

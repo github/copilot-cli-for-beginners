@@ -2,6 +2,7 @@ package bookapp.services
 
 import bookapp.models.Book
 import bookapp.models.BookStats
+import bookapp.models.SearchCriteria
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -72,6 +73,21 @@ class BookCollection(dataFile: String? = null) {
 
     fun findByAuthor(author: String): List<Book> {
         return books.filter { it.author.equals(author, ignoreCase = true) }
+    }
+
+    fun searchBooks(criteria: SearchCriteria): List<Book> {
+        return books.filter { book ->
+            val matchesText = criteria.searchText?.let {
+                book.title.contains(it, ignoreCase = true) || 
+                book.author.contains(it, ignoreCase = true)
+            } ?: true
+            
+            val matchesYearFrom = criteria.yearFrom?.let { book.year >= it } ?: true
+            val matchesYearTo = criteria.yearTo?.let { book.year <= it } ?: true
+            val matchesReadStatus = criteria.readStatus?.let { book.read == it } ?: true
+            
+            matchesText && matchesYearFrom && matchesYearTo && matchesReadStatus
+        }
     }
 
     fun getStatistics(bookList: List<Book> = books): BookStats {
