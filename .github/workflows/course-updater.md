@@ -37,11 +37,11 @@ Look for:
 - Significant changes to existing features (renames, deprecations)
 - New customization options (e.g. instructions, agents, skills, MCP, plugins)
 
-## Step 2 — Compare against the current course content
+## Step 2 — Compare against the current course content and existing PRs
 
 This course targets beginners so only include content changes that would cater to that audience. For example, if a new feature is advanced or doesn't qualify as a "beginner" level feature, it may not be necessary to include it in the course content since we don't want to overwhelm learners. Determine what is most relevant and helpful for beginners learning about the Copilot CLI.
 
-Read the readme files in the repo and compare the features documented there against what you found in Step 1. 
+Read all of the readme files in the repo and compare the features documented there against what you found in Step 1. Also check existing pull requests to see if any updates are already in progress. DO NOT duplicate efforts if an update has already been proposed in an open PR.
 Identify:
 
 - **Missing features** — new capabilities not yet documented
