@@ -69,6 +69,7 @@ Never used or made an agent? Here's all you need to know to get started for this
 | **Init** | `/init` | Generates project configuration files (instructions, agents) |
 | **Explore** | *Automatic* | Used internally when you ask Copilot to explore or analyze the codebase |
 | **Task** | *Automatic* | Executes commands like tests, builds, lints, and dependency installs |
+| **Critic** | *Automatic* | Reviews plans and complex implementations using a second model to catch errors early (experimental, Claude models only) |
 
 <br>
 
@@ -95,6 +96,10 @@ What about the Task Agent? It works behind the scenes to manage and track what i
 |---------|--------------|
 | ✅ **Success** | Brief summary (e.g., "All 247 tests passed", "Build succeeded") |
 | ❌ **Failure** | Full output with stack traces, compiler errors, and detailed logs |
+
+What about the Critic Agent? When you use `/plan`, the Critic agent may automatically kick in to review the plan before you see it. Think of it as a second pair of eyes — it uses a different AI model to double-check the plan for mistakes or gaps before handing it back to you. You don't need to do anything to activate it; just use `/plan` as normal and Copilot handles the rest.
+
+> 💡 **Note**: The Critic agent is currently experimental and works with Claude models. If you don't see it in action, try enabling experimental features in your Copilot settings.
 
 
 > 📚 **Official Documentation**: [GitHub Copilot CLI Agents](https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
