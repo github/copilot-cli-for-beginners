@@ -1,3 +1,5 @@
+HELLO
+
 ![GitHub Copilot CLI for Beginners](./images/copilot-banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)&ensp;
