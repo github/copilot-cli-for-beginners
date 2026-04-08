@@ -904,7 +904,7 @@ These work when you're already inside `copilot`:
 
 ### Option 2: `copilot mcp` command (from your terminal)
 
-New in v1.0.21, you can also manage MCP servers directly from your terminal without starting a chat session first:
+You can also manage MCP servers directly from your terminal without starting a chat session first:
 
 ```bash
 # List all configured MCP servers
