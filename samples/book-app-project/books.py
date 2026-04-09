@@ -70,3 +70,20 @@ class BookCollection:
     def find_by_author(self, author: str) -> List[Book]:
         """Find all books by a given author."""
         return [b for b in self.books if b.author.lower() == author.lower()]
+
+    def search_by_title(self, query: str) -> List[Book]:
+        """Search for books by title with partial/case-insensitive matching."""
+        query_lower = query.lower()
+        return [b for b in self.books if query_lower in b.title.lower()]
+
+    def search_by_author(self, query: str) -> List[Book]:
+        """Search for books by author with partial/case-insensitive matching."""
+        query_lower = query.lower()
+        return [b for b in self.books if query_lower in b.author.lower()]
+
+    def search_by_query(self, query: str) -> dict[str, List[Book]]:
+        """Search books by title or author, returning grouped results."""
+        return {
+            "by_title": self.search_by_title(query),
+            "by_author": self.search_by_author(query),
+        }
