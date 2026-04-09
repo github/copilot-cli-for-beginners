@@ -58,6 +58,15 @@ class BookCollection:
             return True
         return False
 
+    def mark_as_unread(self, title: str) -> bool:
+        """Mark a book as unread."""
+        book = self.find_book_by_title(title)
+        if book:
+            book.read = False
+            self.save_books()
+            return True
+        return False
+
     def remove_book(self, title: str) -> bool:
         """Remove a book by title."""
         book = self.find_book_by_title(title)

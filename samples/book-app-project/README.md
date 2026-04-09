@@ -28,11 +28,13 @@ It can add, remove, and list books. Also mark them as read.
 ## Running the App
 
 ```bash
-python book_app.py list
-python book_app.py add
-python book_app.py find
-python book_app.py remove
-python book_app.py help
+python book_app.py list      # Show all books
+python book_app.py add       # Add a new book
+python book_app.py find      # Find books by author
+python book_app.py remove    # Remove a book
+python book_app.py mark      # Mark a book as read
+python book_app.py unmark    # Mark a book as unread
+python book_app.py help      # Show help
 ```
 
 ## Running Tests

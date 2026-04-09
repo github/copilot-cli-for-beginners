@@ -64,6 +64,28 @@ def handle_find() -> None:
     show_books(books)
 
 
+def handle_mark() -> None:
+    """Mark a book as read."""
+    print("\nMark Book as Read\n")
+
+    title = input("Enter the title of the book to mark as read: ").strip()
+    if collection.mark_as_read(title):
+        print("\nBook marked as read.\n")
+    else:
+        print("\nBook not found.\n")
+
+
+def handle_unmark() -> None:
+    """Mark a book as unread."""
+    print("\nMark Book as Unread\n")
+
+    title = input("Enter the title of the book to mark as unread: ").strip()
+    if collection.mark_as_unread(title):
+        print("\nBook marked as unread.\n")
+    else:
+        print("\nBook not found.\n")
+
+
 def show_search_results(results: dict[str, list]) -> None:
     """Display search results grouped by title and author matches."""
     title_matches = results["by_title"]
@@ -107,6 +129,8 @@ Commands:
   remove   - Remove a book by title
   find     - Find books by author
   search   - Search books by title or author
+  mark     - Mark a book as read
+  unmark   - Mark a book as unread
   help     - Show this help message
 """)
 
@@ -117,6 +141,8 @@ COMMAND_HANDLERS: dict[str, Callable[[], None]] = {
     "remove": handle_remove,
     "find": handle_find,
     "search": handle_search,
+    "mark": handle_mark,
+    "unmark": handle_unmark,
     "help": show_help,
 }
 

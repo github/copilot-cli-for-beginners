@@ -39,6 +39,20 @@ def test_mark_book_as_read_invalid():
     result = collection.mark_as_read("Nonexistent Book")
     assert result is False
 
+def test_mark_book_as_unread():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.mark_as_read("Dune")
+    result = collection.mark_as_unread("Dune")
+    assert result is True
+    book = collection.find_book_by_title("Dune")
+    assert book.read is False
+
+def test_mark_book_as_unread_invalid():
+    collection = BookCollection()
+    result = collection.mark_as_unread("Nonexistent Book")
+    assert result is False
+
 def test_remove_book():
     collection = BookCollection()
     collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
