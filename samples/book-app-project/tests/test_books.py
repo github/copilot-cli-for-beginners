@@ -197,6 +197,61 @@ class TestFindByAuthor:
         results = collection.find_by_author("George Orwell")
         assert len(results) == 2
 
+    # --- Partial match ---
+
+    def test_partial_last_name_returns_match(self, populated_collection):
+        results = populated_collection.find_by_author("Orwell")
+        assert len(results) == 1
+        assert results[0].title == "1984"
+
+    def test_partial_first_name_returns_match(self, populated_collection):
+        results = populated_collection.find_by_author("George")
+        assert len(results) == 1
+        assert results[0].author == "George Orwell"
+
+    def test_partial_name_matches_multiple_authors(self, collection):
+        collection.add_book("Book A", "George Orwell", 1945)
+        collection.add_book("Book B", "George Bernard Shaw", 1900)
+        collection.add_book("Book C", "Frank Herbert", 1965)
+        results = collection.find_by_author("George")
+        assert len(results) == 2
+
+    def test_partial_name_no_match_returns_empty(self, populated_collection):
+        results = populated_collection.find_by_author("Asimov")
+        assert results == []
+
+    # --- Case variations ---
+
+    @pytest.mark.parametrize("query", [
+        "orwell",
+        "ORWELL",
+        "Orwell",
+        "oRwElL",
+    ])
+    def test_partial_match_is_case_insensitive(self, populated_collection, query):
+        results = populated_collection.find_by_author(query)
+        assert len(results) == 1
+        assert results[0].title == "1984"
+
+    def test_uppercase_full_name_matches(self, populated_collection):
+        results = populated_collection.find_by_author("GEORGE ORWELL")
+        assert len(results) == 1
+
+    # --- Edge cases ---
+
+    def test_empty_string_matches_all(self, populated_collection):
+        """Empty string is a substring of every author name."""
+        results = populated_collection.find_by_author("")
+        assert len(results) == len(populated_collection.books)
+
+    def test_single_character_matches_correct_books(self, populated_collection):
+        results = populated_collection.find_by_author("J")
+        titles = [b.title for b in results]
+        assert "The Hobbit" in titles  # J.R.R. Tolkien
+
+    def test_returns_list_type(self, collection):
+        assert isinstance(collection.find_by_author("Anyone"), list)
+
 
 # ---------------------------------------------------------------------------
 # TestMarkAsRead
