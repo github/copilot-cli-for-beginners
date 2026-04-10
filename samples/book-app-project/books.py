@@ -36,6 +36,8 @@ class BookCollection:
             json.dump([asdict(b) for b in self.books], f, indent=2)
 
     def add_book(self, title: str, author: str, year: int) -> Book:
+        if year < 1 or year > 2100:
+            raise ValueError(f"Year must be between 1 and 2100, got {year}.")
         book = Book(title=title, author=author, year=year)
         self.books.append(book)
         self.save_books()
@@ -70,3 +72,12 @@ class BookCollection:
     def find_by_author(self, author: str) -> List[Book]:
         """Find all books by a given author."""
         return [b for b in self.books if b.author.lower() == author.lower()]
+
+    def search_books(self, query: str) -> List[Book]:
+        """Find books where query matches (partial, case-insensitive) title or author."""
+        q = query.lower()
+        return [b for b in self.books if q in b.title.lower() or q in b.author.lower()]
+
+    def get_unread_books(self) -> List[Book]:
+        """Return all books that have not been marked as read."""
+        return [b for b in self.books if not b.read]
