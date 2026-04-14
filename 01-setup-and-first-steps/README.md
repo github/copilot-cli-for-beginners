@@ -320,6 +320,8 @@ Proceed with implementation? [Y/n]
 
 > 📚 **Autopilot mode**: You may have noticed Shift+Tab cycles through a third mode called **Autopilot**. In autopilot mode, Copilot works through an entire plan without waiting for your input after each step — like handing a task to a colleague and saying "let me know when you're finished." The typical workflow is plan → accept → autopilot, which means you need to be good at writing plans first. You can also launch directly into autopilot with `copilot --autopilot`. Get comfortable with Interactive and Plan modes first, then see the [official docs](https://docs.github.com/copilot/concepts/agents/copilot-cli/autopilot) when you're ready.
 
+> 💡 **Start in a specific mode**: You can launch Copilot directly in any mode using flags: `copilot --plan` starts in Plan mode, `copilot --autopilot` starts in Autopilot mode, and `copilot --mode interactive` (or `plan` / `autopilot`) lets you specify the mode explicitly. This is handy when you already know what you want to do.
+
 ---
 
 ### Mode 3: Programmatic Mode
@@ -445,6 +447,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 | Command | What It Does |
 |---------|--------------|
 | `/changelog` | Display changelog for CLI versions |
+| `/env` | Show your loaded environment (instructions, MCP servers, skills, agents, plugins) |
 | `/feedback` | Submit feedback to GitHub |
 | `/help` | Show all available commands |
 | `/theme` | View or set terminal theme |

@@ -131,7 +131,7 @@ When reviewing code, always check for:
 - Hardcoded secrets
 ```
 
-> 💡 **Required vs Optional**: The `description` field is required. Other fields like `name`, `tools`, and `model` are optional.
+> 💡 **Required vs Optional**: The `description` field is required. Other fields like `name`, `tools`, `model`, and `skills` are optional.
 
 ## Where to put agent files
 
@@ -507,7 +507,11 @@ You are a Python specialist focused on code quality and best practices.
 | `name` | No | Display name (defaults to filename) |
 | `description` | **Yes** | What the agent does - helps Copilot understand when to suggest it |
 | `tools` | No | List of allowed tools (omit = all tools available). See tool aliases below. |
+| `model` | No | AI model to use for this agent (e.g., `claude-sonnet-4.5`) |
+| `skills` | No | List of skill names to eagerly load into the agent's context at startup |
 | `target` | No | Limit to `vscode` or `github-copilot` only |
+
+> 💡 **The `skills` field**: When you add a `skills` list to an agent, those skills are automatically loaded when the agent starts — you don't need to invoke them manually. This is useful when your agent always needs specific instructions (e.g., a test-writer agent that always loads your `pytest-gen` skill). See [Chapter 05](../05-skills/README.md) for how to create skills.
 
 ### Tool Aliases
 

@@ -919,6 +919,8 @@ copilot mcp enable filesystem
 copilot mcp disable context7
 ```
 
+> 💡 **Install from the registry**: You can also install MCP servers from the official registry with guided setup. Run `copilot mcp install` and Copilot will walk you through picking a server and configuring it interactively — no manual JSON editing required. This is the easiest way to add a new server you've heard about.
+
 > 💡 **When to use which?** Use `/mcp` slash commands when you're already in a chat session. Use `copilot mcp` from the terminal when you want to quickly check or change your server settings before starting a session.
 
 For most of this course, `/mcp show` is all you need. The other commands become useful as you manage more servers over time.
