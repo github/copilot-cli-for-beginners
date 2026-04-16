@@ -131,7 +131,7 @@ When reviewing code, always check for:
 - Hardcoded secrets
 ```
 
-> 💡 **Required vs Optional**: The `description` field is required. Other fields like `name`, `tools`, and `model` are optional.
+> 💡 **Required vs Optional**: The `description` field is required. Other fields like `name`, `tools`, `skills`, and `model` are optional.
 
 ## Where to put agent files
 
@@ -508,6 +508,7 @@ You are a Python specialist focused on code quality and best practices.
 | `description` | **Yes** | What the agent does - helps Copilot understand when to suggest it |
 | `tools` | No | List of allowed tools (omit = all tools available). See tool aliases below. |
 | `target` | No | Limit to `vscode` or `github-copilot` only |
+| `skills` | No | List of skill names to load into agent context automatically at startup |
 
 ### Tool Aliases
 
@@ -521,6 +522,8 @@ Use these names in the `tools` list:
 > 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/copilot/reference/custom-agents-configuration)
 >
 > ⚠️ **VS Code Only**: The `model` property (for selecting AI models) works in VS Code but is not supported in GitHub Copilot CLI. You can safely include it for cross-platform agent files. GitHub Copilot CLI will ignore it.
+
+> 💡 **Combining agents and skills**: The `skills` field lets an agent pre-load specific skills into its context at startup. For example, if your agent always needs the `code-checklist` skill, add `skills: [code-checklist]` to its frontmatter so it's automatically available without needing to invoke it separately. You'll learn more about creating skills in [Chapter 05](../05-skills/README.md).
 
 ### More Agent Templates
 

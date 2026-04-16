@@ -843,6 +843,8 @@ copilot --add-dir /path/to/directory
 > /add-dir /path/to/directory
 ```
 
+> 💡 **Relative paths work too**: You can use relative paths like `./src` or `../sibling-folder` — the CLI resolves them to absolute paths automatically. This is handy when you're already in the right parent directory.
+
 **Context fills up too quickly**:
 - Be more specific with file references
 - Use `/clear` between different topics

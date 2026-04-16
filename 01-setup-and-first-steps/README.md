@@ -569,7 +569,7 @@ Start a remote session with the `--remote` flag:
 copilot --remote
 ```
 
-Copilot CLI will display a link and provide access to a QR code. Open the link on your phone or in a desktop browser tab to watch the session in real time, send follow-up prompts, review plans, and steer the agent remotely. Sessions are user-specific so you can only access your own Copilot CLI sessions.
+Copilot CLI will display a link and provide access to a QR code. Open the link on your phone or in a desktop browser tab to watch the session in real time, send follow-up prompts, review plans, and remotely control the agent. Sessions are user-specific so you can only access your own Copilot CLI sessions.
 
 You can also enable remote access from inside an active session at any time:
 
