@@ -23,11 +23,13 @@ This course is designed for:
 - **Terminal users** who prefer keyboard-driven workflows over IDE integrations
 - **Teams looking to standardize** AI-assisted code review and development practices
 
+<!--
 <a href="https://aka.ms/githubcopilotdevdays" target="_blank">
   <picture>
     <img src="./images/copilot-dev-days.png" alt="GitHub Copilot Dev Days - Find or host an event" width="100%" />
   </picture>
 </a>
+-->
 
 ## 🎯 What You'll Learn
 
