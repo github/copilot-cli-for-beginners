@@ -75,6 +75,9 @@ copilot
 | `@file.py` | Reference a single file | `Review @samples/book-app-project/books.py` |
 | `@folder/` | Reference all files in a directory | `Review @samples/book-app-project/` |
 | `@file1.py @file2.py` | Reference multiple files | `Compare @samples/book-app-project/book_app.py @samples/book-app-project/books.py` |
+| `@document.pdf` | Reference a document file | `Summarize @requirements.pdf` |
+
+> 💡 **Document files**: In addition to code files and images, you can attach supported document files (such as PDFs) to your prompts using the same `@` syntax. This lets the agent read and reason about specs, requirements, or any document alongside your code.
 
 ### Reference a Single File
 
@@ -673,7 +676,7 @@ This staged approach keeps context focused and efficient.
 <summary><strong>Working with Images</strong></summary>
 <a id="working-with-images"></a>
 
-### Working with Images
+### Working with Images and Documents
 
 You can include images in your conversations using the `@` syntax, or simply **paste from your clipboard** (Cmd+V / Ctrl+V). Copilot CLI can analyze screenshots, mockups, and diagrams to help with UI debugging, design implementation, and error analysis.
 
@@ -683,6 +686,14 @@ copilot
 > @images/screenshot.png What is happening in this image?
 
 > @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
+```
+
+You can also attach **document files** (such as PDFs) to provide requirements, specs, or any written reference material:
+
+```bash
+copilot
+
+> @requirements.pdf Implement the feature described in this document for @samples/book-app-project/book_app.py
 ```
 
 > 📖 **Learn more**: See [Additional Context Features](../appendices/additional-context.md#working-with-images) for supported formats, practical use cases, and tips for combining images with code.
