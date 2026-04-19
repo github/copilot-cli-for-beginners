@@ -1,46 +1,46 @@
-![Chapter 07: Putting It All Together](images/chapter-header.png)
+![第07章: Putting It All Together](images/chapter-header.png)
 
-> **Everything you learned combines here. Go from idea to merged PR in a single session.**
+> **ここでは、これまで学んだことがすべてつながります。idea から merged PR までを 1 つの session で進めましょう。**
 
-In this chapter, you'll bring together everything you've learned into complete workflows. You'll build features using multi-agent collaboration, set up pre-commit hooks that catch security issues before they're committed, integrate Copilot into CI/CD pipelines, and go from feature idea to merged PR in a single terminal session. This is where GitHub Copilot CLI becomes a genuine force multiplier.
+この章では、これまで学んだ内容を complete workflow としてまとめます。multi-agent collaboration で feature を作り、security issue を commit 前に検知する pre-commit hooks を設定し、Copilot を CI/CD pipeline に組み込み、feature idea から merged PR までを 1 つの terminal session で進める流れを見ていきます。ここで GitHub Copilot CLI は、本当の意味での force multiplier になります。
 
-> 💡 **Note**: This chapter shows how to combine everything you've learned. **You don't need agents, skills, or MCP to be productive (although they can be very helpful).** The core workflow — describe, plan, implement, test, review, ship — works with just the built-in features from Chapters 00-03.
+> 💡 **Note**: この章は「全部を組み合わせる」章です。ただし、productive になるために agents・skills・MCP が必須というわけではありません。基本 workflow — describe、plan、implement、test、review、ship — だけでも十分に強力です。
 
-## 🎯 Learning Objectives
+## 🎯 学習目標
 
-By the end of this chapter, you'll be able to:
+この章を終えると、次のことができるようになります。
 
-- Combine agents, skills, and MCP (Model Context Protocol) in unified workflows
-- Build complete features using multi-tool approaches
-- Set up basic automation with hooks
-- Apply best practices for professional development
+- agents、skills、MCP（Model Context Protocol）を unified workflow に組み込む
+- 複数 tool を組み合わせて complete feature を仕上げる
+- hooks で基本的な automation を導入する
+- 実務的な best practice を workflow に反映する
 
-> ⏱️ **Estimated Time**: ~75 minutes (15 min reading + 60 min hands-on)
+> ⏱️ **想定時間**: 約75分（読む時間 15分 + ハンズオン 60分）
 
 ---
 
-## 🧩 Real-World Analogy: The Orchestra
+## 🧩 現実世界のたとえ: Orchestra
 
 <img src="images/orchestra-analogy.png" alt="Orchestra Analogy - Unified Workflow" width="800"/>
 
-A symphony orchestra has many sections:
-- **Strings** provide the foundation (like your core workflows)
-- **Brass** adds power (like agents with specialized expertise)
-- **Woodwinds** add color (like skills that extend capabilities)
-- **Percussion** keeps rhythm (like MCP connecting to external systems)
+オーケストラにはいくつものセクションがあります。
+- **Strings** は土台を支える（core workflows のようなもの）
+- **Brass** は力強さを加える（specialized agent のようなもの）
+- **Woodwinds** は彩りを加える（skills のようなもの）
+- **Percussion** はリズムを刻む（外部 system とつなぐ MCP のようなもの）
 
-Individually, each section sounds limited. Together, conducted well, they create something magnificent.
+それぞれ単体でも役立ちますが、指揮がそろうと大きな力になります。
 
-**That's what this chapter teaches!**<br>
-*Like a conductor with an orchestra, you orchestrate agents, skills, and MCP into unified workflows*
+**この章で学ぶのは、その組み合わせ方です。**
+*conductor が orchestra をまとめるように、agents、skills、MCP を 1 つの workflow にまとめていきます。*
 
-Let's start by walking through a scenario that modifies code, generates tests, reviews it, and creates a PR - all in one session.
+まずは、code を変更し、tests を生成し、review し、PR を作るまでを 1 session で進める例から見ていきましょう。
 
 ---
 
-## Idea to Merged PR in One Session
+## Idea から Merged PR までを 1 Session で
 
-Instead of switching between your editor, terminal, test runner, and GitHub UI and losing context each time, you can combine all your tools in one terminal session. We'll break down this pattern in the [Integration Pattern](#the-integration-pattern-for-power-users) section below.
+editor、terminal、test runner、GitHub UI を行き来して context を失うのではなく、1 つの terminal session でまとめて進めるのがこの章のテーマです。
 
 ```bash
 # Start Copilot in interactive mode
@@ -58,22 +58,12 @@ copilot
 > @samples/book-app-project/books.py Design a get_unread_books method.
 > What is the best approach?
 
-# Python-reviewer agent produces:
-# - Method signature and return type
-# - Filter implementation using list comprehension
-# - Edge case handling for empty collections
-
 # SWITCH TO PYTEST-HELPER AGENT
 > /agent
 # Select "pytest-helper"
 
 > @samples/book-app-project/tests/test_books.py Design test cases for
 > filtering unread books.
-
-# Pytest-helper agent produces:
-# - Test cases for empty collections
-# - Test cases with mixed read/unread books
-# - Test cases with all books read
 
 # IMPLEMENT
 > Add a get_unread_books method to BookCollection in books.py
@@ -82,12 +72,6 @@ copilot
 
 # TEST
 > Generate comprehensive tests for the new feature
-
-# Multiple tests are generated similar to the following:
-# - Happy path (3 tests) — filters correctly, excludes read, includes unread
-# - Edge cases (4 tests) — empty collection, all read, none read, single book
-# - Parametrized (5 cases) — varying read/unread ratios via @pytest.mark.parametrize
-# - Integration (4 tests) — interplay with mark_as_read, remove_book, add_book, and data integrity
 
 # Review the changes
 > /review
@@ -99,11 +83,10 @@ copilot
 > Create a pull request titled "Feature: Add list unread books command"
 ```
 
-**Traditional approach**: Switching between editor, terminal, test runner, docs, and GitHub UI. Each switch causes context loss and friction.
+**従来のやり方**: editor、terminal、test runner、docs、GitHub UI を行き来するたびに context が切れやすい。
+**このやり方**: 1 つの session の中で流れを保ったまま進められます。
 
-**The key insight**: You directed specialists like an architect. They handled the details. You handled the vision.
-
-> 💡 **Going further**: For large multi-step plans like this, try `/fleet` to let Copilot run independent subtasks in parallel. See the [official docs](https://docs.github.com/copilot/concepts/agents/copilot-cli/fleet) for details.
+> 💡 **もっと大きな task では**: `/fleet` を使って、独立した subtasks を parallel に進めることもできます。
 
 ---
 
@@ -111,11 +94,11 @@ copilot
 
 <img src="images/combined-workflows.png" alt="People assembling a colorful giant jigsaw puzzle with gears, representing how agents, skills, and MCP combine into unified workflows" width="800"/>
 
-For power users who completed Chapters 04-06, these workflows show how agents, skills, and MCP multiply your effectiveness.
+Chapters 04-06 を終えた人向けに、agents、skills、MCP を組み合わせた workflow をいくつか紹介します。
 
 ## The Integration Pattern
 
-Here's the mental model for combining everything:
+組み合わせるときの mental model は次の 4 段階です。
 
 <img src="images/integration-pattern.png" alt="The Integration Pattern - A 4-phase workflow: Gather Context (MCP), Analyze and Plan (Agents), Execute (Skills + Manual), Complete (MCP)" width="800"/>
 
@@ -123,15 +106,13 @@ Here's the mental model for combining everything:
 
 ## Workflow 1: Bug Investigation and Fix
 
-Real-world bug fixing with full tool integration:
+実務でもそのまま使える bug fix workflow です。
 
 ```bash
 copilot
 
 # PHASE 1: Understand the bug from GitHub (MCP provides this)
 > Get the details of issue #1
-
-# Learn: "find_by_author doesn't work with partial names"
 
 # PHASE 2: Research best practice (deep research with web + GitHub sources)
 > /research Best practices for Python case-insensitive string matching
@@ -144,8 +125,6 @@ copilot
 # Select "python-reviewer"
 
 > Analyze this method for issues with partial name matching
-
-# Agent identifies: Method uses exact equality instead of substring matching
 
 # PHASE 5: Fix with agent guidance
 > Implement the fix using lowercase comparison and 'in' operator
@@ -165,13 +144,13 @@ copilot
 
 ---
 
-## Workflow 2: Code Review Automation (Optional)
+## Workflow 2: Code Review Automation（optional）
 
-> 💡 **This section is optional.** Pre-commit hooks are useful for teams but not required to be productive. Skip this if you're just getting started.
+> 💡 **この section は optional です。** pre-commit hook は team で便利ですが、最初から必須ではありません。
 >
-> ⚠️ **Performance note**: This hook calls `copilot -p` for each staged file, which takes several seconds per file. For large commits, consider limiting to critical files or running reviews manually with `/review` instead.
+> ⚠️ **performance note**: この hook は staged file ごとに `copilot -p` を呼ぶため、commit が大きいと少し時間がかかります。
 
-A **git hook** is a script that Git runs automatically at certain points, For example, right before a commit. You can use this to run automated checks on your code. Here's how to set up an automated Copilot review on your commits:
+**git hook** は、git が特定のタイミングで自動実行する script です。たとえば commit 前に code review を走らせることができます。
 
 ```bash
 # Create a pre-commit hook
@@ -212,32 +191,13 @@ EOF
 chmod +x .git/hooks/pre-commit
 ```
 
-> ⚠️ **macOS users**: The `timeout` command is not included by default on macOS. Install it with `brew install coreutils` or replace `timeout 60` with a simple invocation without a timeout guard.
-
-> 📚 **Official Documentation**: [Use hooks](https://docs.github.com/copilot/how-tos/copilot-cli/use-hooks) and [Hooks configuration reference](https://docs.github.com/copilot/reference/hooks-configuration) for the complete hooks API.
->
-> 💡 **Built-in alternative**: Copilot CLI also has a built-in hooks system (`copilot hooks`) that can run automatically on events like pre-commit. The manual git hook above gives you full control, while the built-in system is simpler to configure. See the docs above to decide which approach fits your workflow.
-
-Now every commit gets a quick security review:
-
-```bash
-git add samples/book-app-project/books.py
-git commit -m "Update book collection methods"
-
-# Output:
-# Running Copilot review on staged files...
-# Reviewing samples/book-app-project/books.py...
-# Critical issues found in samples/book-app-project/books.py:
-# - Line 15: File path injection vulnerability in load_from_file
-#
-# Fix the issue and try again.
-```
+これで commit のたびに quick security review が走るようになります。
 
 ---
 
-## Workflow 3: Onboarding to a New Codebase
+## Workflow 3: 新しい Codebase への Onboarding
 
-When joining a new project, combine context, agents, and MCP to ramp up fast:
+新しい project に入ったときも、context、agents、MCP を使えば ramp-up がかなり速くなります。
 
 ```bash
 # Start Copilot in interactive mode
@@ -264,21 +224,21 @@ copilot
 > Pick the simplest open issue and outline a plan to fix it
 ```
 
-This workflow combines `@` context, agents, and MCP into a single onboarding session, exactly the integration pattern from earlier in this chapter.
+この workflow は、@ context、agents、MCP を 1 つの onboarding session にまとめた実践例です。
 
 ---
 
 # Best Practices & Automation
 
-Patterns and habits that make your workflows more effective.
+作業をより効果的にする patterns と habits をまとめます。
 
 ---
 
 ## Best Practices
 
-### 1. Start with Context Before Analysis
+### 1. 分析の前に Context を集める
 
-Always gather context before asking for analysis:
+まず context を集めてから分析に入るのが基本です。
 
 ```bash
 # Good
@@ -294,9 +254,9 @@ Always gather context before asking for analysis:
 # Agent doesn't have issue context
 ```
 
-### 2. Know the Difference: Agents, Skills, and Custom Instructions
+### 2. Agents / Skills / Custom Instructions の違いを意識する
 
-Each tool has a sweet spot:
+それぞれに得意な役割があります。
 
 ```bash
 # Agents: Specialized personas you explicitly activate
@@ -305,19 +265,18 @@ Each tool has a sweet spot:
 > Review this authentication code for security issues
 
 # Skills: Modular capabilities that auto-activate when your prompt
-# matches the skill's description (you must create them first — see Ch 05)
+# matches the skill's description
 > Generate comprehensive tests for this code
-# If you have a testing skill configured, it activates automatically
 
 # Custom instructions (.github/copilot-instructions.md): Always-on
 # guidance that applies to every session without switching or triggering
 ```
 
-> 💡 **Key point**: Agents and skills can both analyze AND generate code. The real difference is **how they activate** — agents are explicit (`/agent`), skills are automatic (prompt-matched), and custom instructions are always on.
+> 💡 **ポイント**: 違いは「何ができるか」だけでなく、「どう起動するか」にあります。agents は明示的、skills は自動、custom instructions は常時オンです。
 
-### 3. Keep Sessions Focused
+### 3. Sessions を絞る
 
-Use `/rename` to label your session (makes it easy to find in history) and `/exit` to end it cleanly:
+1 feature 1 session を意識すると整理しやすくなります。`/rename` と `/exit` を活用しましょう。
 
 ```bash
 # Good: One feature per session
@@ -329,26 +288,24 @@ copilot
 > /rename export-csv-feature
 # Work on CSV export
 > /exit
-
-# Less effective: Everything in one long session
 ```
 
-### 4. Make Workflows Reusable with Copilot
+### 4. Workflow を Repo に埋め込む
 
-Instead of just documenting workflows in a wiki, encode them directly in your repo where Copilot can use them:
+wiki に書くだけでなく、Copilot が読める形で repo に残すと効果が上がります。
 
-- **Custom instructions** (`.github/copilot-instructions.md`): Always-on guidance for coding standards, architecture rules, and build/test/deploy steps. Every session follows them automatically.
-- **Prompt files** (`.github/prompts/`): Reusable, parameterized prompts your team can share — like templates for code reviews, component generation, or PR descriptions.
-- **Custom agents** (`.github/agents/`): Encode specialized personas (e.g., a security reviewer or a docs writer) that anyone on the team can activate with `/agent`.
-- **Custom skills** (`.github/skills/`): Package step-by-step workflow instructions that auto-activate when relevant.
+- **Custom instructions** (`.github/copilot-instructions.md`): coding standard や build/test/deploy rules
+- **Prompt files** (`.github/prompts/`): 再利用 가능한 prompt templates
+- **Custom agents** (`.github/agents/`): specialist persona
+- **Custom skills** (`.github/skills/`): auto-activate する workflow instructions
 
-> 💡 **The payoff**: New team members get your workflows for free — they're built into the repo, not locked in someone's head.
+> 💡 **効果**: new team member も、repo を開くだけで team の workflow を使えるようになります。
 
 ---
 
 ## Bonus: Production Patterns
 
-These patterns are optional but valuable for professional environments.
+実務寄りの pattern もいくつか見ておきましょう。
 
 ### PR Description Generator
 
@@ -367,9 +324,7 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 
 ### CI/CD Integration
 
-For teams with existing CI/CD pipelines, you can automate Copilot reviews on every pull request using GitHub Actions. This includes posting review comments automatically and filtering for critical issues.
-
-> 📖 **Learn more**: See [CI/CD Integration](../appendices/ci-cd-integration.md) for complete GitHub Actions workflows, configuration options, and troubleshooting tips.
+既存の CI/CD pipeline に Copilot review を組み込むこともできます。詳しくは [CI/CD Integration](../appendices/ci-cd-integration.md) を参照してください。
 
 ---
 
@@ -377,26 +332,24 @@ For teams with existing CI/CD pipelines, you can automate Copilot reviews on eve
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
-Put the complete workflow into practice.
+ここからは complete workflow を実際に試してみましょう。
 
 ---
 
 ## ▶️ Try It Yourself
 
-After completing the demos, try these variations:
+1. **End-to-End Challenge**: 小さめの feature（例: unread books の一覧、CSV export など）を 1 つ選び、次の flow を試します。
+   - `/plan` で plan を立てる
+   - agents（python-reviewer、pytest-helper）で設計を固める
+   - implement する
+   - tests を作る
+   - PR を作る
 
-1. **End-to-End Challenge**: Pick a small feature (e.g., "list unread books" or "export to CSV"). Use the full workflow:
-   - Plan with `/plan`
-   - Design with agents (python-reviewer, pytest-helper)
-   - Implement
-   - Generate tests
-   - Create PR
+2. **Automation Challenge**: Code Review Automation workflow の pre-commit hook を設定し、意図的な vulnerability を含む file で commit を試してみてください。block されるか確認します。
 
-2. **Automation Challenge**: Set up the pre-commit hook from the Code Review Automation workflow. Make a commit with an intentional file path vulnerability. Does it get blocked?
+3. **Your Production Workflow**: 自分がよく行う task を 1 つ選び、checklist にしてみましょう。どこを skills、agents、hooks で自動化できるか考えてみてください。
 
-3. **Your Production Workflow**: Design your own workflow for a common task you do. Write it down as a checklist. What parts could be automated with skills, agents, or hooks?
-
-**Self-Check**: You've completed the course when you can explain to a colleague how agents, skills, and MCP work together - and when to use each.
+**Self-Check**: agents、skills、MCP がどう連携するか、そしてどんな場面でどれを使うべきかを同僚に説明できれば、この章の目標を達成できています。
 
 ---
 
@@ -404,56 +357,44 @@ After completing the demos, try these variations:
 
 ### Main Challenge: End-to-End Feature
 
-The hands-on examples walked through building a "list unread books" feature. Now practice the full workflow on a different feature: **search books by year range**:
+ハンズオン例では「list unread books」feature を扱いました。今度は別の feature、**year range で本を検索する機能** を作ってみましょう。
 
-1. Start Copilot and gather context: `@samples/book-app-project/books.py`
-2. Plan with `/plan Add a "search by year" command that lets users find books published between two years`
-3. Implement a `find_by_year_range(start_year, end_year)` method in `BookCollection`
-4. Add a `handle_search_year()` function in `book_app.py` that prompts the user for start and end years
-5. Generate tests: `@samples/book-app-project/books.py @samples/book-app-project/tests/test_books.py Generate tests for find_by_year_range() including edge cases like invalid years, reversed range, and no results.`
-6. Review with `/review`
-7. Update the README: `@samples/book-app-project/README.md Add documentation for the new "search by year" command.`
-8. Generate a commit message
+1. Copilot を起動し、context を読み込ませます: `@samples/book-app-project/books.py`
+2. `/plan Add a "search by year" command that lets users find books published between two years` を実行します
+3. `BookCollection` に `find_by_year_range(start_year, end_year)` method を追加します
+4. `book_app.py` に `handle_search_year()` function を追加し、開始年と終了年を聞くようにします
+5. tests を生成します: `@samples/book-app-project/books.py @samples/book-app-project/tests/test_books.py Generate tests for find_by_year_range() including edge cases like invalid years, reversed range, and no results.`
+6. `/review` で変更を review します
+7. README を更新します: `@samples/book-app-project/README.md Add documentation for the new "search by year" command.`
+8. commit message を生成します
 
-Document your workflow as you go.
+**成功条件**: idea → context → plan → implement → test → document → commit の流れを、Copilot CLI を使って自分で完了できることです。
 
-**Success criteria**: You've completed the feature from idea to commit using Copilot CLI, including planning, implementation, tests, documentation, and review.
-
-> 💡 **Bonus**: If you have agents set up from Chapter 04, try creating and using custom agents. For example, an error-handler agent for implementation review and a doc-writer agent for the README update.
+> 💡 **Bonus**: Chapter 04 で custom agents を作っているなら、implementation review 用 agent や doc-writer agent も試してみてください。
 
 <details>
-<summary>💡 Hints (click to expand)</summary>
+<summary>💡 Hints（クリックして展開）</summary>
 
-**Follow the pattern from the ["Idea to Merged PR"](#idea-to-merged-pr-in-one-session) example** at the top of this chapter. The key steps are:
+**上の ["Idea to Merged PR"](#idea-to-merged-pr-in-one-session) の流れをなぞれば OK です。**
 
-1. Gather context with `@samples/book-app-project/books.py`
-2. Plan with `/plan Add a "search by year" command`
-3. Implement the method and command handler
-4. Generate tests with edge cases (invalid input, empty results, reversed range)
-5. Review with `/review`
-6. Update README with `@samples/book-app-project/README.md`
-7. Generate commit message with `-p`
-
-**Edge cases to think about:**
-- What if the user enters "2000" and "1990" (reversed range)?
-- What if no books match the range?
-- What if the user enters non-numeric input?
-
-**The key is practicing the full workflow** from idea → context → plan → implement → test → document → commit.
+考えるべき edge cases:
+- `2000` と `1990` のように range が逆転している場合
+- 該当する本が 1 冊もない場合
+- numeric ではない input が入った場合
 
 </details>
 
 ---
 
 <details>
-<summary>🔧 <strong>Common Mistakes</strong> (click to expand)</summary>
+<summary>🔧 <strong>Common Mistakes</strong>（クリックして展開）</summary>
 
-| Mistake | What Happens | Fix |
+| Mistake | 起きること | Fix |
 |---------|--------------|-----|
-| Jumping straight to implementation | Miss design issues that are costly to fix later | Use `/plan` first to think through the approach |
-| Using one tool when multiple would help | Slower, less thorough results | Combine: Agent for analysis → Skill for execution → MCP for integration |
-| Not reviewing before committing | Security issues or bugs slip through | Always run `/review` or use a [pre-commit hook](#workflow-2-code-review-automation-optional) |
-| Forgetting to share workflows with team | Each person reinvents the wheel | Document patterns in shared agents, skills, and instructions |
+| いきなり implementation に入る | 後で直すのが高い design issue を見落とす | まず `/plan` を使う |
+| 1 つの tool だけに頼る | 結果が遅い / 粗い | Agent → Skill → MCP の組み合わせを使う |
+| commit 前に review しない | bug や security issue を見落とす | `/review` または pre-commit hook を使う |
+| workflow を team と共有しない | 各人が毎回やり直す | agents、skills、instructions として repo に残す |
 
 </details>
 
@@ -463,41 +404,41 @@ Document your workflow as you go.
 
 ## 🔑 Key Takeaways
 
-1. **Integration > Isolation**: Combine tools for maximum impact
-2. **Context first**: Always gather required context before analysis
-3. **Agents analyze, Skills execute**: Use the right tool for the job
-4. **Automate repetition**: Hooks and scripts multiply your effectiveness
-5. **Document workflows**: Shareable patterns benefit the whole team
+1. **Integration > Isolation**: tools は組み合わせるほど効果が高い
+2. **Context first**: 分析の前に必要な context を集める
+3. **Agents、Skills、MCP の役割を使い分ける**
+4. **繰り返しは automation する**: hooks や scripts が効果を増幅する
+5. **workflow を document する**: team 全体の再利用性が上がる
 
-> 📋 **Quick Reference**: See the [GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference) for a complete list of commands and shortcuts.
+> 📋 **Quick Reference**: コマンドやショートカットの一覧は [GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference) を参照してください。
 
 ---
 
 ## 🎓 Course Complete!
 
-Congratulations! You've learned:
+お疲れさまでした。ここまでで次のことを学びました。
 
-| Chapter | What You Learned |
+| Chapter | 学んだこと |
 |---------|-------------------|
-| 00 | Copilot CLI installation and Quick Start |
-| 01 | Three modes of interaction |
-| 02 | Context management with @ syntax |
-| 03 | Development workflows |
-| 04 | Specialized agents |
-| 05 | Extensible skills |
-| 06 | External connections with MCP |
-| 07 | Unified production workflows |
+| 00 | Copilot CLI の installation と Quick Start |
+| 01 | 3 つの interaction mode |
+| 02 | `@` syntax を使った context management |
+| 03 | development workflows |
+| 04 | specialized agents |
+| 05 | extensible skills |
+| 06 | MCP による external connection |
+| 07 | unified production workflow |
 
-You're now equipped to use GitHub Copilot CLI as a genuine force multiplier in your development workflow.
+これで GitHub Copilot CLI を、開発 workflow の中で本格的な force multiplier として使う準備が整いました。
 
 ## ➡️ What's Next
 
-Your learning doesn't stop here:
+学習はここで終わりではありません。次のような形で活用を広げていけます。
 
-1. **Practice daily**: Use Copilot CLI for real work
-2. **Build custom tools**: Create agents and skills for your specific needs
-3. **Share knowledge**: Help your team adopt these workflows
-4. **Stay updated**: Follow GitHub Copilot updates for new features
+1. **daily practice**: 実際の作業で Copilot CLI を使う
+2. **custom tools を作る**: 自分の project に合う agents や skills を作る
+3. **knowledge を共有する**: team に workflow を広める
+4. **最新情報を追う**: GitHub Copilot の新機能を定期的に確認する
 
 ### Resources
 
@@ -507,6 +448,6 @@ Your learning doesn't stop here:
 
 ---
 
-**Great job! Now go build something amazing.**
+**ここまで来たら、ぜひ実際の project で何か 1 つ作ってみてください。**
 
-**[← Back to Chapter 06](../06-mcp-servers/README.md)** | **[Return to Course Home →](../README.md)**
+**[← Chapter 06 に戻る](../06-mcp-servers/README.md)** | **[コース Home に戻る →](../README.md)**

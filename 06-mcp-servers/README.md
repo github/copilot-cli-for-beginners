@@ -1,67 +1,67 @@
-![Chapter 06: MCP Servers](images/chapter-header.png)
+![第06章: MCP Servers](images/chapter-header.png)
 
-> **What if Copilot could read your GitHub issues, check your database, and create PRs... all from the terminal?**
+> **Copilot が GitHub issues を読んだり、database を確認したり、PR を作ったりできるとしたらどうでしょうか？ しかも terminal からそのまま。**
 
-So far, Copilot can only work with what you give it directly: files you reference with `@`, conversation history, and its own training data. But what if it could reach out on its own to check your GitHub repository, browse your project files, or look up the latest documentation for a library?
+これまでの Copilot は、`@` で渡した files、会話履歴、学習済み知識をもとに動いていました。では、GitHub repository を自分で見に行ったり、project files を調べたり、最新の library documentation を取得したりできたらどうでしょうか。
 
-That's what MCP (Model Context Protocol) does. It's a way to connect Copilot to external services so it has access to live, real-world data. Each service Copilot connects to is called an "MCP server." In this chapter, you'll set up a few of these connections and see how they make Copilot dramatically more useful.
+それを可能にするのが MCP（Model Context Protocol）です。Copilot を外部 service に接続し、live data を扱えるようにする仕組みです。Copilot が接続する各 service を「MCP server」と呼びます。この章では、その接続を設定し、Copilot がさらに実用的になる様子を見ていきます。
 
-> 💡 **Already familiar with MCP?** [Jump to the quick start](#-use-the-built-in-github-mcp) to confirm it's working and start configuring servers.
+> 💡 **すでに MCP を知っている場合**: [quick start](#-use-the-built-in-github-mcp) から始めて、動作確認と設定を進めてください。
 
-## 🎯 Learning Objectives
+## 🎯 学習目標
 
-By the end of this chapter, you'll be able to:
+この章を終えると、次のことができるようになります。
 
-- Understand what MCP is and why it matters
-- Manage MCP servers using `/mcp` commands
-- Configure MCP servers for GitHub, filesystem, and documentation
-- Use MCP-powered workflows with the book app project
-- Know when and how to build a custom MCP server (optional)
+- MCP が何か、なぜ重要かを理解する
+- `/mcp` commands で MCP servers を管理する
+- GitHub、filesystem、documentation 用の MCP servers を設定する
+- book app project で MCP-powered workflow を試す
+- 必要に応じて custom MCP server を作る考え方を知る
 
-> ⏱️ **Estimated Time**: ~50 minutes (15 min reading + 35 min hands-on)
+> ⏱️ **想定時間**: 約50分（読む時間 15分 + ハンズオン 35分）
 
 ---
 
-## 🧩 Real-World Analogy: Browser Extensions
+## 🧩 現実世界のたとえ: Browser Extensions
 
 <img src="images/browser-extensions-analogy.png" alt="MCP Servers are like Browser Extensions" width="800"/>
 
-Think of MCP servers like browser extensions. Your browser on its own can display web pages, but extensions connect it to extra services:
+MCP servers は browser extensions に少し似ています。browser 単体でも web page は見られますが、extension を入れると外部 service とつながって一気に便利になります。
 
-| Browser Extension | What It Connects To | MCP Equivalent |
+| Browser Extension | つながるもの | MCP の例 |
 |-------------------|---------------------|----------------|
-| Password manager | Your password vault | **GitHub MCP** → your repos, issues, PRs |
-| Grammarly | Writing analysis service | **Context7 MCP** → library documentation |
-| File manager | Cloud storage | **Filesystem MCP** → local project files |
+| Password manager | password vault | **GitHub MCP** → repos、issues、PRs |
+| Grammarly | writing analysis service | **Context7 MCP** → library docs |
+| File manager | cloud storage | **Filesystem MCP** → local project files |
 
-Without extensions, your browser is still useful, but with them, it becomes a powerhouse. MCP servers do the same for Copilot. They connect it to real, live data sources so it can read your GitHub issues, explore your file system, fetch up-to-date documentation, and more.
+extensions なしでも browser は使えますが、extensions があると一気に強力になります。MCP servers も同じで、Copilot を GitHub、documentation、filesystem などの live data source とつなぎます。
 
-***MCP servers connect Copilot to the outside world: GitHub, repositories, documentation, and more***
+***MCP servers は Copilot を GitHub、repos、documentation などの「外の世界」と接続します***
 
-> 💡 **Key insight**: Without MCP, Copilot can only see files you explicitly share with `@`. With MCP, it can proactively explore your project, check your GitHub repo, and look up documentation, all automatically.
+> 💡 **Key insight**: MCP がない場合、Copilot は `@` で明示的に共有された files しか見られません。MCP があると、project を自分で探索したり、GitHub repo を確認したり、docs を調べたりできます。
 
 ---
 
 <img src="images/quick-start-mcp.png" alt="Power cable connecting with bright electrical spark surrounded by floating tech icons representing MCP server connections" width="800"/>
 
-# Quick Start: MCP in 30 Seconds
+# Quick Start: MCP を 30 秒で試す
 
-## Get started with the built-in GitHub MCP server
-Let's see MCP in action right now, before configuring anything.
-The GitHub MCP server is included by default. Try this:
+## built-in GitHub MCP server を試す
+
+設定前に、まず MCP が動く感覚を見てみましょう。GitHub MCP server は built-in です。次を試してください。
 
 ```bash
 copilot
 > List the recent commits in this repository
 ```
 
-If Copilot returns real commit data, you've just seen MCP in action. That's the GitHub MCP server reaching out to GitHub on your behalf. But GitHub is just *one* server. This chapter shows you how to add more (filesystem access, up-to-date documentation, and others) so Copilot can do even more.
+実際の commit data が返ってきたら、すでに MCP を体験できています。GitHub は built-in の 1 例にすぎません。この章では、filesystem や最新 documentation を引く server も追加していきます。
 
 ---
 
-## The `/mcp show` Command
+## `/mcp show` Command
 
-Use `/mcp show` to see which MCP servers are configured and whether they're enabled:
+`/mcp show` を使うと、どの MCP server が設定されていて、enabled かどうかを確認できます。
 
 ```bash
 copilot
@@ -73,12 +73,12 @@ MCP Servers:
 ✓ filesystem (enabled) - File system access
 ```
 
-> 💡 **Only seeing the GitHub server?** That's expected! If you haven't added any additional MCP servers yet, GitHub is the only one listed. You'll add more in the next section.
+> 💡 **GitHub server しか見えなくても大丈夫**: 追加 server をまだ入れていなければ、それが normal です。次の section で増やします。
 
-> 📚 **Want to see all MCP management commands?** You can manage servers with `/mcp` slash commands inside chat, or with `copilot mcp` directly from your terminal. See the [full command reference](#-additional-mcp-commands) at the end of this chapter.
+> 📚 **`/mcp` の全 command を見たい場合**: chat 内の `/mcp` slash commands や terminal の `copilot mcp` が使えます。
 
 <details>
-<summary>🎬 See it in action!</summary>
+<summary>🎬 動作例を見る</summary>
 
 ![MCP Status Demo](images/mcp-status-demo.gif)
 
@@ -88,9 +88,9 @@ MCP Servers:
 
 ---
 
-## What Changes with MCP?
+## MCP があると何が変わる？
 
-Here's the difference MCP makes in practice:
+実際の違いを比べると分かりやすいです。
 
 **Without MCP:**
 ```bash
@@ -109,9 +109,9 @@ Labels: bug, priority-high
 Description: Users report that passwords containing...
 ```
 
-MCP makes Copilot aware of your actual development environment.
+MCP があると、Copilot は実際の開発環境に即した data を使って答えられるようになります。
 
-> 📚 **Official Documentation**: [About MCP](https://docs.github.com/copilot/concepts/context/mcp) for a deeper look at how MCP works with GitHub Copilot.
+> 📚 **Official Documentation**: [About MCP](https://docs.github.com/copilot/concepts/context/mcp)
 
 ---
 
@@ -119,13 +119,18 @@ MCP makes Copilot aware of your actual development environment.
 
 <img src="images/configuring-mcp-servers.png" alt="Hands adjusting knobs and sliders on a professional audio mixing board representing MCP server configuration" width="800"/>
 
-Now that you've seen MCP in action, let's set up additional servers. You can add servers in two ways: **from the built-in registry** (easiest — guided setup right in the CLI) or by **editing the config file** manually (more flexible). Start with the registry option if you're not sure which to choose.
+MCP の雰囲気が分かったところで、追加 server を設定していきましょう。方法は 2 つあります。
+
+- **built-in registry から入れる** - もっとも簡単。CLI が対話的に案内してくれます
+- **config file を手で編集する** - 柔軟性が高い方法です
+
+迷ったらまずは registry 方式がおすすめです。
 
 ---
 
-## Installing MCP Servers from the Registry
+## Registry から MCP Servers を入れる
 
-The CLI has a built-in MCP server registry that lets you discover and install popular servers with a guided setup — no JSON editing required.
+CLI には MCP server registry が built-in であり、popular server を検索して guided setup できます。
 
 ```bash
 copilot
@@ -133,17 +138,17 @@ copilot
 > /mcp search
 ```
 
-Copilot opens an interactive picker showing available servers. Select one, and the CLI walks you through any required configuration (API keys, paths, etc.) and adds it to your config automatically.
+interactive picker が開き、必要な API key や path の設定もガイドしてくれます。
 
-> 💡 **Why use the registry?** It's the easiest way to get started — you don't need to know the npm package name, command arguments, or JSON structure. The CLI handles all of that for you.
+> 💡 **なぜ registry が便利なの？** npm package 名や JSON format を覚えなくても、CLI が設定を作ってくれるからです。
 
 ---
 
 ## MCP Configuration File
 
-MCP servers are configured in `~/.copilot/mcp-config.json` (user-level, applies to all projects) or `.mcp.json` (project-level, placed in the root of your project). If you used `/mcp search` above, the CLI already created or updated this file for you, but it's useful to understand the format for customization.
+MCP server の設定は `~/.copilot/mcp-config.json`（user-level）または `.mcp.json`（project root）に保存します。
 
-> ⚠️ **Note**: `.vscode/mcp.json` is no longer supported as an MCP config source. If you have an existing `.vscode/mcp.json`, migrate it to `.mcp.json` in your project root. The CLI will show a migration hint if it detects an old config file.
+> ⚠️ **Note**: `.vscode/mcp.json` は現在サポート対象外です。古い config がある場合は `.mcp.json` に移してください。
 
 ```json
 {
@@ -158,41 +163,41 @@ MCP servers are configured in `~/.copilot/mcp-config.json` (user-level, applies 
 }
 ```
 
-*Most MCP servers are distributed as npm packages and run via the `npx` command.*
+*多くの MCP server は npm package として配布され、`npx` で実行されます。*
 
 <details>
-<summary>💡 <strong>New to JSON?</strong> Click here to learn what each field means</summary>
+<summary>💡 <strong>JSON が初めてなら</strong> クリックして展開</summary>
 
-| Field | What It Means |
+| Field | 意味 |
 |-------|---------------|
-| `"mcpServers"` | Container for all your MCP server configurations |
-| `"server-name"` | A name you choose (e.g., "github", "filesystem") |
-| `"type": "local"` | The server runs on your machine |
-| `"command": "npx"` | The program to run (npx runs npm packages) |
-| `"args": [...]` | Arguments passed to the command |
-| `"tools": ["*"]` | Allow all tools from this server |
+| `"mcpServers"` | すべての MCP server 設定を入れる container |
+| `"server-name"` | 自分で付ける名前（例: github, filesystem） |
+| `"type": "local"` | server は自分の machine 上で動く |
+| `"command": "npx"` | 実行する program |
+| `"args": [...]` | command に渡す引数 |
+| `"tools": ["*"]` | その server の tool をすべて許可 |
 
-**Important JSON rules:**
-- Use double quotes `"` for strings (not single quotes)
-- No trailing commas after the last item
-- File must be valid JSON (use a [JSON validator](https://jsonlint.com/) if unsure)
+**JSON で気を付けること:**
+- string には double quotes `"` を使う
+- 最後の要素に trailing comma を付けない
+- valid な JSON にする
 
 </details>
 
 ---
 
-## Adding MCP Servers
+## MCP Servers を追加する
 
-The GitHub MCP server is built-in and requires no setup. Below are additional servers you can add. **Pick what interests you, or work through them in order.**
+GitHub MCP server は built-in で追加設定不要です。それ以外の server は、興味のあるものから試せます。
 
-| I want to... | Jump to |
+| やりたいこと | 該当セクション |
 |---|---|
-| Let Copilot browse my project files | [Filesystem Server](#filesystem-server) |
-| Get up-to-date library documentation | [Context7 Server](#context7-server-documentation) |
-| Explore optional extras (custom servers, web_fetch) | [Beyond the Basics](#beyond-the-basics) |
+| Copilot に project files を見せたい | [Filesystem Server](#filesystem-server) |
+| 最新の library documentation を引きたい | [Context7 Server](#context7-server-documentation) |
+| custom server や web access も見たい | [Beyond the Basics](#beyond-the-basics) |
 
 <details>
-<summary><strong>Filesystem Server</strong> - Let Copilot explore your project files</summary>
+<summary><strong>Filesystem Server</strong> - Copilot に project files を探索させる</summary>
 <a id="filesystem-server"></a>
 
 ### Filesystem Server
@@ -210,19 +215,17 @@ The GitHub MCP server is built-in and requires no setup. Below are additional se
 }
 ```
 
-> 💡 **The `.` path**: The `.` means "current directory". Copilot can access files relative to where you launched it. In a Codespace, this is your workspace root. You can also use an absolute path like `/workspaces/copilot-cli-for-beginners` if you prefer.
-
-Add this to your `~/.copilot/mcp-config.json` and restart Copilot.
+> 💡 **`.` path の意味**: `.` は current directory です。Copilot を起動した位置から相対的に file access できます。
 
 </details>
 
 <details>
-<summary><strong>Context7 Server</strong> - Get up-to-date library docs</summary>
+<summary><strong>Context7 Server</strong> - 最新 documentation を引く</summary>
 <a id="context7-server-documentation"></a>
 
 ### Context7 Server (Documentation)
 
-Context7 gives Copilot access to up-to-date documentation for popular frameworks and libraries. Instead of relying on training data that might be outdated, Copilot fetches the actual current documentation.
+Context7 を使うと、popular framework や library の最新 docs を引けます。training data だけに頼らず、現在の documentation を参照できるのが強みです。
 
 ```json
 {
@@ -237,33 +240,21 @@ Context7 gives Copilot access to up-to-date documentation for popular frameworks
 }
 ```
 
-- ✅ **No API key required** 
-- ✅ **No account needed** 
-- ✅ **Your code stays local**
-
-Add this to your `~/.copilot/mcp-config.json` and restart Copilot.
+- ✅ **API key 不要**
+- ✅ **account 不要**
+- ✅ **自分の code は local のまま**
 
 </details>
 
 <details>
-<summary><strong>Beyond the Basics</strong> - Custom servers and web access (optional)</summary>
+<summary><strong>Beyond the Basics</strong> - custom servers と web access（optional）</summary>
 <a id="beyond-the-basics"></a>
 
-These are optional extras for when you're comfortable with the core servers above.
+ここは optional です。基本 server に慣れてからで十分です。
 
 ### Microsoft Learn MCP Server
 
-Every MCP server you've seen so far (filesystem, Context7) runs locally on your machine. But MCP servers can also run remotely, meaning you just point Copilot CLI at a URL and it handles the rest. No `npx` or `python`, no local process, no dependencies to install.
-
-The [Microsoft Learn MCP Server](https://github.com/microsoftdocs/mcp) is a good example. It gives Copilot CLI direct access to official Microsoft documentation (Azure, Microsoft Foundry and other AI topics, .NET, Microsoft 365, and much more) so it can search docs, fetch full pages, and find official code samples instead of relying on a model's training data.
-
-- ✅ **No API key required** 
-- ✅ **No account needed** 
-- ✅ **No local install required**
-
-**Quick install with `/plugin install`:**
-
-Instead of editing your JSON config file manually, you can install it in one command:
+Microsoft Learn MCP server を使うと、Azure や .NET、Microsoft 365 などの official docs に直接アクセスできます。
 
 ```bash
 copilot
@@ -271,56 +262,26 @@ copilot
 > /plugin install microsoftdocs/mcp
 ```
 
-This adds the server and its associated agent skills automatically. The skills installed include:
-
-- **microsoft-docs**: Concepts, tutorials, and factual lookups
-- **microsoft-code-reference**: API lookups, code samples, and troubleshooting
-- **microsoft-skill-creator**: A meta-skill for generating custom skills about Microsoft technologies
-
-**Usage:**
+**使用例:**
 ```bash
 copilot
 
 > What's the recommended way to deploy a Python app to Azure App Service? Search Microsoft Learn.
 ```
 
-📚 Learn more: [Microsoft Learn MCP Server overview](https://learn.microsoft.com/training/support/mcp-get-started)
+### `web_fetch` による Web Access
 
-### Web Access with `web_fetch`
+Copilot CLI には built-in の `web_fetch` tool もあり、任意 URL の README や docs を取得できます。MCP server がなくても使える場面があります。
 
-Copilot CLI includes a built-in `web_fetch` tool that can fetch content from any URL. This is useful for pulling in READMEs, API docs, or release notes without leaving your terminal. No MCP server needed.
-
-You can control which URLs are accessible via `~/.copilot/config.json` (general Copilot settings), which is separate from `~/.copilot/mcp-config.json` (MCP server definitions).
-
-```json
-{
-  "permissions": {
-    "allowedUrls": [
-      "https://api.github.com/**",
-      "https://docs.github.com/**",
-      "https://*.npmjs.org/**"
-    ],
-    "blockedUrls": [
-      "http://**"
-    ]
-  }
-}
-```
-
-**Usage:**
 ```bash
 copilot
 
 > Fetch and summarize the README from https://github.com/facebook/react
 ```
 
-### Building a Custom MCP Server
+### Custom MCP Server を作る
 
-Want to connect Copilot to your own APIs, databases, or internal tools? You can build a custom MCP server in Python. This is completely optional since the pre-built servers (GitHub, filesystem, Context7) cover most use cases.
-
-📖 See the [Custom MCP Server Guide](mcp-custom-server.md) for a complete walkthrough using the book app as an example.
-
-📚 For more background, see the [MCP for Beginners course](https://github.com/microsoft/mcp-for-beginners).
+自分の API や internal tool とつなぎたい場合は、Python などで custom MCP server を作ることもできます。詳細は [Custom MCP Server Guide](mcp-custom-server.md) を参照してください。
 
 </details>
 
@@ -328,9 +289,9 @@ Want to connect Copilot to your own APIs, databases, or internal tools? You can 
 
 ### Complete Configuration File
 
-Here's a full `mcp-config.json` with filesystem and Context7 servers:
+filesystem と Context7 を両方入れた full config の例です。
 
-> 💡 **Note:** GitHub MCP is built-in. You don't need to add it to your config file.
+> 💡 **Note:** GitHub MCP は built-in なので、config file に書く必要はありません。
 
 ```json
 {
@@ -351,13 +312,11 @@ Here's a full `mcp-config.json` with filesystem and Context7 servers:
 }
 ```
 
-Save this as `~/.copilot/mcp-config.json` for global access or `.mcp.json` in the project root for project-specific configuration.
-
 ---
 
 # Using MCP Servers
 
-Now that you have MCP servers configured, let's see what they can do.
+設定できたら、次は実際に何ができるかを見ていきましょう。
 
 <img src="images/using-mcp-servers.png" alt="Using MCP Servers - Hub-and-spoke diagram showing a Developer CLI connected to GitHub, Filesystem, Context7, and Custom/Web Fetch servers" width="800" />
 
@@ -365,119 +324,63 @@ Now that you have MCP servers configured, let's see what they can do.
 
 ## Server Usage Examples
 
-**Pick a server to explore, or work through them in order.**
-
-| I want to try... | Jump to |
+| 試したいこと | 該当セクション |
 |---|---|
-| GitHub repos, issues, and PRs | [GitHub Server](#github-server-built-in) |
-| Browsing project files | [Filesystem Server Usage](#filesystem-server-usage) |
-| Library documentation lookup | [Context7 Server Usage](#context7-server-usage) |
-| Custom server, Microsoft Learn MCP and web_fetch usage | [Beyond the Basics Usage](#beyond-the-basics-usage) |
+| GitHub repos、issues、PRs | [GitHub Server](#github-server-built-in) |
+| project files の閲覧 | [Filesystem Server Usage](#filesystem-server-usage) |
+| library documentation lookup | [Context7 Server Usage](#context7-server-usage) |
+| custom server や web_fetch | [Beyond the Basics Usage](#beyond-the-basics-usage) |
 
 <details>
-<summary><strong>GitHub Server (Built-in)</strong> - Access repos, issues, PRs, and more</summary>
+<summary><strong>GitHub Server (Built-in)</strong> - repos、issues、PRs などにアクセスする</summary>
 <a id="github-server-built-in"></a>
 
 ### GitHub Server (Built-in)
 
-The GitHub MCP server is **built-in**. If you logged into Copilot (which you did during initial setup), it already works. No configuration needed!
-
-> 💡 **Not working?** Run `/login` to re-authenticate with GitHub.
-
-<details>
-<summary><strong>Authentication in Dev Containers</strong></summary>
-
-- **GitHub Codespaces** (recommended): Authentication is automatic. The `gh` CLI inherits your Codespace token. No action needed.
-- **Local dev container (Docker)**: Run `gh auth login` after the container starts, then restart Copilot.
-
-**Troubleshooting authentication:**
-```bash
-# Check if you're authenticated
-gh auth status
-
-# If not, log in
-gh auth login
-
-# Verify GitHub MCP is connected
-copilot
-> /mcp show
-```
-
-</details>
+GitHub MCP server は **built-in** です。初期 setup で `/login` していれば、そのまま使えます。
 
 | Feature | Example |
 |---------|----------|
-| **Repository info** | View commits, branches, contributors |
-| **Issues** | List, create, search, and comment on issues |
-| **Pull requests** | View PRs, diffs, create PRs, check status |
-| **Code search** | Search code across repositories |
-| **Actions** | Query workflow runs and status |
+| **Repository info** | commits、branches、contributors を見る |
+| **Issues** | issue の一覧、作成、検索、comment |
+| **Pull requests** | PR、diff、status の確認 |
+| **Code search** | repository 横断で code を検索 |
+| **Actions** | workflow run と status の確認 |
 
 ```bash
 copilot
 
-# See recent activity in this repo
 > List the last 5 commits in this repository
-
-Recent commits:
-1. abc1234 - Update chapter 05 skills examples (2 days ago)
-2. def5678 - Add book app test fixtures (3 days ago)
-3. ghi9012 - Fix typo in chapter 03 README (4 days ago)
-...
-
-# Explore the repo structure
 > What branches exist in this repository?
-
-Branches:
-- main (default)
-- chapter6 (current)
-
-# Search for code patterns across the repo
 > Search this repository for files that import pytest
-
-Found 1 file:
-- samples/book-app-project/tests/test_books.py
 ```
 
-> 💡 **Working on your own fork?** If you forked this course repo, you can also try write operations like creating issues and pull requests. We'll practice that in the exercises below.
-
-> ⚠️ **Don't see results?** The GitHub MCP operates on the repository's remote (on github.com), not just local files. Make sure your repo has a remote: run `git remote -v` to check.
+> 💡 **自分の fork で試す場合**: write access があれば issue 作成や PR 作成も試せます。
 
 </details>
 
 <details>
-<summary><strong>Filesystem Server</strong> - Browse and analyze project files</summary>
+<summary><strong>Filesystem Server</strong> - project files を閲覧・分析する</summary>
 <a id="filesystem-server-usage"></a>
 
 ### Filesystem Server
 
-Once configured, the filesystem MCP provides tools that Copilot can use automatically:
+設定後は、filesystem MCP を使って files を探索できます。
 
 ```bash
 copilot
 
 > How many Python files are in the book-app-project directory?
 
-Found 3 Python files in samples/book-app-project/:
-- book_app.py
-- books.py
-- utils.py
-
 > What's the total size of the data.json file?
 
-samples/book-app-project/data.json: 2.4 KB
-
 > Find all functions that don't have type hints in the book app
-
-Found 2 functions without type hints:
-- samples/book-app-project/utils.py:10 - get_user_choice()
-- samples/book-app-project/utils.py:14 - get_book_details()
 ```
 
 </details>
 
 <details>
-<summary><strong>Context7 Server</strong> - Look up library documentation</summary>
+<summary><strong>Context7 Server</strong> - library documentation を調べる</summary>
 <a id="context7-server-usage"></a>
 
 ### Context7 Server
@@ -487,45 +390,20 @@ copilot
 
 > What are the best practices for using pytest fixtures?
 
-From pytest Documentation:
-
-Fixtures - Use fixtures to provide a fixed baseline for tests:
-
-    import pytest
-
-    @pytest.fixture
-    def sample_books():
-        return [
-            {"title": "1984", "author": "George Orwell", "year": 1949},
-            {"title": "Dune", "author": "Frank Herbert", "year": 1965},
-        ]
-
-    def test_find_by_author(sample_books):
-        # fixture is automatically passed as argument
-        results = [b for b in sample_books if "Orwell" in b["author"]]
-        assert len(results) == 1
-
-Best practices:
-- Use fixtures instead of setup/teardown methods
-- Use tmp_path fixture for temporary files
-- Use monkeypatch for modifying environment
-- Scope fixtures appropriately (function, class, module, session)
-
 > How can I apply this to the book app's test file?
-
-# Copilot now knows the official pytest patterns
-# and can apply them to samples/book-app-project/tests/test_books.py
 ```
+
+official docs の情報をもとに、project に即した advice が返ってきます。
 
 </details>
 
 <details>
-<summary><strong>Beyond the Basics</strong> - Custom server and web_fetch usage</summary>
+<summary><strong>Beyond the Basics</strong> - custom server と web_fetch の利用</summary>
 <a id="beyond-the-basics-usage"></a>
 
 ### Beyond the Basics
 
-**Custom MCP Server**: If you built the book-lookup server from the [Custom MCP Server Guide](mcp-custom-server.md), you can query your book collection directly:
+**Custom MCP Server**: [Custom MCP Server Guide](mcp-custom-server.md) で作った server に対して query を投げられます。
 
 ```bash
 copilot
@@ -533,7 +411,7 @@ copilot
 > Look up information about "1984" using the book lookup server. Search for books by George Orwell
 ```
 
-**Microsoft Learn MCP**: If you installed the [Microsoft Learn MCP server](#microsoft-learn-mcp-server), you can look up official Microsoft documentation directly:
+**Microsoft Learn MCP** も使えば、official Microsoft docs を直接引けます。
 
 ```bash
 copilot
@@ -541,7 +419,7 @@ copilot
 > How do I configure managed identity for an Azure Function? Search Microsoft Learn.
 ```
 
-**Web Fetch**: Use the built-in `web_fetch` tool to pull in content from any URL:
+**Web Fetch** では任意 URL の content を取得できます。
 
 ```bash
 copilot
@@ -555,25 +433,23 @@ copilot
 
 ## Multi-Server Workflows
 
-These workflows show why developers say "I never want to work without this again." Each example combines multiple MCP servers in a single session.
+複数 MCP server を組み合わせると、「もうこれなしでは戻れない」と感じる理由が分かってきます。
 
 <img src="images/issue-to-pr-workflow.png" alt="Issue to PR Workflow using MCP - Shows the complete flow from getting a GitHub issue through creating a pull request" width="800"/>
 
-*Complete MCP workflow: GitHub MCP retrieves repo data, Filesystem MCP finds code, Context7 MCP provides best practices, and Copilot handles analysis*
+*GitHub MCP で repo data、Filesystem MCP で files、Context7 MCP で best practices を取得し、Copilot がまとめて分析します。*
 
-Each example below is self-contained. **Pick one that interests you, or read them all.**
-
-| I want to see... | Jump to |
+| 見たいこと | 該当セクション |
 |---|---|
-| Multiple servers working together | [Multi-Server Exploration](#multi-server-exploration) |
-| Going from issue to PR in one session | [Issue-to-PR Workflow](#issue-to-pr-workflow) |
-| A quick project health check | [Health Dashboard](#health-dashboard) |
+| 複数 server の連携 | [Multi-Server Exploration](#multi-server-exploration) |
+| issue から PR までを 1 session で進める | [Issue-to-PR Workflow](#issue-to-pr-workflow) |
+| project の health check | [Health Dashboard](#health-dashboard) |
 
 <details>
-<summary><strong>Multi-Server Exploration</strong> - Combine filesystem, GitHub, and Context7 in one session</summary>
+<summary><strong>Multi-Server Exploration</strong> - filesystem、GitHub、Context7 を 1 session で組み合わせる</summary>
 <a id="multi-server-exploration"></a>
 
-#### Exploring the Book App with Multiple MCP Servers
+#### 複数 MCP Servers で Book App を探索する
 
 ```bash
 copilot
@@ -582,40 +458,19 @@ copilot
 > List all Python files in samples/book-app-project/ and summarize
 > what each file does
 
-Found 3 Python files:
-- book_app.py: CLI entry point with command routing (list, add, remove, find)
-- books.py: BookCollection class with data persistence via JSON
-- utils.py: Helper functions for user input and display
-
 # Step 2: Use GitHub MCP to check recent changes
 > What were the last 3 commits that touched files in samples/book-app-project/?
-
-Recent commits affecting book app:
-1. abc1234 - Add test fixtures for BookCollection (2 days ago)
-2. def5678 - Add find_by_author method (5 days ago)
-3. ghi9012 - Initial book app setup (1 week ago)
 
 # Step 3: Use Context7 MCP for best practices
 > What are Python best practices for JSON data persistence?
 
-From Python Documentation:
-- Use context managers (with statements) for file I/O
-- Handle JSONDecodeError for corrupted files
-- Use dataclasses for structured data
-- Consider atomic writes to prevent data corruption
-
 # Step 4: Synthesize a recommendation
 > Based on the book app code and these best practices,
 > what improvements would you suggest?
-
-Suggestions:
-1. Add input validation in add_book() for empty strings and invalid years
-2. Consider atomic writes in save_books() to prevent data corruption
-3. Add type hints to utils.py functions (get_user_choice, get_book_details)
 ```
 
 <details>
-<summary>🎬 See the MCP workflow in action!</summary>
+<summary>🎬 MCP workflow の動作例を見る</summary>
 
 ![MCP Workflow Demo](images/mcp-workflow-demo.gif)
 
@@ -623,48 +478,34 @@ Suggestions:
 
 </details>
 
-**The result**: Code exploration → history review → best practices lookup → improvement plan. **All from one terminal session, using three MCP servers together.**
+**結果**: code exploration → history review → best practices lookup → improvement plan を、1 つの terminal session のまま進められます。
 
 </details>
 
 <details>
-<summary><strong>Issue-to-PR Workflow</strong> - Go from a GitHub issue to a pull request without leaving the terminal</summary>
+<summary><strong>Issue-to-PR Workflow</strong> - GitHub issue から pull request まで terminal を離れずに進める</summary>
 <a id="issue-to-pr-workflow"></a>
 
-#### The Issue-to-PR Workflow (On Your Own Repo)
-
-This works best on your own fork or repository where you have write access:
-
-> 💡 **Don't worry if you can't try this right now.** If you're on a read-only clone, you'll practice this in the assignment. For now, just read through to understand the flow.
+#### The Issue-to-PR Workflow
 
 ```bash
 copilot
 
 > Get the details of GitHub issue #1
 
-Issue #1: Add input validation for book year
-Status: Open
-Description: The add_book function accepts any year value...
-
 > @samples/book-app-project/books.py Fix the issue described in issue #1
-
-[Copilot implements year validation in add_book()]
 
 > Run the tests to make sure the fix works
 
-All 8 tests passed ✓
-
 > Create a pull request titled "Add year validation to book app"
-
-✓ Created PR #2: Add year validation to book app
 ```
 
-**Zero copy-paste. Zero context switching. One terminal session.**
+**copy-paste なし、context switching なし、1 つの terminal session だけで進められます。**
 
 </details>
 
 <details>
-<summary><strong>Health Dashboard</strong> - Get a quick project health check using multiple servers</summary>
+<summary><strong>Health Dashboard</strong> - 複数 server を使って project の health check をする</summary>
 <a id="health-dashboard"></a>
 
 #### Book App Health Dashboard
@@ -677,31 +518,9 @@ copilot
 > 2. Check which functions have type hints and which don't
 > 3. Show what tests exist in samples/book-app-project/tests/
 > 4. Check the recent commit history for this directory
-
-Book App Health Report
-======================
-
-📊 Functions Found:
-- books.py: 8 methods in BookCollection (all have type hints ✓)
-- book_app.py: 6 functions (4 have type hints, 2 missing)
-- utils.py: 3 functions (1 has type hints, 2 missing)
-
-🧪 Test Coverage:
-- test_books.py: 8 test functions covering BookCollection
-- Missing: no tests for book_app.py CLI functions
-- Missing: no tests for utils.py helper functions
-
-📝 Recent Activity:
-- 3 commits in the last week
-- Most recent: added test fixtures
-
-Recommendations:
-- Add type hints to utils.py functions
-- Add tests for book_app.py CLI handlers
-- All files well-sized (<100 lines) - good structure!
 ```
 
-**The result**: Multiple data sources aggregated in seconds. Manually, this would mean running grep, counting lines, checking git log, and browsing test files. Easily 15+ minutes of work.
+**結果**: 複数 data source の情報をまとめて数秒で把握できます。手作業なら grep や git log、test file の確認などで 15 分以上かかることもあります。
 
 </details>
 
@@ -711,17 +530,13 @@ Recommendations:
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
-**🎉 You now know the essentials!** You understand MCP, you've seen how to configure servers, and you've seen real workflows in action. Now it's time to try it yourself.
+**🎉 ここまでで essentials は理解できました。** では、実際に自分で試してみましょう。
 
 ---
 
 ## ▶️ Try It Yourself
 
-Now it's your turn! Complete these exercises to practice using MCP servers with the book app project.
-
-### Exercise 1: Check Your MCP Status
-
-Start by seeing what MCP servers are available:
+### Exercise 1: MCP Status を確認する
 
 ```bash
 copilot
@@ -729,13 +544,11 @@ copilot
 > /mcp show
 ```
 
-You should see the GitHub server listed as enabled. If not, run `/login` to authenticate.
+GitHub server が enabled と表示されれば OK です。表示されない場合は `/login` してください。
 
 ---
 
-### Exercise 2: Explore the Book App with Filesystem MCP
-
-If you've configured the filesystem server, use it to explore the book app:
+### Exercise 2: Filesystem MCP で Book App を探る
 
 ```bash
 copilot
@@ -744,15 +557,11 @@ copilot
 > What functions are defined in each file?
 ```
 
-**Expected result**: Copilot lists `book_app.py`, `books.py`, and `utils.py` with their functions.
-
-> 💡 **Don't have filesystem MCP configured yet?** Create the config file from the [Complete Configuration](#complete-configuration-file) section above. Then restart Copilot.
+**期待される結果**: `book_app.py`、`books.py`、`utils.py` とその functions が表示されます。
 
 ---
 
-### Exercise 3: Query Repository History with GitHub MCP
-
-Use the built-in GitHub MCP to explore this course repository:
+### Exercise 3: GitHub MCP で Repository History を見る
 
 ```bash
 copilot
@@ -762,15 +571,11 @@ copilot
 > What branches exist in this repository?
 ```
 
-**Expected result**: Copilot shows recent commit messages and branch names from the GitHub remote.
-
-> ⚠️ **In a Codespace?** This works automatically. Authentication is inherited. If you're on a local clone, make sure `gh auth status` shows you're logged in.
+**期待される結果**: GitHub remote の recent commits や branch names が表示されます。
 
 ---
 
-### Exercise 4: Combine Multiple MCP Servers
-
-Now combine filesystem and GitHub MCP in a single session:
+### Exercise 4: 複数 MCP Servers を組み合わせる
 
 ```bash
 copilot
@@ -780,9 +585,7 @@ copilot
 > file was last modified.
 ```
 
-**Expected result**: Copilot reads the JSON file (filesystem MCP), lists the 5 books including "The Hobbit", "1984", "Dune", "To Kill a Mockingbird", and "Mysterious Book", then queries GitHub for commit history.
-
-**Self-Check**: You understand MCP when you can explain why "Check my repo's commit history" is better than manually running `git log` and pasting the output into your prompt.
+**Self-Check**: 「repo の commit history を見て」と頼む方が、`git log` を手で実行して貼り付けるよりなぜ便利か説明できれば、MCP の価値を理解できています。
 
 ---
 
@@ -790,154 +593,74 @@ copilot
 
 ### Main Challenge: Book App MCP Exploration
 
-Practice using MCP servers together on the book app project. Complete these steps in a single Copilot session:
+book app project で MCP servers を組み合わせて使う練習です。1 つの Copilot session の中で次を進めてください。
 
-1. **Verify MCP is working**: Run `/mcp show` and confirm at least the GitHub server is enabled
-2. **Set up filesystem MCP** (if not already done): Create `~/.copilot/mcp-config.json` with the filesystem server configuration
-3. **Explore the code**: Ask Copilot to use the filesystem server to:
-   - List all functions in `samples/book-app-project/books.py`
-   - Check which functions in `samples/book-app-project/utils.py` are missing type hints
-   - Read `samples/book-app-project/data.json` and identify any data quality issues (hint: look at the last entry)
-4. **Check repository activity**: Ask Copilot to use GitHub MCP to:
-   - List recent commits that touched files in `samples/book-app-project/`
-   - Check if there are any open issues or pull requests
-5. **Combine servers**: In a single prompt, ask Copilot to:
-   - Read the test file at `samples/book-app-project/tests/test_books.py`
-   - Compare the tested functions against all functions in `books.py`
-   - Summarize what test coverage is missing
+1. **MCP が動いているか確認**: `/mcp show` を実行し、少なくとも GitHub server が enabled であることを確認する
+2. **filesystem MCP を設定**（まだなら）: `~/.copilot/mcp-config.json` に filesystem config を追加する
+3. **code を探索**: filesystem server を使って次を確認する
+   - `samples/book-app-project/books.py` の functions 一覧
+   - `samples/book-app-project/utils.py` で type hints がない functions
+   - `samples/book-app-project/data.json` の data quality issue
+4. **repository activity を確認**: GitHub MCP を使って次を見る
+   - `samples/book-app-project/` に関連する recent commits
+   - open issues や pull requests があるか
+5. **servers を組み合わせる**: test file を読み、`books.py` の functions と比較し、足りない test coverage をまとめる
 
-**Success criteria**: You can seamlessly combine filesystem and GitHub MCP data in a single Copilot session, and you can explain what each MCP server contributed to the response.
+**成功条件**: filesystem と GitHub MCP の data を 1 つの session で自然に組み合わせられることです。
 
 <details>
-<summary>💡 Hints (click to expand)</summary>
+<summary>💡 Hints（クリックして展開）</summary>
 
 **Step 1: Verify MCP**
 ```bash
 copilot
 > /mcp show
-# Should show "github" as enabled
-# If not, run: /login
 ```
 
-**Step 2: Create the config file**
+**Step 2: config file を作る**
 
-Use the JSON from the [Complete Configuration](#complete-configuration-file) section above and save it as `~/.copilot/mcp-config.json`.
+この章の [Complete Configuration](#complete-configuration-file) を `~/.copilot/mcp-config.json` に保存します。
 
-**Step 3: Data quality issue to look for**
+**Step 3: data quality issue のヒント**
 
-The last book in `data.json` is:
-```json
-{
-  "title": "Mysterious Book",
-  "author": "",
-  "year": 0,
-  "read": false
-}
-```
-An empty author and year of 0. That's the data quality issue!
+`data.json` の最後の book には、author が空、year が 0 という問題があります。
 
-**Step 5: Test coverage comparison**
+**Step 5: test coverage comparison**
 
-The tests in `test_books.py` cover: `add_book`, `mark_as_read`, `remove_book`, `get_unread_books`, and `find_book_by_title`. Functions like `load_books`, `save_books`, and `list_books` don't have direct tests. The CLI functions in `book_app.py` and helpers in `utils.py` have no tests at all.
-
-**If MCP isn't working:** Restart Copilot after editing the config file.
+`test_books.py` は一部 functions をカバーしていますが、`load_books`、`save_books`、`list_books` などには direct test が不足しています。
 
 </details>
 
-### Bonus Challenge: Build a Custom MCP Server
+### Bonus Challenge: Custom MCP Server を作る
 
-Ready to go deeper? Follow the [Custom MCP Server Guide](mcp-custom-server.md) to build your own MCP server in Python that connects to any API.
+さらに深く学びたい場合は、[Custom MCP Server Guide](mcp-custom-server.md) を使って、自分の API につながる MCP server を作ってみてください。
 
 ---
 
 <details>
-<summary>🔧 <strong>Common Mistakes & Troubleshooting</strong> (click to expand)</summary>
+<summary>🔧 <strong>Common Mistakes & Troubleshooting</strong>（クリックして展開）</summary>
 
 ### Common Mistakes
 
-| Mistake | What Happens | Fix |
+| Mistake | 起きること | Fix |
 |---------|--------------|-----|
-| Not knowing GitHub MCP is built-in | Trying to install/configure it manually | GitHub MCP is included by default. Just try: "List the recent commits in this repo" |
-| Looking for config in wrong location | Can't find or edit MCP settings | User-level config is in `~/.copilot/mcp-config.json`, project-level is `.mcp.json` in the project root |
-| Invalid JSON in config file | MCP servers fail to load | Use `/mcp show` to check configuration; validate JSON syntax |
-| Forgetting to authenticate MCP servers | "Authentication failed" errors | Some MCPs need separate auth. Check each server's requirements |
+| GitHub MCP が built-in だと知らない | 手動インストールしようとしてしまう | まずは「List the recent commits in this repo」を試す |
+| config file の場所を間違える | MCP settings を見つけられない | user-level は `~/.copilot/mcp-config.json`、project-level は `.mcp.json` |
+| JSON が無効 | MCP server が読み込まれない | `/mcp show` で確認し、JSON syntax を見直す |
+| 認証を忘れる | authentication failed が出る | 必要に応じて `/login` を実行する |
 
 ### Troubleshooting
 
-**"MCP server not found"** - Check that:
-1. The npm package exists: `npm view @modelcontextprotocol/server-github`
-2. Your configuration is valid JSON
-3. The server name matches your config
+**"MCP server not found"** - npm package、config の JSON、server 名を確認します。
 
-Use `/mcp show` to see the current configuration.
-
-**"GitHub authentication failed"** - The built-in GitHub MCP uses your `/login` credentials. Try:
+**"GitHub authentication failed"** - built-in GitHub MCP は `/login` credentials を使います。再認証してください。
 
 ```bash
 copilot
 > /login
 ```
 
-This will re-authenticate you with GitHub. If issues persist, check that your GitHub account has the necessary permissions for the repository you're accessing.
-
-**"MCP server failed to start"** - Check the server logs:
-```bash
-# Run the server command manually to see errors
-npx -y @modelcontextprotocol/server-github
-```
-
-**MCP tools not available** - Make sure the server is enabled:
-```bash
-copilot
-
-> /mcp show
-# Check if server is listed and enabled
-```
-
-If a server is disabled, see the [additional `/mcp` commands](#-additional-mcp-commands) below for how to re-enable it.
-
-</details>
-
----
-
-<details>
-<summary>📚 <strong>Additional MCP Commands</strong> (click to expand)</summary>
-<a id="-additional-mcp-commands"></a>
-
-You can manage MCP servers in two ways: using **slash commands inside a chat session**, or using the **`copilot mcp` command directly in your terminal** (no chat session needed).
-
-### Option 1: Slash commands (inside a chat session)
-
-These work when you're already inside `copilot`:
-
-| Command | What It Does |
-|---------|--------------|
-| `/mcp show` | Show all configured MCP servers and their status |
-| `/mcp add` | Interactive setup for adding a new server |
-| `/mcp edit <server-name>` | Edit an existing server configuration |
-| `/mcp enable <server-name>` | Enable a disabled server (persists across sessions) |
-| `/mcp disable <server-name>` | Disable a server (persists across sessions) |
-| `/mcp delete <server-name>` | Remove a server permanently |
-| `/mcp auth <server-name>` | Re-authenticate with an MCP server that uses OAuth (e.g., after switching accounts) |
-
-### Option 2: `copilot mcp` command (from your terminal)
-
-You can also manage MCP servers directly from your terminal without starting a chat session first:
-
-```bash
-# List all configured MCP servers
-copilot mcp list
-
-# Enable a server
-copilot mcp enable filesystem
-
-# Disable a server
-copilot mcp disable context7
-```
-
-> 💡 **When to use which?** Use `/mcp` slash commands when you're already in a chat session. Use `copilot mcp` from the terminal when you want to quickly check or change your server settings before starting a session.
-
-For most of this course, `/mcp show` is all you need. The other commands become useful as you manage more servers over time.
+**"MCP tools not available"** - `/mcp show` で enabled か確認します。
 
 </details>
 
@@ -947,28 +670,28 @@ For most of this course, `/mcp show` is all you need. The other commands become 
 
 ## 🔑 Key Takeaways
 
-1. **MCP** connects Copilot to external services (GitHub, filesystem, documentation)
-2. **GitHub MCP is built-in** - no configuration needed, just `/login`
-3. **Filesystem and Context7** are configured via `~/.copilot/mcp-config.json`
-4. **Multi-server workflows** combine data from multiple sources in a single session
-5. **Manage servers two ways**: use `/mcp` slash commands inside chat, or `copilot mcp` from the terminal
-6. **Custom servers** let you connect any API (optional, covered in the appendix guide)
+1. **MCP** は Copilot を外部 service（GitHub、filesystem、documentation）に接続する
+2. **GitHub MCP は built-in** - 追加設定なしで使える
+3. **Filesystem と Context7** は `~/.copilot/mcp-config.json` などで設定する
+4. **複数 server を組み合わせる** と、1 session で investigation や planning ができる
+5. **管理方法は 2 通り**: chat 内の `/mcp` slash commands と、terminal の `copilot mcp`
+6. **custom server** を使えば、任意の API にもつなげられる
 
-> 📋 **Quick Reference**: See the [GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference) for a complete list of commands and shortcuts.
-
----
-
-## ➡️ What's Next
-
-You now have all the building blocks: modes, context, workflows, agents, skills, and MCP. Time to put them all together.
-
-In **[Chapter 07: Putting It All Together](../07-putting-it-together/README.md)**, you'll learn:
-
-- Combining agents, skills, and MCP in unified workflows
-- Complete feature development from idea to merged PR
-- Automation with hooks
-- Best practices for team environments
+> 📋 **Quick Reference**: コマンドやショートカットの一覧は [GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference) を参照してください。
 
 ---
 
-**[← Back to Chapter 05](../05-skills/README.md)** | **[Continue to Chapter 07 →](../07-putting-it-together/README.md)**
+## ➡️ 次は？
+
+これで、modes、context、workflows、agents、skills、MCP という building blocks がそろいました。最後の Chapter 07 では、それらを 1 つの実践 workflow にまとめます。
+
+**[Chapter 07: Putting It All Together](../07-putting-it-together/README.md)** では、次のことを学びます。
+
+- agents、skills、MCP を組み合わせた unified workflow
+- idea から merged PR までの流れ
+- hooks を使った automation
+- team development での best practices
+
+---
+
+**[← Chapter 05 に戻る](../05-skills/README.md)** | **[Chapter 07 へ進む →](../07-putting-it-together/README.md)**
