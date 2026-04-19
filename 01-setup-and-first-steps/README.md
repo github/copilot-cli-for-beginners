@@ -481,8 +481,12 @@ Copilot CLI supports multiple AI models from OpenAI, Anthropic, Google, and othe
 copilot
 > /model
 
-# Shows available models and lets you pick one. Select Sonnet 4.5.
+# Shows available models and lets you pick one.
+# Select "auto" to let Copilot automatically choose the best model for each task.
+# Or select a specific model like Sonnet 4.5.
 ```
+
+> 💡 **Not sure which model to choose?** Select `auto` when prompted. Copilot will automatically pick the best available model for each session based on the task. It's the simplest option and a great starting point.
 
 > 💡 **Tip**: Some models cost more "premium requests" than others. Models marked **1x** (like Claude Sonnet 4.5) are a great default. They're capable and efficient. Higher-multiplier models use your premium request quota faster, so save those for when you really need them.
 

@@ -427,6 +427,7 @@ These topics build on the essentials above. **Pick what interests you, or skip a
 | Token limits and `/compact` | [Understanding Context Windows](#understanding-context-windows) |
 | How to pick the right files to reference | [Choosing What to Reference](#choosing-what-to-reference) |
 | Analyzing screenshots and mockups | [Working with Images](#working-with-images) |
+| Attaching PDF and other document files | [Attaching Document Files](#attaching-documents) |
 
 <details>
 <summary><strong>Additional @ Patterns & Session Commands</strong></summary>
@@ -686,6 +687,28 @@ copilot
 ```
 
 > 📖 **Learn more**: See [Additional Context Features](../appendices/additional-context.md#working-with-images) for supported formats, practical use cases, and tips for combining images with code.
+
+</details>
+
+<details>
+<summary><strong>Attaching Document Files</strong></summary>
+<a id="attaching-documents"></a>
+
+### Attaching Document Files
+
+In addition to code files and images, you can attach supported **document files** (such as PDFs) to your prompts. This lets Copilot read and reason about the contents of documents alongside your code.
+
+```bash
+copilot
+
+> @requirements.pdf @samples/book-app-project/ Does the book app satisfy these requirements?
+
+> @architecture-diagram.pdf Summarize the key design decisions and check if @samples/book-app-project/ follows them
+```
+
+> 💡 **When is this useful?** Suppose you have a PDF of technical requirements, a design document, or a user manual. You can attach it directly so Copilot can understand the context without you having to copy-paste the contents manually.
+
+> ⚠️ **Note**: Not all document formats are supported. PDFs are a common format that works well. If Copilot cannot read a file, try converting it to a plain text or Markdown format first.
 
 </details>
 
