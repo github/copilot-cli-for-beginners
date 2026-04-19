@@ -1,22 +1,22 @@
 ![Chapter 04: Agents and Custom Instructions](images/chapter-header.png)
 
-> **What if you could hire a Python code reviewer, testing expert, and security reviewer... all in one tool?**
+> **Python code reviewer や testing expert、security reviewer を 1 つの tool の中で使い分けられるとしたらどうでしょうか。**
 
-In Chapter 03, you mastered the essential workflows: code review, refactoring, debugging, test generation, and git integration. Those make you highly productive with GitHub Copilot CLI. Now, let's take it further.
+Chapter 03 では、code review、refactoring、debugging、test generation、git integration といった基本 workflow を学びました。それだけでも GitHub Copilot CLI をかなり実用的に使えます。ここからはさらに一歩進めます。
 
-So far, you've been using Copilot CLI as a general-purpose assistant. Agents let you give it a specific persona with built-in standards, like a code reviewer that enforces type hints and PEP 8, or a testing helper that writes pytest cases. You'll see how the same prompt gets noticeably better results when handled by an agent with targeted instructions.
+これまでは Copilot CLI を汎用 assistant として使ってきました。Agents を使うと、type hints や PEP 8 を重視する code reviewer、pytest case を考える testing helper のように、特定の persona と基準を持った assistant として振る舞わせることができます。同じ prompt でも、targeted instruction を持つ agent が担当すると結果が大きく変わることを確認します。
 
-## 🎯 Learning Objectives
+## 🎯 学習目標
 
-By the end of this chapter, you'll be able to:
+この章を終える頃には、次のことができるようになります。
 
-- Use built-in agents: Plan (`/plan`), Code-review (`/review`), and understand automatic agents (Explore, Task)
-- Create specialized agents using agent files (`.agent.md`)
-- Use agents for domain-specific tasks
-- Switch between agents using `/agent` and `--agent`
-- Write custom instruction files for project-specific standards
+- built-in agents: Plan (`/plan`)、Code-review (`/review`)、automatic agents (Explore、Task) を理解して使う
+- agent file (`.agent.md`) を使って specialized agent を作る
+- domain-specific task に agent を活用する
+- `/agent` と `--agent` で agent を切り替える
+- project 固有の standard を custom instruction file にまとめる
 
-> ⏱️ **Estimated Time**: ~55 minutes (20 min reading + 35 min hands-on)
+> ⏱️ **想定時間**: 約 55 分 (読む時間 20 分 + hands-on 35 分)
 
 ---
 
@@ -36,13 +36,13 @@ Agents work the same way. Instead of a generic AI, use agents that focus on spec
 
 ---
 
-# Using Agents
+# Agents を使う
 
 Get started with built-in and custom agents right away.
 
 ---
 
-## *New to Agents?* Start Here!
+## *Agents が初めての方へ* まずはここから
 Never used or made an agent? Here's all you need to know to get started for this course.
 
 1. **Try a *built-in* agent right now:**
@@ -101,7 +101,7 @@ What about the Task Agent? It works behind the scenes to manage and track what i
 
 ---
 
-# Adding Agents to Copilot CLI
+# Copilot CLI に Agents を追加する
 
 You can simply define your own agents to be part of your workflow! Define once, then direct!
 
@@ -133,7 +133,7 @@ When reviewing code, always check for:
 
 > 💡 **Required vs Optional**: The `description` field is required. Other fields like `name`, `tools`, and `model` are optional.
 
-## Where to put agent files
+## Agent File の配置場所
 
 | Location | Scope | Best For |
 |----------|-------|----------|
@@ -187,7 +187,7 @@ copilot --agent python-reviewer
 
 ---
 
-# Going Deeper with Agents
+# Agents をさらに深く使う
 
 <img src="images/creating-custom-agents.png" alt="Robot being assembled on a workbench surrounded by components and tools representing custom agent creation" width="800"/>
 
@@ -537,7 +537,7 @@ For community agents, see [github/awesome-copilot](https://github.com/github/awe
 
 ---
 
-# Practice
+# 練習
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
@@ -607,7 +607,7 @@ copilot
 
 ## 📝 Assignment
 
-### Main Challenge: Build a Specialized Agent Team
+### メイン課題: Specialized Agent Team を作る
 
 The hands-on example created `reviewer` and `documentor` agents. Now practice creating and using agents for a different task - improving data validation in the book app:
 
@@ -706,7 +706,7 @@ Test each instruction file on the book app code.
 <details>
 <summary>🔧 <strong>Common Mistakes & Troubleshooting</strong> (click to expand)</summary>
 
-### Common Mistakes
+### よくあるミス
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
@@ -715,7 +715,7 @@ Test each instruction file on the book app code.
 | Using `.md` instead of `.agent.md` | File may not be recognized as an agent | Name files like `python-reviewer.agent.md` |
 | Overly long agent prompts | May hit the 30,000 character limit | Keep agent definitions focused; use skills for detailed instructions |
 
-### Troubleshooting
+### トラブルシューティング
 
 **Agent not found** - Check that the agent file exists in one of these locations:
 - `~/.copilot/agents/`
@@ -751,7 +751,7 @@ copilot  # This loads custom instructions by default
 
 ---
 
-# Summary
+# まとめ
 
 ## 🔑 Key Takeaways
 

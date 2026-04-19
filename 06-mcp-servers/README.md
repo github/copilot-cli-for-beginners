@@ -1,28 +1,28 @@
 ![Chapter 06: MCP Servers](images/chapter-header.png)
 
-> **What if Copilot could read your GitHub issues, check your database, and create PRs... all from the terminal?**
+> **Copilot が terminal から GitHub issue を読み、database を確認し、PR まで作れるとしたらどうでしょうか。**
 
-So far, Copilot can only work with what you give it directly: files you reference with `@`, conversation history, and its own training data. But what if it could reach out on its own to check your GitHub repository, browse your project files, or look up the latest documentation for a library?
+ここまでは、Copilot は `@` で参照した file、会話履歴、そして自身の training data をもとに動いていました。では、GitHub repository を自分で調べたり、project file を参照したり、library の最新 documentation を取りに行けたらどうなるでしょうか。
 
-That's what MCP (Model Context Protocol) does. It's a way to connect Copilot to external services so it has access to live, real-world data. Each service Copilot connects to is called an "MCP server." In this chapter, you'll set up a few of these connections and see how they make Copilot dramatically more useful.
+それを可能にするのが MCP (Model Context Protocol) です。Copilot を外部 service に接続し、live な現実データへ access できるようにする仕組みです。接続先の各 service を「MCP server」と呼びます。この章では、いくつかの接続を設定し、それによって Copilot がどれほど便利になるかを確認します。
 
-> 💡 **Already familiar with MCP?** [Jump to the quick start](#-use-the-built-in-github-mcp) to confirm it's working and start configuring servers.
+> 💡 **すでに MCP を知っている方へ**: [quick start](#-use-the-built-in-github-mcp) に進んで、動作確認と server 設定から始められます。
 
-## 🎯 Learning Objectives
+## 🎯 学習目標
 
-By the end of this chapter, you'll be able to:
+この章を終える頃には、次のことができるようになります。
 
-- Understand what MCP is and why it matters
-- Manage MCP servers using `/mcp` commands
-- Configure MCP servers for GitHub, filesystem, and documentation
-- Use MCP-powered workflows with the book app project
-- Know when and how to build a custom MCP server (optional)
+- MCP とは何か、なぜ重要かを理解する
+- `/mcp` command を使って MCP servers を管理する
+- GitHub、filesystem、documentation 向けに MCP servers を設定する
+- book app project で MCP を活用した workflow を試す
+- custom MCP server を作るべき場面と方法を理解する (optional)
 
-> ⏱️ **Estimated Time**: ~50 minutes (15 min reading + 35 min hands-on)
+> ⏱️ **想定時間**: 約 50 分 (読む時間 15 分 + hands-on 35 分)
 
 ---
 
-## 🧩 Real-World Analogy: Browser Extensions
+## 🧩 現実世界のたとえ: Browser Extensions
 
 <img src="images/browser-extensions-analogy.png" alt="MCP Servers are like Browser Extensions" width="800"/>
 
@@ -44,7 +44,7 @@ Without extensions, your browser is still useful, but with them, it becomes a po
 
 <img src="images/quick-start-mcp.png" alt="Power cable connecting with bright electrical spark surrounded by floating tech icons representing MCP server connections" width="800"/>
 
-# Quick Start: MCP in 30 Seconds
+# Quick Start: 30 秒で分かる MCP
 
 ## Get started with the built-in GitHub MCP server
 Let's see MCP in action right now, before configuring anything.
@@ -59,7 +59,7 @@ If Copilot returns real commit data, you've just seen MCP in action. That's the 
 
 ---
 
-## The `/mcp show` Command
+## `/mcp show` Command
 
 Use `/mcp show` to see which MCP servers are configured and whether they're enabled:
 
@@ -88,7 +88,7 @@ MCP Servers:
 
 ---
 
-## What Changes with MCP?
+## MCP で何が変わるか?
 
 Here's the difference MCP makes in practice:
 
@@ -115,7 +115,7 @@ MCP makes Copilot aware of your actual development environment.
 
 ---
 
-# Configuring MCP Servers
+# MCP Servers を設定する
 
 <img src="images/configuring-mcp-servers.png" alt="Hands adjusting knobs and sliders on a professional audio mixing board representing MCP server configuration" width="800"/>
 
@@ -181,7 +181,7 @@ MCP servers are configured in `~/.copilot/mcp-config.json` (user-level, applies 
 
 ---
 
-## Adding MCP Servers
+## MCP Servers を追加する
 
 The GitHub MCP server is built-in and requires no setup. Below are additional servers you can add. **Pick what interests you, or work through them in order.**
 
@@ -355,7 +355,7 @@ Save this as `~/.copilot/mcp-config.json` for global access or `.mcp.json` in th
 
 ---
 
-# Using MCP Servers
+# MCP Servers を使う
 
 Now that you have MCP servers configured, let's see what they can do.
 
@@ -363,7 +363,7 @@ Now that you have MCP servers configured, let's see what they can do.
 
 ---
 
-## Server Usage Examples
+## Server の利用例
 
 **Pick a server to explore, or work through them in order.**
 
@@ -707,7 +707,7 @@ Recommendations:
 
 ---
 
-# Practice
+# 練習
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
@@ -844,7 +844,7 @@ The tests in `test_books.py` cover: `add_book`, `mark_as_read`, `remove_book`, `
 
 </details>
 
-### Bonus Challenge: Build a Custom MCP Server
+### Bonus Challenge: Custom MCP Server を作る
 
 Ready to go deeper? Follow the [Custom MCP Server Guide](mcp-custom-server.md) to build your own MCP server in Python that connects to any API.
 
@@ -853,7 +853,7 @@ Ready to go deeper? Follow the [Custom MCP Server Guide](mcp-custom-server.md) t
 <details>
 <summary>🔧 <strong>Common Mistakes & Troubleshooting</strong> (click to expand)</summary>
 
-### Common Mistakes
+### よくあるミス
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
@@ -862,7 +862,7 @@ Ready to go deeper? Follow the [Custom MCP Server Guide](mcp-custom-server.md) t
 | Invalid JSON in config file | MCP servers fail to load | Use `/mcp show` to check configuration; validate JSON syntax |
 | Forgetting to authenticate MCP servers | "Authentication failed" errors | Some MCPs need separate auth. Check each server's requirements |
 
-### Troubleshooting
+### トラブルシューティング
 
 **"MCP server not found"** - Check that:
 1. The npm package exists: `npm view @modelcontextprotocol/server-github`
@@ -943,7 +943,7 @@ For most of this course, `/mcp show` is all you need. The other commands become 
 
 ---
 
-# Summary
+# まとめ
 
 ## 🔑 Key Takeaways
 

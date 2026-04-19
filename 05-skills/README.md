@@ -1,20 +1,19 @@
 ![Chapter 05: Skills System](images/chapter-header.png)
 
-> **What if Copilot could automatically apply your team's best practices without you having to explain them every time?**
+> **毎回説明しなくても、Copilot が team の best practice を自動で適用してくれたらどうでしょうか。**
 
-In this chapter, you'll learn about Agent Skills: folders of instructions that Copilot automatically loads when relevant to your task. While agents change *how* Copilot thinks, skills teach Copilot *specific ways to complete tasks*. You'll create a security audit skill that Copilot applies whenever you ask about security, build team-standard review criteria that ensure consistent code quality, and learn how skills work across Copilot CLI, VS Code, and the GitHub Copilot cloud agent.
+この章では、task に関連すると自動で読み込まれる instruction folder である Agent Skills を学びます。agents が Copilot の「考え方」を変えるのに対して、skills は「どう手順を進めるか」を具体的に教えます。security audit skill の作成や、team で共通利用できる review criteria の整備を通じて、Copilot CLI、VS Code、GitHub Copilot cloud agent で skills がどう機能するかを理解します。
 
+## 🎯 学習目標
 
-## 🎯 Learning Objectives
+この章を終える頃には、次のことができるようになります。
 
-By the end of this chapter, you'll be able to:
+- Agent Skills の仕組みと使いどころを理解する
+- SKILL.md file を使って custom skills を作る
+- shared repository の community skills を活用する
+- skills、agents、MCP の使い分けを理解する
 
-- Understand how Agent Skills work and when to use them
-- Create custom skills with SKILL.md files
-- Use community skills from shared repositories
-- Know when to use skills vs agents vs MCP
-
-> ⏱️ **Estimated Time**: ~55 minutes (20 min reading + 35 min hands-on)
+> ⏱️ **想定時間**: 約 55 分 (読む時間 20 分 + hands-on 35 分)
 
 ---
 
@@ -39,7 +38,7 @@ Skills work the same way. Just like swapping drill bits for different jobs, you 
 
 ---
 
-# How Skills Work
+# Skills の仕組み
 
 <img src="images/how-skills-work.png" alt="Glowing RPG-style skill icons connected by light trails on a starfield background representing Copilot skills" width="800"/>
 
@@ -47,7 +46,7 @@ Learn what skills are, why they matter, and how they differ from agents and MCP.
 
 ---
 
-## *New to Skills?* Start Here!
+## *Skills が初めての方へ* まずはここから
 
 1. **See what skills are already available:**
    ```bash
@@ -63,7 +62,7 @@ Learn what skills are, why they matter, and how they differ from agents and MCP.
 3. **Understand the core concept:** Skills are task-specific instructions that Copilot loads *automatically* when your prompt matches the skill's description. You don't need to activate them, just ask naturally.
 
 
-## Understanding Skills
+## Skills を理解する
 
 Agent Skills are folders containing instructions, scripts, and resources that Copilot **automatically loads when relevant** to your task. Copilot reads your prompt, checks if any skills match, and applies the relevant instructions automatically.
 
@@ -137,7 +136,7 @@ Use agents for broad expertise, skills for specific task instructions, and MCP f
 
 ---
 
-## From Manual Prompts to Automatic Expertise
+## Manual Prompt から Automatic Expertise へ
 
 Before diving into how to create skills, let's see *why* they're worth learning. Once you see the consistency gains, the "how" will make more sense.
 
@@ -259,7 +258,7 @@ PR Review: feature/user-auth
 
 ---
 
-# Creating Custom Skills
+# Custom Skills を作る
 
 <img src="images/creating-managing-skills.png" alt="Human and robotic hands building a wall of glowing LEGO-like blocks representing skill creation and management" width="800"/>
 
@@ -267,7 +266,7 @@ Build your own skills from SKILL.md files.
 
 ---
 
-## Skill Locations
+## Skill の配置場所
 
 Skills are stored in `.github/skills/` (project-specific) or `~/.copilot/skills/` (user level).
 
@@ -454,7 +453,7 @@ copilot --agent code-reviewer
 
 ---
 
-# Managing and Sharing Skills
+# Skills を管理して共有する
 
 Discover installed skills, find community skills, and share your own.
 
@@ -462,7 +461,7 @@ Discover installed skills, find community skills, and share your own.
 
 ---
 
-## Managing Skills with the `/skills` Command
+## `/skills` Command で Skill を管理する
 
 Use the `/skills` command to manage your installed skills:
 
@@ -579,7 +578,7 @@ gh skill install github/awesome-copilot code-checklist --scope user
 
 ---
 
-# Practice
+# 練習
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
@@ -767,7 +766,7 @@ copilot
 <details>
 <summary>🔧 <strong>Common Mistakes & Troubleshooting</strong> (click to expand)</summary>
 
-### Common Mistakes
+### よくあるミス
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
@@ -776,7 +775,7 @@ copilot
 | Missing `name` or `description` in frontmatter | Skill fails to load | Add both fields in YAML frontmatter |
 | Wrong folder location | Skill not found | Use `.github/skills/skill-name/` (project) or `~/.copilot/skills/skill-name/` (personal) |
 
-### Troubleshooting
+### トラブルシューティング
 
 **Skill not being used** - If Copilot isn't using your skill when expected:
 

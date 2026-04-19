@@ -1,25 +1,25 @@
 ![Chapter 07: Putting It All Together](images/chapter-header.png)
 
-> **Everything you learned combines here. Go from idea to merged PR in a single session.**
+> **ここでは、学んだ内容をすべて組み合わせます。idea から merged PR までを 1 つの session で進めましょう。**
 
-In this chapter, you'll bring together everything you've learned into complete workflows. You'll build features using multi-agent collaboration, set up pre-commit hooks that catch security issues before they're committed, integrate Copilot into CI/CD pipelines, and go from feature idea to merged PR in a single terminal session. This is where GitHub Copilot CLI becomes a genuine force multiplier.
+この章では、これまで学んだ内容を complete workflow としてまとめて実践します。multi-agent collaboration による feature 開発、commit 前に security issue を検出する pre-commit hook、CI/CD pipeline への統合などを通じて、feature idea から merged PR までを 1 つの terminal session で進める流れを体験します。ここで GitHub Copilot CLI は本当の force multiplier になります。
 
-> 💡 **Note**: This chapter shows how to combine everything you've learned. **You don't need agents, skills, or MCP to be productive (although they can be very helpful).** The core workflow — describe, plan, implement, test, review, ship — works with just the built-in features from Chapters 00-03.
+> 💡 **Note**: この章では学んだ内容の組み合わせ方を示します。**生産性を上げるのに agents、skills、MCP が必須というわけではありません**。中核となる workflow — describe、plan、implement、test、review、ship — は、Chapters 00-03 の built-in feature だけでも十分に回せます。
 
-## 🎯 Learning Objectives
+## 🎯 学習目標
 
-By the end of this chapter, you'll be able to:
+この章を終える頃には、次のことができるようになります。
 
-- Combine agents, skills, and MCP (Model Context Protocol) in unified workflows
-- Build complete features using multi-tool approaches
-- Set up basic automation with hooks
-- Apply best practices for professional development
+- agents、skills、MCP (Model Context Protocol) を統合した workflow を組み立てる
+- multi-tool approach で complete feature を進める
+- hooks を使った基本 automation を設定する
+- professional development の best practice を適用する
 
-> ⏱️ **Estimated Time**: ~75 minutes (15 min reading + 60 min hands-on)
+> ⏱️ **想定時間**: 約 75 分 (読む時間 15 分 + hands-on 60 分)
 
 ---
 
-## 🧩 Real-World Analogy: The Orchestra
+## 🧩 現実世界のたとえ: オーケストラ
 
 <img src="images/orchestra-analogy.png" alt="Orchestra Analogy - Unified Workflow" width="800"/>
 
@@ -38,7 +38,7 @@ Let's start by walking through a scenario that modifies code, generates tests, r
 
 ---
 
-## Idea to Merged PR in One Session
+## 1 つの Session で Idea から Merged PR へ
 
 Instead of switching between your editor, terminal, test runner, and GitHub UI and losing context each time, you can combine all your tools in one terminal session. We'll break down this pattern in the [Integration Pattern](#the-integration-pattern-for-power-users) section below.
 
@@ -107,13 +107,13 @@ copilot
 
 ---
 
-# Additional Workflows
+# 追加 Workflow
 
 <img src="images/combined-workflows.png" alt="People assembling a colorful giant jigsaw puzzle with gears, representing how agents, skills, and MCP combine into unified workflows" width="800"/>
 
 For power users who completed Chapters 04-06, these workflows show how agents, skills, and MCP multiply your effectiveness.
 
-## The Integration Pattern
+## Integration Pattern
 
 Here's the mental model for combining everything:
 
@@ -121,7 +121,7 @@ Here's the mental model for combining everything:
 
 ---
 
-## Workflow 1: Bug Investigation and Fix
+## Workflow 1: Bug の調査と修正
 
 Real-world bug fixing with full tool integration:
 
@@ -235,7 +235,7 @@ git commit -m "Update book collection methods"
 
 ---
 
-## Workflow 3: Onboarding to a New Codebase
+## Workflow 3: 新しい Codebase への Onboarding
 
 When joining a new project, combine context, agents, and MCP to ramp up fast:
 
@@ -268,7 +268,7 @@ This workflow combines `@` context, agents, and MCP into a single onboarding ses
 
 ---
 
-# Best Practices & Automation
+# Best Practices と Automation
 
 Patterns and habits that make your workflows more effective.
 
@@ -373,7 +373,7 @@ For teams with existing CI/CD pipelines, you can automate Copilot reviews on eve
 
 ---
 
-# Practice
+# 練習
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
@@ -402,7 +402,7 @@ After completing the demos, try these variations:
 
 ## 📝 Assignment
 
-### Main Challenge: End-to-End Feature
+### メイン課題: End-to-End Feature を仕上げる
 
 The hands-on examples walked through building a "list unread books" feature. Now practice the full workflow on a different feature: **search books by year range**:
 
@@ -459,7 +459,7 @@ Document your workflow as you go.
 
 ---
 
-# Summary
+# まとめ
 
 ## 🔑 Key Takeaways
 

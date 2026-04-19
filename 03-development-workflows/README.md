@@ -1,24 +1,24 @@
 ![Chapter 03: Development Workflows](images/chapter-header.png)
 
-> **What if the AI could find bugs you didn't even know to ask about?**
+> **AI が、まだ自分でも気づいていない bug まで見つけてくれるとしたらどうでしょうか。**
 
-In this chapter, GitHub Copilot CLI becomes your daily driver. You'll use it inside the workflows you already rely on every day: testing, refactoring, debugging, and Git.
+この章では、GitHub Copilot CLI を日々の開発 workflow の中心で使っていきます。testing、refactoring、debugging、Git など、普段すでに行っている作業の中に Copilot CLI を自然に組み込む方法を学びます。
 
-## 🎯 Learning Objectives
+## 🎯 学習目標
 
-By the end of this chapter, you'll be able to:
+この章を終える頃には、次のことができるようになります。
 
-- Run comprehensive code reviews with Copilot CLI
-- Refactor legacy code safely
-- Debug issues with AI assistance
-- Generate tests automatically
-- Integrate Copilot CLI with your git workflow
+- Copilot CLI を使って包括的な code review を行う
+- legacy code を安全に refactor する
+- AI 支援で issue を debug する
+- test を自動生成する
+- Copilot CLI を git workflow に統合する
 
-> ⏱️ **Estimated Time**: ~60 minutes (15 min reading + 45 min hands-on)
+> ⏱️ **想定時間**: 約 60 分 (読む時間 15 分 + hands-on 45 分)
 
 ---
 
-## 🧩 Real-World Analogy: A Carpenter's Workflow
+## 🧩 現実世界のたとえ: 大工の Workflow
 
 A carpenter doesn't just know how to use tools, they have *workflows* for different jobs:
 
@@ -28,7 +28,7 @@ Similarly, developers have workflows for different tasks. GitHub Copilot CLI enh
 
 ---
 
-# The Five Workflows
+# 5 つの Workflow
 
 <img src="images/five-workflows.png" alt="Five glowing neon icons representing code review, testing, debugging, refactoring, and git integration workflows" width="800"/>
 
@@ -36,7 +36,7 @@ Each workflow below is self-contained. Pick the ones that match your current nee
 
 ---
 
-## Choose Your Own Adventure
+## 必要な Workflow から選ぶ
 
 This chapter covers five workflows that developers typically use. **However, you don't need to read them all at once!** Each workflow is self-contained in a collapsible section below. Pick the ones that match what you need and that fits best with your current project. You can always come back and explore the others later.
 
@@ -696,7 +696,7 @@ copilot
 
 ---
 
-## Quick Tip: Research Before You Plan or Code
+## Quick Tip: Plan や Coding の前に Research する
 
 When you need to investigate a library, understand best practices, or explore an unfamiliar topic, use `/research` to run a deep research investigation before writing any code:
 
@@ -712,7 +712,7 @@ Copilot searches GitHub repositories and web sources, then returns a summary wit
 
 ---
 
-## Putting It All Together: Bug Fix Workflow
+## まとめて実践する: Bug Fix Workflow
 
 Here's a complete workflow for fixing a reported bug:
 
@@ -754,7 +754,7 @@ copilot -p "Generate commit message for: $(git diff --staged)"
 
 ---
 
-# Practice
+# 練習
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
@@ -782,7 +782,7 @@ After completing the demos, try these variations:
 
 ## 📝 Assignment
 
-### Main Challenge: Refactor, Test, and Ship
+### メイン課題: Refactor して Test し、Ship する
 
 The hands-on examples focused on `find_book_by_title` and code reviews. Now practice the same workflow skills on different functions in `book-app-project`:
 
@@ -830,7 +830,7 @@ copilot
 
 </details>
 
-### Bonus Challenge: Create an application with the Copilot CLI
+### Bonus Challenge: Copilot CLI で application を作る
 
 > 💡 **Note**: This GitHub Skills exercise uses **Node.js** rather than Python. The GitHub Copilot CLI techniques you'll practice - creating issues, generating code, and collaborating from the terminal - apply to any language.
 
@@ -843,7 +843,7 @@ The exercise shows developers how to use GitHub Copilot CLI to create issues, ge
 <details>
 <summary>🔧 <strong>Common Mistakes & Troubleshooting</strong> (click to expand)</summary>
 
-### Common Mistakes
+### よくあるミス
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
@@ -852,7 +852,7 @@ The exercise shows developers how to use GitHub Copilot CLI to create issues, ge
 | Asking to "find bugs" without context | Copilot CLI doesn't know what bug you're experiencing | Describe the symptom: "Users report X happens when Y" |
 | Generating tests without specifying framework | Tests may use wrong syntax or assertion library | Specify: "Generate tests using Jest" or "using pytest" |
 
-### Troubleshooting
+### トラブルシューティング
 
 **Review seems incomplete** - Be more specific about what to look for:
 
@@ -886,7 +886,7 @@ copilot
 
 ---
 
-# Summary
+# まとめ
 
 ## 🔑 Key Takeaways
 

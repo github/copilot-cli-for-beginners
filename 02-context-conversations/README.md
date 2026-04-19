@@ -1,24 +1,24 @@
 ![Chapter 02: Context and Conversations](images/chapter-header.png)
 
-> **What if AI could see your entire codebase, not just one file at a time?**
+> **AI が 1 つの file だけでなく、codebase 全体を見渡せたらどうなるでしょうか。**
 
-In this chapter, you'll unlock the real power of GitHub Copilot CLI: context. You'll learn to use the `@` syntax to reference files and directories, giving Copilot CLI deep understanding of your codebase. You'll discover how to maintain conversations across sessions, resume work days later exactly where you left off, and see how cross-file analysis catches bugs that single-file reviews miss entirely.
+この章では、GitHub Copilot CLI の本当の強みである context を学びます。`@` syntax を使って file や directory を参照し、Copilot CLI に codebase への深い理解を与える方法を身につけます。さらに、session をまたいで会話を続けたり、数日後に中断地点から作業を再開したり、single-file review では見逃しがちな bug を cross-file analysis で見つける流れを体験します。
 
-## 🎯 Learning Objectives
+## 🎯 学習目標
 
-By the end of this chapter, you'll be able to:
+この章を終える頃には、次のことができるようになります。
 
-- Use the `@` syntax to reference files, directories, and images
-- Resume previous sessions with `--resume` and `--continue`
-- Understand how [context windows](../GLOSSARY.md#context-window) work
-- Write effective multi-turn conversations
-- Manage directory permissions for multi-project workflows
+- `@` syntax を使って file、directory、image を参照する
+- `--resume` と `--continue` で以前の session を再開する
+- [context windows](../GLOSSARY.md#context-window) の仕組みを理解する
+- 効果的な multi-turn conversation を組み立てる
+- 複数 project workflow における directory permission を管理する
 
-> ⏱️ **Estimated Time**: ~50 minutes (20 min reading + 30 min hands-on)
+> ⏱️ **想定時間**: 約 50 分 (読む時間 20 分 + hands-on 30 分)
 
 ---
 
-## 🧩 Real-World Analogy: Working with a Colleague
+## 🧩 現実世界のたとえ: 同僚と一緒に作業する
 
 <img src="images/colleague-context-analogy.png" alt="Context Makes the Difference - Without vs With Context" width="800"/>
 
@@ -34,7 +34,7 @@ To provide context to Copilot CLI use *the `@` syntax* to point Copilot CLI at s
 
 ---
 
-# Essential: Basic Context
+# まず押さえたい基本: Basic Context
 
 <img src="images/essential-basic-context.png" alt="Glowing code blocks connected by light trails representing how context flows through Copilot CLI conversations" width="800"/>
 
@@ -42,13 +42,13 @@ This section covers everything you need to work effectively with context. Master
 
 ---
 
-## The @ Syntax
+## @ Syntax
 
 The `@` symbol references files and directories in your prompts. It's how you tell Copilot CLI "look at this file."
 
 > 💡 **Note**: All examples in this course use the `samples/` folder included in this repository, so you can try every command directly.
 
-### Try It Now (No Setup Required)
+### 今すぐ試してみる (Setup 不要)
 
 You can try this with any file on your computer:
 
@@ -68,7 +68,7 @@ copilot
 > > What does @test.py do?
 > ```
 
-### Basic @ Patterns
+### 基本的な @ Pattern
 
 | Pattern | What It Does | Example Use |
 |---------|--------------|-------------|
@@ -76,7 +76,7 @@ copilot
 | `@folder/` | Reference all files in a directory | `Review @samples/book-app-project/` |
 | `@file1.py @file2.py` | Reference multiple files | `Compare @samples/book-app-project/book_app.py @samples/book-app-project/books.py` |
 
-### Reference a Single File
+### 単一 File を参照する
 
 ```bash
 copilot
@@ -97,7 +97,7 @@ copilot
 
 ---
 
-### Reference Multiple Files
+### 複数 File を参照する
 
 ```bash
 copilot
@@ -105,7 +105,7 @@ copilot
 > Compare @samples/book-app-project/book_app.py and @samples/book-app-project/books.py for consistency
 ```
 
-### Reference an Entire Directory
+### Directory 全体を参照する
 
 ```bash
 copilot
@@ -214,7 +214,7 @@ Priority fix: Consolidate duplicate display functions and add input validation.
 
 ---
 
-## Practical Examples
+## 実践例
 
 ### Example 1: Code Review with Context
 
@@ -414,7 +414,7 @@ No re-explaining. No re-reading files. Just continue working.
 
 ---
 
-# Optional: Going Deeper
+# Optional: さらに深く学ぶ
 
 <img src="images/optional-going-deeper.png" alt="Abstract crystal cave in blue and purple tones representing deeper exploration of context concepts" width="800"/>
 
@@ -691,7 +691,7 @@ copilot
 
 ---
 
-# Practice
+# 練習
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
@@ -701,7 +701,7 @@ Time to apply your context and session management skills.
 
 ## ▶️ Try It Yourself
 
-### Full Project Review
+### Project 全体の Review
 
 The course includes sample files you can review directly. Start copilot and run the prompt shown next:
 
@@ -759,7 +759,7 @@ After completing the demos, try these variations:
 
 ## 📝 Assignment
 
-### Main Challenge: Trace the Data Flow
+### メイン課題: Data Flow をたどる
 
 The hands-on examples focused on code quality reviews and input validation. Now practice the same context skills on a different task, tracing how data moves through the app:
 
@@ -798,7 +798,7 @@ Then resume with: `copilot --continue`
 
 </details>
 
-### Bonus Challenge: Context Limits
+### Bonus Challenge: Context Limit を試す
 
 1. Reference all the book app files at once with `@samples/book-app-project/`
 2. Ask several detailed questions about different files (`books.py`, `utils.py`, `book_app.py`, `data.json`)
@@ -811,7 +811,7 @@ Then resume with: `copilot --continue`
 <details>
 <summary>🔧 <strong>Common Mistakes & Troubleshooting</strong> (click to expand)</summary>
 
-### Common Mistakes
+### よくあるミス
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
@@ -820,7 +820,7 @@ Then resume with: `copilot --continue`
 | Referencing files outside current directory | "Permission denied" or "File not found" errors | Use `/add-dir /path/to/directory` to grant access |
 | Not using `/clear` when switching topics | Old context confuses responses about the new topic | Run `/clear` before starting a different task |
 
-### Troubleshooting
+### トラブルシューティング
 
 **"File not found" errors** - Make sure you're in the correct directory:
 
@@ -852,7 +852,7 @@ copilot --add-dir /path/to/directory
 
 ---
 
-# Summary
+# まとめ
 
 ## 🔑 Key Takeaways
 

@@ -5,23 +5,23 @@
 [![Official Copilot CLI documentation](https://img.shields.io/badge/GitHub-CLI_Documentation-00a3ee?style=flat-square&logo=github)](https://docs.github.com/en/copilot/how-tos/copilot-cli)&ensp;
 [![Join AI Foundry Discord](https://img.shields.io/badge/Discord-AI_Community-blue?style=flat-square&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
 
-🎯 [What You'll Learn](#what-youll-learn) &ensp; ✅ [Prerequisites](#prerequisites) &ensp; 🤖 [Copilot Family](#understanding-the-github-copilot-family) &ensp; 📚 [Course Structure](#course-structure) &ensp; 📋 [Command Reference](#-github-copilot-cli-command-reference)
+🎯 [学べること](#what-youll-learn) &ensp; ✅ [前提条件](#prerequisites) &ensp; 🤖 [Copilot ファミリー](#understanding-the-github-copilot-family) &ensp; 📚 [コース構成](#course-structure) &ensp; 📋 [コマンドリファレンス](#command-reference)
 
 # GitHub Copilot CLI for Beginners
 
-> **✨ Learn to supercharge your development workflow with AI-powered command-line assistance.**
+> **✨ AI を活用した command-line 支援で、開発ワークフローをより強力にしましょう。**
 
-GitHub Copilot CLI brings AI assistance directly to your terminal. Instead of switching to a browser or code editor, you can ask questions, generate full-featured applications, review code, generate tests, and debug issues without leaving your command line.
+GitHub Copilot CLI は、AI 支援を terminal へ直接届けます。ブラウザーや code editor に切り替えなくても、質問、アプリケーション生成、code review、test 生成、debug などを command line 上でそのまま行えます。
 
-Think of it as having a knowledgeable colleague available 24/7 who can read your code, explain confusing patterns, and help you work faster!
+まるで、あなたの code を読み取り、分かりにくいパターンを説明し、より素早く作業できるよう助けてくれる詳しい同僚が、24 時間いつでもそばにいるような感覚です。
 
-> 📘 **Prefer a web experience?** You can follow this course right here on GitHub, or view it on [Awesome Copilot](https://awesome-copilot.github.com/learning-hub/cli-for-beginners/) for a more traditional browsing experience.
+> 📘 **Web で読みたい方へ** GitHub 上でこのコースを進めることもできますし、より一般的な閲覧体験をしたい場合は [Awesome Copilot](https://awesome-copilot.github.com/learning-hub/cli-for-beginners/) でも見ることができます。
 
-This course is designed for:
+このコースは、次のような方を対象にしています。
 
-- **Software Developers** who want to use AI from the command line
-- **Terminal users** who prefer keyboard-driven workflows over IDE integrations
-- **Teams looking to standardize** AI-assisted code review and development practices
+- **Software Developers**: command line から AI を活用したい方
+- **Terminal users**: IDE 統合よりもキーボード中心のワークフローを好む方
+- **Teams looking to standardize**: AI 支援による code review や開発プラクティスを標準化したいチーム
 
 <a href="https://aka.ms/githubcopilotdevdays" target="_blank">
   <picture>
@@ -29,73 +29,78 @@ This course is designed for:
   </picture>
 </a>
 
-## 🎯 What You'll Learn
+<a id="what-youll-learn"></a>
+## 🎯 学べること
 
-This hands-on course takes you from zero to productive with GitHub Copilot CLI. You'll work with a single Python book collection app throughout all chapters, progressively improving it using AI-assisted workflows. By the end, you'll confidently use AI to review code, generate tests, debug issues, and automate workflows: all from your terminal.
+このハンズオンコースでは、GitHub Copilot CLI をゼロから実用レベルまで段階的に学べます。すべての章を通して 1 つの Python 製 book collection app を扱い、AI 支援ワークフローを使いながら少しずつ改善していきます。最終的には、terminal から AI を使って code review、test 生成、debug、workflow の自動化を自信を持って進められるようになります。
 
-**No AI experience required.** If you can use a terminal, you can learn this.
+**AI の経験は不要です。** terminal の基本操作ができれば学習を始められます。
 
-**Perfect for:** Developers, students, and anyone who has experience with software development.
+**こんな方に最適です:** Developers、学生、そして software development の経験があるすべての方。
 
-## ✅ Prerequisites
+<a id="prerequisites"></a>
+## ✅ 前提条件
 
-Before starting, ensure you have:
+開始前に、次のものを用意してください。
 
-- **GitHub account**: [Create one free](https://github.com/signup)<br>
-- **GitHub Copilot access**: [Free offering](https://github.com/features/copilot/plans), [Monthly subscription](https://github.com/features/copilot/plans), or [Free for students/teachers](https://education.github.com/pack)<br>
-- **Terminal basics**: Comfortable with `cd`, `ls`, running commands
+- **GitHub account**: [無料で作成](https://github.com/signup)<br>
+- **GitHub Copilot access**: [Free offering](https://github.com/features/copilot/plans)、[Monthly subscription](https://github.com/features/copilot/plans)、または [学生・教職員向け無料プラン](https://education.github.com/pack)<br>
+- **Terminal の基本操作**: `cd`、`ls`、コマンド実行に慣れていること
 
-## 🤖 Understanding the GitHub Copilot Family
+<a id="understanding-the-github-copilot-family"></a>
+## 🤖 GitHub Copilot ファミリーを理解する
 
-GitHub Copilot has evolved into a family of AI-powered tools. Here's where each one lives:
+GitHub Copilot は、AI を活用した複数のツール群へと進化しています。以下は、それぞれがどこで使われるかの一覧です。
 
-| Product | Where It Runs | Description |
-|---------|---------------|----------|
-| [**GitHub Copilot CLI**](https://docs.github.com/copilot/how-tos/copilot-cli/cli-getting-started)<br>(this course) | Your terminal |  Terminal-native AI coding assistant  |
-| [**GitHub Copilot**](https://docs.github.com/copilot) | VS Code, Visual Studio, JetBrains, etc. | Agent mode, chat, inline suggestions  |
-| [**Copilot on GitHub.com**](https://github.com/copilot) | GitHub | Immersive chat about your repos, create agents, and more |
-| [**GitHub Copilot cloud agent**](https://docs.github.com/copilot/using-github-copilot/using-copilot-coding-agent-to-work-on-tasks) | GitHub  | Assign issues to agents, get PRs back |
+| Product | 利用場所 | 説明 |
+|---------|---------------|------|
+| [**GitHub Copilot CLI**](https://docs.github.com/copilot/how-tos/copilot-cli/cli-getting-started)<br>（このコース） | terminal | terminal-native な AI coding assistant |
+| [**GitHub Copilot**](https://docs.github.com/copilot) | VS Code、Visual Studio、JetBrains など | Agent mode、chat、inline suggestions |
+| [**Copilot on GitHub.com**](https://github.com/copilot) | GitHub | repository について深く対話できる immersive chat、agent 作成など |
+| [**GitHub Copilot cloud agent**](https://docs.github.com/copilot/using-github-copilot/using-copilot-coding-agent-to-work-on-tasks) | GitHub | issue を agent に割り当てて、PR を受け取ることが可能 |
 
-This course focuses on **GitHub Copilot CLI**, bringing AI assistance directly to your terminal.
+このコースでは **GitHub Copilot CLI** に焦点を当て、AI 支援を terminal に直接取り込む方法を学びます。
 
-## 📚 Course Structure
+<a id="course-structure"></a>
+## 📚 コース構成
 
 ![GitHub Copilot CLI Learning Path](images/learning-path.png)
 
-| Chapter | Title | What You'll Build |
-|:-------:|-------|-------------------|
-| 00 | 🚀 [Quick Start](./00-quick-start/README.md) | Installation and verification |
-| 01 | 👋 [First Steps](./01-setup-and-first-steps/README.md) | Live demos + three interaction modes |
-| 02 | 🔍 [Context and Conversations](./02-context-conversations/README.md) | Multi-file project analysis |
-| 03 | ⚡ [Development Workflows](./03-development-workflows/README.md) | Code review, debug, test generation |
-| 04 | 🤖 [Create Specialized AI Assistants](./04-agents-custom-instructions/README.md) | Custom agents for your workflow |
-| 05 | 🛠️ [Automate Repetitive Tasks](./05-skills/README.md) | Skills that load automatically |
-| 06 | 🔌 [Connect to GitHub, Databases & APIs](./06-mcp-servers/README.md) | MCP server integration |
-| 07 | 🎯 [Putting It All Together](./07-putting-it-together/README.md) | Complete feature workflows |
+| Chapter | Title | 内容 |
+|:-------:|-------|------|
+| 00 | 🚀 [Quick Start](./00-quick-start/README.md) | インストールと動作確認 |
+| 01 | 👋 [First Steps](./01-setup-and-first-steps/README.md) | Live demo と 3 つの操作モード |
+| 02 | 🔍 [Context and Conversations](./02-context-conversations/README.md) | 複数ファイルの project 分析 |
+| 03 | ⚡ [Development Workflows](./03-development-workflows/README.md) | code review、debug、test 生成 |
+| 04 | 🤖 [Create Specialized AI Assistants](./04-agents-custom-instructions/README.md) | workflow 向けの custom agent 作成 |
+| 05 | 🛠️ [Automate Repetitive Tasks](./05-skills/README.md) | 自動で読み込まれる skill |
+| 06 | 🔌 [Connect to GitHub, Databases & APIs](./06-mcp-servers/README.md) | MCP server 連携 |
+| 07 | 🎯 [Putting It All Together](./07-putting-it-together/README.md) | 一連の feature workflow の実践 |
 
-## 📖 How This Course Works
+## 📖 このコースの進め方
 
-Each chapter follows the same pattern:
+各 chapter は、次の同じ流れで構成されています。
 
-1. **Real-World Analogy**: Understand the concept through familiar comparisons
-2. **Core Concepts**: Learn the essential knowledge
-3. **Hands-On Examples**: Run actual commands and see results
-4. **Assignment**: Practice what you learned
-5. **What's Next**: Preview of the following chapter
+1. **Real-World Analogy**: 身近な例えで概念を理解する
+2. **Core Concepts**: 必要な基礎知識を学ぶ
+3. **Hands-On Examples**: 実際にコマンドを実行して結果を見る
+4. **Assignment**: 学んだ内容を自分で試す
+5. **What's Next**: 次の chapter の内容を先取りする
 
-**Code examples are runnable.** Every copilot text block in this course can be copied and run in your terminal.
+**Code examples はそのまま実行できます。** このコース内の copilot テキストブロックは、terminal にコピーして実行できる形になっています。
 
-## 📋 GitHub Copilot CLI Command Reference
+<a id="command-reference"></a>
+## 📋 GitHub Copilot CLI コマンドリファレンス
 
-The **[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference)** helps you find commands and keyboard shortcuts to help you use Copilot CLI effectively.
+**[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference)** では、Copilot CLI をより効果的に使うためのコマンドや keyboard shortcut を確認できます。
 
-## 🙋 Getting Help
+## 🙋 サポートが必要な場合
 
-- 🐛 **Found a bug?** [Open an Issue](https://github.com/github/copilot-cli-for-beginners/issues)
-- 🤝 **Want to contribute?** PRs welcome!
-- 📚 **Official Docs:** [GitHub Copilot CLI Documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)
+- 🐛 **バグを見つけましたか？** [Issue を作成](https://github.com/github/copilot-cli-for-beginners/issues)
+- 🤝 **貢献したいですか？** PR は歓迎です
+- 📚 **公式ドキュメント:** [GitHub Copilot CLI Documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)
 
-## License
+## ライセンス
 
-This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) file for the full terms.
+この project は MIT open source license の条件の下で提供されています。詳細は [LICENSE](./LICENSE) ファイルを参照してください。
 

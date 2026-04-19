@@ -1,24 +1,24 @@
 ![Chapter 01: First Steps](images/chapter-header.png)
 
-> **Watch AI find bugs instantly, explain confusing code, and generate working scripts. Then learn three different ways to use GitHub Copilot CLI.**
+> **AI が bugs をすばやく見つけ、複雑な code を分かりやすく説明し、動く script を生成する様子を体験しましょう。そのうえで、GitHub Copilot CLI の 3 つの使い方を学びます。**
 
-This chapter is where the magic starts! You'll experience firsthand why developers describe GitHub Copilot CLI as having a senior engineer on speed dial. You'll watch AI find security bugs in seconds, get complex code explained in plain English, and generate working scripts instantly. Then you'll master the three interaction modes (Interactive, Plan, and Programmatic) so you know exactly which one to use for any task.
+この章から、いよいよ本格的な活用が始まります。GitHub Copilot CLI が「すぐ相談できる senior engineer のようだ」と言われる理由を、実際に体験できます。AI が security bug を数秒で見つけ、複雑な code を plain English で説明し、使える script をすぐ生成する流れを見ながら、3 つの interaction mode (Interactive, Plan, Programmatic) を学びます。
 
-> ⚠️ **Prerequisites**: Make sure you've completed **[Chapter 00: Quick Start](../00-quick-start/README.md)** first. You'll need GitHub Copilot CLI installed and authenticated before running the demos below.
+> ⚠️ **前提条件**: 先に **[Chapter 00: Quick Start](../00-quick-start/README.md)** を完了しておいてください。以下の demo を試すには、GitHub Copilot CLI の installation と authentication が必要です。
 
-## 🎯 Learning Objectives
+## 🎯 学習目標
 
-By the end of this chapter, you'll be able to:
+この章を終える頃には、次のことができるようになります。
 
-- Experience the productivity boost GitHub Copilot CLI provides through hands-on demos
-- Choose the right mode (Interactive, Plan, or Programmatic) for any task
-- Use slash commands to control your sessions
+- hands-on demo を通して GitHub Copilot CLI の生産性向上を体感する
+- task に応じて適切な mode (Interactive、Plan、Programmatic) を選ぶ
+- slash command を使って session を操作する
 
-> ⏱️ **Estimated Time**: ~45 minutes (15 min reading + 30 min hands-on)
+> ⏱️ **想定時間**: 約 45 分 (読む時間 15 分 + hands-on 30 分)
 
 ---
 
-# Your First Copilot CLI Experience
+# 最初の Copilot CLI 体験
 
 <img src="images/first-copilot-experience.png" alt="Developer sitting at a desk with code on the monitor and glowing particles representing AI assistance" width="800"/>
 
@@ -26,7 +26,7 @@ Jump right in and see what Copilot CLI can do.
 
 ---
 
-## Getting Comfortable: Your First Prompts
+## まずは慣れてみる: 最初の Prompt
 
 Before diving into the impressive demos, let's start with some simple prompts you can try right now. **No code repository needed**! Just open a terminal and start Copilot CLI:
 
@@ -52,7 +52,7 @@ Notice how natural it feels. Just ask questions like you would to a colleague. W
 
 **The key insight**: GitHub Copilot CLI is conversational. You don't need special syntax to get started. Just ask questions in plain English.
 
-## See It In Action
+## 実際に動かしてみる
 
 Now let's see why developers are calling this "having a senior engineer on speed dial."
 
@@ -60,7 +60,7 @@ Now let's see why developers are calling this "having a senior engineer on speed
 
 > 💡 **About Example Outputs**: The sample outputs shown throughout this course are illustrative. Because Copilot CLI's responses vary each time, your results will differ in wording, formatting, and detail. Focus on the *type* of information returned, not the exact text.
 
-### Demo 1: Code Review in Seconds
+### Demo 1: 数秒でできる Code Review
 
 The course includes sample files with intentional code quality issues. If you're working on your local machine and haven't already cloned the repo, please run the `git clone` command below, navigate to the `copilot-cli-for-beginners` folder, and then run the `copilot` command.
 
@@ -98,7 +98,7 @@ Once inside the interactive Copilot CLI session, run the following:
 
 ---
 
-### Demo 2: Explain Confusing Code
+### Demo 2: 分かりにくい Code を説明してもらう
 
 Ever stared at code wondering what it does? Try this in your Copilot CLI session:
 
@@ -153,7 +153,7 @@ Common pattern: Read from JSON → Work with Python objects → Write back to JS
 
 ---
 
-### Demo 3: Generate Working Code
+### Demo 3: 動く Code を生成する
 
 Need a function you'd otherwise spend 15 minutes googling? Still in your session:
 
@@ -187,7 +187,7 @@ When you're done exploring, exit the session:
 
 ---
 
-# Modes and Commands
+# Modes と Commands
 
 <img src="images/modes-and-commands.png" alt="Futuristic control panel with glowing screens, dials, and equalizers representing Copilot CLI modes and commands" width="800"/>
 
@@ -197,7 +197,7 @@ You've just seen what Copilot CLI can do. Now let's understand *how* to use thes
 
 ---
 
-## 🧩 Real-World Analogy: Dining Out
+## 🧩 現実世界のたとえ: 外食
 
 Think of using GitHub Copilot CLI like going out to eat. From planning the trip to placing your order, different situations call for different approaches:
 
@@ -213,7 +213,7 @@ Just like dining out, you'll naturally learn when each approach feels right.
 
 *Choose your mode based on the task: Plan for mapping it out first, Interactive for back-and-forth collaboration, Programmatic for quick one-shot results*
 
-### Which Mode Should I Start With?
+### 最初はどの Mode から始めるべき?
 
 **Start with Interactive mode.** 
 - You can experiment and ask follow-up questions
@@ -226,9 +226,9 @@ Once you're comfortable, try:
 
 ---
 
-## The Three Modes
+## 3 つの Mode
 
-### Mode 1: Interactive Mode (start here)
+### Mode 1: Interactive Mode (まずはここから)
 
 <img src="images/interactive-mode.png" alt="Interactive Mode - Like talking to a waiter who can answer questions and adjust the order" width="250"/>
 
@@ -361,7 +361,7 @@ copilot --allow-all -p "Review @myfile.py for issues"
 
 ---
 
-## Essential Slash Commands
+## 基本の Slash Commands
 
 These commands are great to learn initially as you're getting started with Copilot CLI:
 
@@ -490,7 +490,7 @@ copilot
 
 ---
 
-# Practice
+# 練習
 
 <img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
@@ -500,7 +500,7 @@ Time to put what you've learned into action.
 
 ## ▶️ Try It Yourself
 
-### Interactive Exploration
+### Interactive に試す
 
 Start Copilot and use follow-up prompts to iteratively improve the book app:
 
@@ -516,7 +516,7 @@ copilot
 > /exit
 ```
 
-### Plan a Feature
+### Feature を Plan する
 
 Use `/plan` to have Copilot CLI map out an implementation before writing any code:
 
@@ -530,7 +530,7 @@ copilot
 # Watch it implement step by step
 ```
 
-### Automate with Programmatic Mode
+### Programmatic Mode で自動化する
 
 The `-p` flag lets you run Copilot CLI directly from your terminal without entering interactive mode. Copy and paste the following script into your terminal (not inside Copilot) from the repository root to review all Python files in the book app.
 
@@ -589,7 +589,7 @@ Additional details about remote sessions can be found in the [Copilot CLI docs](
 
 ## 📝 Assignment
 
-### Main Challenge: Improve the Book App Utilities
+### メイン課題: Book App の Utilities を改善する
 
 The hands-on examples focused on reviewing and refactoring `book_app.py`. Now practice the same skills on a different file, `utils.py`:
 
@@ -621,7 +621,7 @@ The hands-on examples focused on reviewing and refactoring `book_app.py`. Now pr
 
 </details>
 
-### Bonus Challenge: Compare the Modes
+### Bonus Challenge: Modes を比較する
 
 The examples used `/plan` for a search feature and `-p` for batch reviews. Now try all three modes on a single new task: adding a `list_by_year()` method to the `BookCollection` class:
 
@@ -636,7 +636,7 @@ The examples used `/plan` for a search feature and `-p` for batch reviews. Now t
 <details>
 <summary>🔧 <strong>Common Mistakes & Troubleshooting</strong> (click to expand)</summary>
 
-### Common Mistakes
+### よくあるミス
 
 | Mistake | What Happens | Fix |
 |---------|--------------|-----|
@@ -644,7 +644,7 @@ The examples used `/plan` for a search feature and `-p` for batch reviews. Now t
 | Using `-p` for multi-turn conversations | Each `-p` call is isolated with no memory of previous calls | Use interactive mode (`copilot`) for conversations that build on context |
 | Forgetting quotes around prompts with `$` or `!` | Shell interprets special characters before Copilot CLI sees them | Wrap prompts in quotes: `copilot -p "What does $HOME mean?"` |
 
-### Troubleshooting
+### トラブルシューティング
 
 **"Model not available"** - Your subscription may not include all models. Use `/model` to see what's available.
 
@@ -656,7 +656,7 @@ The examples used `/plan` for a search feature and `-p` for batch reviews. Now t
 
 ---
 
-# Summary
+# まとめ
 
 ## 🔑 Key Takeaways
 
