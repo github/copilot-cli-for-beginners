@@ -59,6 +59,21 @@ def handle_find():
     show_books(books)
 
 
+def handle_mark_read():
+    """Prompt the user for a title and mark the matching book as read."""
+    print("\nMark Book as Read\n")
+
+    title = input("Enter the title of the book: ").strip()
+    if not title:
+        print("\nError: Title cannot be empty.\n")
+        return
+
+    if collection.mark_as_read(title):
+        print(f'\n✓ "{title}" marked as read.\n')
+    else:
+        print(f'\nNo book with the title "{title}" was found.\n')
+
+
 def show_help():
     print("""
 Book Collection Helper
@@ -68,6 +83,7 @@ Commands:
   add      - Add a new book
   remove   - Remove a book by title
   find     - Find books by author
+  mark     - Mark a book as read
   help     - Show this help message
 """)
 
@@ -87,6 +103,8 @@ def main():
         handle_remove()
     elif command == "find":
         handle_find()
+    elif command == "mark":
+        handle_mark_read()
     elif command == "help":
         show_help()
     else:
