@@ -119,24 +119,24 @@ Commands:
 
 def main() -> None:
     """Entry point — parse the CLI command and dispatch to the correct handler."""
+    commands = {
+        "list": handle_list,
+        "add": handle_add,
+        "remove": handle_remove,
+        "find": handle_find,
+        "mark": handle_mark_read,
+        "help": show_help,
+    }
+
     if len(sys.argv) < 2:
         show_help()
         return
 
     command = sys.argv[1].lower()
+    handler = commands.get(command)
 
-    if command == "list":
-        handle_list()
-    elif command == "add":
-        handle_add()
-    elif command == "remove":
-        handle_remove()
-    elif command == "find":
-        handle_find()
-    elif command == "mark":
-        handle_mark_read()
-    elif command == "help":
-        show_help()
+    if handler:
+        handler()
     else:
         print("Unknown command.\n")
         show_help()
