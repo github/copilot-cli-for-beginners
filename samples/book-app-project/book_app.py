@@ -1,6 +1,7 @@
 import sys
 import datetime
 from books import Book, BookCollection
+from utils import get_collection_stats
 
 
 # Global collection instance
@@ -102,6 +103,22 @@ def handle_mark_read() -> None:
         print(f'\nNo book with the title "{title}" was found.\n')
 
 
+def handle_stats() -> None:
+    """Display statistics about the book collection."""
+    stats = get_collection_stats(collection.list_books())
+
+    print("\nCollection Statistics:\n")
+    print(f"  Total books : {stats.total}")
+    print(f"  Read        : {stats.read}")
+    print(f"  Unread      : {stats.unread}")
+
+    if stats.oldest:
+        print(f"  Oldest      : {stats.oldest.title} ({stats.oldest.year})")
+    if stats.newest:
+        print(f"  Newest      : {stats.newest.title} ({stats.newest.year})")
+    print()
+
+
 def show_help() -> None:
     """Print available commands."""
     print("""
@@ -113,6 +130,7 @@ Commands:
   remove   - Remove a book by title
   find     - Find books by author
   mark     - Mark a book as read
+  stats    - Show collection statistics
   help     - Show this help message
 """)
 
@@ -125,6 +143,7 @@ def main() -> None:
         "remove": handle_remove,
         "find": handle_find,
         "mark": handle_mark_read,
+        "stats": handle_stats,
         "help": show_help,
     }
 
