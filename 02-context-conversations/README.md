@@ -427,6 +427,7 @@ These topics build on the essentials above. **Pick what interests you, or skip a
 | Token limits and `/compact` | [Understanding Context Windows](#understanding-context-windows) |
 | How to pick the right files to reference | [Choosing What to Reference](#choosing-what-to-reference) |
 | Analyzing screenshots and mockups | [Working with Images](#working-with-images) |
+| Attaching PDFs and other documents | [Attaching Document Files](#attaching-document-files) |
 
 <details>
 <summary><strong>Additional @ Patterns & Session Commands</strong></summary>
@@ -687,6 +688,22 @@ copilot
 
 > 📖 **Learn more**: See [Additional Context Features](../appendices/additional-context.md#working-with-images) for supported formats, practical use cases, and tips for combining images with code.
 
+<a id="attaching-document-files"></a>
+
+### Attaching Document Files
+
+You can also attach supported document files (such as PDFs) to your prompts using the same `@` syntax. This is handy for providing specs, design documents, or reference material that Copilot can read and reason about alongside your code.
+
+```bash
+copilot
+
+> @requirements.pdf Summarize the key requirements and check if @samples/book-app-project/book_app.py covers them
+
+> @design-doc.pdf What features are described here that are missing from @samples/book-app-project/
+```
+
+> 💡 **Tip**: Document attachment works great for onboarding — paste a spec or design doc and ask Copilot to map it to your existing code.
+
 </details>
 
 ---
@@ -856,12 +873,13 @@ copilot --add-dir /path/to/directory
 
 ## 🔑 Key Takeaways
 
-1. **`@` syntax** gives Copilot CLI context about files, directories, and images
+1. **`@` syntax** gives Copilot CLI context about files, directories, images, and documents
 2. **Multi-turn conversations** build on each other as context accumulates
 3. **Sessions auto-save**: use `--continue` or `--resume` to pick up where you left off
 4. **Context windows** have limits: manage them with `/clear`, `/compact`, `/context`, `/new`, and `/rewind`
 5. **Permission flags** (`--add-dir`, `--allow-all`) control multi-directory access. Use them wisely!
 6. **Image references** (`@screenshot.png`) help debug UI issues visually
+7. **Document files** (like PDFs) can be attached with `@` to give Copilot specs, designs, or reference material
 
 > 📚 **Official Documentation**: [Use Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli) for the complete reference on context, sessions, and working with files.
 

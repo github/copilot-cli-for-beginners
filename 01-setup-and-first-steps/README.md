@@ -433,16 +433,16 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 | Command | What It Does |
 |---------|--------------|
-| `/clear` | Abandons the current session (no history saved) and starts a fresh conversation |
+| `/clear` (or `/reset`) | Abandons the current session (no history saved) and starts a fresh conversation |
 | `/compact` | Summarize conversation to reduce context usage |
 | `/context` | Show context window token usage and visualization |
 | `/new` | Ends the current session (saving it to history for search/resume) and starts a fresh conversation. |
-| `/resume` | Switch to a different session (optionally specify session ID) |
+| `/resume` (or `/continue`) | Switch to a different session (optionally specify session ID) |
 | `/rename` | Rename the current session (omit the name to auto-generate one) |
 | `/rewind` | Open a timeline picker to roll back to any earlier point in the conversation |
 | `/usage` | Display session usage metrics and statistics |
 | `/session` | Show session info and workspace summary |
-| `/share` | Export session as a markdown file, GitHub gist, or self-contained HTML file |
+| `/share` (or `/export`) | Export session as a markdown file, GitHub gist, or self-contained HTML file |
 
 ### Display
 
@@ -455,8 +455,8 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 | Command | What It Does |
 |---------|--------------|
-| `/changelog` | Display changelog for CLI versions |
-| `/feedback` | Submit feedback to GitHub |
+| `/changelog` (or `/release-notes`) | Display changelog for CLI versions |
+| `/feedback` (or `/bug`) | Submit feedback or report a bug to GitHub |
 | `/help` | Show all available commands |
 
 ### Quick Shell Commands
@@ -485,6 +485,8 @@ copilot
 ```
 
 > 💡 **Tip**: Some models cost more "premium requests" than others. Models marked **1x** (like Claude Sonnet 4.5) are a great default. They're capable and efficient. Higher-multiplier models use your premium request quota faster, so save those for when you really need them.
+
+> 💡 **New: `auto` model**: You can select `auto` from the `/model` picker to let Copilot automatically choose the best available model for each session. This is a great starting option if you're unsure which model to pick — Copilot will adapt based on what's available to you.
 
 </details>
 
