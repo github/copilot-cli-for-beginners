@@ -103,6 +103,19 @@ def handle_mark_read() -> None:
         print(f'\nNo book with the title "{title}" was found.\n')
 
 
+def handle_search() -> None:
+    """Prompt for a query and display books matching title or author."""
+    print("\nSearch Books\n")
+
+    query = input("Search (title or author): ").strip()
+    if not query:
+        print("\nError: Search query cannot be empty.\n")
+        return
+
+    books = collection.search(query)
+    show_books(books)
+
+
 def handle_stats() -> None:
     """Display statistics about the book collection."""
     stats = get_collection_stats(collection.list_books())
@@ -129,6 +142,7 @@ Commands:
   add      - Add a new book
   remove   - Remove a book by title
   find     - Find books by author
+  search   - Search books by title or author
   mark     - Mark a book as read
   stats    - Show collection statistics
   help     - Show this help message
@@ -142,6 +156,7 @@ def main() -> None:
         "add": handle_add,
         "remove": handle_remove,
         "find": handle_find,
+        "search": handle_search,
         "mark": handle_mark_read,
         "stats": handle_stats,
         "help": show_help,
