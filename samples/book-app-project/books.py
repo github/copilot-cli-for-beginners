@@ -156,7 +156,19 @@ class BookCollection:
         Example:
             >>> col.list_books()
         """
-        return self.books
+        # Return a shallow copy to avoid exposing internal list for mutation.
+        return list(self.books)
+
+    def get_unread_books(self) -> List[Book]:
+        """Return a shallow list of books whose `read` flag is False.
+
+        This returns a new list (shallow copy) so callers may modify the
+        returned list without affecting the collection's internal state.
+
+        Example:
+            >>> col.get_unread_books()
+        """
+        return [b for b in self.books if not b.read]
 
     def list_by_year(self, start: int, end: int) -> List[Book]:
         """Return books published between start and end year (inclusive).
@@ -241,18 +253,25 @@ class BookCollection:
         return False
 
     def find_by_author(self, author: str) -> List[Book]:
-        """Find all books by a given author (case-insensitive exact match).
+        """Find all books by a given author.
+
+        Behavior:
+        - Case-insensitive substring match (so partial names work)
+        - If an empty author is provided, returns an empty list.
 
         Args:
-            author (str): Author name to match.
+            author (str): Author name or partial name to match.
 
         Returns:
             List[Book]: Matching books (may be empty).
 
         Example:
-            >>> col.find_by_author('Frank Herbert')
+            >>> col.find_by_author('Herbert')
         """
-        return [b for b in self.books if b.author.lower() == author.lower()]
+        if not author:
+            return []
+        query = author.strip().lower()
+        return [b for b in self.books if query in (b.author or "").lower()]
 
     def search(self, query: str, fields: Optional[List[str]] = None, case_sensitive: bool = False) -> List[Book]:
         """Search books by query string within the provided fields.

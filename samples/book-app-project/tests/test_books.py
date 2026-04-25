@@ -200,6 +200,37 @@ def test_search_basic_and_edge_cases(tmp_path, isolated_utils):
         col.search("x", fields=["publisher"]) 
 
 
+def test_get_unread_books_returns_only_unread_titles_and_count(tmp_path, isolated_utils):
+    mod, warn_calls, error_calls = isolated_utils
+    col = books_module.BookCollection(str(tmp_path / "d.json"))
+    col.books = [
+        books_module.Book("ReadBook", "A", 2000, read=True),
+        books_module.Book("Unread1", "B", 2001, read=False),
+        books_module.Book("Unread2", "C", 2002, read=False),
+    ]
+
+    res = col.get_unread_books()
+    assert len(res) == 2
+    titles = [b.title for b in res]
+    assert "Unread1" in titles
+    assert "Unread2" in titles
+
+
+def test_get_unread_books_return_is_shallow_copy(tmp_path, isolated_utils):
+    mod, warn_calls, error_calls = isolated_utils
+    col = books_module.BookCollection(str(tmp_path / "d.json"))
+    col.books = [
+        books_module.Book("ReadBook", "A", 2000, read=True),
+        books_module.Book("Unread1", "B", 2001, read=False),
+    ]
+
+    res = col.get_unread_books()
+    # mutate returned list
+    res.clear()
+    # internal collection should be unaffected
+    assert len(col.books) == 2
+
+
 # Ensure tests importable module path mapping
 if __name__ == "__main__":
     pytest.main(["-q"])

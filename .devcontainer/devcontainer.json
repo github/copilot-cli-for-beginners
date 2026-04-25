@@ -12,6 +12,9 @@
       ]
     }
   },
+  "forwardPorts": [3000, 3001],
+  "postCreateCommand": "npm install -g @modelcontextprotocol/sdk && node .devcontainer/start-mcp.js &",
   "onCreateCommand": "pip install pytest && npm install -g @github/copilot",
-  "postStartCommand": "echo '✅ Python, pytest, GitHub CLI, and Copilot CLI are ready. Run: cd samples/book-app-project && python book_app.py help'"
+  "postStartCommand": "echo '✅ Python, pytest, GitHub CLI, and Copilot CLI are ready. MCP servers (filesystem, context7) should be starting on ports 3000 and 3001.'",
+  "remoteUser": "vscode"
 }

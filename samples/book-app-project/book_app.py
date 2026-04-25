@@ -12,6 +12,11 @@ def handle_list():
     display_books(books)
 
 
+def handle_list_unread():
+    books = collection.get_unread_books()
+    display_books(books)
+
+
 def handle_add():
     display_info("\nAdd a New Book\n")
 
@@ -63,11 +68,12 @@ def show_help():
 Book Collection Helper
 
 Commands:
-  list     - Show all books
-  add      - Add a new book
-  remove   - Remove a book by title
-  find     - Find books by title or author
-  help     - Show this help message
+  list       - Show all books
+  list-unread - Show unread books only
+  add        - Add a new book
+  remove     - Remove a book by title
+  find       - Find books by title or author
+  help       - Show this help message
 """)
 
 
@@ -81,6 +87,8 @@ def main():
     # Dispatch table for commands -> handler functions
     commands = {
         "list": handle_list,
+        "list-unread": handle_list_unread,
+        "unread": handle_list_unread,
         "add": handle_add,
         "remove": handle_remove,
         "find": handle_find,
