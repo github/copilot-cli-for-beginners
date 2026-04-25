@@ -51,10 +51,23 @@ def handle_remove():
 
 
 def handle_find():
-    print("\nFind Books by Author\n")
+    print("\nFind Books by Title or Author\n")
 
-    author = input("Author name: ").strip()
-    books = collection.find_by_author(author)
+    query = input("Search query (title or author): ").strip()
+    if not query:
+        print("No query provided.\n")
+        return
+
+    # Ask which fields to search; default searches both title and author
+    choice = input("Search in (t)itle, (a)uthor, or (b)oth? [b]: ").strip().lower()
+    if choice == "t":
+        fields = ["title"]
+    elif choice == "a":
+        fields = ["author"]
+    else:
+        fields = ["title", "author"]
+
+    books = collection.search(query, fields=fields, case_sensitive=False)
 
     show_books(books)
 
@@ -67,7 +80,7 @@ Commands:
   list     - Show all books
   add      - Add a new book
   remove   - Remove a book by title
-  find     - Find books by author
+  find     - Find books by title or author
   help     - Show this help message
 """)
 
@@ -79,16 +92,18 @@ def main():
 
     command = sys.argv[1].lower()
 
-    if command == "list":
-        handle_list()
-    elif command == "add":
-        handle_add()
-    elif command == "remove":
-        handle_remove()
-    elif command == "find":
-        handle_find()
-    elif command == "help":
-        show_help()
+    # Dispatch table for commands -> handler functions
+    commands = {
+        "list": handle_list,
+        "add": handle_add,
+        "remove": handle_remove,
+        "find": handle_find,
+        "help": show_help,
+    }
+
+    handler = commands.get(command)
+    if handler:
+        handler()
     else:
         print("Unknown command.\n")
         show_help()
