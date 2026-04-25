@@ -48,18 +48,20 @@ class BookCollection:
         return self.books
 
     def find_book_by_title(self, title: str) -> Optional[Book]:
-        # BUG 1: Case-sensitive comparison - "the hobbit" won't find "The Hobbit"
+        """Find a book by title (case-insensitive, trims whitespace)."""
+        if title is None:
+            return None
+        norm = title.strip().lower()
         for book in self.books:
-            if book.title == title:
+            if book.title.strip().lower() == norm:
                 return book
         return None
 
     def mark_as_read(self, title: str) -> bool:
-        # BUG 5: Marks ALL books as read instead of just the matching one
+        """Mark a single book as read by title."""
         book = self.find_book_by_title(title)
         if book:
-            for b in self.books:
-                b.read = True
+            book.read = True
             self.save_books()
             return True
         return False

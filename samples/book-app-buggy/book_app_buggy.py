@@ -49,8 +49,10 @@ def handle_remove():
     title = input("Enter the title of the book to remove: ").strip()
     result = collection.remove_book(title)
 
-    # BUG 9: Always says "removed" even when book wasn't found
-    print("\nBook removed.\n")
+    if result:
+        print("\nBook removed.\n")
+    else:
+        print("\nNo matching book found.\n")
 
 
 def handle_find():

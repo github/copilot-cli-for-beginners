@@ -9,6 +9,17 @@ DATA_FILE = "data.json"
 
 @dataclass
 class Book:
+    """Represents a single book in the collection.
+
+    Attributes:
+        title (str): Book title.
+        author (str): Author name.
+        year (int): Publication year.
+        read (bool): Whether the book has been read.
+
+    Example:
+        >>> Book(title='Dune', author='Frank Herbert', year=1965)
+    """
     title: str
     author: str
     year: int
@@ -17,30 +28,44 @@ class Book:
 
 class BookCollection:
     def __init__(self, data_file: str = DATA_FILE) -> None:
+        """Initialize the BookCollection.
+
+        Args:
+            data_file (str): Path to the JSON data file. Defaults to DATA_FILE.
+
+        Side effects:
+            Loads existing books from disk into memory via load_books().
+
+        Example:
+            >>> col = BookCollection('test_data.json')
+        """
         self.data_file = data_file
         self.books: List[Book] = []
         self.load_books()
 
     def load_books(self) -> None:
-        """Load books from the JSON file if it exists.
+        """Load books from the JSON file into memory.
 
-        Robustness:
-        - Handles non-existent file and corrupted JSON gracefully.
-        - Validates each record and attempts to coerce types where reasonable.
-        - Skips invalid records but reports a warning with count.
+        Reads the JSON array stored at self.data_file and converts each valid
+        record into a Book instance. Invalid records are skipped with a warning.
+
+        Returns:
+            None
+
+        Raises:
+            StorageError: If an I/O error occurs while reading the file (propagated
+                from utils.safe_load_json).
+
+        Example:
+            >>> col = BookCollection('books.json')
+            >>> col.load_books()
         """
-        try:
-            with open(self.data_file, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except FileNotFoundError:
-            self.books = []
-            return
-        except json.JSONDecodeError:
-            print(f"Warning: {self.data_file} is corrupted. Starting with empty collection.")
-            self.books = []
-            return
+        from utils import safe_load_json, log_warn
+
+        data = safe_load_json(self.data_file, default=[])
+
         if not isinstance(data, Iterable):
-            print(f"Warning: {self.data_file} does not contain a list. Starting with empty collection.")
+            log_warn(f"{self.data_file} does not contain a list. Starting with empty collection.")
             self.books = []
             return
 
@@ -68,39 +93,69 @@ class BookCollection:
             loaded.append(Book(title=title.strip(), author=str(author), year=year, read=read))
 
         if bad:
-            print(f"Warning: skipped {bad} invalid record(s) in {self.data_file}.")
+            from utils import log_warn
+
+            log_warn(f"skipped {bad} invalid record(s) in {self.data_file}.")
         self.books = loaded
 
     def save_books(self) -> None:
-        """Save the current book collection to JSON using an atomic write.
+        """Persist the current in-memory books to disk atomically.
 
-        Attempts to write to a temporary file in the same directory and then replace
-        the target file to avoid partial writes. Catches and reports IO errors.
+        Uses utils.atomic_write_json to perform an atomic replace of the
+        underlying data file. Any errors encountered are logged; callers should
+        not generally need to catch exceptions here unless they need special
+        handling.
+
+        Returns:
+            None
+
+        Raises:
+            StorageError: If writing to disk fails (propagated from utils.atomic_write_json).
+
+        Example:
+            >>> col.save_books()
         """
-        try:
-            dirpath = os.path.dirname(os.path.abspath(self.data_file)) or "."
-            fd, tmp_path = tempfile.mkstemp(prefix=".tmp_books_", dir=dirpath)
-            try:
-                with os.fdopen(fd, "w", encoding="utf-8") as f:
-                    json.dump([asdict(b) for b in self.books], f, indent=2, ensure_ascii=False)
-                os.replace(tmp_path, self.data_file)
-            finally:
-                # If tmp_path still exists, try to remove it
-                if os.path.exists(tmp_path):
-                    try:
-                        os.remove(tmp_path)
-                    except OSError:
-                        pass
-        except OSError as e:
-            print(f"Error: failed to save books to {self.data_file}: {e}")
+        from utils import atomic_write_json, log_error
+
+        success = atomic_write_json(self.data_file, [asdict(b) for b in self.books])
+        if not success:
+            log_error(f"failed to save books to {self.data_file}")
 
     def add_book(self, title: str, author: str, year: int) -> Book:
-        book = Book(title=title, author=author, year=year)
+        """Add a new book to the collection and persist it.
+
+        Args:
+            title (str): Title of the book. Must be non-empty.
+            author (str): Author name (may be empty).
+            year (int): Publication year. Use 0 if unknown.
+
+        Returns:
+            Book: The Book instance that was added.
+
+        Raises:
+            ValueError: If title is empty.
+            StorageError: If persisting the new book to disk fails.
+
+        Example:
+            >>> col.add_book('Dune', 'Frank Herbert', 1965)
+            Book(title='Dune', author='Frank Herbert', year=1965, read=False)
+        """
+        if not title or not title.strip():
+            raise ValueError("title must be a non-empty string")
+        book = Book(title=title.strip(), author=author, year=year)
         self.books.append(book)
         self.save_books()
         return book
 
     def list_books(self) -> List[Book]:
+        """Return all books currently in the collection.
+
+        Returns:
+            List[Book]: Shallow list of Book instances in insertion order.
+
+        Example:
+            >>> col.list_books()
+        """
         return self.books
 
     def list_by_year(self, start: int, end: int) -> List[Book]:
@@ -123,12 +178,38 @@ class BookCollection:
         return results
 
     def find_book_by_title(self, title: str) -> Optional[Book]:
+        """Find a book by exact title (case-insensitive).
+
+        Args:
+            title (str): Title to match.
+
+        Returns:
+            Optional[Book]: Matching Book if found, otherwise None.
+
+        Example:
+            >>> col.find_book_by_title('Dune')
+        """
         for book in self.books:
             if book.title.lower() == title.lower():
                 return book
         return None
 
     def mark_as_read(self, title: str) -> bool:
+        """Mark the book with the given title as read and persist the change.
+
+        Args:
+            title (str): Title of the book to mark as read.
+
+        Returns:
+            bool: True if a book was found and updated, False otherwise.
+
+        Raises:
+            StorageError: If saving the updated collection fails.
+
+        Example:
+            >>> col.mark_as_read('Dune')
+            True
+        """
         book = self.find_book_by_title(title)
         if book:
             book.read = True
@@ -137,7 +218,21 @@ class BookCollection:
         return False
 
     def remove_book(self, title: str) -> bool:
-        """Remove a book by title."""
+        """Remove a book by title and persist the change.
+
+        Args:
+            title (str): Title of the book to remove.
+
+        Returns:
+            bool: True if a book was removed, False if no matching book was found.
+
+        Raises:
+            StorageError: If saving the updated collection fails.
+
+        Example:
+            >>> col.remove_book('Dune')
+            True
+        """
         book = self.find_book_by_title(title)
         if book:
             self.books.remove(book)
@@ -146,15 +241,40 @@ class BookCollection:
         return False
 
     def find_by_author(self, author: str) -> List[Book]:
-        """Find all books by a given author (case-insensitive exact match)."""
+        """Find all books by a given author (case-insensitive exact match).
+
+        Args:
+            author (str): Author name to match.
+
+        Returns:
+            List[Book]: Matching books (may be empty).
+
+        Example:
+            >>> col.find_by_author('Frank Herbert')
+        """
         return [b for b in self.books if b.author.lower() == author.lower()]
 
     def search(self, query: str, fields: Optional[List[str]] = None, case_sensitive: bool = False) -> List[Book]:
         """Search books by query string within the provided fields.
 
+        Behavior:
         - Partial substring match (default)
         - Case-insensitive by default
         - fields: list containing any of "title" or "author"; defaults to both
+
+        Args:
+            query (str): The substring to search for. If empty, returns an empty list.
+            fields (Optional[List[str]]): Fields to search in; allowed values: "title", "author".
+            case_sensitive (bool): Whether the search should be case-sensitive.
+
+        Returns:
+            List[Book]: Books that match the query in the requested fields.
+
+        Raises:
+            ValueError: If an invalid field name is provided in `fields`.
+
+        Example:
+            >>> col.search('dune')
         """
         if not query:
             return []

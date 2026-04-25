@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-light-theme="light" data-dark-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@samples/book-app-project/books.py Review this file for potential bugs</title>
+<style>
+[data-color-mode=light][data-light-theme=light],[data-color-mode=light][data-light-theme=light] ::backdrop,[data-color-mode=auto][data-light-theme=light],[data-color-mode=auto][data-light-theme=light] ::backdrop{--topicTag-borderColor: #ffffff00;--highlight-neutral-bgColor: #fff8c5;--page-header-bgColor: #f6f8fa;--diffBlob-addition-fgColor-text: #1f2328;--diffBlob-addition-fgColor-num: #1f2328;--diffBlob-addition-bgColor-num: #d1f8d9;--diffBlob-addition-bgColor-line: #dafbe1;--diffBlob-addition-bgColor-word: #aceebb;--diffBlob-deletion-fgColor-text: #1f2328;--diffBlob-deletion-fgColor-num: #1f2328;--diffBlob-deletion-bgColor-num: #ffcecb;--diffBlob-deletion-bgColor-line: #ffebe9;--diffBlob-deletion-bgColor-word: #ff818266;--diffBlob-hunk-bgColor-num: #54aeff66;--diffBlob-expander-iconColor: #59636e;--codeMirror-fgColor: #1f2328;--codeMirror-bgColor: #ffffff;--codeMirror-gutters-bgColor: #ffffff;--codeMirror-gutterMarker-fgColor-default: #ffffff;--codeMirror-gutterMarker-fgColor-muted: #59636e;--codeMirror-lineNumber-fgColor: #59636e;--codeMirror-cursor-fgColor: #1f2328;--codeMirror-selection-bgColor: #54aeff66;--codeMirror-activeline-bgColor: #818b981f;--codeMirror-matchingBracket-fgColor: #1f2328;--codeMirror-lines-bgColor: #ffffff;--codeMirror-syntax-fgColor-comment: #1f2328;--codeMirror-syntax-fgColor-constant: #0550ae;--codeMirror-syntax-fgColor-entity: #8250df;--codeMirror-syntax-fgColor-keyword: #cf222e;--codeMirror-syntax-fgColor-storage: #cf222e;--codeMirror-syntax-fgColor-string: #0a3069;--codeMirror-syntax-fgColor-support: #0550ae;--codeMirror-syntax-fgColor-variable: #953800;--header-fgColor-default: #ffffffb3;--header-fgColor-logo: #ffffff;--header-bgColor: #25292e;--header-borderColor-divider: #818b98;--headerSearch-bgColor: #25292e;--headerSearch-borderColor: #818b98;--data-blue-color-emphasis: #006edb;--data-blue-color-muted: #d1f0ff;--data-auburn-color-emphasis: #9d615c;--data-auburn-color-muted: #f2e9e9;--data-orange-color-emphasis: #eb670f;--data-orange-color-muted: #ffe7d1;--data-yellow-color-emphasis: #b88700;--data-yellow-color-muted: #ffec9e;--data-green-color-emphasis: #30a147;--data-green-color-muted: #caf7ca;--data-teal-color-emphasis: #179b9b;--data-teal-color-muted: #c7f5ef;--data-purple-color-emphasis: #894ceb;--data-purple-color-muted: #f1e5ff;--data-pink-color-emphasis: #ce2c85;--data-pink-color-muted: #ffe5f1;--data-red-color-emphasis: #df0c24;--data-red-color-muted: #ffe2e0;--data-gray-color-emphasis: #808fa3;--data-gray-color-muted: #e8ecf2;--display-blue-bgColor-muted: #d1f0ff;--display-blue-bgColor-emphasis: #006edb;--display-blue-fgColor: #005fcc;--display-blue-borderColor-muted: #ade1ff;--display-blue-borderColor-emphasis: #006edb;--display-green-bgColor-muted: #caf7ca;--display-green-bgColor-emphasis: #2c8141;--display-green-fgColor: #2b6e3f;--display-green-borderColor-muted: #9ceda0;--display-green-borderColor-emphasis: #2c8141;--display-orange-bgColor-muted: #ffe7d1;--display-orange-bgColor-emphasis: #b8500f;--display-orange-fgColor: #a24610;--display-orange-borderColor-muted: #fecfaa;--display-orange-borderColor-emphasis: #b8500f;--display-purple-bgColor-muted: #f1e5ff;--display-purple-bgColor-emphasis: #894ceb;--display-purple-fgColor: #783ae4;--display-purple-borderColor-muted: #e6d2fe;--display-purple-borderColor-emphasis: #894ceb;--display-plum-bgColor-muted: #f8e5ff;--display-plum-bgColor-emphasis: #a830e8;--display-plum-fgColor: #961edc;--display-plum-borderColor-muted: #f0cdfe;--display-plum-borderColor-emphasis: #a830e8;--display-red-bgColor-muted: #ffe2e0;--display-red-bgColor-emphasis: #df0c24;--display-red-fgColor: #c50d28;--display-red-borderColor-muted: #fecdcd;--display-red-borderColor-emphasis: #df0c24;--display-coral-bgColor-muted: #ffe5db;--display-coral-bgColor-emphasis: #d43511;--display-coral-fgColor: #ba2e12;--display-coral-borderColor-muted: #fecebe;--display-coral-borderColor-emphasis: #d43511;--display-yellow-bgColor-muted: #ffec9e;--display-yellow-bgColor-emphasis: #946a00;--display-yellow-fgColor: #805900;--display-yellow-borderColor-muted: #ffd642;--display-yellow-borderColor-emphasis: #946a00;--display-gray-bgColor-muted: #e8ecf2;--display-gray-bgColor-emphasis: #647182;--display-gray-fgColor: #5c6570;--display-gray-borderColor-muted: #d2dae4;--display-gray-borderColor-emphasis: #647182;--display-auburn-bgColor-muted: #f2e9e9;--display-auburn-bgColor-emphasis: #9d615c;--display-auburn-fgColor: #8a5551;--display-auburn-borderColor-muted: #e6d6d5;--display-auburn-borderColor-emphasis: #9d615c;--display-brown-bgColor-muted: #eeeae2;--display-brown-bgColor-emphasis: #856d4c;--display-brown-fgColor: #755f43;--display-brown-borderColor-muted: #dfd7c8;--display-brown-borderColor-emphasis: #856d4c;--display-lemon-bgColor-muted: #f7eea1;--display-lemon-bgColor-emphasis: #866e04;--display-lemon-fgColor: #786002;--display-lemon-borderColor-muted: #f0db3d;--display-lemon-borderColor-emphasis: #866e04;--display-olive-bgColor-muted: #f0f0ad;--display-olive-bgColor-emphasis: #64762d;--display-olive-fgColor: #56682c;--display-olive-borderColor-muted: #dbe170;--display-olive-borderColor-emphasis: #64762d;--display-lime-bgColor-muted: #e3f2b5;--display-lime-bgColor-emphasis: #527a29;--display-lime-fgColor: #476c28;--display-lime-borderColor-muted: #c7e580;--display-lime-borderColor-emphasis: #527a29;--display-pine-bgColor-muted: #bff8db;--display-pine-bgColor-emphasis: #167e53;--display-pine-fgColor: #156f4b;--display-pine-borderColor-muted: #80efb9;--display-pine-borderColor-emphasis: #167e53;--display-teal-bgColor-muted: #c7f5ef;--display-teal-bgColor-emphasis: #127e81;--display-teal-fgColor: #106e75;--display-teal-borderColor-muted: #89ebe1;--display-teal-borderColor-emphasis: #127e81;--display-cyan-bgColor-muted: #bdf4ff;--display-cyan-bgColor-emphasis: #007b94;--display-cyan-fgColor: #006a80;--display-cyan-borderColor-muted: #7ae9ff;--display-cyan-borderColor-emphasis: #007b94;--display-indigo-bgColor-muted: #e5e9ff;--display-indigo-bgColor-emphasis: #5a61e7;--display-indigo-fgColor: #494edf;--display-indigo-borderColor-muted: #d2d7fe;--display-indigo-borderColor-emphasis: #5a61e7;--display-pink-bgColor-muted: #ffe5f1;--display-pink-bgColor-emphasis: #ce2c85;--display-pink-fgColor: #b12f79;--display-pink-borderColor-muted: #fdc9e2;--display-pink-borderColor-emphasis: #ce2c85;--avatar-bgColor: #ffffff;--avatar-borderColor: #1f232826;--avatar-shadow: 0px 0px 0px 2px #ffffffcc;--avatarStack-fade-bgColor-default: #c8d1da;--avatarStack-fade-bgColor-muted: #dae0e7;--control-bgColor-rest: #f6f8fa;--control-bgColor-hover: #eff2f5;--control-bgColor-active: #e6eaef;--control-bgColor-disabled: #eff2f5;--control-bgColor-selected: #f6f8fa;--control-fgColor-rest: #25292e;--control-fgColor-placeholder: #59636e;--control-fgColor-disabled: #818b98;--control-borderColor-rest: #d1d9e0;--control-borderColor-emphasis: #818b98;--control-borderColor-disabled: #818b981a;--control-borderColor-selected: #f6f8fa;--control-borderColor-success: #1a7f37;--control-borderColor-danger: #cf222e;--control-borderColor-warning: #9a6700;--control-iconColor-rest: #59636e;--control-transparent-bgColor-rest: #ffffff00;--control-transparent-bgColor-hover: #818b981a;--control-transparent-bgColor-active: #818b9826;--control-transparent-bgColor-disabled: #eff2f5;--control-transparent-bgColor-selected: #818b9826;--control-transparent-borderColor-rest: #ffffff00;--control-transparent-borderColor-hover: #ffffff00;--control-transparent-borderColor-active: #ffffff00;--control-danger-fgColor-rest: #d1242f;--control-danger-fgColor-hover: #d1242f;--control-danger-bgColor-hover: #ffebe9;--control-danger-bgColor-active: #ffebe966;--control-checked-bgColor-rest: #0969da;--control-checked-bgColor-hover: #0860ca;--control-checked-bgColor-active: #0757ba;--control-checked-bgColor-disabled: #818b98;--control-checked-fgColor-rest: #ffffff;--control-checked-fgColor-disabled: #ffffff;--control-checked-borderColor-rest: #0969da;--control-checked-borderColor-hover: #0860ca;--control-checked-borderColor-active: #0757ba;--control-checked-borderColor-disabled: #818b98;--controlTrack-bgColor-rest: #e6eaef;--controlTrack-bgColor-hover: #e0e6eb;--controlTrack-bgColor-active: #dae0e7;--controlTrack-bgColor-disabled: #818b98;--controlTrack-fgColor-rest: #59636e;--controlTrack-fgColor-disabled: #ffffff;--controlTrack-borderColor-rest: #d1d9e0;--controlTrack-borderColor-disabled: #818b98;--controlKnob-bgColor-rest: #ffffff;--controlKnob-bgColor-disabled: #eff2f5;--controlKnob-bgColor-checked: #ffffff;--controlKnob-borderColor-rest: #818b98;--controlKnob-borderColor-disabled: #eff2f5;--controlKnob-borderColor-checked: #0969da;--counter-borderColor: #ffffff00;--counter-bgColor-muted: #818b981f;--counter-bgColor-emphasis: #59636e;--button-default-fgColor-rest: #25292e;--button-default-bgColor-rest: #f6f8fa;--button-default-bgColor-hover: #eff2f5;--button-default-bgColor-active: #e6eaef;--button-default-bgColor-selected: #e6eaef;--button-default-bgColor-disabled: #eff2f5;--button-default-borderColor-rest: #d1d9e0;--button-default-borderColor-hover: #d1d9e0;--button-default-borderColor-active: #d1d9e0;--button-default-borderColor-disabled: #818b981a;--button-default-shadow-resting: 0px 1px 0px 0px #1f23280a;--button-primary-fgColor-rest: #ffffff;--button-primary-fgColor-disabled: #ffffffcc;--button-primary-iconColor-rest: #ffffffcc;--button-primary-bgColor-rest: #1f883d;--button-primary-bgColor-hover: #1c8139;--button-primary-bgColor-active: #197935;--button-primary-bgColor-disabled: #95d8a6;--button-primary-borderColor-rest: #1f232826;--button-primary-borderColor-hover: #1f232826;--button-primary-borderColor-active: #1f232826;--button-primary-borderColor-disabled: #95d8a6;--button-primary-shadow-selected: inset 0px 1px 0px 0px #002d114d;--button-invisible-fgColor-rest: #25292e;--button-invisible-fgColor-hover: #25292e;--button-invisible-fgColor-disabled: #818b98;--button-invisible-iconColor-rest: #59636e;--button-invisible-iconColor-hover: #59636e;--button-invisible-iconColor-disabled: #818b98;--button-invisible-bgColor-rest: #ffffff00;--button-invisible-bgColor-hover: #818b981a;--button-invisible-bgColor-active: #818b9826;--button-invisible-bgColor-disabled: #eff2f5;--button-invisible-borderColor-rest: #ffffff00;--button-invisible-borderColor-hover: #ffffff00;--button-invisible-borderColor-disabled: #818b981a;--button-outline-fgColor-rest: #0969da;--button-outline-fgColor-hover: #ffffff;--button-outline-fgColor-active: #ffffff;--button-outline-fgColor-disabled: #0969da80;--button-outline-bgColor-rest: #f6f8fa;--button-outline-bgColor-hover: #0969da;--button-outline-bgColor-active: #0757ba;--button-outline-bgColor-disabled: #eff2f5;--button-outline-borderColor-hover: #1f232826;--button-outline-borderColor-active: #1f232826;--button-outline-shadow-selected: inset 0px 1px 0px 0px #00215533;--button-danger-fgColor-rest: #d1242f;--button-danger-fgColor-hover: #ffffff;--button-danger-fgColor-active: #ffffff;--button-danger-fgColor-disabled: #d1242f80;--button-danger-iconColor-rest: #d1242f;--button-danger-iconColor-hover: #ffffff;--button-danger-bgColor-rest: #f6f8fa;--button-danger-bgColor-hover: #a40e26;--button-danger-bgColor-active: #8b0820;--button-danger-bgColor-disabled: #eff2f5;--button-danger-borderColor-rest: #d1d9e0;--button-danger-borderColor-hover: #1f232826;--button-danger-borderColor-active: #1f232826;--button-danger-shadow-selected: inset 0px 1px 0px 0px #4c001433;--button-inactive-fgColor: #59636e;--button-inactive-bgColor: #e6eaef;--button-star-iconColor: #eac54f;--buttonCounter-default-bgColor-rest: #818b981f;--buttonCounter-invisible-bgColor-rest: #818b981f;--buttonCounter-primary-bgColor-rest: #002d1133;--buttonCounter-outline-bgColor-rest: #0969da1a;--buttonCounter-outline-bgColor-hover: #ffffff33;--buttonCounter-outline-bgColor-disabled: #0969da0d;--buttonCounter-outline-fgColor-rest: #0550ae;--buttonCounter-outline-fgColor-hover: #ffffff;--buttonCounter-outline-fgColor-disabled: #0969da80;--buttonCounter-danger-bgColor-hover: #ffffff33;--buttonCounter-danger-bgColor-disabled: #cf222e0d;--buttonCounter-danger-bgColor-rest: #cf222e1a;--buttonCounter-danger-fgColor-rest: #c21c2c;--buttonCounter-danger-fgColor-hover: #ffffff;--buttonCounter-danger-fgColor-disabled: #d1242f80;--reactionButton-selected-bgColor-rest: #ddf4ff;--reactionButton-selected-bgColor-hover: #caecff;--reactionButton-selected-fgColor-rest: #0969da;--reactionButton-selected-fgColor-hover: #0550ae;--focus-outlineColor: #0969da;--focus-outline: #0969da solid 2px;--menu-bgColor-active: #ffffff00;--overlay-bgColor: #ffffff;--overlay-borderColor: #d1d9e080;--overlay-backdrop-bgColor: #c8d1da66;--selectMenu-borderColor: #ffffff00;--selectMenu-bgColor-active: #b6e3ff;--sideNav-bgColor-selected: #ffffff;--skeletonLoader-bgColor: #818b981a;--timelineBadge-bgColor: #f6f8fa;--treeViewItem-leadingVisual-iconColor-rest: #54aeff;--underlineNav-borderColor-active: #fd8c73;--underlineNav-borderColor-hover: #d1d9e0b3;--underlineNav-iconColor-rest: #59636e;--selection-bgColor: #0969da33;--card-bgColor: #ffffff;--label-green-bgColor-rest: #caf7ca;--label-green-bgColor-hover: #9ceda0;--label-green-bgColor-active: #54d961;--label-green-fgColor-rest: #2b6e3f;--label-green-fgColor-hover: #285c3b;--label-green-fgColor-active: #254b34;--label-orange-bgColor-rest: #ffe7d1;--label-orange-bgColor-hover: #fecfaa;--label-orange-bgColor-active: #fbaf74;--label-orange-fgColor-rest: #a24610;--label-orange-fgColor-hover: #8d3c11;--label-orange-fgColor-active: #70300f;--label-purple-bgColor-rest: #f1e5ff;--label-purple-bgColor-hover: #e6d2fe;--label-purple-bgColor-active: #d1b1fc;--label-purple-fgColor-rest: #783ae4;--label-purple-fgColor-hover: #6223d7;--label-purple-fgColor-active: #4f21ab;--label-red-bgColor-rest: #ffe2e0;--label-red-bgColor-hover: #fecdcd;--label-red-bgColor-active: #fda5a7;--label-red-fgColor-rest: #c50d28;--label-red-fgColor-hover: #a60c29;--label-red-fgColor-active: #880c27;--label-yellow-bgColor-rest: #ffec9e;--label-yellow-bgColor-hover: #ffd642;--label-yellow-bgColor-active: #ebb400;--label-yellow-fgColor-rest: #805900;--label-yellow-fgColor-hover: #704d00;--label-yellow-fgColor-active: #5c3d00;--label-gray-bgColor-rest: #e8ecf2;--label-gray-bgColor-hover: #d2dae4;--label-gray-bgColor-active: #b4c0cf;--label-gray-fgColor-rest: #5c6570;--label-gray-fgColor-hover: #4e535a;--label-gray-fgColor-active: #424448;--label-auburn-bgColor-rest: #f2e9e9;--label-auburn-bgColor-hover: #e6d6d5;--label-auburn-bgColor-active: #d4b7b5;--label-auburn-fgColor-rest: #8a5551;--label-auburn-fgColor-hover: #744744;--label-auburn-fgColor-active: #5d3937;--label-brown-bgColor-rest: #eeeae2;--label-brown-bgColor-hover: #dfd7c8;--label-brown-bgColor-active: #cbbda4;--label-brown-fgColor-rest: #755f43;--label-brown-fgColor-hover: #64513a;--label-brown-fgColor-active: #51412f;--label-lemon-bgColor-rest: #f7eea1;--label-lemon-bgColor-hover: #f0db3d;--label-lemon-bgColor-active: #d8bd0e;--label-lemon-fgColor-rest: #786002;--label-lemon-fgColor-hover: #654f01;--label-lemon-fgColor-active: #523f00;--label-olive-bgColor-rest: #f0f0ad;--label-olive-bgColor-hover: #dbe170;--label-olive-bgColor-active: #b9c832;--label-olive-fgColor-rest: #56682c;--label-olive-fgColor-hover: #495a2b;--label-olive-fgColor-active: #3b4927;--label-lime-bgColor-rest: #e3f2b5;--label-lime-bgColor-hover: #c7e580;--label-lime-bgColor-active: #9bd039;--label-lime-fgColor-rest: #476c28;--label-lime-fgColor-hover: #3a5b25;--label-lime-fgColor-active: #2f4a21;--label-pine-bgColor-rest: #bff8db;--label-pine-bgColor-hover: #80efb9;--label-pine-bgColor-active: #1dd781;--label-pine-fgColor-rest: #156f4b;--label-pine-fgColor-hover: #135d41;--label-pine-fgColor-active: #114b36;--label-teal-bgColor-rest: #c7f5ef;--label-teal-bgColor-hover: #89ebe1;--label-teal-bgColor-active: #22d3c7;--label-teal-fgColor-rest: #106e75;--label-teal-fgColor-hover: #0d5b63;--label-teal-fgColor-active: #0a4852;--label-cyan-bgColor-rest: #bdf4ff;--label-cyan-bgColor-hover: #7ae9ff;--label-cyan-bgColor-active: #00d0fa;--label-cyan-fgColor-rest: #006a80;--label-cyan-fgColor-hover: #00596b;--label-cyan-fgColor-active: #004857;--label-indigo-bgColor-rest: #e5e9ff;--label-indigo-bgColor-hover: #d2d7fe;--label-indigo-bgColor-active: #b1b9fb;--label-indigo-fgColor-rest: #494edf;--label-indigo-fgColor-hover: #393cd5;--label-indigo-fgColor-active: #2d2db4;--label-blue-bgColor-rest: #d1f0ff;--label-blue-bgColor-hover: #ade1ff;--label-blue-bgColor-active: #75c8ff;--label-blue-fgColor-rest: #005fcc;--label-blue-fgColor-hover: #004db3;--label-blue-fgColor-active: #003d99;--label-plum-bgColor-rest: #f8e5ff;--label-plum-bgColor-hover: #f0cdfe;--label-plum-bgColor-active: #e2a7fb;--label-plum-fgColor-rest: #961edc;--label-plum-fgColor-hover: #7d1eb8;--label-plum-fgColor-active: #651d96;--label-pink-bgColor-rest: #ffe5f1;--label-pink-bgColor-hover: #fdc9e2;--label-pink-bgColor-active: #f8a5cf;--label-pink-fgColor-rest: #b12f79;--label-pink-fgColor-hover: #8e2e66;--label-pink-fgColor-active: #6e2b53;--label-coral-bgColor-rest: #ffe5db;--label-coral-bgColor-hover: #fecebe;--label-coral-bgColor-active: #fcab92;--label-coral-fgColor-rest: #ba2e12;--label-coral-fgColor-hover: #9b2712;--label-coral-fgColor-active: #7e2011;--tooltip-bgColor: #25292e;--tooltip-fgColor: #ffffff;--fgColor-default: #1f2328;--fgColor-muted: #59636e;--fgColor-onEmphasis: #ffffff;--fgColor-onInverse: #ffffff;--fgColor-white: #ffffff;--fgColor-black: #1f2328;--fgColor-disabled: #818b98;--fgColor-link: #0969da;--fgColor-neutral: #59636e;--fgColor-accent: #0969da;--fgColor-success: #1a7f37;--fgColor-open: #1a7f37;--fgColor-attention: #9a6700;--fgColor-severe: #bc4c00;--fgColor-danger: #d1242f;--fgColor-closed: #d1242f;--fgColor-done: #8250df;--fgColor-upsell: #8250df;--fgColor-sponsors: #bf3989;--bgColor-default: #ffffff;--bgColor-muted: #f6f8fa;--bgColor-inset: #f6f8fa;--bgColor-emphasis: #25292e;--bgColor-inverse: #25292e;--bgColor-white: #ffffff;--bgColor-black: #1f2328;--bgColor-disabled: #eff2f5;--bgColor-transparent: #ffffff00;--bgColor-neutral-muted: #818b981f;--bgColor-neutral-emphasis: #59636e;--bgColor-accent-muted: #ddf4ff;--bgColor-accent-emphasis: #0969da;--bgColor-success-muted: #dafbe1;--bgColor-success-emphasis: #1f883d;--bgColor-open-muted: #dafbe1;--bgColor-open-emphasis: #1f883d;--bgColor-attention-muted: #fff8c5;--bgColor-attention-emphasis: #9a6700;--bgColor-severe-muted: #fff1e5;--bgColor-severe-emphasis: #bc4c00;--bgColor-danger-muted: #ffebe9;--bgColor-danger-emphasis: #cf222e;--bgColor-closed-muted: #ffebe9;--bgColor-closed-emphasis: #cf222e;--bgColor-done-muted: #fbefff;--bgColor-done-emphasis: #8250df;--bgColor-upsell-muted: #fbefff;--bgColor-upsell-emphasis: #8250df;--bgColor-sponsors-muted: #ffeff7;--bgColor-sponsors-emphasis: #bf3989;--borderColor-default: #d1d9e0;--borderColor-muted: #d1d9e0b3;--borderColor-emphasis: #818b98;--borderColor-disabled: #818b981a;--borderColor-transparent: #ffffff00;--borderColor-translucent: #1f232826;--borderColor-neutral-muted: #d1d9e0b3;--borderColor-neutral-emphasis: #59636e;--borderColor-accent-muted: #54aeff66;--borderColor-accent-emphasis: #0969da;--borderColor-success-muted: #4ac26b66;--borderColor-success-emphasis: #1a7f37;--borderColor-open-muted: #4ac26b66;--borderColor-open-emphasis: #1a7f37;--borderColor-attention-muted: #d4a72c66;--borderColor-attention-emphasis: #9a6700;--borderColor-severe-muted: #fb8f4466;--borderColor-severe-emphasis: #bc4c00;--borderColor-danger-muted: #ff818266;--borderColor-danger-emphasis: #cf222e;--borderColor-closed-muted: #ff818266;--borderColor-closed-emphasis: #cf222e;--borderColor-done-muted: #c297ff66;--borderColor-done-emphasis: #8250df;--borderColor-upsell-muted: #c297ff66;--borderColor-upsell-emphasis: #8250df;--borderColor-sponsors-muted: #ff80c866;--borderColor-sponsors-emphasis: #bf3989;--color-ansi-black: #1f2328;--color-ansi-black-bright: #393f46;--color-ansi-white: #59636e;--color-ansi-white-bright: #818b98;--color-ansi-gray: #59636e;--color-ansi-red: #cf222e;--color-ansi-red-bright: #a40e26;--color-ansi-green: #116329;--color-ansi-green-bright: #1a7f37;--color-ansi-yellow: #4d2d00;--color-ansi-yellow-bright: #633c01;--color-ansi-blue: #0969da;--color-ansi-blue-bright: #218bff;--color-ansi-magenta: #8250df;--color-ansi-magenta-bright: #a475f9;--color-ansi-cyan: #1b7c83;--color-ansi-cyan-bright: #3192aa;--color-prettylights-syntax-comment: #59636e;--color-prettylights-syntax-constant: #0550ae;--color-prettylights-syntax-constant-other-reference-link: #0a3069;--color-prettylights-syntax-entity: #6639ba;--color-prettylights-syntax-storage-modifier-import: #1f2328;--color-prettylights-syntax-entity-tag: #0550ae;--color-prettylights-syntax-keyword: #cf222e;--color-prettylights-syntax-string: #0a3069;--color-prettylights-syntax-variable: #953800;--color-prettylights-syntax-brackethighlighter-unmatched: #82071e;--color-prettylights-syntax-brackethighlighter-angle: #59636e;--color-prettylights-syntax-invalid-illegal-text: #f6f8fa;--color-prettylights-syntax-invalid-illegal-bg: #82071e;--color-prettylights-syntax-carriage-return-text: #f6f8fa;--color-prettylights-syntax-carriage-return-bg: #cf222e;--color-prettylights-syntax-string-regexp: #116329;--color-prettylights-syntax-markup-list: #3b2300;--color-prettylights-syntax-markup-heading: #0550ae;--color-prettylights-syntax-markup-italic: #1f2328;--color-prettylights-syntax-markup-bold: #1f2328;--color-prettylights-syntax-markup-deleted-text: #82071e;--color-prettylights-syntax-markup-deleted-bg: #ffebe9;--color-prettylights-syntax-markup-inserted-text: #116329;--color-prettylights-syntax-markup-inserted-bg: #dafbe1;--color-prettylights-syntax-markup-changed-text: #953800;--color-prettylights-syntax-markup-changed-bg: #ffd8b5;--color-prettylights-syntax-markup-ignored-text: #d1d9e0;--color-prettylights-syntax-markup-ignored-bg: #0550ae;--color-prettylights-syntax-meta-diff-range: #8250df;--color-prettylights-syntax-sublimelinter-gutter-mark: #818b98;--shadow-inset: inset 0px 1px 0px 0px #1f23280a;--shadow-resting-xsmall: 0px 1px 0px 0px #1f23281a;--shadow-resting-small: 0px 1px 0px 0px #1f23280a;--shadow-resting-medium: 0px 3px 6px 0px #25292e1f;--shadow-floating-small: 0px 0px 0px 1px #d1d9e080, 0px 6px 12px -3px #25292e0a, 0px 6px 18px 0px #25292e1f;--shadow-floating-medium: 0px 0px 0px 1px #d1d9e0, 0px 8px 16px -4px #25292e14, 0px 4px 32px -4px #25292e14, 0px 24px 48px -12px #25292e14, 0px 48px 96px -24px #25292e14;--shadow-floating-large: 0px 0px 0px 1px #d1d9e0, 0px 40px 80px 0px #25292e3d;--shadow-floating-xlarge: 0px 0px 0px 1px #d1d9e0, 0px 56px 112px 0px #25292e52;--shadow-floating-legacy: 0px 6px 12px -3px #25292e0a, 0px 6px 18px 0px #25292e1f}
+[data-color-mode=dark][data-dark-theme=dark],[data-color-mode=dark][data-dark-theme=dark] ::backdrop,[data-color-mode=auto][data-light-theme=dark],[data-color-mode=auto][data-light-theme=dark] ::backdrop{--topicTag-borderColor: #00000000;--highlight-neutral-bgColor: #d2992266;--page-header-bgColor: #0d1117;--diffBlob-addition-fgColor-text: #f0f6fc;--diffBlob-addition-fgColor-num: #f0f6fc;--diffBlob-addition-bgColor-num: #3fb9504d;--diffBlob-addition-bgColor-line: #2ea04326;--diffBlob-addition-bgColor-word: #2ea04366;--diffBlob-deletion-fgColor-text: #f0f6fc;--diffBlob-deletion-fgColor-num: #f0f6fc;--diffBlob-deletion-bgColor-num: #f851494d;--diffBlob-deletion-bgColor-line: #f8514926;--diffBlob-deletion-bgColor-word: #f8514966;--diffBlob-hunk-bgColor-num: #388bfd66;--diffBlob-expander-iconColor: #9198a1;--codeMirror-fgColor: #f0f6fc;--codeMirror-bgColor: #0d1117;--codeMirror-gutters-bgColor: #0d1117;--codeMirror-gutterMarker-fgColor-default: #0d1117;--codeMirror-gutterMarker-fgColor-muted: #9198a1;--codeMirror-lineNumber-fgColor: #9198a1;--codeMirror-cursor-fgColor: #f0f6fc;--codeMirror-selection-bgColor: #388bfd66;--codeMirror-activeline-bgColor: #656c7633;--codeMirror-matchingBracket-fgColor: #f0f6fc;--codeMirror-lines-bgColor: #0d1117;--codeMirror-syntax-fgColor-comment: #656c76;--codeMirror-syntax-fgColor-constant: #79c0ff;--codeMirror-syntax-fgColor-entity: #d2a8ff;--codeMirror-syntax-fgColor-keyword: #ff7b72;--codeMirror-syntax-fgColor-storage: #ff7b72;--codeMirror-syntax-fgColor-string: #a5d6ff;--codeMirror-syntax-fgColor-support: #79c0ff;--codeMirror-syntax-fgColor-variable: #ffa657;--header-fgColor-default: #ffffffb3;--header-fgColor-logo: #f0f6fc;--header-bgColor: #151b23f2;--header-borderColor-divider: #656c76;--headerSearch-bgColor: #0d1117;--headerSearch-borderColor: #2a313c;--data-blue-color-emphasis: #0576ff;--data-blue-color-muted: #001a47;--data-auburn-color-emphasis: #a86f6b;--data-auburn-color-muted: #271817;--data-orange-color-emphasis: #984b10;--data-orange-color-muted: #311708;--data-yellow-color-emphasis: #895906;--data-yellow-color-muted: #2e1a00;--data-green-color-emphasis: #2f6f37;--data-green-color-muted: #122117;--data-teal-color-emphasis: #106c70;--data-teal-color-muted: #041f25;--data-purple-color-emphasis: #975bf1;--data-purple-color-muted: #211047;--data-pink-color-emphasis: #d34591;--data-pink-color-muted: #2d1524;--data-red-color-emphasis: #eb3342;--data-red-color-muted: #3c0614;--data-gray-color-emphasis: #576270;--data-gray-color-muted: #1c1c1c;--display-blue-bgColor-muted: #001a47;--display-blue-bgColor-emphasis: #005bd1;--display-blue-fgColor: #4da0ff;--display-blue-borderColor-muted: #002766;--display-blue-borderColor-emphasis: #0576ff;--display-green-bgColor-muted: #122117;--display-green-bgColor-emphasis: #2f6f37;--display-green-fgColor: #41b445;--display-green-borderColor-muted: #182f1f;--display-green-borderColor-emphasis: #388f3f;--display-orange-bgColor-muted: #311708;--display-orange-bgColor-emphasis: #984b10;--display-orange-fgColor: #ed8326;--display-orange-borderColor-muted: #43200a;--display-orange-borderColor-emphasis: #c46212;--display-purple-bgColor-muted: #211047;--display-purple-bgColor-emphasis: #7730e8;--display-purple-fgColor: #b687f7;--display-purple-borderColor-muted: #31146b;--display-purple-borderColor-emphasis: #975bf1;--display-plum-bgColor-muted: #2a0e3f;--display-plum-bgColor-emphasis: #9518d8;--display-plum-fgColor: #d07ef7;--display-plum-borderColor-muted: #40125e;--display-plum-borderColor-emphasis: #b643ef;--display-red-bgColor-muted: #3c0614;--display-red-bgColor-emphasis: #c31328;--display-red-fgColor: #f27d83;--display-red-borderColor-muted: #58091a;--display-red-borderColor-emphasis: #eb3342;--display-coral-bgColor-muted: #3c0614;--display-coral-bgColor-emphasis: #c31328;--display-coral-fgColor: #f27d83;--display-coral-borderColor-muted: #58091a;--display-coral-borderColor-emphasis: #eb3342;--display-yellow-bgColor-muted: #2e1a00;--display-yellow-bgColor-emphasis: #895906;--display-yellow-fgColor: #d3910d;--display-yellow-borderColor-muted: #3d2401;--display-yellow-borderColor-emphasis: #aa7109;--display-gray-bgColor-muted: #1c1c1c;--display-gray-bgColor-emphasis: #576270;--display-gray-fgColor: #92a1b5;--display-gray-borderColor-muted: #2a2b2d;--display-gray-borderColor-emphasis: #6e7f96;--display-auburn-bgColor-muted: #271817;--display-auburn-bgColor-emphasis: #87534f;--display-auburn-fgColor: #bf9592;--display-auburn-borderColor-muted: #3a2422;--display-auburn-borderColor-emphasis: #a86f6b;--display-brown-bgColor-muted: #241c14;--display-brown-bgColor-emphasis: #755e3e;--display-brown-fgColor: #b69a6d;--display-brown-borderColor-muted: #342a1d;--display-brown-borderColor-emphasis: #94774c;--display-lemon-bgColor-muted: #291d00;--display-lemon-bgColor-emphasis: #786008;--display-lemon-fgColor: #ba9b12;--display-lemon-borderColor-muted: #372901;--display-lemon-borderColor-emphasis: #977b0c;--display-olive-bgColor-muted: #171e0b;--display-olive-bgColor-emphasis: #5e681d;--display-olive-fgColor: #a2a626;--display-olive-borderColor-muted: #252d10;--display-olive-borderColor-emphasis: #7a8321;--display-lime-bgColor-muted: #141f0f;--display-lime-bgColor-emphasis: #496c28;--display-lime-fgColor: #7dae37;--display-lime-borderColor-muted: #1f3116;--display-lime-borderColor-emphasis: #5f892f;--display-pine-bgColor-muted: #082119;--display-pine-bgColor-emphasis: #14714c;--display-pine-fgColor: #1bb673;--display-pine-borderColor-muted: #0b3224;--display-pine-borderColor-emphasis: #18915e;--display-teal-bgColor-muted: #041f25;--display-teal-bgColor-emphasis: #106c70;--display-teal-fgColor: #1cb0ab;--display-teal-borderColor-muted: #073036;--display-teal-borderColor-emphasis: #158a8a;--display-cyan-bgColor-muted: #001f29;--display-cyan-bgColor-emphasis: #036a8c;--display-cyan-fgColor: #07ace4;--display-cyan-borderColor-muted: #002e3d;--display-cyan-borderColor-emphasis: #0587b3;--display-indigo-bgColor-muted: #1b183f;--display-indigo-bgColor-emphasis: #514ed4;--display-indigo-fgColor: #9899ec;--display-indigo-borderColor-muted: #25215f;--display-indigo-borderColor-emphasis: #7070e1;--display-pink-bgColor-muted: #2d1524;--display-pink-bgColor-emphasis: #ac2f74;--display-pink-fgColor: #e57bb2;--display-pink-borderColor-muted: #451c35;--display-pink-borderColor-emphasis: #d34591;--avatar-bgColor: #ffffff1a;--avatar-borderColor: #ffffff26;--avatar-shadow: 0px 0px 0px 2px #0d1117;--avatarStack-fade-bgColor-default: #3d444d;--avatarStack-fade-bgColor-muted: #2a313c;--control-bgColor-rest: #212830;--control-bgColor-hover: #262c36;--control-bgColor-active: #2a313c;--control-bgColor-disabled: #212830;--control-bgColor-selected: #212830;--control-fgColor-rest: #f0f6fc;--control-fgColor-placeholder: #9198a1;--control-fgColor-disabled: #656c7699;--control-borderColor-rest: #3d444d;--control-borderColor-emphasis: #656c76;--control-borderColor-disabled: #656c761a;--control-borderColor-selected: #f0f6fc;--control-borderColor-success: #238636;--control-borderColor-danger: #da3633;--control-borderColor-warning: #9e6a03;--control-iconColor-rest: #9198a1;--control-transparent-bgColor-rest: #00000000;--control-transparent-bgColor-hover: #656c7633;--control-transparent-bgColor-active: #656c7640;--control-transparent-bgColor-disabled: #212830;--control-transparent-bgColor-selected: #656c761a;--control-transparent-borderColor-rest: #00000000;--control-transparent-borderColor-hover: #00000000;--control-transparent-borderColor-active: #00000000;--control-danger-fgColor-rest: #f85149;--control-danger-fgColor-hover: #ff7b72;--control-danger-bgColor-hover: #f851491a;--control-danger-bgColor-active: #f8514966;--control-checked-bgColor-rest: #1f6feb;--control-checked-bgColor-hover: #2a7aef;--control-checked-bgColor-active: #3685f3;--control-checked-bgColor-disabled: #656c7699;--control-checked-fgColor-rest: #ffffff;--control-checked-fgColor-disabled: #010409;--control-checked-borderColor-rest: #1f6feb;--control-checked-borderColor-hover: #2a7aef;--control-checked-borderColor-active: #3685f3;--control-checked-borderColor-disabled: #656c7699;--controlTrack-bgColor-rest: #262c36;--controlTrack-bgColor-hover: #2a313c;--controlTrack-bgColor-active: #2f3742;--controlTrack-bgColor-disabled: #656c7699;--controlTrack-fgColor-rest: #9198a1;--controlTrack-fgColor-disabled: #ffffff;--controlTrack-borderColor-rest: #3d444d;--controlTrack-borderColor-disabled: #656c7699;--controlKnob-bgColor-rest: #010409;--controlKnob-bgColor-disabled: #212830;--controlKnob-bgColor-checked: #ffffff;--controlKnob-borderColor-rest: #656c76;--controlKnob-borderColor-disabled: #212830;--controlKnob-borderColor-checked: #1f6feb;--counter-borderColor: #00000000;--counter-bgColor-muted: #656c7633;--counter-bgColor-emphasis: #656c76;--button-default-fgColor-rest: #f0f6fc;--button-default-bgColor-rest: #212830;--button-default-bgColor-hover: #262c36;--button-default-bgColor-active: #2a313c;--button-default-bgColor-selected: #2a313c;--button-default-bgColor-disabled: #212830;--button-default-borderColor-rest: #3d444d;--button-default-borderColor-hover: #3d444d;--button-default-borderColor-active: #3d444d;--button-default-borderColor-disabled: #656c761a;--button-default-shadow-resting: 0px 0px 0px 0px #000000;--button-primary-fgColor-rest: #ffffff;--button-primary-fgColor-disabled: #ffffff66;--button-primary-iconColor-rest: #ffffff;--button-primary-bgColor-rest: #238636;--button-primary-bgColor-hover: #29903b;--button-primary-bgColor-active: #2e9a40;--button-primary-bgColor-disabled: #105823;--button-primary-borderColor-rest: #ffffff1a;--button-primary-borderColor-hover: #ffffff1a;--button-primary-borderColor-active: #ffffff1a;--button-primary-borderColor-disabled: #105823;--button-primary-shadow-selected: 0px 0px 0px 0px #000000;--button-invisible-fgColor-rest: #f0f6fc;--button-invisible-fgColor-hover: #f0f6fc;--button-invisible-fgColor-disabled: #656c7699;--button-invisible-iconColor-rest: #9198a1;--button-invisible-iconColor-hover: #9198a1;--button-invisible-iconColor-disabled: #656c7699;--button-invisible-bgColor-rest: #00000000;--button-invisible-bgColor-hover: #656c7633;--button-invisible-bgColor-active: #656c7640;--button-invisible-bgColor-disabled: #212830;--button-invisible-borderColor-rest: #00000000;--button-invisible-borderColor-hover: #00000000;--button-invisible-borderColor-disabled: #656c761a;--button-outline-fgColor-rest: #388bfd;--button-outline-fgColor-hover: #58a6ff;--button-outline-fgColor-active: #ffffff;--button-outline-fgColor-disabled: #4493f880;--button-outline-bgColor-rest: #f0f6fc;--button-outline-bgColor-hover: #262c36;--button-outline-bgColor-active: #0d419d;--button-outline-bgColor-disabled: #212830;--button-outline-borderColor-hover: #3d444d;--button-outline-borderColor-selected: #3d444d;--button-outline-shadow-selected: 0px 0px 0px 0px #000000;--button-danger-fgColor-rest: #fa5e55;--button-danger-fgColor-hover: #ffffff;--button-danger-fgColor-active: #ffffff;--button-danger-fgColor-disabled: #f8514980;--button-danger-iconColor-rest: #fa5e55;--button-danger-iconColor-hover: #ffffff;--button-danger-bgColor-rest: #212830;--button-danger-bgColor-hover: #b62324;--button-danger-bgColor-active: #d03533;--button-danger-bgColor-disabled: #212830;--button-danger-borderColor-rest: #3d444d;--button-danger-borderColor-hover: #ffffff1a;--button-danger-borderColor-active: #ffffff1a;--button-danger-shadow-selected: 0px 0px 0px 0px #000000;--button-inactive-fgColor: #9198a1;--button-inactive-bgColor: #262c36;--button-star-iconColor: #e3b341;--buttonCounter-default-bgColor-rest: #2f3742;--buttonCounter-invisible-bgColor-rest: #656c7633;--buttonCounter-primary-bgColor-rest: #04260f33;--buttonCounter-outline-bgColor-rest: #051d4d33;--buttonCounter-outline-bgColor-hover: #051d4d33;--buttonCounter-outline-bgColor-disabled: #1f6feb0d;--buttonCounter-outline-fgColor-rest: #388bfd;--buttonCounter-outline-fgColor-hover: #58a6ff;--buttonCounter-outline-fgColor-disabled: #4493f880;--buttonCounter-danger-bgColor-hover: #ffffff33;--buttonCounter-danger-bgColor-disabled: #da36330d;--buttonCounter-danger-bgColor-rest: #49020233;--buttonCounter-danger-fgColor-rest: #f85149;--buttonCounter-danger-fgColor-hover: #ffffff;--buttonCounter-danger-fgColor-disabled: #f8514980;--reactionButton-selected-bgColor-rest: #388bfd33;--reactionButton-selected-bgColor-hover: #3a8cfd5c;--reactionButton-selected-fgColor-rest: #4493f8;--reactionButton-selected-fgColor-hover: #79c0ff;--focus-outlineColor: #1f6feb;--menu-bgColor-active: #151b23;--overlay-bgColor: #151b23;--overlay-borderColor: #3d444db3;--overlay-backdrop-bgColor: #21283066;--selectMenu-borderColor: #3d444d;--selectMenu-bgColor-active: #0c2d6b;--sideNav-bgColor-selected: #212830;--skeletonLoader-bgColor: #656c7633;--timelineBadge-bgColor: #212830;--treeViewItem-leadingVisual-iconColor-rest: #9198a1;--underlineNav-borderColor-active: #f78166;--underlineNav-borderColor-hover: #3d444db3;--underlineNav-iconColor-rest: #9198a1;--selection-bgColor: #1f6febb3;--card-bgColor: #151b23;--label-green-bgColor-rest: #122117;--label-green-bgColor-hover: #182f1f;--label-green-bgColor-active: #214529;--label-green-fgColor-rest: #41b445;--label-green-fgColor-hover: #46c144;--label-green-fgColor-active: #75d36f;--label-orange-bgColor-rest: #311708;--label-orange-bgColor-hover: #43200a;--label-orange-bgColor-active: #632f0d;--label-orange-fgColor-rest: #ed8326;--label-orange-fgColor-hover: #f1933b;--label-orange-fgColor-active: #f6b06a;--label-purple-bgColor-rest: #211047;--label-purple-bgColor-hover: #31146b;--label-purple-bgColor-active: #481a9e;--label-purple-fgColor-rest: #b687f7;--label-purple-fgColor-hover: #c398fb;--label-purple-fgColor-active: #d2affd;--label-red-bgColor-rest: #3c0614;--label-red-bgColor-hover: #58091a;--label-red-bgColor-active: #790c20;--label-red-fgColor-rest: #f27d83;--label-red-fgColor-hover: #f48b8d;--label-red-fgColor-active: #f7adab;--label-yellow-bgColor-rest: #2e1a00;--label-yellow-bgColor-hover: #3d2401;--label-yellow-bgColor-active: #5a3702;--label-yellow-fgColor-rest: #d3910d;--label-yellow-fgColor-hover: #df9e11;--label-yellow-fgColor-active: #edb431;--label-gray-bgColor-rest: #1c1c1c;--label-gray-bgColor-hover: #2a2b2d;--label-gray-bgColor-active: #393d41;--label-gray-fgColor-rest: #92a1b5;--label-gray-fgColor-hover: #9babbf;--label-gray-fgColor-active: #b3c0d1;--label-auburn-bgColor-rest: #271817;--label-auburn-bgColor-hover: #3a2422;--label-auburn-bgColor-active: #543331;--label-auburn-fgColor-rest: #bf9592;--label-auburn-fgColor-hover: #c6a19f;--label-auburn-fgColor-active: #d4b7b5;--label-brown-bgColor-rest: #241c14;--label-brown-bgColor-hover: #342a1d;--label-brown-bgColor-active: #483a28;--label-brown-fgColor-rest: #b69a6d;--label-brown-fgColor-hover: #bfa77d;--label-brown-fgColor-active: #cdbb98;--label-lemon-bgColor-rest: #291d00;--label-lemon-bgColor-hover: #372901;--label-lemon-bgColor-active: #4f3c02;--label-lemon-fgColor-rest: #ba9b12;--label-lemon-fgColor-hover: #c4a717;--label-lemon-fgColor-active: #d7bc1d;--label-olive-bgColor-rest: #171e0b;--label-olive-bgColor-hover: #252d10;--label-olive-bgColor-active: #374115;--label-olive-fgColor-rest: #a2a626;--label-olive-fgColor-hover: #b2af24;--label-olive-fgColor-active: #cbc025;--label-lime-bgColor-rest: #141f0f;--label-lime-bgColor-hover: #1f3116;--label-lime-bgColor-active: #2c441d;--label-lime-fgColor-rest: #7dae37;--label-lime-fgColor-hover: #89ba36;--label-lime-fgColor-active: #9fcc3e;--label-pine-bgColor-rest: #082119;--label-pine-bgColor-hover: #0b3224;--label-pine-bgColor-active: #0e4430;--label-pine-fgColor-rest: #1bb673;--label-pine-fgColor-hover: #1ac176;--label-pine-fgColor-active: #1bda81;--label-teal-bgColor-rest: #041f25;--label-teal-bgColor-hover: #073036;--label-teal-bgColor-active: #0a464d;--label-teal-fgColor-rest: #1cb0ab;--label-teal-fgColor-hover: #1fbdb2;--label-teal-fgColor-active: #24d6c4;--label-cyan-bgColor-rest: #001f29;--label-cyan-bgColor-hover: #002e3d;--label-cyan-bgColor-active: #014156;--label-cyan-fgColor-rest: #07ace4;--label-cyan-fgColor-hover: #09b7f1;--label-cyan-fgColor-active: #45cbf7;--label-indigo-bgColor-rest: #1b183f;--label-indigo-bgColor-hover: #25215f;--label-indigo-bgColor-active: #312c90;--label-indigo-fgColor-rest: #9899ec;--label-indigo-fgColor-hover: #a2a5f1;--label-indigo-fgColor-active: #b7baf6;--label-blue-bgColor-rest: #001a47;--label-blue-bgColor-hover: #002766;--label-blue-bgColor-active: #00378a;--label-blue-fgColor-rest: #4da0ff;--label-blue-fgColor-hover: #61adff;--label-blue-fgColor-active: #85c2ff;--label-plum-bgColor-rest: #2a0e3f;--label-plum-bgColor-hover: #40125e;--label-plum-bgColor-active: #5c1688;--label-plum-fgColor-rest: #d07ef7;--label-plum-fgColor-hover: #d889fa;--label-plum-fgColor-active: #e4a5fd;--label-pink-bgColor-rest: #2d1524;--label-pink-bgColor-hover: #451c35;--label-pink-bgColor-active: #65244a;--label-pink-fgColor-rest: #e57bb2;--label-pink-fgColor-hover: #ec8dbd;--label-pink-fgColor-active: #f4a9cd;--label-coral-bgColor-rest: #351008;--label-coral-bgColor-hover: #51180b;--label-coral-bgColor-active: #72220d;--label-coral-fgColor-rest: #f7794b;--label-coral-fgColor-hover: #fa8c61;--label-coral-fgColor-active: #fdaa86;--tooltip-bgColor: #3d444d;--tooltip-fgColor: #ffffff;--fgColor-default: #f0f6fc;--fgColor-muted: #9198a1;--fgColor-onEmphasis: #ffffff;--fgColor-onInverse: #010409;--fgColor-white: #ffffff;--fgColor-black: #010409;--fgColor-disabled: #656c7699;--fgColor-link: #4493f8;--fgColor-neutral: #9198a1;--fgColor-accent: #4493f8;--fgColor-success: #3fb950;--fgColor-open: #3fb950;--fgColor-attention: #d29922;--fgColor-severe: #db6d28;--fgColor-danger: #f85149;--fgColor-closed: #f85149;--fgColor-done: #ab7df8;--fgColor-upsell: #ab7df8;--fgColor-sponsors: #db61a2;--bgColor-default: #0d1117;--bgColor-muted: #151b23;--bgColor-inset: #010409;--bgColor-emphasis: #3d444d;--bgColor-inverse: #ffffff;--bgColor-white: #ffffff;--bgColor-black: #010409;--bgColor-disabled: #212830;--bgColor-transparent: #00000000;--bgColor-neutral-muted: #656c7633;--bgColor-neutral-emphasis: #656c76;--bgColor-accent-muted: #388bfd1a;--bgColor-accent-emphasis: #1f6feb;--bgColor-success-muted: #2ea04326;--bgColor-success-emphasis: #238636;--bgColor-open-muted: #2ea04326;--bgColor-open-emphasis: #238636;--bgColor-attention-muted: #bb800926;--bgColor-attention-emphasis: #9e6a03;--bgColor-severe-muted: #db6d281a;--bgColor-severe-emphasis: #bd561d;--bgColor-danger-muted: #f851491a;--bgColor-danger-emphasis: #da3633;--bgColor-closed-muted: #f851491a;--bgColor-closed-emphasis: #da3633;--bgColor-done-muted: #ab7df826;--bgColor-done-emphasis: #8957e5;--bgColor-upsell-muted: #ab7df826;--bgColor-upsell-emphasis: #8957e5;--bgColor-sponsors-muted: #db61a21a;--bgColor-sponsors-emphasis: #bf4b8a;--borderColor-default: #3d444d;--borderColor-muted: #3d444db3;--borderColor-emphasis: #656c76;--borderColor-disabled: #656c761a;--borderColor-transparent: #00000000;--borderColor-translucent: #ffffff26;--borderColor-neutral-muted: #3d444db3;--borderColor-neutral-emphasis: #656c76;--borderColor-accent-muted: #388bfd66;--borderColor-accent-emphasis: #1f6feb;--borderColor-success-muted: #2ea04366;--borderColor-success-emphasis: #238636;--borderColor-open-muted: #2ea04366;--borderColor-open-emphasis: #238636;--borderColor-attention-muted: #bb800966;--borderColor-attention-emphasis: #9e6a03;--borderColor-severe-muted: #db6d2866;--borderColor-severe-emphasis: #bd561d;--borderColor-danger-muted: #f8514966;--borderColor-danger-emphasis: #da3633;--borderColor-closed-muted: #f8514966;--borderColor-closed-emphasis: #da3633;--borderColor-done-muted: #ab7df866;--borderColor-done-emphasis: #8957e5;--borderColor-upsell-muted: #ab7df866;--borderColor-upsell-emphasis: #8957e5;--borderColor-sponsors-muted: #db61a266;--borderColor-sponsors-emphasis: #bf4b8a;--color-ansi-black: #2f3742;--color-ansi-black-bright: #656c76;--color-ansi-white: #f0f6fc;--color-ansi-white-bright: #ffffff;--color-ansi-gray: #656c76;--color-ansi-red: #ff7b72;--color-ansi-red-bright: #ffa198;--color-ansi-green: #3fb950;--color-ansi-green-bright: #56d364;--color-ansi-yellow: #d29922;--color-ansi-yellow-bright: #e3b341;--color-ansi-blue: #58a6ff;--color-ansi-blue-bright: #79c0ff;--color-ansi-magenta: #be8fff;--color-ansi-magenta-bright: #d2a8ff;--color-ansi-cyan: #39c5cf;--color-ansi-cyan-bright: #56d4dd;--color-prettylights-syntax-comment: #9198a1;--color-prettylights-syntax-constant: #79c0ff;--color-prettylights-syntax-constant-other-reference-link: #a5d6ff;--color-prettylights-syntax-entity: #d2a8ff;--color-prettylights-syntax-storage-modifier-import: #f0f6fc;--color-prettylights-syntax-entity-tag: #7ee787;--color-prettylights-syntax-keyword: #ff7b72;--color-prettylights-syntax-string: #a5d6ff;--color-prettylights-syntax-variable: #ffa657;--color-prettylights-syntax-brackethighlighter-unmatched: #f85149;--color-prettylights-syntax-brackethighlighter-angle: #9198a1;--color-prettylights-syntax-invalid-illegal-text: #f0f6fc;--color-prettylights-syntax-invalid-illegal-bg: #8e1519;--color-prettylights-syntax-carriage-return-text: #f0f6fc;--color-prettylights-syntax-carriage-return-bg: #b62324;--color-prettylights-syntax-string-regexp: #7ee787;--color-prettylights-syntax-markup-list: #f2cc60;--color-prettylights-syntax-markup-heading: #1f6feb;--color-prettylights-syntax-markup-italic: #f0f6fc;--color-prettylights-syntax-markup-bold: #f0f6fc;--color-prettylights-syntax-markup-deleted-text: #ffdcd7;--color-prettylights-syntax-markup-deleted-bg: #67060c;--color-prettylights-syntax-markup-inserted-text: #aff5b4;--color-prettylights-syntax-markup-inserted-bg: #033a16;--color-prettylights-syntax-markup-changed-text: #ffdfb6;--color-prettylights-syntax-markup-changed-bg: #5a1e02;--color-prettylights-syntax-markup-ignored-text: #f0f6fc;--color-prettylights-syntax-markup-ignored-bg: #1158c7;--color-prettylights-syntax-meta-diff-range: #d2a8ff;--color-prettylights-syntax-sublimelinter-gutter-mark: #3d444d;--shadow-inset: inset 0px 1px 0px 0px #0104093d;--shadow-resting-xsmall: 0px 1px 0px 0px #010409cc;--shadow-resting-small: 0px 1px 0px 0px #01040966;--shadow-resting-medium: 0px 3px 6px 0px #010409cc;--shadow-floating-small: 0px 0px 0px 1px #3d444d, 0px 6px 12px -3px #01040966, 0px 6px 18px 0px #01040966;--shadow-floating-medium: 0px 0px 0px 1px #3d444d, 0px 8px 16px -4px #01040966, 0px 4px 32px -4px #01040966, 0px 24px 48px -12px #01040966, 0px 48px 96px -24px #01040966;--shadow-floating-large: 0px 0px 0px 1px #3d444d, 0px 24px 48px 0px #010409;--shadow-floating-xlarge: 0px 0px 0px 1px #3d444d, 0px 32px 64px 0px #010409;--shadow-floating-legacy: 0px 6px 12px -3px #01040966, 0px 6px 18px 0px #01040966;--outline-focus: #1f6feb solid 2px}
+.markdown-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>*:first-child{margin-top:0 !important}.markdown-body>*:last-child{margin-bottom:0 !important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--fgColor-danger, var(--color-danger-fg))}.markdown-body .anchor{float:left;padding-right:var(--base-size-4);margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre,.markdown-body details{margin-top:0;margin-bottom:var(--base-size-16)}.markdown-body hr{height:.25em;padding:0;margin:var(--base-size-24) 0;background-color:var(--borderColor-default, var(--color-border-default));border:0}.markdown-body blockquote{padding:0 1em;color:var(--fgColor-muted, var(--color-fg-muted));border-left:.25em solid var(--borderColor-default, var(--color-border-default))}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:var(--base-size-24);margin-bottom:var(--base-size-16);font-weight:var(--base-text-weight-semibold, 600);line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--fgColor-default, var(--color-fg-default));vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{padding:0 .2em;font-size:inherit}.markdown-body h1{padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--borderColor-muted, var(--color-border-muted))}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--borderColor-muted, var(--color-border-muted))}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:var(--fgColor-muted, var(--color-fg-muted))}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ul,.markdown-body ol{padding-left:2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding:0;list-style-type:none}.markdown-body ol[type="a s"]{list-style-type:lower-alpha}.markdown-body ol[type="A s"]{list-style-type:upper-alpha}.markdown-body ol[type="i s"]{list-style-type:lower-roman}.markdown-body ol[type="I s"]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:var(--base-size-16)}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:var(--base-size-16);font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold, 600)}.markdown-body dl dd{padding:0 var(--base-size-16);margin-bottom:var(--base-size-16)}.markdown-body table{display:block;width:100%;width:max-content;max-width:100%;overflow:auto;font-variant:tabular-nums}.markdown-body table th{font-weight:var(--base-text-weight-semibold, 600)}.markdown-body table th,.markdown-body table td{padding:6px 13px;border:1px solid var(--borderColor-default, var(--color-border-default))}.markdown-body table td>:last-child{margin-bottom:0}.markdown-body table tr{background-color:var(--bgColor-default, var(--color-canvas-default));border-top:1px solid var(--borderColor-muted, var(--color-border-muted))}.markdown-body table tr:nth-child(2n){background-color:var(--bgColor-muted, var(--color-canvas-subtle))}.markdown-body table img{background-color:rgba(0,0,0,0)}.markdown-body img{max-width:100%;box-sizing:content-box}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:rgba(0,0,0,0)}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--borderColor-default, var(--color-border-default))}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--fgColor-default, var(--color-fg-default))}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--bgColor-neutral-muted, var(--color-neutral-muted));border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre{word-wrap:normal}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:rgba(0,0,0,0);border:0}.markdown-body .highlight{margin-bottom:var(--base-size-16)}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:var(--base-size-16);overflow:auto;font-size:85%;line-height:1.45;color:var(--fgColor-default, var(--color-fg-default));background-color:var(--bgColor-muted, var(--color-canvas-subtle));border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:rgba(0,0,0,0);border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px var(--base-size-8) 9px;text-align:right;background:var(--bgColor-default, var(--color-canvas-default));border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold, 600);background:var(--bgColor-muted, var(--color-canvas-subtle));border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--fgColor-muted, var(--color-fg-muted));border-top:1px solid var(--borderColor-default, var(--color-border-default))}.markdown-body .footnotes ol{padding-left:var(--base-size-16)}.markdown-body .footnotes ol ul{display:inline-block;padding-left:var(--base-size-16);margin-top:var(--base-size-16)}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:calc(var(--base-size-8)*-1);right:calc(var(--base-size-8)*-1);bottom:calc(var(--base-size-8)*-1);left:calc(var(--base-size-24)*-1);pointer-events:none;content:"";border:2px solid var(--borderColor-accent-emphasis, var(--color-accent-emphasis));border-radius:6px}.markdown-body .footnotes li:target{color:var(--fgColor-default, var(--color-fg-default))}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}
+/*# sourceMappingURL=markdown.css.map */
+
+/* Primer base variables not included in color-modes */
+:root {
+    --base-size-4: 4px;
+    --base-size-8: 8px;
+    --base-size-16: 16px;
+    --base-size-24: 24px;
+    --base-size-40: 40px;
+    --base-text-weight-semibold: 600;
+    --fontStack-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Alias Primer tokens to app-level semantic variables */
+[data-color-mode] {
+    --bg-primary: var(--bgColor-default);
+    --bg-secondary: var(--bgColor-muted);
+    --bg-tertiary: var(--bgColor-neutral-muted);
+    --text-primary: var(--fgColor-default);
+    --text-secondary: var(--fgColor-muted);
+    --text-tertiary: var(--fgColor-muted);
+    --border-default: var(--borderColor-default);
+    --border-muted: var(--borderColor-muted);
+    --color-success: var(--fgColor-success);
+    --color-error: var(--fgColor-danger);
+    --color-warning: var(--fgColor-attention);
+    --color-info: var(--fgColor-accent);
+    --color-brand: var(--fgColor-done);
+    --border-copilot: var(--color-brand);
+    --border-user: var(--fgColor-accent);
+    --border-tool-success: var(--color-success);
+    --border-tool-failure: var(--color-error);
+    --border-tool-rejected: var(--color-warning);
+    --border-reasoning: var(--fgColor-muted);
+    --border-info: var(--color-info);
+    --border-error: var(--color-error);
+    --border-warning: var(--color-warning);
+    --diff-add-bg: var(--diffBlob-addition-bgColor-line);
+    --diff-add-text: var(--fgColor-success);
+    --diff-del-bg: var(--diffBlob-deletion-bgColor-line);
+    --diff-del-text: var(--fgColor-danger);
+    --diff-hunk-text: var(--fgColor-done);
+    --font-text: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    --font-code: var(--fontStack-monospace);
+    --error-bg: var(--bgColor-danger-muted);
+    --focus-ring: var(--borderColor-accent-emphasis);
+    --syntax-keyword: var(--codeMirror-syntax-fgColor-keyword);
+    --syntax-string: var(--codeMirror-syntax-fgColor-string);
+    --syntax-comment: var(--codeMirror-syntax-fgColor-comment);
+    --syntax-number: var(--codeMirror-syntax-fgColor-constant);
+    --syntax-function: var(--codeMirror-syntax-fgColor-entity);
+    --syntax-type: var(--fgColor-success);
+    --syntax-operator: var(--codeMirror-syntax-fgColor-keyword);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-family: var(--font-text); font-size: 16px; line-height: 1.5; color: var(--text-primary); background: var(--bg-primary); height: 100%; }
+body { padding: 0; margin: 0; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+a { color: var(--color-info); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Fixed header -- outside the scroll container so overscroll bounce does not affect it */
+.sticky-header {
+    flex-shrink: 0; z-index: 100;
+    background: var(--bg-secondary); border-bottom: 1px solid var(--border-default);
+    padding: 8px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+}
+.scroll-container { flex: 1; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; position: relative; }
+.header-meta { font-size: 13px; color: var(--text-secondary); margin-right: auto; }
+.header-meta code { font-family: var(--font-code); font-size: 12px; background: var(--bg-tertiary); padding: 1px 5px; border-radius: 4px; }
+.header-controls { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.search-box {
+    background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: 6px;
+    color: var(--text-primary); font-size: 13px; padding: 4px 8px; width: 200px; outline: none;
+    font-family: var(--font-text);
+}
+.search-box:focus { border-color: var(--color-info); box-shadow: 0 0 0 2px var(--focus-ring); }
+.search-box::placeholder { color: var(--text-tertiary); }
+.btn {
+    background: var(--bg-tertiary); border: 1px solid var(--border-default); border-radius: 6px;
+    color: var(--text-secondary); font-size: 12px; padding: 3px 8px; cursor: pointer;
+    font-family: var(--font-text); white-space: nowrap;
+}
+.btn:hover { color: var(--text-primary); border-color: var(--text-tertiary); }
+.btn.active { background: var(--color-info); color: #fff; border-color: var(--color-info); }
+.filter-pills { display: flex; gap: 4px; flex-wrap: wrap; }
+.filter-pill {
+    font-size: 11px; padding: 2px 8px; border-radius: 12px; cursor: pointer;
+    border: 1px solid var(--border-default); background: var(--bg-tertiary); color: var(--text-secondary);
+    font-family: var(--font-text); white-space: nowrap;
+}
+.filter-pill:hover { color: var(--text-primary); }
+.filter-pill.active { opacity: 1; }
+.filter-pill.inactive { opacity: 0.45; }
+.filter-pill .pill-count { font-size: 10px; opacity: 0.7; margin-left: 3px; }
+
+/* Main content */
+.main-container { max-width: 900px; margin: 0 auto; padding: 16px; }
+
+/* Entries */
+.entry {
+    border: 1px solid var(--border-default); border-radius: 8px; margin-bottom: 8px;
+    border-left: 3px solid var(--border-default); overflow: hidden;
+    background: var(--bg-secondary);
+}
+.entry.border-copilot { border-left-color: var(--border-copilot); }
+.entry.border-user { border-left-color: var(--border-user); }
+.entry.border-tool-success { border-left-color: var(--border-tool-success); }
+.entry.border-tool-failure { border-left-color: var(--border-tool-failure); }
+.entry.border-tool-rejected { border-left-color: var(--border-tool-rejected); }
+.entry.border-reasoning { border-left-color: var(--border-reasoning); }
+.entry.border-info { border-left-color: var(--border-info); }
+.entry.border-error { border-left-color: var(--border-error); }
+.entry.border-warning { border-left-color: var(--border-warning); }
+.entry-error-bg { background: var(--error-bg); }
+.entry.focused { box-shadow: 0 0 0 2px var(--focus-ring); }
+@keyframes entry-flash { 0% { box-shadow: 0 0 0 2px var(--focus-ring); } 100% { box-shadow: none; } }
+.entry.nav-flash { animation: entry-flash 1.2s ease-out; }
+.entry-header {
+    display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+    cursor: pointer; user-select: none;
+}
+.entry-header:hover { background: var(--bg-tertiary); }
+.entry-icon { font-size: 14px; flex-shrink: 0; width: 20px; text-align: center; }
+.entry-number { font-size: 12px; color: var(--text-tertiary); font-family: var(--font-code); flex-shrink: 0; }
+.entry-label { font-size: 14px; font-weight: 500; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.entry-time { font-size: 12px; color: var(--text-tertiary); font-family: var(--font-code); flex-shrink: 0; text-decoration: none; }
+.entry-time:hover { color: var(--color-info); text-decoration: underline; }
+.collapse-indicator { flex-shrink: 0; width: 16px; text-align: center; font-size: 12px; color: var(--text-tertiary); }
+.entry:not(.collapsed) .collapse-indicator::after { content: "\25BC"; }
+.entry.collapsed .collapse-indicator::after { content: "\25B6"; }
+.entry.collapsed .entry-body { display: none; }
+.entry-body { padding: 4px 12px 12px; font-size: 14px; line-height: 1.6; overflow-x: auto; }
+
+/* Nested group entries */
+.nested-entries { padding-left: 12px; border-left: 2px solid var(--border-muted); margin-top: 8px; }
+.nested-entries .entry { margin-bottom: 6px; }
+
+/* Tool call details */
+.tool-args { margin-bottom: 8px; }
+.tool-output { margin-top: 8px; }
+
+/* Reasoning */
+.reasoning-text { font-style: italic; color: var(--text-secondary); white-space: pre-wrap; }
+
+/* User text */
+.user-text { white-space: pre-wrap; }
+
+/* Error text */
+.error-text { white-space: pre-wrap; color: var(--color-error); }
+
+/* Agent mode badge */
+.agent-mode {
+    font-size: 11px; padding: 1px 6px; border-radius: 10px;
+    background: var(--bg-tertiary); color: var(--text-secondary); font-weight: normal;
+}
+
+/* Markdown content: uses Primer .markdown-body for standard elements.
+   Only custom overrides needed for our layout context. */
+.markdown-body { font-size: 14px; line-height: 1.6; }
+.markdown-body > *:first-child { margin-top: 0; }
+.markdown-body > *:last-child { margin-bottom: 0; }
+.md-code-block {
+    background: var(--bg-tertiary); border-radius: 6px; padding: 12px; margin: 0 0 12px; overflow-x: auto;
+}
+.md-code-block pre {
+    margin: 0; font-family: var(--font-code); font-size: 13px; line-height: 1.45;
+    color: var(--text-primary); white-space: pre; overflow-x: auto;
+}
+.md-code-block code { font-family: inherit; background: none; padding: 0; border-radius: 0; }
+.md-fallback { white-space: pre-wrap; font-family: var(--font-code); font-size: 13px; }
+
+/* Diff line coloring */
+.diff-add { background: var(--diff-add-bg); color: var(--diff-add-text); }
+.diff-del { background: var(--diff-del-bg); color: var(--diff-del-text); }
+.diff-hunk { color: var(--diff-hunk-text); font-weight: 600; }
+.diff-line { display: block; padding: 0 4px; min-height: 1.45em; }
+
+/* Search highlighting */
+.search-highlight { background: #e2c02b; color: #000; border-radius: 2px; padding: 0 1px; }
+
+/* Sidebar minimap */
+.sidebar {
+    position: fixed; right: 0; top: 0; bottom: 0; width: 140px;
+    background: var(--bg-secondary); border-left: 1px solid var(--border-default);
+    overflow-y: auto; overflow-x: hidden; z-index: 90; display: block;
+    font-family: var(--font-text); font-size: 11px; padding: 4px 0;
+}
+.sidebar:not(.visible) { display: none; }
+.sidebar-entry {
+    display: flex; align-items: center; gap: 4px; padding: 2px 8px;
+    cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    color: var(--text-secondary); border-left: 2px solid transparent; transition: background 0.1s;
+}
+.sidebar-entry:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+.sidebar-entry.active { background: var(--bg-tertiary); border-left-color: var(--border-copilot); color: var(--text-primary); }
+.sidebar-entry.nested { padding-left: 16px; }
+.sidebar-entry.filter-hidden, .sidebar-entry.search-hidden { display: none; }
+.sidebar-indicator {
+    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.sidebar-indicator[data-type="user"] { background: var(--border-user); }
+.sidebar-indicator[data-type="copilot"] { background: var(--border-copilot); }
+.sidebar-indicator[data-type="tool"] { background: var(--color-success); }
+.sidebar-indicator[data-type="error"] { background: var(--color-error); }
+.sidebar-indicator[data-type="reasoning"] { background: var(--border-reasoning); }
+.sidebar-indicator[data-type="info"], .sidebar-indicator[data-type="warning"],
+.sidebar-indicator[data-type="notification"], .sidebar-indicator[data-type="handoff"],
+.sidebar-indicator[data-type="compaction"], .sidebar-indicator[data-type="task_complete"],
+.sidebar-indicator[data-type="group"] { background: var(--color-info); }
+.sidebar-label { overflow: hidden; text-overflow: ellipsis; }
+.main-container.sidebar-visible { margin-right: max(calc((100% - 900px) / 2), 160px); }
+
+/* Jump buttons */
+.jump-buttons {
+    position: fixed; right: 156px; bottom: 16px; display: flex; flex-direction: column; gap: 6px; z-index: 90;
+}
+.jump-btn {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--bg-tertiary);
+    border: 1px solid var(--border-default); color: var(--text-secondary); cursor: pointer;
+    font-size: 16px; display: flex; align-items: center; justify-content: center;
+}
+.jump-btn:hover { color: var(--text-primary); border-color: var(--text-tertiary); }
+
+/* Hidden by filter */
+.entry.filter-hidden { display: none; }
+.entry.search-hidden { display: none; }
+
+/* Empty state */
+.empty-state { text-align: center; padding: 64px 16px; color: var(--text-secondary); font-size: 15px; }
+
+/* Syntax highlight tokens */
+.syn-kw { color: var(--syntax-keyword); }
+.syn-str { color: var(--syntax-string); }
+.syn-cmt { color: var(--syntax-comment); font-style: italic; }
+.syn-num { color: var(--syntax-number); }
+.syn-fn { color: var(--syntax-function); }
+.syn-type { color: var(--syntax-type); }
+.syn-op { color: var(--syntax-operator); }
+
+@media (max-width: 640px) {
+    .sticky-header { padding: 6px 8px; }
+    .main-container { padding: 8px; }
+    .search-box { width: 120px; }
+    .filter-pills { display: none; }
+    .sidebar { display: none !important; }
+    .main-container.sidebar-visible { margin-right: 0; }
+    .jump-buttons { right: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="sticky-header">
+<div class="header-meta">
+<code>b0b5623c-127a-4c68-9ce6-e7919edde01c</code> &middot; 4/25/2026, 2:22:54 AM &middot; 8m 30s &middot; 29 entries
+</div>
+<div class="header-controls">
+<input type="text" id="search-input" class="search-box" placeholder="Search (/ to focus)" />
+<div class="filter-pills"><button class="filter-pill active" data-filter-type="user">User<span class="pill-count">8</span></button><button class="filter-pill active" data-filter-type="copilot">Copilot<span class="pill-count">8</span></button><button class="filter-pill active" data-filter-type="tool">Tools<span class="pill-count">10</span></button><button class="filter-pill active" data-filter-type="info">Info<span class="pill-count">2</span></button><button class="filter-pill active" data-filter-type="warning">Warning<span class="pill-count">1</span></button></div>
+<button class="btn" id="compact-mode">Compact</button>
+<button class="btn" id="collapse-all">Collapse all</button>
+<button class="btn" id="expand-all">Expand all</button>
+<button class="btn active" id="sidebar-toggle">Map</button>
+<button class="btn" id="theme-toggle">&#x2600;</button>
+</div>
+</div>
+<div class="scroll-container">
+<div id="sidebar" class="sidebar visible"></div>
+<div class="main-container sidebar-visible">
+<div class="entry border-user" data-type="user" data-entry-id="81c80224-e2f3-40f8-94c0-ce9b7da7a6a9" data-index="0" id="entry-0">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F464;</span>
+<span class="entry-number">#1</span>
+<span class="entry-label">User</span>
+<a class="entry-time" href="#entry-0">7s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="user-text">@samples/book-app-project/books.py Review this file for potential bugs</div></div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="f919425d-db54-4298-8553-62a6cc29c041:call_gl3ZU5oeDk8Hl0TagvopNJ9r" data-index="1" id="entry-1">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#2</span>
+<span class="entry-label">view - view the file at /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/books.py.</span>
+<a class="entry-time" href="#entry-1">14s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/books.py</code></div><div class="tool-output"><div class="md-code-block"><pre><code>1. import json
+2. from dataclasses import dataclass, asdict
+3. from typing import List, Optional
+4. 
+5. DATA_FILE = &quot;data.json&quot;
+6. 
+7. 
+8. @dataclass
+9. class Book:
+10.     title: str
+11.     author: str
+12.     year: int
+13.     read: bool = False
+14. 
+15. 
+16. class BookCollection:
+17.     def __init__(self):
+18.         self.books: List[Book] = []
+19.         self.load_books()
+20. 
+21.     def load_books(self):
+22.         &quot;&quot;&quot;Load books from the JSON file if it exists.&quot;&quot;&quot;
+23.         try:
+24.             with open(DATA_FILE, &quot;r&quot;) as f:
+25.                 data = json.load(f)
+26.                 self.books = [Book(**b) for b in data]
+27.         except FileNotFoundError:
+28.             self.books = []
+29.         except json.JSONDecodeError:
+30.             print(&quot;Warning: data.json is corrupted. Starting with empty collection.&quot;)
+31.             self.books = []
+32. 
+33.     def save_books(self):
+34.         &quot;&quot;&quot;Save the current book collection to JSON.&quot;&quot;&quot;
+35.         with open(DATA_FILE, &quot;w&quot;) as f:
+36.             json.dump([asdict(b) for b in self.books], f, indent=2)
+37. 
+38.     def add_book(self, title: str, author: str, year: int) -&gt; Book:
+39.         book = Book(title=title, author=author, year=year)
+40.         self.books.append(book)
+41.         self.save_books()
+42.         return book
+43. 
+44.     def list_books(self) -&gt; List[Book]:
+45.         return self.books
+46. 
+47.     def list_by_year(self, start: int, end: int) -&gt; List[Book]:
+48.         &quot;&quot;&quot;Return books published between start and end year (inclusive).
+49. 
+50.         Args:
+51.             start (int): Lower bound year (inclusive).
+52.             end (int): Upper bound year (inclusive).
+53. 
+54.         Returns:
+55.             List[Book]: Books whose year is between start and end, preserving insertion order.
+56.         &quot;&quot;&quot;
+57.         if start &gt; end:
+58.             raise ValueError(&quot;start year must be less than or equal to end year&quot;)
+59. 
+60.         results: List[Book] = []
+61.         for b in self.books:
+62.             if start &lt;= b.year &lt;= end:
+63.                 results.append(b)
+64.         return results
+65. 
+66.     def find_book_by_title(self, title: str) -&gt; Optional[Book]:
+67.         for book in self.books:
+68.             if book.title.lower() == title.lower():
+69.                 return book
+70.         return None
+71. 
+72.     def mark_as_read(self, title: str) -&gt; bool:
+73.         book = self.find_book_by_title(title)
+74.         if book:
+75.             book.read = True
+76.             self.save_books()
+77.             return True
+78.         return False
+79. 
+80.     def remove_book(self, title: str) -&gt; bool:
+81.         &quot;&quot;&quot;Remove a book by title.&quot;&quot;&quot;
+82.         book = self.find_book_by_title(title)
+83.         if book:
+84.             self.books.remove(book)
+85.             self.save_books()
+86.             return True
+87.         return False
+88. 
+89.     def find_by_author(self, author: str) -&gt; List[Book]:
+90.         &quot;&quot;&quot;Find all books by a given author (case-insensitive exact match).&quot;&quot;&quot;
+91.         return [b for b in self.books if b.author.lower() == author.lower()]
+92. 
+93.     def search(self, query: str, fields: List[str] = [&quot;title&quot;, &quot;author&quot;], case_sensitive: bool = False) -&gt; List[Book]:
+94.         &quot;&quot;&quot;Search books by query string within the provided fields.
+95. 
+96.         - Partial substring match (default)
+97.         - Case-insensitive by default
+98.         - fields: list containing any of &quot;title&quot; or &quot;author&quot;
+99.         &quot;&quot;&quot;
+100.         if not query:
+101.             return []
+102. 
+103.         results: List[Book] = []
+104.         q = query if case_sensitive else query.lower()
+105. 
+106.         for b in self.books:
+107.             matches = False
+108.             if &quot;title&quot; in fields:
+109.                 lhs = b.title if case_sensitive else b.title.lower()
+110.                 if q in lhs:
+111.                     matches = True
+112.             if not matches and &quot;author&quot; in fields:
+113.                 lhs = b.author if case_sensitive else b.author.lower()
+114.                 if q in lhs:
+115.                     matches = True
+116.             if matches:
+117.                 results.append(b)
+118.         return results
+119. </code></pre></div></div></div>
+</div>
+<div class="entry border-copilot" data-type="copilot" data-entry-id="33da90b4-96b0-4312-ab59-147205bccc80" data-index="2" id="entry-2">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F4AC;</span>
+<span class="entry-number">#3</span>
+<span class="entry-label">Copilot</span>
+<a class="entry-time" href="#entry-2">21s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="markdown-body"><p>发现若干潜在问题与改进建议（简短中文）：</p>
+<ul><li><p>可变默认参数错误：search 的 fields: List[str] = [&quot;title&quot;,&quot;author&quot;] 使用可变默认值，应改为 None 并在函数体内赋值，避免跨调用污染。</p>
+</li>
+<li><p>data.json 解析脆弱：load_books 假设每条记录能直接做 Book(**b)。若缺字段或类型不对会抛异常（TypeError）。建议校验/填充默认值或跳过/报告坏记录。</p>
+</li>
+<li><p>类型安全：year 可能以字符串存储，构造 Book 前应尝试 int() 强制转换并处理失败。</p>
+</li>
+<li><p>保存/加载的异常处理不足：save_books 未捕获写入错误（磁盘满、权限等）。建议捕获 IOError 并报告。</p>
+</li>
+<li><p>相同标题冲突：find/mark/remove 以标题唯一识别，若存在重复标题只处理第一个。若需支持重复，应用 ID 或返回所有匹配项。</p>
+</li>
+<li><p>相对路径问题：DATA_FILE 为相对路径，运行目录改变会丢失数据。建议允许传入路径或使用应用数据目录。</p>
+</li>
+<li><p>并发写入风险：无文件锁定，多线程/多进程同时写会损坏文件。可加锁或切换到 sqlite。</p>
+</li>
+<li><p>search 字段校验：传入非 &quot;title&quot;/&quot;author&quot; 字段时静默忽略，建议验证并抛出或记录无效字段。</p>
+</li>
+</ul>
+<p>如果需要，我可以：</p>
+<ul><li><p>提交小补丁修复可变默认和增强 load/save 错误处理；</p>
+</li>
+<li><p>或实现 ID 支持与 safer JSON load. 哪个优先？</p>
+</li>
+</ul>
+</div></div>
+</div>
+<div class="entry border-user" data-type="user" data-entry-id="6090c2d4-0c71-4b83-aea1-58daafa3fdc5" data-index="3" id="entry-3">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F464;</span>
+<span class="entry-number">#4</span>
+<span class="entry-label">User</span>
+<a class="entry-time" href="#entry-3">48s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="user-text">What about @samples/book-app-project/book_app.py?</div></div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="7103cf5a-e263-4c57-be48-ad72150b57bb:call_kWiNJidjTL0O00UdEtSayheU" data-index="4" id="entry-4">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#5</span>
+<span class="entry-label">view - view the file at /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py.</span>
+<a class="entry-time" href="#entry-4">54s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py</code></div><div class="tool-output"><div class="md-code-block"><pre><code>1. import sys
+2. from books import BookCollection
+3. 
+4. 
+5. # Global collection instance
+6. collection = BookCollection()
+7. 
+8. 
+9. def show_books(books):
+10.     &quot;&quot;&quot;Display books in a user-friendly format.&quot;&quot;&quot;
+11.     if not books:
+12.         print(&quot;No books found.&quot;)
+13.         return
+14. 
+15.     print(&quot;\nYour Book Collection:\n&quot;)
+16. 
+17.     for index, book in enumerate(books, start=1):
+18.         status = &quot;✓&quot; if book.read else &quot; &quot;
+19.         print(f&quot;{index}. [{status}] {book.title} by {book.author} ({book.year})&quot;)
+20. 
+21.     print()
+22. 
+23. 
+24. def handle_list():
+25.     books = collection.list_books()
+26.     show_books(books)
+27. 
+28. 
+29. def handle_add():
+30.     print(&quot;\nAdd a New Book\n&quot;)
+31. 
+32.     title = input(&quot;Title: &quot;).strip()
+33.     author = input(&quot;Author: &quot;).strip()
+34.     year_str = input(&quot;Year: &quot;).strip()
+35. 
+36.     try:
+37.         year = int(year_str) if year_str else 0
+38.         collection.add_book(title, author, year)
+39.         print(&quot;\nBook added successfully.\n&quot;)
+40.     except ValueError as e:
+41.         print(f&quot;\nError: {e}\n&quot;)
+42. 
+43. 
+44. def handle_remove():
+45.     print(&quot;\nRemove a Book\n&quot;)
+46. 
+47.     title = input(&quot;Enter the title of the book to remove: &quot;).strip()
+48.     collection.remove_book(title)
+49. 
+50.     print(&quot;\nBook removed if it existed.\n&quot;)
+51. 
+52. 
+53. def handle_find():
+54.     print(&quot;\nFind Books by Title or Author\n&quot;)
+55. 
+56.     query = input(&quot;Search query (title or author): &quot;).strip()
+57.     if not query:
+58.         print(&quot;No query provided.\n&quot;)
+59.         return
+60. 
+61.     # Ask which fields to search; default searches both title and author
+62.     choice = input(&quot;Search in (t)itle, (a)uthor, or (b)oth? [b]: &quot;).strip().lower()
+63.     if choice == &quot;t&quot;:
+64.         fields = [&quot;title&quot;]
+65.     elif choice == &quot;a&quot;:
+66.         fields = [&quot;author&quot;]
+67.     else:
+68.         fields = [&quot;title&quot;, &quot;author&quot;]
+69. 
+70.     books = collection.search(query, fields=fields, case_sensitive=False)
+71. 
+72.     show_books(books)
+73. 
+74. 
+75. def show_help():
+76.     print(&quot;&quot;&quot;
+77. Book Collection Helper
+78. 
+79. Commands:
+80.   list     - Show all books
+81.   add      - Add a new book
+82.   remove   - Remove a book by title
+83.   find     - Find books by title or author
+84.   help     - Show this help message
+85. &quot;&quot;&quot;)
+86. 
+87. 
+88. def main():
+89.     if len(sys.argv) &lt; 2:
+90.         show_help()
+91.         return
+92. 
+93.     command = sys.argv[1].lower()
+94. 
+95.     # Dispatch table for commands -&gt; handler functions
+96.     commands = {
+97.         &quot;list&quot;: handle_list,
+98.         &quot;add&quot;: handle_add,
+99.         &quot;remove&quot;: handle_remove,
+100.         &quot;find&quot;: handle_find,
+101.         &quot;help&quot;: show_help,
+102.     }
+103. 
+104.     handler = commands.get(command)
+105.     if handler:
+106.         handler()
+107.     else:
+108.         print(&quot;Unknown command.\n&quot;)
+109.         show_help()
+110. 
+111. 
+112. if __name__ == &quot;__main__&quot;:
+113.     main()
+114. </code></pre></div></div></div>
+</div>
+<div class="entry border-copilot" data-type="copilot" data-entry-id="7cb6bcff-8043-45b2-9cc9-5f7157dd48ac" data-index="5" id="entry-5">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F4AC;</span>
+<span class="entry-number">#6</span>
+<span class="entry-label">Copilot</span>
+<a class="entry-time" href="#entry-5">1m 2s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="markdown-body"><p>简短审查（中文，重点问题与可选修复）：</p>
+<ul><li><p>空字段允许：handle_add 允许空 title/author 和 year=0；应验证非空 title/author 并拒绝或提示重输。</p>
+</li>
+<li><p>year 验证不严格：year_str 为空时置 0，且不会触发异常。应拒绝空年份或明确允许“未知”并记录为 None/Null，而不是 0。</p>
+</li>
+<li><p>remove 不报告结果：handle_remove 忽略 remove_book 的返回值；应打印确认或报错以提示用户是否删除成功。</p>
+</li>
+<li><p>输入/搜索字段处理：book_app 传入 fields 列表正确，但 books.search 在定义处有可变默认参数 bug（已在之前文件指出），需要修复那里才能完全可靠。</p>
+</li>
+<li><p>相对路径与早期加载：collection 在模块导入时立即加载，会在显示帮助时读写 data.json（可能在不同 cwd 下导致找不到或创建文件）。改为延迟加载或允许通过参数设置数据路径更健壮。</p>
+</li>
+<li><p>国际化/显示：show_books 使用 ✓ 符号，终端编码不支持时可能显示异常；可回退为 ASCII 标记。</p>
+</li>
+<li><p>命令行 UX：unknown command 后没有返回非零退出码；可使用 sys.exit(2) 明确失败（脚本可被其他程序调用时更友好）。</p>
+</li>
+</ul>
+<p>要我帮忙的话，可以提交一个补丁来：</p>
+<ul><li><p>在 handle_add 中验证 title/author、严格解析 year（或允许 None）；</p>
+</li>
+<li><p>在 handle_remove 中展示删除结果；</p>
+</li>
+<li><p>延迟创建/加载 BookCollection（在 main 中按需创建）；</p>
+</li>
+<li><p>并修复 books.py 中的可变默认参数问题。</p>
+</li>
+</ul>
+<p>请选择想要我先实现的修复（推荐：验证输入 + 报告删除结果）。</p>
+</div></div>
+</div>
+<div class="entry border-user" data-type="user" data-entry-id="ac42b1b9-d215-49b8-ba26-41bad6a27530" data-index="6" id="entry-6">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F464;</span>
+<span class="entry-number">#7</span>
+<span class="entry-label">User</span>
+<a class="entry-time" href="#entry-6">1m 27s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="user-text">@samples/book-app-project/books.py What does this module do?</div></div>
+</div>
+<div class="entry border-copilot" data-type="copilot" data-entry-id="146e5292-e45a-41c4-905f-be9fd823406d" data-index="7" id="entry-7">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F4AC;</span>
+<span class="entry-number">#8</span>
+<span class="entry-label">Copilot</span>
+<a class="entry-time" href="#entry-7">1m 33s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="markdown-body"><p>这个模块提供一个简单的书籍数据模型和本地集合管理器（以 JSON 文件持久化）。要点：</p>
+<ul><li><p>定义 Book dataclass（title, author, year, read）。</p>
+</li>
+<li><p>BookCollection 类管理内存列表并把数据读写到 data.json（load_books/save_books）。</p>
+</li>
+<li><p>支持的方法：add_book、list_books、list_by_year（区间查询）、find_book_by_title（不区分大小写）、mark_as_read、remove_book、find_by_author、search（按 title/author 子串搜索，默认不区分大小写）。</p>
+</li>
+<li><p>实现细节：在构造时自动加载文件，增删改会立即保存；search 的默认 fields 使用可变列表（应修复）；load 假定 JSON 记录能直接用 Book(**b) 构造，遇到缺字段或类型不匹配会抛错；DATA_FILE 是相对路径，运行目录会影响文件位置。</p>
+</li>
+</ul>
+</div></div>
+</div>
+<div class="entry border-user" data-type="user" data-entry-id="43402abf-b720-421f-9448-7e7848aa08a0" data-index="8" id="entry-8">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F464;</span>
+<span class="entry-number">#9</span>
+<span class="entry-label">User</span>
+<a class="entry-time" href="#entry-8">1m 46s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="user-text">@samples/book-app-project/ Give me an overview of the code structure</div></div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="84dd71e1-2c70-4171-a98c-abd1f70366f5:call_N5nh04xA5UcmQTEFPJGKt5eo" data-index="9" id="entry-9">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#10</span>
+<span class="entry-label">view - view the file at /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project.</span>
+<a class="entry-time" href="#entry-9">1m 51s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project</code></div><div class="tool-output"><div class="md-code-block"><pre><code>README.md
+__pycache__
+book_app.py
+books.py
+data.json
+pyproject.toml
+test_books.py
+tests
+utils.py</code></pre></div></div></div>
+</div>
+<div class="entry border-copilot" data-type="copilot" data-entry-id="0690e3ba-ad0e-4c8b-8604-2a1a22d891b6" data-index="10" id="entry-10">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F4AC;</span>
+<span class="entry-number">#11</span>
+<span class="entry-label">Copilot</span>
+<a class="entry-time" href="#entry-10">1m 55s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="markdown-body"><p>概览（中文，简短）：</p>
+<ul><li><p>README.md — 项目说明与使用示例。</p>
+</li>
+<li><p>book_app.py — CLI 前端：解析命令并与 BookCollection 交互（list/add/find/remove）。</p>
+</li>
+<li><p>books.py — 数据模型与持久化：Book dataclass + BookCollection（读写 data.json，增删改查、搜索）。</p>
+</li>
+<li><p>data.json — 示例/持久化的书籍 JSON 数据文件。</p>
+</li>
+<li><p>utils.py — 工具函数（辅助逻辑，供其他模块调用）。</p>
+</li>
+<li><p>test_books.py 和 tests/ — 单元测试（验证 books 功能）。</p>
+</li>
+<li><p>pyproject.toml — Python 项目配置与依赖。</p>
+</li>
+<li><p><strong>pycache</strong>/ — 编译字节码缓存。</p>
+</li>
+</ul>
+<p>总体架构：CLI (book_app.py) → 业务层（books.py）→ 持久层（data.json），测试覆盖核心功能。</p>
+</div></div>
+</div>
+<div class="entry border-user" data-type="user" data-entry-id="1567b481-5341-4d96-bdda-e5596245ba14" data-index="11" id="entry-11">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F464;</span>
+<span class="entry-number">#12</span>
+<span class="entry-label">User</span>
+<a class="entry-time" href="#entry-11">2m 2s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="user-text">How does the app save and load books?</div></div>
+</div>
+<div class="entry border-copilot" data-type="copilot" data-entry-id="404f0bf4-8b21-4d65-8dad-a74c77400162" data-index="12" id="entry-12">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F4AC;</span>
+<span class="entry-number">#13</span>
+<span class="entry-label">Copilot</span>
+<a class="entry-time" href="#entry-12">2m 9s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="markdown-body"><ul><li><p>File: books.py uses DATA_FILE = &quot;data.json&quot; (relative path).</p>
+</li>
+<li><p>Loading: BookCollection().<strong>init</strong> calls load_books(), which opens DATA_FILE, json.load(s) it, and constructs Book(**b) for each record. FileNotFoundError -&gt; starts empty; json.JSONDecodeError -&gt; warns and starts empty. No validation of record fields/types.</p>
+</li>
+<li><p>Saving: save_books() opens DATA_FILE for write and json.dump([asdict(b) for b in self.books], f, indent=2). asdict serializes dataclass fields to JSON-ready dicts. save_books is called after add_book, remove_book, and mark_as_read.</p>
+</li>
+<li><p>Notes: save_books does not catch IO errors; load assumes records fit Book signature and types (e.g., year int). Data file location depends on current working directory.</p>
+</li>
+</ul>
+</div></div>
+</div>
+<div class="entry border-user" data-type="user" data-entry-id="19167e79-3529-4553-970c-3c30dd5ddb41" data-index="13" id="entry-13">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F464;</span>
+<span class="entry-number">#14</span>
+<span class="entry-label">User</span>
+<a class="entry-time" href="#entry-13">2m 55s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="user-text">@samples/book-app-project/book_app.py @samples/book-app-project/utils.py
+  I see duplicate display functions: show_books() and print_books(). Help me consolidate these.</div></div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="d454ebd6-3a15-4389-8266-f16bf79221e6:call_ShN6QZulNdlHA61AiVh4FaIq" data-index="14" id="entry-14">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#15</span>
+<span class="entry-label">view - view the file at /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/utils.py.</span>
+<a class="entry-time" href="#entry-14">2m 59s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/utils.py</code></div><div class="tool-output"><div class="md-code-block"><pre><code>1. def print_menu():
+2.     print(&quot;\n📚 Book Collection App&quot;)
+3.     print(&quot;1. Add a book&quot;)
+4.     print(&quot;2. List books&quot;)
+5.     print(&quot;3. Mark book as read&quot;)
+6.     print(&quot;4. Remove a book&quot;)
+7.     print(&quot;5. Exit&quot;)
+8. 
+9. 
+10. def get_user_choice() -&gt; str:
+11.     while True:
+12.         choice = input(&quot;Choose an option (1-5): &quot;).strip()
+13.         if not choice:
+14.             print(&quot;Please enter a choice (1-5).&quot;)
+15.             continue
+16.         if not choice.isdigit():
+17.             print(&quot;Please enter a number between 1 and 5.&quot;)
+18.             continue
+19.         return choice
+20. 
+21. 
+22. def get_book_details():
+23.     &quot;&quot;&quot;
+24.     Prompt the user for book details and return them.
+25. 
+26.     Repeatedly asks for book title until a non-empty string is provided. Then
+27.     prompts once for author and publication year. If the year cannot be parsed
+28.     as an integer, it defaults to 0 and prints a warning.
+29. 
+30.     Returns:
+31.         tuple: (title, author, year)
+32.             - title (str): Non-empty book title provided by the user.
+33.             - author (str): Author name (may be empty if user leaves it blank).
+34.             - year (int): Publication year parsed as int, or 0 if parsing failed
+35.               or the user left it blank.
+36.     &quot;&quot;&quot;
+37.     # Ensure title is not empty
+38.     while True:
+39.         title = input(&quot;Enter book title: &quot;).strip()
+40.         if title:
+41.             break
+42.         print(&quot;Title cannot be empty. Please enter a title.&quot;)
+43. 
+44.     author = input(&quot;Enter author: &quot;).strip()
+45. 
+46.     year_input = input(&quot;Enter publication year: &quot;).strip()
+47.     try:
+48.         year = int(year_input)
+49.     except ValueError:
+50.         print(&quot;Invalid year. Defaulting to 0.&quot;)
+51.         year = 0
+52. 
+53.     return title, author, year
+54. 
+55. 
+56. def print_books(books):
+57.     if not books:
+58.         print(&quot;No books in your collection.&quot;)
+59.         return
+60. 
+61.     print(&quot;\nYour Books:&quot;)
+62.     for index, book in enumerate(books, start=1):
+63.         status = &quot;✅ Read&quot; if book.read else &quot;📖 Unread&quot;
+64.         print(f&quot;{index}. {book.title} by {book.author} ({book.year}) - {status}&quot;)
+65. </code></pre></div></div></div>
+</div>
+<div class="entry collapsed border-tool-failure entry-error-bg" data-type="tool" data-entry-id="956f5f7a-5b32-452e-b30f-fdc51f2558ba:call_6iq4iIWDhUpE6qwdMYXXBp2k" data-index="15" id="entry-15">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2718;</span>
+<span class="entry-number">#16</span>
+<span class="entry-label">edit - edit the file at /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py.</span>
+<a class="entry-time" href="#entry-15">3m 10s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py</code></div><div class="tool-output"><div class="md-code-block"><pre><code>Invalid inputs: new_str is required</code></pre></div></div></div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="305647de-5018-48f1-b0dd-4ce34e328668:call_Q54FZ9TXp5Bo7tVLPTCyrqmz" data-index="16" id="entry-16">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#17</span>
+<span class="entry-label">edit - edit the file at /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py.</span>
+<a class="entry-time" href="#entry-16">3m 54s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py</code></div><div class="tool-output"><div class="md-code-block"><pre><code>File /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py updated with changes.</code></pre></div></div></div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="a1b16ac2-b611-4b01-9c4c-4a8d4e3e9d34:call_ogKPyt5vXXDftTyXwP9SQXI2" data-index="17" id="entry-17">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#18</span>
+<span class="entry-label">view - view the file at /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py.</span>
+<a class="entry-time" href="#entry-17">3m 58s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py (lines 1-200)</code></div><div class="tool-output"><div class="md-code-block"><pre><code>1. import sys
+2. from books import BookCollection
+3. from utils import print_books
+4. 
+5. 
+6. # Global collection instance
+7. collection = BookCollection()
+8. 
+9. 
+10. def handle_list():
+11.     books = collection.list_books()
+12.     print_books(books)
+13. 
+14. 
+15. def handle_add():
+16.     print(&quot;\nAdd a New Book\n&quot;)
+17. 
+18.     title = input(&quot;Title: &quot;).strip()
+19.     author = input(&quot;Author: &quot;).strip()
+20.     year_str = input(&quot;Year: &quot;).strip()
+21. 
+22.     try:
+23.         year = int(year_str) if year_str else 0
+24.         collection.add_book(title, author, year)
+25.         print(&quot;\nBook added successfully.\n&quot;)
+26.     except ValueError as e:
+27.         print(f&quot;\nError: {e}\n&quot;)
+28. 
+29. 
+30. def handle_remove():
+31.     print(&quot;\nRemove a Book\n&quot;)
+32. 
+33.     title = input(&quot;Enter the title of the book to remove: &quot;).strip()
+34.     collection.remove_book(title)
+35. 
+36.     print(&quot;\nBook removed if it existed.\n&quot;)
+37. 
+38. 
+39. def handle_find():
+40.     print(&quot;\nFind Books by Title or Author\n&quot;)
+41. 
+42.     query = input(&quot;Search query (title or author): &quot;).strip()
+43.     if not query:
+44.         print(&quot;No query provided.\n&quot;)
+45.         return
+46. 
+47.     # Ask which fields to search; default searches both title and author
+48.     choice = input(&quot;Search in (t)itle, (a)uthor, or (b)oth? [b]: &quot;).strip().lower()
+49.     if choice == &quot;t&quot;:
+50.         fields = [&quot;title&quot;]
+51.     elif choice == &quot;a&quot;:
+52.         fields = [&quot;author&quot;]
+53.     else:
+54.         fields = [&quot;title&quot;, &quot;author&quot;]
+55. 
+56.     books = collection.search(query, fields=fields, case_sensitive=False)
+57. 
+58.     show_books(books)
+59. 
+60. 
+61. def show_help():
+62.     print(&quot;&quot;&quot;
+63. Book Collection Helper
+64. 
+65. Commands:
+66.   list     - Show all books
+67.   add      - Add a new book
+68.   remove   - Remove a book by title
+69.   find     - Find books by title or author
+70.   help     - Show this help message
+71. &quot;&quot;&quot;)
+72. 
+73. 
+74. def main():
+75.     if len(sys.argv) &lt; 2:
+76.         show_help()
+77.         return
+78. 
+79.     command = sys.argv[1].lower()
+80. 
+81.     # Dispatch table for commands -&gt; handler functions
+82.     commands = {
+83.         &quot;list&quot;: handle_list,
+84.         &quot;add&quot;: handle_add,
+85.         &quot;remove&quot;: handle_remove,
+86.         &quot;find&quot;: handle_find,
+87.         &quot;help&quot;: show_help,
+88.     }
+89. 
+90.     handler = commands.get(command)
+91.     if handler:
+92.         handler()
+93.     else:
+94.         print(&quot;Unknown command.\n&quot;)
+95.         show_help()
+96. 
+97. 
+98. if __name__ == &quot;__main__&quot;:
+99.     main()
+100. </code></pre></div></div></div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="b85d11c2-3d13-47fd-91ec-19687cea8240:call_r4ARNzGPo0spZ7g8PWmItmRs" data-index="18" id="entry-18">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#19</span>
+<span class="entry-label">edit - edit the file at /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py.</span>
+<a class="entry-time" href="#entry-18">4m 4s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py</code></div><div class="tool-output"><div class="md-code-block"><pre><code>File /workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py updated with changes.</code></pre></div></div></div>
+</div>
+<div class="entry border-copilot" data-type="copilot" data-entry-id="7674ccc3-bb68-4629-8fe8-b8a914b3fd2e" data-index="19" id="entry-19">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F4AC;</span>
+<span class="entry-number">#20</span>
+<span class="entry-label">Copilot</span>
+<a class="entry-time" href="#entry-19">4m 8s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="markdown-body"><p>更新摘要（简短）：</p>
+<p>What changed</p>
+<ul><li><p>Consolidated duplicate display logic by using utils.print_books:</p>
+<ul><li><p>Removed show_books from book_app.py.</p>
+</li>
+<li><p>book_app.py now imports print_books from utils and uses it in list/find handlers.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Why</p>
+<ul><li><p>Avoids duplicated code and keeps a single, consistent display format.</p>
+</li>
+</ul>
+<p>Notes / suggested follow-ups</p>
+<ul><li><p>Consider harmonizing status symbols (utils uses emoji, book_app previously used ASCII tick). If terminal compatibility is a concern, change to ASCII in utils.print_books.</p>
+</li>
+<li><p>Optionally, move all user I/O helpers (get_book_details, print_books, menus) into utils and delay BookCollection creation until main() for easier testing.</p>
+</li>
+</ul>
+<p>If you want, run tests or I can:</p>
+<ul><li><p>make BookCollection created lazily in main, or</p>
+</li>
+<li><p>update utils.print_books to accept an optional style flag (emoji vs ASCII). Which to do next?</p>
+</li>
+</ul>
+</div></div>
+</div>
+<div class="entry collapsed border-info" data-type="info" data-entry-id="23ecbf6d-9a39-423d-8755-510b4e8bd8f7" data-index="20" id="entry-20">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2139;</span>
+<span class="entry-number">#21</span>
+<span class="entry-label">Info</span>
+<a class="entry-time" href="#entry-20">5m 19s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body">Environment loaded: 1 custom instruction, 5 skills, 3 agents</div>
+</div>
+<div class="entry collapsed border-info" data-type="info" data-entry-id="58597e89-f5fb-4d82-80dd-11ea048343c1" data-index="21" id="entry-21">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2139;</span>
+<span class="entry-number">#22</span>
+<span class="entry-label">Info</span>
+<a class="entry-time" href="#entry-21">5m 19s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body">MCP Servers reloaded: 1 server connected</div>
+</div>
+<div class="entry border-user" data-type="user" data-entry-id="10681566-b027-4e6a-8776-8c601415f914" data-index="22" id="entry-22">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F464;</span>
+<span class="entry-number">#23</span>
+<span class="entry-label">User <span class="agent-mode">interactive</span></span>
+<a class="entry-time" href="#entry-22">6m 14s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="user-text">Find all TODO comments in @samples/book-app-project/book_app.py</div></div>
+</div>
+<div class="entry collapsed border-warning" data-type="warning" data-entry-id="1ecc7038-72ae-4523-a419-cf01bcf88139" data-index="23" id="entry-23">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x26A0;</span>
+<span class="entry-number">#24</span>
+<span class="entry-label">Warning</span>
+<a class="entry-time" href="#entry-23">6m 21s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body">You&#39;ve used over 75% of your weekly usage limit. Your limit resets on Apr 27 at 12 AM.</div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="a791fc19-1272-48c5-a2c6-2b3905d31623:call_XOGIqvaZmMU6RDUXH5VB2Wkq" data-index="24" id="entry-24">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#25</span>
+<span class="entry-label">grep - TODO</span>
+<a class="entry-time" href="#entry-24">6m 24s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">&quot;TODO&quot; (samples/book-app-project/book_app.py)</code></div><div class="tool-output"><div class="md-code-block"><pre><code>No matches found.</code></pre></div></div></div>
+</div>
+<div class="entry border-copilot" data-type="copilot" data-entry-id="bb4fcb68-1495-4d66-9a63-bdec00af6641" data-index="25" id="entry-25">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F4AC;</span>
+<span class="entry-number">#26</span>
+<span class="entry-label">Copilot</span>
+<a class="entry-time" href="#entry-25">6m 27s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="markdown-body"><p>No TODO comments found in samples/book-app-project/book_app.py.</p>
+</div></div>
+</div>
+<div class="entry border-user" data-type="user" data-entry-id="fddf9072-a5f0-401c-a1dd-1ff8b6168cd0" data-index="26" id="entry-26">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F464;</span>
+<span class="entry-number">#27</span>
+<span class="entry-label">User <span class="agent-mode">interactive</span></span>
+<a class="entry-time" href="#entry-26">7m 42s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="user-text">Find all file name  in @samples/book-app-project/**/*.py</div></div>
+</div>
+<div class="entry collapsed border-tool-success" data-type="tool" data-entry-id="89d4ffd7-44b8-4f7c-99a2-264106e28fbd:call_1Leyy0zfwNWsJtMty8XnxN3S" data-index="27" id="entry-27">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x2714;</span>
+<span class="entry-number">#28</span>
+<span class="entry-label">glob - samples/book-app-project/**/*.py</span>
+<a class="entry-time" href="#entry-27">7m 51s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="tool-args"><code class="md-codespan">&quot;samples/book-app-project/**/*.py&quot;</code></div><div class="tool-output"><div class="md-code-block"><pre><code>/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/tests/test_books.py
+/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/test_books.py
+/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/utils.py
+/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/books.py
+/workspaces/copilot-cli-for-beginners-copy/samples/book-app-project/book_app.py</code></pre></div></div></div>
+</div>
+<div class="entry border-copilot" data-type="copilot" data-entry-id="3cca7fa9-c9dc-4815-9d1a-e35991fb1b84" data-index="28" id="entry-28">
+<div class="entry-header" role="button" tabindex="0">
+<span class="entry-icon">&#x1F4AC;</span>
+<span class="entry-number">#29</span>
+<span class="entry-label">Copilot</span>
+<a class="entry-time" href="#entry-28">7m 54s</a>
+<span class="collapse-indicator"></span>
+</div>
+<div class="entry-body"><div class="markdown-body"><p>Found Python files (paths):</p>
+<ul><li><p>samples/book-app-project/book_app.py</p>
+</li>
+<li><p>samples/book-app-project/books.py</p>
+</li>
+<li><p>samples/book-app-project/utils.py</p>
+</li>
+<li><p>samples/book-app-project/test_books.py</p>
+</li>
+<li><p>samples/book-app-project/tests/test_books.py</p>
+</li>
+</ul>
+</div></div>
+</div>
+</div>
+<div class="jump-buttons">
+<button class="jump-btn" id="jump-prev" title="Previous user message">&#x25B2;</button>
+<button class="jump-btn" id="jump-next" title="Next user message">&#x25BC;</button>
+</div>
+</div>
+<script>
+(function() {
+    'use strict';
+
+    var scrollContainer = document.querySelector('.scroll-container');
+
+    // --- Collapse/Expand ---
+    document.querySelectorAll('.entry-header').forEach(function(header) {
+        header.addEventListener('click', function(e) {
+            if (e.target.closest('.entry-time')) return;
+            header.closest('.entry').classList.toggle('collapsed');
+        });
+        header.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                header.closest('.entry').classList.toggle('collapsed');
+            }
+        });
+    });
+
+    var collapseAllBtn = document.getElementById('collapse-all');
+    var expandAllBtn = document.getElementById('expand-all');
+    if (collapseAllBtn) {
+        collapseAllBtn.addEventListener('click', function() {
+            document.querySelectorAll('.entry').forEach(function(e) { e.classList.add('collapsed'); });
+        });
+    }
+    if (expandAllBtn) {
+        expandAllBtn.addEventListener('click', function() {
+            document.querySelectorAll('.entry').forEach(function(e) { e.classList.remove('collapsed'); });
+        });
+    }
+
+    // --- Search ---
+    var searchInput = document.getElementById('search-input');
+    var searchTimeout = null;
+
+    function clearHighlights() {
+        document.querySelectorAll('.search-highlight').forEach(function(el) {
+            var parent = el.parentNode;
+            parent.replaceChild(document.createTextNode(el.textContent), el);
+            parent.normalize();
+        });
+    }
+
+    function highlightText(node, query) {
+        if (!query) return;
+        var lowerQuery = query.toLowerCase();
+        var walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+        var textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+        textNodes.forEach(function(tn) {
+            var text = tn.textContent;
+            var idx = text.toLowerCase().indexOf(lowerQuery);
+            if (idx === -1) return;
+            var before = document.createTextNode(text.substring(0, idx));
+            var mark = document.createElement('span');
+            mark.className = 'search-highlight';
+            mark.textContent = text.substring(idx, idx + query.length);
+            var after = document.createTextNode(text.substring(idx + query.length));
+            var parent = tn.parentNode;
+            parent.insertBefore(before, tn);
+            parent.insertBefore(mark, tn);
+            parent.insertBefore(after, tn);
+            parent.removeChild(tn);
+        });
+    }
+
+    function doSearch() {
+        var query = searchInput ? searchInput.value.trim() : '';
+        clearHighlights();
+        var entries = document.querySelectorAll('.main-container > .entry');
+        if (!query) {
+            entries.forEach(function(e) { e.classList.remove('search-hidden'); });
+            syncSidebarFilters();
+            return;
+        }
+        var lq = query.toLowerCase();
+        entries.forEach(function(entry) {
+            var text = entry.textContent.toLowerCase();
+            if (text.indexOf(lq) !== -1) {
+                entry.classList.remove('search-hidden');
+                highlightText(entry, query);
+            } else {
+                entry.classList.add('search-hidden');
+            }
+        });
+        syncSidebarFilters();
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(doSearch, 150);
+        });
+    }
+
+    // --- Type Filtering ---
+    var activeFilters = new Set();
+    var filterPills = document.querySelectorAll('.filter-pill');
+    filterPills.forEach(function(pill) {
+        var type = pill.getAttribute('data-filter-type');
+        activeFilters.add(type);
+        pill.classList.add('active');
+        pill.addEventListener('click', function() {
+            if (activeFilters.has(type)) {
+                activeFilters.delete(type);
+                pill.classList.remove('active');
+                pill.classList.add('inactive');
+            } else {
+                activeFilters.add(type);
+                pill.classList.add('active');
+                pill.classList.remove('inactive');
+            }
+            applyFilters();
+        });
+    });
+
+    var compactBtn = document.getElementById('compact-mode');
+    var compactActive = false;
+    if (compactBtn) {
+        compactBtn.addEventListener('click', function() {
+            compactActive = !compactActive;
+            compactBtn.classList.toggle('active', compactActive);
+            if (compactActive) {
+                filterPills.forEach(function(pill) {
+                    var type = pill.getAttribute('data-filter-type');
+                    if (type === 'user' || type === 'copilot') {
+                        activeFilters.add(type);
+                        pill.classList.add('active');
+                        pill.classList.remove('inactive');
+                    } else {
+                        activeFilters.delete(type);
+                        pill.classList.remove('active');
+                        pill.classList.add('inactive');
+                    }
+                });
+            } else {
+                filterPills.forEach(function(pill) {
+                    var type = pill.getAttribute('data-filter-type');
+                    activeFilters.add(type);
+                    pill.classList.add('active');
+                    pill.classList.remove('inactive');
+                });
+            }
+            applyFilters();
+        });
+    }
+
+    function applyFilters() {
+        document.querySelectorAll('.main-container > .entry').forEach(function(entry) {
+            var type = entry.getAttribute('data-type');
+            if (activeFilters.has(type)) {
+                entry.classList.remove('filter-hidden');
+            } else {
+                entry.classList.add('filter-hidden');
+            }
+        });
+        syncSidebarFilters();
+    }
+
+    // --- Keyboard Navigation ---
+    var focusedIndex = -1;
+    function getVisibleEntries() {
+        return Array.from(document.querySelectorAll('.main-container > .entry')).filter(function(e) {
+            return !e.classList.contains('filter-hidden') && !e.classList.contains('search-hidden');
+        });
+    }
+    function setFocus(idx) {
+        var entries = getVisibleEntries();
+        if (entries[focusedIndex]) entries[focusedIndex].classList.remove('focused');
+        focusedIndex = idx;
+        if (focusedIndex >= 0 && focusedIndex < entries.length) {
+            entries[focusedIndex].classList.add('focused');
+            entries[focusedIndex].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.target.tagName === 'INPUT') {
+            if (e.key === 'Escape') { searchInput.blur(); searchInput.value = ''; doSearch(); }
+            return;
+        }
+        var entries = getVisibleEntries();
+        if (e.key === 'j') { setFocus(Math.min(focusedIndex + 1, entries.length - 1)); }
+        else if (e.key === 'k') { setFocus(Math.max(focusedIndex - 1, 0)); }
+        else if (e.key === 'Enter' && focusedIndex >= 0 && focusedIndex < entries.length) {
+            entries[focusedIndex].classList.toggle('collapsed');
+        }
+        else if (e.key === '/') { e.preventDefault(); if (searchInput) searchInput.focus(); }
+        else if (e.key === 'Escape') {
+            if (focusedIndex >= 0) {
+                entries[focusedIndex].classList.remove('focused');
+                focusedIndex = -1;
+            }
+        }
+    });
+
+    // --- Theme Toggle ---
+    var themeBtn = document.getElementById('theme-toggle');
+    function setTheme(theme) {
+        var el = document.documentElement;
+        el.setAttribute('data-color-mode', theme);
+        el.setAttribute('data-light-theme', 'light');
+        el.setAttribute('data-dark-theme', 'dark');
+        try { localStorage.setItem('copilot-share-theme', theme); } catch(e) {}
+        if (themeBtn) themeBtn.textContent = theme === 'dark' ? '\u2600' : '\u263E';
+    }
+    (function initTheme() {
+        var saved = null;
+        try { saved = localStorage.getItem('copilot-share-theme'); } catch(e) {}
+        if (saved === 'light' || saved === 'dark') { setTheme(saved); }
+        else { setTheme('dark'); }
+    })();
+    if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
+            var current = document.documentElement.getAttribute('data-color-mode') || 'dark';
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+    // --- Sidebar Minimap ---
+    var sidebar = document.getElementById('sidebar');
+    var sidebarBtn = document.getElementById('sidebar-toggle');
+    var mainContainer = document.querySelector('.main-container');
+
+    function getMapLabel(type, fullLabel) {
+        var shortLabels = {
+            'user': 'User', 'copilot': 'Copilot', 'error': 'Error',
+            'reasoning': 'Reasoning', 'info': 'Info', 'warning': 'Warning',
+            'handoff': 'Handoff', 'compaction': 'Compacted',
+            'task_complete': 'Complete', 'notification': 'Notification'
+        };
+        if (shortLabels[type]) return shortLabels[type];
+        var dashIdx = fullLabel.indexOf(' - ');
+        if (dashIdx > 0) return fullLabel.substring(0, dashIdx);
+        return fullLabel;
+    }
+
+    function createSidebarEntry(type, label, entryIndex, targetEl, isNested) {
+        var se = document.createElement('div');
+        se.className = 'sidebar-entry' + (isNested ? ' nested' : '');
+        if (entryIndex !== null) se.setAttribute('data-entry-index', entryIndex);
+
+        var dot = document.createElement('span');
+        dot.className = 'sidebar-indicator';
+        dot.setAttribute('data-type', type);
+        se.appendChild(dot);
+
+        var span = document.createElement('span');
+        span.className = 'sidebar-label';
+        span.textContent = getMapLabel(type, label);
+        se.appendChild(span);
+
+        var tip = label;
+        if (entryIndex !== null) tip += ' (#' + (parseInt(entryIndex) + 1) + ')';
+        se.title = tip;
+
+        se.addEventListener('click', function() {
+            // Immediately highlight this sidebar entry
+            document.querySelectorAll('.sidebar-entry.active').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            se.classList.add('active');
+
+            // Suppress scroll-based sync while the smooth scroll is in progress
+            navClickActive = true;
+            clearTimeout(navClickTimer);
+            navClickTimer = setTimeout(function() { navClickActive = false; }, 800);
+
+            // Flash the target entry in the main content
+            targetEl.classList.remove('nav-flash');
+            void targetEl.offsetWidth;
+            targetEl.classList.add('nav-flash');
+
+            targetEl.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        });
+        return se;
+    }
+    var navClickActive = false;
+    var navClickTimer;
+
+    if (sidebarBtn && sidebar) {
+        sidebarBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('visible');
+            var isVis = sidebar.classList.contains('visible');
+            sidebarBtn.classList.toggle('active', isVis);
+            if (mainContainer) mainContainer.classList.toggle('sidebar-visible', isVis);
+        });
+
+        document.querySelectorAll('.main-container > .entry').forEach(function(entry) {
+            var type = entry.getAttribute('data-type');
+            var labelEl = entry.querySelector('.entry-label');
+            var label = labelEl ? labelEl.textContent.trim() : type;
+            var idx = entry.getAttribute('data-index');
+
+            var se = createSidebarEntry(type, label, idx, entry, false);
+            sidebar.appendChild(se);
+
+            // For group entries, add indented nested entries
+            if (type === 'group') {
+                entry.querySelectorAll('.nested-entries > .entry').forEach(function(nested) {
+                    var nType = nested.getAttribute('data-type') || 'tool';
+                    var nLabelEl = nested.querySelector('.entry-label');
+                    var nLabel = nLabelEl ? nLabelEl.textContent.trim() : nType;
+                    var nIdx = nested.getAttribute('data-index');
+                    var nse = createSidebarEntry(nType, nLabel, nIdx, nested, true);
+                    sidebar.appendChild(nse);
+                });
+            }
+        });
+    }
+
+    // --- Sidebar Scroll Position Tracking ---
+    function syncSidebarHighlight() {
+        if (!sidebar || !sidebar.classList.contains('visible')) return;
+        if (navClickActive) return;
+        var entries = document.querySelectorAll('.main-container > .entry');
+        var viewMid = scrollContainer.scrollTop + scrollContainer.clientHeight / 3;
+        var closest = null;
+        var closestDist = Infinity;
+        entries.forEach(function(e) {
+            if (e.classList.contains('filter-hidden') || e.classList.contains('search-hidden')) return;
+            var top = e.offsetTop;
+            var d = Math.abs(top - viewMid);
+            if (d < closestDist) { closestDist = d; closest = e; }
+        });
+        document.querySelectorAll('.sidebar-entry.active').forEach(function(el) {
+            el.classList.remove('active');
+        });
+        if (closest) {
+            var idx = closest.getAttribute('data-index');
+            var se = sidebar.querySelector('[data-entry-index="' + idx + '"]');
+            if (se) {
+                se.classList.add('active');
+                se.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+        }
+    }
+    var scrollTimer;
+    scrollContainer.addEventListener('scroll', function() {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(syncSidebarHighlight, 50);
+    });
+
+    // --- Sidebar Filter Sync ---
+    function syncSidebarFilters() {
+        document.querySelectorAll('.sidebar-entry').forEach(function(se) {
+            var idx = se.getAttribute('data-entry-index');
+            if (idx === null) return;
+            var entry = document.getElementById('entry-' + idx);
+            if (!entry) return;
+            var hidden = entry.classList.contains('filter-hidden') || entry.classList.contains('search-hidden');
+            if (hidden) {
+                se.classList.add('filter-hidden');
+            } else {
+                se.classList.remove('filter-hidden');
+            }
+        });
+    }
+
+    // --- Jump User Navigation ---
+    function getUserEntries() {
+        return Array.from(document.querySelectorAll('.main-container > .entry[data-type="user"]')).filter(function(e) {
+            return !e.classList.contains('filter-hidden') && !e.classList.contains('search-hidden');
+        });
+    }
+    var jumpPrev = document.getElementById('jump-prev');
+    var jumpNext = document.getElementById('jump-next');
+    if (jumpPrev) {
+        jumpPrev.addEventListener('click', function() {
+            var userEntries = getUserEntries();
+            var scrollY = scrollContainer.scrollTop;
+            for (var i = userEntries.length - 1; i >= 0; i--) {
+                if (userEntries[i].offsetTop < scrollY - 10) {
+                    userEntries[i].scrollIntoView({ block: 'start', behavior: 'smooth' });
+                    return;
+                }
+            }
+        });
+    }
+    if (jumpNext) {
+        jumpNext.addEventListener('click', function() {
+            var userEntries = getUserEntries();
+            var scrollY = scrollContainer.scrollTop;
+            for (var i = 0; i < userEntries.length; i++) {
+                if (userEntries[i].offsetTop > scrollY + 60) {
+                    userEntries[i].scrollIntoView({ block: 'start', behavior: 'smooth' });
+                    return;
+                }
+            }
+        });
+    }
+
+    // --- Diff Rendering ---
+    document.querySelectorAll('pre[data-lang="diff"] code').forEach(function(codeEl) {
+        var lines = codeEl.textContent.split('\n');
+        codeEl.textContent = '';
+        lines.forEach(function(line) {
+            var span = document.createElement('span');
+            span.className = 'diff-line';
+            if (line.startsWith('+') && !line.startsWith('+++')) { span.classList.add('diff-add'); }
+            else if (line.startsWith('-') && !line.startsWith('---')) { span.classList.add('diff-del'); }
+            else if (line.startsWith('@@')) { span.classList.add('diff-hunk'); }
+            span.textContent = line;
+            codeEl.appendChild(span);
+        });
+    });
+
+    // --- Syntax Highlighting ---
+    var langKeywords = {
+        'javascript': /\b(const|let|var|function|return|if|else|for|while|class|import|export|from|default|async|await|new|this|typeof|instanceof|try|catch|throw|finally|switch|case|break|continue|yield|of|in|do)\b/g,
+        'typescript': /\b(const|let|var|function|return|if|else|for|while|class|import|export|from|default|async|await|new|this|typeof|instanceof|try|catch|throw|finally|switch|case|break|continue|yield|of|in|do|type|interface|enum|namespace|declare|abstract|implements|extends|as|keyof|readonly|public|private|protected|satisfies)\b/g,
+        'python': /\b(def|class|return|if|elif|else|for|while|import|from|as|try|except|finally|raise|with|yield|lambda|pass|break|continue|and|or|not|in|is|True|False|None|self|async|await|global|nonlocal)\b/g,
+        'rust': /\b(fn|let|mut|const|if|else|for|while|loop|match|struct|enum|impl|trait|pub|use|mod|crate|self|super|return|break|continue|where|async|await|move|ref|type|as|in|unsafe|extern|dyn|static|true|false)\b/g,
+        'go': /\b(func|var|const|if|else|for|range|switch|case|return|break|continue|type|struct|interface|map|chan|go|defer|select|package|import|true|false|nil|default|fallthrough)\b/g,
+        'bash': /\b(if|then|else|elif|fi|for|do|done|while|until|case|esac|function|return|local|export|source|echo|exit|set|unset|readonly|shift|trap|eval|exec|test|in)\b/g,
+        'json': null,
+        'sql': /\b(SELECT|FROM|WHERE|INSERT|UPDATE|DELETE|CREATE|DROP|ALTER|JOIN|LEFT|RIGHT|INNER|OUTER|ON|AND|OR|NOT|IN|IS|NULL|AS|ORDER|BY|GROUP|HAVING|LIMIT|OFFSET|UNION|ALL|DISTINCT|SET|VALUES|INTO|TABLE|INDEX|VIEW|BEGIN|COMMIT|ROLLBACK|GRANT|REVOKE|PRIMARY|KEY|FOREIGN|REFERENCES|CASCADE|DEFAULT|CHECK|UNIQUE|CONSTRAINT|EXISTS|BETWEEN|LIKE|CASE|WHEN|THEN|ELSE|END|COUNT|SUM|AVG|MIN|MAX|COALESCE|CAST|TRUE|FALSE)\b/gi,
+        'css': /\b(color|background|border|margin|padding|display|position|top|left|right|bottom|width|height|font|flex|grid|align|justify|overflow|opacity|transform|transition|animation|z-index|content|cursor|outline|box-sizing|text-align|vertical-align|white-space|min-width|max-width|min-height|max-height|gap|order|float|clear|visibility)\b/gi,
+        'html': null,
+    };
+    langKeywords['js'] = langKeywords['javascript'];
+    langKeywords['ts'] = langKeywords['typescript'];
+    langKeywords['py'] = langKeywords['python'];
+    langKeywords['rs'] = langKeywords['rust'];
+    langKeywords['sh'] = langKeywords['bash'];
+    langKeywords['shell'] = langKeywords['bash'];
+    langKeywords['zsh'] = langKeywords['bash'];
+
+    var stringRe = /("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)/g;
+    var numberRe = /\b(\d+\.?\d*(?:e[+-]?\d+)?|0x[0-9a-f]+|0b[01]+|0o[0-7]+)\b/gi;
+    var singleLineComment = /(\/\/[^\n]*)/g;
+    var hashComment = /(#[^\n]*)/g;
+    var multiLineComment = /(\/\*[\s\S]*?\*\/)/g;
+    var sqlComment = /(--[^\n]*)/g;
+
+    function highlightCode(codeEl, lang) {
+        if (!lang || lang === 'diff' || lang === 'json' || lang === 'html' || lang === 'xml') return;
+        var text = codeEl.textContent;
+        var tokens = [];
+        var idx = 0;
+
+        // Tokenize comments first
+        var commentRes = [];
+        if (lang === 'python' || lang === 'py' || lang === 'bash' || lang === 'sh' || lang === 'shell' || lang === 'zsh') {
+            commentRes.push(hashComment);
+        }
+        if (lang === 'sql') {
+            commentRes.push(sqlComment);
+        }
+        if (lang !== 'python' && lang !== 'py' && lang !== 'bash' && lang !== 'sh' && lang !== 'shell' && lang !== 'zsh' && lang !== 'sql' && lang !== 'css') {
+            commentRes.push(singleLineComment);
+            commentRes.push(multiLineComment);
+        }
+        if (lang === 'css') {
+            commentRes.push(multiLineComment);
+        }
+
+        // Simple token-based approach: find all matches, sort by position, render
+        var allMatches = [];
+        function findAll(re, cls) {
+            re.lastIndex = 0;
+            var m;
+            while ((m = re.exec(text)) !== null) {
+                allMatches.push({ start: m.index, end: m.index + m[0].length, cls: cls, text: m[0] });
+            }
+        }
+        commentRes.forEach(function(re) { findAll(re, 'syn-cmt'); });
+        findAll(stringRe, 'syn-str');
+        findAll(numberRe, 'syn-num');
+        var kwRe = langKeywords[lang];
+        if (kwRe) { findAll(kwRe, 'syn-kw'); }
+
+        // Sort by start position, prioritize comments > strings > others
+        var priority = { 'syn-cmt': 0, 'syn-str': 1, 'syn-num': 2, 'syn-kw': 3, 'syn-fn': 4, 'syn-type': 5, 'syn-op': 6 };
+        allMatches.sort(function(a, b) { return a.start - b.start || (priority[a.cls] || 9) - (priority[b.cls] || 9); });
+
+        // Remove overlapping matches
+        var filtered = [];
+        var lastEnd = 0;
+        allMatches.forEach(function(m) {
+            if (m.start >= lastEnd) {
+                filtered.push(m);
+                lastEnd = m.end;
+            }
+        });
+
+        // Build HTML
+        var html = '';
+        var pos = 0;
+        filtered.forEach(function(m) {
+            if (m.start > pos) html += escapeHtmlJS(text.substring(pos, m.start));
+            html += '<span class="' + m.cls + '">' + escapeHtmlJS(m.text) + '<\/span>';
+            pos = m.end;
+        });
+        if (pos < text.length) html += escapeHtmlJS(text.substring(pos));
+        codeEl.innerHTML = html;
+    }
+
+    function escapeHtmlJS(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    document.querySelectorAll('.md-code-block pre[data-lang]').forEach(function(pre) {
+        var lang = pre.getAttribute('data-lang');
+        var codeEl = pre.querySelector('code');
+        if (codeEl && lang) highlightCode(codeEl, lang.toLowerCase());
+    });
+
+    // --- Permalink/Anchor ---
+    if (location.hash) {
+        var target = document.querySelector(location.hash);
+        if (target && target.classList.contains('entry')) {
+            target.classList.remove('collapsed');
+            setTimeout(function() { target.scrollIntoView({ block: 'start' }); }, 100);
+        }
+    }
+    document.querySelectorAll('.entry-time').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var href = link.getAttribute('href');
+            history.replaceState(null, '', href);
+        });
+    });
+})();
+</script>
+</body>
+</html>
