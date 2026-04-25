@@ -48,3 +48,4 @@ python -m pytest tests/
 * Not production-ready (obviously)
 * Some code could be improved
 * Could add more commands later
+\n- Added: find supports searching by title or author (case-insensitive, partial match).
