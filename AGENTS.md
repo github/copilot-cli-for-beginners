@@ -37,3 +37,7 @@ Beginner-friendly course teaching GitHub Copilot CLI. Educational content, not s
 ```bash
 npm install && npm run release
 ```
+
+## notice
+
+- think in English , answer in Chinese
