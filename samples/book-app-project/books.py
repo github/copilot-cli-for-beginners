@@ -69,4 +69,5 @@ class BookCollection:
 
     def find_by_author(self, author: str) -> List[Book]:
         """Find all books by a given author."""
-        return [b for b in self.books if b.author.lower() == author.lower()]
+        normalized_author = author.lower()
+        return [b for b in self.books if normalized_author in b.author.lower()]

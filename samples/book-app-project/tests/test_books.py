@@ -51,3 +51,34 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+
+def test_find_by_author_returns_partial_matches():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.add_book("Dune Messiah", "Frank Herbert", 1969)
+    collection.add_book("Neuromancer", "William Gibson", 1984)
+
+    books_by_author = collection.find_by_author("Herbert")
+
+    assert [book.title for book in books_by_author] == ["Dune", "Dune Messiah"]
+
+
+def test_find_by_author_matches_case_insensitively():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.add_book("Children of Dune", "FRANK HERBERT", 1976)
+
+    books_by_author = collection.find_by_author("frank")
+
+    assert [book.title for book in books_by_author] == ["Dune", "Children of Dune"]
+
+
+def test_find_by_author_returns_empty_list_when_author_has_no_matches():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.add_book("Neuromancer", "William Gibson", 1984)
+
+    books_by_author = collection.find_by_author("Isaac Asimov")
+
+    assert books_by_author == []
