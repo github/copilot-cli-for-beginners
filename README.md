@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/github-copilot-cli-for-beginners-badge.png)](https://mseep.ai/app/github-copilot-cli-for-beginners)
+
 ![GitHub Copilot CLI for Beginners](./images/copilot-banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)&ensp;
