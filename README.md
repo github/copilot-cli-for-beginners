@@ -92,7 +92,6 @@ The **[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/
 ## 🙋 Getting Help
 
 - 🐛 **Found a bug?** [Open an Issue](https://github.com/github/copilot-cli-for-beginners/issues)
-- 🤝 **Want to contribute?** PRs welcome!
 - 📚 **Official Docs:** [GitHub Copilot CLI Documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)
 
 ## Contributing
