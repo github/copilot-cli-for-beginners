@@ -422,7 +422,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 | Command | What It Does |
 |---------|--------------|
 | `/add-dir <directory>` | Add a directory to allowed list |
-| `/allow-all [on|off|show]` | Auto-approve all permission prompts; use `on` to enable, `off` to disable, `show` to check current status |
+| `/allow-all [on\|off\|show]` | Auto-approve all permission prompts; use `on` to enable, `off` to disable, `show` to check current status |
 | `/yolo` | Quick alias for `/allow-all on` — auto-approves all permission prompts. |
 | `/cwd`, `/cd [directory]` | View or change working directory |
 | `/list-dirs` | Show all allowed directories |
@@ -596,7 +596,7 @@ Additional details about remote sessions can be found in the [Copilot CLI docs](
 The hands-on examples focused on reviewing and refactoring `book_app.py`. Now practice the same skills on a different file, `utils.py`:
 
 1. Start an interactive session: `copilot`
-2. Ask Copilot CLI to summarize the file: `@samples/book-app-project/utils.py What does each function in this file do?`
+2. Ask Copilot CLI to summarize the file: "Summarize @samples/book-app-project/utils.py and explain what each function in this file does"
 3. Ask it to add input validation: "Add validation to `get_user_choice()` so it handles empty input and non-numeric entries"
 4. Ask it to improve error handling: "What happens if `get_book_details()` receives an empty string for the title? Add guards for that."
 5. Ask for a docstring: "Add a comprehensive docstring to `get_book_details()` with parameter descriptions and return values"
