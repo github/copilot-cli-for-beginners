@@ -1,5 +1,6 @@
 ![GitHub Copilot CLI for Beginners](./images/copilot-banner.png)
 
+[![AI Ready](https://img.shields.io/badge/AI--Ready-yes-brightgreen?style=flat)](https://github.com/johnpapa/ai-ready)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)&ensp;
 [![Open project in GitHub Codespaces](https://img.shields.io/badge/Codespaces-Open-blue?style=flat-square&logo=github)](https://codespaces.new/github/copilot-cli-for-beginners?hide_repo_select=true&ref=main&quickstart=true)&ensp;
 [![Official Copilot CLI documentation](https://img.shields.io/badge/GitHub-CLI_Documentation-00a3ee?style=flat-square&logo=github)](https://docs.github.com/en/copilot/how-tos/copilot-cli)&ensp;
@@ -94,6 +95,17 @@ The **[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/
 - 🐛 **Found a bug?** [Open an Issue](https://github.com/github/copilot-cli-for-beginners/issues)
 - 🤝 **Want to contribute?** PRs welcome!
 - 📚 **Official Docs:** [GitHub Copilot CLI Documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)
+
+## Contributing
+
+> **Note**: The code used in the course is designed to generate specific types of output during reviews, explanations, and debugging so we aren't able to accept PRs that change the existing code.
+
+**How to contribute:**
+
+1. Fork this repository and clone it to your machine
+2. Create a feature branch (`git checkout -b my-improvement`)
+3. Make your changes
+4. Submit a pull request
 
 ## License
 

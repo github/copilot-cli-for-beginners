@@ -1,0 +1,65 @@
+name: 🐛 Bug Report
+description: Report an issue with course content, broken examples, or incorrect instructions
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve this course! Please fill out the details below so we can fix the issue quickly.
+
+  - type: dropdown
+    id: chapter
+    attributes:
+      label: Which chapter is affected?
+      options:
+        - "00 - Quick Start"
+        - "01 - First Steps"
+        - "02 - Context and Conversations"
+        - "03 - Development Workflows"
+        - "04 - Create Specialized AI Assistants"
+        - "05 - Automate Repetitive Tasks"
+        - "06 - Connect to GitHub, Databases & APIs"
+        - "07 - Putting It All Together"
+        - "Sample code (samples/)"
+        - "Appendices"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the issue clearly. If a command or code example didn't work, include the exact text you copied.
+      placeholder: "When I ran the command from the 'Code Review' section, I got an error..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: "I expected to see the code review output shown in the example..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Your OS, terminal, Copilot CLI version, and Python version
+      placeholder: |
+        - OS: macOS 15 / Windows 11 / Ubuntu 24.04
+        - Terminal: iTerm2 / Windows Terminal / default
+        - Copilot CLI version: (run `copilot --version`)
+        - Python version: (run `python3 --version`)
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or terminal output
+      description: If applicable, paste terminal output or attach screenshots
+    validations:
+      required: false
