@@ -36,6 +36,16 @@ class BookCollection:
             json.dump([asdict(b) for b in self.books], f, indent=2)
 
     def add_book(self, title: str, author: str, year: int) -> Book:
+        # Validate year is an int and within reasonable bounds
+        from datetime import date
+
+        if not isinstance(year, int):
+            raise ValueError("Year must be an integer")
+
+        current_year = date.today().year
+        if year != 0 and (year < -5000 or year > current_year):
+            raise ValueError(f"Year out of range: must be between -5000 and {current_year} (or 0 for unknown)")
+
         book = Book(title=title, author=author, year=year)
         self.books.append(book)
         self.save_books()

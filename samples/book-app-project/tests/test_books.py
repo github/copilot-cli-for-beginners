@@ -141,3 +141,38 @@ def test_persistence_after_multiple_operations(tmp_path, monkeypatch):
     b = col2.find_book_by_title("B")
     assert a is not None and a.read is True
     assert b is None
+
+def test_parse_year_and_handle_add_retries(tmp_path, monkeypatch):
+    # Setup temp data file and collection
+    temp_file = tmp_path / "data.json"
+    temp_file.write_text("[]")
+    monkeypatch.setattr(books, "DATA_FILE", str(temp_file))
+
+    # Prepare inputs: title, author, invalid 'abc', out-of-range '99999', then valid '2000'
+    inputs = iter(["Test Title", "Test Author", "abc", "99999", "2000"])
+    monkeypatch.setattr('builtins.input', lambda prompt='': next(inputs))
+
+    # Inject collection into book_app and call handler
+    import book_app
+    book_app.collection = BookCollection()
+    book_app.handle_add()
+
+    # Verify book was added with year 2000
+    b = book_app.collection.find_book_by_title("Test Title")
+    assert b is not None
+    assert b.year == 2000
+
+
+def test_parse_year_validation():
+    from utils import parse_year
+    # valid
+    assert parse_year("") == 0
+    assert parse_year("1999") == 1999
+    assert parse_year(" -800 ") == -800
+    # invalid numeric out of range
+    from datetime import date
+    current = date.today().year
+    with pytest.raises(ValueError):
+        parse_year(str(current + 10))
+    with pytest.raises(ValueError):
+        parse_year("not-a-number")

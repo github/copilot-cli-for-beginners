@@ -31,10 +31,23 @@ def handle_add():
 
     title = input("Title: ").strip()
     author = input("Author: ").strip()
-    year_str = input("Year: ").strip()
+
+    # Prompt for year with validation and retries
+    while True:
+        year_str = input("Year: ").strip()
+        try:
+            from utils import parse_year
+
+            year = parse_year(year_str)
+            break
+        except ValueError as e:
+            print(f"Invalid year: {e}")
+            # loop and prompt again
 
     try:
-        year = int(year_str) if year_str else 0
+        if collection is None:
+            print("Collection not initialized.")
+            return
         collection.add_book(title, author, year)
         print("\nBook added successfully.\n")
     except ValueError as e:
@@ -57,6 +70,7 @@ def handle_find():
     books = collection.find_by_author(author)
 
     show_books(books)
+
 
 
 def handle_mark():

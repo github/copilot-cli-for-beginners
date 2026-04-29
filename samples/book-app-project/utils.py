@@ -1,3 +1,6 @@
+from datetime import date
+
+
 def print_menu():
     print("\n📚 Book Collection App")
     print("1. Add a book")
@@ -34,3 +37,28 @@ def print_books(books):
     for index, book in enumerate(books, start=1):
         status = "✅ Read" if book.read else "📖 Unread"
         print(f"{index}. {book.title} by {book.author} ({book.year}) - {status}")
+
+
+# Year parsing and validation utility
+MIN_YEAR = -5000
+
+
+def parse_year(year_str: str) -> int:
+    """Parse and validate a year input from the user.
+
+    Accepts an empty string (returns 0). Raises ValueError for invalid or out-of-range values.
+    """
+    s = year_str.strip()
+    if s == "":
+        return 0
+
+    try:
+        year = int(s)
+    except ValueError:
+        raise ValueError("El año debe ser un entero o vacío")
+
+    current_year = date.today().year
+    if year < MIN_YEAR or year > current_year:
+        raise ValueError(f"Año fuera de rango: debe estar entre {MIN_YEAR} y {current_year}")
+
+    return year
