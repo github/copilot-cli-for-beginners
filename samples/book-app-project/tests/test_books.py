@@ -51,3 +51,95 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+
+# --- Validation tests for add_book ---
+
+def test_add_book_empty_title_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Title cannot be empty"):
+        collection.add_book("", "Author", 2020)
+
+
+def test_add_book_whitespace_title_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Title cannot be empty"):
+        collection.add_book("   ", "Author", 2020)
+
+
+def test_add_book_empty_author_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Author cannot be empty"):
+        collection.add_book("Title", "", 2020)
+
+
+def test_add_book_year_zero_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Year must be between"):
+        collection.add_book("Title", "Author", 0)
+
+
+def test_add_book_negative_year_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Year must be between"):
+        collection.add_book("Title", "Author", -5)
+
+
+def test_add_book_strips_whitespace():
+    collection = BookCollection()
+    book = collection.add_book("  1984  ", "  Orwell  ", 1949)
+    assert book.title == "1984"
+    assert book.author == "Orwell"
+
+
+def test_add_book_year_too_large_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Year must be between"):
+        collection.add_book("Title", "Author", 10000)
+
+
+def test_add_book_whitespace_author_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Author cannot be empty"):
+        collection.add_book("Title", "   \t  ", 2020)
+
+
+def test_add_book_none_title_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Title cannot be empty"):
+        collection.add_book(None, "Author", 2020)
+
+
+def test_add_book_valid_boundary_years():
+    """Year 1 and 9999 should both be accepted."""
+    collection = BookCollection()
+    book_min = collection.add_book("Ancient", "Author", 1)
+    book_max = collection.add_book("Future", "Author", 9999)
+    assert book_min.year == 1
+    assert book_max.year == 9999
+
+
+def test_add_book_persists_to_disk():
+    """Validated book is saved and survives a reload."""
+    collection = BookCollection()
+    collection.add_book("Persisted", "Writer", 2000)
+    reloaded = BookCollection()
+    assert len(reloaded.books) == 1
+    assert reloaded.books[0].title == "Persisted"
+
+
+def test_add_book_invalid_does_not_persist():
+    """A rejected book should not be saved to disk."""
+    collection = BookCollection()
+    with pytest.raises(ValueError):
+        collection.add_book("", "Author", 2020)
+    reloaded = BookCollection()
+    assert len(reloaded.books) == 0
+
+
+# --- Display consolidation: print_books removed from utils ---
+
+def test_utils_has_no_print_books():
+    """Confirm the duplicate print_books was removed from utils."""
+    import utils
+    assert not hasattr(utils, "print_books")
