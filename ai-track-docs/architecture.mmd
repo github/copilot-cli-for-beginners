@@ -1,0 +1,14 @@
+graph TD
+    A[book_app.py<br>Entry point / CLI] --> B[books.py<br>Book CRUD logic]
+    A --> C[utils.py<br>Shared helpers]
+    B --> D[data.json<br>Persistent storage]
+    B --> E[tests/test_books.py<br>pytest suite]
+    C --> E
+
+    subgraph samples/book-app-project
+        A
+        B
+        C
+        D
+        E
+    end
