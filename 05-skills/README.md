@@ -101,6 +101,20 @@ While auto-triggering is the primary way skills work, you can also **invoke skil
 
 This gives you explicit control when you want to ensure a specific skill is used.
 
+#### Combining Multiple Skills in One Message
+
+You can invoke **more than one skill in a single message**, and the skill slash command can appear anywhere in your prompt — not just at the beginning. This is handy when you want two different checks done in one go:
+
+```bash
+> Check @samples/book-app-project/book_app.py with /code-checklist and also run /generate-tests for it
+
+> Review the auth module /security-audit then /code-checklist the result
+```
+
+Copilot will apply each named skill in the same response, saving you from sending multiple separate messages.
+
+> 💡 **Tip**: Put the skill slash commands wherever they feel most natural in your sentence. You can put them at the start, middle, or end of your message.
+
 > 📝 **Skills vs Agents Invocation**: Don't confuse skill invocation with agent invocation:
 > - **Skills**: `/skill-name <prompt>`, e.g., `/code-checklist Check this file`
 > - **Agents**: `/agent` (select from list) or `copilot --agent <name>` (command line)
