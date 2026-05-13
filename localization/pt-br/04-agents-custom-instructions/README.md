@@ -197,11 +197,11 @@ Cada tópico abaixo é independente. **Escolha o que lhe interessa - você não 
 
 | Quero... | Ir para |
 |---|---|
-| Ver por que agentes superam prompts genéricos | [Especialista vs Genérico](#specialist-vs-generic-see-the-difference) |
-| Combinar agentes em uma funcionalidade | [Trabalhando com Múltiplos Agentes](#working-with-multiple-agents) |
+| Ver por que agentes superam prompts genéricos | [Especialista vs Genérico](#especialista-vs-genérico-veja-a-diferença) |
+| Combinar agentes em uma funcionalidade | [Trabalhando com Múltiplos Agentes](#trabalhando-com-múltiplos-agentes) |
 | Organizar, nomear e compartilhar agentes | [Organizando & Compartilhando Agentes](#organizing--sharing-agents) |
-| Configurar contexto sempre ativo do projeto | [Configurando Seu Projeto para o Copilot](#configuring-your-project-for-copilot) |
-| Consultar propriedades YAML e ferramentas | [Referência de Arquivo de Agente](#agent-file-reference) |
+| Configurar contexto sempre ativo do projeto | [Configurando Seu Projeto para o Copilot](#configurando-seu-projeto-para-o-copilot) |
+| Consultar propriedades YAML e ferramentas | [Referência de Arquivo de Agente](#referência-de-arquivo-de-agente) |
 
 Selecione um cenário abaixo para expandi-lo.
 
@@ -384,13 +384,13 @@ Pense desta forma: agentes são especialistas que você chama, e arquivos de ins
 
 ### Onde Colocar Seus Arquivos
 
-Você já conhece os dois locais principais (veja [Onde colocar os arquivos de agente](#where-to-put-agent-files) acima). Use esta árvore de decisão para escolher:
+Você já conhece os dois locais principais (veja [Onde colocar os arquivos de agente](#onde-colocar-os-arquivos-de-agente) acima). Use esta árvore de decisão para escolher:
 
 <img src="../../../04-agents-custom-instructions/images/agent-file-placement-decision-tree.png" alt="Árvore de decisão para onde colocar arquivos de agente: experimentando → pasta atual, uso pela equipe → .github/agents/, em todo lugar → ~/.copilot/agents/" width="800"/>
 
 **Comece simples:** Crie um único arquivo `*.agent.md` na sua pasta do projeto. Mova-o para um local permanente quando estiver satisfeito com ele.
 
-Além dos arquivos de agente, o Copilot também lê **arquivos de instruções de nível de projeto** automaticamente, sem necessidade de `/agent`. Veja [Configurando Seu Projeto para o Copilot](#configuring-your-project-for-copilot) abaixo para `AGENTS.md`, `.instructions.md` e `/init`.
+Além dos arquivos de agente, o Copilot também lê **arquivos de instruções de nível de projeto** automaticamente, sem necessidade de `/agent`. Veja [Configurando Seu Projeto para o Copilot](#configurando-seu-projeto-para-o-copilot) abaixo para `AGENTS.md`, `.instructions.md` e `/init`.
 
 </details>
 

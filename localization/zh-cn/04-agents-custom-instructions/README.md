@@ -197,11 +197,11 @@ copilot --agent python-reviewer
 
 | 我想要…… | 跳转到 |
 |---|---|
-| 看看为什么智能体比通用提示更胜一筹 | [专家 vs 通才](#specialist-vs-generic-see-the-difference) |
-| 在一个功能上组合多个智能体 | [使用多个智能体协作](#working-with-multiple-agents) |
+| 看看为什么智能体比通用提示更胜一筹 | [专家 vs 通才](#专家-vs-通才-直观对比) |
+| 在一个功能上组合多个智能体 | [使用多个智能体协作](#使用多个智能体协作) |
 | 组织、命名并分享智能体 | [组织与分享智能体](#organizing--sharing-agents) |
-| 配置始终生效的项目上下文 | [为 Copilot 配置你的项目](#configuring-your-project-for-copilot) |
-| 查阅 YAML 属性和工具 | [智能体文件参考](#agent-file-reference) |
+| 配置始终生效的项目上下文 | [为 Copilot 配置你的项目](#为-copilot-配置你的项目) |
+| 查阅 YAML 属性和工具 | [智能体文件参考](#智能体文件参考) |
 
 点击下方任一场景即可展开。
 
@@ -384,13 +384,13 @@ copilot
 
 ### 文件应放在哪里
 
-你已经了解了两个主要位置（参见上文 [智能体文件应当放在哪里](#where-to-put-agent-files)）。可以使用下面这棵决策树来决定：
+你已经了解了两个主要位置（参见上文 [智能体文件应当放在哪里](#智能体文件应当放在哪里)）。可以使用下面这棵决策树来决定：
 
 <img src="../../../04-agents-custom-instructions/images/agent-file-placement-decision-tree.png" alt="智能体文件位置决策树：试验阶段 → 当前文件夹；团队使用 → .github/agents/；到处使用 → ~/.copilot/agents/" width="800"/>
 
 **从简单开始：** 先在你的项目目录里创建一个 `*.agent.md` 文件。等你对它满意了，再把它移到一个长期位置。
 
-除了智能体文件，Copilot 还会自动读取 **项目级别的指令文件**，无需 `/agent`。详情见下文的 [为 Copilot 配置你的项目](#configuring-your-project-for-copilot)，其中介绍了 `AGENTS.md`、`.instructions.md` 以及 `/init`。
+除了智能体文件，Copilot 还会自动读取 **项目级别的指令文件**，无需 `/agent`。详情见下文的 [为 Copilot 配置你的项目](#为-copilot-配置你的项目)，其中介绍了 `AGENTS.md`、`.instructions.md` 以及 `/init`。
 
 </details>
 
@@ -468,7 +468,7 @@ copilot --no-custom-instructions
 
 ### 一个更完整的示例
 
-你已经在前面看过 [最简智能体格式](#-add-your-agents)。下面是一个更完整、并且使用了 `tools` 属性的智能体。请创建 `~/.copilot/agents/python-reviewer.agent.md`：
+你已经在前面看过 [最简智能体格式](#-添加你的智能体)。下面是一个更完整、并且使用了 `tools` 属性的智能体。请创建 `~/.copilot/agents/python-reviewer.agent.md`：
 
 ```markdown
 ---

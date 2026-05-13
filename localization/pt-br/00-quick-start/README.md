@@ -204,7 +204,7 @@ copilot
 
 **Saída esperada**: Um resumo das principais funções e comandos do aplicativo de livros.
 
-Se você vir um erro, verifique a [seção de solução de problemas](#troubleshooting) abaixo.
+Se você vir um erro, verifique a [seção de solução de problemas](#solução-de-problemas) abaixo.
 
 Quando terminar, você pode sair do Copilot CLI:
 

@@ -49,8 +49,8 @@ Este capítulo cubre cinco flujos de trabajo que los desarrolladores suelen usar
 | Localizar y corregir un error | [Flujo 3: Depuración](#workflow-3-debugging) |
 | Generar tests para mi código | [Flujo 4: Generación de tests](#workflow-4-test-generation) |
 | Escribir mejores commits y PRs | [Flujo 5: Integración con Git](#workflow-5-git-integration) |
-| Investigar antes de codificar | [Consejo rápido: investiga antes de planificar o codificar](#quick-tip-research-before-you-plan-or-code) |
-| Ver un flujo completo de corrección de errores de principio a fin | [Poniéndolo todo junto](#putting-it-all-together-bug-fix-workflow) |
+| Investigar antes de codificar | [Consejo rápido: investiga antes de planificar o codificar](#consejo-rápido-investiga-antes-de-planificar-o-codificar) |
+| Ver un flujo completo de corrección de errores de principio a fin | [Poniéndolo todo junto](#poniéndolo-todo-junto-flujo-de-corrección-de-errores) |
 
 **Selecciona un flujo de trabajo a continuación para expandirlo** y ver cómo GitHub Copilot CLI puede mejorar tu proceso de desarrollo en esa área.
 

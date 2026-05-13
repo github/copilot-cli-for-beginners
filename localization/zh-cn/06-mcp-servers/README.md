@@ -187,9 +187,9 @@ GitHub MCP 服务器是内置的，无需任何设置。下面是你可以添加
 
 | 我想要…… | 跳转到 |
 |---|---|
-| 让 Copilot 浏览我的项目文件 | [Filesystem 服务器](#filesystem-server) |
-| 获取最新的库文档 | [Context7 服务器](#context7-server-documentation) |
-| 探索可选的进阶功能（自定义服务器、web_fetch） | [进阶内容](#beyond-the-basics) |
+| 让 Copilot 浏览我的项目文件 | [Filesystem 服务器](#filesystem-服务器) |
+| 获取最新的库文档 | [Context7 服务器](#context7-服务器-文档) |
+| 探索可选的进阶功能（自定义服务器、web_fetch） | [进阶内容](#进阶内容) |
 
 <details>
 <summary><strong>Filesystem 服务器</strong> - 让 Copilot 探索你的项目文件</summary>
@@ -369,7 +369,7 @@ copilot
 
 | 我想试试…… | 跳转到 |
 |---|---|
-| GitHub 仓库、issue 与 PR | [GitHub 服务器](#github-server-built-in) |
+| GitHub 仓库、issue 与 PR | [GitHub 服务器](#github-服务器-内置) |
 | 浏览项目文件 | [Filesystem 服务器使用](#filesystem-server-usage) |
 | 查询库文档 | [Context7 服务器使用](#context7-server-usage) |
 | 自定义服务器、Microsoft Learn MCP 与 web_fetch 用法 | [进阶内容用法](#beyond-the-basics-usage) |
@@ -533,7 +533,7 @@ copilot
 > Look up information about "1984" using the book lookup server. Search for books by George Orwell
 ```
 
-**Microsoft Learn MCP**：如果你安装了 [Microsoft Learn MCP 服务器](#microsoft-learn-mcp-server)，你可以直接查询 Microsoft 的官方文档：
+**Microsoft Learn MCP**：如果你安装了 [Microsoft Learn MCP 服务器](#microsoft-learn-mcp-服务器)，你可以直接查询 Microsoft 的官方文档：
 
 ```bash
 copilot
@@ -746,7 +746,7 @@ copilot
 
 **预期结果**：Copilot 列出 `book_app.py`、`books.py` 和 `utils.py` 及其包含的函数。
 
-> 💡 **还没配置 filesystem MCP？** 使用上面[完整配置](#complete-configuration-file)章节中的 JSON 创建配置文件。然后重启 Copilot。
+> 💡 **还没配置 filesystem MCP？** 使用上面[完整配置](#完整的配置文件)章节中的 JSON 创建配置文件。然后重启 Copilot。
 
 ---
 
@@ -821,7 +821,7 @@ copilot
 
 **第 2 步：创建配置文件**
 
-使用上面[完整配置](#complete-configuration-file)章节中的 JSON，并将其保存为 `~/.copilot/mcp-config.json`。
+使用上面[完整配置](#完整的配置文件)章节中的 JSON，并将其保存为 `~/.copilot/mcp-config.json`。
 
 **第 3 步：要查找的数据质量问题**
 

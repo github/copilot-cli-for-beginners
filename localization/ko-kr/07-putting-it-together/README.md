@@ -424,7 +424,7 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 <details>
 <summary>💡 힌트 (클릭해서 펼치기)</summary>
 
-**이번 장 첫 부분의 ["한 세션으로 아이디어부터 머지된 PR까지"](#idea-to-merged-pr-in-one-session) 예시 패턴을 그대로 따라 보세요.** 핵심 단계는 다음과 같습니다:
+**이번 장 첫 부분의 ["한 세션으로 아이디어부터 머지된 PR까지"](#한-세션으로-아이디어부터-머지된-pr까지) 예시 패턴을 그대로 따라 보세요.** 핵심 단계는 다음과 같습니다:
 
 1. `@samples/book-app-project/books.py`로 컨텍스트 수집
 2. `/plan Add a "search by year" command`로 계획 수립
@@ -452,7 +452,7 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 |---------|--------------|-----|
 | 곧바로 구현부터 뛰어들기 | 나중에 비싸게 고쳐야 할 설계 이슈를 놓칩니다 | 먼저 `/plan`으로 접근 방식을 정리하세요 |
 | 여러 도구가 도움이 될 상황에서 한 가지만 사용하기 | 더 느리고 덜 꼼꼼한 결과 | 결합하세요: 분석은 에이전트 → 실행은 스킬 → 통합은 MCP |
-| 커밋 전에 리뷰하지 않기 | 보안 이슈나 버그가 그대로 통과합니다 | 항상 `/review`를 실행하거나 [pre-commit 훅](#workflow-2-code-review-automation-optional)을 사용하세요 |
+| 커밋 전에 리뷰하지 않기 | 보안 이슈나 버그가 그대로 통과합니다 | 항상 `/review`를 실행하거나 [pre-commit 훅](#워크플로-2-코드-리뷰-자동화-선택)을 사용하세요 |
 | 팀과 워크플로를 공유하는 것을 잊기 | 팀원마다 같은 일을 다시 만들게 됩니다 | 공용 에이전트, 스킬, 인스트럭션에 패턴을 문서화하세요 |
 
 </details>

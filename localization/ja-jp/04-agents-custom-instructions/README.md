@@ -197,11 +197,11 @@ copilot --agent python-reviewer
 
 | 目的... | ジャンプ先 |
 |---|---|
-| エージェントが汎用プロンプトより優れている理由を確認する | [専門家対汎用](#specialist-vs-generic-see-the-difference) |
-| 機能でエージェントを組み合わせる | [複数エージェントで働く](#working-with-multiple-agents) |
+| エージェントが汎用プロンプトより優れている理由を確認する | [専門家対汎用](#専門家対汎用-違いを確認する) |
+| 機能でエージェントを組み合わせる | [複数エージェントで働く](#複数エージェントで働く) |
 | エージェントの整理、命名、共有 | [エージェントの整理と共有](#organizing--sharing-agents) |
-| 常時オンのプロジェクトコンテキストを設定する | [Copilot のためのプロジェクト設定](#configuring-your-project-for-copilot) |
-| YAML プロパティとツールを調べる | [エージェントファイルリファレンス](#agent-file-reference) |
+| 常時オンのプロジェクトコンテキストを設定する | [Copilot のためのプロジェクト設定](#copilot-のためのプロジェクト設定) |
+| YAML プロパティとツールを調べる | [エージェントファイルリファレンス](#エージェントファイルリファレンス) |
 
 以下のシナリオを選択して展開します。
 
@@ -384,13 +384,13 @@ copilot
 
 ### ファイルを置く場所
 
-2 つのメインの場所はすでに知っています（上記の[エージェントファイルを置く場所](#where-to-put-agent-files)を参照）。選択するためのディシジョンツリーです。
+2 つのメインの場所はすでに知っています（上記の[エージェントファイルを置く場所](#エージェントファイルを置く場所)を参照）。選択するためのディシジョンツリーです。
 
 <img src="../../../04-agents-custom-instructions/images/agent-file-placement-decision-tree.png" alt="エージェントファイルを置く場所のディシジョンツリー: 実験中 → 現在のフォルダ、チームで使う → .github/agents/、どこでも → ~/.copilot/agents/" width="800"/>
 
 **シンプルに始める:** プロジェクトフォルダに単一の `*.agent.md` ファイルを作成し、満足できたら恒久的な場所に移動します。
 
-エージェントファイルの他にも、Copilot はプロジェクトレベルの**指示ファイル**を自動的に読み込みます（`/agent` は不要）。`AGENTS.md`、`.instructions.md`、`/init` については以下の[Copilot のためのプロジェクト設定](#configuring-your-project-for-copilot)を参照してください。
+エージェントファイルの他にも、Copilot はプロジェクトレベルの**指示ファイル**を自動的に読み込みます（`/agent` は不要）。`AGENTS.md`、`.instructions.md`、`/init` については以下の[Copilot のためのプロジェクト設定](#copilot-のためのプロジェクト設定)を参照してください。
 
 </details>
 
@@ -468,7 +468,7 @@ copilot --no-custom-instructions
 
 ### より完全な例
 
-上記で[最小限のエージェントフォーマット](#-add-your-agents)を見ました。`tools` プロパティを使ったより包括的なエージェントです。`~/.copilot/agents/python-reviewer.agent.md` を作成します:
+上記で[最小限のエージェントフォーマット](#-エージェントを追加する)を見ました。`tools` プロパティを使ったより包括的なエージェントです。`~/.copilot/agents/python-reviewer.agent.md` を作成します:
 
 ```markdown
 ---

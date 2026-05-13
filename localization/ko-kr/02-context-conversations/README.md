@@ -441,15 +441,15 @@ Issue #1 (duplicate functions) was fixed on Monday.
 
 <img src="../../../02-context-conversations/images/optional-going-deeper.png" alt="컨텍스트 개념을 더 깊이 탐험하는 모습을 표현한, 푸른빛과 보랏빛이 도는 추상적인 크리스털 동굴" width="800"/>
 
-이 주제들은 위의 핵심 내용을 토대로 합니다. **관심 가는 것을 선택하거나, [실습](#practice)으로 바로 건너뛰어도 됩니다.**
+이 주제들은 위의 핵심 내용을 토대로 합니다. **관심 가는 것을 선택하거나, [실습](#실습)으로 바로 건너뛰어도 됩니다.**
 
 | 알고 싶은 주제... | 이동 |
 |---|---|
-| 와일드카드 패턴과 고급 세션 명령 | [추가 @ 패턴 및 세션 명령](#additional-patterns) |
-| 여러 프롬프트에 걸쳐 컨텍스트 쌓기 | [컨텍스트 인지 대화](#context-aware-conversations) |
-| 토큰 제한과 `/compact` | [컨텍스트 윈도우 이해하기](#understanding-context-windows) |
-| 참조할 파일을 어떻게 고를지 | [참조할 대상 고르기](#choosing-what-to-reference) |
-| 스크린샷과 목업 분석 | [이미지 다루기](#working-with-images) |
+| 와일드카드 패턴과 고급 세션 명령 | [추가 @ 패턴 및 세션 명령](#추가-패턴) |
+| 여러 프롬프트에 걸쳐 컨텍스트 쌓기 | [컨텍스트 인지 대화](#컨텍스트-인지-대화) |
+| 토큰 제한과 `/compact` | [컨텍스트 윈도우 이해하기](#컨텍스트-윈도우-이해하기) |
+| 참조할 파일을 어떻게 고를지 | [참조할 대상 고르기](#참조할-대상-고르기) |
+| 스크린샷과 목업 분석 | [이미지 다루기](#이미지-다루기) |
 
 <details>
 <summary><strong>추가 @ 패턴 및 세션 명령</strong></summary>
@@ -708,7 +708,7 @@ copilot
 > @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
-> 📖 **더 알아보기**: 지원되는 형식, 실용적인 활용 사례, 이미지와 코드를 결합하는 팁은 [추가 컨텍스트 기능](../appendices/additional-context.md#working-with-images)을 참고하세요.
+> 📖 **더 알아보기**: 지원되는 형식, 실용적인 활용 사례, 이미지와 코드를 결합하는 팁은 [추가 컨텍스트 기능](../appendices/additional-context.md#이미지로-작업하기)을 참고하세요.
 
 </details>
 
@@ -774,7 +774,7 @@ copilot --continue
 
 2. **세션 챌린지**: 세션을 시작하고 `/rename my-first-session`으로 이름을 부여한 뒤, 무언가 작업하고 `/exit`으로 나가세요. 그런 다음 `copilot --continue`를 실행해 보세요. 무엇을 하고 있었는지 기억하나요?
 
-3. **컨텍스트 챌린지**: 세션 도중에 `/context`를 실행해 보세요. 토큰을 얼마나 쓰고 있나요? `/compact`를 시도한 뒤 다시 확인해 보세요. (`/compact`에 대한 자세한 내용은 더 깊이 들어가기의 [컨텍스트 윈도우 이해하기](#understanding-context-windows)를 참고하세요.)
+3. **컨텍스트 챌린지**: 세션 도중에 `/context`를 실행해 보세요. 토큰을 얼마나 쓰고 있나요? `/compact`를 시도한 뒤 다시 확인해 보세요. (`/compact`에 대한 자세한 내용은 더 깊이 들어가기의 [컨텍스트 윈도우 이해하기](#컨텍스트-윈도우-이해하기)를 참고하세요.)
 
 **자가 점검**: 각 파일을 일일이 여는 것보다 `@folder/`가 왜 더 강력한지를 설명할 수 있다면, 컨텍스트를 이해한 것입니다.
 

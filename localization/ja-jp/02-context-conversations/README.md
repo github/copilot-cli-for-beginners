@@ -440,15 +440,15 @@ Issue #1 (duplicate functions) was fixed on Monday.
 
 <img src="../../../02-context-conversations/images/optional-going-deeper.png" alt="深いコンテキストの概念の探求を表す青と紫のトーンの抽象的な水晶洞窟" width="800"/>
 
-これらのトピックは上記の必須事項を基に構築されています。**興味のあるものを選んで、または[練習](#practice)に進んでください。**
+これらのトピックは上記の必須事項を基に構築されています。**興味のあるものを選んで、または[練習](#練習-practice)に進んでください。**
 
 | 学びたいこと... | ジャンプ先 |
 |---|---|
-| ワイルドカードパターンと高度なセッションコマンド | [追加の @ パターンとセッションコマンド](#additional-patterns) |
-| 複数のプロンプトにわたるコンテキストの積み上げ | [コンテキスト対応の会話](#context-aware-conversations) |
-| トークン制限と `/compact` | [コンテキストウィンドウを理解する](#understanding-context-windows) |
-| 参照するファイルの選び方 | [何を参照するかを選ぶ](#choosing-what-to-reference) |
-| スクリーンショットやモックアップの分析 | [画像を使う](#working-with-images) |
+| ワイルドカードパターンと高度なセッションコマンド | [追加の @ パターンとセッションコマンド](#追加の-パターン) |
+| 複数のプロンプトにわたるコンテキストの積み上げ | [コンテキスト対応の会話](#コンテキスト対応の会話) |
+| トークン制限と `/compact` | [コンテキストウィンドウを理解する](#コンテキストウィンドウを理解する) |
+| 参照するファイルの選び方 | [何を参照するかを選ぶ](#何を参照するかを選ぶ) |
+| スクリーンショットやモックアップの分析 | [画像を使う](#画像を使う) |
 
 <details>
 <summary><strong>追加の @ パターンとセッションコマンド</strong></summary>
@@ -707,7 +707,7 @@ copilot
 > @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
-> 📖 **詳細**: サポートされているフォーマット、実践的なユースケース、画像とコードを組み合わせるヒントについては、[追加コンテキスト機能](../appendices/additional-context.md#working-with-images)を参照してください。
+> 📖 **詳細**: サポートされているフォーマット、実践的なユースケース、画像とコードを組み合わせるヒントについては、[追加コンテキスト機能](../appendices/additional-context.md#画像の操作)を参照してください。
 
 </details>
 
@@ -773,7 +773,7 @@ copilot --continue
 
 2. **セッションチャレンジ**: セッションを開始して `/rename my-first-session` で名前を付け、何かを作業して `/exit` で終了し、`copilot --continue` を実行する。何をしていたか覚えていますか？
 
-3. **コンテキストチャレンジ**: セッション中に `/context` を実行する。どれだけのトークンを使用していますか？`/compact` を試して再確認しましょう。（`/compact` の詳細については「さらに深く学ぶ」の[コンテキストウィンドウを理解する](#understanding-context-windows)を参照。）
+3. **コンテキストチャレンジ**: セッション中に `/context` を実行する。どれだけのトークンを使用していますか？`/compact` を試して再確認しましょう。（`/compact` の詳細については「さらに深く学ぶ」の[コンテキストウィンドウを理解する](#コンテキストウィンドウを理解する)を参照。）
 
 **自己確認**: `@folder/` が各ファイルを個別に開くより強力な理由を説明できればコンテキストを理解しています。
 

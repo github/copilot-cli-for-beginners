@@ -49,8 +49,8 @@
 | 버그를 추적하고 수정하기 | [Workflow 3: Debugging](#workflow-3-debugging) |
 | 코드에 대한 테스트 생성하기 | [Workflow 4: Test Generation](#workflow-4-test-generation) |
 | 더 나은 커밋과 PR 작성하기 | [Workflow 5: Git Integration](#workflow-5-git-integration) |
-| 코딩 전에 리서치하기 | [Quick Tip: Research Before You Plan or Code](#quick-tip-research-before-you-plan-or-code) |
-| 처음부터 끝까지 버그 수정 워크플로 살펴보기 | [Putting It All Together](#putting-it-all-together-bug-fix-workflow) |
+| 코딩 전에 리서치하기 | [Quick Tip: Research Before You Plan or Code](#빠른-팁-계획하거나-코딩하기-전에-먼저-리서치하기) |
+| 처음부터 끝까지 버그 수정 워크플로 살펴보기 | [Putting It All Together](#모두-합치기-버그-수정-워크플로) |
 
 **아래에서 워크플로를 선택해 펼쳐 보고**, 해당 영역에서 GitHub Copilot CLI가 개발 과정을 어떻게 향상시키는지 확인해 보세요.
 

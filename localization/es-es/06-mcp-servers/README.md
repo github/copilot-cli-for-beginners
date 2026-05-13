@@ -187,9 +187,9 @@ El servidor MCP de GitHub viene integrado y no requiere configuración. A contin
 
 | Quiero... | Ir a |
 |---|---|
-| Dejar que Copilot navegue por los archivos de mi proyecto | [Servidor Filesystem](#filesystem-server) |
-| Obtener documentación de librerías actualizada | [Servidor Context7](#context7-server-documentation) |
-| Explorar extras opcionales (servidores personalizados, web_fetch) | [Más allá de lo básico](#beyond-the-basics) |
+| Dejar que Copilot navegue por los archivos de mi proyecto | [Servidor Filesystem](#servidor-filesystem) |
+| Obtener documentación de librerías actualizada | [Servidor Context7](#servidor-context7-documentación) |
+| Explorar extras opcionales (servidores personalizados, web_fetch) | [Más allá de lo básico](#más-allá-de-lo-básico) |
 
 <details>
 <summary><strong>Servidor Filesystem</strong> - Deja que Copilot explore los archivos de tu proyecto</summary>
@@ -369,7 +369,7 @@ Ahora que tienes servidores MCP configurados, veamos lo que pueden hacer.
 
 | Quiero probar... | Ir a |
 |---|---|
-| Repos, issues y PRs de GitHub | [Servidor GitHub](#github-server-built-in) |
+| Repos, issues y PRs de GitHub | [Servidor GitHub](#servidor-github-integrado) |
 | Navegar por archivos del proyecto | [Uso del servidor Filesystem](#filesystem-server-usage) |
 | Búsqueda de documentación de librerías | [Uso del servidor Context7](#context7-server-usage) |
 | Servidor personalizado, MCP de Microsoft Learn y uso de web_fetch | [Uso de Más allá de lo básico](#beyond-the-basics-usage) |
@@ -533,7 +533,7 @@ copilot
 > Look up information about "1984" using the book lookup server. Search for books by George Orwell
 ```
 
-**MCP de Microsoft Learn**: Si has instalado el [servidor MCP de Microsoft Learn](#microsoft-learn-mcp-server), puedes consultar la documentación oficial de Microsoft directamente:
+**MCP de Microsoft Learn**: Si has instalado el [servidor MCP de Microsoft Learn](#servidor-mcp-de-microsoft-learn), puedes consultar la documentación oficial de Microsoft directamente:
 
 ```bash
 copilot
@@ -746,7 +746,7 @@ copilot
 
 **Resultado esperado**: Copilot lista `book_app.py`, `books.py` y `utils.py` con sus funciones.
 
-> 💡 **¿Aún no has configurado el MCP de filesystem?** Crea el archivo de configuración a partir de la sección [Configuración completa](#complete-configuration-file) de arriba. Después reinicia Copilot.
+> 💡 **¿Aún no has configurado el MCP de filesystem?** Crea el archivo de configuración a partir de la sección [Configuración completa](#archivo-de-configuración-completo) de arriba. Después reinicia Copilot.
 
 ---
 
@@ -821,7 +821,7 @@ copilot
 
 **Paso 2: Crea el archivo de configuración**
 
-Usa el JSON de la sección [Configuración completa](#complete-configuration-file) de arriba y guárdalo como `~/.copilot/mcp-config.json`.
+Usa el JSON de la sección [Configuración completa](#archivo-de-configuración-completo) de arriba y guárdalo como `~/.copilot/mcp-config.json`.
 
 **Paso 3: Problema de calidad de datos a buscar**
 

@@ -49,8 +49,8 @@ Este capítulo cobre cinco fluxos de trabalho que os desenvolvedores normalmente
 | Rastrear e corrigir um bug | [Fluxo de Trabalho 3: Depuração](#workflow-3-debugging) |
 | Gerar testes para meu código | [Fluxo de Trabalho 4: Geração de Testes](#workflow-4-test-generation) |
 | Escrever commits e PRs melhores | [Fluxo de Trabalho 5: Integração com Git](#workflow-5-git-integration) |
-| Pesquisar antes de codificar | [Dica Rápida: Pesquise Antes de Planejar ou Codificar](#quick-tip-research-before-you-plan-or-code) |
-| Ver um fluxo de trabalho completo de correção de bug | [Juntando Tudo](#putting-it-all-together-bug-fix-workflow) |
+| Pesquisar antes de codificar | [Dica Rápida: Pesquise Antes de Planejar ou Codificar](#dica-rápida-pesquise-antes-de-planejar-ou-codificar) |
+| Ver um fluxo de trabalho completo de correção de bug | [Juntando Tudo](#juntando-tudo-fluxo-de-trabalho-de-correção-de-bug) |
 
 **Selecione um fluxo de trabalho abaixo para expandi-lo** e veja como o GitHub Copilot CLI pode aprimorar o seu processo de desenvolvimento nessa área.
 

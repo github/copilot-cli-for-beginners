@@ -49,8 +49,8 @@
 | バグを追跡して修正する | [ワークフロー 3: デバッグ](#workflow-3-debugging) |
 | コードのテストを生成する | [ワークフロー 4: テスト生成](#workflow-4-test-generation) |
 | より良いコミットと PR を書く | [ワークフロー 5: Git 統合](#workflow-5-git-integration) |
-| コーディング前に調査する | [クイックヒント: 計画やコーディング前に調査する](#quick-tip-research-before-you-plan-or-code) |
-| バグ修正ワークフロー全体を見る | [すべてをまとめる](#putting-it-all-together-bug-fix-workflow) |
+| コーディング前に調査する | [クイックヒント: 計画やコーディング前に調査する](#クイックヒント-計画やコーディング前に調査する-quick-tip-research-before-you-plan-or-code) |
+| バグ修正ワークフロー全体を見る | [すべてをまとめる](#すべてをまとめる-バグ修正ワークフロー-putting-it-all-together-bug-fix-workflow) |
 
 **以下のワークフローを選択して展開し**、その分野で GitHub Copilot CLI が開発プロセスをどのように強化できるかを確認しましょう。
 

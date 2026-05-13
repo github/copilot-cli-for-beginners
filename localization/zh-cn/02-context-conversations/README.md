@@ -440,15 +440,15 @@ Issue #1 (duplicate functions) was fixed on Monday.
 
 <img src="../../../02-context-conversations/images/optional-going-deeper.png" alt="蓝紫色调的抽象水晶洞窟，象征对上下文概念的更深入探索" width="800"/>
 
-这些主题建立在上文的基础知识之上。**挑你感兴趣的看，或者直接跳到 [实践](#practice)。**
+这些主题建立在上文的基础知识之上。**挑你感兴趣的看，或者直接跳到 [实践](#实践)。**
 
 | 我想了解…… | 跳转到 |
 |---|---|
-| 通配符模式与高级会话命令 | [更多 @ 模式与会话命令](#additional-patterns) |
-| 在多个提示词之间叠加上下文 | [上下文感知对话](#context-aware-conversations) |
-| Token 限制与 `/compact` | [理解上下文窗口](#understanding-context-windows) |
-| 如何挑选要引用的文件 | [选择要引用的内容](#choosing-what-to-reference) |
-| 分析截图和原型图 | [处理图片](#working-with-images) |
+| 通配符模式与高级会话命令 | [更多 @ 模式与会话命令](#更多-模式) |
+| 在多个提示词之间叠加上下文 | [上下文感知对话](#上下文感知对话) |
+| Token 限制与 `/compact` | [理解上下文窗口](#理解上下文窗口) |
+| 如何挑选要引用的文件 | [选择要引用的内容](#选择要引用的内容) |
+| 分析截图和原型图 | [处理图片](#处理图片) |
 
 <details>
 <summary><strong>更多 @ 模式与会话命令</strong></summary>
@@ -707,7 +707,7 @@ copilot
 > @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
-> 📖 **了解更多**：参见 [更多上下文功能](../appendices/additional-context.md#working-with-images)，了解支持的格式、实用场景，以及把图片与代码结合使用的小技巧。
+> 📖 **了解更多**：参见 [更多上下文功能](../appendices/additional-context.md#处理图片)，了解支持的格式、实用场景，以及把图片与代码结合使用的小技巧。
 
 </details>
 
@@ -773,7 +773,7 @@ copilot --continue
 
 2. **会话挑战**：开启一个会话，用 `/rename my-first-session` 给它命名，做点事情，用 `/exit` 退出，然后运行 `copilot --continue`。它还记得你之前在做什么吗？
 
-3. **上下文挑战**：在会话进行中运行 `/context`。你用了多少 token？再尝试 `/compact`，然后再次检查。（关于 `/compact` 的更多内容，请参见“深入了解”中的 [理解上下文窗口](#understanding-context-windows)。）
+3. **上下文挑战**：在会话进行中运行 `/context`。你用了多少 token？再尝试 `/compact`，然后再次检查。（关于 `/compact` 的更多内容，请参见“深入了解”中的 [理解上下文窗口](#理解上下文窗口)。）
 
 **自我检查**：当你能解释为什么 `@folder/` 比逐个打开每个文件更强大时，就说明你真正理解了上下文。
 

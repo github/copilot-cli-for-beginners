@@ -424,7 +424,7 @@ Documenta tu flujo de trabajo a medida que avances.
 <details>
 <summary>💡 Pistas (haz clic para expandir)</summary>
 
-**Sigue el patrón del ejemplo ["De la idea al PR fusionado"](#idea-to-merged-pr-in-one-session)** del inicio de este capítulo. Los pasos clave son:
+**Sigue el patrón del ejemplo ["De la idea al PR fusionado"](#de-la-idea-al-pr-fusionado-en-una-sola-sesión)** del inicio de este capítulo. Los pasos clave son:
 
 1. Reúne contexto con `@samples/book-app-project/books.py`
 2. Planifica con `/plan Add a "search by year" command`
@@ -452,7 +452,7 @@ Documenta tu flujo de trabajo a medida que avances.
 |---------|--------------|-----|
 | Saltar directamente a la implementación | Te pierdes problemas de diseño que cuesta corregir más tarde | Usa primero `/plan` para reflexionar sobre el enfoque |
 | Usar una sola herramienta cuando varias ayudarían | Resultados más lentos y menos completos | Combina: agente para análisis → skill para ejecución → MCP para integración |
-| No revisar antes de hacer commit | Se cuelan problemas de seguridad o bugs | Ejecuta siempre `/review` o usa un [hook de pre-commit](#workflow-2-code-review-automation-optional) |
+| No revisar antes de hacer commit | Se cuelan problemas de seguridad o bugs | Ejecuta siempre `/review` o usa un [hook de pre-commit](#flujo-de-trabajo-2-automatización-de-revisión-de-código-opcional) |
 | Olvidar compartir flujos de trabajo con el equipo | Cada persona reinventa la rueda | Documenta los patrones en agentes, skills e instrucciones compartidas |
 
 </details>

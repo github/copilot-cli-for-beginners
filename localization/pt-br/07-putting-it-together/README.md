@@ -424,7 +424,7 @@ Documente seu fluxo de trabalho conforme avança.
 <details>
 <summary>💡 Dicas (clique para expandir)</summary>
 
-**Siga o padrão do exemplo ["De Ideia a PR Mesclado"](#idea-to-merged-pr-in-one-session)** no início deste capítulo. Os passos principais são:
+**Siga o padrão do exemplo ["De Ideia a PR Mesclado"](#de-ideia-a-pr-mesclado-em-uma-sessão)** no início deste capítulo. Os passos principais são:
 
 1. Reunir contexto com `@samples/book-app-project/books.py`
 2. Planejar com `/plan Add a "search by year" command`
@@ -452,7 +452,7 @@ Documente seu fluxo de trabalho conforme avança.
 |------|----------------|---------|
 | Pular direto para a implementação | Perder problemas de design que são custosos para corrigir depois | Use `/plan` primeiro para pensar sobre a abordagem |
 | Usar uma ferramenta quando múltiplas ajudariam | Resultados mais lentos e menos completos | Combine: Agente para análise → Skill para execução → MCP para integração |
-| Não revisar antes de commitar | Problemas de segurança ou bugs passam despercebidos | Sempre execute `/review` ou use um [hook de pré-commit](#workflow-2-code-review-automation-optional) |
+| Não revisar antes de commitar | Problemas de segurança ou bugs passam despercebidos | Sempre execute `/review` ou use um [hook de pré-commit](#fluxo-de-trabalho-2-automação-de-revisão-de-código-opcional) |
 | Esquecer de compartilhar fluxos de trabalho com a equipe | Cada pessoa reinventa a roda | Documente padrões em agentes, skills e instruções compartilhadas |
 
 </details>

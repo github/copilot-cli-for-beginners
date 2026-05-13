@@ -424,7 +424,7 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 <details>
 <summary>💡 提示（点击展开）</summary>
 
-**沿用本章开头[「一次会话，从想法到合并的 PR」](#idea-to-merged-pr-in-one-session)示例中的模式。** 关键步骤包括：
+**沿用本章开头[「一次会话，从想法到合并的 PR」](#一次会话-从想法到合并的-pr)示例中的模式。** 关键步骤包括：
 
 1. 用 `@samples/book-app-project/books.py` 收集上下文
 2. 用 `/plan Add a "search by year" command` 进行规划
@@ -452,7 +452,7 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 |---------|--------------|-----|
 | 直接跳到实现阶段 | 错过设计层面的问题，后续修复成本高 | 先用 `/plan` 把思路理清楚 |
 | 多个工具能配合时只用了一个 | 速度更慢、结果不够全面 | 组合使用：用 Agent 做分析 → 用 Skill 执行 → 用 MCP 集成 |
-| 提交前没有审阅 | 安全问题或 Bug 被漏过 | 一定要运行 `/review`，或使用 [pre-commit 钩子](#workflow-2-code-review-automation-optional) |
+| 提交前没有审阅 | 安全问题或 Bug 被漏过 | 一定要运行 `/review`，或使用 [pre-commit 钩子](#工作流-2-自动化代码审阅-可选) |
 | 忘记把工作流分享给团队 | 每个人都在重新发明轮子 | 把模式沉淀到共享的 agents、skills 和 instructions 中 |
 
 </details>

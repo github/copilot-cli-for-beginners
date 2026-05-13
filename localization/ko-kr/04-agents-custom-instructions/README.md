@@ -197,11 +197,11 @@ copilot --agent python-reviewer
 
 | 하고 싶은 것 | 이동할 곳 |
 |---|---|
-| 에이전트가 일반 프롬프트보다 나은 이유 보기 | [Specialist vs Generic](#specialist-vs-generic-see-the-difference) |
-| 한 기능에 여러 에이전트 결합하기 | [Working with Multiple Agents](#working-with-multiple-agents) |
+| 에이전트가 일반 프롬프트보다 나은 이유 보기 | [Specialist vs Generic](#전문가-vs-일반-에이전트-차이를-직접-확인하기) |
+| 한 기능에 여러 에이전트 결합하기 | [Working with Multiple Agents](#여러-에이전트-함께-사용하기) |
 | 에이전트 정리·명명·공유하기 | [Organizing & Sharing Agents](#organizing--sharing-agents) |
-| 항상 활성화되는 프로젝트 컨텍스트 설정하기 | [Configuring Your Project for Copilot](#configuring-your-project-for-copilot) |
-| YAML 속성과 도구 찾아보기 | [Agent File Reference](#agent-file-reference) |
+| 항상 활성화되는 프로젝트 컨텍스트 설정하기 | [Configuring Your Project for Copilot](#copilot용-프로젝트-구성) |
+| YAML 속성과 도구 찾아보기 | [Agent File Reference](#에이전트-파일-레퍼런스) |
 
 아래 시나리오를 선택해 펼쳐 보세요.
 
@@ -384,13 +384,13 @@ copilot
 
 ### 파일을 두는 위치
 
-이미 두 가지 주요 위치를 알고 있습니다(위 [에이전트 파일을 두는 위치](#where-to-put-agent-files) 참조). 다음 결정 트리를 참고해 선택하세요:
+이미 두 가지 주요 위치를 알고 있습니다(위 [에이전트 파일을 두는 위치](#에이전트-파일을-두는-위치) 참조). 다음 결정 트리를 참고해 선택하세요:
 
 <img src="../../../04-agents-custom-instructions/images/agent-file-placement-decision-tree.png" alt="에이전트 파일 위치 결정 트리: 실험 중 → 현재 폴더, 팀 사용 → .github/agents/, 어디서나 → ~/.copilot/agents/" width="800"/>
 
 **간단하게 시작하세요:** 프로젝트 폴더에 `*.agent.md` 파일 하나를 만드세요. 만족스러우면 영구적인 위치로 옮기면 됩니다.
 
-에이전트 파일 외에도 Copilot은 `/agent` 없이 자동으로 적용되는 **프로젝트 수준 지침 파일**도 읽습니다. `AGENTS.md`, `.instructions.md`, `/init`에 대해서는 아래 [Configuring Your Project for Copilot](#configuring-your-project-for-copilot)을 참고하세요.
+에이전트 파일 외에도 Copilot은 `/agent` 없이 자동으로 적용되는 **프로젝트 수준 지침 파일**도 읽습니다. `AGENTS.md`, `.instructions.md`, `/init`에 대해서는 아래 [Configuring Your Project for Copilot](#copilot용-프로젝트-구성)을 참고하세요.
 
 </details>
 
@@ -468,7 +468,7 @@ copilot --no-custom-instructions
 
 ### 보다 완전한 예시
 
-위에서 [최소 에이전트 형식](#-add-your-agents)을 보았습니다. 다음은 `tools` 속성을 사용하는 보다 포괄적인 에이전트입니다. `~/.copilot/agents/python-reviewer.agent.md`를 만들어 보세요:
+위에서 [최소 에이전트 형식](#-에이전트-추가하기)을 보았습니다. 다음은 `tools` 속성을 사용하는 보다 포괄적인 에이전트입니다. `~/.copilot/agents/python-reviewer.agent.md`를 만들어 보세요:
 
 ```markdown
 ---

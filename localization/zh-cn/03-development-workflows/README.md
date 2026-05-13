@@ -49,8 +49,8 @@
 | 追踪并修复 Bug | [工作流 3：调试](#workflow-3-debugging) |
 | 为代码生成测试 | [工作流 4：测试生成](#workflow-4-test-generation) |
 | 写出更好的提交和 PR | [工作流 5：Git 集成](#workflow-5-git-integration) |
-| 编码前进行调研 | [小贴士：在规划或编码前先调研](#quick-tip-research-before-you-plan-or-code) |
-| 看一个端到端的修 Bug 完整流程 | [全部串起来](#putting-it-all-together-bug-fix-workflow) |
+| 编码前进行调研 | [小贴士：在规划或编码前先调研](#小贴士-在规划或编码前先调研) |
+| 看一个端到端的修 Bug 完整流程 | [全部串起来](#全部串起来-修-bug-工作流) |
 
 **点击下方任一工作流将其展开**，看看 GitHub Copilot CLI 如何在该领域强化你的开发流程。
 

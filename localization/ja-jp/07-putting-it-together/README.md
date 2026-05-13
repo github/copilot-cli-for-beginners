@@ -424,7 +424,7 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 <details>
 <summary>💡 ヒント（クリックして展開）</summary>
 
-**この章の上部にある[「アイデアからマージされた PR へ」](#idea-to-merged-pr-in-one-session)の例のパターンに従ってください。** 主なステップは以下です:
+**この章の上部にある[「アイデアからマージされた PR へ」](#1-つのセッションでアイデアからマージされた-pr-へ)の例のパターンに従ってください。** 主なステップは以下です:
 
 1. `@samples/book-app-project/books.py` でコンテキストを収集する
 2. `/plan Add a "search by year" command` で計画する
@@ -452,7 +452,7 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 |---------|--------------|-----|
 | 実装にすぐ飛びつく | 後で修正コストの高い設計上の問題を見逃す | まず `/plan` を使ってアプローチを考える |
 | 1 つのツールだけ使う | 遅く、徹底性に欠ける | 組み合わせる: 分析にエージェント → 実行にスキル → 統合に MCP |
-| コミット前にレビューしない | セキュリティの問題やバグが見過ごされる | 常に `/review` を実行するか[プリコミットフック](#workflow-2-code-review-automation-optional)を使う |
+| コミット前にレビューしない | セキュリティの問題やバグが見過ごされる | 常に `/review` を実行するか[プリコミットフック](#ワークフロー-2-コードレビューの自動化-オプション)を使う |
 | ワークフローをチームと共有しない | 各人がゼロから発明する | 共有エージェント、スキル、指示にパターンを文書化する |
 
 </details>

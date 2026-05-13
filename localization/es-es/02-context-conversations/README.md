@@ -440,15 +440,15 @@ Sin volver a explicar. Sin volver a leer archivos. Solo continúa trabajando.
 
 <img src="../../../02-context-conversations/images/optional-going-deeper.png" alt="Cueva de cristal abstracta en tonos azules y morados que representa una exploración más profunda de los conceptos de contexto" width="800"/>
 
-Estos temas se construyen sobre los esenciales anteriores. **Elige lo que te interese o salta directamente a [Práctica](#practice).**
+Estos temas se construyen sobre los esenciales anteriores. **Elige lo que te interese o salta directamente a [Práctica](#práctica).**
 
 | Quiero aprender sobre... | Saltar a |
 |---|---|
-| Patrones comodín y comandos de sesión avanzados | [Patrones @ adicionales y comandos de sesión](#additional-patterns) |
-| Construir contexto a través de varios prompts | [Conversaciones conscientes del contexto](#context-aware-conversations) |
-| Límites de tokens y `/compact` | [Entender las ventanas de contexto](#understanding-context-windows) |
-| Cómo elegir los archivos correctos para referenciar | [Elegir qué referenciar](#choosing-what-to-reference) |
-| Analizar capturas de pantalla y mockups | [Trabajar con imágenes](#working-with-images) |
+| Patrones comodín y comandos de sesión avanzados | [Patrones @ adicionales y comandos de sesión](#patrones-adicionales) |
+| Construir contexto a través de varios prompts | [Conversaciones conscientes del contexto](#conversaciones-conscientes-del-contexto) |
+| Límites de tokens y `/compact` | [Entender las ventanas de contexto](#entender-las-ventanas-de-contexto) |
+| Cómo elegir los archivos correctos para referenciar | [Elegir qué referenciar](#elegir-qué-referenciar) |
+| Analizar capturas de pantalla y mockups | [Trabajar con imágenes](#trabajar-con-imágenes) |
 
 <details>
 <summary><strong>Patrones @ adicionales y comandos de sesión</strong></summary>
@@ -707,7 +707,7 @@ copilot
 > @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
-> 📖 **Aprende más**: Consulta [Funciones de contexto adicionales](../appendices/additional-context.md#working-with-images) para conocer formatos compatibles, casos de uso prácticos y consejos para combinar imágenes con código.
+> 📖 **Aprende más**: Consulta [Funciones de contexto adicionales](../appendices/additional-context.md#trabajar-con-imágenes) para conocer formatos compatibles, casos de uso prácticos y consejos para combinar imágenes con código.
 
 </details>
 
@@ -773,7 +773,7 @@ Tras completar los demos, prueba estas variaciones:
 
 2. **Reto de sesión**: Inicia una sesión, nómbrala con `/rename my-first-session`, trabaja en algo, sal con `/exit`, luego ejecuta `copilot --continue`. ¿Recuerda lo que estabas haciendo?
 
-3. **Reto de contexto**: Ejecuta `/context` a mitad de la sesión. ¿Cuántos tokens estás usando? Prueba `/compact` y vuelve a verificar. (Consulta [Entender las ventanas de contexto](#understanding-context-windows) en Profundiza más para más información sobre `/compact`.)
+3. **Reto de contexto**: Ejecuta `/context` a mitad de la sesión. ¿Cuántos tokens estás usando? Prueba `/compact` y vuelve a verificar. (Consulta [Entender las ventanas de contexto](#entender-las-ventanas-de-contexto) en Profundiza más para más información sobre `/compact`.)
 
 **Autocomprobación**: Entiendes el contexto cuando puedes explicar por qué `@folder/` es más potente que abrir cada archivo individualmente.
 
