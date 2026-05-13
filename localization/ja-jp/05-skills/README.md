@@ -1,4 +1,4 @@
-![第 05 章: スキルシステム](../../../images/chapter-header.png)
+![第 05 章: スキルシステム](../../../05-skills/images/chapter-header.png)
 
 > **チームのベストプラクティスを毎回説明しなくても Copilot が自動的に適用してくれたら？**
 
@@ -21,7 +21,7 @@
 ## 🧩 現実世界のたとえ話: 電動工具
 
 汎用ドリルは便利ですが、特化したアタッチメントで強力になります。
-<img src="../../../images/power-tools-analogy.png" alt="電動工具 - スキルが Copilot の機能を拡張する" width="800"/>
+<img src="../../../05-skills/images/power-tools-analogy.png" alt="電動工具 - スキルが Copilot の機能を拡張する" width="800"/>
 
 
 スキルも同様に機能します。ドリルビットを異なる作業に交換するように、異なるタスクのために Copilot にスキルを追加できます。
@@ -41,7 +41,7 @@
 
 # スキルの仕組み
 
-<img src="../../../images/how-skills-work.png" alt="Copilot スキルを表す星空を背景に光のトレイルで繋がれた輝く RPG スタイルのスキルアイコン" width="800"/>
+<img src="../../../05-skills/images/how-skills-work.png" alt="Copilot スキルを表す星空を背景に光のトレイルで繋がれた輝く RPG スタイルのスキルアイコン" width="800"/>
 
 スキルとは何か、なぜ重要か、エージェントや MCP とどう違うかを学びましょう。
 
@@ -137,7 +137,7 @@ Copilot に直接聞くことができます。
 
 > *MCP についてはまだ心配しないでください。[第 06 章](../06-mcp-servers/README.md)でカバーします。スキルが全体像にどう合うかがわかるようにここに含まれています。*
 
-<img src="../../../images/skills-agents-mcp-comparison.png" alt="エージェント、スキル、MCP サーバーの違いとワークフローへの組み合わせ方を示す比較図" width="800"/>
+<img src="../../../05-skills/images/skills-agents-mcp-comparison.png" alt="エージェント、スキル、MCP サーバーの違いとワークフローへの組み合わせ方を示す比較図" width="800"/>
 
 | 機能 | 何をするか | いつ使うか |
 |---------|--------------|-------------|
@@ -192,7 +192,7 @@ copilot
 3. チームの品質チェックリストを自動的に読み込む
 4. リストアップしなくてもすべてのチェックを適用する
 
-<img src="../../../images/skill-auto-discovery-flow.png" alt="スキルの自動トリガー方法 - Copilot がプロンプトを正しいスキルと自動的に一致させる 4 ステップのフロー" width="800"/>
+<img src="../../../05-skills/images/skill-auto-discovery-flow.png" alt="スキルの自動トリガー方法 - Copilot がプロンプトを正しいスキルと自動的に一致させる 4 ステップのフロー" width="800"/>
 
 *自然に聞くだけ。Copilot がプロンプトを正しいスキルと一致させ、自動的に適用します。*
 
@@ -227,7 +227,7 @@ copilot
 <details>
 <summary>🎬 実際の動作を見てみましょう！</summary>
 
-![スキルトリガーデモ](../../../images/skill-trigger-demo.gif)
+![スキルトリガーデモ](../../../05-skills/images/skill-trigger-demo.gif)
 
 *デモの出力は異なります。モデル、ツール、レスポンスはここに表示されているものと異なります。*
 
@@ -275,7 +275,7 @@ PR Review: feature/user-auth
 
 # カスタムスキルを作成する
 
-<img src="../../../images/creating-managing-skills.png" alt="スキルの作成と管理を表す輝く LEGO のようなブロックの壁を構築する人間とロボットの手" width="800"/>
+<img src="../../../05-skills/images/creating-managing-skills.png" alt="スキルの作成と管理を表す輝く LEGO のようなブロックの壁を構築する人間とロボットの手" width="800"/>
 
 SKILL.md ファイルから独自のスキルを構築しましょう。
 
@@ -472,7 +472,7 @@ copilot --agent code-reviewer
 
 インストール済みスキルを見つけ、コミュニティスキルを探し、自分のスキルを共有しましょう。
 
-<img src="../../../images/managing-sharing-skills.png" alt="CLI スキルの発見、使用、作成、共有サイクルを示すスキルの管理と共有" width="800" />
+<img src="../../../05-skills/images/managing-sharing-skills.png" alt="CLI スキルの発見、使用、作成、共有サイクルを示すスキルの管理と共有" width="800" />
 
 ---
 
@@ -516,7 +516,7 @@ Description: Security-focused code review checking OWASP Top 10 vulnerabilities
 <details>
 <summary>実際の動作を見てみましょう！</summary>
 
-![スキルリストデモ](../../../images/list-skills-demo.gif)
+![スキルリストデモ](../../../05-skills/images/list-skills-demo.gif)
 
 *デモの出力は異なります。モデル、ツール、レスポンスはここに表示されているものと異なります。*
 

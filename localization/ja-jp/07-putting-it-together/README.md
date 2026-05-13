@@ -1,4 +1,4 @@
-![第 07 章: すべてをまとめる](../../../images/chapter-header.png)
+![第 07 章: すべてをまとめる](../../../07-putting-it-together/images/chapter-header.png)
 
 > **学んだすべてがここで融合します。1 つのセッションでアイデアからマージされた PR へ。**
 
@@ -21,7 +21,7 @@
 
 ## 🧩 現実世界のたとえ話: オーケストラ
 
-<img src="../../../images/orchestra-analogy.png" alt="オーケストラのたとえ話 - 統合ワークフロー" width="800"/>
+<img src="../../../07-putting-it-together/images/orchestra-analogy.png" alt="オーケストラのたとえ話 - 統合ワークフロー" width="800"/>
 
 交響楽団には多くのセクションがあります:
 - **弦楽器**が基礎を提供する（コアワークフローのように）
@@ -109,7 +109,7 @@ copilot
 
 # 追加ワークフロー
 
-<img src="../../../images/combined-workflows.png" alt="エージェント、スキル、MCP が統合ワークフローにどのように組み合わさるかを表すカラフルな巨大ジグソーパズルのピースとギアを組み立てる人々" width="800"/>
+<img src="../../../07-putting-it-together/images/combined-workflows.png" alt="エージェント、スキル、MCP が統合ワークフローにどのように組み合わさるかを表すカラフルな巨大ジグソーパズルのピースとギアを組み立てる人々" width="800"/>
 
 第 04〜06 章を完了したパワーユーザー向けに、これらのワークフローはエージェント、スキル、MCP が効果をどのように乗数倍するかを示します。
 
@@ -117,7 +117,7 @@ copilot
 
 すべてを組み合わせるためのメンタルモデルです。
 
-<img src="../../../images/integration-pattern.png" alt="統合パターン - 4 フェーズのワークフロー: コンテキストの収集（MCP）、分析と計画（エージェント）、実行（スキル + 手動）、完了（MCP）" width="800"/>
+<img src="../../../07-putting-it-together/images/integration-pattern.png" alt="統合パターン - 4 フェーズのワークフロー: コンテキストの収集（MCP）、分析と計画（エージェント）、実行（スキル + 手動）、完了（MCP）" width="800"/>
 
 ---
 
