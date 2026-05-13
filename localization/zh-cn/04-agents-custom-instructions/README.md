@@ -770,7 +770,7 @@ copilot  # This loads custom instructions by default
 
 智能体改变的是 *Copilot 在你的代码中如何思考问题、采取有针对性的行动* 的方式。接下来，你将了解 **技能（skills）**——它们改变的是 Copilot 遵循的 *步骤*。想知道智能体和技能到底有什么不同？第 05 章会正面回答这个问题。
 
-在 **[第 05 章：Skills 系统](../05-skills/README.md)** 中，你将学到：
+在 [**第 05 章：Skills 系统**](../05-skills/README.md) 中，你将学到：
 
 - 技能如何根据你的提示自动触发（无需斜杠命令）
 - 安装社区提供的技能
@@ -780,4 +780,4 @@ copilot  # This loads custom instructions by default
 
 ---
 
-**[← 返回第 03 章](../03-development-workflows/README.md)** | **[继续学习第 05 章 →](../05-skills/README.md)**
+[**← 返回第 03 章**](../03-development-workflows/README.md) | [**继续学习第 05 章 →**](../05-skills/README.md)

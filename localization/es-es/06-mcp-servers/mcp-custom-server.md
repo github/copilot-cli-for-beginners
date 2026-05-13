@@ -7,7 +7,7 @@
 > - Comprender los patrones `async`/`await`
 > - Tener `pip` disponible en tu sistema (incluido en este dev container)
 >
-> **[← Volver al Capítulo 06: Servidores MCP](README.md)**
+> [**← Volver al Capítulo 06: Servidores MCP**](README.md)
 
 ---
 
@@ -173,4 +173,4 @@ Una vez que hayas construido un servidor básico, puedes:
 
 ---
 
-**[← Volver al Capítulo 06: Servidores MCP](README.md)**
+[**← Volver al Capítulo 06: Servidores MCP**](README.md)

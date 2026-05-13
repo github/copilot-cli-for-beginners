@@ -960,7 +960,7 @@ Los capítulos restantes cubren características adicionales que extienden las c
 
 ## Continúa con temas adicionales
 
-En el **[Capítulo 04: Agentes e instrucciones personalizadas](../04-agents-custom-instructions/README.md)** aprenderás:
+En el [**Capítulo 04: Agentes e instrucciones personalizadas**](../04-agents-custom-instructions/README.md) aprenderás:
 
 - Usar agentes integrados (`/plan`, `/review`)
 - Crear agentes especializados (experto frontend, auditor de seguridad) con archivos `.agent.md`
@@ -969,4 +969,4 @@ En el **[Capítulo 04: Agentes e instrucciones personalizadas](../04-agents-cust
 
 ---
 
-**[← Volver al Capítulo 02](../02-context-conversations/README.md)** | **[Continuar al Capítulo 04 →](../04-agents-custom-instructions/README.md)**
+[**← Volver al Capítulo 02**](../02-context-conversations/README.md) | [**Continuar al Capítulo 04 →**](../04-agents-custom-instructions/README.md)

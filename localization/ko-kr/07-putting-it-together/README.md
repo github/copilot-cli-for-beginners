@@ -509,4 +509,4 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 
 **정말 잘하셨습니다! 이제 멋진 것을 직접 만들어 볼 차례입니다.**
 
-**[← 6장으로 돌아가기](../06-mcp-servers/README.md)** | **[강의 홈으로 돌아가기 →](../README.md)**
+[**← 6장으로 돌아가기**](../06-mcp-servers/README.md) | [**강의 홈으로 돌아가기 →**](../README.md)

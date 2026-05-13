@@ -196,4 +196,4 @@ fi
 
 ---
 
-**[← 第 07 章に戻る](../07-putting-it-together/README.md)** | **[付録に戻る](README.md)**
+[**← 第 07 章に戻る**](../07-putting-it-together/README.md) | [**付録に戻る**](README.md)

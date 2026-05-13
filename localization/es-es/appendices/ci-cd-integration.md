@@ -196,4 +196,4 @@ fi
 
 ---
 
-**[← Volver al Capítulo 07](../07-putting-it-together/README.md)** | **[Volver a los apéndices](README.md)**
+[**← Volver al Capítulo 07**](../07-putting-it-together/README.md) | [**Volver a los apéndices**](README.md)

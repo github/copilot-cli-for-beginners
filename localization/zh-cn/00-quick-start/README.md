@@ -222,7 +222,7 @@ copilot
 - 学习使用 Copilot CLI 的三种不同方式
 - 用普通英语生成可运行的代码
 
-**[继续学习第 01 章：初步上手 →](../01-setup-and-first-steps/README.md)**
+[**继续学习第 01 章：初步上手 →**](../01-setup-and-first-steps/README.md)
 
 ---
 
@@ -287,4 +287,4 @@ copilot
 
 ---
 
-**[继续学习第 01 章：初步上手 →](../01-setup-and-first-steps/README.md)**
+[**继续学习第 01 章：初步上手 →**](../01-setup-and-first-steps/README.md)

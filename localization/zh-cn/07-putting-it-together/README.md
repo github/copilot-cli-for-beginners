@@ -509,4 +509,4 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 
 **干得漂亮！现在去打造一些精彩的东西吧。**
 
-**[← 返回第 06 章](../06-mcp-servers/README.md)** | **[返回课程主页 →](../README.md)**
+[**← 返回第 06 章**](../06-mcp-servers/README.md) | [**返回课程主页 →**](../README.md)

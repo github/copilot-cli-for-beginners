@@ -137,4 +137,4 @@ Escenarios comunes donde necesitarás estos permisos:
 
 ---
 
-**[← Volver al Capítulo 02](../02-context-conversations/README.md)** | **[Volver a los apéndices](README.md)**
+[**← Volver al Capítulo 02**](../02-context-conversations/README.md) | [**Volver a los apéndices**](README.md)

@@ -509,4 +509,4 @@ Tu aprendizaje no termina aquí:
 
 **¡Buen trabajo! Ahora ve a construir algo increíble.**
 
-**[← Volver al Capítulo 06](../06-mcp-servers/README.md)** | **[Volver al inicio del curso →](../README.md)**
+[**← Volver al Capítulo 06**](../06-mcp-servers/README.md) | [**Volver al inicio del curso →**](../README.md)

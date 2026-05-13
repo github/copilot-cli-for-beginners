@@ -962,7 +962,7 @@ copilot mcp disable context7
 
 이제 모든 구성 요소를 갖추셨습니다: 모드, 컨텍스트, 워크플로, 에이전트, 스킬, MCP. 이제 모두 합쳐 볼 시간입니다.
 
-**[챕터 07: 모두 합치기](../07-putting-it-together/README.md)**에서는 다음을 배웁니다:
+[**챕터 07: 모두 합치기**](../07-putting-it-together/README.md)에서는 다음을 배웁니다:
 
 - 통합된 워크플로에서 에이전트, 스킬, MCP 결합하기
 - 아이디어부터 병합된 PR까지 완전한 기능 개발
@@ -971,4 +971,4 @@ copilot mcp disable context7
 
 ---
 
-**[← 챕터 05로 돌아가기](../05-skills/README.md)** | **[챕터 07로 계속 →](../07-putting-it-together/README.md)**
+[**← 챕터 05로 돌아가기**](../05-skills/README.md) | [**챕터 07로 계속 →**](../07-putting-it-together/README.md)

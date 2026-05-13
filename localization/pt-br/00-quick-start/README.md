@@ -222,7 +222,7 @@ Quando terminar, você pode sair do Copilot CLI:
 - Aprender três formas diferentes de usar o Copilot CLI
 - Gerar código funcional a partir de linguagem natural
 
-**[Continuar para o Capítulo 01: Primeiros Passos →](../01-setup-and-first-steps/README.md)**
+[**Continuar para o Capítulo 01: Primeiros Passos →**](../01-setup-and-first-steps/README.md)
 
 ---
 
@@ -287,4 +287,4 @@ copilot
 
 ---
 
-**[Continuar para o Capítulo 01: Primeiros Passos →](../01-setup-and-first-steps/README.md)**
+[**Continuar para o Capítulo 01: Primeiros Passos →**](../01-setup-and-first-steps/README.md)

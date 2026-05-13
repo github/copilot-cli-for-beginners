@@ -770,7 +770,7 @@ copilot  # This loads custom instructions by default
 
 Los agentes cambian *cómo enfoca y ejecuta acciones dirigidas Copilot* en tu código. A continuación aprenderás sobre las **skills**, que cambian *qué pasos* sigue. ¿Te preguntas en qué se diferencian agentes y skills? El Capítulo 05 lo aborda directamente.
 
-En el **[Capítulo 05: Sistema de skills](../05-skills/README.md)**, aprenderás:
+En el [**Capítulo 05: Sistema de skills**](../05-skills/README.md), aprenderás:
 
 - Cómo las skills se autodisparan a partir de tus prompts (sin necesidad de un slash command)
 - Instalar skills de la comunidad
@@ -780,4 +780,4 @@ En el **[Capítulo 05: Sistema de skills](../05-skills/README.md)**, aprenderás
 
 ---
 
-**[← Volver al Capítulo 03](../03-development-workflows/README.md)** | **[Continuar al Capítulo 05 →](../05-skills/README.md)**
+[**← Volver al Capítulo 03**](../03-development-workflows/README.md) | [**Continuar al Capítulo 05 →**](../05-skills/README.md)

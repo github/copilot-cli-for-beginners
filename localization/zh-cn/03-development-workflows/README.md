@@ -960,7 +960,7 @@ copilot
 
 ## 继续学习更多主题
 
-在 **[第 04 章：智能体与自定义指令](../04-agents-custom-instructions/README.md)** 中，你将学到：
+在 [**第 04 章：智能体与自定义指令**](../04-agents-custom-instructions/README.md) 中，你将学到：
 
 - 使用内置智能体（`/plan`、`/review`）
 - 用 `.agent.md` 文件创建专门的智能体（前端专家、安全审计员）
@@ -969,4 +969,4 @@ copilot
 
 ---
 
-**[← 返回第 02 章](../02-context-conversations/README.md)** | **[继续到第 04 章 →](../04-agents-custom-instructions/README.md)**
+[**← 返回第 02 章**](../02-context-conversations/README.md) | [**继续到第 04 章 →**](../04-agents-custom-instructions/README.md)

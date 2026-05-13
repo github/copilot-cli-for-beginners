@@ -4,7 +4,7 @@
 
 ¡En este capítulo empieza la magia! Vivirás de primera mano por qué los desarrolladores describen GitHub Copilot CLI como tener a un ingeniero senior en marcación rápida. Verás cómo la IA encuentra bugs de seguridad en segundos, te explica código complejo en lenguaje sencillo y genera scripts funcionales al instante. Después dominarás los tres modos de interacción (Interactivo, Plan y Programático) para que sepas exactamente cuál usar en cada tarea.
 
-> ⚠️ **Requisitos previos**: Asegúrate de haber completado primero **[Capítulo 00: Inicio rápido](../00-quick-start/README.md)**. Necesitarás GitHub Copilot CLI instalado y autenticado antes de ejecutar las demos siguientes.
+> ⚠️ **Requisitos previos**: Asegúrate de haber completado primero [**Capítulo 00: Inicio rápido**](../00-quick-start/README.md). Necesitarás GitHub Copilot CLI instalado y autenticado antes de ejecutar las demos siguientes.
 
 ## 🎯 Objetivos de aprendizaje
 
@@ -679,7 +679,7 @@ Los ejemplos usaron `/plan` para una funcionalidad de búsqueda y `-p` para revi
 
 Ahora que entiendes los tres modos, vamos a aprender a darle a Copilot CLI contexto sobre tu código.
 
-En **[Capítulo 02: Contexto y conversaciones](../02-context-conversations/README.md)** aprenderás:
+En [**Capítulo 02: Contexto y conversaciones**](../02-context-conversations/README.md) aprenderás:
 
 - La sintaxis `@` para referenciar archivos y directorios
 - Gestión de sesiones con `--resume` y `--continue`
@@ -687,4 +687,4 @@ En **[Capítulo 02: Contexto y conversaciones](../02-context-conversations/READM
 
 ---
 
-**[← Volver al inicio del curso](../README.md)** | **[Continuar al Capítulo 02 →](../02-context-conversations/README.md)**
+[**← Volver al inicio del curso**](../README.md) | [**Continuar al Capítulo 02 →**](../02-context-conversations/README.md)

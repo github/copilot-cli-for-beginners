@@ -87,7 +87,7 @@ Cada capítulo sigue el mismo patrón:
 
 ## 📋 Referencia de comandos de GitHub Copilot CLI
 
-La **[referencia de comandos de GitHub Copilot CLI](https://docs.github.com/en/copilot/reference/cli-command-reference)** te ayuda a encontrar comandos y atajos de teclado para usar Copilot CLI de forma eficaz.
+La [**referencia de comandos de GitHub Copilot CLI**](https://docs.github.com/en/copilot/reference/cli-command-reference) te ayuda a encontrar comandos y atajos de teclado para usar Copilot CLI de forma eficaz.
 
 ## 🙋 Obtener ayuda
 

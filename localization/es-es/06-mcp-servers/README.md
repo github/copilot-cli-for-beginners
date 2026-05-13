@@ -962,7 +962,7 @@ Para la mayor parte de este curso, `/mcp show` es todo lo que necesitas. Los dem
 
 Ya tienes todos los bloques: modos, contexto, flujos de trabajo, agentes, skills y MCP. Es hora de combinarlos.
 
-En el **[Capítulo 07: Combinando todo](../07-putting-it-together/README.md)** aprenderás:
+En el [**Capítulo 07: Combinando todo**](../07-putting-it-together/README.md) aprenderás:
 
 - Combinar agentes, skills y MCP en flujos de trabajo unificados
 - Desarrollo completo de funcionalidades de la idea al PR fusionado
@@ -971,4 +971,4 @@ En el **[Capítulo 07: Combinando todo](../07-putting-it-together/README.md)** a
 
 ---
 
-**[← Volver al Capítulo 05](../05-skills/README.md)** | **[Continuar al Capítulo 07 →](../07-putting-it-together/README.md)**
+[**← Volver al Capítulo 05**](../05-skills/README.md) | [**Continuar al Capítulo 07 →**](../07-putting-it-together/README.md)

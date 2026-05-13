@@ -770,7 +770,7 @@ copilot  # This loads custom instructions by default
 
 에이전트는 *Copilot이 코드에 접근하고 목적에 맞춰 행동하는 방식*을 바꿉니다. 다음으로 배울 **skill**은 *어떤 단계*를 따르는지를 바꿉니다. 에이전트와 skill의 차이가 궁금하신가요? 5장에서 정면으로 다룹니다.
 
-**[5장: Skills 시스템](../05-skills/README.md)** 에서는 다음을 배웁니다:
+[**5장: Skills 시스템**](../05-skills/README.md) 에서는 다음을 배웁니다:
 
 - 슬래시 명령 없이 프롬프트에서 자동으로 트리거되는 skill
 - 커뮤니티 skill 설치
@@ -780,4 +780,4 @@ copilot  # This loads custom instructions by default
 
 ---
 
-**[← 3장으로 돌아가기](../03-development-workflows/README.md)** | **[5장으로 계속 →](../05-skills/README.md)**
+[**← 3장으로 돌아가기**](../03-development-workflows/README.md) | [**5장으로 계속 →**](../05-skills/README.md)

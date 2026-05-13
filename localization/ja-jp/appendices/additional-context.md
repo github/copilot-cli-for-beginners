@@ -137,4 +137,4 @@ copilot -p "Review @src/" --yolo
 
 ---
 
-**[← 第 02 章に戻る](../02-context-conversations/README.md)** | **[付録に戻る](README.md)**
+[**← 第 02 章に戻る**](../02-context-conversations/README.md) | [**付録に戻る**](README.md)

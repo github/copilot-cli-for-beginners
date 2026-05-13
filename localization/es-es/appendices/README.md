@@ -9,4 +9,4 @@ Estos apéndices cubren temas adicionales que amplían el contenido principal de
 
 ---
 
-**[← Volver al inicio del curso](../README.md)**
+[**← Volver al inicio del curso**](../README.md)

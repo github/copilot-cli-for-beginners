@@ -137,4 +137,4 @@ copilot -p "Review @src/" --yolo
 
 ---
 
-**[← 2장으로 돌아가기](../02-context-conversations/README.md)** | **[부록 목록으로 돌아가기](README.md)**
+[**← 2장으로 돌아가기**](../02-context-conversations/README.md) | [**부록 목록으로 돌아가기**](README.md)

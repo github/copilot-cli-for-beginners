@@ -572,7 +572,7 @@ copilot plugin marketplace update
 
 미리 만들어진 스킬은 커뮤니티 저장소에서도 받을 수 있습니다:
 
-- **[Awesome Copilot](https://github.com/github/awesome-copilot)** - 스킬 문서와 예제를 포함한 공식 GitHub Copilot 리소스
+- [**Awesome Copilot**](https://github.com/github/awesome-copilot) - 스킬 문서와 예제를 포함한 공식 GitHub Copilot 리소스
 
 ### GitHub CLI로 커뮤니티 스킬 설치하기
 
@@ -874,7 +874,7 @@ copilot
 
 스킬은 자동 로드되는 지시문으로 Copilot이 할 수 있는 일을 확장합니다. 그렇다면 외부 서비스에 연결하는 것은 어떨까요? 그것이 바로 MCP의 역할입니다.
 
-**[Chapter 06: MCP Servers](../06-mcp-servers/README.md)**에서는 다음을 배웁니다:
+[**Chapter 06: MCP Servers**](../06-mcp-servers/README.md)에서는 다음을 배웁니다:
 
 - MCP(Model Context Protocol)란 무엇인가
 - GitHub, 파일 시스템, 문서 서비스에 연결하기
@@ -883,4 +883,4 @@ copilot
 
 ---
 
-**[← Chapter 04로 돌아가기](../04-agents-custom-instructions/README.md)** | **[Chapter 06으로 계속하기 →](../06-mcp-servers/README.md)**
+[**← Chapter 04로 돌아가기**](../04-agents-custom-instructions/README.md) | [**Chapter 06으로 계속하기 →**](../06-mcp-servers/README.md)

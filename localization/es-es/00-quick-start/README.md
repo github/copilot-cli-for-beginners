@@ -222,7 +222,7 @@ Eso es todo en cuanto a la instalación. La diversión de verdad empieza en el C
 - Aprenderás tres formas distintas de usar Copilot CLI
 - Generarás código funcional a partir de inglés sencillo
 
-**[Continuar al Capítulo 01: Primeros pasos →](../01-setup-and-first-steps/README.md)**
+[**Continuar al Capítulo 01: Primeros pasos →**](../01-setup-and-first-steps/README.md)
 
 ---
 
@@ -287,4 +287,4 @@ copilot
 
 ---
 
-**[Continuar al Capítulo 01: Primeros pasos →](../01-setup-and-first-steps/README.md)**
+[**Continuar al Capítulo 01: Primeros pasos →**](../01-setup-and-first-steps/README.md)

@@ -222,7 +222,7 @@ copilot
 - Copilot CLI を使う 3 つの方法を学ぶ
 - 平易な日本語からコードを生成する
 
-**[第 01 章: はじめの一歩に進む →](../01-setup-and-first-steps/README.md)**
+[**第 01 章: はじめの一歩に進む →**](../01-setup-and-first-steps/README.md)
 
 ---
 
@@ -287,4 +287,4 @@ copilot
 
 ---
 
-**[第 01 章: はじめの一歩に進む →](../01-setup-and-first-steps/README.md)**
+[**第 01 章: はじめの一歩に進む →**](../01-setup-and-first-steps/README.md)

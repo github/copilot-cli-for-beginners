@@ -509,4 +509,4 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 
 **素晴らしい仕事をしました！今度は素晴らしいものを作りましょう。**
 
-**[← 第 06 章に戻る](../06-mcp-servers/README.md)** | **[コースホームに戻る →](../README.md)**
+[**← 第 06 章に戻る**](../06-mcp-servers/README.md) | [**コースホームに戻る →**](../README.md)

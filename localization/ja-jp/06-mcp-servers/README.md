@@ -962,7 +962,7 @@ copilot mcp disable context7
 
 これですべてのビルディングブロックが揃いました: モード、コンテキスト、ワークフロー、エージェント、スキル、MCP。すべてを組み合わせる時間です。
 
-**[第 07 章: すべてをまとめる](../07-putting-it-together/README.md)**では以下を学びます。
+[**第 07 章: すべてをまとめる**](../07-putting-it-together/README.md)では以下を学びます。
 
 - エージェント、スキル、MCP を統合ワークフローで組み合わせる
 - アイデアからマージされた PR までの完全な機能開発
@@ -971,4 +971,4 @@ copilot mcp disable context7
 
 ---
 
-**[← 第 05 章に戻る](../05-skills/README.md)** | **[第 07 章に進む →](../07-putting-it-together/README.md)**
+[**← 第 05 章に戻る**](../05-skills/README.md) | [**第 07 章に進む →**](../07-putting-it-together/README.md)

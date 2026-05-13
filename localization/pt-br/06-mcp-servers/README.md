@@ -962,7 +962,7 @@ Para a maior parte deste curso, `/mcp show` é tudo que você precisa. Os outros
 
 Agora você tem todos os blocos de construção: modos, contexto, fluxos de trabalho, agentes, skills e MCP. Hora de colocá-los todos juntos.
 
-No **[Capítulo 07: Colocando Tudo Junto](../07-putting-it-together/README.md)**, você aprenderá:
+No [**Capítulo 07: Colocando Tudo Junto**](../07-putting-it-together/README.md), você aprenderá:
 
 - Combinar agentes, skills e MCP em fluxos de trabalho unificados
 - Desenvolvimento completo de funcionalidades de ideia a PR mesclado
@@ -971,4 +971,4 @@ No **[Capítulo 07: Colocando Tudo Junto](../07-putting-it-together/README.md)**
 
 ---
 
-**[← Voltar ao Capítulo 05](../05-skills/README.md)** | **[Continuar para o Capítulo 07 →](../07-putting-it-together/README.md)**
+[**← Voltar ao Capítulo 05**](../05-skills/README.md) | [**Continuar para o Capítulo 07 →**](../07-putting-it-together/README.md)

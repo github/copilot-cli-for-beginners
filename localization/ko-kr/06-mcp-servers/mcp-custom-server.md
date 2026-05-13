@@ -7,7 +7,7 @@
 > - `async`/`await` 패턴 이해
 > - 시스템에 `pip` 설치 (이 dev container에는 포함되어 있습니다)
 >
-> **[← 6장으로 돌아가기: MCP 서버](README.md)**
+> [**← 6장으로 돌아가기: MCP 서버**](README.md)
 
 ---
 
@@ -173,4 +173,4 @@ copilot
 
 ---
 
-**[← 6장으로 돌아가기: MCP 서버](README.md)**
+[**← 6장으로 돌아가기: MCP 서버**](README.md)

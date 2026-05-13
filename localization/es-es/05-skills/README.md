@@ -572,7 +572,7 @@ Los plugins pueden agrupar varias capacidades. Un único plugin puede incluir sk
 
 También hay skills prefabricadas disponibles en repositorios de la comunidad:
 
-- **[Awesome Copilot](https://github.com/github/awesome-copilot)** - Recursos oficiales de GitHub Copilot incluyendo documentación y ejemplos de skills
+- [**Awesome Copilot**](https://github.com/github/awesome-copilot) - Recursos oficiales de GitHub Copilot incluyendo documentación y ejemplos de skills
 
 ### Instalar una skill de la comunidad con GitHub CLI
 
@@ -874,7 +874,7 @@ Ejecuta `/skills reload` después de crear o editar skills para asegurarte de qu
 
 Las skills amplían lo que Copilot puede hacer con instrucciones cargadas automáticamente. Pero, ¿qué pasa con conectarse a servicios externos? Ahí es donde entra MCP.
 
-En el **[Capítulo 06: Servidores MCP](../06-mcp-servers/README.md)**, aprenderás:
+En el [**Capítulo 06: Servidores MCP**](../06-mcp-servers/README.md), aprenderás:
 
 - Qué es MCP (Model Context Protocol)
 - Conectar a GitHub, sistema de archivos y servicios de documentación
@@ -883,4 +883,4 @@ En el **[Capítulo 06: Servidores MCP](../06-mcp-servers/README.md)**, aprender�
 
 ---
 
-**[← Volver al Capítulo 04](../04-agents-custom-instructions/README.md)** | **[Continuar al Capítulo 06 →](../06-mcp-servers/README.md)**
+[**← Volver al Capítulo 04**](../04-agents-custom-instructions/README.md) | [**Continuar al Capítulo 06 →**](../06-mcp-servers/README.md)

@@ -895,7 +895,7 @@ copilot --add-dir /path/to/directory
 
 既然你已经能给 Copilot CLI 提供上下文了，就让它真正在实际开发任务中派上用场吧。你刚刚学到的上下文技巧（文件引用、跨文件分析和会话管理）正是下一章中那些强大工作流的基础。
 
-在 **[第 03 章：开发工作流](../03-development-workflows/README.md)** 中，你将学习：
+在 [**第 03 章：开发工作流**](../03-development-workflows/README.md) 中，你将学习：
 
 - 代码审查工作流
 - 重构模式
@@ -905,4 +905,4 @@ copilot --add-dir /path/to/directory
 
 ---
 
-**[← 返回第 01 章](../01-setup-and-first-steps/README.md)** | **[继续到第 03 章 →](../03-development-workflows/README.md)**
+[**← 返回第 01 章**](../01-setup-and-first-steps/README.md) | [**继续到第 03 章 →**](../03-development-workflows/README.md)

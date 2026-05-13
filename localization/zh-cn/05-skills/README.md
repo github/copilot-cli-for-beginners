@@ -572,7 +572,7 @@ copilot plugin marketplace update
 
 预制好的技能也可以从社区仓库中获取：
 
-- **[Awesome Copilot](https://github.com/github/awesome-copilot)** —— GitHub 官方的 Copilot 资源，包含技能文档与示例
+- [**Awesome Copilot**](https://github.com/github/awesome-copilot) —— GitHub 官方的 Copilot 资源，包含技能文档与示例
 
 ### 使用 GitHub CLI 安装社区技能
 
@@ -874,7 +874,7 @@ copilot
 
 技能通过自动加载的指令扩展了 Copilot 能做的事情。但要连接外部服务怎么办？这就是 MCP 的用武之地。
 
-在**[第 06 章：MCP 服务器](../06-mcp-servers/README.md)**中，你将学习：
+在[**第 06 章：MCP 服务器**](../06-mcp-servers/README.md)中，你将学习：
 
 - 什么是 MCP（Model Context Protocol，模型上下文协议）
 - 连接到 GitHub、文件系统和文档服务
@@ -883,4 +883,4 @@ copilot
 
 ---
 
-**[← 返回第 04 章](../04-agents-custom-instructions/README.md)** | **[继续到第 06 章 →](../06-mcp-servers/README.md)**
+[**← 返回第 04 章**](../04-agents-custom-instructions/README.md) | [**继续到第 06 章 →**](../06-mcp-servers/README.md)

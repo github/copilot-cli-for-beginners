@@ -222,7 +222,7 @@ copilot
 - Copilot CLI를 사용하는 세 가지 방식 학습
 - 일반 영어 설명으로 동작하는 코드 생성
 
-**[챕터 01로 계속: 첫걸음 →](../01-setup-and-first-steps/README.md)**
+[**챕터 01로 계속: 첫걸음 →**](../01-setup-and-first-steps/README.md)
 
 ---
 
@@ -287,4 +287,4 @@ copilot
 
 ---
 
-**[챕터 01로 계속: 첫걸음 →](../01-setup-and-first-steps/README.md)**
+[**챕터 01로 계속: 첫걸음 →**](../01-setup-and-first-steps/README.md)

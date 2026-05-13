@@ -895,7 +895,7 @@ copilot --add-dir /path/to/directory
 
 Ahora que puedes darle contexto a Copilot CLI, vamos a ponerlo a trabajar en tareas reales de desarrollo. Las técnicas de contexto que acabas de aprender (referencias a archivos, análisis entre archivos y gestión de sesiones) son la base de los potentes flujos de trabajo del próximo capítulo.
 
-En el **[Capítulo 03: Flujos de trabajo de desarrollo](../03-development-workflows/README.md)** aprenderás:
+En el [**Capítulo 03: Flujos de trabajo de desarrollo**](../03-development-workflows/README.md) aprenderás:
 
 - Flujos de trabajo de revisión de código
 - Patrones de refactorización
@@ -905,4 +905,4 @@ En el **[Capítulo 03: Flujos de trabajo de desarrollo](../03-development-workfl
 
 ---
 
-**[← Volver al Capítulo 01](../01-setup-and-first-steps/README.md)** | **[Continuar al Capítulo 03 →](../03-development-workflows/README.md)**
+[**← Volver al Capítulo 01**](../01-setup-and-first-steps/README.md) | [**Continuar al Capítulo 03 →**](../03-development-workflows/README.md)

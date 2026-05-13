@@ -896,7 +896,7 @@ copilot --add-dir /path/to/directory
 
 이제 Copilot CLI에 컨텍스트를 제공할 수 있게 되었으니, 실제 개발 작업에 활용해 봅시다. 방금 배운 컨텍스트 기술(파일 참조, 교차 파일 분석, 세션 관리)은 다음 장의 강력한 워크플로의 토대가 됩니다.
 
-**[3장: 개발 워크플로](../03-development-workflows/README.md)** 에서는 다음을 배웁니다.
+[**3장: 개발 워크플로**](../03-development-workflows/README.md) 에서는 다음을 배웁니다.
 
 - 코드 리뷰 워크플로
 - 리팩터링 패턴
@@ -906,4 +906,4 @@ copilot --add-dir /path/to/directory
 
 ---
 
-**[← 1장으로 돌아가기](../01-setup-and-first-steps/README.md)** | **[3장으로 계속하기 →](../03-development-workflows/README.md)**
+[**← 1장으로 돌아가기**](../01-setup-and-first-steps/README.md) | [**3장으로 계속하기 →**](../03-development-workflows/README.md)

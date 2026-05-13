@@ -962,7 +962,7 @@ copilot mcp disable context7
 
 你现在已经具备了所有的构建块：模式、上下文、工作流、agent、skill 和 MCP。是时候将它们全部整合起来了。
 
-在 **[第 07 章：融会贯通](../07-putting-it-together/README.md)** 中，你将学习：
+在 [**第 07 章：融会贯通**](../07-putting-it-together/README.md) 中，你将学习：
 
 - 在统一工作流中组合 agent、skill 和 MCP
 - 从想法到合并的 PR 的完整功能开发
@@ -971,4 +971,4 @@ copilot mcp disable context7
 
 ---
 
-**[← 返回第 05 章](../05-skills/README.md)** | **[继续到第 07 章 →](../07-putting-it-together/README.md)**
+[**← 返回第 05 章**](../05-skills/README.md) | [**继续到第 07 章 →**](../07-putting-it-together/README.md)

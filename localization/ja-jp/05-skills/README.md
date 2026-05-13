@@ -572,7 +572,7 @@ copilot plugin marketplace update
 
 プリメイドスキルはコミュニティリポジトリからも入手できます。
 
-- **[Awesome Copilot](https://github.com/github/awesome-copilot)** - スキルのドキュメントと例を含む公式 GitHub Copilot リソース
+- [**Awesome Copilot**](https://github.com/github/awesome-copilot) - スキルのドキュメントと例を含む公式 GitHub Copilot リソース
 
 ### GitHub CLI でコミュニティスキルをインストールする
 
@@ -874,7 +874,7 @@ copilot
 
 スキルは自動読み込みの指示で Copilot ができることを拡張します。しかし外部サービスへの接続はどうでしょうか？そこで MCP の出番です。
 
-**[第 06 章: MCP サーバー](../06-mcp-servers/README.md)**では以下を学びます。
+[**第 06 章: MCP サーバー**](../06-mcp-servers/README.md)では以下を学びます。
 
 - MCP（Model Context Protocol）とは何か
 - GitHub、ファイルシステム、ドキュメントサービスへの接続
@@ -883,4 +883,4 @@ copilot
 
 ---
 
-**[← 第 04 章に戻る](../04-agents-custom-instructions/README.md)** | **[第 06 章に進む →](../06-mcp-servers/README.md)**
+[**← 第 04 章に戻る**](../04-agents-custom-instructions/README.md) | [**第 06 章に進む →**](../06-mcp-servers/README.md)
