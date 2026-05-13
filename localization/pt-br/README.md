@@ -5,7 +5,7 @@
 [![Documentação oficial do Copilot CLI](https://img.shields.io/badge/GitHub-CLI_Documentation-00a3ee?style=flat-square&logo=github)](https://docs.github.com/en/copilot/how-tos/copilot-cli)&ensp;
 [![Entre na comunidade AI Foundry no Discord](https://img.shields.io/badge/Discord-AI_Community-blue?style=flat-square&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
 
-🎯 [O que você vai aprender](#-o-que-você-vai-aprender) &ensp; ✅ [Pré-requisitos](#-pré-requisitos) &ensp; 🤖 [Família Copilot](#-entendendo-a-família-github-copilot) &ensp; 📚 [Estrutura do curso](#-estrutura-do-curso) &ensp; 📋 [Referência de comandos](#-referência-de-comandos-do-github-copilot-cli)
+🎯 [O que você vai aprender](#-o-que-você-vai-aprender) &ensp; ✅ [Pré-requisitos](#-pré-requisitos) &ensp; 🤖 [Família Copilot](#-entendendo-a-família-github-copilot) &ensp; 📚 [Estrutura do curso](#-estrutura-do-curso) &ensp; 📋 [Referência de comandos](#-referência-de-comandos-do-github-copilot-cli) &ensp; 🌐 [Seu idioma](#-use-seu-idioma-preferido)
 
 # GitHub Copilot CLI para Iniciantes
 

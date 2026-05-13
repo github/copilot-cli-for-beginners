@@ -5,7 +5,7 @@
 [![Official Copilot CLI documentation](https://img.shields.io/badge/GitHub-CLI_Documentation-00a3ee?style=flat-square&logo=github)](https://docs.github.com/en/copilot/how-tos/copilot-cli)&ensp;
 [![Join AI Foundry Discord](https://img.shields.io/badge/Discord-AI_Community-blue?style=flat-square&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
 
-🎯 [学習内容](#-学習内容) &ensp; ✅ [前提条件](#-前提条件) &ensp; 🤖 [Copilot ファミリー](#-github-copilot-ファミリーを理解する) &ensp; 📚 [コース構成](#-コース構成) &ensp; 📋 [コマンドリファレンス](#-github-copilot-cli-コマンドリファレンス)
+🎯 [学習内容](#-学習内容) &ensp; ✅ [前提条件](#-前提条件) &ensp; 🤖 [Copilot ファミリー](#-github-copilot-ファミリーを理解する) &ensp; 📚 [コース構成](#-コース構成) &ensp; 📋 [コマンドリファレンス](#-github-copilot-cli-コマンドリファレンス) &ensp; 🌐 [あなたの言語](#-お好みの言語で利用する)
 
 # GitHub Copilot CLI for Beginners
 
