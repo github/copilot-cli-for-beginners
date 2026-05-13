@@ -5,7 +5,7 @@
 [![Official Copilot CLI documentation](https://img.shields.io/badge/GitHub-CLI_Documentation-00a3ee?style=flat-square&logo=github)](https://docs.github.com/en/copilot/how-tos/copilot-cli)&ensp;
 [![Join AI Foundry Discord](https://img.shields.io/badge/Discord-AI_Community-blue?style=flat-square&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
 
-🎯 [학습 목표](#학습-목표) &ensp; ✅ [사전 요건](#사전-요건) &ensp; 🤖 [Copilot 제품군](#github-copilot-제품군-이해하기) &ensp; 📚 [강의 구성](#강의-구성) &ensp; 📋 [명령어 참조](#-github-copilot-cli-명령어-참조)
+🎯 [학습 목표](#-학습-목표) &ensp; ✅ [사전 요건](#-사전-요건) &ensp; 🤖 [Copilot 제품군](#-github-copilot-제품군-이해하기) &ensp; 📚 [강의 구성](#-강의-구성) &ensp; 📋 [명령어 참조](#-github-copilot-cli-명령어-참조)
 
 # GitHub Copilot CLI for Beginners
 
