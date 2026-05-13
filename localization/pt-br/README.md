@@ -89,6 +89,12 @@ Cada capítulo segue o mesmo padrão:
 
 A [**referência de comandos do GitHub Copilot CLI**](https://docs.github.com/en/copilot/reference/cli-command-reference) ajuda você a encontrar comandos e atalhos de teclado para usar o Copilot CLI com eficiência.
 
+## 🌐 Use seu idioma preferido
+
+Este material está disponível nos seguintes idiomas.
+
+[English](../../README.md) | [Español](../es-es/README.md) | [日本語](../ja-jp/README.md) | [한국어](../ko-kr/README.md) | [Português](./README.md) | [中文(简体)](../zh-cn/README.md)
+
 ## 🙋 Obtendo ajuda
 
 - 🐛 **Encontrou um bug?** [Abra uma issue](https://github.com/github/copilot-cli-for-beginners/issues)
