@@ -1,4 +1,5 @@
 def print_menu():
+    """Display the main menu options for the book collection app."""
     print("\n📚 Book Collection App")
     print("1. Add a book")
     print("2. List books")
@@ -8,11 +9,22 @@ def print_menu():
 
 
 def get_user_choice() -> str:
+    """Prompt user for menu choice and return stripped input."""
     return input("Choose an option (1-5): ").strip()
 
 
 def parse_year(year_input: str) -> int:
-    """Parse year input, defaulting to 0 if invalid."""
+    """Parse year input, defaulting to 0 if invalid.
+
+    Args:
+        year_input: String representation of a year
+
+    Returns:
+        Parsed year as integer, or 0 if parsing fails
+
+    Note:
+        Prints error message to console when parsing fails
+    """
     try:
         return int(year_input)
     except ValueError:
@@ -21,6 +33,14 @@ def parse_year(year_input: str) -> int:
 
 
 def get_book_details():
+    """Collect book details from user input.
+
+    Prompts user for title, author, and publication year.
+    Year input is parsed with error handling.
+
+    Returns:
+        Tuple of (title, author, year) where year is int
+    """
     title = input("Enter book title: ").strip()
     author = input("Enter author: ").strip()
 
@@ -31,6 +51,14 @@ def get_book_details():
 
 
 def print_books(books):
+    """Display a formatted list of books with read status.
+
+    Args:
+        books: List of Book objects to display
+
+    Note:
+        Shows "No books in your collection." if list is empty
+    """
     if not books:
         print("No books in your collection.")
         return
