@@ -11,16 +11,21 @@ def get_user_choice() -> str:
     return input("Choose an option (1-5): ").strip()
 
 
+def parse_year(year_input: str) -> int:
+    """Parse year input, defaulting to 0 if invalid."""
+    try:
+        return int(year_input)
+    except ValueError:
+        print("Invalid year. Defaulting to 0.")
+        return 0
+
+
 def get_book_details():
     title = input("Enter book title: ").strip()
     author = input("Enter author: ").strip()
 
     year_input = input("Enter publication year: ").strip()
-    try:
-        year = int(year_input)
-    except ValueError:
-        print("Invalid year. Defaulting to 0.")
-        year = 0
+    year = parse_year(year_input)
 
     return title, author, year
 
