@@ -1,0 +1,14 @@
+graph TD
+    A["Placeholder: System Component A"] --> B["Placeholder: Component B"]
+    B --> C["Placeholder: Component C"]
+    C --> D["Database"]
+    A --> E["External Service"]
+    
+    style A fill:#e1f5ff
+    style B fill:#e1f5ff
+    style C fill:#e1f5ff
+    style D fill:#fff3e0
+    style E fill:#f3e5f5
+    
+    classDef placeholder fill:#e0e0e0,color:#424242
+    class A,B,C,D,E placeholder
