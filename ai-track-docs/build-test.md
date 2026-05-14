@@ -1,38 +1,92 @@
 # Build and Test
 
 ## Prerequisites
-Placeholder: Document system requirements (Node.js version, Python version, etc.)
+
+| Tool | Requirement | Status |
+|------|-------------|--------|
+| **Python** | 3.10 or higher | Required |
+| **pip** | Package manager | Included with Python 3.10+ |
+| **pytest** | Test framework | Listed in `pyproject.toml` |
+
+Verify: `python --version` should show `Python 3.10.x` or higher.
 
 ## Build Commands
-Placeholder: Provide exact commands to build the project.
 
-Example:
+### Python (Primary Sample)
+
+Navigate to the project:
 ```bash
-# Build the project
-npm install
-npm run build
+cd samples/book-app-project
 ```
 
-## Test Commands
-Placeholder: Provide exact commands to run tests.
-
-Example:
+Install the project with dev dependencies:
 ```bash
-# Run all tests
-npm test
+pip install -e .
+```
 
-# Run tests with coverage
-npm run test:coverage
+This installs the `book-app` package in editable mode and includes `pytest`.
 
-# Run specific test suite
-npm test -- path/to/test.js
+## Test Commands
+
+### Run All Tests
+```bash
+cd samples/book-app-project
+pytest tests/ -v
+```
+
+### Run Tests with Coverage Report
+```bash
+cd samples/book-app-project
+pytest tests/ --cov=. --cov-report=term-missing
+```
+
+### Run a Specific Test File
+```bash
+cd samples/book-app-project
+pytest tests/test_utils.py -v
+```
+
+### Run a Single Test
+```bash
+cd samples/book-app-project
+pytest tests/test_utils.py::test_get_book_details_valid_year -v
 ```
 
 ## Local Development
-Placeholder: Document how to set up a local development environment.
 
-## Verification
-After making changes, run:
+1. **Clone and navigate:**
+   ```bash
+   git clone https://github.com/<your-username>/copilot-cli-for-beginners-mnf.git
+   cd copilot-cli-for-beginners-mnf/samples/book-app-project
+   ```
+
+2. **Install in editable mode:**
+   ```bash
+   pip install -e .
+   ```
+
+3. **Run the app:**
+   ```bash
+   python book_app.py
+   ```
+
+4. **Run tests after changes:**
+   ```bash
+   pytest tests/ -v
+   ```
+
+## Verification (Exercise 2 Baseline)
+
+After making changes, verify locally:
 ```bash
-npm run build && npm test
+cd samples/book-app-project
+pytest tests/ -v
 ```
+
+Expected output: All tests pass (green checkmarks).
+
+## Baseline Tests Added
+
+- `test_utils.py` — Unit tests for utility functions
+  - `test_get_book_details_valid_year()` — Verifies year parsing works correctly
+  - `test_get_book_details_invalid_year()` — Verifies invalid years default to 0
