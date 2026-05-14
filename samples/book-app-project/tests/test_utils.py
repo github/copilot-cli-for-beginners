@@ -6,6 +6,26 @@ import pytest
 import utils
 
 
+def test_parse_year_valid():
+    """Test parse_year with valid year."""
+    result = utils.parse_year("1925")
+    assert result == 1925
+    assert isinstance(result, int)
+
+
+def test_parse_year_invalid():
+    """Test parse_year with invalid year defaults to 0."""
+    result = utils.parse_year("not_a_year")
+    assert result == 0
+    assert isinstance(result, int)
+
+
+def test_parse_year_empty():
+    """Test parse_year with empty string defaults to 0."""
+    result = utils.parse_year("")
+    assert result == 0
+
+
 def test_get_book_details_valid_year(monkeypatch):
     """Test get_book_details with valid year input."""
     inputs = iter(["The Great Gatsby", "F. Scott Fitzgerald", "1925"])
