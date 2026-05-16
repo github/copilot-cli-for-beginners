@@ -1,0 +1,72 @@
+version=1
+
+# This file caches language service data to improve the performance of C# Dev Kit.
+# It is not intended for manual editing. It can safely be deleted and will be
+# regenerated automatically. For more information, see https://aka.ms/lscache
+#
+# To control where cache files are stored, use the following VS Code setting:
+#   "dotnet.projectsystem.cacheInProjectFolder": true
+
+[project]
+language=C#
+primary
+lastDtbSucceeded
+
+[properties]
+AssemblyName=BookApp.Tests
+CommandLineArgsForDesignTimeEvaluation=-langversion:13.0 -define:TRACE
+CompilerGeneratedFilesOutputPath=
+MaxSupportedLangVersion=13.0
+ProjectAssetsFile=<PATH>obj/project.assets.json
+RootNamespace=BookApp.Tests
+RunAnalyzers=
+RunAnalyzersDuringLiveAnalysis=
+SolutionPath=<PATH>../../../copilot-cli-for-beginners.sln
+TargetFrameworkIdentifier=.NETCoreApp
+TargetPath=<PATH>bin/Debug/net10.0/BookApp.Tests.dll
+TargetRefPath=<PATH>obj/Debug/net10.0/ref/BookApp.Tests.dll
+TemporaryDependencyNodeTargetIdentifier=net10.0
+
+[commandLineArguments]
+/noconfig
+/unsafe-
+/checked-
+/nowarn:1701,1702,1701,1702
+/fullpaths
+/nostdlib+
+/errorreport:prompt
+/warn:1
+/define:TRACE;DEBUG;NET;NET10_0;NETCOREAPP;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP1_0_OR_GREATER;NETCOREAPP1_1_OR_GREATER;NETCOREAPP2_0_OR_GREATER;NETCOREAPP2_1_OR_GREATER;NETCOREAPP2_2_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER
+/highentropyva+
+/nullable:enable
+/debug+
+/debug:portable
+/filealign:512
+/optimize-
+/out:obj/Debug/net10.0/BookApp.Tests.dll
+/refout:obj/Debug/net10.0/refint/BookApp.Tests.dll
+/target:library
+/warnaserror-
+/utf8output
+/deterministic+
+/langversion:13.0
+/warnaserror+:NU1605,SYSLIB0011
+
+[sourceFiles]
+BookCollectionTests.cs
+obj/Debug/net10.0/
+ .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+ BookApp.Tests.AssemblyInfo.cs
+ BookApp.Tests.GlobalUsings.g.cs
+
+[metadataReferences]
+../obj/Debug/net10.0/ref/BookApp.dll
+
+[analyzerReferences]
+../../../../../../../usr/lib/dotnet/sdk/9.0.203/Sdks/Microsoft.NET.Sdk/analyzers/
+ Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll
+ Microsoft.CodeAnalysis.NetAnalyzers.dll
+
+[analyzerConfigFiles]
+../../../../../../../usr/lib/dotnet/sdk/9.0.203/Sdks/Microsoft.NET.Sdk/codestyle/cs/build/config/analysislevelstyle_default.globalconfig
+obj/Debug/net10.0/BookApp.Tests.GeneratedMSBuildEditorConfig.editorconfig

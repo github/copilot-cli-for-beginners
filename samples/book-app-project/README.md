@@ -30,6 +30,7 @@ It can add, remove, and list books. Also mark them as read.
 ```bash
 python book_app.py list
 python book_app.py add
+python book_app.py mark-read
 python book_app.py find
 python book_app.py remove
 python book_app.py help
