@@ -14,19 +14,24 @@ def get_user_choice() -> str:
 
 
 def parse_year(year_input: str) -> int:
-    """Parse year input, defaulting to 0 if invalid.
+    """Parse year input, defaulting to 0 if invalid or out of range.
 
     Args:
         year_input: String representation of a year
 
     Returns:
-        Parsed year as integer, or 0 if parsing fails
+        Parsed year as integer, or 0 if parsing fails or out of range
 
     Note:
-        Prints error message to console when parsing fails
+        Prints error message to console when parsing fails or year is invalid
     """
     try:
-        return int(year_input)
+        year = int(year_input)
+        if 0 <= year <= 9999:
+            return year
+        else:
+            print("Year out of range. Defaulting to 0.")
+            return 0
     except ValueError:
         print("Invalid year. Defaulting to 0.")
         return 0

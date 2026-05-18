@@ -26,6 +26,15 @@ def test_parse_year_empty():
     assert result == 0
 
 
+def test_parse_year_out_of_range():
+    """Test parse_year with year out of range defaults to 0."""
+    result = utils.parse_year("10000")
+    assert result == 0
+
+    result = utils.parse_year("-1")
+    assert result == 0
+
+
 def test_get_book_details_valid_year(monkeypatch):
     """Test get_book_details with valid year input."""
     inputs = iter(["The Great Gatsby", "F. Scott Fitzgerald", "1925"])

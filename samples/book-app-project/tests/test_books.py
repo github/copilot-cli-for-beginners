@@ -26,6 +26,23 @@ def test_add_book():
     assert book.year == 1949
     assert book.read is False
 
+def test_add_book_invalid_title():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Title cannot be empty."):
+        collection.add_book("", "Author", 2023)
+
+def test_add_book_invalid_author():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Author cannot be empty."):
+        collection.add_book("Title", "", 2023)
+
+def test_add_book_invalid_year():
+    collection = BookCollection()
+    with pytest.raises(ValueError, match="Year must be between 0 and 9999."):
+        collection.add_book("Title", "Author", -1)
+    with pytest.raises(ValueError, match="Year must be between 0 and 9999."):
+        collection.add_book("Title", "Author", 10000)
+
 def test_mark_book_as_read():
     collection = BookCollection()
     collection.add_book("Dune", "Frank Herbert", 1965)
