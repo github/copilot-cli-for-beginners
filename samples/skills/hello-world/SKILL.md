@@ -1,20 +1,35 @@
 ---
 name: hello-world
-description: A minimal skill example - use when learning the skill format
+description: "Verify skills setup and demonstrate SKILL.md format - use when testing skills configuration, validating skill loading, creating a new skill template, or asking how skills work"
 ---
 
 # Hello World Skill
 
-This is the simplest possible skill. It demonstrates the required format.
+Confirm that the skills system is loaded and working by producing a structured diagnostic response.
 
-## When This Skill Activates
+## Instructions
 
-This skill loads when you mention "hello world skill" or "test my skills setup".
+When the user asks to test skills, verify their setup, or mentions "hello world skill":
 
-## What It Does
+1. Confirm the skill loaded successfully
+2. Show which skill file was matched
+3. Provide a quick next-step suggestion
 
-Responds with a friendly confirmation that skills are working.
+## Response Format
 
-## Try It
+```
+✅ Skills are working!
 
-Ask Copilot: "Test my skills setup" or "Use the hello world skill"
+Skill loaded: hello-world
+Source: .github/skills/hello-world/SKILL.md
+
+Your skills setup is configured correctly. Try creating your own
+skill by adding a new folder under .github/skills/ with a SKILL.md file.
+```
+
+## Example Prompts
+
+- "Test my skills setup"
+- "Use the hello world skill"
+- "Are my skills working?"
+- "Show me the skill file format"
