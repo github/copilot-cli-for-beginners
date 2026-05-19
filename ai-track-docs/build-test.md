@@ -98,3 +98,17 @@ Expected output: All tests pass (green checkmarks).
 - `test_utils.py` — Unit tests for utility functions
   - `test_get_book_details_valid_year()` — Verifies year parsing works correctly
   - `test_get_book_details_invalid_year()` — Verifies invalid years default to 0
+
+## Walk Ex2 Coverage Baseline
+
+Command used:
+
+```bash
+cd samples/book-app-project
+python -m pytest tests --cov=. --cov-report=term
+```
+
+Latest observed summary:
+
+- Tests: 22 passed
+- TOTAL coverage: 79%
