@@ -28,6 +28,14 @@ This installs the `book-app` package in editable mode and includes `pytest`.
 
 ## Test Commands
 
+### Run the Local Validation Script
+```bash
+cd samples/book-app-project
+python run_tests.py
+```
+
+This wraps the standard pytest command in a single cross-platform script for local validation.
+
 ### Run All Tests
 ```bash
 cd samples/book-app-project
@@ -80,7 +88,7 @@ pytest tests/test_utils.py::test_get_book_details_valid_year -v
 After making changes, verify locally:
 ```bash
 cd samples/book-app-project
-pytest tests/ -v
+python run_tests.py
 ```
 
 Expected output: All tests pass (green checkmarks).
