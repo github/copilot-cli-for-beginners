@@ -68,3 +68,31 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+def test_handle_add_invalid_input(monkeypatch, capsys):
+    from book_app import handle_add
+
+    # Test empty title
+    monkeypatch.setattr('builtins.input', lambda _: "")
+    handle_add()
+    captured = capsys.readouterr()
+    assert "Error: Title cannot be empty." in captured.out
+
+    # Test empty author
+    monkeypatch.setattr('builtins.input', lambda prompt: "Title" if "Title" in prompt else "")
+    handle_add()
+    captured = capsys.readouterr()
+    assert "Error: Author cannot be empty." in captured.out
+
+    # Test invalid year
+    monkeypatch.setattr('builtins.input', lambda prompt: "Title" if "Title" in prompt else ("Author" if "Author" in prompt else "-1"))
+    handle_add()
+    captured = capsys.readouterr()
+    assert "Error: Year must be between 0 and 9999." in captured.out
+
+def test_list_books():
+    collection = BookCollection()
+    collection.add_book("Test Book", "Author", 2023)
+    books = collection.list_books()
+    assert len(books) == 1
+    assert books[0].title == "Test Book"
