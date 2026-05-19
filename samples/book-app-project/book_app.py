@@ -1,4 +1,5 @@
 import logging
+import os
 import sys
 import time
 from books import BookCollection
@@ -19,6 +20,10 @@ def log_operation(op, status, started_at, **fields):
     logger.info(" ".join(parts))
 
 
+def should_show_year() -> bool:
+    return os.getenv("BOOK_APP_SHOW_YEAR", "1").lower() not in {"0", "false", "off", "no"}
+
+
 def show_books(books):
     """Display books in a user-friendly format."""
     if not books:
@@ -29,7 +34,8 @@ def show_books(books):
 
     for index, book in enumerate(books, start=1):
         status = "✓" if book.read else " "
-        print(f"{index}. [{status}] {book.title} by {book.author} ({book.year})")
+        year_suffix = f" ({book.year})" if should_show_year() else ""
+        print(f"{index}. [{status}] {book.title} by {book.author}{year_suffix}")
 
     print()
 

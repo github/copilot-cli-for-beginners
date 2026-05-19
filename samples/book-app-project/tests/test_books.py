@@ -112,3 +112,23 @@ def test_handle_add_logs_structured_success(monkeypatch, caplog):
     assert "op=add_book" in caplog.text
     assert "status=success" in caplog.text
     assert "elapsed_ms=" in caplog.text
+
+def test_show_books_toggle_on(monkeypatch, capsys):
+    import book_app
+    from books import Book
+
+    monkeypatch.setenv("BOOK_APP_SHOW_YEAR", "1")
+    book_app.show_books([Book(title="Dune", author="Frank Herbert", year=1965)])
+
+    captured = capsys.readouterr()
+    assert "(1965)" in captured.out
+
+def test_show_books_toggle_off(monkeypatch, capsys):
+    import book_app
+    from books import Book
+
+    monkeypatch.setenv("BOOK_APP_SHOW_YEAR", "0")
+    book_app.show_books([Book(title="Dune", author="Frank Herbert", year=1965)])
+
+    captured = capsys.readouterr()
+    assert "(1965)" not in captured.out
