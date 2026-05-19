@@ -2,4 +2,4 @@
 name = "book-app"
 version = "0.1.0"
 requires-python = ">=3.10"
-dependencies = ["pytest"]
+dependencies = ["pytest>=8,<9"]
