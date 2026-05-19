@@ -28,6 +28,15 @@ output.json
 .env.test.local
 .env.production.local
 
+# Common secret and certificate files
+*.pem
+*.key
+*.crt
+*.cer
+*.pfx
+*.p12
+secrets.*
+
 # IDE and Editor directories
 .vscode/*
 !.vscode/extensions.json
