@@ -1,9 +1,22 @@
+import logging
 import sys
+import time
 from books import BookCollection
+
+
+logging.basicConfig(level=logging.INFO, format="%(message)s")
+logger = logging.getLogger("book_app")
 
 
 # Global collection instance
 collection = BookCollection()
+
+
+def log_operation(op, status, started_at, **fields):
+    elapsed_ms = (time.perf_counter() - started_at) * 1000
+    parts = [f"op={op}", f"status={status}", f"elapsed_ms={elapsed_ms:.3f}"]
+    parts.extend(f"{key}={value}" for key, value in fields.items())
+    logger.info(" ".join(parts))
 
 
 def show_books(books):
@@ -28,6 +41,7 @@ def handle_list():
 
 def handle_add():
     print("\nAdd a New Book\n")
+    started_at = time.perf_counter()
 
     title = input("Title: ").strip()
     author = input("Author: ").strip()
@@ -35,9 +49,11 @@ def handle_add():
 
     # Input validation
     if not title:
+        log_operation("add_book", "validation_error", started_at, reason="empty_title")
         print("\nError: Title cannot be empty.\n")
         return
     if not author:
+        log_operation("add_book", "validation_error", started_at, reason="empty_author")
         print("\nError: Author cannot be empty.\n")
         return
     try:
@@ -45,8 +61,10 @@ def handle_add():
         if year < 0 or year > 9999:
             raise ValueError("Year must be between 0 and 9999.")
         collection.add_book(title, author, year)
+        log_operation("add_book", "success", started_at, year=year)
         print("\nBook added successfully.\n")
     except ValueError as e:
+        log_operation("add_book", "validation_error", started_at, reason="invalid_year")
         print(f"\nError: {e}\n")
 
 

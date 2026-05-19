@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
 import books
 from books import BookCollection
+import logging
 
 
 @pytest.fixture(autouse=True)
@@ -96,3 +97,18 @@ def test_list_books():
     books = collection.list_books()
     assert len(books) == 1
     assert books[0].title == "Test Book"
+
+def test_handle_add_logs_structured_success(monkeypatch, caplog):
+    import book_app
+
+    book_app.collection = BookCollection()
+
+    answers = iter(["Structured Logging", "Logger Author", "2024"])
+    monkeypatch.setattr('builtins.input', lambda _: next(answers))
+
+    with caplog.at_level(logging.INFO, logger="book_app"):
+        book_app.handle_add()
+
+    assert "op=add_book" in caplog.text
+    assert "status=success" in caplog.text
+    assert "elapsed_ms=" in caplog.text
