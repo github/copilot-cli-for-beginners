@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
 import books
 from books import BookCollection
+import builtins
 import logging
 
 
@@ -132,3 +133,35 @@ def test_show_books_toggle_off(monkeypatch, capsys):
 
     captured = capsys.readouterr()
     assert "(1965)" not in captured.out
+
+def test_load_books_permission_error_falls_back_to_empty(monkeypatch, capsys):
+    original_open = builtins.open
+
+    def failing_open(path, mode="r", *args, **kwargs):
+        if path == books.DATA_FILE and mode == "r":
+            raise PermissionError("access denied")
+        return original_open(path, mode, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "open", failing_open)
+
+    collection = BookCollection()
+    captured = capsys.readouterr()
+
+    assert collection.books == []
+    assert "Warning: could not read data file" in captured.out
+
+def test_load_books_os_error_falls_back_to_empty(monkeypatch, capsys):
+    original_open = builtins.open
+
+    def failing_open(path, mode="r", *args, **kwargs):
+        if path == books.DATA_FILE and mode == "r":
+            raise OSError("device not ready")
+        return original_open(path, mode, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "open", failing_open)
+
+    collection = BookCollection()
+    captured = capsys.readouterr()
+
+    assert collection.books == []
+    assert "Warning: could not read data file" in captured.out

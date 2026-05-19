@@ -29,6 +29,9 @@ class BookCollection:
         except json.JSONDecodeError:
             print("Warning: data.json is corrupted. Starting with empty collection.")
             self.books = []
+        except OSError as error:
+            print(f"Warning: could not read data file ({error}). Starting with empty collection.")
+            self.books = []
 
     def save_books(self):
         """Save the current book collection to JSON."""
