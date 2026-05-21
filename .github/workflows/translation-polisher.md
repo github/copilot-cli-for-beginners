@@ -72,14 +72,16 @@ If this workflow is triggered by `pull_request`, inspect the triggering pull req
 
 ## Loop prevention
 
-Before editing, inspect the pull request's latest commit and current diff.
+Before editing, inspect the pull request's latest commit, current diff, labels, and body.
 
-Stop with a no-op if either of these is true:
+Stop with a no-op only if both of these are true:
 
-1. The latest commit appears to be from this Translation Polisher workflow.
-2. The translated Markdown already satisfies the quality checklist below and no changes are needed.
+1. The translated Markdown already satisfies the quality checklist below and no file changes are needed.
+2. The pull request body already contains an up-to-date `## Translation Quality Review` section with one grade row for every changed translated Markdown file.
 
-Do not add churn. If the translation is already good enough, leave it unchanged.
+If the latest commit appears to be from this Translation Polisher workflow but the pull request body is missing the `## Translation Quality Review` section, do not edit files. Still review and grade the changed translated Markdown files, update the pull request body, and add a concise comment if useful.
+
+Do not add churn. If the translation is already good enough and the PR body already has current grades, leave it unchanged.
 
 ## Files you may change
 
