@@ -4,7 +4,7 @@
 
 En este capítulo aprenderás sobre Agent Skills: carpetas de instrucciones que Copilot carga automáticamente cuando son relevantes para tu tarea. Mientras que los agentes cambian *cómo* piensa Copilot, las skills le enseñan *formas específicas de completar tareas*. Crearás una skill de auditoría de seguridad que Copilot aplicará siempre que preguntes sobre seguridad, construirás criterios de revisión estándar del equipo que garanticen calidad de código coherente y aprenderás cómo funcionan las skills en Copilot CLI, VS Code y el agente en la nube de GitHub Copilot.
 
-## 🎯 Learning Objectives
+## 🎯 Objetivos de aprendizaje
 
 Al final de este capítulo, podrás:
 
@@ -37,7 +37,7 @@ Las skills funcionan de la misma manera. Igual que cambiar brocas para diferente
 
 ---
 
-# How Skills Work
+# Cómo funcionan las Skills
 
 <img src="../../../05-skills/images/how-skills-work.png" alt="Iconos de habilidades estilo RPG brillando conectados por senderos de luz sobre un fondo estrellado que representan las habilidades de Copilot" width="800"/>
 
@@ -60,7 +60,7 @@ Aprende qué son las skills, por qué importan y en qué se diferencian de los a
 
 3. **Entiende el concepto principal:** Las skills son instrucciones específicas de tareas que Copilot carga *automáticamente* cuando tu prompt coincide con la descripción de la skill. No necesitas activarlas, solo pregunta de forma natural.
 
-## Understanding Skills
+## Entendiendo las Skills
 
 Agent Skills son carpetas que contienen instrucciones, scripts y recursos que Copilot **carga automáticamente cuando son relevantes** para tu tarea. Copilot lee tu prompt, comprueba si alguna skill coincide y aplica las instrucciones relevantes automáticamente.
 

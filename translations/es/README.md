@@ -41,7 +41,7 @@ Antes de comenzar, asegúrate de tener:
 
 ## 🤖 Comprender la familia GitHub Copilot
 
-GitHub Copilot ha evolucionado hasta convertirse en una familia de herramientas impulsadas por IA. Aquí es dónde vive cada una:
+GitHub Copilot ha evolucionado hasta convertirse en una familia de herramientas impulsadas por IA. Aquí es dónde se encuentra cada una:
 
 | Producto | Dónde se ejecuta | Descripción |
 |---------|---------------|----------|
@@ -99,7 +99,7 @@ La **[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/r
 3. Realiza tus cambios
 4. Envía un pull request
 
-## License
+## Licencia
 
 This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](../../LICENSE) file for the full terms.
 

@@ -4,7 +4,7 @@
 
 En este capítulo desbloquearás el verdadero poder de GitHub Copilot CLI: el contexto. Aprenderás a usar la sintaxis `@` para referenciar archivos y directorios, dando a Copilot CLI un entendimiento profundo de tu base de código. Descubrirás cómo mantener conversaciones a través de sesiones, reanudar el trabajo días después exactamente donde lo dejaste, y verás cómo el análisis entre archivos detecta errores que las revisiones de un solo archivo no alcanzan a ver.
 
-## 🎯 Learning Objectives
+## 🎯 Objetivos de aprendizaje
 
 Al final de este capítulo, podrás:
 
@@ -442,13 +442,13 @@ Sin volver a explicar. Sin volver a leer archivos. Simplemente continúa trabaja
 
 Estos temas se basan en lo esencial anterior. **Elige lo que te interese, o salta a [Práctica](#el-espectro-de-especificidad).**
 
-| I want to learn about... | Jump to |
+| Quiero aprender sobre... | Ir a |
 |---|---|
-| Wildcard patterns and advanced session commands | [Additional @ Patterns & Session Commands](#check-and-manage-context) |
-| Building on context across multiple prompts | [Context-Aware Conversations](#patrones-adicionales) |
-| Token limits and `/compact` | [Understanding Context Windows](#compartir-tu-sesión) |
-| How to pick the right files to reference | [Choosing What to Reference](#el-comando-compact) |
-| Analyzing screenshots and mockups | [Working with Images](#qué-incluir-vs-excluir) |
+| Patrones comodín y comandos de sesión avanzados | [Patrones @ adicionales y comandos de sesión](#check-and-manage-context) |
+| Construir contexto a través de múltiples prompts | [Conversaciones conscientes del contexto](#patrones-adicionales) |
+| Límites de tokens y `/compact` | [Entendiendo las ventanas de contexto](#compartir-tu-sesión) |
+| Cómo elegir los archivos correctos para referenciar | [Elegir qué referenciar](#el-comando-compact) |
+| Analizar capturas de pantalla y maquetas | [Trabajar con imágenes](#qué-incluir-vs-excluir) |
 
 <details>
 <summary><strong>Patrones @ adicionales y comandos de sesión</strong></summary>

@@ -42,15 +42,15 @@ Este capítulo cubre cinco flujos de trabajo que los desarrolladores suelen usar
 
 <img src="../../../03-development-workflows/images/five-workflows-swimlane.png" alt="Cinco flujos de trabajo de desarrollo: Revisión de código, Refactorización, Depuración, Generación de pruebas e Integración con Git mostrados como carriles horizontales" width="800"/>
 
-| I want to... | Jump to |
+| Quiero... | Ir a |
 |---|---|
-| Review code before merging | [Workflow 1: Code Review](#workflow-1-code-review) |
-| Clean up messy or legacy code | [Workflow 2: Refactoring](#workflow-2-refactoring) |
-| Track down and fix a bug | [Workflow 3: Debugging](#workflow-3-debugging) |
-| Generate tests for my code | [Workflow 4: Test Generation](#workflow-4-test-generation) |
-| Write better commits and PRs | [Workflow 5: Git Integration](#workflow-5-git-integration) |
-| Research before coding | [Quick Tip: Research Before You Plan or Code](#revisar-antes-del-push) |
-| See a full bug-fix workflow end to end | [Putting It All Together](#usar-delegate-para-tareas-en-segundo-plano) |
+| Revisar código antes de fusionar | [Flujo de trabajo 1: Revisión de código](#workflow-1-code-review) |
+| Limpiar código desordenado o heredado | [Flujo de trabajo 2: Refactorización](#workflow-2-refactoring) |
+| Localizar y corregir un error | [Flujo de trabajo 3: Depuración](#workflow-3-debugging) |
+| Generar pruebas para mi código | [Flujo de trabajo 4: Generación de pruebas](#workflow-4-test-generation) |
+| Escribir mejores commits y pull requests | [Flujo de trabajo 5: Integración con Git](#workflow-5-git-integration) |
+| Investigar antes de codificar | [Consejo rápido: Investigar antes de planificar o codificar](#revisar-antes-del-push) |
+| Ver un flujo de trabajo completo de corrección de errores de principio a fin | [Poniéndolo todo junto](#usar-delegate-para-tareas-en-segundo-plano) |
 
 **Selecciona un flujo de trabajo abajo para expandirlo** y ver cómo GitHub Copilot CLI puede mejorar tu proceso de desarrollo en esa área. 
 
