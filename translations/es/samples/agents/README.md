@@ -1,8 +1,8 @@
-# Sample Agent Definitions
+# Definiciones de agentes de ejemplo
 
-This folder contains some simple agent templates for GitHub Copilot CLI intended to help you get started using agents.
+Esta carpeta contiene algunas plantillas de agentes sencillas para GitHub Copilot CLI, diseñadas para ayudarte a comenzar a usar agentes.
 
-## Quick Start
+## Inicio rápido
 
 ```bash
 # Copia un agente en tu carpeta personal de agentes
@@ -12,23 +12,23 @@ cp hello-world.agent.md ~/.copilot/agents/
 cp python-reviewer.agent.md .github/agents/
 ```
 
-## Sample Files in This Folder
+## Archivos de ejemplo en esta carpeta
 
-| File | Description | Best For |
+| Archivo | Descripción | Ideal para |
 |------|-------------|----------|
-| `hello-world.agent.md` | Minimal example (11 lines) | Learning the format |
-| `python-reviewer.agent.md` | Python code quality reviewer | Code reviews, PEP 8, type hints |
-| `pytest-helper.agent.md` | Pytest testing specialist | Test generation, fixtures, edge cases |
+| `hello-world.agent.md` | Ejemplo mínimo (11 líneas) | Aprender el formato |
+| `python-reviewer.agent.md` | Revisor de calidad de código Python | Revisiones de código, PEP 8, anotaciones de tipo |
+| `pytest-helper.agent.md` | Especialista en pruebas con Pytest | Generación de pruebas, fixtures, casos extremos |
 
-## Finding More Agents
+## Encontrar más agentes
 
 - **[github/awesome-copilot](https://github.com/github/awesome-copilot)** - Recursos oficiales de GitHub con agentes comunitarios e instrucciones
 
 ---
 
-## Agent File Format
+## Formato de archivo de agente
 
-Each agent file requires YAML frontmatter with at least a `description` field:
+Cada archivo de agente requiere frontmatter YAML con al menos un campo `description`:
 
 ```markdown
 ---
@@ -57,18 +57,18 @@ Agent instructions go here...
 >
 > 📖 **Documentación oficial**: [Configuración de agentes personalizados](https://docs.github.com/copilot/reference/custom-agents-configuration)
 
-## Agent File Locations
+## Ubicaciones de archivos de agente
 
 Los agentes pueden almacenarse en:
 - `~/.copilot/agents/` - Agentes globales disponibles en todos los proyectos
 - `.github/agents/` - Agentes específicos del proyecto
 - `.agent.md` archivos - Formato compatible con VS Code
 
-Each agent is a separate file with the `.agent.md` extension.
+Cada agente es un archivo separado con la extensión `.agent.md`.
 
 ---
 
-## Usage Examples
+## Ejemplos de uso
 
 ```bash
 # Comienza con un agente específico
@@ -91,13 +91,13 @@ copilot
 
 ---
 
-## Creating Your Own Agents
+## Crear tus propios agentes
 
-1. Create a new file in `~/.copilot/agents/` with `.agent.md` extension
-2. Add YAML frontmatter with at least a `description` field
-3. Add a descriptive header (e.g., `# Security Agent`)
-4. Define the agent's expertise, standards, and behaviors
-5. Use the agent with `/agent` or `--agent <name>`
+1. Crea un nuevo archivo en `~/.copilot/agents/` con la extensión `.agent.md`
+2. Agrega frontmatter YAML con al menos un campo `description`
+3. Agrega un encabezado descriptivo (p. ej., `# Agente de seguridad`)
+4. Define la experiencia, los estándares y los comportamientos del agente
+5. Usa el agente con `/agent` o `--agent <nombre>`
 
 **Consejos para agentes efectivos:**
 - Sé específico respecto a las áreas de especialización

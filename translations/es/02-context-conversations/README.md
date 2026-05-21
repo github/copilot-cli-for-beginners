@@ -14,11 +14,11 @@ Al final de este capítulo, podrás:
 - Escribir conversaciones de varios turnos efectivas
 - Gestionar permisos de directorio para flujos de trabajo de múltiples proyectos
 
-> ⏱️ **Estimated Time**: ~50 minutes (20 min reading + 30 min hands-on)
+> ⏱️ **Tiempo estimado**: ~50 minutos (20 min de lectura + 30 min de práctica)
 
 ---
 
-## 🧩 Real-World Analogy: Working with a Colleague
+## 🧩 Analogía del mundo real: Trabajar con un colega
 
 <img src="../../../02-context-conversations/images/colleague-context-analogy.png" alt="El contexto marca la diferencia - Sin contexto vs Con contexto" width="800"/>
 
@@ -34,7 +34,7 @@ Para proporcionar contexto a Copilot CLI usa *la sintaxis `@`* para indicarle ar
 
 ---
 
-# Essential: Basic Context
+# Esencial: Contexto básico
 
 <img src="../../../02-context-conversations/images/essential-basic-context.png" alt="Bloques de código brillantes conectados por rastros de luz que representan cómo fluye el contexto a través de las conversaciones de Copilot CLI" width="800"/>
 
@@ -42,13 +42,13 @@ Esta sección cubre todo lo que necesitas para trabajar de forma efectiva con el
 
 ---
 
-## The @ Syntax
+## La sintaxis @
 
 El símbolo `@` referencia archivos y directorios en tus mensajes. Es la forma de decirle a Copilot CLI "mira este archivo."
 
 > 💡 **Nota**: Todos los ejemplos de este curso usan la carpeta `samples/` incluida en este repositorio, así que puedes probar cada comando directamente.
 
-### Try It Now (No Setup Required)
+### Pruébalo ahora (sin configuración necesaria)
 
 Puedes probar esto con cualquier archivo en tu computadora:
 
@@ -68,7 +68,7 @@ copilot
 > > What does @test.py do?
 > ```
 
-### Basic @ Patterns
+### Patrones @ básicos
 
 | Pattern | Qué hace | Ejemplo de uso |
 |---------|--------------|-------------|
@@ -76,7 +76,7 @@ copilot
 | `@folder/` | Referencia todos los archivos en un directorio | `Review @samples/book-app-project/` |
 | `@file1.py @file2.py` | Referencia múltiples archivos | `Compare @samples/book-app-project/book_app.py @samples/book-app-project/books.py` |
 
-### Reference a Single File
+### Referenciar un solo archivo
 
 ```bash
 copilot
@@ -97,7 +97,7 @@ copilot
 
 ---
 
-### Reference Multiple Files
+### Referenciar múltiples archivos
 
 ```bash
 copilot
@@ -105,7 +105,7 @@ copilot
 > Compare @samples/book-app-project/book_app.py and @samples/book-app-project/books.py for consistency
 ```
 
-### Reference an Entire Directory
+### Referenciar un directorio completo
 
 ```bash
 copilot
@@ -115,13 +115,13 @@ copilot
 
 ---
 
-## Cross-File Intelligence
+## Inteligencia entre archivos
 
 Aquí es donde el contexto se convierte en una superpotencia. El análisis de un solo archivo es útil. El análisis entre archivos es transformador.
 
 <img src="../../../02-context-conversations/images/cross-file-intelligence.png" alt="Inteligencia entre archivos - comparando análisis de un solo archivo vs análisis entre archivos mostrando cómo analizar archivos juntos revela errores, flujo de datos y patrones invisibles en aislamiento" width="800"/>
 
-### Demo: Find Bugs That Span Multiple Files
+### Demo: Encontrar errores que abarcan múltiples archivos
 
 ```bash
 copilot
@@ -183,7 +183,7 @@ Cross-Module Analysis
 
 ---
 
-### Demo: Understand a Codebase in 60 Seconds
+### Demo: Comprender una base de código en 60 segundos
 
 <img src="../../../02-context-conversations/images/codebase-understanding.png" alt="Comparación en pantalla dividida mostrando la revisión manual de código que toma 1 hora frente a análisis asistido por IA que toma 10 segundos" width="800" />
 
@@ -214,9 +214,9 @@ Priority fix: Consolidate duplicate display functions and add input validation.
 
 ---
 
-## Practical Examples
+## Ejemplos prácticos
 
-### Example 1: Code Review with Context
+### Ejemplo 1: Revisión de código con contexto
 
 ```bash
 copilot
@@ -232,7 +232,7 @@ copilot
 # Ahora revisando book_app.py, pero aún consciente del contexto de books.py
 ```
 
-### Example 2: Understanding a Codebase
+### Ejemplo 2: Comprender una base de código
 
 ```bash
 copilot
@@ -259,7 +259,7 @@ copilot
 
 </details>
 
-### Example 3: Multi-File Refactoring
+### Ejemplo 3: Refactorización entre múltiples archivos
 
 ```bash
 copilot
@@ -272,11 +272,11 @@ copilot
 
 ---
 
-## Session Management
+## Gestión de sesiones
 
 Las sesiones se guardan automáticamente mientras trabajas. Puedes reanudar sesiones previas para continuar donde lo dejaste.
 
-### Sessions Auto-Save
+### Guardado automático de sesiones
 
 Cada conversación se guarda automáticamente. Simplemente sal normalmente:
 
@@ -290,14 +290,14 @@ copilot
 > /exit
 ```
 
-### Resume the Most Recent Session
+### Reanudar la sesión más reciente
 
 ```bash
 # Continúa donde lo dejaste
 copilot --continue
 ```
 
-### Resume a Specific Session
+### Reanudar una sesión específica
 
 ```bash
 # Selecciona de una lista de sesiones de forma interactiva
@@ -320,7 +320,7 @@ copilot --resume="my book app review"
 > # Shows a list of sessions to switch to
 > ```
 
-### Organize Your Sessions
+### Organizar tus sesiones
 
 Da a las sesiones nombres significativos para que las puedas encontrar después. Puedes nombrar una sesión cuando la inicias, o renombrarla en cualquier momento mientras estás dentro de la sesión:
 
@@ -351,7 +351,7 @@ copilot
 > /session delete-all        # Elimina todas las sesiones (¡usar con precaución!)
 ```
 
-### Check and Manage Context
+### Verificar y gestionar el contexto
 
 A medida que añades archivos y conversación, la [ventana de contexto](../GLOSSARY.md#context-window) de Copilot CLI se llena. Hay varios comandos disponibles para ayudarte a mantener el control:
 
@@ -377,7 +377,7 @@ Context usage: 62k/200k tokens (31%)
 
 ---
 
-### Pick Up Where You Left Off
+### Continúa donde lo dejaste
 
 <img src="../../../02-context-conversations/images/session-persistence-timeline.png" alt="Línea de tiempo que muestra cómo las sesiones de GitHub Copilot CLI persisten a través de los días - empieza el lunes, reanuda el miércoles con todo el contexto restaurado" width="800"/>
 
@@ -436,19 +436,19 @@ Sin volver a explicar. Sin volver a leer archivos. Simplemente continúa trabaja
 
 ---
 
-# Optional: Going Deeper
+# Opcional: Profundizar
 
 <img src="../../../02-context-conversations/images/optional-going-deeper.png" alt="Cueva cristalina abstracta en tonos azul y púrpura que representa una exploración más profunda de conceptos de contexto" width="800"/>
 
-Estos temas se basan en lo esencial anterior. **Elige lo que te interese, o salta a [Práctica](#el-espectro-de-especificidad).**
+Estos temas se basan en lo esencial anterior. **Elige lo que te interese, o salta a [Práctica](#práctica).**
 
 | Quiero aprender sobre... | Ir a |
 |---|---|
-| Patrones comodín y comandos de sesión avanzados | [Patrones @ adicionales y comandos de sesión](#check-and-manage-context) |
-| Construir contexto a través de múltiples prompts | [Conversaciones conscientes del contexto](#patrones-adicionales) |
-| Límites de tokens y `/compact` | [Entendiendo las ventanas de contexto](#compartir-tu-sesión) |
-| Cómo elegir los archivos correctos para referenciar | [Elegir qué referenciar](#el-comando-compact) |
-| Analizar capturas de pantalla y maquetas | [Trabajar con imágenes](#qué-incluir-vs-excluir) |
+| Patrones comodín y comandos de sesión avanzados | [Patrones @ adicionales y comandos de sesión](#patrones-adicionales) |
+| Construir contexto a través de múltiples prompts | [Conversaciones conscientes del contexto](#conversaciones-conscientes-del-contexto) |
+| Límites de tokens y `/compact` | [Comprender las ventanas de contexto](#comprender-las-ventanas-de-contexto) |
+| Cómo elegir los archivos correctos para referenciar | [Elegir qué referenciar](#eligiendo-qué-referenciar) |
+| Analizar capturas de pantalla y maquetas | [Trabajar con imágenes](#trabajar-con-imágenes) |
 
 <details>
 <summary><strong>Patrones @ adicionales y comandos de sesión</strong></summary>
@@ -508,7 +508,7 @@ copilot
 
 La magia ocurre cuando tienes conversaciones de varios turnos que se construyen unas sobre otras.
 
-#### Example: Progressive Enhancement
+#### Ejemplo: Mejora progresiva
 
 ```bash
 copilot
@@ -773,7 +773,7 @@ Después de completar las demos, prueba estas variaciones:
 
 2. **Desafío de sesión**: Inicia una sesión, asígnale nombre con `/rename my-first-session`, trabaja en algo, sal con `/exit`, luego ejecuta `copilot --continue`. ¿Recuerda lo que estabas haciendo?
 
-3. **Desafío de contexto**: Ejecuta `/context` a mitad de la sesión. ¿Cuántos tokens estás usando? Prueba `/compact` y verifica de nuevo. (Consulta [Comprender las ventanas de contexto](#compartir-tu-sesión) en Going Deeper para más sobre `/compact`.)
+3. **Desafío de contexto**: Ejecuta `/context` a mitad de la sesión. ¿Cuántos tokens estás usando? Prueba `/compact` y verifica de nuevo. (Consulta [Comprender las ventanas de contexto](#comprender-las-ventanas-de-contexto) en Profundizar para más sobre `/compact`.)
 
 **Autoevaluación**: Entiendes el contexto cuando puedes explicar por qué `@folder/` es más poderoso que abrir cada archivo individualmente.
 
