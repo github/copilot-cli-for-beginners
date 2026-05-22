@@ -28,5 +28,11 @@
     "author": "",
     "year": 0,
     "read": false
+  },
+  {
+    "title": "Test",
+    "author": "Someone",
+    "year": 0,
+    "read": false
   }
 ]
