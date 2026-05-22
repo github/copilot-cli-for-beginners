@@ -446,6 +446,32 @@ For teams that want more granular control, split instructions into topic-specifi
 
 > 💡 **Note**: Instruction files work with any language. This example uses Python to match our course project, but you can create similar files for TypeScript, Go, Rust, or any technology your team uses.
 
+#### Scoping Instructions with `applyTo`
+
+By default, an instruction file applies to every conversation. To limit it to specific file types, add an `applyTo` field in YAML frontmatter (the block between `---` markers at the very top of the file):
+
+```markdown
+---
+applyTo: "**/*.py"
+---
+# Python Standards
+Always follow PEP 8 style conventions.
+Use type hints in all function signatures.
+```
+
+With `applyTo: "**/*.py"`, Copilot only loads that instruction file when you are working with Python files. Instructions for Python style never clutter a conversation about, say, a Dockerfile or a SQL query.
+
+Here are some common patterns:
+
+| `applyTo` value | When it applies |
+|---|---|
+| `"**/*.py"` | Any Python file |
+| `"**/*.{ts,tsx}"` | TypeScript and TSX files |
+| `"tests/**"` | Any file inside a `tests/` folder |
+| (no frontmatter) | Every conversation — the default |
+
+> 💡 **Tip**: Wrap the glob pattern in quotes (e.g., `"**/*.py"`) to ensure it is interpreted correctly across all operating systems and shells.
+
 **Finding community instruction files**: Browse [github/awesome-copilot](https://github.com/github/awesome-copilot) for pre-made instruction files covering .NET, Angular, Azure, Python, Docker, and many more technologies.
 
 ### Disabling Custom Instructions
