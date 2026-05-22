@@ -2,7 +2,7 @@ import sys
 from collections.abc import Callable
 
 from books import BookCollection
-from utils import display_books, display_help
+from utils import display_books, display_help, parse_publication_year
 
 
 def handle_list(collection: BookCollection) -> int:
@@ -18,8 +18,12 @@ def handle_add(collection: BookCollection) -> int:
     author = input("Author: ").strip()
     year_str = input("Year: ").strip()
 
+    year, year_error = parse_publication_year(year_str)
+    if year_error is not None or year is None:
+        print(f"\nError: {year_error}\n")
+        return 1
+
     try:
-        year = int(year_str) if year_str else 0
         collection.add_book(title, author, year)
         print("\nBook added successfully.\n")
         return 0
@@ -32,15 +36,17 @@ def handle_remove(collection: BookCollection) -> int:
     print("\nRemove a Book\n")
 
     title = input("Enter the title of the book to remove: ").strip()
-    if not title:
-        print("\nError: Title cannot be empty.\n")
+    try:
+        result = collection.remove_book(title)
+    except ValueError as e:
+        print(f"\nError: {e}\n")
         return 1
 
-    if collection.remove_book(title):
-        print("\nBook removed successfully.\n")
+    if result.success:
+        print(f"\n{result.message}\n")
         return 0
 
-    print("\nError: Book not found.\n")
+    print(f"\nError: {result.message}\n")
     return 1
 
 

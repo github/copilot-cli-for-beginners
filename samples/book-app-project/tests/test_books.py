@@ -3,6 +3,7 @@ import os
 import sys
 import threading
 from dataclasses import asdict
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -360,6 +361,15 @@ class TestAddBook:
         with pytest.raises(ValueError, match="Year cannot be negative."):
             empty_collection.add_book("Dune", "Frank Herbert", year)
 
+    def test_add_book_rejects_future_year(self, empty_collection: BookCollection) -> None:
+        future_year = date.today().year + 1
+
+        with pytest.raises(
+            ValueError,
+            match=rf"Year cannot be in the future\. Please enter a year up to {date.today().year}\.",
+        ):
+            empty_collection.add_book("Dune", "Frank Herbert", future_year)
+
     def test_add_book_persists_normalized_values(
         self,
         empty_collection: BookCollection,
@@ -490,16 +500,27 @@ class TestMarkAsRead:
 class TestRemoveBook:
     """Tests for remove_book."""
 
-    def test_removes_book_case_insensitively_and_persists(self, empty_collection: BookCollection) -> None:
+    def test_removes_book_that_exists_and_persists(self, empty_collection: BookCollection) -> None:
+        empty_collection.add_book("Dune", "Frank Herbert", 1965)
+
+        result = empty_collection.remove_book("Dune")
+        reloaded_collection = BookCollection()
+
+        assert result.success is True
+        assert result.message == 'Removed "Dune" from the collection.'
+        assert reloaded_collection.books == []
+
+    def test_matches_title_case_insensitively(self, empty_collection: BookCollection) -> None:
         empty_collection.add_book("Dune", "Frank Herbert", 1965)
 
         result = empty_collection.remove_book("dUnE")
         reloaded_collection = BookCollection()
 
-        assert result is True
+        assert result.success is True
+        assert result.message == 'Removed "Dune" from the collection.'
         assert reloaded_collection.books == []
 
-    def test_returns_false_without_saving_when_title_is_not_found(
+    def test_returns_feedback_when_book_does_not_exist(
         self,
         empty_collection: BookCollection,
         monkeypatch: pytest.MonkeyPatch,
@@ -514,25 +535,48 @@ class TestRemoveBook:
 
         result = empty_collection.remove_book("Missing Book")
 
-        assert result is False
+        assert result.success is False
+        assert result.message == 'Book "Missing Book" was not found in the collection.'
         assert save_books_called is False
 
-    def test_returns_false_for_empty_collection(self, empty_collection: BookCollection) -> None:
-        assert empty_collection.remove_book("Dune") is False
+    def test_rejects_empty_title(self, empty_collection: BookCollection) -> None:
+        with pytest.raises(ValueError, match="Title cannot be empty."):
+            empty_collection.remove_book("   ")
+
+    def test_returns_feedback_when_collection_is_empty(self, empty_collection: BookCollection) -> None:
+        result = empty_collection.remove_book("Dune")
+
+        assert result.success is False
+        assert result.message == 'Book "Dune" was not found in the collection.'
 
     def test_only_removes_first_matching_title(self, empty_collection: BookCollection) -> None:
         first_book = empty_collection.add_book("Dune", "Frank Herbert", 1965)
         second_book = empty_collection.add_book("Dune", "Brian Herbert", 2001)
 
-        assert empty_collection.remove_book("Dune") is True
+        result = empty_collection.remove_book("Dune")
+
+        assert result.success is True
         assert empty_collection.books == [second_book]
         assert first_book not in empty_collection.books
 
     def test_does_not_remove_book_by_partial_title_match(self, empty_collection: BookCollection) -> None:
         empty_collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
 
-        assert empty_collection.remove_book("Hob") is False
+        result = empty_collection.remove_book("Hob")
+
+        assert result.success is False
+        assert result.message == (
+            'No exact match found for "Hob". Try one of these full titles: "The Hobbit".'
+        )
         assert [book.title for book in empty_collection.books] == ["The Hobbit"]
+
+    def test_ignores_whitespace_around_title(self, empty_collection: BookCollection) -> None:
+        empty_collection.add_book("Dune", "Frank Herbert", 1965)
+
+        result = empty_collection.remove_book("  dune  ")
+
+        assert result.success is True
+        assert empty_collection.books == []
 
 
 class TestFindByAuthor:
