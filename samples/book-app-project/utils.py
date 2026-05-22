@@ -1,4 +1,5 @@
 from collections.abc import Sequence
+from datetime import date
 from typing import Final, Literal, TypeAlias, cast
 
 from books import Book
@@ -84,11 +85,28 @@ def validate_title(title: str) -> str | None:
     return "Title cannot be empty. Please enter a book title."
 
 
-def parse_publication_year(year_input: str) -> tuple[int, str | None]:
+def current_calendar_year() -> int:
+    return date.today().year
+
+
+def parse_publication_year(year_input: str) -> tuple[int | None, str | None]:
+    normalized_year = year_input.strip()
+    if not normalized_year:
+        return None, "Year cannot be empty. Please enter a publication year."
+
     try:
-        return int(year_input), None
+        year = int(normalized_year)
     except ValueError:
-        return 0, "Invalid year. Defaulting to 0."
+        return None, "Year must be a whole number."
+
+    if year < 0:
+        return None, "Year cannot be negative."
+
+    max_year = current_calendar_year()
+    if year > max_year:
+        return None, f"Year cannot be in the future. Please enter a year up to {max_year}."
+
+    return year, None
 
 
 def get_book_details() -> BookDetails:
@@ -101,9 +119,7 @@ def get_book_details() -> BookDetails:
         tuple[str, str, int]: A tuple containing:
             - title: The non-empty book title entered by the user.
             - author: The author name entered by the user.
-            - year: The publication year as an integer. If the entered year
-              cannot be converted to an integer, the function prints a message
-              and returns 0 for the year instead.
+            - year: The publication year as an integer after validation.
     """
     while True:
         title = input("Enter book title: ").strip()
@@ -115,9 +131,12 @@ def get_book_details() -> BookDetails:
 
     author = input("Enter author: ").strip()
 
-    year_input = input("Enter publication year: ").strip()
-    year, error_message = parse_publication_year(year_input)
-    if error_message is not None:
+    while True:
+        year_input = input("Enter publication year: ").strip()
+        year, error_message = parse_publication_year(year_input)
+        if error_message is None and year is not None:
+            break
+
         print(error_message)
 
     return title, author, year

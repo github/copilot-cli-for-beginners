@@ -1,5 +1,6 @@
 import os
 import sys
+from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -103,29 +104,33 @@ class TestGetBookDetails:
         assert "Title cannot be empty. Please enter a book title." in captured.out
 
     @pytest.mark.parametrize(
-        ("year_input", "expected_title", "expected_author"),
+        ("invalid_year", "expected_message"),
         [
-            ("invalid", "Dune", "Frank Herbert"),
-            ("19.65", "Dune", "Frank Herbert"),
-            ("1965a", "Dune", "Frank Herbert"),
-            ("", "Dune", "Frank Herbert"),
+            ("invalid", "Year must be a whole number."),
+            ("19.65", "Year must be a whole number."),
+            ("1965a", "Year must be a whole number."),
+            ("", "Year cannot be empty. Please enter a publication year."),
+            ("-1", "Year cannot be negative."),
+            (
+                str(date.today().year + 1),
+                f"Year cannot be in the future. Please enter a year up to {date.today().year}.",
+            ),
         ],
     )
-    def test_defaults_invalid_year_formats_to_zero(
+    def test_reprompts_after_invalid_year_input(
         self,
         mock_input,
         capsys: pytest.CaptureFixture[str],
-        year_input: str,
-        expected_title: str,
-        expected_author: str,
+        invalid_year: str,
+        expected_message: str,
     ) -> None:
-        mock_input([expected_title, expected_author, year_input])
+        mock_input(["Dune", "Frank Herbert", invalid_year, "1965"])
 
         result = utils.get_book_details()
 
         captured = capsys.readouterr()
-        assert result == (expected_title, expected_author, 0)
-        assert "Invalid year. Defaulting to 0." in captured.out
+        assert result == ("Dune", "Frank Herbert", 1965)
+        assert expected_message in captured.out
 
     def test_returns_details_for_valid_input(self, mock_input) -> None:
         mock_input(["The Hobbit", "J.R.R. Tolkien", "1937"])
@@ -196,13 +201,23 @@ class TestParsePublicationYear:
         ("year_input", "expected_result"),
         [
             ("1965", (1965, None)),
-            ("invalid", (0, "Invalid year. Defaulting to 0.")),
+            (" 1965 ", (1965, None)),
+            ("", (None, "Year cannot be empty. Please enter a publication year.")),
+            ("invalid", (None, "Year must be a whole number.")),
+            ("-1", (None, "Year cannot be negative.")),
+            (
+                str(date.today().year + 1),
+                (
+                    None,
+                    f"Year cannot be in the future. Please enter a year up to {date.today().year}.",
+                ),
+            ),
         ],
     )
     def test_returns_parsed_year_and_optional_message(
         self,
         year_input: str,
-        expected_result: tuple[int, str | None],
+        expected_result: tuple[int | None, str | None],
     ) -> None:
         assert utils.parse_publication_year(year_input) == expected_result
 

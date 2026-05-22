@@ -1,4 +1,5 @@
 from contextlib import contextmanager
+from datetime import date
 import json
 import os
 from pathlib import Path
@@ -36,6 +37,36 @@ def _normalize_required_text(value: str, field_name: str) -> str:
     return normalized_value
 
 
+def _validate_publication_year(year: int) -> int:
+    """Validate that a publication year is realistic for the sample app.
+
+    Args:
+        year (int): The publication year to validate.
+
+    Returns:
+        int: The validated year when it is within the accepted range.
+
+    Raises:
+        ValueError: If ``year`` is negative or later than the current year.
+
+    Examples:
+        >>> _validate_publication_year(1965)
+        1965
+        >>> _validate_publication_year(-1)
+        Traceback (most recent call last):
+        ...
+        ValueError: Year cannot be negative.
+    """
+    if year < 0:
+        raise ValueError("Year cannot be negative.")
+
+    current_year = date.today().year
+    if year > current_year:
+        raise ValueError(f"Year cannot be in the future. Please enter a year up to {current_year}.")
+
+    return year
+
+
 @dataclass
 class Book:
     """Represent a single book in the collection.
@@ -54,6 +85,23 @@ class Book:
     author: str
     year: int
     read: bool = False
+
+
+@dataclass(frozen=True)
+class BookOperationResult:
+    """Describe the outcome of an operation on a book.
+
+    Attributes:
+        success (bool): Whether the operation completed successfully.
+        message (str): A user-friendly summary of the result.
+
+    Examples:
+        >>> BookOperationResult(success=True, message="Removed the book.")
+        BookOperationResult(success=True, message='Removed the book.')
+    """
+
+    success: bool
+    message: str
 
 
 class BookCollection:
@@ -75,12 +123,39 @@ class BookCollection:
 
     @contextmanager
     def _open_data_file(self, mode: str) -> Iterator[IO[str]]:
-        """Open the collection data file using a shared context manager."""
+        """Open the JSON data file using a shared context manager.
+
+        Args:
+            mode (str): The file mode to pass to ``open()``, such as ``"r"`` or
+                ``"w"``.
+
+        Yields:
+            IO[str]: An open text file handle for the collection data file.
+
+        Examples:
+            >>> collection = BookCollection()
+            >>> with collection._open_data_file("r") as data_file:
+            ...     hasattr(data_file, "read")
+            True
+        """
         with open(DATA_FILE, mode) as data_file:
             yield data_file
 
     def _quarantine_corrupted_file(self) -> Path:
-        """Move unreadable data aside so the app can start with a clean file."""
+        """Rename an unreadable data file to a safe backup path.
+
+        Returns:
+            Path: The new path of the quarantined file.
+
+        Raises:
+            OSError: If the file cannot be renamed.
+
+        Examples:
+            >>> collection = BookCollection()
+            >>> backup_path = Path("data.corrupted.json")
+            >>> isinstance(backup_path, Path)
+            True
+        """
         data_path = Path(DATA_FILE)
         backup_path = data_path.with_name(f"{data_path.stem}.corrupted{data_path.suffix}")
         counter = 1
@@ -95,7 +170,19 @@ class BookCollection:
         return backup_path
 
     def _load_book_data(self) -> List[Book]:
-        """Validate and convert raw JSON into ``Book`` instances."""
+        """Validate and convert raw JSON entries into ``Book`` objects.
+
+        Returns:
+            List[Book]: The validated books loaded from the JSON file.
+
+        Raises:
+            ValueError: If the JSON structure or any book entry is invalid.
+
+        Examples:
+            >>> collection = BookCollection()
+            >>> isinstance(collection._load_book_data(), list)
+            True
+        """
         with self._open_data_file("r") as data_file:
             data = json.load(data_file)
 
@@ -195,10 +282,9 @@ class BookCollection:
         normalized_title = _normalize_required_text(title, "Title")
         normalized_author = _normalize_required_text(author, "Author")
 
-        if year < 0:
-            raise ValueError("Year cannot be negative.")
+        validated_year = _validate_publication_year(year)
 
-        book = Book(title=normalized_title, author=normalized_author, year=year)
+        book = Book(title=normalized_title, author=normalized_author, year=validated_year)
         self.books.append(book)
         self.save_books()
         return book
@@ -249,8 +335,13 @@ class BookCollection:
             >>> collection.find_book_by_title("Dune") is None
             True
         """
+        normalized_title = title.strip()
+        if not normalized_title:
+            return None
+
+        normalized_query = normalized_title.casefold()
         for book in self.books:
-            if book.title.lower() == title.lower():
+            if book.title.casefold() == normalized_query:
                 return book
         return None
 
@@ -279,30 +370,54 @@ class BookCollection:
             return True
         return False
 
-    def remove_book(self, title: str) -> bool:
+    def remove_book(self, title: str) -> BookOperationResult:
         """Remove the first book whose title matches case-insensitively.
 
         Args:
             title (str): The title of the book to remove.
 
         Returns:
-            bool: ``True`` if a matching book was removed; otherwise, ``False``.
+            BookOperationResult: Describes whether a book was removed and why.
 
         Raises:
+            ValueError: If ``title`` is empty after trimming.
             OSError: If the updated collection cannot be written to disk.
             TypeError: If the updated collection cannot be serialized to JSON.
 
         Examples:
             >>> collection = BookCollection()
-            >>> collection.remove_book("Dune")
+            >>> collection.remove_book("Dune").success
             False
         """
-        book = self.find_book_by_title(title)
+        normalized_title = _normalize_required_text(title, "Title")
+        book = self.find_book_by_title(normalized_title)
         if book:
             self.books.remove(book)
             self.save_books()
-            return True
-        return False
+            return BookOperationResult(
+                success=True,
+                message=f'Removed "{book.title}" from the collection.',
+            )
+
+        partial_matches = [
+            candidate.title
+            for candidate in self.books
+            if normalized_title.casefold() in candidate.title.casefold()
+        ]
+        if partial_matches:
+            suggestions = ", ".join(f'"{title}"' for title in partial_matches)
+            return BookOperationResult(
+                success=False,
+                message=(
+                    f'No exact match found for "{normalized_title}". '
+                    f"Try one of these full titles: {suggestions}."
+                ),
+            )
+
+        return BookOperationResult(
+            success=False,
+            message=f'Book "{normalized_title}" was not found in the collection.',
+        )
 
     def find_by_author(self, author: str) -> List[Book]:
         """Find all books written by a given author.
