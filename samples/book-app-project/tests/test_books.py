@@ -396,6 +396,43 @@ class TestListBooks:
         assert empty_collection.list_books() == []
 
 
+class TestGetUnreadBooks:
+    """Tests for get_unread_books."""
+
+    def test_returns_only_unread_books_from_mixed_collection(self, collection_with_books: BookCollection) -> None:
+        collection_with_books.mark_as_read("Dune")
+
+        result = collection_with_books.get_unread_books()
+
+        assert [book.title for book in result] == ["The Hobbit", "Neuromancer"]
+
+    def test_returns_empty_list_when_all_books_are_read(self, collection_with_books: BookCollection) -> None:
+        for book in collection_with_books.books:
+            book.read = True
+
+        assert collection_with_books.get_unread_books() == []
+
+    def test_returns_empty_list_for_empty_collection(self, empty_collection: BookCollection) -> None:
+        assert empty_collection.get_unread_books() == []
+
+    def test_preserves_original_order(self, empty_collection: BookCollection) -> None:
+        empty_collection.add_book("First", "Author One", 2001)
+        empty_collection.add_book("Second", "Author Two", 2002)
+        empty_collection.add_book("Third", "Author Three", 2003)
+        empty_collection.mark_as_read("Second")
+
+        result = empty_collection.get_unread_books()
+
+        assert [book.title for book in result] == ["First", "Third"]
+
+    def test_does_not_modify_collection(self, collection_with_books: BookCollection) -> None:
+        before = collection_with_books.books.copy()
+
+        collection_with_books.get_unread_books()
+
+        assert collection_with_books.books == before
+
+
 class TestListByYear:
     """Tests for list_by_year."""
 

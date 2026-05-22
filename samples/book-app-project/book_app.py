@@ -11,6 +11,12 @@ def handle_list(collection: BookCollection) -> int:
     return 0
 
 
+def handle_list_unread(collection: BookCollection) -> int:
+    books = collection.get_unread_books()
+    display_books(books)
+    return 0
+
+
 def handle_add(collection: BookCollection) -> int:
     print("\nAdd a New Book\n")
 
@@ -104,6 +110,7 @@ def create_collection_command(handler: CollectionCommandHandler) -> CommandHandl
 
 COMMAND_HANDLERS: dict[str, CommandHandler] = {
     "list": create_collection_command(handle_list),
+    "list-unread": create_collection_command(handle_list_unread),
     "add": create_collection_command(handle_add),
     "mark-read": create_collection_command(handle_mark_read),
     "remove": create_collection_command(handle_remove),

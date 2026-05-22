@@ -126,6 +126,41 @@ class TestHandleList:
         assert "2. [✓] 1984 by George Orwell (1949)" in captured.out
 
 
+class TestHandleListUnread:
+    """Tests for handle_list_unread."""
+
+    def test_shows_only_unread_books(
+        self,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        collection = books.BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        collection.add_book("1984", "George Orwell", 1949)
+        collection.mark_as_read("1984")
+
+        result = book_app.handle_list_unread(collection)
+
+        captured = capsys.readouterr()
+        assert result == 0
+        assert "Your Book Collection:" in captured.out
+        assert "1. [ ] Dune by Frank Herbert (1965)" in captured.out
+        assert "1984 by George Orwell (1949)" not in captured.out
+
+    def test_shows_empty_state_when_no_unread_books(
+        self,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        collection = books.BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        collection.mark_as_read("Dune")
+
+        result = book_app.handle_list_unread(collection)
+
+        captured = capsys.readouterr()
+        assert result == 0
+        assert "No books found." in captured.out
+
+
 class TestHandleRemove:
     """Tests for handle_remove."""
 
@@ -355,6 +390,23 @@ class TestMain:
 
         assert result == 0
         assert calls == ["help"]
+
+    def test_list_unread_command_dispatches_handler(
+        self,
+        monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        calls: list[str] = []
+
+        def fake_handler() -> int:
+            calls.append("list-unread")
+            return 0
+
+        monkeypatch.setitem(book_app.COMMAND_HANDLERS, "list-unread", fake_handler)
+
+        result = book_app.main(["list-unread"])
+
+        assert result == 0
+        assert calls == ["list-unread"]
 
     def test_help_command_does_not_initialize_collection(
         self,
