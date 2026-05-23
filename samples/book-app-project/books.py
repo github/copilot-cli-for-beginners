@@ -303,6 +303,19 @@ class BookCollection:
         """
         return self.books
 
+    def get_unread_books(self) -> List[Book]:
+        """Return the books that have not been marked as read.
+
+        Returns:
+            List[Book]: Books where ``read`` is ``False``.
+
+        Examples:
+            >>> collection = BookCollection()
+            >>> collection.get_unread_books()
+            []
+        """
+        return [book for book in self.books if not book.read]
+
     def list_by_year(self, start: int, end: int) -> List[Book]:
         """Return books published within an inclusive year range.
 

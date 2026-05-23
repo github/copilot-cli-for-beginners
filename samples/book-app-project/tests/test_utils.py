@@ -275,8 +275,9 @@ class TestPrintHelp:
 
         captured = capsys.readouterr()
         assert "Book Collection Helper" in captured.out
-        assert "list     - Show all books" in captured.out
-        assert "help     - Show this help message" in captured.out
+        assert "list       - Show all books" in captured.out
+        assert "list-unread - Show only unread books" in captured.out
+        assert "help       - Show this help message" in captured.out
 
 
 class TestFormatHelp:
@@ -286,5 +287,6 @@ class TestFormatHelp:
         result = utils.format_help()
 
         assert "Book Collection Helper" in result
-        assert "list     - Show all books" in result
-        assert "help     - Show this help message" in result
+        assert "list       - Show all books" in result
+        assert "list-unread - Show only unread books" in result
+        assert "help       - Show this help message" in result
