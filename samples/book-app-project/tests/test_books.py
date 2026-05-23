@@ -1,3 +1,4 @@
+import csv
 import json
 import os
 import sys
@@ -322,6 +323,82 @@ class TestSaveBooks:
 
         with pytest.raises(PermissionError, match="permission denied"):
             empty_collection.save_books()
+
+        assert list(Path(books.DATA_FILE).parent.glob("tmp*")) == []
+
+
+class TestExportToCsv:
+    """Tests for export_to_csv."""
+
+    def test_export_to_csv_writes_header_and_all_books(
+        self,
+        collection_with_books: BookCollection,
+        temp_data_file: Path,
+    ) -> None:
+        output_file = temp_data_file.with_name("books.csv")
+        collection_with_books.mark_as_read("Dune")
+
+        result = collection_with_books.export_to_csv(str(output_file))
+
+        with output_file.open(newline="", encoding="utf-8") as csv_file:
+            rows = list(csv.DictReader(csv_file))
+
+        assert result == output_file
+        assert rows == [
+            {"title": "The Hobbit", "author": "J.R.R. Tolkien", "year": "1937", "read": "False"},
+            {"title": "Dune", "author": "Frank Herbert", "year": "1965", "read": "True"},
+            {"title": "Neuromancer", "author": "William Gibson", "year": "1984", "read": "False"},
+        ]
+
+    def test_export_to_csv_creates_missing_parent_directory(
+        self,
+        collection_with_books: BookCollection,
+        temp_data_file: Path,
+    ) -> None:
+        output_file = temp_data_file.parent / "exports" / "books.csv"
+
+        collection_with_books.export_to_csv(str(output_file))
+
+        assert output_file.exists()
+
+    def test_export_to_csv_writes_header_for_empty_collection(
+        self,
+        empty_collection: BookCollection,
+        temp_data_file: Path,
+    ) -> None:
+        output_file = temp_data_file.with_name("books.csv")
+
+        empty_collection.export_to_csv(str(output_file))
+
+        assert output_file.read_text(encoding="utf-8").splitlines() == ["title,author,year,read"]
+
+    @pytest.mark.parametrize("output_file", ["", "   "])
+    def test_export_to_csv_rejects_empty_output_filename(
+        self,
+        empty_collection: BookCollection,
+        output_file: str,
+    ) -> None:
+        with pytest.raises(ValueError, match="Output filename cannot be empty."):
+            empty_collection.export_to_csv(output_file)
+
+    def test_export_to_csv_propagates_permission_error_from_replace(
+        self,
+        empty_collection: BookCollection,
+        monkeypatch: pytest.MonkeyPatch,
+        tmp_path: Path,
+    ) -> None:
+        empty_collection.books = [Book(title="Dune", author="Frank Herbert", year=1965)]
+        output_file = tmp_path / "books.csv"
+
+        def raise_permission_error(source: Path, destination: Path) -> None:
+            raise PermissionError("permission denied")
+
+        monkeypatch.setattr(books.os, "replace", raise_permission_error)
+
+        with pytest.raises(PermissionError, match="permission denied"):
+            empty_collection.export_to_csv(str(output_file))
+
+        assert list(output_file.parent.glob("tmp*")) == []
 
 
 class TestAddBook:

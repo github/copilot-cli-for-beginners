@@ -87,6 +87,7 @@ def handle_find(collection: BookCollection) -> int:
 
 
 CollectionCommandHandler = Callable[[BookCollection], int]
+CollectionArgsCommandHandler = Callable[[BookCollection, list[str]], int]
 CommandHandler = Callable[[], int]
 
 
@@ -108,6 +109,42 @@ def create_collection_command(handler: CollectionCommandHandler) -> CommandHandl
     return command
 
 
+def run_collection_args_command(
+    handler: CollectionArgsCommandHandler,
+    command_args: list[str],
+) -> int:
+    try:
+        collection = BookCollection()
+    except (OSError, ValueError) as e:
+        print(f"Error: {e}")
+        return 1
+
+    return handler(collection, command_args)
+
+
+def handle_export_csv(collection: BookCollection, command_args: list[str]) -> int:
+    if not command_args:
+        print('\nError: Please provide an output filename. Example: python3 book_app.py export-csv books.csv\n')
+        return 1
+
+    if len(command_args) > 1:
+        print("\nError: Please provide exactly one output filename.\n")
+        return 1
+
+    output_file = command_args[0].strip()
+    if not output_file:
+        print("\nError: Output filename cannot be empty.\n")
+        return 1
+
+    try:
+        output_path = collection.export_to_csv(output_file)
+        print(f'\nExported {len(collection.list_books())} books to "{output_path}".\n')
+        return 0
+    except (OSError, ValueError) as e:
+        print(f"\nError: {e}\n")
+        return 1
+
+
 COMMAND_HANDLERS: dict[str, CommandHandler] = {
     "list": create_collection_command(handle_list),
     "list-unread": create_collection_command(handle_list_unread),
@@ -118,6 +155,10 @@ COMMAND_HANDLERS: dict[str, CommandHandler] = {
     "help": handle_help,
 }
 
+COMMAND_HANDLERS_WITH_ARGS: dict[str, CollectionArgsCommandHandler] = {
+    "export-csv": handle_export_csv,
+}
+
 
 def main(argv: list[str] | None = None) -> int:
     args = argv if argv is not None else sys.argv[1:]
@@ -126,6 +167,10 @@ def main(argv: list[str] | None = None) -> int:
         return handle_help()
 
     command = args[0].lower()
+
+    handler_with_args = COMMAND_HANDLERS_WITH_ARGS.get(command)
+    if handler_with_args is not None:
+        return run_collection_args_command(handler_with_args, args[1:])
 
     handler = COMMAND_HANDLERS.get(command)
     if handler is None:

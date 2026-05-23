@@ -1,4 +1,5 @@
 from contextlib import contextmanager
+import csv
 from datetime import date
 import json
 import os
@@ -35,6 +36,15 @@ def _normalize_required_text(value: str, field_name: str) -> str:
     if not normalized_value:
         raise ValueError(f"{field_name} cannot be empty.")
     return normalized_value
+
+
+def _replace_file_atomically(temp_file_path: Path, destination_path: Path) -> None:
+    """Replace a destination file and clean up the temp file on failure."""
+    try:
+        os.replace(temp_file_path, destination_path)
+    except OSError:
+        temp_file_path.unlink(missing_ok=True)
+        raise
 
 
 def _validate_publication_year(year: int) -> int:
@@ -254,7 +264,52 @@ class BookCollection:
             temp_file.write("\n")
             temp_file_path = Path(temp_file.name)
 
-        os.replace(temp_file_path, data_path)
+        _replace_file_atomically(temp_file_path, data_path)
+
+    def export_to_csv(self, output_file: str) -> Path:
+        """Write the current book collection to a CSV file.
+
+        Args:
+            output_file (str): The destination CSV filename or path.
+
+        Returns:
+            Path: The path where the CSV file was written.
+
+        Raises:
+            ValueError: If ``output_file`` is empty after trimming.
+            OSError: If the CSV file cannot be written.
+        """
+        normalized_output_file = _normalize_required_text(output_file, "Output filename")
+        output_path = Path(normalized_output_file)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            newline="",
+            dir=output_path.parent,
+            delete=False,
+        ) as temp_file:
+            writer = csv.DictWriter(
+                temp_file,
+                fieldnames=["title", "author", "year", "read"],
+            )
+            writer.writeheader()
+
+            for book in self.books:
+                writer.writerow(
+                    {
+                        "title": book.title,
+                        "author": book.author,
+                        "year": book.year,
+                        "read": book.read,
+                    }
+                )
+
+            temp_file_path = Path(temp_file.name)
+
+        _replace_file_atomically(temp_file_path, output_path)
+        return output_path
 
     def add_book(self, title: str, author: str, year: int) -> Book:
         """Add a new book to the collection and save the updated data.

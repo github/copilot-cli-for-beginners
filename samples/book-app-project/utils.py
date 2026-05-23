@@ -19,6 +19,7 @@ Commands:
   mark-read  - Mark a book as read
   remove     - Remove a book by title
   find       - Find books by author
+  export-csv - Export all books to a CSV file
   help       - Show this help message
 """
 MENU_TEXT: Final[str] = """

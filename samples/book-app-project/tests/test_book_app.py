@@ -316,6 +316,50 @@ class TestHandleFind:
         assert "1. [ ] Dune by Frank Herbert (1965)" in captured.out
 
 
+class TestHandleExportCsv:
+    """Tests for handle_export_csv."""
+
+    def test_exports_books_to_requested_file(
+        self,
+        tmp_path: Path,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        collection = books.BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        output_file = tmp_path / "books.csv"
+
+        result = book_app.handle_export_csv(collection, [str(output_file)])
+
+        captured = capsys.readouterr()
+        assert result == 0
+        assert f'Exported 1 books to "{output_file}".' in captured.out
+        assert output_file.exists()
+
+    def test_requires_output_filename(
+        self,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        collection = books.BookCollection()
+
+        result = book_app.handle_export_csv(collection, [])
+
+        captured = capsys.readouterr()
+        assert result == 1
+        assert "Error: Please provide an output filename." in captured.out
+
+    def test_rejects_multiple_output_filenames(
+        self,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        collection = books.BookCollection()
+
+        result = book_app.handle_export_csv(collection, ["books.csv", "extra.csv"])
+
+        captured = capsys.readouterr()
+        assert result == 1
+        assert "Error: Please provide exactly one output filename." in captured.out
+
+
 class TestCreateCollectionCommand:
     """Tests for create_collection_command."""
 
@@ -358,6 +402,52 @@ class TestCreateCollectionCommand:
         command = book_app.create_collection_command(lambda _: 0)
 
         result = command()
+
+        captured = capsys.readouterr()
+        assert result == 1
+        assert f"Error: {message}" in captured.out
+
+
+class TestRunCollectionArgsCommand:
+    """Tests for run_collection_args_command."""
+
+    def test_passes_collection_and_args_to_handler(self) -> None:
+        expected_collection = books.BookCollection()
+
+        def handler(collection: books.BookCollection, command_args: list[str]) -> int:
+            assert collection is expected_collection
+            assert command_args == ["books.csv"]
+            return 11
+
+        original_collection = book_app.BookCollection
+        book_app.BookCollection = lambda: expected_collection
+        try:
+            result = book_app.run_collection_args_command(handler, ["books.csv"])
+        finally:
+            book_app.BookCollection = original_collection
+
+        assert result == 11
+
+    @pytest.mark.parametrize(
+        ("exception_type", "message"),
+        [
+            (OSError, "cannot open data"),
+            (ValueError, "invalid book data"),
+        ],
+    )
+    def test_handles_collection_initialization_errors(
+        self,
+        exception_type: type[Exception],
+        message: str,
+        monkeypatch: pytest.MonkeyPatch,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        def raise_error() -> None:
+            raise exception_type(message)
+
+        monkeypatch.setattr(book_app, "BookCollection", raise_error)
+
+        result = book_app.run_collection_args_command(lambda *_: 0, ["books.csv"])
 
         captured = capsys.readouterr()
         assert result == 1
@@ -408,6 +498,21 @@ class TestMain:
         assert result == 0
         assert calls == ["list-unread"]
 
+    def test_export_csv_command_dispatches_handler_with_remaining_args(
+        self,
+        monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        def fake_handler(collection: books.BookCollection, command_args: list[str]) -> int:
+            assert isinstance(collection, books.BookCollection)
+            assert command_args == ["books.csv"]
+            return 0
+
+        monkeypatch.setitem(book_app.COMMAND_HANDLERS_WITH_ARGS, "export-csv", fake_handler)
+
+        result = book_app.main(["export-csv", "books.csv"])
+
+        assert result == 0
+
     def test_help_command_does_not_initialize_collection(
         self,
         monkeypatch: pytest.MonkeyPatch,
@@ -443,6 +548,22 @@ class TestMain:
         monkeypatch.setattr(book_app, "BookCollection", raise_os_error)
 
         result = book_app.main(["list"])
+
+        captured = capsys.readouterr()
+        assert result == 1
+        assert "Error: cannot read data file" in captured.out
+
+    def test_export_csv_collection_init_failure(
+        self,
+        monkeypatch: pytest.MonkeyPatch,
+        capsys: pytest.CaptureFixture[str],
+    ) -> None:
+        def raise_os_error() -> None:
+            raise OSError("cannot read data file")
+
+        monkeypatch.setattr(book_app, "BookCollection", raise_os_error)
+
+        result = book_app.main(["export-csv", "books.csv"])
 
         captured = capsys.readouterr()
         assert result == 1

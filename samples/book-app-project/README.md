@@ -28,18 +28,19 @@ It can add, remove, and list books. Also mark them as read.
 ## Running the App
 
 ```bash
-python book_app.py list
-python book_app.py add
-python book_app.py mark-read
-python book_app.py find
-python book_app.py remove
-python book_app.py help
+python3 book_app.py list
+python3 book_app.py add
+python3 book_app.py mark-read
+python3 book_app.py find
+python3 book_app.py remove
+python3 book_app.py export-csv books.csv
+python3 book_app.py help
 ```
 
 ## Running Tests
 
 ```bash
-python -m pytest tests/
+python3 -m pytest tests/
 ```
 
 ---
