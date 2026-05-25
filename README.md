@@ -1,4 +1,4 @@
-![GitHub Copilot CLI for Beginners](./images/copilot-banner.png)
+ ![GitHub Copilot CLI for Beginners](./images/copilot-banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)&ensp;
 [![Open project in GitHub Codespaces](https://img.shields.io/badge/Codespaces-Open-blue?style=flat-square&logo=github)](https://codespaces.new/github/copilot-cli-for-beginners?hide_repo_select=true&ref=main&quickstart=true)&ensp;
