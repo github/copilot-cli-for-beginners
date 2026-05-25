@@ -87,6 +87,31 @@ Follow these steps if you'd like to run Copilot CLI on your local machine with t
     curl -fsSL https://gh.io/copilot-install | bash
     ```
 
+<details>
+<summary>Optional: Enable shell tab completion</summary>
+
+Shell tab completion lets you press **Tab** to complete `copilot` subcommands, command options, and some option values. This is optional, but it can be handy once you're comfortable using the CLI.
+
+Copilot CLI currently supports completion scripts for Bash, Zsh, and Fish:
+
+```shell
+# Bash, current session only
+source <(copilot completion bash)
+
+# Bash, persistent on Linux
+copilot completion bash | sudo tee /etc/bash_completion.d/copilot
+
+# Zsh
+copilot completion zsh > "${fpath[1]}/_copilot"
+
+# Fish
+copilot completion fish > ~/.config/fish/completions/copilot.fish
+```
+
+Restart your shell after adding persistent completion. PowerShell is supported for running Copilot CLI on Windows, but `copilot completion` currently supports only Bash, Zsh, and Fish.
+
+</details>
+
 ---
 
 ## Authentication

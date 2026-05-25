@@ -1,0 +1,48 @@
+name: 💡 Feature Request
+description: Suggest new content, a new chapter topic, or an improvement to the course
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea to make this course better? We'd love to hear it!
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: What kind of improvement?
+      options:
+        - "New chapter or section"
+        - "New sample app or exercise"
+        - "Improve existing content"
+        - "Add a new agent or skill example"
+        - "Better explanation of a concept"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe your idea
+      description: What would you like to see added or changed? Why would it help learners?
+      placeholder: "It would be helpful to have a section on..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: audience
+    attributes:
+      label: Who would benefit?
+      description: Is this for complete beginners, intermediate users, or a specific audience?
+      placeholder: "Beginners who are new to the terminal..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Have you seen this covered elsewhere? Is there a workaround?
+    validations:
+      required: false

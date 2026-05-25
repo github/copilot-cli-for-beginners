@@ -726,7 +726,7 @@ copilot
 > Users report: 'Finding books by author name doesn't work for partial names'
 > @samples/book-app-project/books.py Analyze and identify the likely cause
 
-# 2. Debug the issue (continuing in same session)
+# 2. Debug the issue and fix (continuing in same session)
 > Based on the analysis, show me the find_by_author function and explain the issue
 
 > Fix the find_by_author function to handle partial name matches
@@ -738,10 +738,23 @@ copilot
 > - Case-insensitive matching
 > - Author name not found
 
-# 4. Generate commit message
+# Exit the interactive session
+
+> /exit
+
+# 4. Run git add
+
+# Stage the changes so git diff --staged has something to work with
+git add .
+
+# 5. Generate commit message
 copilot -p "Generate commit message for: $(git diff --staged)"
 
-# Output: "fix(books): support partial author name search"
+# Example Output: "fix(books): support partial author name search"
+
+# 6. Commit changes (optional)
+
+git commit -m "<paste generated message>"
 ```
 
 ### Bug Fix Workflow Summary
@@ -749,10 +762,11 @@ copilot -p "Generate commit message for: $(git diff --staged)"
 | Step | Action | Copilot Command |
 |------|--------|-----------------|
 | 1 | Understand the bug | `> [describe bug] @relevant-file.py Analyze the likely cause` |
-| 2 | Get detailed analysis | `> Show me the function and explain the issue` |
-| 3 | Implement the fix | `> Fix the [specific issue]` |
-| 4 | Generate tests | `> Generate tests for [specific scenarios]` |
-| 5 | Commit | `copilot -p "Generate commit message for: $(git diff --staged)"` |
+| 2 | Analysis and fix | `> Show me the function and fix the issue` |
+| 3 | Generate tests | `> Generate tests for [specific scenarios]` |
+| 4 | Stage changes | `git add .` |
+| 5 | Generate commit message | `copilot -p "Generate commit message for: $(git diff --staged)"` |
+| 6 | Commit changes| `git commit -m "<paste generated message>"` |
 
 ---
 
