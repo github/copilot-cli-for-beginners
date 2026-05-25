@@ -725,7 +725,7 @@ copilot
 > Users report: 'Finding books by author name doesn't work for partial names'
 > @samples/book-app-project/books.py Analyze and identify the likely cause
 
-# 2. 問題をデバッグ（同じセッションを継続）
+# 2. 問題をデバッグして修正（同じセッションを継続）
 > Based on the analysis, show me the find_by_author function and explain the issue
 
 > Fix the find_by_author function to handle partial name matches
@@ -737,10 +737,20 @@ copilot
 > - Case-insensitive matching
 > - Author name not found
 
-# 4. コミットメッセージを生成
+# 対話型セッションを終了
+> /exit
+
+# 4. git add の実行
+# git diff --staged で差分を比較できるよう、変更をステージングします
+git add .
+
+# 5. コミットメッセージを生成
 copilot -p "Generate commit message for: $(git diff --staged)"
 
 # 出力例: "fix(books): support partial author name search"
+
+# 6. 変更をコミット（任意）
+git commit -m "<生成されたメッセージを貼り付け>"
 ```
 
 ### バグ修正ワークフローの要約
@@ -748,10 +758,11 @@ copilot -p "Generate commit message for: $(git diff --staged)"
 | ステップ | アクション | Copilot コマンド |
 |------|--------|-----------------|
 | 1 | バグを理解する | `> [バグの説明] @relevant-file.py Analyze the likely cause` |
-| 2 | 詳細な分析を得る | `> Show me the function and explain the issue` |
-| 3 | 修正を実装する | `> Fix the [具体的な問題]` |
-| 4 | テストを生成する | `> Generate tests for [具体的なシナリオ]` |
-| 5 | コミットする | `copilot -p "Generate commit message for: $(git diff --staged)"` |
+| 2 | 分析と修正 | `> Show me the function and fix the issue` |
+| 3 | テストを生成する | `> Generate tests for [具体的なシナリオ]` |
+| 4 | 変更をステージングする | `git add .` |
+| 5 | コミットメッセージを生成する | `copilot -p "Generate commit message for: $(git diff --staged)"` |
+| 6 | 変更をコミットする | `git commit -m "<生成されたメッセージを貼り付け>"` |
 
 ---
 

@@ -101,6 +101,20 @@ copilot
 
 これにより、特定のスキルを確実に使用させたい場合に明示的なコントロールが可能になります。
 
+#### 1つのメッセージで複数のスキルを組み合わせる
+
+**1つのメッセージで複数のスキルを呼び出す**ことができます。また、スキルのスラッシュコマンドはプロンプトの先頭だけでなく、文章のどこに置いても構いません。これは、1回で2つの異なるチェックを行いたい場合に便利です：
+
+```bash
+> Check @samples/book-app-project/book_app.py with /code-checklist and also run /generate-tests for it
+
+> Review the auth module /security-audit then /code-checklist the result
+```
+
+Copilot は同じ回答の中でそれぞれの指定されたスキルを適用するため、個別に複数のメッセージを送信する手間が省けます。
+
+> 💡 **ヒント**: スキルのスラッシュコマンドは、文章の中で最も自然に感じられる場所に配置できます。メッセージの先頭、途中、または末尾のどこに置いても機能します。
+
 > 📝 **スキル vs エージェントの呼び出し**: スキルの呼び出しとエージェントの呼び出しを混同しないでください：
 > - **スキル**: `/スキル名 <プロンプト>` 例：`/code-checklist Check this file`
 > - **エージェント**: `/agent` (リストから選択) または `copilot --agent <名前>` (コマンドライン)
@@ -547,6 +561,12 @@ copilot
 # マーケットプレイスからプラグインをインストール
 ```
 
+ローカルのプラグインカタログを最新の状態に保つには、以下を実行して更新します：
+
+```bash
+copilot plugin marketplace update
+```
+
 プラグインは複数の機能を一括で提供できます。一つのプラグインに、互いに連携する関連スキル、エージェント、MCP サーバー設定が含まれている場合があります。
 
 ### コミュニティ製スキルリポジトリ
@@ -555,22 +575,22 @@ copilot
 
 - **[Awesome Copilot](https://github.com/github/awesome-copilot)** - スキルのドキュメントや例を含む、GitHub Copilot の公式リソース
 
-### コミュニティ製スキルの手動インストール
+### GitHub CLI を使用したコミュニティ製スキルのインストール
 
-GitHub リポジトリで見つけたスキルを使用するには、そのフォルダを自分のスキルディレクトリにコピーします：
+GitHub リポジトリからスキルをインストールする最も簡単な方法は、`gh skill install` コマンドを使用することです（[GitHub CLI v2.90.0 以上](https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/)（英語）が必要です）：
 
 ```bash
-# awesome-copilot リポジトリをクローン
-git clone https://github.com/github/awesome-copilot.git /tmp/awesome-copilot
+# awesome-copilot からスキルをブラウズして対話的に選択する
+gh skill install github/awesome-copilot
 
-# 特定のスキルをプロジェクトにコピー
-cp -r /tmp/awesome-copilot/skills/code-checklist .github/skills/
+# または、特定のスキルを直接インストールする
+gh skill install github/awesome-copilot code-checklist
 
-# または全プロジェクトで個人利用する場合
-cp -r /tmp/awesome-copilot/skills/code-checklist ~/.copilot/skills/
+# すべてのプロジェクトで個人利用するためにインストールする（ユーザー共通スコープ）
+gh skill install github/awesome-copilot code-checklist --scope user
 ```
 
-> ⚠️ **インストール前の確認**: プロジェクトにコピーする前に、必ずスキルの `SKILL.md` を読んでください。スキルは Copilot の動作を制御するため、悪意のあるスキルが有害なコマンドを実行させたり、予期しない方法でコードを修正させたりする可能性があります。
+> ⚠️ **インストール前の確認**: インストールする前に、必ずスキルの `SKILL.md` を読んでください。スキルは Copilot の動作を制御するため、悪意のあるスキルが有害なコマンドを実行させたり、予期しない方法でコードを修正させたりする可能性があります。
 
 ---
 

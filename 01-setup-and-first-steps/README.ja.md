@@ -387,6 +387,7 @@ copilot --allow-all -p "Review @myfile.py for issues"
 | コマンド | 何をするか |
 |---------|--------------|
 | `/agent` | 利用可能なエージェントの一覧・選択 |
+| `/env` | ロードされた環境の詳細（アクティブな指示、MCP サーバー、スキル、エージェント、プラグインなど）を表示 |
 | `/init` | リポジトリ用の Copilot 指示ファイルを初期化 |
 | `/mcp` | MCP サーバー設定の管理 |
 | `/skills` | 拡張機能である「スキル」の管理 |
@@ -417,11 +418,12 @@ copilot --allow-all -p "Review @myfile.py for issues"
 | コマンド | 何をするか |
 |---------|--------------|
 | `/add-dir <directory>` | 許可リストにディレクトリを追加 |
-| `/allow-all [on|off|show]` | 全権限確認を自動承認。`on` で有効、`off` で無効、`show` で現在の状態を確認 |
+| `/allow-all [on\|off\|show]` | 全権限確認を自動承認。`on` で有効、`off` で無効、`show` で現在の状態を確認 |
+| `/yolo` | `/allow-all on` のクイックエイリアス — 全権限確認を自動承認 |
 | `/cwd`, `/cd [directory]` | 作業ディレクトリを表示または変更 |
 | `/list-dirs` | 許可されている全ディレクトリを表示 |
 
-> ⚠️ **注意**: `/allow-all` は確認プロンプトをスキップします。信頼できるプロジェクトには便利ですが、信頼できないコードを扱う際は注意してください。
+> ⚠️ **注意**: `/allow-all` および `/yolo` は確認プロンプトをスキップします。信頼できるプロジェクトには便利ですが、信頼できないコードを扱う際は注意してください。
 
 ### セッション
 
@@ -430,13 +432,21 @@ copilot --allow-all -p "Review @myfile.py for issues"
 | `/clear` | 現在のセッションを破棄（履歴は保存されない）し、新しく開始 |
 | `/compact` | 会話を要約してコンテキスト使用量を削減 |
 | `/context` | コンテキストウィンドウのトークン使用量と可視化を表示 |
+| `/keep-alive` | Copilot CLI の有効時間中にシステムがスリープするのを防止 — ノート PC などで長時間かかるタスクを実行する際に便利 |
 | `/new` | 現在のセッションを終了（履歴に保存される）し、新しく開始 |
-| `/resume` | 別のセッションに切り替え（セッション ID を指定可能） |
+| `/resume` | 別のセッションに切り替え（セッション ID または名前を指定可能） |
 | `/rename` | 現在のセッションの名前を変更（名前を省略すると自動生成） |
 | `/rewind` | タイムラインピッカーを開き、以前の時点にロールバック |
 | `/usage` | セッションの使用状況メトリクスと統計を表示 |
-| `/session` | セッション情報とワークスペースの概要を表示 |
+| `/session` | セッション情報とワークスペースの概要を表示。`/session delete`、`/session delete <id>`、または `/session delete-all` を使用してセッションを削除可能 |
 | `/share` | セッションを Markdown、GitHub Gist、または HTML ファイルとしてエクスポート |
+
+### 表示
+
+| コマンド | 何をするか |
+|---------|--------------|
+| `/statusline`（または `/footer`） | セッション下部のステータスバーに表示する項目をカスタマイズ（ディレクトリ、ブランチ、エフォート、コンテキストウィンドウ、クォータ） |
+| `/theme` | ターミナルのテーマを表示または設定 |
 
 ### ヘルプとフィードバック
 
@@ -445,7 +455,6 @@ copilot --allow-all -p "Review @myfile.py for issues"
 | `/changelog` | CLI バージョンの変更履歴を表示 |
 | `/feedback` | GitHub にフィードバックを送信 |
 | `/help` | 利用可能な全コマンドを表示 |
-| `/theme` | ターミナルのテーマを表示または設定 |
 
 ### クイックシェルコマンド
 
@@ -473,6 +482,8 @@ copilot
 ```
 
 > 💡 **ヒント**: モデルによって「プレミアムリクエスト」の消費量が異なります。**1x** と表示されているモデル（Claude Sonnet 4.5 など）をデフォルトにするのがおすすめです。非常に有能で効率的です。より高い倍率のモデルはクォータを早く消費するため、本当に必要なときのために取っておきましょう。
+
+> 💡 **どのモデルを選べばよいか迷ったら？** モデル選択画面で **`Auto`** を選択すると、セッションごとに最適な利用可能モデルが自動的に選択されます。どのモデルを使うべきか深く考えずにすぐに始めたい場合に最適なデフォルト設定です。
 
 </details>
 
@@ -554,6 +565,28 @@ Get-ChildItem samples/book-app-project/*.py | ForEach-Object {
 
 ---
 
+## 💡 ヒント：Web またはモバイルから CLI セッションをコントロールする
+
+GitHub Copilot CLI は**リモートセッション**をサポートしており、ターミナルの前にいなくても、Web ブラウザ（PC またはモバイル）や GitHub Mobile アプリから実行中の CLI セッションを監視し、対話することができます。
+
+`--remote` フラグを使用してリモートセッションを開始します：
+
+```bash
+copilot --remote
+```
+
+Copilot CLI にリンクが表示され、QR コードへのアクセスが提供されます。スマートフォンのカメラで読み取るか、PC のブラウザでそのリンクを開くと、セッションをリアルタイムで監視し、フォローアッププロンプトを送信し、計画を確認し、エージェントをリモートで操作できます。セッションはユーザー固有であるため、自身の Copilot CLI セッションにのみアクセスできます。
+
+アクティブなセッションの内部から、いつでもリモートアクセスを有効にすることもできます：
+
+```
+> /remote
+```
+
+リモートセッションの詳細については、[Copilot CLI ドキュメント](https://docs.github.com/copilot/how-tos/copilot-cli/steer-remotely)（英語）を参照してください。
+
+---
+
 ## 📝 課題
 
 ### メインチャレンジ：書籍アプリのユーティリティを改善する
@@ -561,7 +594,7 @@ Get-ChildItem samples/book-app-project/*.py | ForEach-Object {
 ハンズオンでは `book_app.py` のレビューとリファクタリングを行いました。今度は別のファイル `utils.py` で同じスキルを練習しましょう：
 
 1. 対話型セッションを開始する：`copilot`
-2. Copilot CLI にファイルの要約を求める：`@samples/book-app-project/utils.py What does each function in this file do?`
+2. Copilot CLI にファイルの要約を求める：`"Summarize @samples/book-app-project/utils.py and explain what each function in this file does"`
 3. 入力バリデーションを追加させる：「空の入力や数値以外の入力も処理できるように `get_user_choice()` にバリデーションを追加して」
 4. エラーハンドリングを改善させる：「タイトルに空文字列が渡されたらどうなる？ガードを追加して」
 5. ドキュメント（docstring）を追加させる：「パラメータの説明と戻り値を含めた包括的な docstring を `get_book_details()` に追加して」
@@ -575,7 +608,7 @@ Get-ChildItem samples/book-app-project/*.py | ForEach-Object {
 
 **試してみるプロンプトの例:**
 ```bash
-> @samples/book-app-project/utils.py What does each function in this file do?
+> Summarize @samples/book-app-project/utils.py and explain what each function in this file does
 > Add validation to get_user_choice() so it handles empty input and non-numeric entries
 > What happens if get_book_details() receives an empty string for the title? Add guards for that.
 > Add a comprehensive docstring to get_book_details() with parameter descriptions and return values
@@ -610,6 +643,7 @@ Get-ChildItem samples/book-app-project/*.py | ForEach-Object {
 | `/exit` ではなく `exit` と打つ | Copilot CLI は "exit" をコマンドではなくプロンプト（AIへの質問）として扱います | スラッシュコマンドは必ず `/` で始めます |
 | 複数回の会話に `-p` を使う | 各 `-p` の呼び出しは独立しており、前のやり取りの記憶はありません | コンテキストを積み重ねる会話には Interactive モード (`copilot`) を使います |
 | `$` や `!` を含むプロンプトを引用符で囲むのを忘れる | Copilot CLI が受け取る前にシェルが特殊文字を解釈してしまいます | プロンプトを引用符で囲んでください：`copilot -p "What does $HOME mean?"` |
+| 実行中のタスクをキャンセルするために Esc キーを 1 回だけ押す | 誤操作を防ぐため、Esc キーの 1 回押しでは処理中のタスクをキャンセルできなくなりました | Copilot CLI が処理中の場合は、**Esc キーを 2 回**押すことでキャンセルできます |
 
 ### トラブルシューティング
 
@@ -630,7 +664,7 @@ Get-ChildItem samples/book-app-project/*.py | ForEach-Object {
 1. **Interactive モード** は探索と試行錯誤のためのものです。コンテキストが引き継がれるため、これまでの話を覚えている相手と会話しているような感覚になります。
 2. **Plan モード** は、通常より複雑なタスクに使います。実装前に計画をレビューします。
 3. **Programmatic モード** は自動化のためのものです。やり取りは不要です。
-4. **必須コマンド** (`/help`, `/clear`, `/plan`, `/research`, `/model`, `/exit`) で日常的な使用のほとんどをカバーできます。
+4. **必須コマンド** (`/ask`, `/help`, `/clear`, `/plan`, `/research`, `/model`, `/exit`) で日常的な使用のほとんどをカバーできます。
 
 > 📋 **クイックリファレンス**: コマンドとショートカットの完全なリストについては、[GitHub Copilot CLI コマンドリファレンス](https://docs.github.com/en/copilot/reference/cli-command-reference)（英語）を参照してください。
 
