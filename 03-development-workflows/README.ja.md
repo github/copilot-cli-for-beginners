@@ -1,5 +1,7 @@
 ![Chapter 03: Development Workflows](images/chapter-header.png)
 
+[English Version](./README.md)
+
 > **もし AI が、あなたが気づかなかったバグを見つけることができたらどうでしょうか？**
 
 この章では、GitHub Copilot CLI を日々の開発のメインツールとして活用していきます。テスト、リファクタリング、デバッグ、Git など、毎日行うワークフローの中で Copilot CLI を使いこなせるようになりましょう。

@@ -1,5 +1,7 @@
 ![Chapter 01: First Steps](images/chapter-header.png)
 
+[English Version](./README.md)
+
 > **AI が一瞬でバグを見つけ、難解なコードを説明し、動作するスクリプトを生成する様子をご覧ください。その後、GitHub Copilot CLI を使う3つの異なる方法を学びます。**
 
 この章から、魔法が始まります！開発者が GitHub Copilot CLI を「シニアエンジニアにいつでも相談できるようなもの」と表現する理由を、あなた自身で体験することになります。AI がセキュリティ上のバグを数秒で見つけ、複雑なコードを平易な言葉で説明し、動作するスクリプトを即座に生成する様子を見ていきます。その後、3つのインタラクションモード（Interactive、Plan、Programmatic）をマスターし、どのタスクにどのモードを使うべきかを学びます。
@@ -287,6 +289,12 @@ copilot
 > /plan Add a "mark as read" command to the book app
 ```
 
+`--plan` フラグを使用して、Copilot CLI を直接 Plan モードで起動することもできます：
+
+```bash
+copilot --plan
+```
+
 **Plan モードの出力例:** (出力は異なります)
 
 ```
@@ -362,7 +370,7 @@ copilot --allow-all -p "Review @myfile.py for issues"
 
 ## 必須のスラッシュコマンド
 
-これらは Interactive モードで機能します。まずは**この7つだけ**覚えてください。日常的な使用の90%をカバーできます。
+これらは、Copilot CLI を使い始めるにあたって、最初に学ぶのに適したコマンドです：
 
 | コマンド | 何をするか | いつ使うか |
 |---------|--------------|-------------|
