@@ -1,8 +1,8 @@
 ---
 name: "Course Updater"
-description: "Daily check for new GitHub Copilot CLI features and updates. Opens a PR if the course content needs updating."
+description: "Weekly check (Mondays) for new GitHub Copilot CLI features and updates. Opens a PR if the course content needs updating."
 on:
-  schedule: daily
+  schedule: weekly on monday
   workflow_dispatch:
 tools:
   bash: ["curl", "gh"]
@@ -37,11 +37,15 @@ Look for:
 - Significant changes to existing features (renames, deprecations)
 - New customization options (e.g. instructions, agents, skills, MCP, plugins)
 
-## Step 2 — Compare against the current course content and existing PRs
+## Step 2 — Check for existing open PRs to avoid duplicates
+
+Before doing any content comparison, list all open pull requests in this repo that have the `automated-update` or `copilot-cli-updates` labels. Read their titles and descriptions to understand which features or changes each PR already covers. Build a list of features that are **already addressed** by existing PRs — you must exclude those features from any updates you propose later. If every feature you found in Step 1 is already covered by an open PR, stop here and report that no new updates are needed.
+
+## Step 3 — Compare against the current course content
 
 This course targets beginners, so only include content changes that cater to that audience. For example, if a new feature is advanced, marked as experimental, or otherwise doesn't qualify as a "beginner" level feature, don't include it in the course content since we don't want to overwhelm learners. Determine what is most relevant and helpful for beginners learning about the Copilot CLI.
 
-Read all of the readme files in the repo and compare the features documented there against what you found in Step 1. Also check existing pull requests to see if any updates are already in progress. DO NOT duplicate efforts if an update has already been proposed in an open PR.
+Read all of the readme files in the repo and compare the features documented there against what you found in Step 1.
 Identify:
 
 - **Missing features** — new capabilities not yet documented
@@ -49,13 +53,13 @@ Identify:
 
 If there is nothing new or everything is already up to date, stop here and report that no updates are needed. 
 
-## Step 3 — Update the course content
+## Step 4 — Update the course content
 
 If updates are needed, make a decision on which chapter(s) need to be updated.
 
 If the new information can be added to existing chapter(s), edit those chapters to include refinements, new sections, or updated information as needed. Remember that this course targets beginners, so ensure that any new content is explained clearly and simply, with examples if possible.
 
-## Step 4 — Open a pull request
+## Step 5 — Open a pull request
 
 Create a pull request with your changes, using the `main` branch as the base branch. The PR title should summarize what was updated (e.g., "Add /plan command documentation"). The PR body should list:
 

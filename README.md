@@ -25,12 +25,6 @@ This course is designed for:
 - **Terminal users** who prefer keyboard-driven workflows over IDE integrations
 - **Teams looking to standardize** AI-assisted code review and development practices
 
-<a href="https://aka.ms/githubcopilotdevdays" target="_blank">
-  <picture>
-    <img src="./images/copilot-dev-days.png" alt="GitHub Copilot Dev Days - Find or host an event" width="100%" />
-  </picture>
-</a>
-
 ## 🎯 What You'll Learn
 
 This hands-on course takes you from zero to productive with GitHub Copilot CLI. You'll work with a single Python book collection app throughout all chapters, progressively improving it using AI-assisted workflows. By the end, you'll confidently use AI to review code, generate tests, debug issues, and automate workflows: all from your terminal.
@@ -94,8 +88,18 @@ The **[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/
 ## 🙋 Getting Help
 
 - 🐛 **Found a bug?** [Open an Issue](https://github.com/github/copilot-cli-for-beginners/issues)
-- 🤝 **Want to contribute?** PRs welcome!
 - 📚 **Official Docs:** [GitHub Copilot CLI Documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)
+
+## Contributing
+
+> **Note**: The code used in the course is designed to generate specific types of output during reviews, explanations, and debugging so we aren't able to accept PRs that change the existing code.
+
+**How to contribute:**
+
+1. Fork this repository and clone it to your machine
+2. Create a feature branch (`git checkout -b my-improvement`)
+3. Make your changes
+4. Submit a pull request
 
 ## License
 

@@ -111,6 +111,9 @@ copilot
 
 > /list-dirs
 # See all allowed directories
+
+> /yolo
+# Quick alias for /allow-all on — auto-approves all permission prompts
 ```
 
 ### For Automation
