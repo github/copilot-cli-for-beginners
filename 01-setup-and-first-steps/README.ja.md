@@ -1,5 +1,7 @@
 ![Chapter 01: First Steps](images/chapter-header.png)
 
+[English Version](./README.md)
+
 > **AI が一瞬でバグを見つけ、難解なコードを説明し、動作するスクリプトを生成する様子をご覧ください。その後、GitHub Copilot CLI を使う3つの異なる方法を学びます。**
 
 この章から、魔法が始まります！開発者が GitHub Copilot CLI を「シニアエンジニアにいつでも相談できるようなもの」と表現する理由を、あなた自身で体験することになります。AI がセキュリティ上のバグを数秒で見つけ、複雑なコードを平易な言葉で説明し、動作するスクリプトを即座に生成する様子を見ていきます。その後、3つのインタラクションモード（Interactive、Plan、Programmatic）をマスターし、どのタスクにどのモードを使うべきかを学びます。
@@ -38,16 +40,16 @@ copilot
 
 ```
 > Explain what a dataclass is in Python in simple terms
-（Python の dataclass とは何か、簡単に説明して）
+# → Python の dataclass とは何か、簡単に説明して
 
 > Write a function that sorts a list of dictionaries by a specific key
-（辞書のリストを特定のキーでソートする関数を書いて）
+# → 辞書のリストを特定のキーでソートする関数を書いて
 
 > What's the difference between a list and a tuple in Python?
-（Python のリストとタプルの違いは何？）
+# → Python のリストとタプルの違いは何？
 
 > Give me 5 best practices for writing clean Python code
-（きれいな Python コードを書くためのベストプラクティスを5つ教えて）
+# → きれいな Python コードを書くためのベストプラクティスを5つ教えて
 ```
 
 Python を使っていませんか？問題ありません！お好きな言語について質問してみてください。
@@ -287,6 +289,12 @@ copilot
 > /plan Add a "mark as read" command to the book app
 ```
 
+`--plan` フラグを使用して、Copilot CLI を直接 Plan モードで起動することもできます：
+
+```bash
+copilot --plan
+```
+
 **Plan モードの出力例:** (出力は異なります)
 
 ```
@@ -362,16 +370,19 @@ copilot --allow-all -p "Review @myfile.py for issues"
 
 ## 必須のスラッシュコマンド
 
-これらは Interactive モードで機能します。まずは**この6つだけ**覚えてください。日常的な使用の90%をカバーできます。
+これらは、Copilot CLI を使い始めるにあたって、最初に学ぶのに適したコマンドです：
 
 | コマンド | 何をするか | いつ使うか |
 |---------|--------------|-------------|
+| `/ask` | 会話履歴に影響を与えずに素早く質問する | 今の作業を邪魔したくないときに素早く答えが欲しいとき |
 | `/clear` | 会話をクリアして新しく始める | トピックを切り替えるとき |
 | `/help` | 利用可能な全コマンドを表示 | コマンドを忘れたとき |
 | `/model` | AI モデルを表示または切り替え | AI モデルを変更したいとき |
 | `/plan` | コーディングの前に作業を計画 | より複雑な機能を作るとき |
 | `/research` | GitHubやウェブから深く調査 | 実装前に詳しく調べる必要があるとき |
 | `/exit` | セッションを終了 | 終わったとき |
+
+> 💡 **`/ask` と通常のチャットの違い**: 通常、送信したメッセージはすべて進行中の会話の一部となり、今後の回答に影響します。`/ask` は「オフ・ザ・レコード」のショートカットです — `/ask YAML とは何？` のように、セッションのコンテキストを汚さずに素早く質問できるので便利です。
 
 まずはこれだけで十分です！慣れてきたら、他のコマンドも探検してみてください。
 

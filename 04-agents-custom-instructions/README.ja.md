@@ -1,5 +1,7 @@
 ![Chapter 04: Agents and Custom Instructions](images/chapter-header.png)
 
+[English Version](./README.md)
+
 > **Python のコードレビュアー、テストの専門家、セキュリティのレビュアー……これらをすべて一つのツールで雇えるとしたらどうでしょうか？**
 
 第03章では、コードレビュー、リファクタリング、デバッグ、テスト生成、Git 連携という必須のワークフローをマスターしました。これらだけでも GitHub Copilot CLI での生産性は飛躍的に向上します。ここからは、さらに一歩進んでみましょう。

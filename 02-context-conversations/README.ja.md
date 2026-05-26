@@ -1,5 +1,7 @@
 ![Chapter 02: Context and Conversations](images/chapter-header.png)
 
+[English Version](./README.md)
+
 > **もし AI が一度に一つのファイルだけでなく、コードベース全体を見ることができたらどうでしょうか？**
 
 この章では、GitHub Copilot CLI の真の力である「コンテキスト（文脈）」を解き放ちます。`@` 構文を使ってファイルやディレクトリを参照し、Copilot CLI にコードベースへの深い理解を与える方法を学びます。また、セッションをまたいで会話を維持し、数日後に作業を中断したところから正確に再開する方法、そして単一ファイルのレビューでは見逃してしまうバグを複数ファイルの分析でキャッチする方法を発見します。
@@ -704,7 +706,7 @@ copilot
 > @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
-> 📖 **さらに詳しく**: サポートされている形式、実践的なユースケース、画像とコードを組み合わせるコツについては、[追加のコンテキスト機能](../appendices/additional-context.md#working-with-images)を参照してください。
+> 📖 **さらに詳しく**: サポートされている形式、実践的なユースケース、画像とコードを組み合わせるコツについては、[追加のコンテキスト機能](../appendices/additional-context.ja.md#working-with-images)を参照してください。
 
 </details>
 
@@ -859,10 +861,10 @@ copilot
 **「Permission denied」** - 許可リストにディレクトリを追加してください：
 
 ```bash
-copilot --add-dir /パス/トウ/ディレクトリ
+copilot --add-dir /path/to/directory
 
 # またはセッション内で：
-> /add-dir /パス/トウ/ディレクトリ
+> /add-dir /path/to/directory
 ```
 
 **コンテキストがすぐにいっぱいになる場合**:
