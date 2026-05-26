@@ -38,16 +38,16 @@ copilot
 
 ```
 > Explain what a dataclass is in Python in simple terms
-（Python の dataclass とは何か、簡単に説明して）
+# → Python の dataclass とは何か、簡単に説明して
 
 > Write a function that sorts a list of dictionaries by a specific key
-（辞書のリストを特定のキーでソートする関数を書いて）
+# → 辞書のリストを特定のキーでソートする関数を書いて
 
 > What's the difference between a list and a tuple in Python?
-（Python のリストとタプルの違いは何？）
+# → Python のリストとタプルの違いは何？
 
 > Give me 5 best practices for writing clean Python code
-（きれいな Python コードを書くためのベストプラクティスを5つ教えて）
+# → きれいな Python コードを書くためのベストプラクティスを5つ教えて
 ```
 
 Python を使っていませんか？問題ありません！お好きな言語について質問してみてください。
@@ -362,16 +362,19 @@ copilot --allow-all -p "Review @myfile.py for issues"
 
 ## 必須のスラッシュコマンド
 
-これらは Interactive モードで機能します。まずは**この6つだけ**覚えてください。日常的な使用の90%をカバーできます。
+これらは Interactive モードで機能します。まずは**この7つだけ**覚えてください。日常的な使用の90%をカバーできます。
 
 | コマンド | 何をするか | いつ使うか |
 |---------|--------------|-------------|
+| `/ask` | 会話履歴に影響を与えずに素早く質問する | 今の作業を邪魔したくないときに素早く答えが欲しいとき |
 | `/clear` | 会話をクリアして新しく始める | トピックを切り替えるとき |
 | `/help` | 利用可能な全コマンドを表示 | コマンドを忘れたとき |
 | `/model` | AI モデルを表示または切り替え | AI モデルを変更したいとき |
 | `/plan` | コーディングの前に作業を計画 | より複雑な機能を作るとき |
 | `/research` | GitHubやウェブから深く調査 | 実装前に詳しく調べる必要があるとき |
 | `/exit` | セッションを終了 | 終わったとき |
+
+> 💡 **`/ask` と通常のチャットの違い**: 通常、送信したメッセージはすべて進行中の会話の一部となり、今後の回答に影響します。`/ask` は「オフ・ザ・レコード」のショートカットです — `/ask YAML とは何？` のように、セッションのコンテキストを汚さずに素早く質問できるので便利です。
 
 まずはこれだけで十分です！慣れてきたら、他のコマンドも探検してみてください。
 

@@ -859,10 +859,10 @@ copilot
 **「Permission denied」** - 許可リストにディレクトリを追加してください：
 
 ```bash
-copilot --add-dir /パス/トウ/ディレクトリ
+copilot --add-dir /path/to/directory
 
 # またはセッション内で：
-> /add-dir /パス/トウ/ディレクトリ
+> /add-dir /path/to/directory
 ```
 
 **コンテキストがすぐにいっぱいになる場合**:

@@ -757,12 +757,12 @@ git commit -m "<生成されたメッセージを貼り付け>"
 
 | ステップ | アクション | Copilot コマンド |
 |------|--------|-----------------|
-| 1 | バグを理解する | `> [バグの説明] @relevant-file.py Analyze the likely cause` |
+| 1 | バグを理解する | `> [describe bug] @relevant-file.py Analyze the likely cause` |
 | 2 | 分析と修正 | `> Show me the function and fix the issue` |
-| 3 | テストを生成する | `> Generate tests for [具体的なシナリオ]` |
+| 3 | テストを生成する | `> Generate tests for [specific scenarios]` |
 | 4 | 変更をステージングする | `git add .` |
 | 5 | コミットメッセージを生成する | `copilot -p "Generate commit message for: $(git diff --staged)"` |
-| 6 | 変更をコミットする | `git commit -m "<生成されたメッセージを貼り付け>"` |
+| 6 | 変更をコミットする | `git commit -m "<paste generated message>"` |
 
 ---
 
