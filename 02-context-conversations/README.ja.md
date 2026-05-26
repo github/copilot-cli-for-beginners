@@ -704,7 +704,7 @@ copilot
 > @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
-> 📖 **さらに詳しく**: サポートされている形式、実践的なユースケース、画像とコードを組み合わせるコツについては、[追加のコンテキスト機能](../appendices/additional-context.md#working-with-images)を参照してください。
+> 📖 **さらに詳しく**: サポートされている形式、実践的なユースケース、画像とコードを組み合わせるコツについては、[追加のコンテキスト機能](../appendices/additional-context.ja.md#working-with-images)を参照してください。
 
 </details>
 
