@@ -1,0 +1,14 @@
+{
+  "name": "samples-src",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server ./ -p 3000",
+    "test:playwright": "npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "http-server": "^14.1.1",
+    "playwright": "^1.36.0"
+  }
+}

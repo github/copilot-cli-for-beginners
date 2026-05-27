@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "playwright-demo": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "http-server", "samples/src", "-p", "3000"],
+      "tools": ["browser"]
+    }
+  }
+}

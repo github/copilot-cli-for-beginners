@@ -27,19 +27,33 @@ It can add, remove, and list books. Also mark them as read.
 
 ## Running the App
 
+Available commands (run from samples/book-app-project/):
+
 ```bash
-python book_app.py list
-python book_app.py add
-python book_app.py find
-python book_app.py remove
+python book_app.py list       # Show all books
+python book_app.py add        # Interactive add
+python book_app.py find       # Find books by author (exact match)
+python book_app.py remove     # Remove a book by title
+python book_app.py search     # Interactive search prompt
+python book_app.py search "dune" title    # Search titles containing "dune"
+python book_app.py search "gibson" author # Search authors containing "gibson"
 python book_app.py help
 ```
 
 ## Running Tests
 
+Run the full test suite for the sample:
+
 ```bash
-python -m pytest tests/
+python -m pytest samples/book-app-project -q
 ```
+
+Run a single test by node (example):
+
+```bash
+python -m pytest samples/book-app-project/tests/test_books.py::test_search_by_title_exact -q
+```
+
 
 ---
 

@@ -51,3 +51,33 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+
+def test_search_by_title_exact():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.add_book("Dune Messiah", "Frank Herbert", 1969)
+    results = collection.search_books("Dune", field='title')
+    assert any(b.title == "Dune" for b in results)
+
+
+def test_search_by_title_partial_case_insensitive():
+    collection = BookCollection()
+    collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
+    results = collection.search_books("hob", field='title')
+    assert any("hob" in b.title.lower() for b in results)
+
+
+def test_search_by_author_partial_case_insensitive():
+    collection = BookCollection()
+    collection.add_book("Neuromancer", "William Gibson", 1984)
+    collection.add_book("Count Zero", "William Gibson", 1986)
+    results = collection.search_books("gibson", field='author')
+    assert len(results) == 2
+
+
+def test_search_no_results():
+    collection = BookCollection()
+    collection.add_book("Frankenstein", "Mary Shelley", 1818)
+    results = collection.search_books("notfound", field='title')
+    assert results == []
