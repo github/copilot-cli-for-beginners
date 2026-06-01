@@ -142,6 +142,8 @@ When reviewing code, always check for:
 
 **This project includes sample agent files in the [.github/agents/](../.github/agents/) folder**. You can write your own, or customize the ones already provided.
 
+> 💡 **Subdirectory support**: Copilot discovers agent files recursively, so you can organize agents into nested folders. For example, `.github/agents/backend/api-reviewer.agent.md` or `.github/agents/frontend/ui-reviewer.agent.md` both work just fine.
+
 <details>
 <summary>📂 See the sample agents in this course</summary>
 

@@ -294,6 +294,8 @@ Copilot automatically scans these locations for skills:
 | `.github/skills/` | Project-specific (shared with team via git) |
 | `~/.copilot/skills/` | User-specific (your personal skills) |
 
+> 💡 **Subdirectory support**: Skills are discovered recursively, so you can organize them into nested folders. For example, `.github/skills/security/sql-audit/SKILL.md` or `.github/skills/testing/pytest-gen/SKILL.md` both work. This is handy for teams with many skills to keep things tidy.
+
 ### Skill Structure
 
 Each skill lives in its own folder with a `SKILL.md` file. You can optionally include scripts, examples, or other resources:

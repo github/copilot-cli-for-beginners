@@ -680,7 +680,7 @@ This is great for well-defined tasks you want completed while you focus on other
 
 ### Using /diff to Review Session Changes
 
-The `/diff` command shows all changes made during your current session. Use this slash command to see a visual diff of everything Copilot CLI has modified before you commit.
+The `/diff` command shows a visual diff of changes so you can review everything before you commit. By default, `/diff` shows unstaged changes — files you've modified but haven't staged yet. If there are no unstaged changes, it automatically falls back to showing your branch diff (all commits on your current branch compared to the base branch).
 
 ```bash
 copilot
@@ -688,9 +688,12 @@ copilot
 # After making some changes...
 > /diff
 
-# Shows a visual diff of all files modified in this session
-# Great for reviewing before committing
+# Shows a visual diff of unstaged changes in your working directory.
+# If there are no unstaged changes, it shows the branch diff instead.
+# Great for reviewing before committing!
 ```
+
+> 💡 **Tip**: If `/diff` seems to show more than you expected, it may have switched to branch diff mode because you already staged your changes with `git add`. Run `git status` to check what's staged vs. unstaged.
 
 </details>
 
