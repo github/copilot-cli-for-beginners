@@ -59,6 +59,16 @@ def handle_find():
     show_books(books)
 
 
+def handle_mark(title: str = None):
+    print("\nMark a Book as Read\n")
+    if not title:
+        title = input("Enter the title of the book to mark as read: ").strip()
+    if collection.mark_as_read(title):
+        print(f"\nBook '{title}' marked as read.\n")
+    else:
+        print(f"\nBook '{title}' not found.\n")
+
+
 def show_help():
     print("""
 Book Collection Helper
@@ -87,6 +97,10 @@ def main():
         handle_remove()
     elif command == "find":
         handle_find()
+    elif command == "mark":
+        # Support optional title via argv: `mark <title>`
+        title = sys.argv[2] if len(sys.argv) > 2 else None
+        handle_mark(title)
     elif command == "help":
         show_help()
     else:
