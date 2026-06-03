@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  bookkeeper-app:
+    build: .
+    image: bookkeeper-app:local
+    volumes:
+      - ./data.json:/app/data.json
+    stdin_open: true
+    tty: true
+    entrypoint: ["python", "book_app.py"]

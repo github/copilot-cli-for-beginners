@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: bookkeeper-list-job
+  labels:
+    app: bookkeeper
+spec:
+  template:
+    metadata:
+      labels:
+        app: bookkeeper
+    spec:
+      containers:
+      - name: bookkeeper
+        image: bookkeeper-app:latest
+        imagePullPolicy: IfNotPresent
+        command: ["python", "book_app.py", "list"]
+        volumeMounts:
+        - name: data-json
+          mountPath: /app/data.json
+          subPath: data.json
+      restartPolicy: Never
+      volumes:
+      - name: data-json
+        configMap:
+          name: book-data
+  backoffLimit: 2
