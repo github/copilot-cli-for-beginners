@@ -21,6 +21,7 @@ jobs:
         run: python -m pytest -q samples/book-app-project/tests
 
   build-and-push:
+    if: github.event_name == 'push'
     needs: test
     runs-on: ubuntu-latest
     permissions:
@@ -50,7 +51,7 @@ jobs:
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
-    if: ${{ secrets.KUBE_CONFIG != '' }}
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main') && secrets.KUBE_CONFIG != '' }}
     steps:
       - uses: actions/checkout@v4
       - name: Install kubectl
