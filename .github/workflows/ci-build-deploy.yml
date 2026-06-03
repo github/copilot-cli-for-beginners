@@ -51,23 +51,35 @@ jobs:
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main') && secrets.KUBE_CONFIG != '' }}
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main') }}
     steps:
       - uses: actions/checkout@v4
+      - name: Check KUBE_CONFIG secret
+        run: |
+          if [ -z "${{ secrets.KUBE_CONFIG }}" ]; then
+            echo "KUBE_CONFIG secret is not configured; skipping deploy."
+            exit 0
+          fi
       - name: Install kubectl
+        if: ${{ secrets.KUBE_CONFIG != '' }}
         uses: azure/setup-kubectl@v3
         with:
           version: 'latest'
       - name: Patch Job image to GHCR
+        if: ${{ secrets.KUBE_CONFIG != '' }}
         run: |
           sed -i "s|image: bookkeeper-app:latest|image: ghcr.io/${{ github.repository_owner }}/bookkeeper-app:latest|" samples/book-app-project/k8s/job-list.yaml
       - name: Configure kubeconfig
+        if: ${{ secrets.KUBE_CONFIG != '' }}
         run: echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
       - name: Apply k8s manifests
+        if: ${{ secrets.KUBE_CONFIG != '' }}
         run: |
           kubectl --kubeconfig=kubeconfig apply -f samples/book-app-project/k8s/configmap-data.yaml
           kubectl --kubeconfig=kubeconfig apply -f samples/book-app-project/k8s/job-list.yaml
       - name: Wait for job completion
+        if: ${{ secrets.KUBE_CONFIG != '' }}
         run: kubectl --kubeconfig=kubeconfig wait --for=condition=complete job/bookkeeper-list-job --timeout=120s || true
       - name: Fetch job logs
+        if: ${{ secrets.KUBE_CONFIG != '' }}
         run: kubectl --kubeconfig=kubeconfig logs job/bookkeeper-list-job || true
