@@ -243,6 +243,14 @@ class BookCollection:
         """Return the list of books in insertion order."""
         return self.books
 
+    def get_unread_books(self) -> List[Book]:
+        """Return books that are unread (read == False).
+
+        This convenience method keeps callers from filtering the list themselves
+        and documents the intended behavior in the public API.
+        """
+        return [b for b in self.books if not getattr(b, "read", False)]
+
     def find_book_by_title(self, title: str) -> Optional[Book]:
         """Find a book by exact title (case-insensitive). Returns None if not found."""
         if title is None:

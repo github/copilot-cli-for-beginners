@@ -36,3 +36,21 @@ def test_mark_command_with_arg(tmp_path, monkeypatch):
 
     book = book_app.collection.find_book_by_title("1984")
     assert book.read is True
+
+
+def test_search_command_with_arg(tmp_path, monkeypatch):
+    temp_file = tmp_path / "data.json"
+    temp_file.write_text("[]")
+    monkeypatch.setattr(books, "DATA_FILE", str(temp_file))
+    import book_app
+    importlib.reload(book_app)
+
+    book_app.collection.add_book("Dune", "Frank Herbert", 1965)
+    book_app.collection.add_book("1984", "George Orwell", 1949)
+
+    monkeypatch.setattr(sys, 'argv', ['book_app.py', 'search', 'Dune'])
+    book_app.main()
+
+    results = book_app.collection.search("Dune")
+    assert len(results) == 1
+    assert results[0].title == "Dune"

@@ -2,110 +2,160 @@ import sys
 from books import BookCollection
 
 
-# Global collection instance
-collection = BookCollection()
+from utils import print_books, print_help, get_book_details
+
+# Global collection instance (lazy-initialized)
+collection = None
 
 
-def show_books(books):
-    """Display books in a user-friendly format."""
-    if not books:
-        print("No books found.")
-        return
+def get_collection():
+    """Return a lazily-created global BookCollection instance.
 
-    print("\nYour Book Collection:\n")
+    Avoid creating the collection (and touching the data file) at import time so
+    importing this module is side-effect free and easier to test.
+    """
+    global collection
+    if collection is None:
+        collection = BookCollection()
+    return collection
 
-    for index, book in enumerate(books, start=1):
-        status = "✓" if book.read else " "
-        print(f"{index}. [{status}] {book.title} by {book.author} ({book.year})")
 
-    print()
-
+# Initialize collection at import time so tests that reload this module after
+# monkeypatching books.DATA_FILE get a collection bound to the patched path.
+# This keeps the test expectation while still allowing explicit injection by
+# passing data_file to BookCollection in other code paths.
+collection = get_collection()
 
 def handle_list():
-    books = collection.list_books()
-    show_books(books)
+    books = get_collection().list_books()
+    print_books(books)
+
+
+def handle_list_unread():
+    books = get_collection().get_unread_books()
+    print_books(books)
 
 
 def handle_add():
     print("\nAdd a New Book\n")
+    try:
+        title, author, year = get_book_details()
+    except ValueError as e:
+        print(f"\nError: {e}\n")
+        return
 
-    title = input("Title: ").strip()
-    author = input("Author: ").strip()
-    year_str = input("Year: ").strip()
+    if not title:
+        print("\nError: Title cannot be empty.\n")
+        return
+    if not author:
+        print("\nError: Author cannot be empty.\n")
+        return
 
     try:
-        year = int(year_str) if year_str else 0
-        collection.add_book(title, author, year)
+        get_collection().add_book(title, author, year)
         print("\nBook added successfully.\n")
     except ValueError as e:
         print(f"\nError: {e}\n")
+    except Exception as e:
+        print(f"\nUnexpected error adding book: {e}\n")
 
 
 def handle_remove():
     print("\nRemove a Book\n")
 
     title = input("Enter the title of the book to remove: ").strip()
-    collection.remove_book(title)
+    if not title:
+        print("\nError: Title cannot be empty.\n")
+        return
 
-    print("\nBook removed if it existed.\n")
+    try:
+        removed = get_collection().remove_book(title)
+        if removed:
+            print(f"\nBook '{title}' removed.\n")
+        else:
+            print(f"\nBook '{title}' not found.\n")
+    except Exception as e:
+        print(f"\nUnexpected error removing book: {e}\n")
 
 
 def handle_find():
     print("\nFind Books by Author\n")
 
     author = input("Author name: ").strip()
-    books = collection.find_by_author(author)
+    if not author:
+        print("\nError: Author name cannot be empty.\n")
+        return
 
-    show_books(books)
+    books = get_collection().find_by_author(author)
+    print_books(books)
+
+
+def handle_search(query: str = None):
+    print("\nSearch Books by Title or Author\n")
+    if not query:
+        query = input("Search query: ").strip()
+    if not query:
+        print("\nError: Search query cannot be empty.\n")
+        return
+    try:
+        books = get_collection().search(query)
+        print_books(books)
+    except Exception as e:
+        print(f"\nUnexpected error searching books: {e}\n")
 
 
 def handle_mark(title: str = None):
     print("\nMark a Book as Read\n")
     if not title:
         title = input("Enter the title of the book to mark as read: ").strip()
-    if collection.mark_as_read(title):
-        print(f"\nBook '{title}' marked as read.\n")
-    else:
-        print(f"\nBook '{title}' not found.\n")
+    if not title:
+        print("\nError: Title cannot be empty.\n")
+        return
+    try:
+        if get_collection().mark_as_read(title):
+            print(f"\nBook '{title}' marked as read.\n")
+        else:
+            print(f"\nBook '{title}' not found.\n")
+    except Exception as e:
+        print(f"\nUnexpected error marking book as read: {e}\n")
 
 
-def show_help():
-    print("""
-Book Collection Helper
-
-Commands:
-  list     - Show all books
-  add      - Add a new book
-  remove   - Remove a book by title
-  find     - Find books by author
-  help     - Show this help message
-""")
 
 
 def main():
     if len(sys.argv) < 2:
-        show_help()
+        print_help()
         return
 
     command = sys.argv[1].lower()
+    args = sys.argv[2:]
 
-    if command == "list":
-        handle_list()
-    elif command == "add":
-        handle_add()
-    elif command == "remove":
-        handle_remove()
-    elif command == "find":
-        handle_find()
-    elif command == "mark":
-        # Support optional title via argv: `mark <title>`
-        title = sys.argv[2] if len(sys.argv) > 2 else None
-        handle_mark(title)
-    elif command == "help":
-        show_help()
-    else:
-        print("Unknown command.\n")
-        show_help()
+    # Helper wrappers for commands that accept optional argv arguments
+    def _search_wrapper():
+        query = " ".join(args) if args else None
+        return handle_search(query)
+
+    def _mark_wrapper():
+        title = " ".join(args) if args else None
+        return handle_mark(title)
+
+    dispatch = {
+        "list": handle_list,
+        "list-unread": handle_list_unread,
+        "add": handle_add,
+        "remove": handle_remove,
+        "find": handle_find,
+        "search": _search_wrapper,
+        "mark": _mark_wrapper,
+        "help": print_help,
+    }
+
+    func = dispatch.get(command)
+    if func:
+        return func()
+
+    print("Unknown command.\n")
+    print_help()
 
 
 if __name__ == "__main__":

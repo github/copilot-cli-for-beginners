@@ -32,13 +32,22 @@ class BookCollection:
 
     def save_books(self):
         """Save the current book collection to JSON."""
-        # BUG 2: Doesn't handle file permission errors - crashes silently
-        f = open(DATA_FILE, "w")
-        json.dump([asdict(b) for b in self.books], f, indent=2)
-        # Missing f.close() - file handle leak
+        try:
+            with open(DATA_FILE, "w", encoding="utf-8") as f:
+                json.dump([asdict(b) for b in self.books], f, indent=2)
+        except OSError as e:
+            print(f"Error saving {DATA_FILE}: {e}")
 
     def add_book(self, title: str, author: str, year: int) -> Book:
-        # BUG 3: Year validation accepts negative numbers and future years
+        # Validate inputs: year must be int within reasonable bounds
+        try:
+            year = int(year)
+        except (TypeError, ValueError):
+            raise ValueError("Year must be an integer")
+        from datetime import datetime
+        current_year = datetime.utcnow().year
+        if year < 0 or year > current_year:
+            raise ValueError(f"Year must be between 0 and {current_year}")
         book = Book(title=title, author=author, year=year)
         self.books.append(book)
         self.save_books()
@@ -48,33 +57,37 @@ class BookCollection:
         return self.books
 
     def find_book_by_title(self, title: str) -> Optional[Book]:
-        # BUG 1: Case-sensitive comparison - "the hobbit" won't find "The Hobbit"
+        # Case-insensitive, stripped comparison
+        if title is None:
+            return None
+        t = title.strip().lower()
         for book in self.books:
-            if book.title == title:
+            if isinstance(book.title, str) and book.title.strip().lower() == t:
                 return book
         return None
 
     def mark_as_read(self, title: str) -> bool:
-        # BUG 5: Marks ALL books as read instead of just the matching one
+        # Mark only matching book as read
         book = self.find_book_by_title(title)
         if book:
-            for b in self.books:
-                b.read = True
-            self.save_books()
+            if not book.read:
+                book.read = True
+                self.save_books()
             return True
         return False
 
     def remove_book(self, title: str) -> bool:
-        """Remove a book by title."""
-        # BUG 4: Uses 'in' check - removing "Dune" also matches "Dune Messiah"
-        for book in self.books:
-            if title in book.title:
+        """Remove a book by title (exact case-insensitive match)."""
+        for book in list(self.books):
+            if isinstance(book.title, str) and book.title.strip().lower() == title.strip().lower():
                 self.books.remove(book)
                 self.save_books()
                 return True
         return False
 
     def find_by_author(self, author: str) -> List[Book]:
-        """Find all books by a given author."""
-        # BUG 6: Exact match instead of partial - "Tolkien" won't find "J.R.R. Tolkien"
-        return [b for b in self.books if b.author == author]
+        """Find all books by a given author (case-insensitive substring match)."""
+        if not author:
+            return []
+        a = author.strip().lower()
+        return [b for b in self.books if isinstance(b.author, str) and a in b.author.strip().lower()]
