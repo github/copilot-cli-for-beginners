@@ -3,11 +3,11 @@ using BookApp.Services;
 
 var collection = new BookCollection();
 
-void ShowBooks(List<Book> books)
+void ShowBooks(List<Book> books, string emptyMessage = "No books found.")
 {
     if (books.Count == 0)
     {
-        Console.WriteLine("No books found.");
+        Console.WriteLine(emptyMessage);
         return;
     }
 
@@ -27,6 +27,12 @@ void HandleList()
 {
     var books = collection.ListBooks();
     ShowBooks(books);
+}
+
+void HandleListUnread()
+{
+    var books = collection.GetUnreadBooks();
+    ShowBooks(books, "No unread books found.");
 }
 
 void HandleAdd()
@@ -64,6 +70,23 @@ void HandleRemove()
     Console.WriteLine("\nBook removed if it existed.\n");
 }
 
+void HandleMarkRead()
+{
+    Console.WriteLine("\nMark a Book as Read\n");
+
+    Console.Write("Enter the title of the book to mark as read: ");
+    var title = Console.ReadLine()?.Trim() ?? "";
+
+    if (collection.MarkAsRead(title))
+    {
+        Console.WriteLine("\nBook marked as read.\n");
+    }
+    else
+    {
+        Console.WriteLine($"\nNo book found with title '{title}'.\n");
+    }
+}
+
 void HandleFind()
 {
     Console.WriteLine("\nFind Books by Author\n");
@@ -82,11 +105,13 @@ void ShowHelp()
     Book Collection Helper
 
     Commands:
-      list     - Show all books
-      add      - Add a new book
-      remove   - Remove a book by title
-      find     - Find books by author
-      help     - Show this help message
+      list        - Show all books
+      list-unread - Show only unread books
+      add         - Add a new book
+      remove      - Remove a book by title
+      mark-read   - Mark a book as read by title
+      find        - Find books by author
+      help        - Show this help message
     """);
 }
 
@@ -103,11 +128,17 @@ switch (command)
     case "list":
         HandleList();
         break;
+    case "list-unread":
+        HandleListUnread();
+        break;
     case "add":
         HandleAdd();
         break;
     case "remove":
         HandleRemove();
+        break;
+    case "mark-read":
+        HandleMarkRead();
         break;
     case "find":
         HandleFind();

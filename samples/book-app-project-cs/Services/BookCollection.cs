@@ -56,6 +56,11 @@ public class BookCollection
 
     public List<Book> ListBooks() => _books;
 
+    public List<Book> GetUnreadBooks()
+    {
+        return _books.Where(b => !b.Read).ToList();
+    }
+
     public Book? FindBookByTitle(string title)
     {
         return _books.Find(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));

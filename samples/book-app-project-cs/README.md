@@ -29,9 +29,11 @@ It can add, remove, and list books. Also mark them as read.
 
 ```bash
 dotnet run -- list
+dotnet run -- list-unread
 dotnet run -- add
 dotnet run -- find
 dotnet run -- remove
+dotnet run -- mark-read
 dotnet run -- help
 ```
 
