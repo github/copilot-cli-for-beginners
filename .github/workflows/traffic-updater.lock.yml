@@ -758,6 +758,7 @@ jobs:
         timeout-minutes: 20
         run: |
           set -o pipefail
+          export COPILOT_GITHUB_TOKEN="${COPILOT_GITHUB_TOKEN}"
           touch /tmp/gh-aw/agent-step-summary.md
           (umask 177 && touch /tmp/gh-aw/agent-stdio.log)
           # shellcheck disable=SC1003
