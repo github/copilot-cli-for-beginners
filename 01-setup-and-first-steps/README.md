@@ -377,6 +377,8 @@ These commands are great to learn initially as you're getting started with Copil
 
 > 💡 **`/ask` vs regular chat**: Normally every message you send becomes part of the ongoing conversation and affects future responses. `/ask` is an "off the record" shortcut — perfect for quick one-off questions like `/ask What does YAML mean?` without polluting your session context.
 
+> 💡 **Tab-completion**: When typing a slash command, press **Tab** to auto-complete the command name or cycle through available subcommands and arguments. This is especially handy when you can't remember the exact name of a command.
+
 That's it for getting started! As you become comfortable, you can explore additional commands.
 
 > 📚 **Official Documentation**: [CLI command reference](https://docs.github.com/copilot/reference/cli-command-reference) for the complete list of commands and flags.
@@ -422,7 +424,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 | Command | What It Does |
 |---------|--------------|
 | `/add-dir <directory>` | Add a directory to allowed list |
-| `/allow-all [on|off|show]` | Auto-approve all permission prompts; use `on` to enable, `off` to disable, `show` to check current status |
+| `/allow-all [on\|off\|show]` | Auto-approve all permission prompts; use `on` to enable, `off` to disable, `show` to check current status |
 | `/yolo` | Quick alias for `/allow-all on` — auto-approves all permission prompts. |
 | `/cwd`, `/cd [directory]` | View or change working directory |
 | `/list-dirs` | Show all allowed directories |
@@ -434,14 +436,16 @@ That's it for getting started! As you become comfortable, you can explore additi
 | Command | What It Does |
 |---------|--------------|
 | `/clear` | Abandons the current session (no history saved) and starts a fresh conversation |
-| `/compact` | Summarize conversation to reduce context usage |
+| `/compact` | Summarize conversation to reduce context usage (optionally add focus instructions, e.g. `/compact focus on the bug list`) |
 | `/context` | Show context window token usage and visualization |
+| `/keep-alive` | Prevent your system from sleeping while Copilot CLI is active — handy for long-running tasks on a laptop |
+| `/memory [on\|off\|show]` | Enable, disable, or view persistent memory — facts and preferences remembered across all sessions |
 | `/new` | Ends the current session (saving it to history for search/resume) and starts a fresh conversation. |
-| `/resume` | Switch to a different session (optionally specify session ID) |
+| `/resume` | Switch to a different session (optionally specify session ID or name) |
 | `/rename` | Rename the current session (omit the name to auto-generate one) |
 | `/rewind` | Open a timeline picker to roll back to any earlier point in the conversation |
-| `/usage` | Display session usage metrics and statistics |
-| `/session` | Show session info and workspace summary |
+| `/usage` | Display session usage metrics and statistics, including quota progress bars |
+| `/session` | Show session info and workspace summary; use `/session delete`, `/session delete <id>`, or `/session delete-all` to remove sessions |
 | `/share` | Export session as a markdown file, GitHub gist, or self-contained HTML file |
 
 ### Display
@@ -450,6 +454,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 |---------|--------------|
 | `/statusline` (or `/footer`) | Customize which items appear in the status bar at the bottom of the session (directory, branch, effort, context window, quota) |
 | `/theme` | View or set terminal theme |
+| `/voice` | Dictate your prompt using local speech-to-text — speak naturally instead of typing |
 
 ### Help and Feedback
 
@@ -596,7 +601,7 @@ Additional details about remote sessions can be found in the [Copilot CLI docs](
 The hands-on examples focused on reviewing and refactoring `book_app.py`. Now practice the same skills on a different file, `utils.py`:
 
 1. Start an interactive session: `copilot`
-2. Ask Copilot CLI to summarize the file: `@samples/book-app-project/utils.py What does each function in this file do?`
+2. Ask Copilot CLI to summarize the file: "Summarize @samples/book-app-project/utils.py and explain what each function in this file does"
 3. Ask it to add input validation: "Add validation to `get_user_choice()` so it handles empty input and non-numeric entries"
 4. Ask it to improve error handling: "What happens if `get_book_details()` receives an empty string for the title? Add guards for that."
 5. Ask for a docstring: "Add a comprehensive docstring to `get_book_details()` with parameter descriptions and return values"
@@ -645,6 +650,7 @@ The examples used `/plan` for a search feature and `-p` for batch reviews. Now t
 | Typing `exit` instead of `/exit` | Copilot CLI treats "exit" as a prompt, not a command | Slash commands always start with `/` |
 | Using `-p` for multi-turn conversations | Each `-p` call is isolated with no memory of previous calls | Use interactive mode (`copilot`) for conversations that build on context |
 | Forgetting quotes around prompts with `$` or `!` | Shell interprets special characters before Copilot CLI sees them | Wrap prompts in quotes: `copilot -p "What does $HOME mean?"` |
+| Pressing Esc once to cancel a running task | A single Esc no longer cancels in-flight work (to prevent accidents) | Press **Esc twice** to cancel while Copilot CLI is processing |
 
 ### Troubleshooting
 

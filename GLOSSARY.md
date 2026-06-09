@@ -76,6 +76,12 @@ Model Context Protocol. A standard for connecting AI assistants to external data
 
 ---
 
+### Memory (Copilot CLI)
+
+A feature that lets Copilot CLI remember facts and preferences *across all sessions*, not just within a single one. Unlike session history (which saves a specific conversation), memory persists globally and is applied automatically in future sessions. Managed with the `/memory` slash command (`/memory on`, `/memory off`, `/memory show`). Memory can be scoped to your user account (visible across all repositories) or to a specific repository (shared with collaborators).
+
+---
+
 ## N
 
 ### npx

@@ -303,13 +303,19 @@ copilot --continue
 # Pick from a list of sessions interactively
 copilot --resume
 
+# -r is a shorthand for --resume (saves some typing!)
+copilot -r
+
 # Or resume a specific session by ID
-copilot --resume abc123
+copilot --resume=abc123
+
+# Or resume by the name you gave the session
+copilot --resume="my book app review"
 ```
 
 > 💡 **How do I find a session ID?** You don't need to memorize them. Running `copilot --resume` without an ID shows an interactive list of your previous sessions, their names, IDs, and when they were last active. Just pick the one you want.
 >
-> **What about multiple terminals?** Each terminal window is its own session with its own context. If you have Copilot CLI open in three terminals, that's three separate sessions. Running `--resume` from any terminal lets you browse all of them. The `--continue` flag grabs whichever session was closed most recently, no matter which terminal it was in.
+> **What about multiple terminals?** Each terminal window is its own session with its own context. If you have Copilot CLI open in three terminals, that's three separate sessions. Running `--resume` from any terminal lets you browse all of them. The `--continue` flag grabs the session from the current working directory first; if none exists there, it picks the most recently active session.
 >
 > **Can I switch sessions without restarting?** Yes. Use the `/resume` slash command from inside an active session:
 > ```
@@ -319,14 +325,55 @@ copilot --resume abc123
 
 ### Organize Your Sessions
 
-Give sessions meaningful names so you can find them later:
+Give sessions meaningful names so you can find them later. You can name a session when you start it, or rename it at any time while inside the session:
 
 ```bash
+# Name a session right when you start it
+copilot --name book-app-review
+
+# Or rename the current session from inside
 copilot
 
 > /rename book-app-review
 # Session renamed for easier identification
 ```
+
+Once a session is named, you can resume it directly by name without browsing through a list:
+
+```bash
+copilot --resume=book-app-review
+```
+
+To clean up sessions you no longer need, use `/session delete` from inside a session:
+
+```bash
+copilot
+
+> /session delete            # Deletes the current session
+> /session delete abc123     # Deletes a specific session by ID
+> /session delete-all        # Deletes all sessions (use with care!)
+```
+
+### Persistent Memory Across Sessions
+
+Sessions save your conversation history, but **memory** goes one step further and lets Copilot CLI remember preferences and facts *across all sessions*, not just within a single one.
+
+```bash
+copilot
+
+> /memory show
+# Shows what Copilot CLI currently remembers about you and your project
+
+> /memory on
+# Enables memory (on by default if your account supports it)
+
+> /memory off
+# Disables memory (useful if you prefer a fresh slate each time)
+```
+
+For example, if you tell Copilot CLI "I always prefer pytest for Python testing", it can remember that preference and apply it automatically in future sessions. All without you having to repeat it.
+
+> 💡 **Memory vs. Sessions**: Sessions save conversation history so you can resume a specific task. Memory saves reusable repository facts and user preferences that Copilot can apply in future work. Think of sessions as task notebooks, and memory as reusable context Copilot can carry forward.
 
 ### Check and Manage Context
 
@@ -363,10 +410,9 @@ Context usage: 62k/200k tokens (31%)
 Imagine this workflow across multiple days:
 
 ```bash
-# Monday: Start book app review
-copilot
+# Monday: Start book app review with a name right from the beginning
+copilot --name book-app-review
 
-> /rename book-app-review
 > @samples/book-app-project/books.py
 > Review and number all code quality issues
 
@@ -384,8 +430,8 @@ Quality Issues Found:
 ```
 
 ```bash
-# Wednesday: Resume exactly where you left off
-copilot --continue
+# Wednesday: Resume exactly where you left off, by name
+copilot --resume=book-app-review
 
 > What issues remain unfixed from our book app review?
 
@@ -410,7 +456,7 @@ No re-explaining. No re-reading files. Just continue working.
 
 ---
 
-**🎉 You now know the essentials!** The `@` syntax, session management (`--continue`/`--resume`/`/rename`), and context commands (`/context`/`/clear`) are enough to be highly productive. Everything below is optional. Return to it when you're ready.
+**🎉 You now know the essentials!** The `@` syntax, session management (`--name`/`--continue`/`--resume`/`/rename`), and context commands (`/context`/`/clear`) are enough to be highly productive. Everything below is optional. Return to it when you're ready.
 
 ---
 
@@ -565,6 +611,17 @@ copilot
 # Summarizes conversation history, freeing up context space
 # Your key findings and decisions are preserved
 ```
+
+You can also give `/compact` optional focus instructions to shape what gets prioritized in the summary:
+
+```bash
+copilot
+
+> /compact focus on the list of bugs we found and decisions made
+# Summarizes history, keeping bug list and decisions prominent
+```
+
+> 💡 **When to use focus instructions**: If your conversation covered many topics, focus instructions help `/compact` retain the parts most relevant to your next steps so you don't lose the thread.
 
 #### Context Efficiency Tips
 
@@ -858,10 +915,11 @@ copilot --add-dir /path/to/directory
 
 1. **`@` syntax** gives Copilot CLI context about files, directories, and images
 2. **Multi-turn conversations** build on each other as context accumulates
-3. **Sessions auto-save**: use `--continue` or `--resume` to pick up where you left off
-4. **Context windows** have limits: manage them with `/clear`, `/compact`, `/context`, `/new`, and `/rewind`
-5. **Permission flags** (`--add-dir`, `--allow-all`) control multi-directory access. Use them wisely!
-6. **Image references** (`@screenshot.png`) help debug UI issues visually
+3. **Sessions auto-save**: name them at startup with `--name`, resume by name with `--resume=<name>`, or use `--continue` to pick up the most recent session
+4. **Context windows** have limits: manage them with `/clear`, `/compact`, `/context`, `/new`, and `/rewind`. Use `/compact focus on <topic>` to shape what gets kept in the summary
+5. **Persistent memory** (`/memory`) lets Copilot CLI remember preferences and facts across *all* sessions — not just the current one
+6. **Permission flags** (`--add-dir`, `--allow-all`) control multi-directory access. Use them wisely!
+7. **Image references** (`@screenshot.png`) help debug UI issues visually
 
 > 📚 **Official Documentation**: [Use Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli) for the complete reference on context, sessions, and working with files.
 
