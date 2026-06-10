@@ -1,3 +1,14 @@
+<!--
+---
+id: CopilotCLI-Appendix-CI-CD-Integration
+title: !translate CI/CD Integration
+description: !translate Integrate GitHub Copilot CLI into GitHub Actions workflows for automated pull request reviews.
+audience: Developers / Students / Terminal users
+slug: ci-cd-integration
+weight: 91
+---
+-->
+
 # CI/CD Integration
 
 > 📖 **Prerequisite**: Complete [Chapter 07: Putting It All Together](../07-putting-it-together/README.md) before reading this appendix.

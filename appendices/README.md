@@ -1,3 +1,14 @@
+<!--
+---
+id: CopilotCLI-Appendices
+title: !translate Appendices
+description: !translate Explore optional reference material that extends the GitHub Copilot CLI for Beginners course.
+audience: Developers / Students / Terminal users
+slug: appendices
+weight: 9
+---
+-->
+
 # Appendices
 
 These appendices cover additional topics that extend the core course content. They're optional reading for when you need these specific capabilities.

@@ -1,3 +1,14 @@
+<!--
+---
+id: CopilotCLI-06-Custom-MCP-Server
+title: !translate Building a Custom MCP Server
+description: !translate Build a simple custom MCP server in Python to connect GitHub Copilot CLI to your own APIs.
+audience: Developers / Students / Terminal users
+slug: building-a-custom-mcp-server
+weight: 61
+---
+-->
+
 # Building a Custom MCP Server
 
 > ⚠️ **This content is completely optional.** You can be highly productive with Copilot CLI using only the pre-built MCP servers (GitHub, filesystem, Context7). This guide is for developers who want to connect Copilot to custom internal APIs. See the [MCP for Beginners course](https://github.com/microsoft/mcp-for-beginners) for more details.
