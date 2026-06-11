@@ -8,11 +8,34 @@ def print_menu():
 
 
 def get_user_choice() -> str:
-    return input("Choose an option (1-5): ").strip()
+    while True:
+        choice = input("Choose an option (1-5): ").strip()
+        if choice in {"1", "2", "3", "4", "5"}:
+            return choice
+        print("Invalid choice. Please enter a number between 1 and 5.")
 
 
 def get_book_details():
-    title = input("Enter book title: ").strip()
+    """Prompt the user for book details and return them.
+
+    Prompts (via standard input) for the following fields:
+    - title: required. The function will re-prompt until a non-empty title is provided.
+    - author: optional. An empty string is allowed.
+    - publication year: optional. The function attempts to convert input to int; if conversion
+      fails the year defaults to 0 and a message is printed.
+
+    Returns:
+        tuple[str, str, int]: A 3-tuple of (title, author, year).
+
+    Side effects:
+        - Prints prompts and validation messages to stdout.
+    """
+    while True:
+        title = input("Enter book title: ").strip()
+        if title:
+            break
+        print("Title cannot be empty. Please enter a title.")
+
     author = input("Enter author: ").strip()
 
     year_input = input("Enter publication year: ").strip()
