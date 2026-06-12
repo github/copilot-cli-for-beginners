@@ -68,6 +68,7 @@ Commands:
   add      - Add a new book
   remove   - Remove a book by title
   find     - Find books by author
+  mark     - Mark a book as read
   help     - Show this help message
 """)
 
@@ -87,6 +88,22 @@ def main():
         handle_remove()
     elif command == "find":
         handle_find()
+    elif command == "mark":
+        # Accept title as remaining argv or prompt interactively
+        if len(sys.argv) >= 3:
+            title = " ".join(sys.argv[2:]).strip()
+        else:
+            title = input("Enter the title of the book to mark as read: ").strip()
+
+        if not title:
+            print("\nNo title provided. Aborting.\n")
+            return
+
+        success = collection.mark_as_read(title)
+        if success:
+            print(f'\nMarked "{title}" as read.\n')
+        else:
+            print(f'\nBook titled "{title}" not found.\n')
     elif command == "help":
         show_help()
     else:
