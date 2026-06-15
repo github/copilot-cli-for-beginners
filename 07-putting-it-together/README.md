@@ -1,4 +1,15 @@
-![Chapter 07: Putting It All Together](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-07
+title: !translate Putting It All Together
+description: !translate Combine context, workflows, agents, skills, and MCP into complete feature development workflows from idea to pull request.
+audience: Developers / Students / Terminal users
+slug: putting-it-all-together
+weight: 8
+---
+-->
+
+![Chapter 07: Putting It All Together](assets/chapter-header.png)
 
 > **Everything you learned combines here. Go from idea to merged PR in a single session.**
 
@@ -21,7 +32,7 @@ By the end of this chapter, you'll be able to:
 
 ## 🧩 Real-World Analogy: The Orchestra
 
-<img src="images/orchestra-analogy.png" alt="Orchestra Analogy - Unified Workflow" width="800"/>
+<img src="assets/orchestra-analogy.png" alt="Orchestra Analogy - Unified Workflow" width="800"/>
 
 A symphony orchestra has many sections:
 - **Strings** provide the foundation (like your core workflows)
@@ -109,7 +120,7 @@ copilot
 
 # Additional Workflows
 
-<img src="images/combined-workflows.png" alt="People assembling a colorful giant jigsaw puzzle with gears, representing how agents, skills, and MCP combine into unified workflows" width="800"/>
+<img src="assets/combined-workflows.png" alt="People assembling a colorful giant jigsaw puzzle with gears, representing how agents, skills, and MCP combine into unified workflows" width="800"/>
 
 For power users who completed Chapters 04-06, these workflows show how agents, skills, and MCP multiply your effectiveness.
 
@@ -117,7 +128,7 @@ For power users who completed Chapters 04-06, these workflows show how agents, s
 
 Here's the mental model for combining everything:
 
-<img src="images/integration-pattern.png" alt="The Integration Pattern - A 4-phase workflow: Gather Context (MCP), Analyze and Plan (Agents), Execute (Skills + Manual), Complete (MCP)" width="800"/>
+<img src="assets/integration-pattern.png" alt="The Integration Pattern - A 4-phase workflow: Gather Context (MCP), Analyze and Plan (Agents), Execute (Skills + Manual), Complete (MCP)" width="800"/>
 
 ---
 
@@ -375,7 +386,7 @@ For teams with existing CI/CD pipelines, you can automate Copilot reviews on eve
 
 # Practice
 
-<img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
+<img src="../assets/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
 Put the complete workflow into practice.
 

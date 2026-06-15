@@ -1,4 +1,15 @@
-![Chapter 00: Quick Start](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-00
+title: !translate Quick Start
+description: !translate Install GitHub Copilot CLI, sign in with your GitHub account, and verify that everything works.
+audience: Developers / Students / Terminal users
+slug: quick-start
+weight: 1
+---
+-->
+
+![Chapter 00: Quick Start](assets/chapter-header.png)
 
 Welcome! In this chapter, you'll get GitHub Copilot CLI (Command Line Interface) installed, signed in with your GitHub account, and verified that everything works. This is a quick setup chapter. Once you're up and running, the real demos start in Chapter 01!
 
@@ -124,7 +135,7 @@ copilot
 
 You'll be asked to trust the folder containing the repository (if you haven't already). You can trust it one time or across all future sessions.
 
-<img src="images/copilot-trust.png" alt="Trusting files in a folder with the Copilot CLI" width="800"/>
+<img src="assets/copilot-trust.png" alt="Trusting files in a folder with the Copilot CLI" width="800"/>
 
 After trusting the folder, you can sign in with your GitHub account.
 
@@ -140,7 +151,7 @@ After trusting the folder, you can sign in with your GitHub account.
 4. Select "Authorize" to grant GitHub Copilot CLI access
 5. Return to your terminal - you're now signed in!
 
-<img src="images/auth-device-flow.png" alt="Device Authorization Flow - showing the 5-step process from terminal login to signed-in confirmation" width="800"/>
+<img src="assets/auth-device-flow.png" alt="Device Authorization Flow - showing the 5-step process from terminal login to signed-in confirmation" width="800"/>
 
 *The device authorization flow: your terminal generates a code, you verify it in the browser, and Copilot CLI is authenticated.*
 
@@ -169,7 +180,7 @@ After you receive a response, you can exit the CLI:
 <details>
 <summary>🎬 See it in action!</summary>
 
-![Hello Demo](images/hello-demo.gif)
+![Hello Demo](assets/hello-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 

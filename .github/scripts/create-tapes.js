@@ -136,13 +136,13 @@ console.log('📝 Creating tape files from demos.json...\n');
 let created = 0;
 
 for (const demo of config.demos) {
-  const imagesDir = join(rootDir, demo.chapter, 'images');
-  const tapePath = join(imagesDir, `${demo.name}.tape`);
+  const assetsDir = join(rootDir, demo.chapter, 'assets');
+  const tapePath = join(assetsDir, `${demo.name}.tape`);
 
-  // Ensure images directory exists
-  if (!existsSync(imagesDir)) {
-    mkdirSync(imagesDir, { recursive: true });
-    console.log(`  Created: ${demo.chapter}/images/`);
+  // Ensure assets directory exists
+  if (!existsSync(assetsDir)) {
+    mkdirSync(assetsDir, { recursive: true });
+    console.log(`  Created: ${demo.chapter}/assets/`);
   }
 
   // Generate tape content
@@ -150,7 +150,7 @@ for (const demo of config.demos) {
 
   // Write tape file
   writeFileSync(tapePath, content);
-  console.log(`  ✓ ${demo.chapter}/images/${demo.name}.tape`);
+  console.log(`  ✓ ${demo.chapter}/assets/${demo.name}.tape`);
   created++;
 }
 

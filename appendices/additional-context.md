@@ -1,3 +1,14 @@
+<!--
+---
+id: CopilotCLI-Appendix-Additional-Context
+title: !translate Additional Context Features
+description: !translate Learn how to use image context and manage permissions across multiple directories in GitHub Copilot CLI.
+audience: Developers / Students / Terminal users
+slug: additional-context-features
+weight: 92
+---
+-->
+
 # Additional Context Features
 
 > 📖 **Prerequisite**: Complete [Chapter 02: Context and Conversations](../02-context-conversations/README.md) before reading this appendix.

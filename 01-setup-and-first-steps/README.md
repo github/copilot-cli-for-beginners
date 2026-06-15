@@ -1,4 +1,15 @@
-![Chapter 01: First Steps](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-01
+title: !translate First Steps
+description: !translate Experience GitHub Copilot CLI through hands-on demos, then learn when to use interactive, plan, and programmatic modes.
+audience: Developers / Students / Terminal users
+slug: first-steps
+weight: 2
+---
+-->
+
+![Chapter 01: First Steps](assets/chapter-header.png)
 
 [日本語版 (Japanese Version)](./README.ja.md)
 
@@ -22,7 +33,7 @@ By the end of this chapter, you'll be able to:
 
 # Your First Copilot CLI Experience
 
-<img src="images/first-copilot-experience.png" alt="Developer sitting at a desk with code on the monitor and glowing particles representing AI assistance" width="800"/>
+<img src="assets/first-copilot-experience.png" alt="Developer sitting at a desk with code on the monitor and glowing particles representing AI assistance" width="800"/>
 
 Jump right in and see what Copilot CLI can do.
 
@@ -88,7 +99,7 @@ Once inside the interactive Copilot CLI session, run the following:
 <details>
 <summary>🎬 See it in action!</summary>
 
-![Code Review Demo](images/code-review-demo.gif)
+![Code Review Demo](assets/code-review-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -113,7 +124,7 @@ Ever stared at code wondering what it does? Try this in your Copilot CLI session
 <details>
 <summary>🎬 See it in action!</summary>
 
-![Explain Code Demo](images/explain-code-demo.gif)
+![Explain Code Demo](assets/explain-code-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -169,7 +180,7 @@ Need a function you'd otherwise spend 15 minutes googling? Still in your session
 <details>
 <summary>🎬 See it in action!</summary>
 
-![Generate Code Demo](images/generate-code-demo.gif)
+![Generate Code Demo](assets/generate-code-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -191,7 +202,7 @@ When you're done exploring, exit the session:
 
 # Modes and Commands
 
-<img src="images/modes-and-commands.png" alt="Futuristic control panel with glowing screens, dials, and equalizers representing Copilot CLI modes and commands" width="800"/>
+<img src="assets/modes-and-commands.png" alt="Futuristic control panel with glowing screens, dials, and equalizers representing Copilot CLI modes and commands" width="800"/>
 
 You've just seen what Copilot CLI can do. Now let's understand *how* to use these capabilities effectively. The key is knowing which of the three interaction modes to use for different situations.
 
@@ -211,7 +222,7 @@ Think of using GitHub Copilot CLI like going out to eat. From planning the trip 
 
 Just like dining out, you'll naturally learn when each approach feels right.
 
-<img src="images/ordering-food-analogy.png" alt="Three Ways to Use GitHub Copilot CLI - Plan Mode (GPS route to restaurant), Interactive Mode (talking to waiter), Programmatic Mode (drive-through)" width="800"/>
+<img src="assets/ordering-food-analogy.png" alt="Three Ways to Use GitHub Copilot CLI - Plan Mode (GPS route to restaurant), Interactive Mode (talking to waiter), Programmatic Mode (drive-through)" width="800"/>
 
 *Choose your mode based on the task: Plan for mapping it out first, Interactive for back-and-forth collaboration, Programmatic for quick one-shot results*
 
@@ -232,7 +243,7 @@ Once you're comfortable, try:
 
 ### Mode 1: Interactive Mode (start here)
 
-<img src="images/interactive-mode.png" alt="Interactive Mode - Like talking to a waiter who can answer questions and adjust the order" width="250"/>
+<img src="assets/interactive-mode.png" alt="Interactive Mode - Like talking to a waiter who can answer questions and adjust the order" width="250"/>
 
 **Best for**: Exploration, iteration, multi-turn conversations. Like talking to a waiter who can answer questions, take feedback, and adjust the order on the fly.
 
@@ -270,7 +281,7 @@ Notice how each prompt builds on the previous answer. You're having a conversati
 
 ### Mode 2: Plan Mode
 
-<img src="images/plan-mode.png" alt="Plan Mode - Like planning a route before a trip using GPS" width="250"/>
+<img src="assets/plan-mode.png" alt="Plan Mode - Like planning a route before a trip using GPS" width="250"/>
 
 **Best for**: Complex tasks where you want to review the approach before execution. Similar to planning a route before a trip using GPS.
 
@@ -326,7 +337,7 @@ Proceed with implementation? [Y/n]
 
 ### Mode 3: Programmatic Mode
 
-<img src="images/programmatic-mode.png" alt="Programmatic Mode - Like using a drive-through for a quick order" width="250"/>
+<img src="assets/programmatic-mode.png" alt="Programmatic Mode - Like using a drive-through for a quick order" width="250"/>
 
 **Best for**: Automation, scripts, CI/CD, single-shot commands. Like using a drive-through for a quick order without needing to talk to a waiter.
 
@@ -438,14 +449,15 @@ That's it for getting started! As you become comfortable, you can explore additi
 | Command | What It Does |
 |---------|--------------|
 | `/clear` | Abandons the current session (no history saved) and starts a fresh conversation |
-| `/compact` | Summarize conversation to reduce context usage |
+| `/compact` | Summarize conversation to reduce context usage (optionally add focus instructions, e.g. `/compact focus on the bug list`) |
 | `/context` | Show context window token usage and visualization |
 | `/keep-alive` | Prevent your system from sleeping while Copilot CLI is active — handy for long-running tasks on a laptop |
+| `/memory [on\|off\|show]` | Enable, disable, or view persistent memory — facts and preferences remembered across all sessions |
 | `/new` | Ends the current session (saving it to history for search/resume) and starts a fresh conversation. |
 | `/resume` | Switch to a different session (optionally specify session ID or name) |
 | `/rename` | Rename the current session (omit the name to auto-generate one) |
 | `/rewind` | Open a timeline picker to roll back to any earlier point in the conversation |
-| `/usage` | Display session usage metrics and statistics |
+| `/usage` | Display session usage metrics and statistics, including quota progress bars |
 | `/session` | Show session info and workspace summary; use `/session delete`, `/session delete <id>`, or `/session delete-all` to remove sessions |
 | `/share` | Export session as a markdown file, GitHub gist, or self-contained HTML file |
 
@@ -455,6 +467,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 |---------|--------------|
 | `/statusline` (or `/footer`) | Customize which items appear in the status bar at the bottom of the session (directory, branch, effort, context window, quota) |
 | `/theme` | View or set terminal theme |
+| `/voice` | Dictate your prompt using local speech-to-text — speak naturally instead of typing |
 
 ### Help and Feedback
 
@@ -499,7 +512,7 @@ copilot
 
 # Practice
 
-<img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
+<img src="../assets/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
 Time to put what you've learned into action.
 

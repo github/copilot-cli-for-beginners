@@ -47,7 +47,7 @@ Do not deviate from this structure when editing or adding chapter content.
 ## Markdown Formatting
 
 - Use standard GitHub-Flavored Markdown.
-- Images go in the repo-root `images/` directory.
+- Images go in the repo-root `assets/` directory.
 - Use relative links for cross-chapter references (e.g., `../03-development-workflows/README.md`).
 - Emoji usage is encouraged for section headers (matching existing style).
 
@@ -55,7 +55,7 @@ Do not deviate from this structure when editing or adding chapter content.
 
 | Change Made | Files to Update |
 |---|---|
-| New chapter added | `README.md` (course table), `AGENTS.md` (structure table), `images/learning-path.png` |
+| New chapter added | `README.md` (course table), `AGENTS.md` (structure table), `assets/learning-path.png` |
 | Chapter content updated | The chapter's `README.md`, verify cross-references in adjacent chapters |
 | New sample app variant added | `AGENTS.md` (structure table), `samples/` directory, relevant chapter references |
 | Sample app code changed | `samples/book-app-project/tests/` (update/add tests), chapters referencing that code |
@@ -66,5 +66,5 @@ Do not deviate from this structure when editing or adding chapter content.
 | Glossary term introduced | `GLOSSARY.md` — add definition in alphabetical order |
 | npm scripts changed | `package.json`, `AGENTS.md` (build section) |
 | Devcontainer updated | `.devcontainer/devcontainer.json`, Chapter 00 (setup instructions) |
-| Image or banner changed | `images/` directory, any README referencing the image |
+| Image or banner changed | `assets/` directory, any README referencing the image |
 | Copilot CLI version requirements change | Chapter 00, Chapter 01, `.devcontainer/devcontainer.json` |

@@ -2,7 +2,7 @@
 /**
  * Generate course demo GIFs from .tape files
  *
- * This script finds all .tape files in [chapter]/images/ folders and runs VHS
+ * This script finds all .tape files in [chapter]/assets/ folders and runs VHS
  * to generate GIFs. VHS is run from the project root so that @file references
  * in prompts resolve correctly.
  *
@@ -135,7 +135,7 @@ function cleanupCopilotWrapper() {
   try { rmSync(wrapperDir, { recursive: true }); } catch (e) { /* ignore */ }
 }
 
-// Find all .tape files in [chapter]/images/ folders
+// Find all .tape files in [chapter]/assets/ folders
 function findTapeFiles(dir, chapterFilter) {
   const tapeFiles = [];
 
@@ -151,17 +151,17 @@ function findTapeFiles(dir, chapterFilter) {
         if (!matches) continue;
       }
 
-      const imagesDir = join(fullPath, 'images');
-      if (existsSync(imagesDir)) {
+      const assetsDir = join(fullPath, 'assets');
+      if (existsSync(assetsDir)) {
         try {
-          const imagesEntries = readdirSync(imagesDir);
-          for (const file of imagesEntries) {
+          const assetsEntries = readdirSync(assetsDir);
+          for (const file of assetsEntries) {
             if (file.endsWith('.tape')) {
-              tapeFiles.push(join(imagesDir, file));
+              tapeFiles.push(join(assetsDir, file));
             }
           }
         } catch (e) {
-          // Can't read images folder, skip
+          // Can't read assets folder, skip
         }
       }
     }

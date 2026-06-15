@@ -23,7 +23,7 @@ CHAPTERS = {
 # Get project root (parent of scripts folder)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
-BACKGROUND_IMAGE = os.path.join(PROJECT_ROOT, "images", "chapter-header-bg.png")
+BACKGROUND_IMAGE = os.path.join(PROJECT_ROOT, "assets", "chapter-header-bg.png")
 
 # Font settings - 25% larger than original 36px
 FONT_SIZE = 45
@@ -112,8 +112,8 @@ def generate_header(chapter_folder, title, font):
         y = (height - text_height) // 2
         draw.text((x, y), title, fill=(255, 255, 255), font=font)
 
-    # Save to chapter's images folder
-    output_dir = os.path.join(PROJECT_ROOT, chapter_folder, "images")
+    # Save to chapter's assets folder
+    output_dir = os.path.join(PROJECT_ROOT, chapter_folder, "assets")
     os.makedirs(output_dir, exist_ok=True)
 
     output_path = os.path.join(output_dir, "chapter-header.png")

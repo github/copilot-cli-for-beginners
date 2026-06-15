@@ -41,11 +41,11 @@ function findGifs(dir) {
     const fullPath = join(dir, entry);
     const stat = statSync(fullPath);
     if (stat.isDirectory() && !entry.startsWith('.') && entry !== 'node_modules') {
-      const imagesDir = join(fullPath, 'images');
-      if (existsSync(imagesDir)) {
-        for (const file of readdirSync(imagesDir)) {
+      const assetsDir = join(fullPath, 'assets');
+      if (existsSync(assetsDir)) {
+        for (const file of readdirSync(assetsDir)) {
           if (file.endsWith('-demo.gif')) {
-            gifs.push(join(imagesDir, file));
+            gifs.push(join(assetsDir, file));
           }
         }
       }

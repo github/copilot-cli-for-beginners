@@ -1,4 +1,15 @@
-![Chapter 06: MCP Servers](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-06
+title: !translate Connect to GitHub, Databases, and APIs
+description: !translate Configure MCP servers so GitHub Copilot CLI can connect to GitHub, local files, documentation, databases, and other live data sources.
+audience: Developers / Students / Terminal users
+slug: connect-to-github-databases-and-apis
+weight: 7
+---
+-->
+
+![Chapter 06: MCP Servers](assets/chapter-header.png)
 
 > **What if Copilot could read your GitHub issues, check your database, and create PRs... all from the terminal?**
 
@@ -24,7 +35,7 @@ By the end of this chapter, you'll be able to:
 
 ## 🧩 Real-World Analogy: Browser Extensions
 
-<img src="images/browser-extensions-analogy.png" alt="MCP Servers are like Browser Extensions" width="800"/>
+<img src="assets/browser-extensions-analogy.png" alt="MCP Servers are like Browser Extensions" width="800"/>
 
 Think of MCP servers like browser extensions. Your browser on its own can display web pages, but extensions connect it to extra services:
 
@@ -42,7 +53,7 @@ Without extensions, your browser is still useful, but with them, it becomes a po
 
 ---
 
-<img src="images/quick-start-mcp.png" alt="Power cable connecting with bright electrical spark surrounded by floating tech icons representing MCP server connections" width="800"/>
+<img src="assets/quick-start-mcp.png" alt="Power cable connecting with bright electrical spark surrounded by floating tech icons representing MCP server connections" width="800"/>
 
 # Quick Start: MCP in 30 Seconds
 
@@ -80,7 +91,7 @@ MCP Servers:
 <details>
 <summary>🎬 See it in action!</summary>
 
-![MCP Status Demo](images/mcp-status-demo.gif)
+![MCP Status Demo](assets/mcp-status-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -117,7 +128,7 @@ MCP makes Copilot aware of your actual development environment.
 
 # Configuring MCP Servers
 
-<img src="images/configuring-mcp-servers.png" alt="Hands adjusting knobs and sliders on a professional audio mixing board representing MCP server configuration" width="800"/>
+<img src="assets/configuring-mcp-servers.png" alt="Hands adjusting knobs and sliders on a professional audio mixing board representing MCP server configuration" width="800"/>
 
 Now that you've seen MCP in action, let's set up additional servers. You can add servers in two ways: **from the built-in registry** (easiest — guided setup right in the CLI) or by **editing the config file** manually (more flexible). Start with the registry option if you're not sure which to choose.
 
@@ -359,7 +370,7 @@ Save this as `~/.copilot/mcp-config.json` for global access or `.mcp.json` in th
 
 Now that you have MCP servers configured, let's see what they can do.
 
-<img src="images/using-mcp-servers.png" alt="Using MCP Servers - Hub-and-spoke diagram showing a Developer CLI connected to GitHub, Filesystem, Context7, and Custom/Web Fetch servers" width="800" />
+<img src="assets/using-mcp-servers.png" alt="Using MCP Servers - Hub-and-spoke diagram showing a Developer CLI connected to GitHub, Filesystem, Context7, and Custom/Web Fetch servers" width="800" />
 
 ---
 
@@ -557,7 +568,7 @@ copilot
 
 These workflows show why developers say "I never want to work without this again." Each example combines multiple MCP servers in a single session.
 
-<img src="images/issue-to-pr-workflow.png" alt="Issue to PR Workflow using MCP - Shows the complete flow from getting a GitHub issue through creating a pull request" width="800"/>
+<img src="assets/issue-to-pr-workflow.png" alt="Issue to PR Workflow using MCP - Shows the complete flow from getting a GitHub issue through creating a pull request" width="800"/>
 
 *Complete MCP workflow: GitHub MCP retrieves repo data, Filesystem MCP finds code, Context7 MCP provides best practices, and Copilot handles analysis*
 
@@ -617,7 +628,7 @@ Suggestions:
 <details>
 <summary>🎬 See the MCP workflow in action!</summary>
 
-![MCP Workflow Demo](images/mcp-workflow-demo.gif)
+![MCP Workflow Demo](assets/mcp-workflow-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -709,7 +720,7 @@ Recommendations:
 
 # Practice
 
-<img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
+<img src="../assets/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
 **🎉 You now know the essentials!** You understand MCP, you've seen how to configure servers, and you've seen real workflows in action. Now it's time to try it yourself.
 

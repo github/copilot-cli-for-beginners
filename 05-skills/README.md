@@ -1,4 +1,15 @@
-![Chapter 05: Skills System](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-05
+title: !translate Automate Repetitive Tasks
+description: !translate Create and use Agent Skills so GitHub Copilot CLI can apply task-specific instructions and team best practices automatically.
+audience: Developers / Students / Terminal users
+slug: automate-repetitive-tasks
+weight: 6
+---
+-->
+
+![Chapter 05: Skills System](assets/chapter-header.png)
 
 [日本語版 (Japanese Version)](./README.ja.md)
 
@@ -23,7 +34,7 @@ By the end of this chapter, you'll be able to:
 ## 🧩 Real-World Analogy: Power Tools
 
 A general-purpose drill is useful, but specialized attachments make it powerful. 
-<img src="images/power-tools-analogy.png" alt="Power Tools - Skills Extend Copilot's Capabilities" width="800"/>
+<img src="assets/power-tools-analogy.png" alt="Power Tools - Skills Extend Copilot's Capabilities" width="800"/>
 
 
 Skills work the same way. Just like swapping drill bits for different jobs, you can add skills to Copilot for different tasks:
@@ -43,7 +54,7 @@ Skills work the same way. Just like swapping drill bits for different jobs, you 
 
 # How Skills Work
 
-<img src="images/how-skills-work.png" alt="Glowing RPG-style skill icons connected by light trails on a starfield background representing Copilot skills" width="800"/>
+<img src="assets/how-skills-work.png" alt="Glowing RPG-style skill icons connected by light trails on a starfield background representing Copilot skills" width="800"/>
 
 Learn what skills are, why they matter, and how they differ from agents and MCP.
 
@@ -139,7 +150,7 @@ Skills are just one piece of GitHub Copilot's extensibility model. Here's how th
 
 > *Don't worry about MCP quite yet. We'll cover it in [Chapter 06](../06-mcp-servers/). It's included here so you can see how skills fit into the overall picture.*
 
-<img src="images/skills-agents-mcp-comparison.png" alt="Comparison diagram showing the differences between Agents, Skills, and MCP Servers and how they combine into your workflow" width="800"/>
+<img src="assets/skills-agents-mcp-comparison.png" alt="Comparison diagram showing the differences between Agents, Skills, and MCP Servers and how they combine into your workflow" width="800"/>
 
 | Feature | What It Does | When to Use |
 |---------|--------------|-------------|
@@ -194,7 +205,7 @@ copilot
 3. Automatically loads your team's quality checklist
 4. Applies all checks without you listing them
 
-<img src="images/skill-auto-discovery-flow.png" alt="How Skills Auto-Trigger - 4-step flow showing how Copilot automatically matches your prompt to the right skill" width="800"/>
+<img src="assets/skill-auto-discovery-flow.png" alt="How Skills Auto-Trigger - 4-step flow showing how Copilot automatically matches your prompt to the right skill" width="800"/>
 
 *Just ask naturally. Copilot matches your prompt to the right skill and applies it automatically.*
 
@@ -229,7 +240,7 @@ copilot
 <details>
 <summary>🎬 See it in action!</summary>
 
-![Skill Trigger Demo](images/skill-trigger-demo.gif)
+![Skill Trigger Demo](assets/skill-trigger-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -277,7 +288,7 @@ PR Review: feature/user-auth
 
 # Creating Custom Skills
 
-<img src="images/creating-managing-skills.png" alt="Human and robotic hands building a wall of glowing LEGO-like blocks representing skill creation and management" width="800"/>
+<img src="assets/creating-managing-skills.png" alt="Human and robotic hands building a wall of glowing LEGO-like blocks representing skill creation and management" width="800"/>
 
 Build your own skills from SKILL.md files.
 
@@ -474,7 +485,7 @@ copilot --agent code-reviewer
 
 Discover installed skills, find community skills, and share your own.
 
-<img src="images/managing-sharing-skills.png" alt="Managing and Sharing Skills - showing the discover, use, create, and share cycle for CLI skills" width="800" />
+<img src="assets/managing-sharing-skills.png" alt="Managing and Sharing Skills - showing the discover, use, create, and share cycle for CLI skills" width="800" />
 
 ---
 
@@ -518,7 +529,7 @@ Description: Security-focused code review checking OWASP Top 10 vulnerabilities
 <details>
 <summary>See it in action!</summary>
 
-![List Skills Demo](images/list-skills-demo.gif)
+![List Skills Demo](assets/list-skills-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -585,10 +596,10 @@ The easiest way to install a skill from a GitHub repository is using the `gh ski
 gh skill install github/awesome-copilot
 
 # Or install a specific skill directly
-gh skill install github/awesome-copilot code-checklist
+gh skill install github/awesome-copilot ai-ready
 
 # Install for personal use across all projects (user scope)
-gh skill install github/awesome-copilot code-checklist --scope user
+gh skill install github/awesome-copilot ai-ready --scope user
 ```
 
 > ⚠️ **Review before installing**: Always read a skill's `SKILL.md` before installing it. Skills control what Copilot does, and a malicious skill could instruct it to run harmful commands or modify code in unexpected ways.
@@ -597,7 +608,7 @@ gh skill install github/awesome-copilot code-checklist --scope user
 
 # Practice
 
-<img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
+<img src="../assets/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
 Apply what you've learned by building and testing your own skills.
 
