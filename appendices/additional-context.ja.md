@@ -1,3 +1,14 @@
+<!--
+---
+id: CopilotCLI-Appendix-Additional-Context
+title: 追加のコンテキスト機能
+description: GitHub Copilot CLI における画像コンテキストの使用方法と、複数ディレクトリにまたがる権限管理について学びます。
+audience: Developers / Students / Terminal users
+slug: additional-context-features
+weight: 92
+---
+-->
+
 # 追加のコンテキスト機能
 
 > 📖 **前提条件**: この付録を読む前に、[第02章：コンテキストと対話](../02-context-conversations/README.ja.md) を完了してください。

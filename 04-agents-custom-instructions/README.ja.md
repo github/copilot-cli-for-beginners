@@ -1,4 +1,15 @@
-![Chapter 04: Agents and Custom Instructions](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-04
+title: エージェントとカスタム指示
+description: 指示とカスタムプロンプトのルールを設定して、専門的な AI エージェントを構成します。
+audience: Developers / Students / Terminal users
+slug: agents-and-custom-instructions
+weight: 5
+---
+-->
+
+![Chapter 04: Agents and Custom Instructions](assets/chapter-header.png)
 
 [English Version](./README.md)
 
@@ -34,7 +45,7 @@
 
 エージェントも同じ仕組みです。汎用的な AI ではなく、特定のタスクに集中し、従うべき正しいプロセスを知っているエージェントを使いましょう。一度指示を設定すれば、コードレビュー、テスト、セキュリティ、ドキュメント作成など、その専門知識が必要なときにいつでも再利用できます。
 
-<img src="images/hiring-specialists-analogy.png" alt="専門家の雇用に例えると - 家の修理に専門職を呼ぶのと同じように、AIエージェントもコードレビュー、テスト、セキュリティ、ドキュメント作成などの特定のタスクに特化しています" width="800" />
+<img src="assets/hiring-specialists-analogy.png" alt="専門家の雇用に例えると - 家の修理に専門職を呼ぶのと同じように、AIエージェントもコードレビュー、テスト、セキュリティ、ドキュメント作成などの特定のタスクに特化しています" width="800" />
 
 ---
 
@@ -107,7 +118,7 @@ Task エージェントはどうでしょうか？これは舞台裏で何が起
 
 自分自身のエージェントを定義してワークフローに組み込むことができます！一度定義すれば、あとは指示するだけです。
 
-<img src="images/using-agents.png" alt="4台のカラフルなAIロボット。それぞれが特化型エージェントの能力を表す異なる道具を持っている" width="800"/>
+<img src="assets/using-agents.png" alt="4台のカラフルなAIロボット。それぞれが特化型エージェントの能力を表す異なる道具を持っている" width="800"/>
 
 ## 🗂️ エージェントを追加する
 
@@ -190,7 +201,7 @@ copilot --agent python-reviewer
 
 # エージェントをさらに使いこなす
 
-<img src="images/creating-custom-agents.png" alt="作業台で組み立てられているロボット。カスタムエージェント作成を表す部品や道具に囲まれている" width="800"/>
+<img src="assets/creating-custom-agents.png" alt="作業台で組み立てられているロボット。カスタムエージェント作成を表す部品や道具に囲まれている" width="800"/>
 
 > 💡 **このセクションはオプションです。** ほとんどのワークフローには、組み込みエージェント (`/plan`, `/review`) で十分です。カスタムエージェントは、作業全体で一貫して適用したい特定の専門知識が必要な場合に作成してください。
 
@@ -339,7 +350,7 @@ copilot
 <details>
 <summary>🎬 実際の動きを見てみよう！</summary>
 
-![Python Reviewer Demo](images/python-reviewer-demo.gif)
+![Python Reviewer Demo](assets/python-reviewer-demo.gif)
 
 *デモの出力は一例です。使用するモデルやツールによってレスポンスは異なります。*
 
@@ -388,7 +399,7 @@ copilot
 
 すでに2つの主要な場所を知っています（上記の「エージェントファイルの置き場所」を参照）。選択にはこの意思決定ツリーを使用してください：
 
-<img src="images/agent-file-placement-decision-tree.png" alt="エージェントファイルの置き場所の決定ツリー：実験中ならカレントフォルダ、チームで使用するなら .github/agents/、どこでも使うなら ~/.copilot/agents/" width="800"/>
+<img src="assets/agent-file-placement-decision-tree.png" alt="エージェントファイルの置き場所の決定ツリー：実験中ならカレントフォルダ、チームで使用するなら .github/agents/、どこでも使うなら ~/.copilot/agents/" width="800"/>
 
 **まずはシンプルに:** プロジェクトフォルダに `*.agent.md` ファイルを一つ作成してみましょう。気に入ったら、恒久的な場所に移動させてください。
 
@@ -567,7 +578,7 @@ tools: ["read", "edit", "search", "execute"]
 
 # 練習
 
-<img src="../images/practice.png" alt="コードが表示されたモニター、ランプ、コーヒーカップ、ヘッドフォンが置かれた、実践練習の準備が整ったデスク" width="800"/>
+<img src="../assets/practice.png" alt="コードが表示されたモニター、ランプ、コーヒーカップ、ヘッドフォンが置かれた、実践練習の準備が整ったデスク" width="800"/>
 
 自分自身のエージェントを作成し、動作を確認してみましょう。
 

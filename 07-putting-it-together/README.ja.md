@@ -1,4 +1,15 @@
-![Chapter 07: Putting It All Together](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-07
+title: すべてを組み合わせる
+description: コンテキスト、ワークフロー、エージェント、スキル、MCP を組み合わせて、アイデアからプルリクエスト作成までの完全な機能開発ワークフローを構築します。
+audience: Developers / Students / Terminal users
+slug: putting-it-all-together
+weight: 8
+---
+-->
+
+![Chapter 07: Putting It All Together](assets/chapter-header.png)
 
 > **学んだことすべてがここに結実します。アイデア出しから PR マージまでを一つのセッションで完結させましょう。**
 
@@ -21,7 +32,7 @@
 
 ## 🧩 現実世界の例え：オーケストラ
 
-<img src="images/orchestra-analogy.png" alt="オーケストラに例えると - 統合ワークフロー" width="800"/>
+<img src="assets/orchestra-analogy.png" alt="オーケストラに例えると - 統合ワークフロー" width="800"/>
 
 交響楽団には多くのセクションがあります：
 - **弦楽器**は土台を提供します（コアワークフローのように）
@@ -110,7 +121,7 @@ copilot
 
 # 追加のワークフロー
 
-<img src="images/combined-workflows.png" alt="歯車が付いた巨大なカラフルなジグソーパズルを組み立てる人々。エージェント、スキル、MCPが統合ワークフローとして組み合わさる様子を表現している" width="800"/>
+<img src="assets/combined-workflows.png" alt="歯車が付いた巨大なカラフルなジグソーパズルを組み立てる人々。エージェント、スキル、MCPが統合ワークフローとして組み合わさる様子を表現している" width="800"/>
 
 第04〜06章を完了したパワーユーザー向けに、エージェント、スキル、MCP が生産性をいかに倍増させるかを示すワークフローを紹介します。
 
@@ -118,7 +129,7 @@ copilot
 
 すべてを組み合わせるためのメンタルモデルは以下の通りです：
 
-<img src="images/integration-pattern.png" alt="統合パターン - 4つのフェーズ：コンテキスト収集 (MCP)、分析と計画 (エージェント)、実行 (スキル + 手動)、完了 (MCP)" width="800"/>
+<img src="assets/integration-pattern.png" alt="統合パターン - 4つのフェーズ：コンテキスト収集 (MCP)、分析と計画 (エージェント)、実行 (スキル + 手動)、完了 (MCP)" width="800"/>
 
 ---
 
@@ -376,7 +387,7 @@ Include: Summary, Changes Made, Testing Done, Screenshots Needed"
 
 # 練習
 
-<img src="../images/practice.png" alt="コードが表示されたモニター、ランプ、コーヒーカップ、ヘッドフォンが置かれた、実践練習の準備が整ったデスク" width="800"/>
+<img src="../assets/practice.png" alt="コードが表示されたモニター、ランプ、コーヒーカップ、ヘッドフォンが置かれた、実践練習の準備が整ったデスク" width="800"/>
 
 統合ワークフローを実際に試してみましょう。
 

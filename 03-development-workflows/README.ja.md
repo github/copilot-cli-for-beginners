@@ -1,4 +1,15 @@
-![Chapter 03: Development Workflows](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-03
+title: 開発ワークフロー
+description: CLIによる支援を活用した Git 操作、コードのリファクタリング、テスト作成、デバッグによって、開発を合理化します。
+audience: Developers / Students / Terminal users
+slug: development-workflows
+weight: 4
+---
+-->
+
+![Chapter 03: Development Workflows](assets/chapter-header.png)
 
 [English Version](./README.md)
 
@@ -24,7 +35,7 @@
 
 大工はただ道具の使い方を知っているだけでなく、仕事の種類に応じた *ワークフロー* を持っています：
 
-<img src="images/carpenter-workflow-steps.png" alt="職人の作業場。3つのワークフローレーンが表示されている：家具の製作（計測、切断、組み立て、仕上げ）、損傷の修復（評価、取り外し、修理、調整）、品質チェック（検査、接合部のテスト、アライメントの確認）" width="800"/>
+<img src="assets/carpenter-workflow-steps.png" alt="職人の作業場。3つのワークフローレーンが表示されている：家具の製作（計測、切断、組み立て、仕上げ）、損傷の修復（評価、取り外し、修理、調整）、品質チェック（検査、接合部のテスト、アライメントの確認）" width="800"/>
 
 同様に、開発者にもタスクに応じたワークフローがあります。GitHub Copilot CLI は、それぞれのワークフローを強化し、日々のコーディングタスクをより効率的かつ効果的なものにします。
 
@@ -32,7 +43,7 @@
 
 # 5つのワークフロー
 
-<img src="images/five-workflows.png" alt="コードレビュー、テスト、デバッグ、リファクタリング、git 連携のワークフローを表す5つの光るネオンアイコン" width="800"/>
+<img src="assets/five-workflows.png" alt="コードレビュー、テスト、デバッグ、リファクタリング、git 連携のワークフローを表す5つの光るネオンアイコン" width="800"/>
 
 以下の各ワークフローは独立しています。現在のニーズに合ったものを選ぶか、すべて順に試してみてください。
 
@@ -42,7 +53,7 @@
 
 この章では、開発者が一般的に使用する5つのワークフローを扱います。**しかし、一度にすべてを読む必要はありません！** 各ワークフローは、以下の折りたたみセクションにまとめられています。あなたのプロジェクトに最も適したもの、あるいは今必要なものを選んでください。いつでも戻って他のワークフローを探索できます。
 
-<img src="images/five-workflows-swimlane.png" alt="5つの開発ワークフロー：コードレビュー、リファクタリング、デバッグ、テスト生成、Git 連携が水平なレーンとして表示されている" width="800"/>
+<img src="assets/five-workflows-swimlane.png" alt="5つの開発ワークフロー：コードレビュー、リファクタリング、デバッグ、テスト生成、Git 連携が水平なレーンとして表示されている" width="800"/>
 
 | やりたいこと | リンク |
 |---|---|
@@ -62,7 +73,7 @@
 <details>
 <summary><strong>ワークフロー 1: コードレビュー</strong> - ファイルのレビュー、/review エージェントの使用、重要度別のチェックリスト作成</summary>
 
-<img src="images/code-review-swimlane-single.png" alt="コードレビューのワークフロー：レビュー、問題の特定、優先順位付け、チェックリストの生成。" width="800"/>
+<img src="assets/code-review-swimlane-single.png" alt="コードレビューのワークフロー：レビュー、問題の特定、優先順位付け、チェックリストの生成。" width="800"/>
 
 ### 基本的なレビュー
 
@@ -79,7 +90,7 @@ copilot
 <details>
 <summary>🎬 実際の動きを見てみよう！</summary>
 
-![Code Review Demo](images/code-review-demo.gif)
+![Code Review Demo](assets/code-review-demo.gif)
 
 *デモの出力は一例です。使用するモデルやツールによってレスポンスは異なります。*
 
@@ -188,7 +199,7 @@ copilot
 <details>
 <summary><strong>ワークフロー 2: リファクタリング</strong> - コードの再構成、関心の分離、エラーハンドリングの改善</summary>
 
-<img src="images/refactoring-swimlane-single.png" alt="リファクタリングのワークフロー：コードの評価、変更の計画、実装、動作の検証。" width="800"/>
+<img src="assets/refactoring-swimlane-single.png" alt="リファクタリングのワークフロー：コードの評価、変更の計画、実装、動作の検証。" width="800"/>
 
 ### シンプルなリファクタリング
 
@@ -213,7 +224,7 @@ copilot
 <details>
 <summary>🎬 実際の動きを見てみよう！</summary>
 
-![Refactor Demo](images/refactor-demo.gif)
+![Refactor Demo](assets/refactor-demo.gif)
 
 *デモの出力は一例です。使用するモデルやツールによってレスポンスは異なります。*
 
@@ -281,7 +292,7 @@ copilot
 <details>
 <summary><strong>ワークフロー 3: デバッグ</strong> - バグの追跡、セキュリティ監査、ファイル間を跨いだ問題の追跡</summary>
 
-<img src="images/debugging-swimlane-single.png" alt="デバッグのワークフロー：エラーの理解、根本原因の特定、修正、テスト。" width="800"/>
+<img src="assets/debugging-swimlane-single.png" alt="デバッグのワークフロー：エラーの理解、根本原因の特定、修正、テスト。" width="800"/>
 
 ### シンプルなデバッグ
 
@@ -309,7 +320,7 @@ copilot
 <details>
 <summary>🎬 実際の動きを見てみよう！</summary>
 
-![Fix Bug Demo](images/fix-bug-demo.gif)
+![Fix Bug Demo](assets/fix-bug-demo.gif)
 
 *デモの出力は一例です。使用するモデルやツールによってレスポンスは異なります。*
 
@@ -423,7 +434,7 @@ copilot
 <details>
 <summary><strong>ワークフロー 4: テスト生成</strong> - 包括的なテストとエッジケースを自動生成</summary>
 
-<img src="images/test-gen-swimlane-single.png" alt="テスト生成のワークフロー：関数の分析、テストの生成、エッジケースの追加、実行。" width="800"/>
+<img src="assets/test-gen-swimlane-single.png" alt="テスト生成のワークフロー：関数の分析、テストの生成、エッジケースの追加、実行。" width="800"/>
 
 > **まずはこれを試して:** `@samples/book-app-project/books.py Generate pytest tests for all functions including edge cases`
 
@@ -453,7 +464,7 @@ copilot
 <details>
 <summary>🎬 実際の動きを見てみよう！</summary>
 
-![Test Generation Demo](images/test-gen-demo.gif)
+![Test Generation Demo](assets/test-gen-demo.gif)
 
 *デモの出力は一例です。使用するモデルやツールによってレスポンスは異なります。*
 
@@ -576,7 +587,7 @@ copilot
 <details>
 <summary><strong>ワークフロー 5: Git 連携</strong> - コミットメッセージ、PR の説明、/pr、/delegate、および /diff</summary>
 
-<img src="images/git-integration-swimlane-single.png" alt="Git 連携のワークフロー：変更のステージング、メッセージの生成、コミット、PR の作成。" width="800"/>
+<img src="assets/git-integration-swimlane-single.png" alt="Git 連携のワークフロー：変更のステージング、メッセージの生成、コミット、PR の作成。" width="800"/>
 
 > 💡 **このワークフローは、git の基本的な知識**（ステージング、コミット、ブランチなど）があることを前提としています。git が初めての方は、まず他の4つのワークフローを試してみてください。
 
@@ -607,7 +618,7 @@ copilot -p "Generate a conventional commit message for: $(git diff --staged)"
 <details>
 <summary>🎬 実際の動きを見てみよう！</summary>
 
-![Git Integration Demo](images/git-integration-demo.gif)
+![Git Integration Demo](assets/git-integration-demo.gif)
 
 *デモの出力は一例です。使用するモデルやツールによってレスポンスは異なります。*
 
@@ -770,7 +781,7 @@ git commit -m "<生成されたメッセージを貼り付け>"
 
 # 練習
 
-<img src="../images/practice.png" alt="コードが表示されたモニター、ランプ、コーヒーカップ、ヘッドフォンが置かれた、実践練習の準備が整ったデスク" width="800"/>
+<img src="../assets/practice.png" alt="コードが表示されたモニター、ランプ、コーヒーカップ、ヘッドフォンが置かれた、実践練習の準備が整ったデスク" width="800"/>
 
 学んだワークフローを実際に適用してみましょう。
 
@@ -850,7 +861,7 @@ copilot
 
 この演習では、Node.js の電卓アプリを構築しながら、GitHub Copilot CLI を使って Issue を作成し、コードを生成し、ターミナルから共同作業する方法を学びます。CLI をインストールし、テンプレートやエージェントを使い、対話的なコマンドライン主導の開発を練習します。
 
-##### <img src="../images/github-skills-logo.png" width="28" align="center" /> [GitHub Skills 演習を開始：「Create applications with the Copilot CLI」](https://github.com/skills/create-applications-with-the-copilot-cli)（英語）
+##### <img src="../assets/github-skills-logo.png" width="28" align="center" /> [GitHub Skills 演習を開始：「Create applications with the Copilot CLI」](https://github.com/skills/create-applications-with-the-copilot-cli)（英語）
 
 ---
 
@@ -904,7 +915,7 @@ copilot
 
 ## 🔑 重要なポイント
 
-<img src="images/specialized-workflows.png" alt="あらゆるタスクのための特化型ワークフロー：コードレビュー、リファクタリング、デバッグ、テスト、Git 連携" width="800"/>
+<img src="assets/specialized-workflows.png" alt="あらゆるタスクのための特化型ワークフロー：コードレビュー、リファクタリング、デバッグ、テスト、Git 連携" width="800"/>
 
 1. **コードレビュー**は、具体的なプロンプトによって包括的なものになります。
 2. **リファクタリング**は、まずテストを生成しておくことで安全になります。

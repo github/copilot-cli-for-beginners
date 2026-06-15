@@ -1,4 +1,15 @@
-![Chapter 00: Quick Start](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-00
+title: クイックスタート
+description: GitHub Copilot CLI をインストールし、GitHub アカウントでサインインして、すべてが正常に動作することを確認します。
+audience: Developers / Students / Terminal users
+slug: quick-start
+weight: 1
+---
+-->
+
+![Chapter 00: Quick Start](assets/chapter-header.png)
 
 ようこそ！この章では、GitHub Copilot CLI（コマンドラインインターフェース）をインストールし、GitHub アカウントでサインインして、すべてが正常に動作することを確認します。これはクイックセットアップの章です。準備が整えば、第01章から本格的なデモが始まります！
 
@@ -124,7 +135,7 @@ copilot
 
 フォルダを信頼するかどうか尋ねられます（まだの場合）。今回のみ信頼するか、今後のすべてのセッションで信頼するかを選択できます。
 
-<img src="images/copilot-trust.png" alt="Copilot CLI でフォルダ内のファイルを信頼する" width="800"/>
+<img src="assets/copilot-trust.png" alt="Copilot CLI でフォルダ内のファイルを信頼する" width="800"/>
 
 フォルダを信頼した後、GitHub アカウントでサインインできます。
 
@@ -140,7 +151,7 @@ copilot
 4. 「Authorize」を選択して GitHub Copilot CLI にアクセス権を付与します。
 5. ターミナルに戻ります。これでサインイン完了です！
 
-<img src="images/auth-device-flow.png" alt="デバイス認証フロー - ターミナルでのログインからサインイン完了までの5ステップ" width="800"/>
+<img src="assets/auth-device-flow.png" alt="デバイス認証フロー - ターミナルでのログインからサインイン完了までの5ステップ" width="800"/>
 
 *デバイス認証フロー：ターミナルでコードが生成され、ブラウザで確認し、Copilot CLI が認証されます。*
 
@@ -171,7 +182,7 @@ copilot
 <details>
 <summary>🎬 実際の動きを見てみよう！</summary>
 
-![Hello Demo](images/hello-demo.gif)
+![Hello Demo](assets/hello-demo.gif)
 
 *デモの出力は一例です。使用するモデルやツールによってレスポンスは異なります。*
 
