@@ -22,6 +22,7 @@ permissions:
 
 jobs:
   translate-content:
+    if: github.repository == 'github/copilot-cli-for-beginners'
     name: Translate Markdown and Images
     runs-on: ubuntu-latest
     timeout-minutes: 90

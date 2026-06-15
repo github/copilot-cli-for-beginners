@@ -1,6 +1,7 @@
 ---
 name: "Translation Polisher"
 description: "Reviews Co-op Translator pull requests and polishes generated translations without changing source content."
+if: github.repository == 'github/copilot-cli-for-beginners'
 on:
   workflow_run:
     workflows: ["Co-op Translator"]
@@ -40,7 +41,7 @@ safe-outputs:
     github-token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
   push-to-pull-request-branch:
     target: "*"
-    labels: [translation, automated-pr]
+    required-labels: [translation, automated-pr]
     protected-files: allowed
     allowed-files:
       - "translations/**/*.md"

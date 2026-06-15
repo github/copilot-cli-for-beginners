@@ -1,6 +1,7 @@
 ---
 name: "Course Updater"
 description: "Weekly check (Mondays) for new GitHub Copilot CLI features and updates. Opens a PR if the course content needs updating."
+if: github.repository == 'github/copilot-cli-for-beginners'
 on:
   schedule: weekly on monday
   workflow_dispatch:

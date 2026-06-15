@@ -1,6 +1,7 @@
 ---
 name: "Traffic Updater"
 description: "Weekly collection of repo traffic data (views and unique visitors). Appends the previous week's daily numbers to CSV files."
+if: github.repository == 'github/copilot-cli-for-beginners'
 on:
   schedule: weekly on monday
   workflow_dispatch:
