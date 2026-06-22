@@ -65,3 +65,28 @@ def test_add_review_and_average():
 
     avg = collection.average_rating("Sapiens")
     assert avg == pytest.approx(4.0)
+
+
+def test_get_unread_books_returns_only_unread():
+    collection = BookCollection()
+    collection.add_book("Book A", "Author A", 2000)
+    collection.add_book("Book B", "Author B", 2001)
+    collection.add_book("Book C", "Author C", 2002)
+
+    # Mark one book as read
+    collection.mark_as_read("Book B")
+
+    unread = collection.get_unread_books()
+    titles = {b.title for b in unread}
+
+    assert titles == {"Book A", "Book C"}
+    assert all(not b.read for b in unread)
+
+
+def test_get_unread_books_empty_when_all_read():
+    collection = BookCollection()
+    collection.add_book("Only Book", "Author", 1999)
+    collection.mark_as_read("Only Book")
+
+    unread = collection.get_unread_books()
+    assert unread == []

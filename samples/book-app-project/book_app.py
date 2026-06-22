@@ -29,6 +29,12 @@ def handle_list() -> None:
     show_books(books)
 
 
+def handle_unread() -> None:
+    """Show only unread books."""
+    books = collection.get_unread_books()
+    show_books(books)
+
+
 def handle_add() -> None:
     print("\nAdd a New Book\n")
 
@@ -113,15 +119,24 @@ def show_help() -> None:
     print("""
 Book Collection Helper
 
+Usage:
+  python book_app.py <command>
+
 Commands:
-  list     - Show all books
-  add      - Add a new book
-  remove   - Remove a book by title
-  find     - Find books by author
-  search   - Search books by title or author
-  review   - Add a rating and optional text review for a book
-  reviews  - Show reviews for a specific book
-  help     - Show this help message
+  list          Show all books
+  unread        Show unread books
+  list-unread   Alias for 'unread'
+  add           Add a new book
+  remove        Remove a book by title
+  find          Find books by author
+  search        Search books by title or author
+  review        Add a rating and optional text review for a book
+  reviews       Show reviews for a specific book
+  help          Show this help message
+
+Examples:
+  python book_app.py list
+  python book_app.py unread
 """)
 
 
@@ -134,6 +149,8 @@ def main() -> None:
 
     commands = {
         "list": handle_list,
+        "unread": handle_unread,
+        "list-unread": handle_unread,
         "add": handle_add,
         "remove": handle_remove,
         "find": handle_find,
