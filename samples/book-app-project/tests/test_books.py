@@ -51,3 +51,17 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+
+def test_add_review_and_average():
+    collection = BookCollection()
+    collection.add_book("Sapiens", "Yuval", 2011)
+    # Add two reviews
+    collection.add_review("Sapiens", 5, "Great read")
+    collection.add_review("Sapiens", 3, "It was okay")
+
+    reviews = collection.get_reviews("Sapiens")
+    assert len(reviews) == 2
+
+    avg = collection.average_rating("Sapiens")
+    assert avg == pytest.approx(4.0)
