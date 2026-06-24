@@ -1,120 +1,166 @@
 import sys
-from books import BookCollection
-from typing import List, Any
+from abc import ABC, abstractmethod
+from books import BookCollection, Book
+from typing import List
 
 
-# Global collection instance
 collection = BookCollection()
 
 
-def show_books(books: List[Any]) -> None:
+def prompt_required(label: str) -> str:
+    """Prompt user for required input, retrying if empty."""
+    while True:
+        value = input(f"{label}: ").strip()
+        if value:
+            return value
+        print(f"  {label} cannot be empty. Please try again.")
+
+
+def show_books(books: List[Book]) -> None:
     """Display books in a user-friendly format."""
     if not books:
         print("No books found.")
         return
 
     print("\nYour Book Collection:\n")
-
     for index, book in enumerate(books, start=1):
         status = "✓" if book.read else " "
         print(f"{index}. [{status}] {book.title} by {book.author} ({book.year})")
-
     print()
 
 
-def handle_list() -> None:
-    books = collection.list_books()
-    show_books(books)
+class Command(ABC):
+    """Base class for all commands."""
+
+    @abstractmethod
+    def execute(self) -> None:
+        """Execute the command."""
+        pass
+
+    @abstractmethod
+    def help(self) -> str:
+        """Return help text for this command."""
+        pass
 
 
-def handle_add() -> None:
-    print("\nAdd a New Book\n")
+class ListCommand(Command):
+    def execute(self) -> None:
+        books = collection.list_books()
+        show_books(books)
 
-    title = input("Title: ").strip()
-    author = input("Author: ").strip()
-    year_str = input("Year: ").strip()
-
-    try:
-        year = int(year_str) if year_str else 0
-        collection.add_book(title, author, year)
-        print("\nBook added successfully.\n")
-    except ValueError as e:
-        print(f"\nError: {e}\n")
+    def help(self) -> str:
+        return "Show all books"
 
 
-def handle_remove() -> None:
-    print("\nRemove a Book\n")
+class AddCommand(Command):
+    def execute(self) -> None:
+        print("\nAdd a New Book\n")
+        title = prompt_required("Title")
+        author = prompt_required("Author")
 
-    title = input("Enter the title of the book to remove: ").strip()
-    collection.remove_book(title)
+        year_str = input("Year (optional): ").strip()
+        try:
+            year = int(year_str) if year_str else 0
+            collection.add_book(title, author, year)
+            print("\n✓ Book added successfully.\n")
+        except ValueError:
+            print("\n✗ Error: Year must be a valid number.\n")
 
-    print("\nBook removed if it existed.\n")
-
-
-def handle_find() -> None:
-    print("\nFind Books by Author\n")
-
-    author = input("Author name: ").strip()
-    books = collection.find_by_author(author)
-
-    show_books(books)
-
-
-def handle_search() -> None:
-    """Search books by title or author.
-
-    Usage: book_app.py search <query> [title|author]
-    If query is omitted, user is prompted.
-    """
-    # prefer CLI args when provided
-    if len(sys.argv) >= 3:
-        query = sys.argv[2]
-    else:
-        query = input("Query: ").strip()
-
-    field = 'title'
-    if len(sys.argv) >= 4:
-        field = sys.argv[3].lower()
-    books = collection.search_books(query, field)
-    show_books(books)
+    def help(self) -> str:
+        return "Add a new book"
 
 
-def show_help() -> None:
-    print("""
-Book Collection Helper
+class RemoveCommand(Command):
+    def execute(self) -> None:
+        print("\nRemove a Book\n")
+        title = prompt_required("Enter the title of the book to remove")
+        if collection.remove_book(title):
+            print(f"\n✓ '{title}' removed.\n")
+        else:
+            print(f"\n✗ '{title}' not found.\n")
 
-Commands:
-  list     - Show all books
-  add      - Add a new book
-  remove   - Remove a book by title
-  find     - Find books by author (exact match)
-  search   - Search books by title or author (partial, case-insensitive). Usage: search <query> [title|author]
-  help     - Show this help message
-""")
+    def help(self) -> str:
+        return "Remove a book by title"
+
+
+class FindCommand(Command):
+    def execute(self) -> None:
+        print("\nFind Books by Author\n")
+        author = prompt_required("Author name")
+        books = collection.find_by_author(author)
+        show_books(books)
+
+    def help(self) -> str:
+        return "Find books by author (exact match)"
+
+
+class SearchCommand(Command):
+    def execute(self) -> None:
+        query = sys.argv[2] if len(sys.argv) >= 3 else prompt_required("Query")
+        field = sys.argv[3].lower() if len(sys.argv) >= 4 else "title"
+
+        if field not in ("title", "author"):
+            print(f"\n✗ Field must be 'title' or 'author', not '{field}'.\n")
+            return
+
+        books = collection.search_books(query, field)
+        show_books(books)
+
+    def help(self) -> str:
+        return "Search books by title or author (partial). Usage: search <query> [title|author]"
+
+
+class HelpCommand(Command):
+    def __init__(self, commands: dict):
+        self.commands = commands
+
+    def execute(self) -> None:
+        self._print_help()
+
+    def _print_help(self) -> None:
+        print("\nBook Collection Helper\n")
+        print("Commands:")
+        for name, cmd in self.commands.items():
+            print(f"  {name:<8} - {cmd.help()}")
+        print()
+
+    def help(self) -> str:
+        return "Show this help message"
+
+
+class CommandDispatcher:
+    """Manages command registration and execution."""
+
+    def __init__(self):
+        self.commands = {
+            "list": ListCommand(),
+            "add": AddCommand(),
+            "remove": RemoveCommand(),
+            "find": FindCommand(),
+            "search": SearchCommand(),
+        }
+        self.commands["help"] = HelpCommand(self.commands)
+
+    def dispatch(self, command_name: str) -> None:
+        """Execute a command by name."""
+        command = self.commands.get(command_name.lower())
+        if command:
+            command.execute()
+        else:
+            print(f"✗ Unknown command: '{command_name}'.\n")
+            self.commands["help"].execute()
+
+    def run(self) -> None:
+        """Main entry point."""
+        if len(sys.argv) < 2:
+            self.commands["help"].execute()
+        else:
+            self.dispatch(sys.argv[1])
 
 
 def main() -> None:
-    if len(sys.argv) < 2:
-        show_help()
-        return
-
-    command = sys.argv[1].lower()
-
-    COMMANDS = {
-        "list": handle_list,
-        "add": handle_add,
-        "remove": handle_remove,
-        "find": handle_find,
-        "search": handle_search,
-        "help": show_help,
-    }
-
-    handler = COMMANDS.get(command)
-    if handler:
-        handler()
-    else:
-        print("Unknown command.\n")
-        show_help()
+    dispatcher = CommandDispatcher()
+    dispatcher.run()
 
 
 if __name__ == "__main__":
