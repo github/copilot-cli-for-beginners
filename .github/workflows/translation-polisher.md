@@ -93,7 +93,7 @@ You may edit only translated Markdown files:
 Exclude these generated translation paths from review, grading, and edits:
 
 - `translations/*/.github/**`
-- `translations/*/samples/skills/**`
+- `translations/*/samples/**`
 
 Leave skill definition Markdown in English.
 
@@ -111,7 +111,7 @@ Do not edit:
 2. Compare each changed translated Markdown file with its corresponding English source file.
    - Example: compare `translations/es/README.md` with `README.md`.
    - Example: compare `translations/es/03-development-workflows/README.md` with `03-development-workflows/README.md`.
-3. Focus on files changed by the pull request, not every translated file in the repository. Ignore excluded translation paths under `translations/*/.github/**` and `translations/*/samples/skills/**`.
+3. Focus on files changed by the pull request, not every translated file in the repository. Ignore excluded translation paths under `translations/*/.github/**` and `translations/*/samples/**`.
 4. If the pull request body already has a managed `## Translation Quality Review` section, identify files with grades below A- and repair those files first.
 5. Preserve Markdown structure exactly unless a link or heading fix is required.
 6. Apply the shared quality rules and the language quality profile for each target language present in the pull request.

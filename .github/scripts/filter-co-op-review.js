@@ -17,7 +17,7 @@ const { spawnSync } = require("child_process");
 // Source paths that are intentionally excluded from translation. Keep this in
 // sync with the excludes in .github/workflows/co-op-translator.yml and the
 // guidance in .github/workflows/translation-polisher.md.
-const EXCLUDED_PREFIXES = [".github/", "samples/skills/"];
+const EXCLUDED_PREFIXES = [".github/", "samples/"];
 
 const languages = process.argv
   .slice(2)

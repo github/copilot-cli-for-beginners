@@ -14,7 +14,7 @@ on:
       - "!translations/**"
       - "!translated_images/**"
       - "!.github/**"
-      - "!samples/skills/**"
+      - "!samples/**"
 
 permissions:
   contents: write
@@ -94,9 +94,9 @@ jobs:
           for language in $TRANSLATION_LANGUAGES; do
             rm -rf \
               "translations/$language/.github" \
-              "translations/$language/samples/skills" \
+              "translations/$language/samples" \
               "translated_images/$language/.github" \
-              "translated_images/$language/samples/skills"
+              "translated_images/$language/samples"
           done
 
       - name: Upload Co-op Translator logs
