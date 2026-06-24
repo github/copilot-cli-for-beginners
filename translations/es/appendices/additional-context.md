@@ -9,7 +9,7 @@ weight: 92
 ---
 -->
 
-# Additional Context Features
+# Características adicionales de contexto
 
 > 📖 **Prerequisito**: Completa [Capítulo 02: Contexto y conversaciones](../02-context-conversations/README.md) antes de leer este apéndice.
 
@@ -17,11 +17,11 @@ Este apéndice cubre dos características adicionales de contexto: trabajar con 
 
 ---
 
-## Working with Images
+## Trabajar con imágenes
 
 Puedes incluir imágenes en tus conversaciones usando la sintaxis `@`. Copilot puede analizar capturas de pantalla, maquetas, diagramas y otro contenido visual.
 
-### Basic Image Reference
+### Referencia básica de imágenes
 
 ```bash
 copilot
@@ -35,43 +35,43 @@ copilot
 # También puedes arrastrar y soltar imágenes o pegar desde el portapapeles
 ```
 
-### Supported Image Formats
+### Formatos de imagen admitidos
 
-| Format | Best For |
+| Formato | Mejor para |
 |--------|----------|
 | PNG | Screenshots, UI mockups, diagrams |
 | JPG/JPEG | Photos, complex images |
 | GIF | Simple diagrams (first frame only) |
 | WebP | Web screenshots |
 
-### Practical Image Use Cases
+### Casos de uso prácticos de imágenes
 
-**1. UI Debugging**
+**1. Depuración de UI**
 ```bash
 > @bug-screenshot.png The button doesn't align properly. What CSS might cause this?
 ```
 
-**2. Design Implementation**
+**2. Implementación de diseño**
 ```bash
 > @figma-export.png Write the HTML and Tailwind CSS to match this design
 ```
 
-**3. Error Analysis**
+**3. Análisis de errores**
 ```bash
 > @error-screenshot.png What does this error mean and how do I fix it?
 ```
 
-**4. Architecture Review**
+**4. Revisión de arquitectura**
 ```bash
 > @whiteboard-diagram.png Convert this architecture diagram to a Mermaid diagram I can put in docs
 ```
 
-**5. Before/After Comparison**
+**5. Comparación antes/después**
 ```bash
 > @before.png @after.png What changed between these two versions of the UI?
 ```
 
-### Combining Images with Code
+### Combinar imágenes con código
 
 Las imágenes son aún más potentes cuando se combinan con el contexto de código:
 
@@ -82,7 +82,7 @@ copilot
 > The header looks wrong in the screenshot. What's causing it in the code?
 ```
 
-### Image Tips
+### Consejos para imágenes
 
 - **Recorta las capturas de pantalla** para mostrar solo las porciones relevantes (ahorra tokens de contexto)
 - **Usa alto contraste** para los elementos de la interfaz que quieras analizar
@@ -91,11 +91,11 @@ copilot
 
 ---
 
-## Permission Patterns
+## Patrones de permisos
 
 De forma predeterminada, Copilot puede acceder a los archivos en tu directorio actual. Para archivos en otras ubicaciones, necesitas otorgar acceso.
 
-### Add Directories
+### Agregar directorios
 
 ```bash
 # Agregar un directorio a la lista permitida
@@ -105,14 +105,14 @@ copilot --add-dir /path/to/other/project
 copilot --add-dir ~/workspace --add-dir /tmp
 ```
 
-### Allow All Paths
+### Permitir todas las rutas
 
 ```bash
 # Deshabilitar por completo las restricciones de ruta (usar con precaución)
 copilot --allow-all-paths
 ```
 
-### Inside a Session
+### Dentro de una sesión
 
 ```bash
 copilot
@@ -127,7 +127,7 @@ copilot
 # Alias rápido para /allow-all activado — aprueba automáticamente todas las solicitudes de permisos
 ```
 
-### For Automation
+### Para automatización
 
 ```bash
 # Permitir todos los permisos para scripts no interactivos
@@ -137,14 +137,14 @@ copilot -p "Review @src/" --allow-all
 copilot -p "Review @src/" --yolo
 ```
 
-### When You Need Multi-Directory Access
+### Cuando necesitas acceso a múltiples directorios
 
 Escenarios comunes en los que necesitarás estos permisos:
 
-1. **Monorepo work** - Comparing code across packages
-2. **Cross-project refactoring** - Updating shared libraries
-3. **Documentation projects** - Referencing multiple codebases
-4. **Migration work** - Comparing old and new implementations
+1. **Trabajo en monorepo** - Comparar código entre paquetes
+2. **Refactorización entre proyectos** - Actualizar bibliotecas compartidas
+3. **Proyectos de documentación** - Referenciar múltiples bases de código
+4. **Trabajo de migración** - Comparar implementaciones antiguas y nuevas
 
 ---
 

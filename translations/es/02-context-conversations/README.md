@@ -752,7 +752,7 @@ copilot
 > @assets/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
-> 📖 **Aprende más**: Consulta [Funciones adicionales de contexto](../appendices/additional-context.md#working-with-images) para formatos compatibles, casos de uso prácticos y consejos para combinar imágenes con código.
+> 📖 **Aprende más**: Consulta [Funciones adicionales de contexto](../appendices/additional-context.md#trabajar-con-imágenes) para formatos compatibles, casos de uso prácticos y consejos para combinar imágenes con código.
 
 </details>
 

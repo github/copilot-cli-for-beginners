@@ -54,7 +54,7 @@ Antes de comenzar, asegúrate de tener:
 
 GitHub Copilot ha evolucionado hacia una familia de herramientas impulsadas por IA. Aquí es donde vive cada una:
 
-| Product | Where It Runs | Description |
+| Producto | Dónde funciona | Descripción |
 |---------|---------------|----------|
 | [**GitHub Copilot CLI**](https://docs.github.com/copilot/how-tos/copilot-cli/cli-getting-started)<br>(este curso) | Tu terminal |  Asistente de codificación con IA nativo para terminal  |
 | [**GitHub Copilot**](https://docs.github.com/copilot) | VS Code, Visual Studio, JetBrains, etc. | Modo agente, chat, sugerencias en línea  |

@@ -53,15 +53,15 @@ Este capítulo cubre cinco flujos de trabajo que los desarrolladores usan típic
 
 <img src="../../../03-development-workflows/assets/five-workflows-swimlane.png" alt="Cinco flujos de desarrollo: Revisión de código, Refactorización, Depuración, Generación de pruebas e Integración con Git mostrados como carriles horizontales" width="800"/>
 
-| I want to... | Jump to |
+| Quiero... | Ir a |
 |---|---|
-| Review code before merging | [Workflow 1: Code Review](#workflow-1-code-review) |
-| Clean up messy or legacy code | [Workflow 2: Refactoring](#workflow-2-refactoring) |
-| Track down and fix a bug | [Workflow 3: Debugging](#workflow-3-debugging) |
-| Generate tests for my code | [Workflow 4: Test Generation](#workflow-4-test-generation) |
-| Write better commits and PRs | [Workflow 5: Git Integration](#workflow-5-git-integration) |
-| Research before coding | [Quick Tip: Research Before You Plan or Code](#revisar-antes-de-hacer-push) |
-| See a full bug-fix workflow end to end | [Putting It All Together](#usar-delegate-para-tareas-en-segundo-plano) |
+| Revisar código antes de hacer merge | [Flujo de trabajo 1: Revisión de código](#workflow-1-code-review) |
+| Limpiar código desordenado o heredado | [Flujo de trabajo 2: Refactorización](#workflow-2-refactoring) |
+| Encontrar y corregir un error | [Flujo de trabajo 3: Depuración](#workflow-3-debugging) |
+| Generar pruebas para mi código | [Flujo de trabajo 4: Generación de pruebas](#workflow-4-test-generation) |
+| Escribir mejores commits y PRs | [Flujo de trabajo 5: Integración con Git](#workflow-5-git-integration) |
+| Investigar antes de codificar | [Consejo rápido: Investigar antes de planificar o codificar](#revisar-antes-de-hacer-push) |
+| Ver un flujo de trabajo completo de corrección de errores de principio a fin | [Poniendo todo junto](#usar-delegate-para-tareas-en-segundo-plano) |
 
 **Selecciona un flujo de trabajo abajo para expandirlo** y ver cómo GitHub Copilot CLI puede mejorar tu proceso de desarrollo en esa área. 
 
@@ -158,10 +158,10 @@ copilot
 
 Antes de usar el comando `/review`, necesitas entender dos tipos de cambios en git:
 
-| Change Type | What It Means | How to See |
+| Tipo de cambio | Qué significa | Cómo verlo |
 |-------------|---------------|------------|
-| **Staged changes** | Files you've marked for the next commit with `git add` | `git diff --staged` |
-| **Unstaged changes** | Files you've modified but haven't added yet | `git diff` |
+| **Cambios preparados** | Archivos marcados para el próximo commit con `git add` | `git diff --staged` |
+| **Cambios no preparados** | Archivos modificados pero aún no añadidos | `git diff` |
 
 ```bash
 # Referencia rápida
@@ -957,11 +957,11 @@ No existe una única forma "correcta" de usar GitHub Copilot CLI. Aquí tienes a
 
 ## ➡️ Qué sigue
 
-| Chapter | What It Covers | When You'll Want It |
+| Capítulo | Qué cubre | Cuándo lo querrás |
 |---------|----------------|---------------------|
-| Ch 04: Agents | Create specialized AI personas | When you want domain experts (frontend, security) |
-| Ch 05: Skills | Auto-load instructions for tasks | When you repeat the same prompts often |
-| Ch 06: MCP | Connect external services | When you need live data from GitHub, databases |
+| Cap 04: Agentes | Crear personas de IA especializadas | Cuando quieras expertos de dominio (frontend, seguridad) |
+| Cap 05: Skills | Carga automática de instrucciones para tareas | Cuando repitas los mismos prompts con frecuencia |
+| Cap 06: MCP | Conectar servicios externos | Cuando necesites datos en tiempo real de GitHub, bases de datos |
 
 **Recomendación**: Prueba los flujos de trabajo principales durante una semana y luego vuelve a los Capítulos 04-06 cuando tengas necesidades específicas.
 

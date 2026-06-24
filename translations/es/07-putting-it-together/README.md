@@ -487,7 +487,7 @@ Documenta tu flujo de trabajo mientras avanzas.
 
 ¡Felicidades! Has aprendido:
 
-| Chapter | What You Learned |
+| Capítulo | Lo que aprendiste |
 |---------|-------------------|
 | 00 | Instalación de Copilot CLI y inicio rápido |
 | 01 | Tres modos de interacción |

@@ -27,7 +27,7 @@ Al final de este capítulo, habrás:
 
 ## ✅ Requisitos previos
 
-- **Cuenta de GitHub** con acceso a Copilot. [See subscription options](https://github.com/features/copilot/plans). Estudiantes/Profesores pueden acceder a Copilot Pro [gratis a través de GitHub Education](https://education.github.com/pack).
+- **Cuenta de GitHub** con acceso a Copilot. [Ver opciones de suscripción](https://github.com/features/copilot/plans). Estudiantes/Profesores pueden acceder a Copilot Pro [gratis a través de GitHub Education](https://education.github.com/pack).
 - **Conceptos básicos de la terminal**: Familiaridad con comandos como `cd` y `ls`
 
 ### Qué significa "acceso a Copilot"
@@ -237,7 +237,7 @@ Eso es todo para la instalación. La diversión real comienza en el Capítulo 01
 
 ---
 
-## Troubleshooting
+## Solución de problemas
 
 ### "copilot: command not found"
 

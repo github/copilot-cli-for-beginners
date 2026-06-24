@@ -17,7 +17,7 @@ weight: 2
 
 > ⚠️ **Prerequisitos**: Asegúrate de haber completado primero **[Capítulo 00: Inicio rápido](../00-quick-start/README.md)**. Necesitarás tener GitHub Copilot CLI instalado y autenticado antes de ejecutar las demostraciones a continuación.
 
-## 🎯 Learning Objectives
+## 🎯 Objetivos de aprendizaje
 
 Al final de este capítulo, podrás:
 
@@ -400,7 +400,7 @@ Estos comandos son buenos para aprender al principio mientras te familiarizas co
 
 ### Agent Environment
 
-| Command | What It Does |
+| Comando | Qué hace |
 |---------|--------------|
 | `/agent` | Examinar y seleccionar entre agentes disponibles |
 | `/env` | Mostrar detalles del entorno cargado — qué instrucciones, servidores MCP, habilidades, agentes y complementos están activos |
@@ -413,7 +413,7 @@ Estos comandos son buenos para aprender al principio mientras te familiarizas co
 
 ### Models and Subagents
 
-| Command | What It Does |
+| Comando | Qué hace |
 |---------|--------------|
 | `/delegate` | Delegar la tarea a un agente en la nube de GitHub Copilot |
 | `/fleet` | Dividir una tarea compleja en subtareas paralelas para completar más rápido |
@@ -422,7 +422,7 @@ Estos comandos son buenos para aprender al principio mientras te familiarizas co
 
 ### Code
 
-| Command | What It Does |
+| Comando | Qué hace |
 |---------|--------------|
 | `/diff` | Revisar los cambios realizados en el directorio actual |
 | `/pr` | Operar sobre pull requests para la rama actual |
@@ -432,7 +432,7 @@ Estos comandos son buenos para aprender al principio mientras te familiarizas co
 
 ### Permissions
 
-| Command | What It Does |
+| Comando | Qué hace |
 |---------|--------------|
 | `/add-dir <directory>` | Agregar un directorio a la lista permitida |
 | `/allow-all [on\|off\|show]` | Aprobar automáticamente todos los avisos de permisos; usa `on` para activar, `off` para desactivar, `show` para verificar el estado actual |
@@ -444,7 +444,7 @@ Estos comandos son buenos para aprender al principio mientras te familiarizas co
 
 ### Session
 
-| Command | What It Does |
+| Comando | Qué hace |
 |---------|--------------|
 | `/clear` | Abandona la sesión actual (sin historial guardado) y comienza una conversación nueva |
 | `/compact` | Resumir la conversación para reducir el uso de contexto (opcionalmente agrega instrucciones de enfoque, p. ej. `/compact focus on the bug list`) |
@@ -463,7 +463,7 @@ Estos comandos son buenos para aprender al principio mientras te familiarizas co
 
 ### Display
 
-| Command | What It Does |
+| Comando | Qué hace |
 |---------|--------------|
 | `/statusline` (or `/footer`) | Personalizar qué elementos aparecen en la barra de estado en la parte inferior de la sesión (directorio, rama, esfuerzo, ventana de contexto, cuota) |
 | `/theme` | Ver o establecer el tema del terminal |
@@ -471,7 +471,7 @@ Estos comandos son buenos para aprender al principio mientras te familiarizas co
 
 ### Help and Feedback
 
-| Command | What It Does |
+| Comando | Qué hace |
 |---------|--------------|
 | `/app` | Abrir la app de GitHub (o navegador como alternativa) directamente desde la CLI |
 | `/changelog` | Mostrar el changelog de las versiones de la CLI |
