@@ -1,0 +1,60 @@
+name: Sync content-engine copy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-content-engine-copy
+  cancel-in-progress: true
+
+jobs:
+  sync-content:
+    name: Copy content and open content-engine PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout course repository
+        uses: actions/checkout@v4
+        with:
+          path: copilot-cli-for-beginners
+
+      - name: Checkout content-engine repository
+        uses: actions/checkout@v4
+        with:
+          repository: github/cse-content-engine
+          token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
+          path: cse-content-engine
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Copy course content into content-engine
+        working-directory: copilot-cli-for-beginners
+        env:
+          CONTENT_ENGINE_DESTINATION_ROOT: ${{ github.workspace }}/cse-content-engine/content/learning-pathways/copilot-cli-for-beginners
+        run: npm run copy:content-engine
+
+      - name: Create content-engine pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          path: cse-content-engine
+          token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
+          commit-message: "Update Copilot CLI for Beginners content"
+          title: "Update Copilot CLI for Beginners content"
+          body: |
+            This automated PR syncs the latest `github/copilot-cli-for-beginners`
+            content into the content-engine learning pathway.
+
+            Source commit: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+          branch: update/copilot-cli-for-beginners-content
+          base: main
+          delete-branch: true

@@ -32,11 +32,11 @@ function findGifs() {
   const gifs = [];
   for (const entry of readdirSync(rootDir)) {
     if (!/^\d{2}-/.test(entry)) continue;
-    const imagesDir = join(rootDir, entry, 'images');
-    if (!existsSync(imagesDir)) continue;
-    for (const file of readdirSync(imagesDir)) {
+    const assetsDir = join(rootDir, entry, 'assets');
+    if (!existsSync(assetsDir)) continue;
+    for (const file of readdirSync(assetsDir)) {
       if (file.endsWith('-demo.gif')) {
-        gifs.push({ path: join(imagesDir, file), chapter: entry });
+        gifs.push({ path: join(assetsDir, file), chapter: entry });
       }
     }
   }

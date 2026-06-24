@@ -1,4 +1,15 @@
-![Chapter 02: Context and Conversations](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-02
+title: !translate Context and Conversations
+description: !translate Use file and directory context, resume previous sessions, and write effective multi-turn conversations with GitHub Copilot CLI.
+audience: Developers / Students / Terminal users
+slug: context-and-conversations
+weight: 3
+---
+-->
+
+![Chapter 02: Context and Conversations](assets/chapter-header.png)
 
 > **What if AI could see your entire codebase, not just one file at a time?**
 
@@ -20,7 +31,7 @@ By the end of this chapter, you'll be able to:
 
 ## 🧩 Real-World Analogy: Working with a Colleague
 
-<img src="images/colleague-context-analogy.png" alt="Context Makes the Difference - Without vs With Context" width="800"/>
+<img src="assets/colleague-context-analogy.png" alt="Context Makes the Difference - Without vs With Context" width="800"/>
 
 *Just like your colleagues, Copilot CLI isn't a mind reader. Providing more information helps humans and Copilot alike provide targeted support!*
 
@@ -36,7 +47,7 @@ To provide context to Copilot CLI use *the `@` syntax* to point Copilot CLI at s
 
 # Essential: Basic Context
 
-<img src="images/essential-basic-context.png" alt="Glowing code blocks connected by light trails representing how context flows through Copilot CLI conversations" width="800"/>
+<img src="assets/essential-basic-context.png" alt="Glowing code blocks connected by light trails representing how context flows through Copilot CLI conversations" width="800"/>
 
 This section covers everything you need to work effectively with context. Master these basics first.
 
@@ -89,7 +100,7 @@ copilot
 <details>
 <summary>🎬 See it in action!</summary>
 
-![File Context Demo](images/file-context-demo.gif)
+![File Context Demo](assets/file-context-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -119,7 +130,7 @@ copilot
 
 This is where context becomes a superpower. Single-file analysis is useful. Cross-file analysis is transformative.
 
-<img src="images/cross-file-intelligence.png" alt="Cross-File Intelligence - comparing single-file vs cross-file analysis showing how analyzing files together reveals bugs, data flow, and patterns invisible in isolation" width="800"/>
+<img src="assets/cross-file-intelligence.png" alt="Cross-File Intelligence - comparing single-file vs cross-file analysis showing how analyzing files together reveals bugs, data flow, and patterns invisible in isolation" width="800"/>
 
 ### Demo: Find Bugs That Span Multiple Files
 
@@ -142,7 +153,7 @@ copilot
 <details>
 <summary>🎬 See it in action!</summary>
 
-![Multi-File Demo](images/multi-file-demo.gif)
+![Multi-File Demo](assets/multi-file-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -185,7 +196,7 @@ Cross-Module Analysis
 
 ### Demo: Understand a Codebase in 60 Seconds
 
-<img src="images/codebase-understanding.png" alt="Split-screen comparison showing manual code review taking 1 hour versus AI-assisted analysis taking 10 seconds" width="800" />
+<img src="assets/codebase-understanding.png" alt="Split-screen comparison showing manual code review taking 1 hour versus AI-assisted analysis taking 10 seconds" width="800" />
 
 New to a project? Learn about it quickly using Copilot CLI.
 
@@ -253,7 +264,7 @@ copilot
 <details>
 <summary>🎬 See a multi-turn conversation in action!</summary>
 
-![Multi-Turn Demo](images/multi-turn-demo.gif)
+![Multi-Turn Demo](assets/multi-turn-demo.gif)
 
 *Demo output varies. Your model, tools, and responses will differ from what's shown here.*
 
@@ -303,6 +314,9 @@ copilot --continue
 # Pick from a list of sessions interactively
 copilot --resume
 
+# -r is a shorthand for --resume (saves some typing!)
+copilot -r
+
 # Or resume a specific session by ID
 copilot --resume=abc123
 
@@ -351,6 +365,27 @@ copilot
 > /session delete-all        # Deletes all sessions (use with care!)
 ```
 
+### Persistent Memory Across Sessions
+
+Sessions save your conversation history, but **memory** goes one step further and lets Copilot CLI remember preferences and facts *across all sessions*, not just within a single one.
+
+```bash
+copilot
+
+> /memory show
+# Shows what Copilot CLI currently remembers about you and your project
+
+> /memory on
+# Enables memory (on by default if your account supports it)
+
+> /memory off
+# Disables memory (useful if you prefer a fresh slate each time)
+```
+
+For example, if you tell Copilot CLI "I always prefer pytest for Python testing", it can remember that preference and apply it automatically in future sessions. All without you having to repeat it.
+
+> 💡 **Memory vs. Sessions**: Sessions save conversation history so you can resume a specific task. Memory saves reusable repository facts and user preferences that Copilot can apply in future work. Think of sessions as task notebooks, and memory as reusable context Copilot can carry forward.
+
 ### Check and Manage Context
 
 As you add files and conversation, Copilot CLI's [context window](../GLOSSARY.md#context-window) fills up. Several commands are available to help you stay in control:
@@ -379,7 +414,7 @@ Context usage: 62k/200k tokens (31%)
 
 ### Pick Up Where You Left Off
 
-<img src="images/session-persistence-timeline.png" alt="Timeline showing how GitHub Copilot CLI sessions persist across days - start on Monday, resume on Wednesday with full context restored" width="800"/>
+<img src="assets/session-persistence-timeline.png" alt="Timeline showing how GitHub Copilot CLI sessions persist across days - start on Monday, resume on Wednesday with full context restored" width="800"/>
 
 *Sessions auto-save when you exit. Resume days later with full context: files, issues, and progress all remembered.*
 
@@ -438,7 +473,7 @@ No re-explaining. No re-reading files. Just continue working.
 
 # Optional: Going Deeper
 
-<img src="images/optional-going-deeper.png" alt="Abstract crystal cave in blue and purple tones representing deeper exploration of context concepts" width="800"/>
+<img src="assets/optional-going-deeper.png" alt="Abstract crystal cave in blue and purple tones representing deeper exploration of context concepts" width="800"/>
 
 These topics build on the essentials above. **Pick what interests you, or skip ahead to [Practice](#practice).**
 
@@ -550,7 +585,7 @@ You already know `/context` and `/clear` from the essentials. Here's the deeper 
 
 Every AI has a "context window," which is the amount of text it can consider at once.
 
-<img src="images/context-window-visualization.png" alt="Context Window Visualization" width="800"/>
+<img src="assets/context-window-visualization.png" alt="Context Window Visualization" width="800"/>
 
 *The context window is like a desk: it can only hold so much at once. Files, conversation history, and system prompts all take space.*
 
@@ -587,6 +622,17 @@ copilot
 # Summarizes conversation history, freeing up context space
 # Your key findings and decisions are preserved
 ```
+
+You can also give `/compact` optional focus instructions to shape what gets prioritized in the summary:
+
+```bash
+copilot
+
+> /compact focus on the list of bugs we found and decisions made
+# Summarizes history, keeping bug list and decisions prominent
+```
+
+> 💡 **When to use focus instructions**: If your conversation covered many topics, focus instructions help `/compact` retain the parts most relevant to your next steps so you don't lose the thread.
 
 #### Context Efficiency Tips
 
@@ -702,9 +748,9 @@ You can include images in your conversations using the `@` syntax, or simply **p
 ```bash
 copilot
 
-> @images/screenshot.png What is happening in this image?
+> @assets/screenshot.png What is happening in this image?
 
-> @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
+> @assets/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
 > 📖 **Learn more**: See [Additional Context Features](../appendices/additional-context.md#working-with-images) for supported formats, practical use cases, and tips for combining images with code.
@@ -715,7 +761,7 @@ copilot
 
 # Practice
 
-<img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
+<img src="../assets/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
 Time to apply your context and session management skills.
 
@@ -881,9 +927,10 @@ copilot --add-dir /path/to/directory
 1. **`@` syntax** gives Copilot CLI context about files, directories, and images
 2. **Multi-turn conversations** build on each other as context accumulates
 3. **Sessions auto-save**: name them at startup with `--name`, resume by name with `--resume=<name>`, or use `--continue` to pick up the most recent session
-4. **Context windows** have limits: manage them with `/clear`, `/compact`, `/context`, `/new`, and `/rewind`
-5. **Permission flags** (`--add-dir`, `--allow-all`) control multi-directory access. Use them wisely!
-6. **Image references** (`@screenshot.png`) help debug UI issues visually
+4. **Context windows** have limits: manage them with `/clear`, `/compact`, `/context`, `/new`, and `/rewind`. Use `/compact focus on <topic>` to shape what gets kept in the summary
+5. **Persistent memory** (`/memory`) lets Copilot CLI remember preferences and facts across *all* sessions — not just the current one
+6. **Permission flags** (`--add-dir`, `--allow-all`) control multi-directory access. Use them wisely!
+7. **Image references** (`@screenshot.png`) help debug UI issues visually
 
 > 📚 **Official Documentation**: [Use Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli) for the complete reference on context, sessions, and working with files.
 

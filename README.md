@@ -1,4 +1,15 @@
-![GitHub Copilot CLI for Beginners](./images/copilot-banner.png)
+<!--
+---
+id: CopilotCLI-ROOT
+title: !translate GitHub Copilot CLI for Beginners
+description: !translate Learn to supercharge your development workflow with AI-powered command-line assistance from your terminal.
+audience: Developers / Students / Terminal users
+slug: copilot-cli-for-beginners
+weight: 0
+---
+-->
+
+![GitHub Copilot CLI for Beginners](./assets/copilot-banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)&ensp;
 [![Open project in GitHub Codespaces](https://img.shields.io/badge/Codespaces-Open-blue?style=flat-square&logo=github)](https://codespaces.new/github/copilot-cli-for-beginners?hide_repo_select=true&ref=main&quickstart=true)&ensp;
@@ -54,7 +65,7 @@ This course focuses on **GitHub Copilot CLI**, bringing AI assistance directly t
 
 ## 📚 Course Structure
 
-![GitHub Copilot CLI Learning Path](images/learning-path.png)
+![GitHub Copilot CLI Learning Path](assets/learning-path.png)
 
 | Chapter | Title | What You'll Build |
 |:-------:|-------|-------------------|
@@ -102,4 +113,3 @@ The **[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/
 ## License
 
 This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) file for the full terms.
-

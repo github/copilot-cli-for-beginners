@@ -1,4 +1,15 @@
-![Chapter 04: Agents and Custom Instructions](images/chapter-header.png)
+<!--
+---
+id: CopilotCLI-04
+title: !translate Create Specialized AI Assistants
+description: !translate Use built-in agents, create custom agents, and write custom instructions that guide GitHub Copilot CLI for specialized tasks.
+audience: Developers / Students / Terminal users
+slug: create-specialized-ai-assistants
+weight: 5
+---
+-->
+
+![Chapter 04: Agents and Custom Instructions](assets/chapter-header.png)
 
 > **What if you could hire a Python code reviewer, testing expert, and security reviewer... all in one tool?**
 
@@ -32,7 +43,7 @@ When you need help with your house, you don't call one "general helper." You cal
 
 Agents work the same way. Instead of a generic AI, use agents that focus on specific tasks and know the right process to follow. Set up the instructions once, then reuse them whenever you need that specialty: code review, testing, security, documentation.
 
-<img src="images/hiring-specialists-analogy.png" alt="Hiring Specialists Analogy - Just as you call specialized tradespeople for house repairs, AI agents are specialized for specific tasks like code review, testing, security, and documentation" width="800" />
+<img src="assets/hiring-specialists-analogy.png" alt="Hiring Specialists Analogy - Just as you call specialized tradespeople for house repairs, AI agents are specialized for specific tasks like code review, testing, security, and documentation" width="800" />
 
 ---
 
@@ -105,7 +116,7 @@ What about the Task Agent? It works behind the scenes to manage and track what i
 
 You can simply define your own agents to be part of your workflow! Define once, then direct!
 
-<img src="images/using-agents.png" alt="Four colorful AI robots standing together, each with different tools representing specialized agent capabilities" width="800"/>
+<img src="assets/using-agents.png" alt="Four colorful AI robots standing together, each with different tools representing specialized agent capabilities" width="800"/>
 
 ## 🗂️ Add your agents 
 
@@ -185,11 +196,13 @@ copilot --agent python-reviewer
 
 > 💡 **Switching agents**: You can switch to a different agent at any time by using `/agent` or `--agent` again. To return to the standard Copilot CLI experience, use `/agent` and select **no agent**.
 
+> 💡 **Agent mode is session-scoped**: The agent you select applies only to the current session. When you start a new session with `/new`, `/clear`, or by opening a fresh terminal, Copilot returns to its default mode — your agent selection does not carry over automatically. This means each session starts with a clean slate, which is a good habit to keep your work focused.
+
 ---
 
 # Going Deeper with Agents
 
-<img src="images/creating-custom-agents.png" alt="Robot being assembled on a workbench surrounded by components and tools representing custom agent creation" width="800"/>
+<img src="assets/creating-custom-agents.png" alt="Robot being assembled on a workbench surrounded by components and tools representing custom agent creation" width="800"/>
 
 > 💡 **This section is optional.** The built-in agents (`/plan`, `/review`) are powerful enough for most workflows. Create custom agents when you need specialized expertise that's consistently applied across your work.
 
@@ -337,7 +350,7 @@ copilot
 <details>
 <summary>🎬 See it in action!</summary>
 
-![Python Reviewer Demo](images/python-reviewer-demo.gif)
+![Python Reviewer Demo](assets/python-reviewer-demo.gif)
 
 *Demo output varies - your model, tools, and responses will differ from what's shown here.*
 
@@ -386,7 +399,7 @@ Think of it this way: agents are specialists you call on, and instruction files 
 
 You already know the two main locations (see [Where to put agent files](#where-to-put-agent-files) above). Use this decision tree to choose:
 
-<img src="images/agent-file-placement-decision-tree.png" alt="Decision tree for where to put agent files: experimenting → current folder, team use → .github/agents/, everywhere → ~/.copilot/agents/" width="800"/>
+<img src="assets/agent-file-placement-decision-tree.png" alt="Decision tree for where to put agent files: experimenting → current folder, team use → .github/agents/, everywhere → ~/.copilot/agents/" width="800"/>
 
 **Start simple:** Create a single `*.agent.md` file in your project folder. Move it to a permanent location once you're happy with it.
 
@@ -422,6 +435,7 @@ Copilot will scan your project and create tailored instruction files. You can ed
 | `AGENTS.md` | Project root or nested | **Cross-platform standard** - works with Copilot and other AI assistants |
 | `.github/copilot-instructions.md` | Project | GitHub Copilot specific |
 | `.github/instructions/*.instructions.md` | Project | Granular, topic-specific instructions |
+| `~/.copilot/instructions/**/*.instructions.md` | User (all projects) | Personal instructions that apply everywhere, across all your repos |
 | `CLAUDE.md`, `GEMINI.md` | Project root | Supported for compatibility |
 
 > 🎯 **Just getting started?** Use `AGENTS.md` for project instructions. You can explore the other formats later as needed.
@@ -565,7 +579,7 @@ For community agents, see [github/awesome-copilot](https://github.com/github/awe
 
 # Practice
 
-<img src="../images/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
+<img src="../assets/practice.png" alt="Warm desk setup with monitor showing code, lamp, coffee cup, and headphones ready for hands-on practice" width="800"/>
 
 Create your own agents and see them in action.
 
