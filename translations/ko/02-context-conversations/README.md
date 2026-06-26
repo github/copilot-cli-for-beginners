@@ -1,6 +1,6 @@
 ![2장: 컨텍스트와 대화](../../../02-context-conversations/images/chapter-header.png)
 
-> **AI가 한 번에 한 파일이 아니라 코드베이스 전체를 볼 수 있다면 어떨까요?**
+> **AI가 한 번에 한 파일이 아니라 코드베이스 전체를 볼 수 있다면 어떻습니까?**
 
 이번 장에서는 GitHub Copilot CLI의 진짜 힘인 **컨텍스트**를 이끌어 냅니다. `@` 구문을 사용해 파일과 디렉터리를 참조하고, Copilot CLI가 여러분의 코드베이스를 깊이 이해하도록 만드는 방법을 배웁니다. 또한 세션 간 대화를 유지하는 방법, 며칠 뒤에도 정확히 멈췄던 지점에서 다시 작업을 이어 가는 방법, 그리고 단일 파일 리뷰로는 절대 잡아낼 수 없는 버그를 교차 파일 분석으로 발견하는 모습을 함께 살펴봅니다.
 
@@ -24,11 +24,11 @@
 
 *동료와 마찬가지로 Copilot CLI도 마음을 읽지는 못합니다. 더 많은 정보를 제공하면 사람도, Copilot도 더 정확한 도움을 줄 수 있습니다!*
 
-버그를 동료에게 설명한다고 상상해 보세요.
+버그를 동료에게 설명한다고 상상해 봅니다.
 
-> **컨텍스트 없이**: "북 앱이 동작하지 않아요."
+> **컨텍스트 없이**: "북 앱이 동작하지 않습니다."
 
-> **컨텍스트와 함께**: "`books.py`, 특히 `find_book_by_title` 함수를 봐 주세요. 대소문자 구분 없는 매칭이 안 되고 있어요."
+> **컨텍스트와 함께**: "`books.py`, 특히 `find_book_by_title` 함수를 봅니다. 대소문자 구분 없는 매칭이 안 되고 있습니다."
 
 Copilot CLI에 컨텍스트를 제공하려면 *`@` 구문* 을 사용해 특정 파일을 가리키면 됩니다.
 
@@ -38,13 +38,13 @@ Copilot CLI에 컨텍스트를 제공하려면 *`@` 구문* 을 사용해 특정
 
 <img src="../../../02-context-conversations/images/essential-basic-context.png" alt="Copilot CLI 대화에서 컨텍스트가 어떻게 흘러가는지를 표현한, 빛의 흐름으로 연결된 빛나는 코드 블록" width="800"/>
 
-이 섹션은 컨텍스트를 효과적으로 다루기 위해 알아야 할 모든 것을 다룹니다. 기본기를 먼저 익혀 보세요.
+이 섹션은 컨텍스트를 효과적으로 다루기 위해 알아야 할 모든 것을 다룹니다. 기본기를 먼저 익힙니다.
 
 ---
 
 ## @ 구문
 
-`@` 기호는 프롬프트 안에서 파일과 디렉터리를 참조합니다. Copilot CLI에게 "이 파일을 봐 주세요"라고 알려주는 방법입니다.
+`@` 기호는 프롬프트 안에서 파일과 디렉터리를 참조합니다. Copilot CLI에게 "이 파일을 봅니다"라고 알려주는 방법입니다.
 
 > 💡 **참고**: 이 코스의 모든 예제는 이 저장소에 포함된 `samples/` 폴더를 사용하므로, 어떤 명령이든 직접 따라 해 볼 수 있습니다.
 
@@ -55,13 +55,13 @@ Copilot CLI에 컨텍스트를 제공하려면 *`@` 구문* 을 사용해 특정
 ```bash
 copilot
 
-# 가지고 있는 아무 파일이나 가리켜 보세요
+# 가지고 있는 아무 파일이나 가리킵니다
 > Explain what @package.json does
 > Summarize @README.md
 > What's in @.gitignore and why?
 ```
 
-> 💡 **마땅한 프로젝트가 없나요?** 빠르게 테스트 파일을 만들어 보세요.
+> 💡 **마땅한 프로젝트가 없습니까?** 빠르게 테스트 파일을 만들어 봅니다.
 > ```bash
 > echo "def greet(name): return 'Hello ' + name" > test.py
 > copilot
@@ -131,7 +131,7 @@ copilot
 > How do these files work together? What's the data flow?
 ```
 
-> 💡 **고급 옵션**: 보안 중심의 교차 파일 분석을 원한다면 Python 보안 예제를 시도해 보세요.
+> 💡 **고급 옵션**: 보안 중심의 교차 파일 분석을 원한다면 Python 보안 예제를 시도합니다.
 > ```bash
 > > @samples/buggy-code/python/user_service.py @samples/buggy-code/python/payment_processor.py
 > > Find security vulnerabilities that span BOTH files
@@ -176,7 +176,7 @@ Cross-Module Analysis
    Pattern: No unified approach to error handling across modules
 ```
 
-**왜 중요할까요**: 단일 파일 리뷰로는 더 큰 그림을 놓칩니다. 교차 파일 분석만이 다음을 드러냅니다.
+**중요한 이유**: 단일 파일 리뷰로는 더 큰 그림을 놓칩니다. 교차 파일 분석만이 다음을 드러냅니다.
 - 통합해야 할 **중복 코드**
 - 컴포넌트 간 상호작용을 보여 주는 **데이터 흐름 패턴**
 - 유지보수성에 영향을 주는 **아키텍처 문제**
@@ -187,7 +187,7 @@ Cross-Module Analysis
 
 <img src="../../../02-context-conversations/images/codebase-understanding.png" alt="수동 코드 리뷰 1시간과 AI 지원 분석 10초를 비교하는 분할 화면" width="800" />
 
-새 프로젝트에 합류했나요? Copilot CLI를 사용해 빠르게 파악해 보세요.
+새 프로젝트에 합류했습니까? Copilot CLI를 사용해 빠르게 파악합니다.
 
 ```bash
 copilot
@@ -225,8 +225,8 @@ copilot
 > @samples/book-app-project/books.py Review this file for potential bugs
 
 # 이제 Copilot CLI는 파일 전체 내용을 가지고 있어서 구체적인 피드백을 제공할 수 있습니다:
-# "Line 49: Case-sensitive comparison may miss books..."
-# "Line 29: JSON decode errors are caught but data corruption isn't logged..."
+# "49번째 줄: 대소문자를 구분하는 비교 때문에 책을 놓칠 수 있습니다..."
+# "29번째 줄: JSON 디코딩 오류는 잡지만 데이터 손상은 기록하지 않습니다..."
 
 > What about @samples/book-app-project/book_app.py?
 
@@ -294,28 +294,28 @@ copilot
 ### 가장 최근 세션 다시 이어 가기
 
 ```bash
-# 멈췄던 지점에서 이어 가기
+# 멈췄던 지점에서 이어 갑니다
 copilot --continue
 ```
 
 ### 특정 세션 다시 이어 가기
 
 ```bash
-# 세션 목록에서 대화형으로 선택
+# 세션 목록에서 대화형으로 선택합니다
 copilot --resume
 
-# 또는 특정 세션 ID로 이어 가기
+# 또는 특정 세션 ID로 이어 갑니다
 copilot --resume=abc123
 
-# 또는 세션에 부여한 이름으로 이어 가기
+# 또는 세션에 부여한 이름으로 이어 갑니다
 copilot --resume="my book app review"
 ```
 
-> 💡 **세션 ID는 어떻게 찾나요?** 외울 필요 없습니다. ID 없이 `copilot --resume`을 실행하면 이전 세션의 이름, ID, 마지막 활동 시점이 대화형 목록으로 표시됩니다. 원하는 항목을 고르기만 하면 됩니다.
+> 💡 **세션 ID는 어떻게 찾습니까?** 외울 필요 없습니다. ID 없이 `copilot --resume`을 실행하면 이전 세션의 이름, ID, 마지막 활동 시점이 대화형 목록으로 표시됩니다. 원하는 항목을 고르기만 하면 됩니다.
 >
-> **여러 터미널은 어떻게 처리되나요?** 각 터미널 창은 자체 컨텍스트를 가진 별도의 세션입니다. Copilot CLI를 세 개의 터미널에서 열어 두었다면, 그것은 세 개의 별도 세션입니다. 어느 터미널에서든 `--resume`을 실행하면 모두 둘러볼 수 있습니다. `--continue` 플래그는 현재 작업 디렉터리의 세션을 우선 가져오고, 거기에 세션이 없으면 가장 최근에 활동한 세션을 선택합니다.
+> **여러 터미널은 어떻게 처리됩니까?** 각 터미널 창은 자체 컨텍스트를 가진 별도의 세션입니다. Copilot CLI를 세 개의 터미널에서 열어 두었다면, 그것은 세 개의 별도 세션입니다. 어느 터미널에서든 `--resume`을 실행하면 모두 둘러볼 수 있습니다. `--continue` 플래그는 현재 작업 디렉터리의 세션을 우선 가져오고, 거기에 세션이 없으면 가장 최근에 활동한 세션을 선택합니다.
 >
-> **재시작하지 않고 세션을 전환할 수 있나요?** 네. 활성 세션 안에서 `/resume` 슬래시 명령을 사용하세요.
+> **재시작하지 않고 세션을 전환할 수 있습니까?** 네. 활성 세션 안에서 `/resume` 슬래시 명령을 사용합니다.
 > ```
 > > /resume
 > # 전환할 세션 목록을 보여 줍니다
@@ -323,13 +323,13 @@ copilot --resume="my book app review"
 
 ### 세션 정리하기
 
-나중에 찾을 수 있도록 세션에 의미 있는 이름을 부여하세요. 세션을 시작할 때 이름을 지정할 수도 있고, 세션 안에서 언제든 이름을 바꿀 수도 있습니다.
+나중에 찾을 수 있도록 세션에 의미 있는 이름을 부여합니다. 세션을 시작할 때 이름을 지정할 수도 있고, 세션 안에서 언제든 이름을 바꿀 수도 있습니다.
 
 ```bash
-# 세션을 시작할 때 바로 이름 지정
+# 세션을 시작할 때 바로 이름을 지정합니다
 copilot --name book-app-review
 
-# 또는 세션 안에서 현재 세션 이름 변경
+# 또는 세션 안에서 현재 세션 이름을 변경합니다
 copilot
 
 > /rename book-app-review
@@ -349,7 +349,7 @@ copilot
 
 > /session delete            # 현재 세션 삭제
 > /session delete abc123     # 특정 ID의 세션 삭제
-> /session delete-all        # 모든 세션 삭제 (신중하게 사용하세요!)
+> /session delete-all        # 모든 세션 삭제 (신중하게 사용합니다!)
 ```
 
 ### 컨텍스트 확인 및 관리
@@ -372,9 +372,9 @@ Context usage: 62k/200k tokens (31%)
 # 타임라인 선택기를 열어 대화의 이전 시점으로 되돌릴 수 있게 합니다
 ```
 
-> 💡 **`/clear` 또는 `/new`를 언제 사용해야 하나요?** books.py를 리뷰하다가 utils.py로 주제를 옮기고 싶다면 먼저 `/new`를 실행하세요(세션 히스토리가 필요 없다면 `/clear`). 그렇지 않으면 이전 주제의 오래된 컨텍스트가 응답을 혼란스럽게 만들 수 있습니다.
+> 💡 **`/clear` 또는 `/new`를 언제 사용해야 합니까?** books.py를 리뷰하다가 utils.py로 주제를 옮기고 싶다면 먼저 `/new`를 실행합니다(세션 히스토리가 필요 없다면 `/clear`). 그렇지 않으면 이전 주제의 오래된 컨텍스트가 응답을 혼란스럽게 만들 수 있습니다.
 
-> 💡 **실수했거나 다른 접근 방식을 시도하고 싶나요?** `/rewind`를 사용하거나 Esc를 두 번 누르면 **타임라인 선택기**가 열려, 가장 최근 시점뿐 아니라 대화의 어느 지점으로든 되돌아갈 수 있습니다. 잘못된 길로 들어섰을 때 처음부터 다시 시작하지 않고 되돌아가고 싶을 때 유용합니다.
+> 💡 **실수했거나 다른 접근 방식을 시도하고 싶습니까?** `/rewind`를 사용하거나 Esc를 두 번 누르면 **타임라인 선택기**가 열려, 가장 최근 시점뿐 아니라 대화의 어느 지점으로든 되돌아갈 수 있습니다. 잘못된 길로 들어섰을 때 처음부터 다시 시작하지 않고 되돌아가고 싶을 때 유용합니다.
 
 ---
 
@@ -384,10 +384,10 @@ Context usage: 62k/200k tokens (31%)
 
 *세션은 종료할 때 자동으로 저장됩니다. 며칠 뒤에 다시 열어도 파일, 이슈, 진행 상황까지 전체 컨텍스트가 그대로 복원됩니다.*
 
-여러 날에 걸친 다음 워크플로를 상상해 보세요.
+여러 날에 걸친 다음 워크플로를 상상해 봅니다.
 
 ```bash
-# 월요일: 처음부터 이름을 부여해 북 앱 리뷰 시작
+# 월요일: 처음부터 이름을 부여해 북 앱 리뷰를 시작합니다
 copilot --name book-app-review
 
 > @samples/book-app-project/books.py
@@ -401,13 +401,13 @@ Quality Issues Found:
 5. Missing error logging - LOW
 
 > Fix issue #1 (duplicate functions)
-# 수정 작업 진행...
+# 수정 작업을 진행합니다...
 
 > /exit
 ```
 
 ```bash
-# 수요일: 멈췄던 지점에서 이름으로 바로 이어 가기
+# 수요일: 멈췄던 지점에서 이름으로 바로 이어 갑니다
 copilot --resume=book-app-review
 
 > What issues remain unfixed from our book app review?
@@ -433,7 +433,7 @@ Issue #1 (duplicate functions) was fixed on Monday.
 
 ---
 
-**🎉 이제 핵심을 모두 익혔습니다!** `@` 구문, 세션 관리(`--name`/`--continue`/`--resume`/`/rename`), 컨텍스트 명령(`/context`/`/clear`)만으로도 매우 생산적으로 일할 수 있습니다. 아래 내용은 모두 선택 사항입니다. 준비가 되었을 때 다시 돌아오세요.
+**🎉 이제 핵심을 모두 익혔습니다!** `@` 구문, 세션 관리(`--name`/`--continue`/`--resume`/`/rename`), 컨텍스트 명령(`/context`/`/clear`)만으로도 매우 생산적으로 일할 수 있습니다. 아래 내용은 모두 선택 사항입니다. 준비가 되었을 때 다시 돌아옵니다.
 
 ---
 
@@ -537,7 +537,7 @@ Copilot CLI: "Based on the class with types and error handling..."
 [종합적인 테스트를 생성]
 ```
 
-각 프롬프트가 어떻게 이전 작업 위에 쌓이는지 살펴보세요. 이것이 컨텍스트의 힘입니다.
+각 프롬프트가 어떻게 이전 작업 위에 쌓이는지 살펴봅니다. 이것이 컨텍스트의 힘입니다.
 
 </details>
 
@@ -553,7 +553,7 @@ Copilot CLI: "Based on the class with types and error handling..."
 
 <img src="../../../02-context-conversations/images/context-window-visualization.png" alt="컨텍스트 윈도우 시각화" width="800"/>
 
-*컨텍스트 윈도우는 책상과 같습니다. 한 번에 일정량만 올려놓을 수 있죠. 파일, 대화 기록, 시스템 프롬프트가 모두 자리를 차지합니다.*
+*컨텍스트 윈도우는 책상과 같습니다. 한 번에 일정량만 올려놓을 수 있습니다. 파일, 대화 기록, 시스템 프롬프트가 모두 자리를 차지합니다.*
 
 #### 한계에 도달하면 일어나는 일
 
@@ -570,7 +570,7 @@ Context usage: 45,000 / 128,000 tokens (35%)
 
 Context usage: 120,000 / 128,000 tokens (94%)
 
-# 경고: 컨텍스트 한계에 근접
+# 경고: 컨텍스트 한계에 근접합니다
 
 > @another-large-file.py
 
@@ -633,11 +633,11 @@ copilot
 - package.json ≈ 약 200~500 토큰
 - 짧은 프롬프트 + 응답 ≈ 약 500~1,500 토큰
 
-> 💡 **코드용 빠른 추정:** 코드 줄 수에 약 15를 곱하면 대략적인 토큰 수가 나옵니다. 이는 어디까지나 추정치라는 점을 기억하세요.
+> 💡 **코드용 빠른 추정:** 코드 줄 수에 약 15를 곱하면 대략적인 토큰 수가 나옵니다. 이는 어디까지나 추정치라는 점을 기억합니다.
 
 #### 포함할 것 vs 제외할 것
 
-**높은 가치** (포함하세요):
+**높은 가치** (포함합니다):
 - 진입점 (`book_app.py`, `main.py`, `app.py`)
 - 질문하려는 바로 그 파일
 - 대상 파일이 직접 임포트하는 파일
@@ -675,16 +675,16 @@ Less specific ──────────────────────
 ```bash
 copilot
 
-# 1단계: 구조부터 파악
+# 1단계: 구조부터 파악합니다
 > @package.json What frameworks does this project use?
 
-# 2단계: 답변에 따라 범위 좁히기
+# 2단계: 답변에 따라 범위를 좁힙니다
 > @samples/book-app-project/ Show me the project structure
 
-# 3단계: 중요한 부분에 집중
+# 3단계: 중요한 부분에 집중합니다
 > @samples/book-app-project/books.py Review the BookCollection class
 
-# 4단계: 필요할 때만 관련 파일 추가
+# 4단계: 필요할 때만 관련 파일을 추가합니다
 > @samples/book-app-project/book_app.py @samples/book-app-project/books.py How does the CLI use the BookCollection?
 ```
 
@@ -708,7 +708,7 @@ copilot
 > @images/mockup.png Write the HTML and CSS to match this design. Place it in a new file called index.html and put the CSS in styles.css.
 ```
 
-> 📖 **더 알아보기**: 지원되는 형식, 실용적인 활용 사례, 이미지와 코드를 결합하는 팁은 [추가 컨텍스트 기능](../appendices/additional-context.md#이미지로-작업하기)을 참고하세요.
+> 📖 **더 알아보기**: 지원되는 형식, 실용적인 활용 사례, 이미지와 코드를 결합하는 팁은 [추가 컨텍스트 기능](../appendices/additional-context.md#이미지로-작업하기)을 참고합니다.
 
 </details>
 
@@ -726,7 +726,7 @@ copilot
 
 ### 전체 프로젝트 리뷰
 
-이 코스에는 바로 리뷰해 볼 수 있는 샘플 파일이 포함되어 있습니다. copilot을 시작한 뒤 다음 프롬프트를 실행해 보세요.
+이 코스에는 바로 리뷰해 볼 수 있는 샘플 파일이 포함되어 있습니다. copilot을 시작한 뒤 다음 프롬프트를 실행합니다.
 
 ```bash
 copilot
@@ -734,12 +734,12 @@ copilot
 > @samples/book-app-project/ Give me a code quality review of this project
 
 # Copilot CLI가 다음과 같은 이슈를 식별합니다:
-# - 중복된 표시(display) 함수
-# - 누락된 입력 검증
-# - 일관성 없는 오류 처리
+# - 표시(display) 함수가 중복되었습니다
+# - 입력 검증이 누락되었습니다
+# - 오류 처리가 일관적이지 않습니다
 ```
 
-> 💡 **자신의 파일로 시도해 보고 싶나요?** 작은 Python 프로젝트를 만들고(`mkdir -p my-project/src`) .py 파일을 몇 개 추가한 뒤, `@my-project/src/`로 리뷰해 보세요. 원한다면 copilot에게 샘플 코드를 만들어 달라고 부탁할 수도 있습니다!
+> 💡 **자신의 파일로 시도해 보고 싶습니까?** 작은 Python 프로젝트를 만들고(`mkdir -p my-project/src`) .py 파일을 몇 개 추가한 뒤, `@my-project/src/`로 리뷰합니다. 원한다면 copilot에게 샘플 코드를 만들어 달라고 부탁할 수도 있습니다!
 
 ### 세션 워크플로
 
@@ -755,7 +755,7 @@ copilot
 > Now consolidate the duplicate display functions in @samples/book-app-project/
 > /exit
 
-# 나중에 - 멈췄던 지점에서 이어 가기
+# 나중에 - 멈췄던 지점에서 이어 갑니다
 copilot --continue
 
 > Generate tests for the changes we made
@@ -763,18 +763,18 @@ copilot --continue
 
 ---
 
-데모를 마쳤다면 다음 변형들도 시도해 보세요.
+데모를 마쳤다면 다음 변형들도 시도합니다.
 
-1. **교차 파일 챌린지**: book_app.py와 books.py가 어떻게 함께 동작하는지 분석해 보세요.
+1. **교차 파일 챌린지**: book_app.py와 books.py가 어떻게 함께 동작하는지 분석합니다.
    ```bash
    copilot
    > @samples/book-app-project/book_app.py @samples/book-app-project/books.py
    > What's the relationship between these files? Are there any code smells?
    ```
 
-2. **세션 챌린지**: 세션을 시작하고 `/rename my-first-session`으로 이름을 부여한 뒤, 무언가 작업하고 `/exit`으로 나가세요. 그런 다음 `copilot --continue`를 실행해 보세요. 무엇을 하고 있었는지 기억하나요?
+2. **세션 챌린지**: 세션을 시작하고 `/rename my-first-session`으로 이름을 부여한 뒤, 무언가 작업하고 `/exit`으로 나갑니다. 그런 다음 `copilot --continue`를 실행합니다. 무엇을 하고 있었는지 기억합니까?
 
-3. **컨텍스트 챌린지**: 세션 도중에 `/context`를 실행해 보세요. 토큰을 얼마나 쓰고 있나요? `/compact`를 시도한 뒤 다시 확인해 보세요. (`/compact`에 대한 자세한 내용은 더 깊이 들어가기의 [컨텍스트 윈도우 이해하기](#컨텍스트-윈도우-이해하기)를 참고하세요.)
+3. **컨텍스트 챌린지**: 세션 도중에 `/context`를 실행합니다. 토큰을 얼마나 쓰고 있습니까? `/compact`를 시도한 뒤 다시 확인합니다. (`/compact`에 대한 자세한 내용은 더 깊이 들어가기의 [컨텍스트 윈도우 이해하기](#컨텍스트-윈도우-이해하기)를 참고합니다.)
 
 **자가 점검**: 각 파일을 일일이 여는 것보다 `@folder/`가 왜 더 강력한지를 설명할 수 있다면, 컨텍스트를 이해한 것입니다.
 
@@ -794,7 +794,7 @@ copilot --continue
 4. 교차 파일 개선을 요청합니다:
    `@samples/book-app-project/books.py @samples/book-app-project/utils.py Suggest a consistent error-handling strategy that works across both files.`
 5. 세션 이름 변경: `/rename data-flow-analysis`
-6. `/exit`로 종료한 뒤 `copilot --continue`로 다시 이어 가, 데이터 흐름에 대한 후속 질문을 해 보세요.
+6. `/exit`로 종료한 뒤 `copilot --continue`로 다시 이어 가, 데이터 흐름에 대한 후속 질문을 합니다.
 
 **성공 기준**: 여러 파일에 걸쳐 데이터를 추적하고, 이름이 부여된 세션을 다시 이어 가며, 교차 파일 제안을 받을 수 있어야 합니다.
 
@@ -825,7 +825,7 @@ copilot
 
 1. `@samples/book-app-project/`로 북 앱 파일을 한꺼번에 모두 참조합니다.
 2. 서로 다른 파일(`books.py`, `utils.py`, `book_app.py`, `data.json`)에 대해 자세한 질문을 여러 개 합니다.
-3. `/context`를 실행해 사용량을 확인합니다. 얼마나 빨리 차오르나요?
+3. `/context`를 실행해 사용량을 확인합니다. 얼마나 빨리 차오릅니까?
 4. `/compact`로 공간을 회수하고 대화를 이어 가는 연습을 합니다.
 5. 파일 참조를 더 구체적으로(예: 폴더 전체 대신 `@samples/book-app-project/books.py`) 시도해 보고, 컨텍스트 사용량이 어떻게 달라지는지 살펴봅니다.
 
@@ -845,24 +845,24 @@ copilot
 
 ### 문제 해결
 
-**"File not found" 오류** - 올바른 디렉터리에 있는지 확인하세요.
+**"File not found" 오류** - 올바른 디렉터리에 있는지 확인합니다.
 
 ```bash
 pwd  # 현재 디렉터리 확인
 ls   # 파일 목록 확인
 
-# 그런 다음 copilot을 시작하고 상대 경로 사용
+# 그런 다음 copilot을 시작하고 상대 경로를 사용합니다
 copilot
 
 > Review @samples/book-app-project/books.py
 ```
 
-**"Permission denied"** - 디렉터리를 허용 목록에 추가하세요.
+**"Permission denied"** - 디렉터리를 허용 목록에 추가합니다.
 
 ```bash
 copilot --add-dir /path/to/directory
 
-# 또는 세션 안에서:
+# 또는 세션 안에서 실행합니다:
 > /add-dir /path/to/directory
 ```
 
@@ -882,13 +882,13 @@ copilot --add-dir /path/to/directory
 1. **`@` 구문**으로 Copilot CLI에 파일, 디렉터리, 이미지 컨텍스트를 제공합니다.
 2. **멀티턴 대화**는 컨텍스트가 누적되면서 서로의 결과 위에 쌓입니다.
 3. **세션은 자동 저장**됩니다: 시작 시 `--name`으로 이름을 부여하고, `--resume=<name>`으로 이름으로 이어 가거나, `--continue`로 가장 최근 세션을 이어 갑니다.
-4. **컨텍스트 윈도우**에는 한계가 있습니다: `/clear`, `/compact`, `/context`, `/new`, `/rewind`로 관리하세요.
-5. **권한 플래그**(`--add-dir`, `--allow-all`)로 멀티 디렉터리 접근을 통제합니다. 신중하게 사용하세요!
+4. **컨텍스트 윈도우**에는 한계가 있습니다: `/clear`, `/compact`, `/context`, `/new`, `/rewind`로 관리합니다.
+5. **권한 플래그**(`--add-dir`, `--allow-all`)로 멀티 디렉터리 접근을 통제합니다. 신중하게 사용합니다!
 6. **이미지 참조**(`@screenshot.png`)는 UI 이슈를 시각적으로 디버깅하는 데 도움이 됩니다.
 
-> 📚 **공식 문서**: 컨텍스트, 세션, 파일 작업에 대한 전체 레퍼런스는 [Use Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli)를 참고하세요.
+> 📚 **공식 문서**: 컨텍스트, 세션, 파일 작업에 대한 전체 레퍼런스는 [Use Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli)를 참고합니다.
 
-> 📋 **빠른 참고**: 명령과 단축키의 전체 목록은 [GitHub Copilot CLI 명령 레퍼런스](https://docs.github.com/en/copilot/reference/cli-command-reference)를 확인하세요.
+> 📋 **빠른 참고**: 명령과 단축키의 전체 목록은 [GitHub Copilot CLI 명령 레퍼런스](https://docs.github.com/en/copilot/reference/cli-command-reference)를 확인합니다.
 
 ---
 

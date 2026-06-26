@@ -1,6 +1,6 @@
 # 커스텀 MCP 서버 만들기
 
-> ⚠️ **이 콘텐츠는 완전히 선택 사항입니다.** 미리 만들어진 MCP 서버(GitHub, filesystem, Context7)만 사용해도 Copilot CLI로 매우 생산적으로 작업할 수 있습니다. 이 가이드는 Copilot을 사내 커스텀 API에 연결하고 싶은 개발자를 위한 것입니다. 더 자세한 내용은 [MCP for Beginners 코스](https://github.com/microsoft/mcp-for-beginners)를 참고해 보세요.
+> ⚠️ **이 콘텐츠는 완전히 선택 사항입니다.** 미리 만들어진 MCP 서버(GitHub, filesystem, Context7)만 사용해도 Copilot CLI로 매우 생산적으로 작업할 수 있습니다. 이 가이드는 Copilot을 사내 커스텀 API에 연결하고 싶은 개발자를 위한 것입니다. 더 자세한 내용은 [MCP for Beginners 코스](https://github.com/microsoft/mcp-for-beginners)를 참고합니다.
 >
 > **사전 준비:**
 > - Python에 익숙할 것
@@ -11,7 +11,7 @@
 
 ---
 
-Copilot을 여러분의 API에 연결하고 싶으신가요? 이 코스 전반에서 사용해 온 book app 프로젝트와 연결되는, 책 정보를 조회하는 간단한 MCP 서버를 Python으로 만드는 방법을 소개합니다.
+Copilot을 여러분의 API에 연결하려면, 이 코스 전반에서 사용해 온 book app 프로젝트와 연결되는 책 정보를 조회하는 간단한 MCP 서버를 Python으로 만드는 방법을 소개합니다.
 
 ## 프로젝트 설정
 
@@ -32,10 +32,10 @@ pip install mcp
 import json
 from mcp.server.fastmcp import FastMCP
 
-# Create the MCP server
+# MCP 서버를 생성합니다
 mcp = FastMCP("book-lookup")
 
-# Sample book database (in a real server, this could query an API or database)
+# 샘플 책 데이터베이스입니다. 실제 서버에서는 API 또는 데이터베이스를 쿼리할 수 있습니다
 BOOKS_DB = {
     "978-0-547-92822-7": {
         "title": "The Hobbit",
@@ -105,7 +105,7 @@ if __name__ == "__main__":
 | 타입 힌트 + docstring | 각 도구가 무엇을 하고 어떤 매개변수가 필요한지 Copilot에게 알려 줍니다 |
 | `mcp.run()` | 서버를 시작하고 요청을 수신 대기합니다 |
 
-> 💡 **왜 데코레이터를 쓰나요?** `@mcp.tool()` 데코레이터 하나면 충분합니다. MCP SDK가 함수 이름, 타입 힌트, docstring을 자동으로 읽어 도구 스키마를 생성해 줍니다. 직접 JSON 스키마를 작성할 필요가 없습니다!
+> 💡 **데코레이터를 사용하는 이유**: `@mcp.tool()` 데코레이터 하나면 충분합니다. MCP SDK가 함수 이름, 타입 힌트, docstring을 자동으로 읽어 도구 스키마를 생성해 줍니다. 직접 JSON 스키마를 작성할 필요가 없습니다!
 
 ## 설정
 

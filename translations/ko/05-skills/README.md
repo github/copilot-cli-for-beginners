@@ -451,7 +451,7 @@ description: Use for security reviews, vulnerability scanning,
 ---
 ```
 
-> 💡 **팁**: 자연스럽게 질문할 때 사용하는 키워드를 description에 포함하세요. "security review"라고 말한다면 description에도 "security review"를 넣으세요.
+> 💡 **팁**: 자연스럽게 질문할 때 사용하는 키워드를 description에 포함합니다. "security review"라고 말한다면 description에도 "security review"를 넣습니다.
 
 ### 스킬과 에이전트 결합하기
 
@@ -488,7 +488,7 @@ copilot --agent code-reviewer
 | `/skills remove <name>` | 스킬 비활성화 또는 제거 |
 | `/skills reload` | SKILL.md 파일을 편집한 뒤 스킬 다시 불러오기 |
 
-> 💡 **기억하세요**: 프롬프트마다 스킬을 "활성화"할 필요는 없습니다. 한 번 설치된 스킬은 프롬프트가 description과 일치하면 **자동으로 트리거됩니다**. 위 명령들은 어떤 스킬을 사용할 수 있게 할지 관리하기 위한 것이지, 스킬을 사용하기 위한 것이 아닙니다.
+> 💡 **기억하십시오**: 프롬프트마다 스킬을 "활성화"할 필요는 없습니다. 한 번 설치된 스킬은 프롬프트가 description과 일치하면 **자동으로 트리거됩니다**. 위 명령들은 어떤 스킬을 사용할 수 있게 할지 관리하기 위한 것이지, 스킬을 사용하기 위한 것이 아닙니다.
 
 ### 예제: 스킬 목록 보기
 
@@ -705,7 +705,7 @@ EOF
 
 2. **스킬 비교**: 자세한 보안 리뷰 프롬프트를 직접 작성하는 데 걸리는 시간을 측정합니다. 그런 다음 "Check for security issues in this file"이라고만 묻고 security-audit 스킬이 자동으로 불러와지도록 합니다. 스킬이 시간을 얼마나 절약했습니까?
 
-3. **팀 스킬 챌린지**: 여러분 팀의 코드 리뷰 체크리스트를 떠올려 보세요. 그것을 스킬로 인코딩할 수 있습니까? 스킬이 항상 점검해야 할 3가지를 적습니다.
+3. **팀 스킬 챌린지**: 여러분 팀의 코드 리뷰 체크리스트를 떠올립니다. 그것을 스킬로 인코딩할 수 있습니까? 스킬이 항상 점검해야 할 3가지를 적습니다.
 
 **자가 점검**: `description` 필드가 왜 중요한지(스킬을 불러올지 Copilot이 결정하는 기준이기 때문) 설명할 수 있다면 스킬을 이해한 것입니다.
 
@@ -766,7 +766,7 @@ copilot
 # description 일치를 기반으로 스킬이 자동 트리거되어야 합니다
 ```
 
-**트리거되지 않는다면:** `/skills reload`를 실행한 뒤 다시 물어보세요.
+**트리거되지 않는다면:** `/skills reload`를 실행한 뒤 다시 물어봅니다.
 
 </details>
 
@@ -830,9 +830,9 @@ copilot
     └── SKILL.md        # 정확히 SKILL.md여야 합니다(대소문자 구분)
 ```
 
-스킬을 만들거나 수정한 뒤에는 `/skills reload`를 실행해 변경 사항이 반영되도록 하세요.
+스킬을 만들거나 수정한 뒤에는 `/skills reload`를 실행해 변경 사항이 반영되도록 합니다.
 
-**스킬이 로드되는지 확인하기** - Copilot에게 직접 물어보세요:
+**스킬이 로드되는지 확인하기** - Copilot에게 직접 물어봅니다:
 ```bash
 > What skills do you have available for checking code quality?
 # Copilot이 찾은 관련 스킬을 설명합니다
@@ -840,8 +840,8 @@ copilot
 
 **내 스킬이 실제로 동작하는지 어떻게 알 수 있습니까?**
 
-1. **출력 형식 확인**: 스킬이 출력 형식(예: `[CRITICAL]` 태그)을 지정했다면 응답에서 이를 찾아보세요.
-2. **직접 묻기**: 응답을 받은 뒤 "Did you use any skills for that?"라고 물어보세요.
+1. **출력 형식 확인**: 스킬이 출력 형식(예: `[CRITICAL]` 태그)을 지정했다면 응답에서 이를 찾습니다.
+2. **직접 묻기**: 응답을 받은 뒤 "Did you use any skills for that?"라고 물어봅니다.
 3. **있을 때와 없을 때 비교**: 같은 프롬프트를 `--no-custom-instructions`와 함께 실행해 차이를 확인합니다:
    ```bash
    # 스킬이 있는 경우입니다
@@ -864,7 +864,7 @@ copilot
 2. **직접 호출**: `/skill-name` 슬래시 명령으로 스킬을 직접 호출할 수도 있습니다.
 3. **SKILL.md 형식**: YAML frontmatter(name, description, 선택적 license)와 마크다운 지시문으로 구성됩니다.
 4. **위치가 중요합니다**: 프로젝트/팀 공유는 `.github/skills/`, 개인 사용은 `~/.copilot/skills/`.
-5. **description이 핵심**: 자연스럽게 묻는 방식과 일치하는 description을 작성하세요.
+5. **description이 핵심**: 자연스럽게 묻는 방식과 일치하는 description을 작성합니다.
 
 > 📋 **빠른 참조**: 명령과 단축키 전체 목록은 [GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference)를 확인합니다.
 
@@ -872,7 +872,7 @@ copilot
 
 ## ➡️ 다음 단계
 
-스킬은 자동 로드되는 지시문으로 Copilot이 할 수 있는 일을 확장합니다. 그렇다면 외부 서비스에 연결하는 것은 어떨까요? 그것이 바로 MCP의 역할입니다.
+스킬은 자동 로드되는 지시문으로 Copilot이 할 수 있는 일을 확장합니다. 그렇다면 외부 서비스에 연결하는 것은 어떻습니까? 그것이 바로 MCP의 역할입니다.
 
 [**Chapter 06: MCP Servers**](../06-mcp-servers/README.md)에서는 다음을 배웁니다:
 
