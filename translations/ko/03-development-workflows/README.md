@@ -118,15 +118,15 @@ copilot
 > - Error handling
 > - Code style and best practices
 
-# Copilot CLI provides detailed review
+# Copilot CLI가 자세한 리뷰를 제공합니다
 
 > The user input handling - are there any edge cases I'm missing?
 
-# Copilot CLI shows potential issues with empty strings, special characters
+# Copilot CLI가 빈 문자열과 특수 문자 관련 잠재적 이슈를 보여 줍니다
 
 > Create a checklist of all issues found, prioritized by severity
 
-# Copilot CLI generates prioritized action items
+# Copilot CLI가 우선순위가 지정된 작업 항목을 생성합니다
 ```
 
 ### 리뷰 체크리스트 템플릿
@@ -153,11 +153,11 @@ copilot
 | **Unstaged 변경** | 수정했지만 아직 추가하지 않은 파일 | `git diff` |
 
 ```bash
-# Quick reference
-git status           # Shows both staged and unstaged
-git add file.py      # Stage a file for commit
-git diff             # Shows unstaged changes
-git diff --staged    # Shows staged changes
+# 빠른 참고
+git status           # staged 변경과 unstaged 변경을 모두 보여 줍니다
+git add file.py      # 커밋할 파일을 스테이징합니다
+git diff             # unstaged 변경 사항을 보여 줍니다
+git diff --staged    # staged 변경 사항을 보여 줍니다
 ```
 
 ### /review 명령 사용하기
@@ -168,11 +168,11 @@ git diff --staged    # Shows staged changes
 copilot
 
 > /review
-# Invokes the code-review agent on staged/unstaged changes
-# Provides focused, actionable feedback
+# staged/unstaged 변경 사항에 대해 code-review 에이전트를 호출합니다
+# 집중도 높고 실행 가능한 피드백을 제공합니다
 
 > /review Check for security issues in authentication
-# Run review with specific focus area
+# 특정 집중 영역으로 리뷰를 실행합니다
 ```
 
 > 💡 **팁**: code-review 에이전트는 변경 사항이 대기 중일 때 가장 잘 동작합니다. `git add`로 파일을 스테이징하면 더 집중된 리뷰를 받을 수 있습니다.
@@ -263,11 +263,11 @@ copilot
 
 > @samples/book-app-project/books.py Before refactoring, generate tests for current behavior
 
-# Get tests first
+# 먼저 테스트를 얻습니다
 
 > Now refactor the BookCollection class to use a context manager for file operations
 
-# Refactor with confidence - tests verify behavior is preserved
+# 테스트가 동작 보존을 검증하므로 안심하고 리팩터링합니다
 ```
 
 </details>
@@ -289,13 +289,13 @@ copilot
 ```bash
 copilot
 
-# Pattern: "Expected X but got Y"
+# 패턴: "X를 기대했지만 Y가 나옴"
 > @samples/book-app-buggy/books_buggy.py Users report that searching for "The Hobbit" returns no results even though it's in the data. Debug why.
 
-# Pattern: "Unexpected behavior"
+# 패턴: "예상치 못한 동작"
 > @samples/book-app-buggy/book_app_buggy.py When I remove a book that doesn't exist, the app says it was removed. Help me find why.
 
-# Pattern: "Wrong results"
+# 패턴: "잘못된 결과"
 > @samples/book-app-buggy/books_buggy.py When I mark one book as read, ALL books get marked. What's the bug?
 ```
 
@@ -462,13 +462,13 @@ copilot
 
 ```python
 class TestBookCollection:
-    # Happy path
+    # 해피 패스
     def test_add_book_creates_new_book(self):
         ...
     def test_list_books_returns_all_books(self):
         ...
 
-    # Find operations
+    # 찾기 작업
     def test_find_book_by_title_case_insensitive(self):
         ...
     def test_find_book_by_title_returns_none_when_not_found(self):
@@ -478,7 +478,7 @@ class TestBookCollection:
     def test_find_by_author_case_insensitive(self):
         ...
 
-    # Edge cases
+    # 엣지 케이스
     def test_add_book_with_empty_title(self):
         ...
     def test_remove_nonexistent_book(self):
@@ -486,7 +486,7 @@ class TestBookCollection:
     def test_mark_as_read_nonexistent_book(self):
         ...
 
-    # Data persistence
+    # 데이터 지속성
     def test_save_books_persists_to_json(self):
         ...
     def test_load_books_handles_missing_file(self):
@@ -494,7 +494,7 @@ class TestBookCollection:
     def test_load_books_handles_corrupted_json(self):
         ...
 
-    # Special characters
+    # 특수 문자
     def test_add_book_with_unicode_characters(self):
         ...
     def test_find_by_author_with_special_characters(self):
@@ -529,10 +529,10 @@ copilot
 
 > How do I run the tests? Show me the pytest command.
 
-# Copilot CLI responds:
+# Copilot CLI가 응답합니다:
 # cd samples/book-app-project && python -m pytest tests/
-# Or for verbose output: python -m pytest tests/ -v
-# To see print statements: python -m pytest tests/ -s
+# 자세한 출력을 보려면 다음을 사용합니다: python -m pytest tests/ -v
+# print 문을 보려면 다음을 사용합니다: python -m pytest tests/ -s
 ```
 
 ### 특정 시나리오에 대한 테스트
@@ -585,18 +585,18 @@ copilot
 
 ```bash
 
-# See what changed
+# 변경된 내용을 확인합니다
 git diff --staged
 
-# Generate commit message using [Conventional Commit](../../../GLOSSARY.md#conventional-commit) format
-# (structured messages like "feat(books): add search" or "fix(data): handle empty input")
+# [Conventional Commit](../../../GLOSSARY.md#conventional-commit) 형식으로 커밋 메시지를 생성합니다
+# ("feat(books): add search" 또는 "fix(data): handle empty input" 같은 구조화된 메시지입니다)
 copilot -p "Generate a conventional commit message for: $(git diff --staged)"
 
-# Output: "feat(books): add partial author name search
+# 출력: "feat(books): add partial author name search
 #
-# - Update find_by_author to support partial matches
-# - Add case-insensitive comparison
-# - Improve user experience when searching authors"
+# - find_by_author를 업데이트하여 부분 일치를 지원합니다
+# - 대소문자 구분 없는 비교를 추가합니다
+# - 저자 검색 시 사용자 경험을 개선합니다"
 ```
 
 ---
@@ -617,7 +617,7 @@ copilot -p "Generate a conventional commit message for: $(git diff --staged)"
 `git show` 출력을 `-p` 프롬프트에 파이프하면, 마지막 커밋에 대한 평범한 언어의 요약을 받을 수 있습니다.
 
 ```bash
-# What did this commit change?
+# 이 커밋은 무엇을 변경했습니까?
 copilot -p "Explain what this commit does: $(git show HEAD --stat)"
 ```
 
@@ -626,7 +626,7 @@ copilot -p "Explain what this commit does: $(git show HEAD --stat)"
 `git log` 출력을 구조화된 프롬프트 템플릿과 결합해, 완전한 pull request 설명을 자동으로 생성할 수 있습니다.
 
 ```bash
-# Generate PR description from branch changes
+# 브랜치 변경 사항으로 PR 설명을 생성합니다
 copilot -p "Generate a pull request description for these changes:
 $(git log main..HEAD --oneline)
 
@@ -652,7 +652,7 @@ copilot
 `git diff main..HEAD`를 `-p` 프롬프트 안에 넣으면, 모든 브랜치 변경 사항을 푸시 전에 빠르게 점검할 수 있습니다.
 
 ```bash
-# Last check before pushing
+# 푸시 전 마지막으로 확인합니다
 copilot -p "Review these changes for issues before I push:
 $(git diff main..HEAD)"
 ```
@@ -666,14 +666,14 @@ copilot
 
 > /delegate Add input validation to the login form
 
-# Or use the & prefix shortcut:
+# 또는 & 접두사 단축키를 사용합니다:
 > & Fix the typo in the README header
 
 # Copilot CLI:
-# 1. Commits your changes to a new branch
-# 2. Opens a draft pull request
-# 3. Works in the background on GitHub
-# 4. Requests your review when done
+# 1. 변경 사항을 새 브랜치에 커밋합니다
+# 2. 초안 pull request를 엽니다
+# 3. GitHub에서 백그라운드로 작업합니다
+# 4. 완료되면 리뷰를 요청합니다
 ```
 
 다른 작업에 집중하면서 완료시키고 싶은, 잘 정의된 작업에 매우 유용합니다.
@@ -685,11 +685,11 @@ copilot
 ```bash
 copilot
 
-# After making some changes...
+# 몇 가지 변경을 수행한 뒤...
 > /diff
 
-# Shows a visual diff of all files modified in this session
-# Great for reviewing before committing
+# 이 세션에서 수정된 모든 파일의 시각적 diff를 보여 줍니다
+# 커밋 전에 리뷰하기에 좋습니다
 ```
 
 </details>
@@ -718,39 +718,39 @@ Copilot은 GitHub 저장소와 웹 자료를 검색한 뒤, 참고 자료와 함
 
 ```bash
 
-# 1. Understand the bug report
+# 1. 버그 보고를 이해합니다
 copilot
 
 > Users report: 'Finding books by author name doesn't work for partial names'
 > @samples/book-app-project/books.py Analyze and identify the likely cause
 
-# 2. Debug the issue and fix (continuing in same session)
+# 2. 이슈를 디버깅하고 수정합니다(같은 세션에서 계속 진행)
 > Based on the analysis, show me the find_by_author function and explain the issue
 
 > Fix the find_by_author function to handle partial name matches
 
-# 3. Generate tests for the fix
+# 3. 수정 사항에 대한 테스트를 생성합니다
 > @samples/book-app-project/books.py Generate pytest tests specifically for:
 > - Full author name match
 > - Partial author name match
 > - Case-insensitive matching
 > - Author name not found
 
-# Exit the interactive session
+# 인터랙티브 세션을 종료합니다
 
 > /exit
 
-# 4. Run git add
+# 4. git add를 실행합니다
 
-# Stage the changes so git diff --staged has something to work with
+# git diff --staged가 확인할 수 있도록 변경 사항을 스테이징합니다
 git add .
 
-# 5. Generate commit message
+# 5. 커밋 메시지를 생성합니다
 copilot -p "Generate commit message for: $(git diff --staged)"
 
-# Example Output: "fix(books): support partial author name search"
+# 출력 예: "fix(books): support partial author name search"
 
-# 6. Commit changes (optional)
+# 6. 변경 사항을 커밋합니다(선택 사항)
 
 git commit -m "<paste generated message>"
 ```
@@ -820,23 +820,23 @@ git commit -m "<paste generated message>"
 ```bash
 copilot
 
-# Step 1: Review
+# 1단계: 리뷰합니다
 > @samples/book-app-project/books.py Review the remove_book() function. What edge cases are not handled?
 
-# Step 2: Refactor
+# 2단계: 리팩터링합니다
 > Improve remove_book() to use case-insensitive matching and return a clear message when the book isn't found. Show me the before and after code.
 
-# Step 3: Test
+# 3단계: 테스트합니다
 > Generate pytest tests for the improved remove_book() function, including:
 > - Removing a book that exists
 > - Case-insensitive matching ("dune" should remove "Dune")
 > - Book not found returns appropriate response
 > - Removing from an empty collection
 
-# Step 4: Review
+# 4단계: 리뷰합니다
 > /review
 
-# Step 5: Commit
+# 5단계: 커밋합니다
 > Generate a conventional commit message for this refactor
 ```
 
@@ -873,10 +873,10 @@ copilot
 ```bash
 copilot
 
-# Instead of:
+# 다음 대신:
 > Review @samples/book-app-project/book_app.py
 
-# Try:
+# 다음을 시도합니다:
 > Review @samples/book-app-project/book_app.py for input validation, error handling, and edge cases
 ```
 

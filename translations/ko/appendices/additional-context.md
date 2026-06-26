@@ -1,6 +1,6 @@
 # 추가 컨텍스트 기능
 
-> 📖 **사전 학습**: 이 부록을 읽기 전에 [2장: 컨텍스트와 대화](../02-context-conversations/README.md)를 먼저 마쳐 주세요.
+> 📖 **사전 학습**: 이 부록을 읽기 전에 [2장: 컨텍스트와 대화](../02-context-conversations/README.md)를 먼저 마칩니다.
 
 이 부록에서는 두 가지 추가 컨텍스트 기능을 다룹니다. 이미지 다루기와 여러 디렉터리에 대한 권한 관리입니다.
 
@@ -17,11 +17,11 @@ copilot
 
 > @screenshot.png What's happening in this UI?
 
-# Copilot analyzes the image and responds
+# Copilot이 이미지를 분석하고 응답합니다
 
 > @mockup.png @current-design.png Compare these two designs
 
-# You can also drag and drop images or paste from clipboard
+# 이미지를 끌어다 놓거나 클립보드에서 붙여넣을 수도 있습니다
 ```
 
 ### 지원되는 이미지 형식
@@ -73,10 +73,10 @@ copilot
 
 ### 이미지 사용 팁
 
-- **스크린샷은 잘라내세요** - 관련 부분만 남기면 컨텍스트 토큰을 아낄 수 있습니다.
-- **고대비를 사용하세요** - 분석할 UI 요소가 잘 보이도록 합니다.
-- **필요하면 표시를 더하세요** - 업로드 전에 문제 영역에 동그라미를 치거나 강조 표시를 해 두세요.
-- **개념 하나당 이미지 한 장** - 여러 장도 가능하지만 초점을 분명히 해 주세요.
+- **스크린샷은 잘라냅니다** - 관련 부분만 남기면 컨텍스트 토큰을 아낄 수 있습니다.
+- **고대비를 사용합니다** - 분석할 UI 요소가 잘 보이도록 합니다.
+- **필요하면 표시를 추가합니다** - 업로드 전에 문제 영역에 동그라미를 치거나 강조 표시를 해 둡니다.
+- **개념 하나당 이미지 한 장** - 여러 장도 가능하지만 초점을 분명히 합니다.
 
 ---
 
@@ -87,17 +87,17 @@ copilot
 ### 디렉터리 추가하기
 
 ```bash
-# Add a directory to the allowed list
+# 허용 목록에 디렉터리를 추가합니다
 copilot --add-dir /path/to/other/project
 
-# Add multiple directories
+# 여러 디렉터리를 추가합니다
 copilot --add-dir ~/workspace --add-dir /tmp
 ```
 
 ### 모든 경로 허용하기
 
 ```bash
-# Disable path restrictions entirely (use with caution)
+# 경로 제한을 완전히 비활성화합니다(주의해서 사용)
 copilot --allow-all-paths
 ```
 
@@ -107,22 +107,22 @@ copilot --allow-all-paths
 copilot
 
 > /add-dir /path/to/other/project
-# Now you can reference files from that directory
+# 이제 해당 디렉터리의 파일을 참조할 수 있습니다
 
 > /list-dirs
-# See all allowed directories
+# 허용된 모든 디렉터리를 확인합니다
 
 > /yolo
-# Quick alias for /allow-all on — auto-approves all permission prompts
+# /allow-all on의 빠른 별칭입니다 — 모든 권한 프롬프트를 자동 승인합니다
 ```
 
 ### 자동화 환경에서
 
 ```bash
-# Allow all permissions for non-interactive scripts
+# 비대화형 스크립트에 모든 권한을 허용합니다
 copilot -p "Review @src/" --allow-all
 
-# Or use the memorable alias
+# 기억하기 쉬운 별칭을 사용합니다
 copilot -p "Review @src/" --yolo
 ```
 

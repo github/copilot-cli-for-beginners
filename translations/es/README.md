@@ -93,7 +93,7 @@ La [**referencia de comandos de GitHub Copilot CLI**](https://docs.github.com/en
 
 Este material está disponible en los siguientes idiomas.
 
-[English](../../README.md) | [Español](./README.md) | [日本語](../ja-jp/README.md) | [한국어](../ko-kr/README.md) | [Português](../pt-br/README.md) | [中文(简体)](../zh-cn/README.md)
+[English](../../README.md) | [Español](./README.md) | [日本語](../ja/README.md) | [한국어](../ko/README.md) | [Português](../pt-br/README.md) | [中文(简体)](../zh-cn/README.md)
 
 ## 🙋 Obtener ayuda
 
