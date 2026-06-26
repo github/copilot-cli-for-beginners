@@ -100,7 +100,7 @@ If a non-technical document still contains occasional code or links, Tier A Crit
 | # | Criterion | Passes (5) when… | Fails (<5) when… |
 | :-- | :--- | :--- | :--- |
 | 1 | **Accuracy (정확성)** | Meaning matches the source exactly; every number, name, and fact is preserved; nothing is added, distorted, or omitted. | **Any** mistranslation, negation flip, fabricated/dropped fact, or altered number/name — even a single isolated one. |
-| 2 | **Markdown & Structural Integrity** | Frontmatter keys, Markdown structure, tables, URLs, link targets, image paths, and heading anchors/slugs are preserved exactly; heading order is stable. | **Any** broken link, altered anchor, translated frontmatter key, or corrupted Markdown/table. |
+| 2 | **Markdown & Structural Integrity** | Frontmatter keys, Markdown structure, tables, and external URLs are preserved exactly; heading order is stable. Heading anchors follow the localized headings, and every same-document anchor link resolves to its (now-localized) target. Image/asset paths resolve to a real asset—the original asset (relative path rewritten as needed) unless a localized asset exists. | **Any** broken link (including a same-document anchor that points at the original English slug after its heading was translated), unresolved image path, translated frontmatter key, or corrupted Markdown/table. |
 
 ### Tier B — Graded criteria (must score ≥4)
 

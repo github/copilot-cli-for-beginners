@@ -77,10 +77,14 @@ Regardless of locale, the following must be preserved exactly and **not** transl
 
 - YAML frontmatter **keys** (translate values only where appropriate, e.g. a `title`).
 - Fenced and inline code, including variable, function, and command names.
-- URLs, link targets, image paths, and heading anchors/slugs.
+- URLs and external link targets.
 - HTML tags, Markdown structure, tables, and admonition markers.
 
-Translate human-language prose, including comments inside code blocks where they are explanatory (per the locale rules). Keep heading structure and ordering stable so links and anchors continue to resolve.
+Translate human-language prose, including comments inside code blocks where they are explanatory (per the locale rules). Keep heading order and document structure stable.
+
+**Heading anchors follow the localized text.** When a heading is translated, its auto-generated anchor/slug changes with it—this is expected. The requirement is that **same-document anchor links keep resolving**: whenever you translate a heading, update every in-page link that targets it (`](#...)`) to the localized heading's new slug. Do not leave a link pointing at the original English slug once the heading is translated, and do not preserve an English anchor that no longer matches its heading. Anchors that point into **non-localized** files (or external URLs) keep their original target.
+
+**Image and asset paths point to the original assets unless a localized asset exists.** Because localized files live under `translations/<locale>/`, a source-relative path such as `images/x.png` must be rewritten so it still resolves to the original asset (e.g. `../../../<chapter>/images/x.png`). Only point at a localized asset when a corresponding translated image actually exists under the locale tree. Either way, the link must resolve to a real file.
 
 ### Translator agent
 
@@ -95,7 +99,9 @@ The evaluator scores the localized document against the locale's **Evaluator Sco
 ## DOs and DON'Ts
 
 - **Do** perform localization only for the target locales defined in the `rules` directory (one `<locale>.md` per supported locale). Do not localize into unsupported locales.
-- **Do** preserve Markdown structure, code, links, image paths, heading anchors, and frontmatter keys exactly (see *Markdown and formatting preservation*).
+- **Do** preserve Markdown structure, code, external link/URL targets, and frontmatter keys exactly (see *Markdown and formatting preservation*).
+- **Do** let heading anchors follow the localized heading text, and update same-document anchor links to match the new slugs so they keep resolving (see *Markdown and formatting preservation*).
+- **Do** point image and asset paths at the original assets (rewriting the relative path as needed so it resolves from `translations/<locale>/`), unless a corresponding localized asset exists (see *Markdown and formatting preservation*).
 - **Do** mirror the source directory layout under `translations/<locale>/`.
 - **Don't** treat files under `translations/` as source input.
 - **Don't** reorder or restructure content; keep headings and their order stable.
