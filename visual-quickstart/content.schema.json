@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/github/copilot-cli-for-beginners/comic-content.schema.json",
+  "title": "Comic site content",
+  "description": "Content for the comic-strip-site engine (build_site.py). This file is the source of truth for every editable word; the engine hard-codes none.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["site", "home", "footer_html", "chapters"],
+  "properties": {
+    "site": { "$ref": "#/definitions/site" },
+    "home": { "$ref": "#/definitions/home" },
+    "footer_html": {
+      "type": "string",
+      "description": "Footer HTML (raw, inserted as-is - typically a link)."
+    },
+    "chapters": {
+      "type": "array",
+      "description": "Ordered list of chapters; index 0 -> chapter-00.html, etc.",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/chapter" }
+    }
+  },
+  "definitions": {
+    "site": {
+      "type": "object",
+      "description": "Site-wide chrome text and assets (everything not tied to a specific chapter/panel).",
+      "additionalProperties": false,
+      "properties": {
+        "source_base_url": {
+          "type": "string",
+          "description": "Base URL of the course source repo for frame deep links (e.g. a GitHub blob/main root). Omit to disable deep links."
+        },
+        "lang": { "type": "string", "description": "Document language for <html lang>, e.g. 'en'." },
+        "title": { "type": "string", "description": "Browser tab title on the home page." },
+        "chapter_title_suffix": { "type": "string", "description": "Appended to each chapter's tab title, e.g. ' - Pip's Comic'." },
+        "favicon": { "type": "string", "description": "Favicon path relative to the site root." },
+        "avatar": { "type": "string", "description": "Mascot avatar image path shown in the banner." },
+        "avatar_alt": { "type": "string", "description": "Alt text for the mascot avatar image." },
+        "select_label": { "type": "string", "description": "Home page chapter-picker button label." },
+        "open_section_label": { "type": "string", "description": "Book-icon deep-link label (aria-label + tooltip)." },
+        "copy_command_label": { "type": "string", "description": "Prefix for terminal copy-button aria-labels, e.g. 'Copy command'." },
+        "progress_label": { "type": "string", "description": "Banner progress-bar aria label. {n} and {total} are substituted." },
+        "nav": { "$ref": "#/definitions/nav" }
+      }
+    },
+    "nav": {
+      "type": "object",
+      "description": "Navigation button labels.",
+      "additionalProperties": false,
+      "properties": {
+        "home": { "type": "string" },
+        "prev": { "type": "string", "description": "Full 'previous' label (wide screens)." },
+        "prev_short": { "type": "string", "description": "Short 'previous' label (narrow screens)." },
+        "next": { "type": "string", "description": "Full 'next' label (wide screens)." },
+        "next_short": { "type": "string", "description": "Short 'next' label (narrow screens)." }
+      }
+    },
+    "home": {
+      "type": "object",
+      "description": "Home page banner and intro frame.",
+      "additionalProperties": false,
+      "required": ["title_html", "subtitle", "cta_text", "cta_href", "intro"],
+      "properties": {
+        "title_html": { "type": "string", "description": "Home banner heading (raw HTML; <br> allowed)." },
+        "subtitle": { "type": "string", "description": "Home banner subtitle." },
+        "cta_text": { "type": "string", "description": "Call-to-action button text." },
+        "cta_href": { "type": "string", "description": "Call-to-action link target." },
+        "intro": { "$ref": "#/definitions/panel" }
+      }
+    },
+    "chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["badge", "title", "subtitle", "selector", "panels"],
+      "properties": {
+        "badge": { "type": "string", "description": "Chapter chip text, e.g. 'Chapter 00'. The trailing number drives the progress bar." },
+        "title": { "type": "string", "description": "Chapter title (banner + tab title)." },
+        "subtitle": { "type": "string", "description": "Chapter subtitle shown under the title." },
+        "selector": { "type": "string", "description": "One-line description shown in the home chapter picker." },
+        "doc": { "type": "string", "description": "Chapter README path under site.source_base_url; gives every frame a default book-icon link." },
+        "panels": {
+          "type": "array",
+          "description": "The chapter's comic frames, in order.",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/panel" }
+        }
+      }
+    },
+    "panel": {
+      "type": "object",
+      "description": "A single comic frame: a background image plus optional speech bubbles, a terminal bar, a caption, and a deep link.",
+      "additionalProperties": false,
+      "required": ["img", "alt", "caption"],
+      "properties": {
+        "img": { "type": "string", "description": "Panel image filename under assets/img/." },
+        "alt": { "type": "string", "description": "Alt text / aria-label describing the panel image." },
+        "caption": {
+          "description": "Frame title shown above the panel: a string, or a list of strings joined with spaces.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
+        "bubble": { "$ref": "#/definitions/bubble" },
+        "bubbles": {
+          "type": "array",
+          "description": "Multiple speech bubbles (multi-character dialogue).",
+          "items": { "$ref": "#/definitions/bubble" }
+        },
+        "terminal": {
+          "type": "array",
+          "description": "Dark terminal-bar command lines. An indented line continues the line above; '  # ...' (two spaces then #) renders as a dimmed comment.",
+          "items": { "type": "string" }
+        },
+        "term": {
+          "type": "array",
+          "description": "Legacy alias for 'terminal'. Prefer 'terminal'.",
+          "items": { "type": "string" }
+        },
+        "link": {
+          "description": "Book-icon deep link: a '#anchor' (resolved against the chapter's doc), a path relative to site.source_base_url, an absolute http(s) URL, or false to hide the icon on this frame.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "boolean" }
+          ]
+        }
+      }
+    },
+    "bubble": {
+      "type": "object",
+      "description": "A white speech bubble with a tail that points at the speaker's head.",
+      "additionalProperties": false,
+      "required": ["lines", "w", "tx", "ty"],
+      "properties": {
+        "lines": {
+          "type": "array",
+          "description": "Speech text, one entry per rendered line.",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "w": { "type": "number", "description": "Bubble width in panel pixels." },
+        "tx": { "type": "number", "description": "Speaker head X (panel px); the tail points here." },
+        "ty": { "type": "number", "description": "Speaker head Y (panel px); the tail points here." },
+        "x": { "type": "number", "description": "Manual bubble X (panel px). Usually omit and let auto-placement choose." },
+        "y": { "type": "number", "description": "Manual bubble Y (panel px). Usually omit and let auto-placement choose." },
+        "auto": { "type": "boolean", "description": "Auto-place the bubble (default true). Set false to force the manual x/y." }
+      }
+    }
+  }
+}

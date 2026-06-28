@@ -5,8 +5,9 @@
   edits here will be overwritten on the next build.
   
   How to make changes:
-    - WORDS (titles, subtitle, CTA, footer, captions, character dialogue,
-      terminal commands, chapter list): edit visual-quickstart/content.yaml
+    - WORDS (page/tab titles, nav labels, site chrome, subtitle, CTA, footer,
+      captions, character dialogue, terminal commands, chapter list): edit
+      visual-quickstart/content.yaml (see its top-level `site:` section)
     - STYLES (CSS): edit the CSS block in build_site.py
     - HTML STRUCTURE / layout: edit the page templates in build_site.py
       (index_page / chapter_page / banner / nav / panel)
@@ -17,7 +18,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Pip's GitHub Copilot CLI Comic</title>
+<title>GitHub Copilot - Visual Quickstart</title>
 <link rel="icon" href="assets/img/pip-hero.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,15 +30,15 @@
   <div class="banner home-banner">
     <div class="b-copy">
       <h1>GitHub Copilot CLI<br>for Beginners</h1>
-      <p class="b-sub">A visual quickstart guide to the GitHub Copilot CLI.</p>
+      <p class="b-sub">A visual quickstart reference for learning agentic coding.</p>
     </div>
-    <img class="home-av" src="assets/img/pip-avatar-hat.png?v=00a7de70" alt="Pip the fox waving" width="170" height="170"/>
+    <img class="home-av" src="assets/img/pip-avatar-hat.png?v=8444f7c2" alt="Pip the fox mascot waving" width="170" height="170"/>
   </div>
 </header>
 <main class="home-main">
   <figure class="cell home-intro">
     <figcaption class="cap">Meet Pip and Professor Quill - pick a chapter below to get started!</figcaption>
-    <svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip the fox waves hello beside Professor Quill the owl at a cozy desk with a laptop." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch00-welcome.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="834" y="96" width="520" height="138" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="834,158 773,201 834,218" fill="#ffffff"/><line x1="834" y1="158" x2="834" y2="218" stroke="#ffffff" stroke-width="9"/><line x1="834" y1="158" x2="773" y2="201" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="834" y1="218" x2="773" y2="201" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1094" y="149" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="33" fill="#1f2937">Hi, I&#x27;m Pip! Ready to learn</text><text x="1094" y="194" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="33" fill="#1f2937">about GitHub Copilot CLI!</text></g><g><rect x="780" y="312" width="640" height="134" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1085,446 1127,503 1145,446" fill="#ffffff"/><line x1="1085" y1="446" x2="1145" y2="446" stroke="#ffffff" stroke-width="9"/><line x1="1085" y1="446" x2="1127" y2="503" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1145" y1="446" x2="1127" y2="503" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1100" y="364" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="32" fill="#1f2937">Greetings! I&#x27;m Professor Quill.</text><text x="1100" y="407" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="32" fill="#1f2937">I explain the why behind each step.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg>
+    <svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip the fox waves hello beside Professor Quill the owl at a cozy desk with a laptop." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch00-welcome.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="834" y="96" width="624" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="834,160 773,202 834,220" fill="#ffffff"/><line x1="834" y1="160" x2="834" y2="220" stroke="#ffffff" stroke-width="9"/><line x1="834" y1="160" x2="773" y2="202" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="834" y1="220" x2="773" y2="202" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1146" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Hi, I&#x27;m Pip! Ready to learn</text><text x="1146" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">about GitHub Copilot CLI?</text></g><g><rect x="780" y="312" width="690" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1101,452 1135,506 1161,452" fill="#ffffff"/><line x1="1101" y1="452" x2="1161" y2="452" stroke="#ffffff" stroke-width="9"/><line x1="1101" y1="452" x2="1135" y2="506" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1161" y1="452" x2="1135" y2="506" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1125" y="366" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Greetings! I&#x27;m Professor Quill.</text><text x="1125" y="412" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">I explain the &quot;why&quot; behind each step.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg>
   </figure>
   <div class="intro-cta"><a class="cta" href="chapter-00.html">Get Started!</a></div>
   <details class="chapter-select">
@@ -54,7 +55,7 @@
     </div>
   </details>
 </main>
-<footer class="foot"><a href="https://github.com/github/copilot-cli-for-beginners">GitHub Copilot CLI for Beginners course</a>.</footer>
+<footer class="foot"><a href="https://github.com/github/copilot-cli-for-beginners">GitHub Copilot CLI for Beginners course</a></footer>
 <script>
 (function(){
   var d=document.querySelector('.chapter-select');
