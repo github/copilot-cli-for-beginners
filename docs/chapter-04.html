@@ -19,67 +19,69 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Agents and Custom Instructions - Pip&#x27;s Copilot CLI Comic</title>
-<link rel="icon" href="assets/img/pip-hero.png"/>
+<link rel="icon" href="assets/img/pip-hero.webp"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css"/>
+<style>.fd-body.hljs{color:#e6edf3}.fd-body .hljs-comment,.fd-body .hljs-quote{color:#8b949e;font-style:italic}.fd-body .hljs-keyword,.fd-body .hljs-selector-tag,.fd-body .hljs-literal,.fd-body .hljs-type{color:#ff7b72}.fd-body .hljs-string,.fd-body .hljs-meta .hljs-string,.fd-body .hljs-regexp{color:#a5d6ff}.fd-body .hljs-number,.fd-body .hljs-symbol{color:#79c0ff}.fd-body .hljs-title,.fd-body .hljs-title.function_,.fd-body .hljs-section{color:#d2a8ff}.fd-body .hljs-built_in,.fd-body .hljs-attr,.fd-body .hljs-attribute{color:#ffa657}.fd-body .hljs-name,.fd-body .hljs-tag,.fd-body .hljs-selector-class,.fd-body .hljs-selector-id{color:#7ee787}.fd-body .hljs-bullet,.fd-body .hljs-link{color:#f2cc60}.fd-body .hljs-meta,.fd-body .hljs-comment.hljs-doctag{color:#8b949e}.fd-body .hljs-strong{font-weight:700}.fd-body .hljs-section{font-weight:700}</style>
 </head>
-<body>
+<body data-chapter="04" data-total="8">
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="banner-wrap">
+  <div class="b-track" role="img" aria-label="Course progress: chapter 4 of 8"><i style="width:62%"></i></div>
   <div class="banner">
     <span class="chip">CHAPTER 04</span>
     <h1>Agents and Custom Instructions</h1>
     <p class="b-sub">Hire built-in and custom agents, and set project standards once with AGENTS.md.</p>
-    <div class="b-track" role="img" aria-label="Course progress: chapter 4 of 8"><i style="width:62%"></i></div>
-    <img class="pipav" src="assets/img/pip-avatar-hat.png?v=8444f7c2" alt="Pip the fox mascot"/>
+    <img class="pipav" src="assets/img/pip-avatar-hat.webp?v=f093b7cf" alt="Pip the fox mascot"/>
   </div>
 </header>
 <nav class="nav" aria-label="Chapter"><a class="nav-btn" href="chapter-03.html">&larr;&nbsp;<span class="nav-lbl-full">Previous Chapter</span><span class="nav-lbl-short">Prev</span></a><a class="nav-home" href="index.html">Home</a><a class="nav-btn" href="chapter-05.html"><span class="nav-lbl-full">Next Chapter</span><span class="nav-lbl-short">Next</span>&nbsp;&rarr;</a></nav>
+<button class="present-btn present-fab" type="button"><svg class="present-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20"/></svg><span>Present</span></button>
 <main id="main" class="strip">
-<figure class="cell"><span class="badge">1</span><figcaption class="cap"><span class="cap-title">Learning Objectives</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill and Pip stand beside a chalkboard showing a checklist of four green checkmarks. Details: In this chapter you will: - Pick built-in and custom agents - Combine specialist agents on a task - Set standards with AGENTS.md and instruction files" xmlns="http://www.w3.org/2000/svg"><image href="assets/img/objectives.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="756" width="1488" height="246" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="772" width="9" height="214" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="822" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">In this chapter you will:</text><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Pick built-in and custom agents</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Combine specialist agents on a task</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Set standards with AGENTS.md and instruction files</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
-<figure class="cell"><span class="badge">2</span><figcaption class="cap"><span class="cap-title">What is an agent?</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#new-to-agents-start-here" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill points at three cards showing a wrench, a lightning bolt, and a paint roller while Pip thinks about which specialist to hire. Speech bubble: “An agent is a specialist I can hire for a job.”. Speech bubble: “Each is an expert at one kind of task.”. Details: Like calling a plumber, electrician, or painter - the right pro for each job." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-agents.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="894" width="1488" height="108" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="910" width="9" height="76" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Like calling a plumber, electrician, or painter - the right pro for each job.</text></g><g><rect x="546" y="60" width="520" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="546,124 488,176 546,184" fill="#ffffff"/><line x1="546" y1="124" x2="546" y2="184" stroke="#ffffff" stroke-width="9"/><line x1="546" y1="124" x2="488" y2="176" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="546" y1="184" x2="488" y2="176" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="806" y="114" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">An agent is a specialist</text><text x="806" y="160" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">I can hire for a job.</text></g><g><rect x="834" y="708" width="500" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1059,708 1094,646 1119,708" fill="#ffffff"/><line x1="1059" y1="708" x2="1119" y2="708" stroke="#ffffff" stroke-width="9"/><line x1="1059" y1="708" x2="1094" y2="646" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1119" y1="708" x2="1094" y2="646" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1084" y="762" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Each is an expert at</text><text x="1084" y="808" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">one kind of task.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
-<figure class="cell"><span class="badge">3</span><figcaption class="cap"><span class="cap-title">Pick an agent with /agent</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#interactive-mode" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip points at a laptop showing a list of agents with the top one highlighted. Speech bubble: “Type /agent, then pick one from the list.”. Terminal: copilot; &gt; /agent          # list and pick an agent." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-pick.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="744" y="96" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="744,160 686,212 744,220" fill="#ffffff"/><line x1="744" y1="160" x2="744" y2="220" stroke="#ffffff" stroke-width="9"/><line x1="744" y1="160" x2="686" y2="212" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="744" y1="220" x2="686" y2="212" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1024" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Type /agent, then</text><text x="1024" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">pick one from the list.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /agent          # list and pick an agent" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /agent        </span><span class="term-comment">  # list and pick an agent</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/agent" aria-label="Copy command: /agent" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">4</span><figcaption class="cap"><span class="cap-title">Built-in agents</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#built-in-agents" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip gives a thumbs up beside a laptop showing a checklist and a badge. Speech bubble: “Some agents are built in. Just type a slash command.”. Terminal: &gt; /review     # built-in code-review agent; &gt; /plan       # built-in planning agent." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-builtin.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="690" y="78" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="690,142 635,201 690,202" fill="#ffffff"/><line x1="690" y1="142" x2="690" y2="202" stroke="#ffffff" stroke-width="9"/><line x1="690" y1="142" x2="635" y2="201" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="690" y1="202" x2="635" y2="201" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="970" y="132" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Some agents are built in.</text><text x="970" y="178" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Just type a slash command.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; /review     # built-in code-review agent" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /review   </span><span class="term-comment">  # built-in code-review agent</span></div><div class="term-line" data-full="&gt; /plan       # built-in planning agent" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /plan     </span><span class="term-comment">  # built-in planning agent</span></div></div><button class="term-copy" type="button" data-copy="/review" aria-label="Copy command: /review" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/plan" aria-label="Copy command: /plan" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">5</span><figcaption class="cap"><span class="cap-title">Make your own agent</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#where-to-put-agent-files" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip proudly holds a page showing a gear icon, representing a custom agent. Speech bubble: “Write your own custom agent in a simple markdown file.”. Details: A custom agent is just a markdown file you write." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-custom.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="894" width="1488" height="108" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="910" width="9" height="76" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">A custom agent is just a markdown file you write.</text></g><g><rect x="24" y="60" width="560" height="138" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="464,198 532,212 524,198" fill="#ffffff"/><line x1="464" y1="198" x2="524" y2="198" stroke="#ffffff" stroke-width="9"/><line x1="464" y1="198" x2="532" y2="212" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="524" y1="198" x2="532" y2="212" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="304" y="113" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="33" fill="#1f2937">Write your own custom agent</text><text x="304" y="158" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="33" fill="#1f2937">in a simple markdown file.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><button class="file-view-btn" type="button" data-dialog="fd-ch04-custom" aria-haspopup="dialog" aria-label="See an example" style="top:92.578%"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span>See an example</span></button></div><dialog class="file-dialog" id="fd-ch04-custom" aria-label="python-reviewer.agent.md"><div class="fd-head"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span class="fd-name">python-reviewer.agent.md</span><button class="fd-close" type="button" data-close aria-label="Close">&times;</button></div><pre class="fd-body"><code>---
+<figure class="cell"><span class="badge">1</span><figcaption class="cap"><span class="cap-title">Chapter 04 - Learning Objectives</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill and Pip stand beside a chalkboard showing a checklist of four green checkmarks. Details: In this chapter you will: - Pick built-in and custom agents - Combine specialist agents on a task - Set standards with AGENTS.md and instruction files" xmlns="http://www.w3.org/2000/svg"><image href="assets/img/objectives.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="756" width="1488" height="246" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="772" width="9" height="214" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="822" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">In this chapter you will:</text><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Pick built-in and custom agents</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Combine specialist agents on a task</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Set standards with AGENTS.md and instruction files</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
+<figure class="cell"><span class="badge">2</span><figcaption class="cap"><span class="cap-title">What is an agent?</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#new-to-agents-start-here" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill points at three cards showing a wrench, a lightning bolt, and a paint roller while Pip thinks about which specialist to hire. Speech bubble: “An agent is a specialist I can hire for a job.”. Speech bubble: “Each is an expert at one kind of task.”. Details: Like calling a plumber, electrician, or painter - the right pro for each job." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-agents.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="894" width="1488" height="108" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="910" width="9" height="76" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Like calling a plumber, electrician, or painter - the right pro for each job.</text></g><g><rect x="546" y="60" width="520" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="546,124 488,176 546,184" fill="#ffffff"/><line x1="546" y1="124" x2="546" y2="184" stroke="#ffffff" stroke-width="9"/><line x1="546" y1="124" x2="488" y2="176" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="546" y1="184" x2="488" y2="176" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="806" y="114" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">An agent is a specialist</text><text x="806" y="160" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">I can hire for a job.</text></g><g><rect x="834" y="708" width="500" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1059,708 1094,646 1119,708" fill="#ffffff"/><line x1="1059" y1="708" x2="1119" y2="708" stroke="#ffffff" stroke-width="9"/><line x1="1059" y1="708" x2="1094" y2="646" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1119" y1="708" x2="1094" y2="646" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1084" y="762" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Each is an expert at</text><text x="1084" y="808" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">one kind of task.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
+<figure class="cell"><span class="badge">3</span><figcaption class="cap"><span class="cap-title">Pick an agent with /agent</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#interactive-mode" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip points at a laptop showing a list of agents with the top one highlighted. Speech bubble: “Type /agent, then pick one from the list.”. Terminal: copilot; &gt; /agent          # list and pick an agent." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-pick.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="744" y="96" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="744,160 686,212 744,220" fill="#ffffff"/><line x1="744" y1="160" x2="744" y2="220" stroke="#ffffff" stroke-width="9"/><line x1="744" y1="160" x2="686" y2="212" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="744" y1="220" x2="686" y2="212" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1024" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Type /agent, then</text><text x="1024" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">pick one from the list.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /agent          # list and pick an agent" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /agent        </span><span class="term-comment">  # list and pick an agent</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/agent" aria-label="Copy command: /agent" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">4</span><figcaption class="cap"><span class="cap-title">Built-in agents</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#built-in-agents" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip gives a thumbs up beside a laptop showing a checklist and a badge. Speech bubble: “Some agents are built in. Just type a slash command.”. Terminal: &gt; /review     # built-in code-review agent; &gt; /plan       # built-in planning agent." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-builtin.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="690" y="78" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="690,142 635,201 690,202" fill="#ffffff"/><line x1="690" y1="142" x2="690" y2="202" stroke="#ffffff" stroke-width="9"/><line x1="690" y1="142" x2="635" y2="201" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="690" y1="202" x2="635" y2="201" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="970" y="132" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Some agents are built in.</text><text x="970" y="178" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Just type a slash command.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; /review     # built-in code-review agent" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /review   </span><span class="term-comment">  # built-in code-review agent</span></div><div class="term-line" data-full="&gt; /plan       # built-in planning agent" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /plan     </span><span class="term-comment">  # built-in planning agent</span></div></div><button class="term-copy" type="button" data-copy="/review" aria-label="Copy command: /review" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/plan" aria-label="Copy command: /plan" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">5</span><figcaption class="cap"><span class="cap-title">Make your own agent</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#where-to-put-agent-files" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip proudly holds a page showing a gear icon, representing a custom agent. Speech bubble: “Write your own custom agent in a simple markdown file.”. Details: A custom agent is just a markdown file you write." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-custom.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="894" width="1488" height="108" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="910" width="9" height="76" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">A custom agent is just a markdown file you write.</text></g><g><rect x="24" y="60" width="560" height="138" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="464,198 532,212 524,198" fill="#ffffff"/><line x1="464" y1="198" x2="524" y2="198" stroke="#ffffff" stroke-width="9"/><line x1="464" y1="198" x2="532" y2="212" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="524" y1="198" x2="532" y2="212" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="304" y="113" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="33" fill="#1f2937">Write your own custom agent</text><text x="304" y="158" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="33" fill="#1f2937">in a simple markdown file.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><button class="file-view-btn" type="button" data-dialog="fd-ch04-custom" aria-haspopup="dialog" aria-label="See an example" style="top:92.578%"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span>See an example</span></button></div><dialog class="file-dialog" id="fd-ch04-custom" aria-label="python-reviewer.agent.md"><div class="fd-head"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span class="fd-name">python-reviewer.agent.md</span><button class="fd-close" type="button" data-close aria-label="Close">&times;</button></div><pre class="fd-body hljs"><code>---
 name: python-reviewer
 description: Python code quality specialist for reviewing Python projects
-tools: [&quot;read&quot;, &quot;edit&quot;, &quot;search&quot;]
----
+<span class="hljs-section">tools: [&quot;read&quot;, &quot;edit&quot;, &quot;search&quot;]
+---</span>
 
-# Python Code Reviewer
+<span class="hljs-section"># Python Code Reviewer</span>
 
 You are a Python specialist focused on code quality and best practices.
 
-## Your Expertise
+<span class="hljs-section">## Your Expertise</span>
 
-- Python 3.10+ features (dataclasses, type hints, match statements)
-- PEP 8 style compliance
-- Error handling patterns (try/except, custom exceptions)
-- File I/O and JSON handling best practices
+<span class="hljs-bullet">-</span> Python 3.10+ features (dataclasses, type hints, match statements)
+<span class="hljs-bullet">-</span> PEP 8 style compliance
+<span class="hljs-bullet">-</span> Error handling patterns (try/except, custom exceptions)
+<span class="hljs-bullet">-</span> File I/O and JSON handling best practices
 
-## Code Standards
+<span class="hljs-section">## Code Standards</span>
 
 When reviewing, always check for:
-- Missing type hints on function signatures
-- Bare except clauses (should catch specific exceptions)
-- Mutable default arguments
-- Proper use of context managers (with statements)
-- Input validation completeness
+<span class="hljs-bullet">-</span> Missing type hints on function signatures
+<span class="hljs-bullet">-</span> Bare except clauses (should catch specific exceptions)
+<span class="hljs-bullet">-</span> Mutable default arguments
+<span class="hljs-bullet">-</span> Proper use of context managers (with statements)
+<span class="hljs-bullet">-</span> Input validation completeness
 
-## When Reviewing Code
+<span class="hljs-section">## When Reviewing Code</span>
 
 Prioritize:
-- [CRITICAL] Security issues and data corruption risks
-- [HIGH] Missing error handling
-- [MEDIUM] Style and type hint issues
-- [LOW] Minor improvements
+<span class="hljs-bullet">-</span> [CRITICAL] Security issues and data corruption risks
+<span class="hljs-bullet">-</span> [HIGH] Missing error handling
+<span class="hljs-bullet">-</span> [MEDIUM] Style and type hint issues
+<span class="hljs-bullet">-</span> [LOW] Minor improvements
 </code></pre></dialog></figure>
-<figure class="cell"><span class="badge">6</span><figcaption class="cap"><span class="cap-title">Agents work as a team</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#working-with-multiple-agents" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip and Professor Quill watch three colorful robot agents passing a glowing task token around a laptop. Speech bubble: “Big task? Several specialist agents team up on it.”. Speech bubble: “Each handles the part it knows best.”. Terminal: copilot; &gt; /agent       # switch to the reviewer; &gt; /agent       # then the tester." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-multiagent.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="788" width="1488" height="214" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="818" r="11" fill="#ff5f56"/><circle cx="94" cy="818" r="11" fill="#ffbd2e"/><circle cx="130" cy="818" r="11" fill="#27c93f"/></g><g><rect x="402" y="42" width="580" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="546,182 523,214 606,182" fill="#ffffff"/><line x1="546" y1="182" x2="606" y2="182" stroke="#ffffff" stroke-width="9"/><line x1="546" y1="182" x2="523" y2="214" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="606" y1="182" x2="523" y2="214" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="692" y="96" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Big task? Several specialist</text><text x="692" y="142" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">agents team up on it.</text></g><g><rect x="528" y="312" width="460" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="667,452 657,499 727,452" fill="#ffffff"/><line x1="667" y1="452" x2="727" y2="452" stroke="#ffffff" stroke-width="9"/><line x1="667" y1="452" x2="657" y2="499" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="727" y1="452" x2="657" y2="499" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="758" y="366" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Each handles the part</text><text x="758" y="412" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">it knows best.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:81.738%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /agent       # switch to the reviewer" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /agent     </span><span class="term-comment">  # switch to the reviewer</span></div><div class="term-line" data-full="&gt; /agent       # then the tester" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /agent     </span><span class="term-comment">  # then the tester</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:82.422%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/agent" aria-label="Copy command: /agent" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/agent" aria-label="Copy command: /agent" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">7</span><figcaption class="cap"><span class="cap-title">Set up your project with /init</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#quick-setup-with-init" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip presses a glowing button on a laptop and configuration file icons spill out and arrange themselves on the desk. Speech bubble: “New project? Run /init and I scaffold your config files for you.”. Terminal: copilot; &gt; /init      # scan the project and create instruction files." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-init.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="690" y="96" width="720" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="772,236 743,253 832,236" fill="#ffffff"/><line x1="772" y1="236" x2="832" y2="236" stroke="#ffffff" stroke-width="9"/><line x1="772" y1="236" x2="743" y2="253" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="832" y1="236" x2="743" y2="253" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1050" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">New project? Run /init and I</text><text x="1050" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">scaffold your config files for you.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /init      # scan the project and create instruction files" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /init    </span><span class="term-comment">  # scan the project and create instruction files</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/init" aria-label="Copy command: /init" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">8</span><figcaption class="cap"><span class="cap-title">Target rules to file types</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#custom-instruction-files-instructionsmd" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip points at a laptop showing one instruction document with arrows targeting a Python file and a code file. Speech bubble: “Each .instructions.md file applies to the files you choose.”. Details: Example: .github/instructions/python-standards.instructions.md To apply it to a specific file type, use the applyTo field. Example: applyTo: &quot;**/*.py&quot;." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-scope.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="802" width="1488" height="200" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="818" width="9" height="168" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Example: .github/instructions/python-standards.instructions.md</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">To apply it to a specific file type, use the applyTo field.</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Example: applyTo: &quot;**/*.py&quot;.</text></g><g><rect x="708" y="96" width="640" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="708,160 649,210 708,220" fill="#ffffff"/><line x1="708" y1="160" x2="708" y2="220" stroke="#ffffff" stroke-width="9"/><line x1="708" y1="160" x2="649" y2="210" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="708" y1="220" x2="649" y2="210" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1028" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Each .instructions.md file</text><text x="1028" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">applies to the files you choose.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><button class="file-view-btn" type="button" data-dialog="fd-ch04-scope" aria-haspopup="dialog" aria-label="See an example" style="top:88.086%"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span>See an example</span></button></div><dialog class="file-dialog" id="fd-ch04-scope" aria-label="python-standards.instructions.md"><div class="fd-head"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span class="fd-name">python-standards.instructions.md</span><button class="fd-close" type="button" data-close aria-label="Close">&times;</button></div><pre class="fd-body"><code>---
-applyTo: &quot;**/*.py&quot;
+<figure class="cell"><span class="badge">6</span><figcaption class="cap"><span class="cap-title">Agents work as a team</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#working-with-multiple-agents" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip and Professor Quill watch three colorful robot agents passing a glowing task token around a laptop. Speech bubble: “Big task? Several specialist agents team up on it.”. Speech bubble: “Each handles the part it knows best.”. Terminal: copilot; &gt; /agent       # switch to the reviewer; &gt; /agent       # then the tester." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-multiagent.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="788" width="1488" height="214" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="818" r="11" fill="#ff5f56"/><circle cx="94" cy="818" r="11" fill="#ffbd2e"/><circle cx="130" cy="818" r="11" fill="#27c93f"/></g><g><rect x="402" y="42" width="580" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="546,182 523,214 606,182" fill="#ffffff"/><line x1="546" y1="182" x2="606" y2="182" stroke="#ffffff" stroke-width="9"/><line x1="546" y1="182" x2="523" y2="214" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="606" y1="182" x2="523" y2="214" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="692" y="96" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Big task? Several specialist</text><text x="692" y="142" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">agents team up on it.</text></g><g><rect x="528" y="312" width="460" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="667,452 657,499 727,452" fill="#ffffff"/><line x1="667" y1="452" x2="727" y2="452" stroke="#ffffff" stroke-width="9"/><line x1="667" y1="452" x2="657" y2="499" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="727" y1="452" x2="657" y2="499" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="758" y="366" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Each handles the part</text><text x="758" y="412" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">it knows best.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:81.738%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /agent       # switch to the reviewer" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /agent     </span><span class="term-comment">  # switch to the reviewer</span></div><div class="term-line" data-full="&gt; /agent       # then the tester" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /agent     </span><span class="term-comment">  # then the tester</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:82.422%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/agent" aria-label="Copy command: /agent" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/agent" aria-label="Copy command: /agent" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">7</span><figcaption class="cap"><span class="cap-title">Set up your project with /init</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#quick-setup-with-init" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip presses a glowing button on a laptop and configuration file icons spill out and arrange themselves on the desk. Speech bubble: “New project? Run /init and I scaffold your config files for you.”. Terminal: copilot; &gt; /init      # scan the project and create instruction files." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-init.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="690" y="96" width="720" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="772,236 743,253 832,236" fill="#ffffff"/><line x1="772" y1="236" x2="832" y2="236" stroke="#ffffff" stroke-width="9"/><line x1="772" y1="236" x2="743" y2="253" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="832" y1="236" x2="743" y2="253" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1050" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">New project? Run /init and I</text><text x="1050" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">scaffold your config files for you.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /init      # scan the project and create instruction files" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /init    </span><span class="term-comment">  # scan the project and create instruction files</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/init" aria-label="Copy command: /init" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">8</span><figcaption class="cap"><span class="cap-title">Target rules to file types</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#custom-instruction-files-instructionsmd" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip points at a laptop showing one instruction document with arrows targeting a Python file and a code file. Speech bubble: “Each .instructions.md file applies to the files you choose.”. Details: Example: .github/instructions/python-standards.instructions.md To apply it to a specific file type, use the applyTo field. Example: applyTo: &quot;**/*.py&quot;." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-scope.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="802" width="1488" height="200" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="818" width="9" height="168" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Example: .github/instructions/python-standards.instructions.md</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">To apply it to a specific file type, use the applyTo field.</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Example: applyTo: &quot;**/*.py&quot;.</text></g><g><rect x="708" y="96" width="640" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="708,160 649,210 708,220" fill="#ffffff"/><line x1="708" y1="160" x2="708" y2="220" stroke="#ffffff" stroke-width="9"/><line x1="708" y1="160" x2="649" y2="210" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="708" y1="220" x2="649" y2="210" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1028" y="150" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Each .instructions.md file</text><text x="1028" y="196" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">applies to the files you choose.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><button class="file-view-btn" type="button" data-dialog="fd-ch04-scope" aria-haspopup="dialog" aria-label="See an example" style="top:88.086%"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span>See an example</span></button></div><dialog class="file-dialog" id="fd-ch04-scope" aria-label="python-standards.instructions.md"><div class="fd-head"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span class="fd-name">python-standards.instructions.md</span><button class="fd-close" type="button" data-close aria-label="Close">&times;</button></div><pre class="fd-body hljs"><code>---
+<span class="hljs-section">applyTo: &quot;<span class="hljs-strong">**/<span class="hljs-emphasis">*.py&quot;
 ---
 
 # Python Standards
@@ -101,53 +103,130 @@ Dockerfile or some JSON stays clutter-free.
 
 ## Testing
 
-- Put pytest tests in `samples/book-app-project/tests/` using `test_*.py` naming.
+- Put pytest tests in `samples/book-app-project/tests/` using `test_*</span>.py` naming.
 - Cover the happy path and edge cases (empty input, missing data).
-</code></pre></dialog></figure>
-<figure class="cell"><span class="badge">9</span><figcaption class="cap"><span class="cap-title">Set project standards once</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#agentsmd" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip gestures toward a laptop with a gear while Professor Quill watches. Speech bubble: “Put your rules in AGENTS.md.”. Speech bubble: “Set standards once - Copilot follows them.”. Details: Add an AGENTS.md file to your repo. Copilot reads and follows it automatically." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-instructions.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="848" width="1488" height="154" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="864" width="9" height="122" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Add an AGENTS.md file to your repo.</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Copilot reads and follows it automatically.</text></g><g><rect x="618" y="132" width="560" height="94" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="618,150 558,194 618,210" fill="#ffffff"/><line x1="618" y1="150" x2="618" y2="210" stroke="#ffffff" stroke-width="9"/><line x1="618" y1="150" x2="558" y2="194" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="618" y1="210" x2="558" y2="194" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="898" y="186" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Put your rules in AGENTS.md.</text></g><g><rect x="762" y="258" width="540" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1071,398 1144,442 1131,398" fill="#ffffff"/><line x1="1071" y1="398" x2="1131" y2="398" stroke="#ffffff" stroke-width="9"/><line x1="1071" y1="398" x2="1144" y2="442" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1131" y1="398" x2="1144" y2="442" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1032" y="312" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Set standards once -</text><text x="1032" y="358" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Copilot follows them.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><button class="file-view-btn" type="button" data-dialog="fd-ch04-instructions" aria-haspopup="dialog" aria-label="See an example" style="top:90.332%"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span>See an example</span></button></div><dialog class="file-dialog" id="fd-ch04-instructions" aria-label="AGENTS.md"><div class="fd-head"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span class="fd-name">AGENTS.md</span><button class="fd-close" type="button" data-close aria-label="Close">&times;</button></div><pre class="fd-body"><code># AGENTS.md
+</span></span></code></pre></dialog></figure>
+<figure class="cell"><span class="badge">9</span><figcaption class="cap"><span class="cap-title">Set project standards once</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/04-agents-custom-instructions/README.md#agentsmd" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip gestures toward a laptop with a gear while Professor Quill watches. Speech bubble: “Put your rules in AGENTS.md.”. Speech bubble: “Set standards once - Copilot follows them.”. Details: Add an AGENTS.md file to your repo. Copilot reads and follows it automatically." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-instructions.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="848" width="1488" height="154" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="864" width="9" height="122" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Add an AGENTS.md file to your repo.</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Copilot reads and follows it automatically.</text></g><g><rect x="618" y="132" width="560" height="94" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="618,150 558,194 618,210" fill="#ffffff"/><line x1="618" y1="150" x2="618" y2="210" stroke="#ffffff" stroke-width="9"/><line x1="618" y1="150" x2="558" y2="194" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="618" y1="210" x2="558" y2="194" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="898" y="186" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Put your rules in AGENTS.md.</text></g><g><rect x="762" y="258" width="540" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1071,398 1144,442 1131,398" fill="#ffffff"/><line x1="1071" y1="398" x2="1131" y2="398" stroke="#ffffff" stroke-width="9"/><line x1="1071" y1="398" x2="1144" y2="442" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1131" y1="398" x2="1144" y2="442" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1032" y="312" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Set standards once -</text><text x="1032" y="358" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Copilot follows them.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><button class="file-view-btn" type="button" data-dialog="fd-ch04-instructions" aria-haspopup="dialog" aria-label="See an example" style="top:90.332%"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span>See an example</span></button></div><dialog class="file-dialog" id="fd-ch04-instructions" aria-label="AGENTS.md"><div class="fd-head"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span class="fd-name">AGENTS.md</span><button class="fd-close" type="button" data-close aria-label="Close">&times;</button></div><pre class="fd-body hljs"><code><span class="hljs-section"># AGENTS.md</span>
 
 Beginner-friendly course teaching GitHub Copilot CLI. Educational content, not software.
 
-## Structure
+<span class="hljs-section">## Structure</span>
 
 | Path | Purpose |
 |------|---------|
-| `00-07/` | Chapters: analogy → concepts → hands-on → assignment → next |
-| `samples/book-app-project/` | **Primary sample**: Python CLI book collection app used throughout all chapters |
-| `samples/book-app-project-cs/` | C# version of the book collection app |
-| `samples/book-app-project-js/` | JavaScript version of the book collection app |
-| `samples/book-app-buggy/` | **Intentional bugs** for debugging exercises (Ch 03) |
-| `samples/agents/` | Agent template examples (python-reviewer, pytest-helper, hello-world) |
-| `samples/skills/` | Skill template examples (code-checklist, pytest-gen, commit-message, hello-world) |
-| `samples/mcp-configs/` | MCP server configuration examples |
-| `samples/buggy-code/` | **Optional extra**: Security-focused buggy code (JS and Python) |
-| `samples/src/` | **Optional extra**: Legacy JS/React samples from earlier course version |
-| `appendices/` | Supplementary reference material |
+| <span class="hljs-code">`00-07/`</span> | Chapters: analogy → concepts → hands-on → assignment → next |
+| <span class="hljs-code">`samples/book-app-project/`</span> | <span class="hljs-strong">**Primary sample**</span>: Python CLI book collection app used throughout all chapters |
+| <span class="hljs-code">`samples/book-app-project-cs/`</span> | C# version of the book collection app |
+| <span class="hljs-code">`samples/book-app-project-js/`</span> | JavaScript version of the book collection app |
+| <span class="hljs-code">`samples/book-app-buggy/`</span> | <span class="hljs-strong">**Intentional bugs**</span> for debugging exercises (Ch 03) |
+| <span class="hljs-code">`samples/agents/`</span> | Agent template examples (python-reviewer, pytest-helper, hello-world) |
+| <span class="hljs-code">`samples/skills/`</span> | Skill template examples (code-checklist, pytest-gen, commit-message, hello-world) |
+| <span class="hljs-code">`samples/mcp-configs/`</span> | MCP server configuration examples |
+| <span class="hljs-code">`samples/buggy-code/`</span> | <span class="hljs-strong">**Optional extra**</span>: Security-focused buggy code (JS and Python) |
+| <span class="hljs-code">`samples/src/`</span> | <span class="hljs-strong">**Optional extra**</span>: Legacy JS/React samples from earlier course version |
+| <span class="hljs-code">`appendices/`</span> | Supplementary reference material |
 
-## Do
+<span class="hljs-section">## Do</span>
 
-- Keep explanations beginner-friendly; explain AI/ML jargon when used
-- Ensure bash examples are copy-paste ready
-- Tone: friendly, encouraging, practical
-- Use `samples/book-app-project/` paths in all primary examples
-- Use Python/pytest context for code examples
+<span class="hljs-bullet">-</span> Keep explanations beginner-friendly; explain AI/ML jargon when used
+<span class="hljs-bullet">-</span> Ensure bash examples are copy-paste ready
+<span class="hljs-bullet">-</span> Tone: friendly, encouraging, practical
+<span class="hljs-bullet">-</span> Use <span class="hljs-code">`samples/book-app-project/`</span> paths in all primary examples
+<span class="hljs-bullet">-</span> Use Python/pytest context for code examples
 
-## Don&#x27;t
+<span class="hljs-section">## Don&#x27;t</span>
 
-- Fix bugs in `samples/book-app-buggy/` or `samples/buggy-code/` — they&#x27;re intentional
-- Add chapters without updating README.md course table
-- Assume readers know AI/ML terminology
+<span class="hljs-bullet">-</span> Fix bugs in <span class="hljs-code">`samples/book-app-buggy/`</span> or <span class="hljs-code">`samples/buggy-code/`</span> — they&#x27;re intentional
+<span class="hljs-bullet">-</span> Add chapters without updating README.md course table
+<span class="hljs-bullet">-</span> Assume readers know AI/ML terminology
 
-## Build
+<span class="hljs-section">## Build</span>
 
-```bash
+<span class="hljs-code">```bash
 npm install &amp;&amp; npm run release
-```
+```</span>
 </code></pre></dialog></figure>
+<figure class="cell quiz-cell"><div class="quiz" data-quiz-id="04-8" data-answer="0" data-correct="Right - /agent shows the available agents so you can choose one." data-incorrect="Agents are chosen with the /agent slash command, not @ or a shell flag."><div class="quiz-head"><svg class="quiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span>Quick check</span></div><p class="quiz-prompt">How do you list and pick an agent in Copilot CLI?</p><ul class="quiz-opts"><li><button class="quiz-opt" type="button" data-i="0"><span class="quiz-key" aria-hidden="true">A</span><span class="quiz-txt">Type /agent</span></button></li><li><button class="quiz-opt" type="button" data-i="1"><span class="quiz-key" aria-hidden="true">B</span><span class="quiz-txt">Type @agent</span></button></li><li><button class="quiz-opt" type="button" data-i="2"><span class="quiz-key" aria-hidden="true">C</span><span class="quiz-txt">Run copilot --pick-agent</span></button></li></ul><p class="quiz-feedback" role="status" aria-live="polite" hidden></p></div></figure>
+<figure class="cell"><span class="badge">10</span><figcaption class="cap"><span class="cap-title">On to Chapter 05!</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip waves goodbye beside Professor Quill while walking toward a glowing arrow. Speech bubble: “Next: skills - teach Copilot repeatable tasks you can reuse. See you in Chapter 05!”. Speech bubble: “Keep going - you&#x27;re doing great!”." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch04-next.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="510" y="24" width="640" height="186" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="578,210 571,225 638,210" fill="#ffffff"/><line x1="578" y1="210" x2="638" y2="210" stroke="#ffffff" stroke-width="9"/><line x1="578" y1="210" x2="571" y2="225" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="638" y1="210" x2="571" y2="225" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="830" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Next: skills - teach Copilot</text><text x="830" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">repeatable tasks you can reuse.</text><text x="830" y="170" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">See you in Chapter 05!</text></g><g><rect x="672" y="312" width="440" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="900,452 949,487 960,452" fill="#ffffff"/><line x1="900" y1="452" x2="960" y2="452" stroke="#ffffff" stroke-width="9"/><line x1="900" y1="452" x2="949" y2="487" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="960" y1="452" x2="949" y2="487" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="892" y="366" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Keep going -</text><text x="892" y="412" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">you&#x27;re doing great!</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
 </main>
 <nav class="nav" aria-label="Chapter (bottom)"><a class="nav-btn" href="chapter-03.html">&larr;&nbsp;<span class="nav-lbl-full">Previous Chapter</span><span class="nav-lbl-short">Prev</span></a><a class="nav-home" href="index.html">Home</a><a class="nav-btn" href="chapter-05.html"><span class="nav-lbl-full">Next Chapter</span><span class="nav-lbl-short">Next</span>&nbsp;&rarr;</a></nav>
 <footer class="foot"><a href="https://github.com/github/copilot-cli-for-beginners">GitHub Copilot CLI for Beginners course</a></footer>
 <div id="copy-status" class="sr-only" role="status" aria-live="polite"></div>
+<script>window.VQS_CFG={"storageKey":"vqs-progress-v1","xpPerChapter":100,"levelStep":200,"quiz":{"heading":"Quick check","correct_prefix":"Correct!","incorrect_prefix":"Not quite.","retry_label":"Try another answer.","answered_label":"Answer recorded."},"present":{"start_label":"Present","exit_label":"Exit","next_label":"Next panel","prev_label":"Previous panel","counter_label":"{n} / {total}","hint":"Use the arrow keys to move, Esc to exit"},"quest":{"heading":"Your Learning Quest","subheading":"Complete chapters to light up the map, earn medals, build a daily streak, and unlock your certificate.","level_label":"Level {n}","xp_label":"{xp} XP","streak_label":"{n}-day streak","streak_zero":"Start your streak!","progress_label":"{done} / {total} chapters","node_todo":"Not started yet","node_done":"Complete","reset_label":"Reset my progress","reset_confirm":"Reset all of your saved progress, streak, and certificate name?"},"certificate":{"locked_hint":"Finish all chapters to unlock your certificate of completion!","unlocked_heading":"🎉 You completed every chapter!","name_prompt":"Your name","name_placeholder":"e.g. Ada Lovelace","generate_label":"Create my certificate","print_label":"Print / Save as PDF","title":"Certificate of Completion","body":"has successfully completed","course":"GitHub Copilot CLI for Beginners","date_label":"Completed on {date}","signature":"Pip & Professor Quill"}};</script>
+<script>
+/* Shared client-side progress store for the visual quickstart (localStorage).
+   All user-facing words come from window.VQS_CFG (emitted from content.yaml);
+   this file holds no copy. Safe to load on every page. */
+window.VQS = (function () {
+  var CFG = window.VQS_CFG || {};
+  var KEY = CFG.storageKey || 'vqs-progress-v1';
+  var XP_PER = CFG.xpPerChapter || 100;
+  var LEVEL_STEP = CFG.levelStep || 200;
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+  }
+  function save(s) {
+    try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  function dayStr(d) {
+    d = d || new Date();
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+
+  function completedMap() { var s = load(); return s.completed || {}; }
+  function isComplete(ch) { return !!completedMap()[ch]; }
+  function completedKeys() { return Object.keys(completedMap()); }
+  function completedCount() { return completedKeys().length; }
+  function xp() { return completedCount() * XP_PER; }
+  function level() { return Math.floor(xp() / LEVEL_STEP) + 1; }
+
+  function markComplete(ch) {
+    var s = load();
+    s.completed = s.completed || {};
+    if (s.completed[ch]) return false;
+    s.completed[ch] = Date.now();
+    save(s);
+    return true;
+  }
+
+  // Increment a per-day visit streak. Idempotent within the same calendar day.
+  function updateStreak() {
+    var s = load();
+    s.streak = s.streak || { count: 0, last: null };
+    var today = dayStr();
+    if (s.streak.last === today) { return s.streak.count; }
+    var y = new Date(); y.setDate(y.getDate() - 1);
+    s.streak.count = (s.streak.last === dayStr(y)) ? (s.streak.count + 1) : 1;
+    s.streak.last = today;
+    save(s);
+    return s.streak.count;
+  }
+  function streak() { var s = load(); return (s.streak && s.streak.count) || 0; }
+
+  function getName() { return load().name || ''; }
+  function setName(n) { var s = load(); s.name = n; save(s); }
+
+  function getQuiz(id) { var q = load().quizzes || {}; return q[id]; }
+  function setQuiz(id, chosen, correct) {
+    var s = load(); s.quizzes = s.quizzes || {};
+    s.quizzes[id] = { chosen: chosen, correct: !!correct };
+    save(s);
+  }
+
+  function reset() { try { localStorage.removeItem(KEY); } catch (e) {} }
+
+  return {
+    isComplete: isComplete, completedKeys: completedKeys, completedCount: completedCount,
+    markComplete: markComplete, xp: xp, level: level,
+    updateStreak: updateStreak, streak: streak,
+    getName: getName, setName: setName,
+    getQuiz: getQuiz, setQuiz: setQuiz, reset: reset,
+    XP_PER: XP_PER
+  };
+})();
+</script>
+
 <script>
 (function(){
   var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -179,19 +258,30 @@ npm install &amp;&amp; npm run release
   });
 
   // --- "view file" buttons open a native <dialog> showing the embedded file ---
-  [].forEach.call(document.querySelectorAll('.file-view-btn'),function(btn){
-    btn.addEventListener('click',function(){
-      var dlg=document.getElementById(btn.getAttribute('data-dialog'));
-      if(dlg&&typeof dlg.showModal==='function'){ dlg.showModal(); }
-      else if(dlg){ dlg.setAttribute('open',''); }
+  // Scoped so it works both for the page and for cloned present-mode slides.
+  function wireFiles(root){
+    [].forEach.call(root.querySelectorAll('.file-view-btn'),function(btn){
+      if(btn.getAttribute('data-file-wired')) return;
+      btn.setAttribute('data-file-wired','1');
+      btn.addEventListener('click',function(){
+        var id=btn.getAttribute('data-dialog');
+        var dlg=root.getElementById ? root.getElementById(id) : root.querySelector('dialog.file-dialog');
+        if(!dlg) return;
+        if(typeof dlg.showModal==='function'){ try{ dlg.showModal(); }catch(e){ dlg.setAttribute('open',''); } }
+        else { dlg.setAttribute('open',''); }
+      });
     });
-  });
-  [].forEach.call(document.querySelectorAll('dialog.file-dialog'),function(dlg){
-    var close=dlg.querySelector('[data-close]');
-    if(close) close.addEventListener('click',function(){dlg.close();});
-    // click on the backdrop (outside the dialog content) closes it
-    dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
-  });
+    [].forEach.call(root.querySelectorAll('dialog.file-dialog'),function(dlg){
+      if(dlg.getAttribute('data-file-wired')) return;
+      dlg.setAttribute('data-file-wired','1');
+      var close=dlg.querySelector('[data-close]');
+      if(close) close.addEventListener('click',function(){dlg.close();});
+      // click on the backdrop (outside the dialog content) closes it
+      dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+    });
+  }
+  window.__vqsWireFiles=wireFiles;
+  wireFiles(document);
 
   if(reduce) return;                 // honor reduced motion: skip the typewriter
 
@@ -231,6 +321,232 @@ npm install &amp;&amp; npm run release
     cells.forEach(function(c){io.observe(c);});
   } else {
     cells.forEach(onVisible);
+  }
+})();
+
+// --- mark the chapter complete once the reader reaches the last panel; bump streak ---
+(function(){
+  if(!window.VQS) return;
+  try{ window.VQS.updateStreak(); }catch(e){}
+  var ch=document.body.getAttribute('data-chapter');
+  if(!ch) return;
+  var cells=document.querySelectorAll('main.strip .cell');
+  if(!cells.length) return;
+  var last=cells[cells.length-1];
+  function done(){ try{ window.VQS.markComplete(ch); }catch(e){} }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){ if(e.isIntersecting){ done(); io.disconnect(); } });
+    },{threshold:0.4});
+    io.observe(last);
+  } else { done(); }
+})();
+
+// --- inline knowledge checks: pick an answer, get instant right/wrong feedback ---
+(function(){
+  var CFG=(window.VQS_CFG&&window.VQS_CFG.quiz)||{};
+  // Restore a (possibly cloned) quiz to a fresh, interactive state.
+  function reset(q){
+    q.removeAttribute('data-wired');
+    [].forEach.call(q.querySelectorAll('.quiz-opt'),function(o){ o.disabled=false; o.className='quiz-opt'; });
+    var fb=q.querySelector('.quiz-feedback');
+    if(fb){ fb.hidden=true; fb.className='quiz-feedback'; fb.textContent=''; }
+  }
+  // Wire one quiz node's option buttons + feedback. Reused for page quizzes and
+  // for cloned quizzes shown as dedicated slides in presentation mode.
+  function wire(q){
+    if(q.getAttribute('data-wired')) return;
+    q.setAttribute('data-wired','1');
+    var id=q.getAttribute('data-quiz-id');
+    var answer=parseInt(q.getAttribute('data-answer'),10);
+    var opts=[].slice.call(q.querySelectorAll('.quiz-opt'));
+    var fb=q.querySelector('.quiz-feedback');
+    var solved=false;
+    function feedback(correct){
+      var prefix=correct?(CFG.correct_prefix||'Correct!'):(CFG.incorrect_prefix||'Not quite.');
+      var expl=correct?q.getAttribute('data-correct'):q.getAttribute('data-incorrect');
+      var retry=(!correct&&CFG.retry_label)?(' '+CFG.retry_label):'';
+      fb.hidden=false;
+      fb.className='quiz-feedback '+(correct?'is-correct':'is-incorrect');
+      fb.textContent=prefix+(expl?(' '+expl):'')+retry;
+      var s=document.getElementById('copy-status');
+      if(s&&CFG.answered_label){ s.textContent=''; s.textContent=CFG.answered_label; }
+    }
+    function choose(i,el,persist){
+      if(solved) return;
+      var correct=(i===answer);
+      el.classList.add('chosen',correct?'correct':'incorrect');
+      feedback(correct);
+      if(correct){
+        solved=true;
+        opts.forEach(function(o){ o.disabled=true; o.classList.add('locked'); });
+        if(persist&&window.VQS){ try{ window.VQS.setQuiz(id,i,true); }catch(e){} }
+      } else {
+        el.disabled=true; el.classList.add('locked');
+      }
+    }
+    opts.forEach(function(el){
+      el.addEventListener('click',function(){ choose(parseInt(el.getAttribute('data-i'),10),el,true); });
+    });
+    if(window.VQS){
+      var prev=null; try{ prev=window.VQS.getQuiz(id); }catch(e){}
+      if(prev&&prev.correct&&opts[prev.chosen]) choose(prev.chosen,opts[prev.chosen],false);
+    }
+  }
+  window.__vqsWireQuiz=wire;
+  window.__vqsResetQuiz=reset;
+  [].forEach.call(document.querySelectorAll('.quiz'),wire);
+})();
+
+// --- presentation mode: fullscreen slideshow that flows across chapters ---
+(function(){
+  var CFG=(window.VQS_CFG&&window.VQS_CFG.present)||{};
+  var btn=document.querySelector('.present-btn');
+  var startCells=[].slice.call(document.querySelectorAll('main.strip .cell'));
+  if(!startCells.length) return;
+  var total=parseInt(document.body.getAttribute('data-total'),10)||1;
+  var origChapter=parseInt(document.body.getAttribute('data-chapter'),10)||0;
+  var curChapter=origChapter;
+  var overlay,stage,counterEl,chapterEl,slides=[],idx=0,active=false,loading=false,exiting=false;
+  function tmpl(t,map){ t=t||''; Object.keys(map).forEach(function(k){ t=t.split('{'+k+'}').join(map[k]); }); return t; }
+  function chapterUrl(i){ return 'chapter-'+('0'+i).slice(-2)+'.html'; }
+  function chipText(root){ var c=root.querySelector('.banner .chip'); return c?c.textContent.trim():''; }
+  function setChapter(text){ if(chapterEl) chapterEl.textContent=text||''; }
+  function makeSlide(cell){
+    var s=document.createElement('div'); s.className='present-slide';
+    s.innerHTML=cell.innerHTML;
+    // restore any terminal line caught mid-typewriter to its full text
+    [].forEach.call(s.querySelectorAll('.term-line'),function(el){
+      var rich=el.getAttribute('data-rich'); if(rich!=null) el.innerHTML=rich;
+    });
+    // make the "view file" button + dialog work inside this cloned slide
+    // (clones inherit data-file-wired from the page, so clear it first)
+    [].forEach.call(s.querySelectorAll('[data-file-wired]'),function(el){ el.removeAttribute('data-file-wired'); });
+    if(window.__vqsWireFiles) window.__vqsWireFiles(s);
+    return s;
+  }
+  // A Quick Check becomes its own interactive slide right after its panel.
+  function makeQuizSlide(quizNode){
+    var s=document.createElement('div'); s.className='present-slide present-quiz-slide';
+    var q=quizNode.cloneNode(true);
+    if(window.__vqsResetQuiz) window.__vqsResetQuiz(q);
+    s.appendChild(q);
+    if(window.__vqsWireQuiz) window.__vqsWireQuiz(q);
+    return s;
+  }
+  function setSlides(cells){
+    while(stage.firstChild) stage.removeChild(stage.firstChild);
+    slides=[];
+    cells.forEach(function(c){
+      // Quiz now lives in its own bare cell - render it as a single quiz slide.
+      if(c.classList.contains('quiz-cell')){
+        var only=c.querySelector('.quiz');
+        if(only){ var os=makeQuizSlide(only); stage.appendChild(os); slides.push(os); }
+        return;
+      }
+      var s=makeSlide(c); stage.appendChild(s); slides.push(s);
+      var quiz=c.querySelector('.quiz');
+      if(quiz){ var qs=makeQuizSlide(quiz); stage.appendChild(qs); slides.push(qs); }
+    });
+  }
+  function build(){
+    overlay=document.createElement('div'); overlay.className='present-overlay';
+    overlay.setAttribute('role','dialog'); overlay.setAttribute('aria-modal','true');
+    stage=document.createElement('div'); stage.className='present-stage';
+    var prev=document.createElement('button'); prev.type='button'; prev.className='present-nav prev';
+    prev.setAttribute('aria-label',CFG.prev_label||'Previous'); prev.innerHTML='&larr;';
+    var nextb=document.createElement('button'); nextb.type='button'; nextb.className='present-nav next';
+    nextb.setAttribute('aria-label',CFG.next_label||'Next'); nextb.innerHTML='&rarr;';
+    var exit=document.createElement('button'); exit.type='button'; exit.className='present-exit';
+    exit.textContent=CFG.exit_label||'Exit';
+    counterEl=document.createElement('div'); counterEl.className='present-counter';
+    chapterEl=document.createElement('div'); chapterEl.className='present-chapter';
+    overlay.appendChild(stage); overlay.appendChild(prev); overlay.appendChild(nextb);
+    overlay.appendChild(exit); overlay.appendChild(counterEl); overlay.appendChild(chapterEl);
+    prev.addEventListener('click',prevSlide);
+    nextb.addEventListener('click',nextSlide);
+    exit.addEventListener('click',stop);
+    document.body.appendChild(overlay);
+    setSlides(startCells);
+    setChapter(chipText(document));
+  }
+  function go(i){
+    if(!slides.length) return;
+    idx=Math.max(0,Math.min(slides.length-1,i));
+    slides.forEach(function(s,k){ s.classList.toggle('active',k===idx); });
+    counterEl.textContent=tmpl(CFG.counter_label||'{n} / {total}',{n:idx+1,total:slides.length});
+  }
+  // Pull an adjacent chapter's panels into the running slideshow (keeps fullscreen).
+  // Falls back to a full navigation if fetch is unavailable (e.g. file:// preview).
+  function loadChapter(i,atEnd){
+    if(loading||i<0||i>=total) return;
+    loading=true;
+    var url=chapterUrl(i);
+    fetch(url).then(function(r){ return r.text(); }).then(function(html){
+      var doc=new DOMParser().parseFromString(html,'text/html');
+      var cells=[].slice.call(doc.querySelectorAll('main.strip .cell'));
+      if(!cells.length){ loading=false; return; }
+      curChapter=i; setSlides(cells); setChapter(chipText(doc)); go(atEnd?slides.length-1:0); loading=false;
+    }).catch(function(){
+      loading=false;
+      window.location.href=url+(atEnd?'#present-last':'#present');
+    });
+  }
+  function nextSlide(){
+    if(idx<slides.length-1) go(idx+1);
+    else if(curChapter<total-1) loadChapter(curChapter+1,false);
+  }
+  function prevSlide(){
+    if(idx>0) go(idx-1);
+    else if(curChapter>0) loadChapter(curChapter-1,true);
+  }
+  function key(e){
+    if(!active) return;
+    // if a file dialog is open, let it own the keys (Esc closes it, not the show)
+    if(overlay&&overlay.querySelector('dialog.file-dialog[open]')){
+      if(e.key==='Escape') return;
+    }
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); nextSlide(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prevSlide(); }
+    else if(e.key==='Escape'){ stop(); }
+  }
+  function start(atEnd){
+    if(active) return;
+    if(!overlay) build();
+    active=true; document.body.classList.add('presenting');
+    overlay.classList.add('show'); go(atEnd?slides.length-1:0);
+    document.addEventListener('keydown',key);
+    if(overlay.requestFullscreen){ overlay.requestFullscreen().catch(function(){}); }
+    if(CFG.hint){
+      var h=document.createElement('div'); h.className='present-hint'; h.textContent=CFG.hint;
+      overlay.appendChild(h);
+      setTimeout(function(){ h.classList.add('fade'); },1800);
+      setTimeout(function(){ if(h.parentNode) h.parentNode.removeChild(h); },2600);
+    }
+  }
+  function stop(){
+    if(exiting) return;
+    active=false; document.body.classList.remove('presenting');
+    if(overlay) overlay.classList.remove('show');
+    document.removeEventListener('keydown',key);
+    if(document.fullscreenElement&&document.exitFullscreen){ document.exitFullscreen().catch(function(){}); }
+    // land the underlying page on whichever chapter the presentation ended on
+    if(curChapter!==origChapter){ exiting=true; window.location.href=chapterUrl(curChapter); }
+  }
+  if(btn) btn.addEventListener('click',function(){ start(false); });
+  document.addEventListener('keydown',function(e){
+    if(active) return;
+    var tag=(e.target&&e.target.tagName)||'';
+    if((e.key==='p'||e.key==='P')&&!/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) start(false);
+  });
+  document.addEventListener('fullscreenchange',function(){
+    if(active&&!document.fullscreenElement) stop();
+  });
+  // Auto-resume when arriving from an adjacent chapter via the navigation fallback.
+  if(location.hash==='#present'||location.hash==='#present-last'){
+    var resumeEnd=location.hash==='#present-last';
+    try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+    start(resumeEnd);
   }
 })();
 </script>

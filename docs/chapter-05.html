@@ -19,46 +19,48 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Skills - Pip&#x27;s Copilot CLI Comic</title>
-<link rel="icon" href="assets/img/pip-hero.png"/>
+<link rel="icon" href="assets/img/pip-hero.webp"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css"/>
+<style>.fd-body.hljs{color:#e6edf3}.fd-body .hljs-comment,.fd-body .hljs-quote{color:#8b949e;font-style:italic}.fd-body .hljs-keyword,.fd-body .hljs-selector-tag,.fd-body .hljs-literal,.fd-body .hljs-type{color:#ff7b72}.fd-body .hljs-string,.fd-body .hljs-meta .hljs-string,.fd-body .hljs-regexp{color:#a5d6ff}.fd-body .hljs-number,.fd-body .hljs-symbol{color:#79c0ff}.fd-body .hljs-title,.fd-body .hljs-title.function_,.fd-body .hljs-section{color:#d2a8ff}.fd-body .hljs-built_in,.fd-body .hljs-attr,.fd-body .hljs-attribute{color:#ffa657}.fd-body .hljs-name,.fd-body .hljs-tag,.fd-body .hljs-selector-class,.fd-body .hljs-selector-id{color:#7ee787}.fd-body .hljs-bullet,.fd-body .hljs-link{color:#f2cc60}.fd-body .hljs-meta,.fd-body .hljs-comment.hljs-doctag{color:#8b949e}.fd-body .hljs-strong{font-weight:700}.fd-body .hljs-section{font-weight:700}</style>
 </head>
-<body>
+<body data-chapter="05" data-total="8">
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="banner-wrap">
+  <div class="b-track" role="img" aria-label="Course progress: chapter 5 of 8"><i style="width:75%"></i></div>
   <div class="banner">
     <span class="chip">CHAPTER 05</span>
     <h1>Skills</h1>
     <p class="b-sub">Use built-in skills automatically, call them by name, or build your own.</p>
-    <div class="b-track" role="img" aria-label="Course progress: chapter 5 of 8"><i style="width:75%"></i></div>
-    <img class="pipav" src="assets/img/pip-avatar-hat.png?v=8444f7c2" alt="Pip the fox mascot"/>
+    <img class="pipav" src="assets/img/pip-avatar-hat.webp?v=f093b7cf" alt="Pip the fox mascot"/>
   </div>
 </header>
 <nav class="nav" aria-label="Chapter"><a class="nav-btn" href="chapter-04.html">&larr;&nbsp;<span class="nav-lbl-full">Previous Chapter</span><span class="nav-lbl-short">Prev</span></a><a class="nav-home" href="index.html">Home</a><a class="nav-btn" href="chapter-06.html"><span class="nav-lbl-full">Next Chapter</span><span class="nav-lbl-short">Next</span>&nbsp;&rarr;</a></nav>
+<button class="present-btn present-fab" type="button"><svg class="present-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20"/></svg><span>Present</span></button>
 <main id="main" class="strip">
-<figure class="cell"><span class="badge">1</span><figcaption class="cap"><span class="cap-title">Learning Objectives</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill and Pip stand beside a chalkboard showing a checklist of four green checkmarks. Details: In this chapter you will: - Use skills automatically or by name - Build your own skill - Tell agents, skills, and MCP apart" xmlns="http://www.w3.org/2000/svg"><image href="assets/img/objectives.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="756" width="1488" height="246" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="772" width="9" height="214" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="822" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">In this chapter you will:</text><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Use skills automatically or by name</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Build your own skill</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Tell agents, skills, and MCP apart</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
-<figure class="cell"><span class="badge">2</span><figcaption class="cap"><span class="cap-title">Skills are power tools</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#understanding-skills" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip holds a power drill beside Professor Quill, with drill bits on a workbench. Speech bubble: “Skills are swappable drill bits for a task.”. Speech bubble: “The right bit makes the job easy.”. Terminal: copilot; &gt; /skills list      # see available skills." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-skills.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="762" y="60" width="500" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="762,124 701,166 762,184" fill="#ffffff"/><line x1="762" y1="124" x2="762" y2="184" stroke="#ffffff" stroke-width="9"/><line x1="762" y1="124" x2="701" y2="166" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="762" y1="184" x2="701" y2="166" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1012" y="114" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Skills are swappable</text><text x="1012" y="160" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">drill bits for a task.</text></g><g><rect x="834" y="294" width="440" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="924,434 921,457 984,434" fill="#ffffff"/><line x1="924" y1="434" x2="984" y2="434" stroke="#ffffff" stroke-width="9"/><line x1="924" y1="434" x2="921" y2="457" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="984" y1="434" x2="921" y2="457" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1054" y="348" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">The right bit</text><text x="1054" y="394" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">makes the job easy.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /skills list      # see available skills" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /skills list    </span><span class="term-comment">  # see available skills</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/skills list" aria-label="Copy command: /skills list" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">3</span><figcaption class="cap"><span class="cap-title">Skills apply automatically</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#from-manual-prompts-to-automatic-expertise" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip raises a fist beside a laptop that lights up with a checkmark badge. Speech bubble: “Describe the job and the matching skill kicks in.”. Terminal: &gt; Check @samples/book-app-project/book_app.py for quality." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-auto.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="880" width="1488" height="122" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="910" r="11" fill="#ff5f56"/><circle cx="94" cy="910" r="11" fill="#ffbd2e"/><circle cx="130" cy="910" r="11" fill="#27c93f"/></g><g><rect x="708" y="60" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="724,200 693,213 784,200" fill="#ffffff"/><line x1="724" y1="200" x2="784" y2="200" stroke="#ffffff" stroke-width="9"/><line x1="724" y1="200" x2="693" y2="213" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="784" y1="200" x2="693" y2="213" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="988" y="114" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Describe the job and the</text><text x="988" y="160" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">matching skill kicks in.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; Check @samples/book-app-project/book_app.py for quality" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; Check @samples/book-app-project/book_app.py for quality</span></div></div><button class="term-copy" type="button" data-copy="Check @samples/book-app-project/book_app.py for quality" aria-label="Copy command: Check @samples/book-app-project/book_app.py for quality" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">4</span><figcaption class="cap"><span class="cap-title">Or call one by name</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#direct-slash-command-invocation" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip presses a large glowing button next to a laptop. Speech bubble: “Want a specific skill? Call it with a slash.”. Terminal: &gt; /code-checklist Check; @samples/book-app-project/book_app.py." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-invoke.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="24" y="168" width="520" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="544,232 560,299 544,292" fill="#ffffff"/><line x1="544" y1="232" x2="544" y2="292" stroke="#ffffff" stroke-width="9"/><line x1="544" y1="232" x2="560" y2="299" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="544" y1="292" x2="560" y2="299" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="284" y="222" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Want a specific skill?</text><text x="284" y="268" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Call it with a slash.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; /code-checklist Check" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /code-checklist Check</span></div><div class="term-line" data-full="  @samples/book-app-project/book_app.py" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>  @samples/book-app-project/book_app.py</span></div></div><button class="term-copy" type="button" data-copy="/code-checklist Check @samples/book-app-project/book_app.py" aria-label="Copy command: /code-checklist Check @samples/book-app-project/book_app.py" style="top:86.914%;height:8.984%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">5</span><figcaption class="cap"><span class="cap-title">Build your own skill</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#creating-your-first-skill" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip holds a clipboard beside Professor Quill, building a new skill. Speech bubble: “Make your own skill with a short SKILL.md file.”. Speech bubble: “Teach it once, reuse it forever.”. Details: A SKILL.md just needs a description and instructions." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-create.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="894" width="1488" height="108" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="910" width="9" height="76" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">A SKILL.md just needs a description and instructions.</text></g><g><rect x="636" y="24" width="520" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="765,164 745,199 825,164" fill="#ffffff"/><line x1="765" y1="164" x2="825" y2="164" stroke="#ffffff" stroke-width="9"/><line x1="765" y1="164" x2="745" y2="199" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="825" y1="164" x2="745" y2="199" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="896" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Make your own skill with</text><text x="896" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">a short SKILL.md file.</text></g><g><rect x="726" y="294" width="470" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1009,434 1085,475 1069,434" fill="#ffffff"/><line x1="1009" y1="434" x2="1069" y2="434" stroke="#ffffff" stroke-width="9"/><line x1="1009" y1="434" x2="1085" y2="475" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1069" y1="434" x2="1085" y2="475" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="961" y="348" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Teach it once,</text><text x="961" y="394" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">reuse it forever.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><button class="file-view-btn" type="button" data-dialog="fd-ch05-create" aria-haspopup="dialog" aria-label="See an example" style="top:92.578%"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span>See an example</span></button></div><dialog class="file-dialog" id="fd-ch05-create" aria-label="code-checklist/SKILL.md"><div class="fd-head"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span class="fd-name">code-checklist/SKILL.md</span><button class="fd-close" type="button" data-close aria-label="Close">&times;</button></div><pre class="fd-body"><code>---
+<figure class="cell"><span class="badge">1</span><figcaption class="cap"><span class="cap-title">Chapter 05 - Learning Objectives</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill and Pip stand beside a chalkboard showing a checklist of four green checkmarks. Details: In this chapter you will: - Use skills automatically or by name - Build your own skill - Tell agents, skills, and MCP apart" xmlns="http://www.w3.org/2000/svg"><image href="assets/img/objectives.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="756" width="1488" height="246" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="772" width="9" height="214" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="822" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">In this chapter you will:</text><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Use skills automatically or by name</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Build your own skill</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Tell agents, skills, and MCP apart</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
+<figure class="cell"><span class="badge">2</span><figcaption class="cap"><span class="cap-title">Skills are power tools</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#understanding-skills" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip holds a power drill beside Professor Quill, with drill bits on a workbench. Speech bubble: “Skills are swappable drill bits for a task.”. Speech bubble: “The right bit makes the job easy.”. Terminal: copilot; &gt; /skills list      # see available skills." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-skills.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="762" y="60" width="500" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="762,124 701,166 762,184" fill="#ffffff"/><line x1="762" y1="124" x2="762" y2="184" stroke="#ffffff" stroke-width="9"/><line x1="762" y1="124" x2="701" y2="166" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="762" y1="184" x2="701" y2="166" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1012" y="114" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Skills are swappable</text><text x="1012" y="160" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">drill bits for a task.</text></g><g><rect x="834" y="294" width="440" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="924,434 921,457 984,434" fill="#ffffff"/><line x1="924" y1="434" x2="984" y2="434" stroke="#ffffff" stroke-width="9"/><line x1="924" y1="434" x2="921" y2="457" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="984" y1="434" x2="921" y2="457" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1054" y="348" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">The right bit</text><text x="1054" y="394" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">makes the job easy.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /skills list      # see available skills" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /skills list    </span><span class="term-comment">  # see available skills</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/skills list" aria-label="Copy command: /skills list" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">3</span><figcaption class="cap"><span class="cap-title">Skills apply automatically</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#from-manual-prompts-to-automatic-expertise" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip raises a fist beside a laptop that lights up with a checkmark badge. Speech bubble: “Describe the job and the matching skill kicks in. For example, check for code quality and the code-checklist skill will run.”. Terminal: &gt; Check @samples/book-app-project/book_app.py for quality." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-auto.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="880" width="1488" height="122" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="910" r="11" fill="#ff5f56"/><circle cx="94" cy="910" r="11" fill="#ffbd2e"/><circle cx="130" cy="910" r="11" fill="#27c93f"/></g><g><rect x="618" y="24" width="700" height="232" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="618,180 582,228 618,240" fill="#ffffff"/><line x1="618" y1="180" x2="618" y2="240" stroke="#ffffff" stroke-width="9"/><line x1="618" y1="180" x2="582" y2="228" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="618" y1="240" x2="582" y2="228" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="968" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Describe the job and the</text><text x="968" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">matching skill kicks in.</text><text x="968" y="170" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">For example, check for code quality</text><text x="968" y="216" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">and the code-checklist skill will run.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; Check @samples/book-app-project/book_app.py for quality" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; Check @samples/book-app-project/book_app.py for quality</span></div></div><button class="term-copy" type="button" data-copy="Check @samples/book-app-project/book_app.py for quality" aria-label="Copy command: Check @samples/book-app-project/book_app.py for quality" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">4</span><figcaption class="cap"><span class="cap-title">Or call one by name</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#direct-slash-command-invocation" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip presses a large glowing button next to a laptop. Speech bubble: “Want a specific skill? Call it with a slash.”. Terminal: &gt; /code-checklist Check @samples/book-app-project/book_app.py." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-invoke.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="880" width="1488" height="122" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="910" r="11" fill="#ff5f56"/><circle cx="94" cy="910" r="11" fill="#ffbd2e"/><circle cx="130" cy="910" r="11" fill="#27c93f"/></g><g><rect x="24" y="168" width="520" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="544,232 560,299 544,292" fill="#ffffff"/><line x1="544" y1="232" x2="544" y2="292" stroke="#ffffff" stroke-width="9"/><line x1="544" y1="232" x2="560" y2="299" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="544" y1="292" x2="560" y2="299" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="284" y="222" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Want a specific skill?</text><text x="284" y="268" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Call it with a slash.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; /code-checklist Check @samples/book-app-project/book_app.py" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /code-checklist Check @samples/book-app-project/book_app.py</span></div></div><button class="term-copy" type="button" data-copy="/code-checklist Check @samples/book-app-project/book_app.py" aria-label="Copy command: /code-checklist Check @samples/book-app-project/book_app.py" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">5</span><figcaption class="cap"><span class="cap-title">Build your own skill</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#creating-your-first-skill" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip holds a clipboard beside Professor Quill, building a new skill. Speech bubble: “Make your own skill with a short SKILL.md file.”. Speech bubble: “Teach it once, reuse it forever.”. Details: A SKILL.md just needs a description and instructions. The description should explain when the skill should be used." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-create.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="848" width="1488" height="154" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="864" width="9" height="122" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">A SKILL.md just needs a description and instructions.</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">The description should explain when the skill should be used.</text></g><g><rect x="636" y="24" width="520" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="765,164 745,199 825,164" fill="#ffffff"/><line x1="765" y1="164" x2="825" y2="164" stroke="#ffffff" stroke-width="9"/><line x1="765" y1="164" x2="745" y2="199" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="825" y1="164" x2="745" y2="199" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="896" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Make your own skill with</text><text x="896" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">a short SKILL.md file.</text></g><g><rect x="726" y="294" width="470" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1009,434 1085,475 1069,434" fill="#ffffff"/><line x1="1009" y1="434" x2="1069" y2="434" stroke="#ffffff" stroke-width="9"/><line x1="1009" y1="434" x2="1085" y2="475" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1069" y1="434" x2="1085" y2="475" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="961" y="348" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Teach it once,</text><text x="961" y="394" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">reuse it forever.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><button class="file-view-btn" type="button" data-dialog="fd-ch05-create" aria-haspopup="dialog" aria-label="See an example" style="top:90.332%"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span>See an example</span></button></div><dialog class="file-dialog" id="fd-ch05-create" aria-label="code-checklist/SKILL.md"><div class="fd-head"><svg class="fv-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg><span class="fd-name">code-checklist/SKILL.md</span><button class="fd-close" type="button" data-close aria-label="Close">&times;</button></div><pre class="fd-body hljs"><code>---
 name: code-checklist
-description: Team code quality checklist - use for checking Python code quality, bugs, security issues, and best practices
----
+<span class="hljs-section">description: Team code quality checklist - use for checking Python code quality, bugs, security issues, and best practices
+---</span>
 
-# Code Checklist Skill
+<span class="hljs-section"># Code Checklist Skill</span>
 
 Apply this checklist when checking Python code.
 
-## Code Quality Checklist
+<span class="hljs-section">## Code Quality Checklist</span>
 
-- [ ] All functions have type hints
-- [ ] No bare except clauses
-- [ ] No mutable default arguments
-- [ ] Context managers used for file I/O
-- [ ] Functions are under 50 lines
-- [ ] Variable and function names follow PEP 8 (snake_case)
+<span class="hljs-bullet">-</span> [ ] All functions have type hints
+<span class="hljs-bullet">-</span> [ ] No bare except clauses
+<span class="hljs-bullet">-</span> [ ] No mutable default arguments
+<span class="hljs-bullet">-</span> [ ] Context managers used for file I/O
+<span class="hljs-bullet">-</span> [ ] Functions are under 50 lines
+<span class="hljs-bullet">-</span> [ ] Variable and function names follow PEP 8 (snake<span class="hljs-emphasis">_case)
 
 ## Input Validation Checklist
 
@@ -91,13 +93,90 @@ Present findings as:
 ### Summary
 [X] items need attention before merge
 ```
-</code></pre></dialog></figure>
-<figure class="cell"><span class="badge">6</span><figcaption class="cap"><span class="cap-title">Install community skills</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#finding-and-using-community-skills" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip holds a drill bit beside a tall shelf stocked with many ready-made bits while Professor Quill gestures toward the shelf. Speech bubble: “Don&#x27;t build every skill yourself - install a ready-made one!”. Terminal: &gt; /plugin marketplace      # browse installable skills and agents; gh skill install github/awesome-copilot   # add a community skill." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-community.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="618" y="24" width="640" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="773,164 748,192 833,164" fill="#ffffff"/><line x1="773" y1="164" x2="833" y2="164" stroke="#ffffff" stroke-width="9"/><line x1="773" y1="164" x2="748" y2="192" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="833" y1="164" x2="748" y2="192" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="938" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Don&#x27;t build every skill yourself -</text><text x="938" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">install a ready-made one!</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; /plugin marketplace      # browse installable skills and agents" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /plugin marketplace    </span><span class="term-comment">  # browse installable skills and agents</span></div><div class="term-line" data-full="gh skill install github/awesome-copilot   # add a community skill" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>gh skill install github/awesome-copilot </span><span class="term-comment">  # add a community skill</span></div></div><button class="term-copy" type="button" data-copy="/plugin marketplace" aria-label="Copy command: /plugin marketplace" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="gh skill install github/awesome-copilot" aria-label="Copy command: gh skill install github/awesome-copilot" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">7</span><figcaption class="cap"><span class="cap-title">Agents vs Skills vs MCP</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#skills-vs-agents-vs-mcp" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill gestures at three glowing icons - an expert badge, a drill bit, and a plug - while Pip compares them. Speech bubble: “Agents think, skills do the steps, MCP connects services.”. Speech bubble: “The right tool for each job.”. Details: Agent = broad expertise. Skill = task steps. MCP = live data from services (see Chapter 06)." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-vs.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="848" width="1488" height="154" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="864" width="9" height="122" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Agent = broad expertise. Skill = task steps.</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">MCP = live data from services (see Chapter 06).</text></g><g><rect x="456" y="672" width="600" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="560,672 533,648 620,672" fill="#ffffff"/><line x1="560" y1="672" x2="620" y2="672" stroke="#ffffff" stroke-width="9"/><line x1="560" y1="672" x2="533" y2="648" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="620" y1="672" x2="533" y2="648" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="756" y="726" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Agents think, skills do the</text><text x="756" y="772" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">steps, MCP connects services.</text></g><g><rect x="672" y="24" width="400" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="982,164 1068,192 1042,164" fill="#ffffff"/><line x1="982" y1="164" x2="1042" y2="164" stroke="#ffffff" stroke-width="9"/><line x1="982" y1="164" x2="1068" y2="192" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1042" y1="164" x2="1068" y2="192" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="872" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">The right tool</text><text x="872" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">for each job.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
+</span></code></pre></dialog></figure>
+<figure class="cell"><span class="badge">6</span><figcaption class="cap"><span class="cap-title">Install community skills</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#finding-and-using-community-skills" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip holds a drill bit beside a tall shelf stocked with many ready-made bits while Professor Quill gestures toward the shelf. Speech bubble: “Don&#x27;t build every skill yourself - install a ready-made one!”. Terminal: # Browse installable skills and agents; &gt; /plugin marketplace; # Browse and interactively select a skill from awesome-copilot; gh skill install github/awesome-copilot   # add a community skill." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-community.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="742" width="1488" height="260" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="772" r="11" fill="#ff5f56"/><circle cx="94" cy="772" r="11" fill="#ffbd2e"/><circle cx="130" cy="772" r="11" fill="#27c93f"/></g><g><rect x="24" y="24" width="640" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="381,164 453,209 441,164" fill="#ffffff"/><line x1="381" y1="164" x2="441" y2="164" stroke="#ffffff" stroke-width="9"/><line x1="381" y1="164" x2="453" y2="209" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="441" y1="164" x2="453" y2="209" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="344" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Don&#x27;t build every skill yourself -</text><text x="344" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">install a ready-made one!</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="# Browse installable skills and agents" style="top:77.246%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span class="term-comment"># Browse installable skills and agents</span></div><div class="term-line" data-full="&gt; /plugin marketplace" style="top:81.738%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /plugin marketplace</span></div><div class="term-line" data-full="# Browse and interactively select a skill from awesome-copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span class="term-comment"># Browse and interactively select a skill from awesome-copilot</span></div><div class="term-line" data-full="gh skill install github/awesome-copilot   # add a community skill" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>gh skill install github/awesome-copilot </span><span class="term-comment">  # add a community skill</span></div></div><button class="term-copy" type="button" data-copy="/plugin marketplace" aria-label="Copy command: /plugin marketplace" style="top:82.422%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="gh skill install github/awesome-copilot" aria-label="Copy command: gh skill install github/awesome-copilot" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">7</span><figcaption class="cap"><span class="cap-title">Agents vs Skills vs MCP</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/05-skills/README.md#skills-vs-agents-vs-mcp" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill gestures at three glowing icons - a lightbulb, a power drill, and a plug going into a socket - while Pip considers them. Speech bubble: “Agents reason and orchestrate Skills provide the know-how MCP delivers the tools and connections.”. Speech bubble: “The right tool for each job.”. Details: Agent = broad expertise Skill = task steps MCP = live data from services (see Chapter 06)" xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-vs.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="802" width="1488" height="200" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="818" width="9" height="168" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Agent = broad expertise</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">Skill = task steps</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">MCP = live data from services (see Chapter 06)</text></g><g><rect x="24" y="24" width="700" height="177" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="327,201 345,262 387,201" fill="#ffffff"/><line x1="327" y1="201" x2="387" y2="201" stroke="#ffffff" stroke-width="9"/><line x1="327" y1="201" x2="345" y2="262" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="387" y1="201" x2="345" y2="262" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="374" y="76" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="32" fill="#1f2937">Agents reason and orchestrate</text><text x="374" y="119" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="32" fill="#1f2937">Skills provide the know-how</text><text x="374" y="162" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="32" fill="#1f2937">MCP delivers the tools and connections.</text></g><g><rect x="1212" y="24" width="300" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1253,164 1236,205 1313,164" fill="#ffffff"/><line x1="1253" y1="164" x2="1313" y2="164" stroke="#ffffff" stroke-width="9"/><line x1="1253" y1="164" x2="1236" y2="205" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1313" y1="164" x2="1236" y2="205" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1362" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">The right tool</text><text x="1362" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">for each job.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
+<figure class="cell quiz-cell"><div class="quiz" data-quiz-id="05-6" data-answer="0" data-correct="Right - call a skill by name, like /code-checklist, to run it on demand." data-incorrect="Skills apply automatically, but you can also call one by name with a slash command."><div class="quiz-head"><svg class="quiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span>Quick check</span></div><p class="quiz-prompt">How do you run a specific skill on demand?</p><ul class="quiz-opts"><li><button class="quiz-opt" type="button" data-i="0"><span class="quiz-key" aria-hidden="true">A</span><span class="quiz-txt">Call it by name with a slash command</span></button></li><li><button class="quiz-opt" type="button" data-i="1"><span class="quiz-key" aria-hidden="true">B</span><span class="quiz-txt">Wait for Copilot to guess</span></button></li><li><button class="quiz-opt" type="button" data-i="2"><span class="quiz-key" aria-hidden="true">C</span><span class="quiz-txt">Skills can&#x27;t be called directly</span></button></li></ul><p class="quiz-feedback" role="status" aria-live="polite" hidden></p></div></figure>
+<figure class="cell"><span class="badge">8</span><figcaption class="cap"><span class="cap-title">On to Chapter 06!</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip waves goodbye beside Professor Quill while walking toward a glowing arrow. Speech bubble: “Next: MCP servers connect Copilot to GitHub, files, and live docs. See you in Chapter 06!”. Speech bubble: “Keep going - you&#x27;re doing great!”." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch05-next.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="564" y="24" width="640" height="186" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="587,210 580,223 647,210" fill="#ffffff"/><line x1="587" y1="210" x2="647" y2="210" stroke="#ffffff" stroke-width="9"/><line x1="587" y1="210" x2="580" y2="223" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="647" y1="210" x2="580" y2="223" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="884" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Next: MCP servers connect Copilot</text><text x="884" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">to GitHub, files, and live docs.</text><text x="884" y="170" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">See you in Chapter 06!</text></g><g><rect x="672" y="276" width="440" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="890,416 935,453 950,416" fill="#ffffff"/><line x1="890" y1="416" x2="950" y2="416" stroke="#ffffff" stroke-width="9"/><line x1="890" y1="416" x2="935" y2="453" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="950" y1="416" x2="935" y2="453" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="892" y="330" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Keep going -</text><text x="892" y="376" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">you&#x27;re doing great!</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
 </main>
 <nav class="nav" aria-label="Chapter (bottom)"><a class="nav-btn" href="chapter-04.html">&larr;&nbsp;<span class="nav-lbl-full">Previous Chapter</span><span class="nav-lbl-short">Prev</span></a><a class="nav-home" href="index.html">Home</a><a class="nav-btn" href="chapter-06.html"><span class="nav-lbl-full">Next Chapter</span><span class="nav-lbl-short">Next</span>&nbsp;&rarr;</a></nav>
 <footer class="foot"><a href="https://github.com/github/copilot-cli-for-beginners">GitHub Copilot CLI for Beginners course</a></footer>
 <div id="copy-status" class="sr-only" role="status" aria-live="polite"></div>
+<script>window.VQS_CFG={"storageKey":"vqs-progress-v1","xpPerChapter":100,"levelStep":200,"quiz":{"heading":"Quick check","correct_prefix":"Correct!","incorrect_prefix":"Not quite.","retry_label":"Try another answer.","answered_label":"Answer recorded."},"present":{"start_label":"Present","exit_label":"Exit","next_label":"Next panel","prev_label":"Previous panel","counter_label":"{n} / {total}","hint":"Use the arrow keys to move, Esc to exit"},"quest":{"heading":"Your Learning Quest","subheading":"Complete chapters to light up the map, earn medals, build a daily streak, and unlock your certificate.","level_label":"Level {n}","xp_label":"{xp} XP","streak_label":"{n}-day streak","streak_zero":"Start your streak!","progress_label":"{done} / {total} chapters","node_todo":"Not started yet","node_done":"Complete","reset_label":"Reset my progress","reset_confirm":"Reset all of your saved progress, streak, and certificate name?"},"certificate":{"locked_hint":"Finish all chapters to unlock your certificate of completion!","unlocked_heading":"🎉 You completed every chapter!","name_prompt":"Your name","name_placeholder":"e.g. Ada Lovelace","generate_label":"Create my certificate","print_label":"Print / Save as PDF","title":"Certificate of Completion","body":"has successfully completed","course":"GitHub Copilot CLI for Beginners","date_label":"Completed on {date}","signature":"Pip & Professor Quill"}};</script>
+<script>
+/* Shared client-side progress store for the visual quickstart (localStorage).
+   All user-facing words come from window.VQS_CFG (emitted from content.yaml);
+   this file holds no copy. Safe to load on every page. */
+window.VQS = (function () {
+  var CFG = window.VQS_CFG || {};
+  var KEY = CFG.storageKey || 'vqs-progress-v1';
+  var XP_PER = CFG.xpPerChapter || 100;
+  var LEVEL_STEP = CFG.levelStep || 200;
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+  }
+  function save(s) {
+    try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  function dayStr(d) {
+    d = d || new Date();
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+
+  function completedMap() { var s = load(); return s.completed || {}; }
+  function isComplete(ch) { return !!completedMap()[ch]; }
+  function completedKeys() { return Object.keys(completedMap()); }
+  function completedCount() { return completedKeys().length; }
+  function xp() { return completedCount() * XP_PER; }
+  function level() { return Math.floor(xp() / LEVEL_STEP) + 1; }
+
+  function markComplete(ch) {
+    var s = load();
+    s.completed = s.completed || {};
+    if (s.completed[ch]) return false;
+    s.completed[ch] = Date.now();
+    save(s);
+    return true;
+  }
+
+  // Increment a per-day visit streak. Idempotent within the same calendar day.
+  function updateStreak() {
+    var s = load();
+    s.streak = s.streak || { count: 0, last: null };
+    var today = dayStr();
+    if (s.streak.last === today) { return s.streak.count; }
+    var y = new Date(); y.setDate(y.getDate() - 1);
+    s.streak.count = (s.streak.last === dayStr(y)) ? (s.streak.count + 1) : 1;
+    s.streak.last = today;
+    save(s);
+    return s.streak.count;
+  }
+  function streak() { var s = load(); return (s.streak && s.streak.count) || 0; }
+
+  function getName() { return load().name || ''; }
+  function setName(n) { var s = load(); s.name = n; save(s); }
+
+  function getQuiz(id) { var q = load().quizzes || {}; return q[id]; }
+  function setQuiz(id, chosen, correct) {
+    var s = load(); s.quizzes = s.quizzes || {};
+    s.quizzes[id] = { chosen: chosen, correct: !!correct };
+    save(s);
+  }
+
+  function reset() { try { localStorage.removeItem(KEY); } catch (e) {} }
+
+  return {
+    isComplete: isComplete, completedKeys: completedKeys, completedCount: completedCount,
+    markComplete: markComplete, xp: xp, level: level,
+    updateStreak: updateStreak, streak: streak,
+    getName: getName, setName: setName,
+    getQuiz: getQuiz, setQuiz: setQuiz, reset: reset,
+    XP_PER: XP_PER
+  };
+})();
+</script>
+
 <script>
 (function(){
   var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -129,19 +208,30 @@ Present findings as:
   });
 
   // --- "view file" buttons open a native <dialog> showing the embedded file ---
-  [].forEach.call(document.querySelectorAll('.file-view-btn'),function(btn){
-    btn.addEventListener('click',function(){
-      var dlg=document.getElementById(btn.getAttribute('data-dialog'));
-      if(dlg&&typeof dlg.showModal==='function'){ dlg.showModal(); }
-      else if(dlg){ dlg.setAttribute('open',''); }
+  // Scoped so it works both for the page and for cloned present-mode slides.
+  function wireFiles(root){
+    [].forEach.call(root.querySelectorAll('.file-view-btn'),function(btn){
+      if(btn.getAttribute('data-file-wired')) return;
+      btn.setAttribute('data-file-wired','1');
+      btn.addEventListener('click',function(){
+        var id=btn.getAttribute('data-dialog');
+        var dlg=root.getElementById ? root.getElementById(id) : root.querySelector('dialog.file-dialog');
+        if(!dlg) return;
+        if(typeof dlg.showModal==='function'){ try{ dlg.showModal(); }catch(e){ dlg.setAttribute('open',''); } }
+        else { dlg.setAttribute('open',''); }
+      });
     });
-  });
-  [].forEach.call(document.querySelectorAll('dialog.file-dialog'),function(dlg){
-    var close=dlg.querySelector('[data-close]');
-    if(close) close.addEventListener('click',function(){dlg.close();});
-    // click on the backdrop (outside the dialog content) closes it
-    dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
-  });
+    [].forEach.call(root.querySelectorAll('dialog.file-dialog'),function(dlg){
+      if(dlg.getAttribute('data-file-wired')) return;
+      dlg.setAttribute('data-file-wired','1');
+      var close=dlg.querySelector('[data-close]');
+      if(close) close.addEventListener('click',function(){dlg.close();});
+      // click on the backdrop (outside the dialog content) closes it
+      dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+    });
+  }
+  window.__vqsWireFiles=wireFiles;
+  wireFiles(document);
 
   if(reduce) return;                 // honor reduced motion: skip the typewriter
 
@@ -181,6 +271,232 @@ Present findings as:
     cells.forEach(function(c){io.observe(c);});
   } else {
     cells.forEach(onVisible);
+  }
+})();
+
+// --- mark the chapter complete once the reader reaches the last panel; bump streak ---
+(function(){
+  if(!window.VQS) return;
+  try{ window.VQS.updateStreak(); }catch(e){}
+  var ch=document.body.getAttribute('data-chapter');
+  if(!ch) return;
+  var cells=document.querySelectorAll('main.strip .cell');
+  if(!cells.length) return;
+  var last=cells[cells.length-1];
+  function done(){ try{ window.VQS.markComplete(ch); }catch(e){} }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){ if(e.isIntersecting){ done(); io.disconnect(); } });
+    },{threshold:0.4});
+    io.observe(last);
+  } else { done(); }
+})();
+
+// --- inline knowledge checks: pick an answer, get instant right/wrong feedback ---
+(function(){
+  var CFG=(window.VQS_CFG&&window.VQS_CFG.quiz)||{};
+  // Restore a (possibly cloned) quiz to a fresh, interactive state.
+  function reset(q){
+    q.removeAttribute('data-wired');
+    [].forEach.call(q.querySelectorAll('.quiz-opt'),function(o){ o.disabled=false; o.className='quiz-opt'; });
+    var fb=q.querySelector('.quiz-feedback');
+    if(fb){ fb.hidden=true; fb.className='quiz-feedback'; fb.textContent=''; }
+  }
+  // Wire one quiz node's option buttons + feedback. Reused for page quizzes and
+  // for cloned quizzes shown as dedicated slides in presentation mode.
+  function wire(q){
+    if(q.getAttribute('data-wired')) return;
+    q.setAttribute('data-wired','1');
+    var id=q.getAttribute('data-quiz-id');
+    var answer=parseInt(q.getAttribute('data-answer'),10);
+    var opts=[].slice.call(q.querySelectorAll('.quiz-opt'));
+    var fb=q.querySelector('.quiz-feedback');
+    var solved=false;
+    function feedback(correct){
+      var prefix=correct?(CFG.correct_prefix||'Correct!'):(CFG.incorrect_prefix||'Not quite.');
+      var expl=correct?q.getAttribute('data-correct'):q.getAttribute('data-incorrect');
+      var retry=(!correct&&CFG.retry_label)?(' '+CFG.retry_label):'';
+      fb.hidden=false;
+      fb.className='quiz-feedback '+(correct?'is-correct':'is-incorrect');
+      fb.textContent=prefix+(expl?(' '+expl):'')+retry;
+      var s=document.getElementById('copy-status');
+      if(s&&CFG.answered_label){ s.textContent=''; s.textContent=CFG.answered_label; }
+    }
+    function choose(i,el,persist){
+      if(solved) return;
+      var correct=(i===answer);
+      el.classList.add('chosen',correct?'correct':'incorrect');
+      feedback(correct);
+      if(correct){
+        solved=true;
+        opts.forEach(function(o){ o.disabled=true; o.classList.add('locked'); });
+        if(persist&&window.VQS){ try{ window.VQS.setQuiz(id,i,true); }catch(e){} }
+      } else {
+        el.disabled=true; el.classList.add('locked');
+      }
+    }
+    opts.forEach(function(el){
+      el.addEventListener('click',function(){ choose(parseInt(el.getAttribute('data-i'),10),el,true); });
+    });
+    if(window.VQS){
+      var prev=null; try{ prev=window.VQS.getQuiz(id); }catch(e){}
+      if(prev&&prev.correct&&opts[prev.chosen]) choose(prev.chosen,opts[prev.chosen],false);
+    }
+  }
+  window.__vqsWireQuiz=wire;
+  window.__vqsResetQuiz=reset;
+  [].forEach.call(document.querySelectorAll('.quiz'),wire);
+})();
+
+// --- presentation mode: fullscreen slideshow that flows across chapters ---
+(function(){
+  var CFG=(window.VQS_CFG&&window.VQS_CFG.present)||{};
+  var btn=document.querySelector('.present-btn');
+  var startCells=[].slice.call(document.querySelectorAll('main.strip .cell'));
+  if(!startCells.length) return;
+  var total=parseInt(document.body.getAttribute('data-total'),10)||1;
+  var origChapter=parseInt(document.body.getAttribute('data-chapter'),10)||0;
+  var curChapter=origChapter;
+  var overlay,stage,counterEl,chapterEl,slides=[],idx=0,active=false,loading=false,exiting=false;
+  function tmpl(t,map){ t=t||''; Object.keys(map).forEach(function(k){ t=t.split('{'+k+'}').join(map[k]); }); return t; }
+  function chapterUrl(i){ return 'chapter-'+('0'+i).slice(-2)+'.html'; }
+  function chipText(root){ var c=root.querySelector('.banner .chip'); return c?c.textContent.trim():''; }
+  function setChapter(text){ if(chapterEl) chapterEl.textContent=text||''; }
+  function makeSlide(cell){
+    var s=document.createElement('div'); s.className='present-slide';
+    s.innerHTML=cell.innerHTML;
+    // restore any terminal line caught mid-typewriter to its full text
+    [].forEach.call(s.querySelectorAll('.term-line'),function(el){
+      var rich=el.getAttribute('data-rich'); if(rich!=null) el.innerHTML=rich;
+    });
+    // make the "view file" button + dialog work inside this cloned slide
+    // (clones inherit data-file-wired from the page, so clear it first)
+    [].forEach.call(s.querySelectorAll('[data-file-wired]'),function(el){ el.removeAttribute('data-file-wired'); });
+    if(window.__vqsWireFiles) window.__vqsWireFiles(s);
+    return s;
+  }
+  // A Quick Check becomes its own interactive slide right after its panel.
+  function makeQuizSlide(quizNode){
+    var s=document.createElement('div'); s.className='present-slide present-quiz-slide';
+    var q=quizNode.cloneNode(true);
+    if(window.__vqsResetQuiz) window.__vqsResetQuiz(q);
+    s.appendChild(q);
+    if(window.__vqsWireQuiz) window.__vqsWireQuiz(q);
+    return s;
+  }
+  function setSlides(cells){
+    while(stage.firstChild) stage.removeChild(stage.firstChild);
+    slides=[];
+    cells.forEach(function(c){
+      // Quiz now lives in its own bare cell - render it as a single quiz slide.
+      if(c.classList.contains('quiz-cell')){
+        var only=c.querySelector('.quiz');
+        if(only){ var os=makeQuizSlide(only); stage.appendChild(os); slides.push(os); }
+        return;
+      }
+      var s=makeSlide(c); stage.appendChild(s); slides.push(s);
+      var quiz=c.querySelector('.quiz');
+      if(quiz){ var qs=makeQuizSlide(quiz); stage.appendChild(qs); slides.push(qs); }
+    });
+  }
+  function build(){
+    overlay=document.createElement('div'); overlay.className='present-overlay';
+    overlay.setAttribute('role','dialog'); overlay.setAttribute('aria-modal','true');
+    stage=document.createElement('div'); stage.className='present-stage';
+    var prev=document.createElement('button'); prev.type='button'; prev.className='present-nav prev';
+    prev.setAttribute('aria-label',CFG.prev_label||'Previous'); prev.innerHTML='&larr;';
+    var nextb=document.createElement('button'); nextb.type='button'; nextb.className='present-nav next';
+    nextb.setAttribute('aria-label',CFG.next_label||'Next'); nextb.innerHTML='&rarr;';
+    var exit=document.createElement('button'); exit.type='button'; exit.className='present-exit';
+    exit.textContent=CFG.exit_label||'Exit';
+    counterEl=document.createElement('div'); counterEl.className='present-counter';
+    chapterEl=document.createElement('div'); chapterEl.className='present-chapter';
+    overlay.appendChild(stage); overlay.appendChild(prev); overlay.appendChild(nextb);
+    overlay.appendChild(exit); overlay.appendChild(counterEl); overlay.appendChild(chapterEl);
+    prev.addEventListener('click',prevSlide);
+    nextb.addEventListener('click',nextSlide);
+    exit.addEventListener('click',stop);
+    document.body.appendChild(overlay);
+    setSlides(startCells);
+    setChapter(chipText(document));
+  }
+  function go(i){
+    if(!slides.length) return;
+    idx=Math.max(0,Math.min(slides.length-1,i));
+    slides.forEach(function(s,k){ s.classList.toggle('active',k===idx); });
+    counterEl.textContent=tmpl(CFG.counter_label||'{n} / {total}',{n:idx+1,total:slides.length});
+  }
+  // Pull an adjacent chapter's panels into the running slideshow (keeps fullscreen).
+  // Falls back to a full navigation if fetch is unavailable (e.g. file:// preview).
+  function loadChapter(i,atEnd){
+    if(loading||i<0||i>=total) return;
+    loading=true;
+    var url=chapterUrl(i);
+    fetch(url).then(function(r){ return r.text(); }).then(function(html){
+      var doc=new DOMParser().parseFromString(html,'text/html');
+      var cells=[].slice.call(doc.querySelectorAll('main.strip .cell'));
+      if(!cells.length){ loading=false; return; }
+      curChapter=i; setSlides(cells); setChapter(chipText(doc)); go(atEnd?slides.length-1:0); loading=false;
+    }).catch(function(){
+      loading=false;
+      window.location.href=url+(atEnd?'#present-last':'#present');
+    });
+  }
+  function nextSlide(){
+    if(idx<slides.length-1) go(idx+1);
+    else if(curChapter<total-1) loadChapter(curChapter+1,false);
+  }
+  function prevSlide(){
+    if(idx>0) go(idx-1);
+    else if(curChapter>0) loadChapter(curChapter-1,true);
+  }
+  function key(e){
+    if(!active) return;
+    // if a file dialog is open, let it own the keys (Esc closes it, not the show)
+    if(overlay&&overlay.querySelector('dialog.file-dialog[open]')){
+      if(e.key==='Escape') return;
+    }
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); nextSlide(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prevSlide(); }
+    else if(e.key==='Escape'){ stop(); }
+  }
+  function start(atEnd){
+    if(active) return;
+    if(!overlay) build();
+    active=true; document.body.classList.add('presenting');
+    overlay.classList.add('show'); go(atEnd?slides.length-1:0);
+    document.addEventListener('keydown',key);
+    if(overlay.requestFullscreen){ overlay.requestFullscreen().catch(function(){}); }
+    if(CFG.hint){
+      var h=document.createElement('div'); h.className='present-hint'; h.textContent=CFG.hint;
+      overlay.appendChild(h);
+      setTimeout(function(){ h.classList.add('fade'); },1800);
+      setTimeout(function(){ if(h.parentNode) h.parentNode.removeChild(h); },2600);
+    }
+  }
+  function stop(){
+    if(exiting) return;
+    active=false; document.body.classList.remove('presenting');
+    if(overlay) overlay.classList.remove('show');
+    document.removeEventListener('keydown',key);
+    if(document.fullscreenElement&&document.exitFullscreen){ document.exitFullscreen().catch(function(){}); }
+    // land the underlying page on whichever chapter the presentation ended on
+    if(curChapter!==origChapter){ exiting=true; window.location.href=chapterUrl(curChapter); }
+  }
+  if(btn) btn.addEventListener('click',function(){ start(false); });
+  document.addEventListener('keydown',function(e){
+    if(active) return;
+    var tag=(e.target&&e.target.tagName)||'';
+    if((e.key==='p'||e.key==='P')&&!/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) start(false);
+  });
+  document.addEventListener('fullscreenchange',function(){
+    if(active&&!document.fullscreenElement) stop();
+  });
+  // Auto-resume when arriving from an adjacent chapter via the navigation fallback.
+  if(location.hash==='#present'||location.hash==='#present-last'){
+    var resumeEnd=location.hash==='#present-last';
+    try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+    start(resumeEnd);
   }
 })();
 </script>

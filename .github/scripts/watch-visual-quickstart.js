@@ -5,69 +5,50 @@
  * Usage:
  *   npm run watch:visual-quickstart
  *
- * Leave this running while you edit content.yaml. Each time you save the file,
- * the visual quickstart HTML/CSS is regenerated automatically (same as `npm run build:visual-quickstart`).
- * Press Ctrl+C to stop.
+ * Leave this running while you edit content.yaml. Each save regenerates the
+ * visual quickstart HTML/CSS (and re-optimizes images) automatically. Ctrl+C to stop.
  *
- * Zero dependencies: uses Node's built-in fs.watch. It watches the directory and
- * filters for content.yaml so it keeps working across atomic "save = replace file"
- * editors (where the file is briefly renamed/recreated).
+ * The watch loop, like the rest of the rendering/optimization engine, lives in the
+ * reusable visual-quickstart-generator skill; this is a thin launcher that points
+ * that engine at this repo's content file and output dir.
+ *
+ * Optional env overrides:
+ *   VISUAL_QUICKSTART_SKILL_DIR  path to the visual-quickstart-generator skill folder
  */
 
-const { spawn } = require('child_process');
-const { watch, existsSync } = require('fs');
+const { spawnSync } = require('child_process');
+const { existsSync } = require('fs');
 const { join } = require('path');
+const os = require('os');
 
 const repoRoot = join(__dirname, '..', '..'); // .github/scripts -> repo root
 const docsDir = join(repoRoot, 'docs');
 const contentFile = join(docsDir, 'content.yaml');
-const buildScript = join(__dirname, 'build-visual-quickstart.js');
-const WATCHED = 'content.yaml';
-const DEBOUNCE_MS = 200;
 
+const skillDir =
+  process.env.VISUAL_QUICKSTART_SKILL_DIR ||
+  join(os.homedir(), '.copilot', 'skills', 'visual-quickstart-generator');
+const watchScript = join(skillDir, 'scripts', 'watch.js');
+
+if (!existsSync(watchScript)) {
+  console.error(
+    `\u2716 Visual quickstart engine not found at:\n  ${watchScript}\n` +
+      'Set VISUAL_QUICKSTART_SKILL_DIR to the visual-quickstart-generator skill folder, or install the skill.',
+  );
+  process.exit(1);
+}
 if (!existsSync(contentFile)) {
   console.error(`\u2716 Content file not found:\n  ${contentFile}`);
   process.exit(1);
 }
 
-let building = false;
-let pending = false;
-let timer = null;
-
-function runBuild() {
-  if (building) {
-    pending = true; // a change arrived mid-build; rebuild once this one finishes
-    return;
-  }
-  building = true;
-  const child = spawn('node', [buildScript], { stdio: 'inherit' });
-  child.on('exit', (code) => {
-    building = false;
-    if (code === 0) {
-      console.log(`\u2713 Rebuilt at ${new Date().toLocaleTimeString()} \u2014 watching for changes\u2026`);
-    } else {
-      console.error(`\u2716 Build failed (exit ${code}) \u2014 fix the error and save again.`);
-    }
-    if (pending) {
-      pending = false;
-      runBuild();
-    }
-  });
-}
-
-function scheduleBuild() {
-  clearTimeout(timer);
-  timer = setTimeout(runBuild, DEBOUNCE_MS);
-}
-
-console.log(`Watching ${contentFile}\nPress Ctrl+C to stop.`);
-runBuild(); // build once on startup so output is fresh
-
-watch(docsDir, (_event, filename) => {
-  if (filename === WATCHED) scheduleBuild();
+const result = spawnSync(process.execPath, [watchScript], {
+  stdio: 'inherit',
+  env: { ...process.env, VISUAL_QUICKSTART_DOCS: docsDir, VISUAL_QUICKSTART_CONTENT: contentFile },
 });
 
-process.on('SIGINT', () => {
-  console.log('\nStopped watching.');
-  process.exit(0);
-});
+if (result.error) {
+  console.error(`\u2716 Failed to run the engine: ${result.error.message}`);
+  process.exit(1);
+}
+process.exit(result.status ?? 0);

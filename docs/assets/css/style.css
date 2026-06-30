@@ -54,9 +54,9 @@ a{color:var(--teal)}
 .banner h1{font:700 clamp(2rem,5.4vw,3.2rem)/1.03 'Space Grotesk','Poppins',sans-serif;
   margin:.42em 0 .14em;letter-spacing:-.5px}
 .banner .b-sub{color:rgba(255,255,255,.88);max-width:540px;margin:0;font-size:1.05rem}
-.banner .b-track{height:7px;width:220px;margin-top:20px;border-radius:4px;overflow:hidden;
-  background:rgba(255,255,255,.22)}
-.banner .b-track i{display:block;height:100%;border-radius:4px;
+.banner-wrap .b-track{position:absolute;top:0;left:0;z-index:3;height:6px;width:100%;
+  margin:0;border-radius:0;overflow:hidden;background:rgba(255,255,255,.22)}
+.banner-wrap .b-track i{display:block;height:100%;border-radius:0;
   background:linear-gradient(90deg,#ffd27a,#e8702a)}
 .banner .pipav{position:absolute;right:26px;top:50%;transform:translateY(-50%);
   width:150px;height:150px;object-fit:cover;border-radius:50%;
@@ -89,6 +89,7 @@ a{color:var(--teal)}
   display:flex;flex-direction:column;gap:34px}
 .cell{position:relative;margin:0;background:var(--card);border-radius:22px;
   padding:14px;box-shadow:var(--shadow)}
+.cell.quiz-cell{background:none;padding:0;box-shadow:none;border-radius:0}
 .cell .panel{display:block;width:100%;height:auto;border-radius:12px}
 .cap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-weight:700;
   font-size:1.325rem;color:var(--ink);margin:2px 4px 12px;padding-left:24px;line-height:1.25}
@@ -96,7 +97,7 @@ a{color:var(--teal)}
 .badge{position:absolute;top:-14px;left:-14px;z-index:2;width:46px;height:46px;
   display:grid;place-items:center;border-radius:50%;background:var(--accent);
   color:#fff;font-weight:800;font-size:1.25rem;border:4px solid #fff;
-  box-shadow:0 6px 14px rgba(190,18,60,.4)}
+  box-shadow:0 2px 5px rgb(0 0 0 / 40%)}
 /* 'Read in course' deep-link pill, right-aligned on the caption row */
 .cap-link{flex:0 0 auto;margin-left:auto;display:inline-flex;align-items:center;gap:7px;
   white-space:nowrap;font-size:.86rem;font-weight:600;line-height:1;color:var(--teal);
@@ -265,4 +266,200 @@ body.home .home-intro .panel > g:nth-of-type(3){animation-delay:4.6s}
   .chapter-select summary:focus-visible,.cs-options a:focus-visible,
   .term-copy:focus-visible .tc-box,.foot a:focus-visible{
     outline:3px solid Highlight;outline-offset:2px}
+}
+
+/* ============================================================================
+   Level-up features: presentation mode, knowledge checks, quest map + dashboard,
+   completion certificate. Palette reuses the :root tokens above.
+   ============================================================================ */
+
+/* --- Present button: floating action button, fixed bottom-right --- */
+.present-fab{position:fixed;right:24px;bottom:24px;z-index:40;
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  font:600 .95rem/1 'Poppins',sans-serif;color:#fff;background:var(--teal);
+  border:none;border-radius:999px;padding:14px 22px;
+  transition:transform .15s ease,background .15s ease}
+.present-fab:hover{background:#0a6a72;transform:translateY(-2px)}
+.present-fab:focus-visible{outline:3px solid #fff;outline-offset:2px;
+  box-shadow:0 0 0 6px var(--focus)}
+.present-ico{width:15px;height:15px}
+body.presenting .present-fab{display:none}
+@media(max-width:600px){.present-fab{right:16px;bottom:16px;padding:12px 18px}}
+
+/* --- Inline knowledge check (quiz) --- */
+.quiz{margin:0;background:#fff;border:2px solid #e7dcc4;border-radius:16px;
+  padding:16px 18px;box-shadow:0 6px 16px rgba(31,41,55,.08)}
+.quiz-head{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--teal);
+  font-size:.84rem;letter-spacing:.04em;text-transform:uppercase}
+.quiz-ico{width:18px;height:18px}
+.quiz-prompt{margin:8px 0 14px;font-weight:600;font-size:1.06rem;line-height:1.35}
+.quiz-opts{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.quiz-opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
+  font:500 1rem/1.3 'Poppins',sans-serif;color:var(--ink);background:var(--cream);
+  border:2px solid #ecdfc4;border-radius:12px;padding:11px 14px;
+  transition:border-color .15s ease,background .15s ease,transform .12s ease}
+.quiz-opt:hover:not(:disabled){border-color:var(--teal);transform:translateY(-1px)}
+.quiz-opt:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.quiz-key{flex:0 0 auto;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;
+  background:#fff;border:2px solid #e0d3b6;font-weight:700;font-size:.9rem}
+.quiz-opt.correct{border-color:#15803d;background:#e9f8ee}
+.quiz-opt.correct .quiz-key{background:#15803d;color:#fff;border-color:#15803d}
+.quiz-opt.incorrect{border-color:var(--accent);background:#fdeaee}
+.quiz-opt.incorrect .quiz-key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.quiz-opt.locked{cursor:default}
+.quiz-opt:disabled{opacity:.85}
+.quiz-feedback{margin:13px 0 0;padding:11px 14px;border-radius:12px;font-weight:600;
+  font-size:.98rem;line-height:1.4}
+.quiz-feedback.is-correct{background:#e9f8ee;color:#14532d;border:1px solid #b7e4c5}
+.quiz-feedback.is-incorrect{background:#fdeaee;color:#7d1227;border:1px solid #f3c2cc}
+
+/* --- Quest map + progress dashboard (home page) --- */
+.quest{max-width:920px;margin:34px auto 0;padding:0 4px}
+.quest-h{font:700 1.7rem/1.1 'Space Grotesk','Poppins',sans-serif;text-align:center;margin:0}
+.quest-sub{text-align:center;color:#6c6657;margin:8px auto 22px;max-width:560px}
+.quest-dash{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 24px}
+.qstat{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;
+  background:linear-gradient(160deg,#fff,#fef7e8);border:2px solid #efe2c6;border-radius:16px;
+  padding:16px 10px;box-shadow:0 6px 16px rgba(31,41,55,.07)}
+.qstat-ico{font-size:1.5rem;line-height:1}
+.qstat b{font:700 1.02rem/1.15 'Poppins',sans-serif;color:var(--ink)}
+.quest-map{list-style:none;margin:0;padding:0;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.q-node{position:relative}
+.q-link{display:flex;flex-direction:column;gap:4px;height:100%;text-decoration:none;color:var(--ink);
+  background:var(--card);border:2px solid #ecdfc4;border-radius:16px;padding:16px 16px 14px;
+  box-shadow:0 6px 16px rgba(31,41,55,.08);transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+.q-link:hover{transform:translateY(-3px);border-color:var(--teal);box-shadow:0 12px 24px rgba(31,41,55,.14)}
+.q-link:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.q-medal{position:absolute;top:-12px;right:-10px;font-size:1.5rem;
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.25));opacity:0;transform:scale(.4);
+  transition:opacity .2s ease,transform .2s ease}
+.q-badge{font:700 .74rem/1 'Poppins',sans-serif;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal)}
+.q-name{font-weight:700;font-size:1.12rem;line-height:1.2}
+.q-status{font-size:.86rem;font-weight:500;color:#8a8470}
+.q-node.is-done .q-link{background:linear-gradient(160deg,#eafaf0,#d6f3e1);border-color:#7cd0a1}
+.q-node.is-done .q-medal{opacity:1;transform:scale(1)}
+.q-node.is-done .q-status{color:#15803d;font-weight:700}
+.quest-foot{text-align:center;margin:22px 0 0}
+.quest-reset{cursor:pointer;background:none;border:none;color:#8a8470;font:600 .86rem/1 'Poppins',sans-serif;
+  text-decoration:underline;text-underline-offset:3px;padding:6px 10px;border-radius:8px}
+.quest-reset:hover{color:var(--accent)}
+.quest-reset:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+/* --- Completion certificate --- */
+.cert-wrap{margin:30px auto 0;max-width:720px;text-align:center}
+.cert-locked{color:#8a8470;font-weight:500;background:#faf4e6;border:1px dashed #e0d3b6;
+  border-radius:14px;padding:16px 18px;margin:0}
+.cert-congrats{font:700 1.5rem/1.15 'Space Grotesk','Poppins',sans-serif;margin:0 0 16px}
+.cert-form{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:flex-end;margin:0 0 22px}
+.cert-name-row{display:flex;flex-direction:column;gap:6px;text-align:left;font-weight:600;font-size:.92rem}
+.cert-name-in{font:500 1.05rem/1 'Poppins',sans-serif;padding:12px 16px;border-radius:12px;
+  border:2px solid #e0d3b6;min-width:240px}
+.cert-name-in:focus-visible{outline:3px solid var(--focus);outline-offset:1px;border-color:var(--teal)}
+.cert-make,.cert-print{cursor:pointer;font:600 1rem/1 'Poppins',sans-serif;color:#fff;
+  background:var(--accent);border:none;border-radius:999px;padding:13px 24px;
+  box-shadow:0 8px 20px rgba(190,18,60,.32);transition:transform .15s ease}
+.cert-make:hover,.cert-print:hover{transform:translateY(-2px)}
+.cert-make:focus-visible,.cert-print:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.cert-print{margin-top:20px;background:var(--teal);box-shadow:0 8px 20px rgba(12,122,122,.3)}
+.cert-card{position:relative;background:#fffdf7;border:3px solid var(--teal);border-radius:18px;
+  padding:42px 36px;box-shadow:var(--shadow);
+  background-image:radial-gradient(circle at 12% 8%,rgba(232,112,42,.08),transparent 40%),
+    radial-gradient(circle at 88% 92%,rgba(12,122,122,.1),transparent 42%)}
+.cert-card::before{content:"";position:absolute;inset:10px;border:2px solid #e7dcc4;border-radius:12px;pointer-events:none}
+.cert-seal{font-size:3rem;line-height:1}
+.cert-title{font:700 1.7rem/1.1 'Space Grotesk','Poppins',sans-serif;letter-spacing:.02em;margin:6px 0 22px;color:var(--teal)}
+.cert-name-out{font:700 2rem/1.1 'Space Grotesk','Poppins',sans-serif;margin:0 0 10px;
+  border-bottom:2px solid #e7dcc4;display:inline-block;padding:0 18px 8px}
+.cert-body{color:#6c6657;margin:14px 0 4px;font-weight:500}
+.cert-course{font:700 1.25rem/1.2 'Poppins',sans-serif;margin:0 0 18px}
+.cert-date{color:#8a8470;font-size:.95rem;margin:0 0 18px}
+.cert-sign{font-weight:600;color:var(--ink);margin:0;font-style:italic}
+
+/* --- Presentation / slideshow overlay --- */
+body.presenting{overflow:hidden}
+.present-overlay{position:fixed;inset:0;z-index:90;display:none;
+  background:radial-gradient(140% 120% at 50% 0%,#10333a 0%,#0a1f24 70%,#06151a 100%)}
+.present-overlay.show{display:flex;align-items:center;justify-content:center}
+.present-stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:2.4vh 5.5vw}
+.present-slide{display:none;width:100%;max-width:1480px;text-align:center}
+.present-slide.active{display:block;animation:present-in .35s ease both}
+.present-slide .badge,.present-slide .quiz,.present-slide .file-dialog:not([open]){display:none}
+.present-slide .file-dialog{text-align:left}
+.present-slide .cap{position:relative;justify-content:center;align-items:center;color:#eaf6f6;
+  font-size:clamp(1.15rem,2.5vw,1.9rem);padding-left:0;margin:0 auto 10px;
+  max-width:min(100%,120vh)}
+.present-slide .cap-title{flex:0 1 auto}
+.present-slide .cap-link{position:absolute;right:0;top:50%;transform:translateY(-50%);
+  margin-left:0;flex:0 0 auto;font-size:.92rem}
+.present-slide .panel-wrap{width:100%;max-width:min(100%,120vh);margin-inline:auto}
+.present-slide .panel{width:100%;height:auto;display:block;max-width:min(100%,120vh);
+  margin-inline:auto;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+/* Terminal/details panels (and their text) slide up as each frame loads - a little
+   motion in place of the typewriter, which doesn't run in presentation mode. */
+.present-slide.active .term-bar,
+.present-slide.active .details-bar{transform-box:fill-box;
+  animation:present-rise .55s cubic-bezier(.22,1,.36,1) .12s both}
+.present-slide.active .term-text{animation:present-rise .55s cubic-bezier(.22,1,.36,1) .12s both}
+.present-slide.active .term-copy{animation:present-fade .4s ease .5s both}
+/* --- dedicated Quick Check slide in presentation mode --- */
+.present-quiz-slide{max-width:880px}
+.present-quiz-slide .quiz{display:block;margin:0 auto;text-align:left;
+  padding:30px 34px;border-radius:22px;box-shadow:0 26px 64px rgba(0,0,0,.34)}
+.present-quiz-slide.active .quiz{animation:present-rise .5s cubic-bezier(.22,1,.36,1) both}
+.present-quiz-slide .quiz-head{font-size:1rem}
+.present-quiz-slide .quiz-ico{width:22px;height:22px}
+.present-quiz-slide .quiz-prompt{font-size:1.5rem;margin:12px 0 20px;line-height:1.3}
+.present-quiz-slide .quiz-opts{gap:13px}
+.present-quiz-slide .quiz-opt{font-size:1.18rem;padding:16px 18px;border-radius:14px}
+.present-quiz-slide .quiz-key{width:34px;height:34px;font-size:1.05rem}
+.present-quiz-slide .quiz-feedback{font-size:1.12rem;padding:15px 18px;margin-top:18px}
+@keyframes present-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes present-fade{from{opacity:0}to{opacity:1}}
+.present-nav{position:absolute;top:50%;transform:translateY(-50%);width:58px;height:58px;
+  border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.14);color:#fff;
+  font-size:1.7rem;line-height:1;display:grid;place-items:center;backdrop-filter:blur(4px);
+  transition:background .15s ease}
+.present-nav:hover{background:rgba(255,255,255,.28)}
+.present-nav:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.present-nav.prev{left:18px}
+.present-nav.next{right:18px}
+.present-exit{position:absolute;top:18px;right:20px;cursor:pointer;border:none;border-radius:999px;
+  background:rgba(255,255,255,.16);color:#fff;font:600 .92rem/1 'Poppins',sans-serif;padding:10px 18px}
+.present-chapter{position:absolute;top:18px;left:20px;color:#cfe7e7;
+  font:700 .82rem/1 'Poppins',sans-serif;letter-spacing:.16em;text-transform:uppercase;
+  background:rgba(255,255,255,.12);border-radius:999px;padding:10px 16px;backdrop-filter:blur(4px)}
+.present-exit:hover{background:rgba(255,255,255,.3)}
+.present-exit:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.present-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  color:#cfe7e7;font:600 .95rem/1 'Poppins',sans-serif;letter-spacing:.05em}
+.present-hint{position:absolute;bottom:54px;left:50%;transform:translateX(-50%);
+  color:#fff;background:rgba(0,0,0,.45);border-radius:999px;padding:9px 18px;font-size:.9rem;
+  transition:opacity .5s ease}
+.present-hint.fade{opacity:0}
+@keyframes present-in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+
+@media(max-width:760px){
+  .quest-dash{grid-template-columns:repeat(2,1fr)}
+  .present-nav{width:46px;height:46px;font-size:1.3rem}
+  .cert-card{padding:30px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  .present-slide.active,
+  .present-slide.active .term-bar,.present-slide.active .details-bar,
+  .present-slide.active .term-text,.present-slide.active .term-copy{animation:none}
+  .q-medal{transition:none}
+  .present-fab:hover,.q-link:hover,.cert-make:hover,.cert-print:hover,.quiz-opt:hover:not(:disabled){transform:none}
+}
+@media (forced-colors: active){
+  .present-fab,.quiz-opt,.q-link,.cert-make,.cert-print,.present-nav,.present-exit{border:1px solid ButtonText}
+}
+
+/* --- Print: isolate the certificate card when the reader prints it --- */
+@media print{
+  body.printing-cert *{visibility:hidden !important}
+  body.printing-cert .cert-card,body.printing-cert .cert-card *{visibility:visible !important}
+  body.printing-cert .cert-card{position:absolute;left:0;right:0;top:0;margin:0 auto;
+    max-width:680px;box-shadow:none}
 }

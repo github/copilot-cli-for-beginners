@@ -19,35 +19,114 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>MCP Servers - Pip&#x27;s Copilot CLI Comic</title>
-<link rel="icon" href="assets/img/pip-hero.png"/>
+<link rel="icon" href="assets/img/pip-hero.webp"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css"/>
+
 </head>
-<body>
+<body data-chapter="06" data-total="8">
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="banner-wrap">
+  <div class="b-track" role="img" aria-label="Course progress: chapter 6 of 8"><i style="width:88%"></i></div>
   <div class="banner">
     <span class="chip">CHAPTER 06</span>
     <h1>MCP Servers</h1>
     <p class="b-sub">Add new powers to Copilot with MCP servers for GitHub, files, and docs.</p>
-    <div class="b-track" role="img" aria-label="Course progress: chapter 6 of 8"><i style="width:88%"></i></div>
-    <img class="pipav" src="assets/img/pip-avatar-hat.png?v=8444f7c2" alt="Pip the fox mascot"/>
+    <img class="pipav" src="assets/img/pip-avatar-hat.webp?v=f093b7cf" alt="Pip the fox mascot"/>
   </div>
 </header>
 <nav class="nav" aria-label="Chapter"><a class="nav-btn" href="chapter-05.html">&larr;&nbsp;<span class="nav-lbl-full">Previous Chapter</span><span class="nav-lbl-short">Prev</span></a><a class="nav-home" href="index.html">Home</a><a class="nav-btn" href="chapter-07.html"><span class="nav-lbl-full">Next Chapter</span><span class="nav-lbl-short">Next</span>&nbsp;&rarr;</a></nav>
+<button class="present-btn present-fab" type="button"><svg class="present-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20"/></svg><span>Present</span></button>
 <main id="main" class="strip">
-<figure class="cell"><span class="badge">1</span><figcaption class="cap"><span class="cap-title">Learning Objectives</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill and Pip stand beside a chalkboard showing a checklist of four green checkmarks. Details: In this chapter you will: - See what MCP servers add - Use the GitHub server and pull in live docs - Add more servers and combine them" xmlns="http://www.w3.org/2000/svg"><image href="assets/img/objectives.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="756" width="1488" height="246" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="772" width="9" height="214" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="822" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">In this chapter you will:</text><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- See what MCP servers add</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Use the GitHub server and pull in live docs</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Add more servers and combine them</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
-<figure class="cell"><span class="badge">2</span><figcaption class="cap"><span class="cap-title">MCP adds superpowers</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#the-mcp-show-command" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip stands beside Professor Quill as glowing extension icons plug into a power outlet. Speech bubble: “MCP servers are like browser extensions.”. Speech bubble: “Each one plugs in a new power.”. Terminal: copilot; &gt; /mcp show      # see configured servers." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-mcp.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="24" y="78" width="500" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="386,218 380,200 446,218" fill="#ffffff"/><line x1="386" y1="218" x2="446" y2="218" stroke="#ffffff" stroke-width="9"/><line x1="386" y1="218" x2="380" y2="200" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="446" y1="218" x2="380" y2="200" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="274" y="132" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">MCP servers are like</text><text x="274" y="178" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">browser extensions.</text></g><g><rect x="24" y="294" width="420" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="368,434 458,451 428,434" fill="#ffffff"/><line x1="368" y1="434" x2="428" y2="434" stroke="#ffffff" stroke-width="9"/><line x1="368" y1="434" x2="458" y2="451" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="428" y1="434" x2="458" y2="451" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="234" y="348" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Each one plugs in</text><text x="234" y="394" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">a new power.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /mcp show      # see configured servers" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /mcp show    </span><span class="term-comment">  # see configured servers</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/mcp show" aria-label="Copy command: /mcp show" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">3</span><figcaption class="cap"><span class="cap-title">GitHub MCP is built in</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#get-started-with-the-built-in-github-mcp-server" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip gives a thumbs up beside a laptop showing the GitHub octocat. Speech bubble: “The GitHub server is built in - no setup needed.”. Terminal: &gt; List the latest commits in this repository." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-github.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="880" width="1488" height="122" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="910" r="11" fill="#ff5f56"/><circle cx="94" cy="910" r="11" fill="#ffbd2e"/><circle cx="130" cy="910" r="11" fill="#27c93f"/></g><g><rect x="708" y="78" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="708,142 652,198 708,202" fill="#ffffff"/><line x1="708" y1="142" x2="708" y2="202" stroke="#ffffff" stroke-width="9"/><line x1="708" y1="142" x2="652" y2="198" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="708" y1="202" x2="652" y2="198" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="988" y="132" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">The GitHub server is built</text><text x="988" y="178" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">in - no setup needed.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; List the latest commits in this repository" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; List the latest commits in this repository</span></div></div><button class="term-copy" type="button" data-copy="List the latest commits in this repository" aria-label="Copy command: List the latest commits in this repository" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">4</span><figcaption class="cap"><span class="cap-title">Pull in live docs</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#context7-server-documentation" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip looks up a glowing open documentation book that plugs into his laptop. Speech bubble: “Need current library docs? A docs server fetches them live.”. Terminal: &gt; Get the latest pytest docs and apply them to; @samples/book-app-project/tests/test_books.py." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-docs.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="24" y="24" width="680" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="435,164 512,197 495,164" fill="#ffffff"/><line x1="435" y1="164" x2="495" y2="164" stroke="#ffffff" stroke-width="9"/><line x1="435" y1="164" x2="512" y2="197" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="495" y1="164" x2="512" y2="197" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="364" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Need current library docs?</text><text x="364" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">A docs server fetches them live.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; Get the latest pytest docs and apply them to" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; Get the latest pytest docs and apply them to</span></div><div class="term-line" data-full="  @samples/book-app-project/tests/test_books.py" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>  @samples/book-app-project/tests/test_books.py</span></div></div><button class="term-copy" type="button" data-copy="Get the latest pytest docs and apply them to @samples/book-app-project/tests/test_books.py" aria-label="Copy command: Get the latest pytest docs and apply them to @samples/book-app-project/tests/test_books.py" style="top:86.914%;height:8.984%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">5</span><figcaption class="cap"><span class="cap-title">Add more servers</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#adding-mcp-servers" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip connects a small server device as glowing icons rise from it. Speech bubble: “Browse the registry and add servers in seconds.”. Terminal: &gt; /mcp search    # browse and add servers; # e.g. add a filesystem server to read and write local files." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-add.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="762" y="150" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="762,214 702,261 762,274" fill="#ffffff"/><line x1="762" y1="214" x2="762" y2="274" stroke="#ffffff" stroke-width="9"/><line x1="762" y1="214" x2="702" y2="261" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="762" y1="274" x2="702" y2="261" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1042" y="204" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Browse the registry and</text><text x="1042" y="250" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">add servers in seconds.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; /mcp search    # browse and add servers" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /mcp search  </span><span class="term-comment">  # browse and add servers</span></div><div class="term-line" data-full="# e.g. add a filesystem server to read and write local files" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span># e.g. add a filesystem server to read and write local files</span></div></div><button class="term-copy" type="button" data-copy="/mcp search" aria-label="Copy command: /mcp search" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
-<figure class="cell"><span class="badge">6</span><figcaption class="cap"><span class="cap-title">Many servers, one workflow</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#multi-server-workflows" target="_blank" rel="noopener noreferrer" aria-label="Read in course (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Read in course</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip thinks beside a laptop with glowing icons while Professor Quill looks on. Speech bubble: “Files, docs, and GitHub - all in one chat.”. Speech bubble: “Many servers, one smooth flow.”. Terminal: &gt; Read the docs, then open a pull request." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-workflow.png" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="24" y="880" width="1488" height="122" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="910" r="11" fill="#ff5f56"/><circle cx="94" cy="910" r="11" fill="#ffbd2e"/><circle cx="130" cy="910" r="11" fill="#27c93f"/></g><g><rect x="690" y="78" width="520" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="690,142 629,185 690,202" fill="#ffffff"/><line x1="690" y1="142" x2="690" y2="202" stroke="#ffffff" stroke-width="9"/><line x1="690" y1="142" x2="629" y2="185" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="690" y1="202" x2="629" y2="185" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="950" y="132" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Files, docs, and GitHub -</text><text x="950" y="178" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">all in one chat.</text></g><g><rect x="1068" y="330" width="440" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1171,470 1153,509 1231,470" fill="#ffffff"/><line x1="1171" y1="470" x2="1231" y2="470" stroke="#ffffff" stroke-width="9"/><line x1="1171" y1="470" x2="1153" y2="509" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1231" y1="470" x2="1153" y2="509" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1288" y="384" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Many servers,</text><text x="1288" y="430" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">one smooth flow.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; Read the docs, then open a pull request" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; Read the docs, then open a pull request</span></div></div><button class="term-copy" type="button" data-copy="Read the docs, then open a pull request" aria-label="Copy command: Read the docs, then open a pull request" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">1</span><figcaption class="cap"><span class="cap-title">Chapter 06 - Learning Objectives</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Professor Quill and Pip stand beside a chalkboard showing a checklist of four green checkmarks. Details: In this chapter you will: - See what MCP servers add - Use the GitHub server and pull in live docs - Add more servers and combine them" xmlns="http://www.w3.org/2000/svg"><image href="assets/img/objectives.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="details-bar"><rect x="24" y="756" width="1488" height="246" rx="18" fill="#ffffff" stroke="#0c7a7a" stroke-width="4"/><rect x="40" y="772" width="9" height="214" rx="4" fill="#0c7a7a"/><text class="details-line" x="68" y="822" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">In this chapter you will:</text><text class="details-line" x="68" y="868" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- See what MCP servers add</text><text class="details-line" x="68" y="914" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Use the GitHub server and pull in live docs</text><text class="details-line" x="68" y="960" font-family="'Poppins',Verdana,Segoe UI,sans-serif" font-weight="500" font-size="30" fill="#1f2937">- Add more servers and combine them</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
+<figure class="cell"><span class="badge">2</span><figcaption class="cap"><span class="cap-title">MCP adds superpowers</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#the-mcp-show-command" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip stands beside Professor Quill as glowing extension icons plug into a power outlet. Speech bubble: “MCP servers are like browser extensions.”. Speech bubble: “Each one plugs in a new power.”. Terminal: copilot; &gt; /mcp show      # see configured servers." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-mcp.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="24" y="24" width="400" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="424,88 485,129 424,148" fill="#ffffff"/><line x1="424" y1="88" x2="424" y2="148" stroke="#ffffff" stroke-width="9"/><line x1="424" y1="88" x2="485" y2="129" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="424" y1="148" x2="485" y2="129" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="224" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">MCP servers are like</text><text x="224" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">browser extensions.</text></g><g><rect x="300" y="520" width="420" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="720,536 760,543 720,596" fill="#ffffff"/><line x1="720" y1="536" x2="720" y2="596" stroke="#ffffff" stroke-width="9"/><line x1="720" y1="536" x2="760" y2="543" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="720" y1="596" x2="760" y2="543" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="510" y="574" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Each one plugs in</text><text x="510" y="620" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">a new power.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="copilot" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>copilot</span></div><div class="term-line" data-full="&gt; /mcp show      # see configured servers" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /mcp show    </span><span class="term-comment">  # see configured servers</span></div></div><button class="term-copy" type="button" data-copy="copilot" aria-label="Copy command: copilot" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button><button class="term-copy" type="button" data-copy="/mcp show" aria-label="Copy command: /mcp show" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">3</span><figcaption class="cap"><span class="cap-title">GitHub MCP is built in</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#get-started-with-the-built-in-github-mcp-server" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip gives a thumbs up beside a laptop showing the GitHub octocat. Speech bubble: “The GitHub server is built in - no setup needed.”. Terminal: &gt; List the latest commits in this repository." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-github.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="880" width="1488" height="122" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="910" r="11" fill="#ff5f56"/><circle cx="94" cy="910" r="11" fill="#ffbd2e"/><circle cx="130" cy="910" r="11" fill="#27c93f"/></g><g><rect x="708" y="78" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="708,142 652,198 708,202" fill="#ffffff"/><line x1="708" y1="142" x2="708" y2="202" stroke="#ffffff" stroke-width="9"/><line x1="708" y1="142" x2="652" y2="198" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="708" y1="202" x2="652" y2="198" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="988" y="132" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">The GitHub server is built</text><text x="988" y="178" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">in - no setup needed.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; List the latest commits in this repository" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; List the latest commits in this repository</span></div></div><button class="term-copy" type="button" data-copy="List the latest commits in this repository" aria-label="Copy command: List the latest commits in this repository" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">4</span><figcaption class="cap"><span class="cap-title">Pull in live docs</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#context7-server-documentation" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip looks up a glowing open documentation book that plugs into his laptop. Speech bubble: “Need current library docs? A docs server fetches them live.”. Terminal: &gt; Get the latest pytest docs and apply them to; @samples/book-app-project/tests/test_books.py." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-docs.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="24" y="24" width="680" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="435,164 512,197 495,164" fill="#ffffff"/><line x1="435" y1="164" x2="495" y2="164" stroke="#ffffff" stroke-width="9"/><line x1="435" y1="164" x2="512" y2="197" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="495" y1="164" x2="512" y2="197" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="364" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Need current library docs?</text><text x="364" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">A docs server fetches them live.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; Get the latest pytest docs and apply them to" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; Get the latest pytest docs and apply them to</span></div><div class="term-line" data-full="  @samples/book-app-project/tests/test_books.py" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>  @samples/book-app-project/tests/test_books.py</span></div></div><button class="term-copy" type="button" data-copy="Get the latest pytest docs and apply them to @samples/book-app-project/tests/test_books.py" aria-label="Copy command: Get the latest pytest docs and apply them to @samples/book-app-project/tests/test_books.py" style="top:86.914%;height:8.984%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">5</span><figcaption class="cap"><span class="cap-title">Add more servers</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#adding-mcp-servers" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip connects a small server device as glowing icons rise from it. Speech bubble: “Browse the registry and add servers in seconds.”. Terminal: &gt; /mcp search    # browse and add servers; # e.g. add a filesystem server to read and write local files." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-add.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="834" width="1488" height="168" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="864" r="11" fill="#ff5f56"/><circle cx="94" cy="864" r="11" fill="#ffbd2e"/><circle cx="130" cy="864" r="11" fill="#27c93f"/></g><g><rect x="762" y="150" width="560" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="762,214 702,261 762,274" fill="#ffffff"/><line x1="762" y1="214" x2="762" y2="274" stroke="#ffffff" stroke-width="9"/><line x1="762" y1="214" x2="702" y2="261" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="762" y1="274" x2="702" y2="261" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1042" y="204" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Browse the registry and</text><text x="1042" y="250" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">add servers in seconds.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; /mcp search    # browse and add servers" style="top:86.230%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; /mcp search  </span><span class="term-comment">  # browse and add servers</span></div><div class="term-line" data-full="# e.g. add a filesystem server to read and write local files" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span class="term-comment"># e.g. add a filesystem server to read and write local files</span></div></div><button class="term-copy" type="button" data-copy="/mcp search" aria-label="Copy command: /mcp search" style="top:86.914%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell"><span class="badge">6</span><figcaption class="cap"><span class="cap-title">Many servers, one workflow</span><a class="cap-link" href="https://github.com/github/copilot-cli-for-beginners/blob/main/06-mcp-servers/README.md#multi-server-workflows" target="_blank" rel="noopener noreferrer" aria-label="Learn more (opens in a new tab)" title="Read this section in the full course"><svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="cap-link-txt">Learn more</span><span class="cap-arrow" aria-hidden="true">&rarr;</span></a></figcaption><div class="panel-wrap"><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip thinks beside a laptop with glowing icons while Professor Quill looks on. Speech bubble: “Files, docs, and GitHub - all in one chat.”. Speech bubble: “Many servers, one smooth flow.”. Terminal: &gt; Read the docs, then open a pull request." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-workflow.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g class="term-bar"><rect x="24" y="880" width="1488" height="122" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="3"/><circle cx="58" cy="910" r="11" fill="#ff5f56"/><circle cx="94" cy="910" r="11" fill="#ffbd2e"/><circle cx="130" cy="910" r="11" fill="#27c93f"/></g><g><rect x="690" y="78" width="520" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="690,142 629,185 690,202" fill="#ffffff"/><line x1="690" y1="142" x2="690" y2="202" stroke="#ffffff" stroke-width="9"/><line x1="690" y1="142" x2="629" y2="185" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="690" y1="202" x2="629" y2="185" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="950" y="132" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Files, docs, and GitHub -</text><text x="950" y="178" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">all in one chat.</text></g><g><rect x="1068" y="330" width="440" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="1171,470 1153,509 1231,470" fill="#ffffff"/><line x1="1171" y1="470" x2="1231" y2="470" stroke="#ffffff" stroke-width="9"/><line x1="1171" y1="470" x2="1153" y2="509" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1231" y1="470" x2="1153" y2="509" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1288" y="384" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Many servers,</text><text x="1288" y="430" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">one smooth flow.</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg><div class="term-text" aria-hidden="true"><div class="term-line" data-full="&gt; Read the docs, then open a pull request" style="top:90.723%;left:3.776%;width:93.099%;height:4.492%;font-size:2.083cqw"><span>&gt; Read the docs, then open a pull request</span></div></div><button class="term-copy" type="button" data-copy="Read the docs, then open a pull request" aria-label="Copy command: Read the docs, then open a pull request" style="top:91.406%;height:4.492%;left:92.969%;width:5.469%"><span class="tc-box"><svg class="tc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><svg class="tc-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></div></figure>
+<figure class="cell quiz-cell"><div class="quiz" data-quiz-id="06-5" data-answer="0" data-correct="Right - the GitHub MCP server is built in and ready to use." data-incorrect="The GitHub server is built in - you can use it without any setup."><div class="quiz-head"><svg class="quiz-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span>Quick check</span></div><p class="quiz-prompt">Which MCP server is built into Copilot CLI with no setup required?</p><ul class="quiz-opts"><li><button class="quiz-opt" type="button" data-i="0"><span class="quiz-key" aria-hidden="true">A</span><span class="quiz-txt">The GitHub server</span></button></li><li><button class="quiz-opt" type="button" data-i="1"><span class="quiz-key" aria-hidden="true">B</span><span class="quiz-txt">A database server</span></button></li><li><button class="quiz-opt" type="button" data-i="2"><span class="quiz-key" aria-hidden="true">C</span><span class="quiz-txt">None - every server needs setup</span></button></li></ul><p class="quiz-feedback" role="status" aria-live="polite" hidden></p></div></figure>
+<figure class="cell"><span class="badge">7</span><figcaption class="cap"><span class="cap-title">On to Chapter 07!</span></figcaption><svg class="panel" viewBox="0 0 1536 1024" role="img" aria-label="Pip waves goodbye beside Professor Quill, who carries a trophy, while walking toward a glowing arrow. Speech bubble: “Next: put it all together - go from an idea to a tested, reviewed pull request.”. Speech bubble: “The finish line - let&#x27;s bring it home!”." xmlns="http://www.w3.org/2000/svg"><image href="assets/img/ch06-next.webp" x="0" y="0" width="1536" height="1024" preserveAspectRatio="xMidYMid slice"/><g><rect x="888" y="24" width="620" height="186" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="888,134 827,174 888,194" fill="#ffffff"/><line x1="888" y1="134" x2="888" y2="194" stroke="#ffffff" stroke-width="9"/><line x1="888" y1="134" x2="827" y2="174" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="888" y1="194" x2="827" y2="174" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1198" y="78" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">Next: put it all together -</text><text x="1198" y="124" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">go from an idea to a tested,</text><text x="1198" y="170" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">reviewed pull request.</text></g><g><rect x="798" y="240" width="460" height="140" rx="34" fill="#ffffff" stroke="#1f2937" stroke-width="6"/><polygon points="968,380 974,435 1028,380" fill="#ffffff"/><line x1="968" y1="380" x2="1028" y2="380" stroke="#ffffff" stroke-width="9"/><line x1="968" y1="380" x2="974" y2="435" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><line x1="1028" y1="380" x2="974" y2="435" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><text x="1028" y="294" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">The finish line -</text><text x="1028" y="340" text-anchor="middle" font-family="Poppins,Verdana,sans-serif" font-size="34" fill="#1f2937">let&#x27;s bring it home!</text></g><rect x="8" y="8" width="1520" height="1008" rx="14" fill="none" stroke="#1f2937" stroke-width="14"/></svg></figure>
 </main>
 <nav class="nav" aria-label="Chapter (bottom)"><a class="nav-btn" href="chapter-05.html">&larr;&nbsp;<span class="nav-lbl-full">Previous Chapter</span><span class="nav-lbl-short">Prev</span></a><a class="nav-home" href="index.html">Home</a><a class="nav-btn" href="chapter-07.html"><span class="nav-lbl-full">Next Chapter</span><span class="nav-lbl-short">Next</span>&nbsp;&rarr;</a></nav>
 <footer class="foot"><a href="https://github.com/github/copilot-cli-for-beginners">GitHub Copilot CLI for Beginners course</a></footer>
 <div id="copy-status" class="sr-only" role="status" aria-live="polite"></div>
+<script>window.VQS_CFG={"storageKey":"vqs-progress-v1","xpPerChapter":100,"levelStep":200,"quiz":{"heading":"Quick check","correct_prefix":"Correct!","incorrect_prefix":"Not quite.","retry_label":"Try another answer.","answered_label":"Answer recorded."},"present":{"start_label":"Present","exit_label":"Exit","next_label":"Next panel","prev_label":"Previous panel","counter_label":"{n} / {total}","hint":"Use the arrow keys to move, Esc to exit"},"quest":{"heading":"Your Learning Quest","subheading":"Complete chapters to light up the map, earn medals, build a daily streak, and unlock your certificate.","level_label":"Level {n}","xp_label":"{xp} XP","streak_label":"{n}-day streak","streak_zero":"Start your streak!","progress_label":"{done} / {total} chapters","node_todo":"Not started yet","node_done":"Complete","reset_label":"Reset my progress","reset_confirm":"Reset all of your saved progress, streak, and certificate name?"},"certificate":{"locked_hint":"Finish all chapters to unlock your certificate of completion!","unlocked_heading":"🎉 You completed every chapter!","name_prompt":"Your name","name_placeholder":"e.g. Ada Lovelace","generate_label":"Create my certificate","print_label":"Print / Save as PDF","title":"Certificate of Completion","body":"has successfully completed","course":"GitHub Copilot CLI for Beginners","date_label":"Completed on {date}","signature":"Pip & Professor Quill"}};</script>
+<script>
+/* Shared client-side progress store for the visual quickstart (localStorage).
+   All user-facing words come from window.VQS_CFG (emitted from content.yaml);
+   this file holds no copy. Safe to load on every page. */
+window.VQS = (function () {
+  var CFG = window.VQS_CFG || {};
+  var KEY = CFG.storageKey || 'vqs-progress-v1';
+  var XP_PER = CFG.xpPerChapter || 100;
+  var LEVEL_STEP = CFG.levelStep || 200;
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+  }
+  function save(s) {
+    try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  function dayStr(d) {
+    d = d || new Date();
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+
+  function completedMap() { var s = load(); return s.completed || {}; }
+  function isComplete(ch) { return !!completedMap()[ch]; }
+  function completedKeys() { return Object.keys(completedMap()); }
+  function completedCount() { return completedKeys().length; }
+  function xp() { return completedCount() * XP_PER; }
+  function level() { return Math.floor(xp() / LEVEL_STEP) + 1; }
+
+  function markComplete(ch) {
+    var s = load();
+    s.completed = s.completed || {};
+    if (s.completed[ch]) return false;
+    s.completed[ch] = Date.now();
+    save(s);
+    return true;
+  }
+
+  // Increment a per-day visit streak. Idempotent within the same calendar day.
+  function updateStreak() {
+    var s = load();
+    s.streak = s.streak || { count: 0, last: null };
+    var today = dayStr();
+    if (s.streak.last === today) { return s.streak.count; }
+    var y = new Date(); y.setDate(y.getDate() - 1);
+    s.streak.count = (s.streak.last === dayStr(y)) ? (s.streak.count + 1) : 1;
+    s.streak.last = today;
+    save(s);
+    return s.streak.count;
+  }
+  function streak() { var s = load(); return (s.streak && s.streak.count) || 0; }
+
+  function getName() { return load().name || ''; }
+  function setName(n) { var s = load(); s.name = n; save(s); }
+
+  function getQuiz(id) { var q = load().quizzes || {}; return q[id]; }
+  function setQuiz(id, chosen, correct) {
+    var s = load(); s.quizzes = s.quizzes || {};
+    s.quizzes[id] = { chosen: chosen, correct: !!correct };
+    save(s);
+  }
+
+  function reset() { try { localStorage.removeItem(KEY); } catch (e) {} }
+
+  return {
+    isComplete: isComplete, completedKeys: completedKeys, completedCount: completedCount,
+    markComplete: markComplete, xp: xp, level: level,
+    updateStreak: updateStreak, streak: streak,
+    getName: getName, setName: setName,
+    getQuiz: getQuiz, setQuiz: setQuiz, reset: reset,
+    XP_PER: XP_PER
+  };
+})();
+</script>
+
 <script>
 (function(){
   var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -79,19 +158,30 @@
   });
 
   // --- "view file" buttons open a native <dialog> showing the embedded file ---
-  [].forEach.call(document.querySelectorAll('.file-view-btn'),function(btn){
-    btn.addEventListener('click',function(){
-      var dlg=document.getElementById(btn.getAttribute('data-dialog'));
-      if(dlg&&typeof dlg.showModal==='function'){ dlg.showModal(); }
-      else if(dlg){ dlg.setAttribute('open',''); }
+  // Scoped so it works both for the page and for cloned present-mode slides.
+  function wireFiles(root){
+    [].forEach.call(root.querySelectorAll('.file-view-btn'),function(btn){
+      if(btn.getAttribute('data-file-wired')) return;
+      btn.setAttribute('data-file-wired','1');
+      btn.addEventListener('click',function(){
+        var id=btn.getAttribute('data-dialog');
+        var dlg=root.getElementById ? root.getElementById(id) : root.querySelector('dialog.file-dialog');
+        if(!dlg) return;
+        if(typeof dlg.showModal==='function'){ try{ dlg.showModal(); }catch(e){ dlg.setAttribute('open',''); } }
+        else { dlg.setAttribute('open',''); }
+      });
     });
-  });
-  [].forEach.call(document.querySelectorAll('dialog.file-dialog'),function(dlg){
-    var close=dlg.querySelector('[data-close]');
-    if(close) close.addEventListener('click',function(){dlg.close();});
-    // click on the backdrop (outside the dialog content) closes it
-    dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
-  });
+    [].forEach.call(root.querySelectorAll('dialog.file-dialog'),function(dlg){
+      if(dlg.getAttribute('data-file-wired')) return;
+      dlg.setAttribute('data-file-wired','1');
+      var close=dlg.querySelector('[data-close]');
+      if(close) close.addEventListener('click',function(){dlg.close();});
+      // click on the backdrop (outside the dialog content) closes it
+      dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+    });
+  }
+  window.__vqsWireFiles=wireFiles;
+  wireFiles(document);
 
   if(reduce) return;                 // honor reduced motion: skip the typewriter
 
@@ -131,6 +221,232 @@
     cells.forEach(function(c){io.observe(c);});
   } else {
     cells.forEach(onVisible);
+  }
+})();
+
+// --- mark the chapter complete once the reader reaches the last panel; bump streak ---
+(function(){
+  if(!window.VQS) return;
+  try{ window.VQS.updateStreak(); }catch(e){}
+  var ch=document.body.getAttribute('data-chapter');
+  if(!ch) return;
+  var cells=document.querySelectorAll('main.strip .cell');
+  if(!cells.length) return;
+  var last=cells[cells.length-1];
+  function done(){ try{ window.VQS.markComplete(ch); }catch(e){} }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){ if(e.isIntersecting){ done(); io.disconnect(); } });
+    },{threshold:0.4});
+    io.observe(last);
+  } else { done(); }
+})();
+
+// --- inline knowledge checks: pick an answer, get instant right/wrong feedback ---
+(function(){
+  var CFG=(window.VQS_CFG&&window.VQS_CFG.quiz)||{};
+  // Restore a (possibly cloned) quiz to a fresh, interactive state.
+  function reset(q){
+    q.removeAttribute('data-wired');
+    [].forEach.call(q.querySelectorAll('.quiz-opt'),function(o){ o.disabled=false; o.className='quiz-opt'; });
+    var fb=q.querySelector('.quiz-feedback');
+    if(fb){ fb.hidden=true; fb.className='quiz-feedback'; fb.textContent=''; }
+  }
+  // Wire one quiz node's option buttons + feedback. Reused for page quizzes and
+  // for cloned quizzes shown as dedicated slides in presentation mode.
+  function wire(q){
+    if(q.getAttribute('data-wired')) return;
+    q.setAttribute('data-wired','1');
+    var id=q.getAttribute('data-quiz-id');
+    var answer=parseInt(q.getAttribute('data-answer'),10);
+    var opts=[].slice.call(q.querySelectorAll('.quiz-opt'));
+    var fb=q.querySelector('.quiz-feedback');
+    var solved=false;
+    function feedback(correct){
+      var prefix=correct?(CFG.correct_prefix||'Correct!'):(CFG.incorrect_prefix||'Not quite.');
+      var expl=correct?q.getAttribute('data-correct'):q.getAttribute('data-incorrect');
+      var retry=(!correct&&CFG.retry_label)?(' '+CFG.retry_label):'';
+      fb.hidden=false;
+      fb.className='quiz-feedback '+(correct?'is-correct':'is-incorrect');
+      fb.textContent=prefix+(expl?(' '+expl):'')+retry;
+      var s=document.getElementById('copy-status');
+      if(s&&CFG.answered_label){ s.textContent=''; s.textContent=CFG.answered_label; }
+    }
+    function choose(i,el,persist){
+      if(solved) return;
+      var correct=(i===answer);
+      el.classList.add('chosen',correct?'correct':'incorrect');
+      feedback(correct);
+      if(correct){
+        solved=true;
+        opts.forEach(function(o){ o.disabled=true; o.classList.add('locked'); });
+        if(persist&&window.VQS){ try{ window.VQS.setQuiz(id,i,true); }catch(e){} }
+      } else {
+        el.disabled=true; el.classList.add('locked');
+      }
+    }
+    opts.forEach(function(el){
+      el.addEventListener('click',function(){ choose(parseInt(el.getAttribute('data-i'),10),el,true); });
+    });
+    if(window.VQS){
+      var prev=null; try{ prev=window.VQS.getQuiz(id); }catch(e){}
+      if(prev&&prev.correct&&opts[prev.chosen]) choose(prev.chosen,opts[prev.chosen],false);
+    }
+  }
+  window.__vqsWireQuiz=wire;
+  window.__vqsResetQuiz=reset;
+  [].forEach.call(document.querySelectorAll('.quiz'),wire);
+})();
+
+// --- presentation mode: fullscreen slideshow that flows across chapters ---
+(function(){
+  var CFG=(window.VQS_CFG&&window.VQS_CFG.present)||{};
+  var btn=document.querySelector('.present-btn');
+  var startCells=[].slice.call(document.querySelectorAll('main.strip .cell'));
+  if(!startCells.length) return;
+  var total=parseInt(document.body.getAttribute('data-total'),10)||1;
+  var origChapter=parseInt(document.body.getAttribute('data-chapter'),10)||0;
+  var curChapter=origChapter;
+  var overlay,stage,counterEl,chapterEl,slides=[],idx=0,active=false,loading=false,exiting=false;
+  function tmpl(t,map){ t=t||''; Object.keys(map).forEach(function(k){ t=t.split('{'+k+'}').join(map[k]); }); return t; }
+  function chapterUrl(i){ return 'chapter-'+('0'+i).slice(-2)+'.html'; }
+  function chipText(root){ var c=root.querySelector('.banner .chip'); return c?c.textContent.trim():''; }
+  function setChapter(text){ if(chapterEl) chapterEl.textContent=text||''; }
+  function makeSlide(cell){
+    var s=document.createElement('div'); s.className='present-slide';
+    s.innerHTML=cell.innerHTML;
+    // restore any terminal line caught mid-typewriter to its full text
+    [].forEach.call(s.querySelectorAll('.term-line'),function(el){
+      var rich=el.getAttribute('data-rich'); if(rich!=null) el.innerHTML=rich;
+    });
+    // make the "view file" button + dialog work inside this cloned slide
+    // (clones inherit data-file-wired from the page, so clear it first)
+    [].forEach.call(s.querySelectorAll('[data-file-wired]'),function(el){ el.removeAttribute('data-file-wired'); });
+    if(window.__vqsWireFiles) window.__vqsWireFiles(s);
+    return s;
+  }
+  // A Quick Check becomes its own interactive slide right after its panel.
+  function makeQuizSlide(quizNode){
+    var s=document.createElement('div'); s.className='present-slide present-quiz-slide';
+    var q=quizNode.cloneNode(true);
+    if(window.__vqsResetQuiz) window.__vqsResetQuiz(q);
+    s.appendChild(q);
+    if(window.__vqsWireQuiz) window.__vqsWireQuiz(q);
+    return s;
+  }
+  function setSlides(cells){
+    while(stage.firstChild) stage.removeChild(stage.firstChild);
+    slides=[];
+    cells.forEach(function(c){
+      // Quiz now lives in its own bare cell - render it as a single quiz slide.
+      if(c.classList.contains('quiz-cell')){
+        var only=c.querySelector('.quiz');
+        if(only){ var os=makeQuizSlide(only); stage.appendChild(os); slides.push(os); }
+        return;
+      }
+      var s=makeSlide(c); stage.appendChild(s); slides.push(s);
+      var quiz=c.querySelector('.quiz');
+      if(quiz){ var qs=makeQuizSlide(quiz); stage.appendChild(qs); slides.push(qs); }
+    });
+  }
+  function build(){
+    overlay=document.createElement('div'); overlay.className='present-overlay';
+    overlay.setAttribute('role','dialog'); overlay.setAttribute('aria-modal','true');
+    stage=document.createElement('div'); stage.className='present-stage';
+    var prev=document.createElement('button'); prev.type='button'; prev.className='present-nav prev';
+    prev.setAttribute('aria-label',CFG.prev_label||'Previous'); prev.innerHTML='&larr;';
+    var nextb=document.createElement('button'); nextb.type='button'; nextb.className='present-nav next';
+    nextb.setAttribute('aria-label',CFG.next_label||'Next'); nextb.innerHTML='&rarr;';
+    var exit=document.createElement('button'); exit.type='button'; exit.className='present-exit';
+    exit.textContent=CFG.exit_label||'Exit';
+    counterEl=document.createElement('div'); counterEl.className='present-counter';
+    chapterEl=document.createElement('div'); chapterEl.className='present-chapter';
+    overlay.appendChild(stage); overlay.appendChild(prev); overlay.appendChild(nextb);
+    overlay.appendChild(exit); overlay.appendChild(counterEl); overlay.appendChild(chapterEl);
+    prev.addEventListener('click',prevSlide);
+    nextb.addEventListener('click',nextSlide);
+    exit.addEventListener('click',stop);
+    document.body.appendChild(overlay);
+    setSlides(startCells);
+    setChapter(chipText(document));
+  }
+  function go(i){
+    if(!slides.length) return;
+    idx=Math.max(0,Math.min(slides.length-1,i));
+    slides.forEach(function(s,k){ s.classList.toggle('active',k===idx); });
+    counterEl.textContent=tmpl(CFG.counter_label||'{n} / {total}',{n:idx+1,total:slides.length});
+  }
+  // Pull an adjacent chapter's panels into the running slideshow (keeps fullscreen).
+  // Falls back to a full navigation if fetch is unavailable (e.g. file:// preview).
+  function loadChapter(i,atEnd){
+    if(loading||i<0||i>=total) return;
+    loading=true;
+    var url=chapterUrl(i);
+    fetch(url).then(function(r){ return r.text(); }).then(function(html){
+      var doc=new DOMParser().parseFromString(html,'text/html');
+      var cells=[].slice.call(doc.querySelectorAll('main.strip .cell'));
+      if(!cells.length){ loading=false; return; }
+      curChapter=i; setSlides(cells); setChapter(chipText(doc)); go(atEnd?slides.length-1:0); loading=false;
+    }).catch(function(){
+      loading=false;
+      window.location.href=url+(atEnd?'#present-last':'#present');
+    });
+  }
+  function nextSlide(){
+    if(idx<slides.length-1) go(idx+1);
+    else if(curChapter<total-1) loadChapter(curChapter+1,false);
+  }
+  function prevSlide(){
+    if(idx>0) go(idx-1);
+    else if(curChapter>0) loadChapter(curChapter-1,true);
+  }
+  function key(e){
+    if(!active) return;
+    // if a file dialog is open, let it own the keys (Esc closes it, not the show)
+    if(overlay&&overlay.querySelector('dialog.file-dialog[open]')){
+      if(e.key==='Escape') return;
+    }
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); nextSlide(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prevSlide(); }
+    else if(e.key==='Escape'){ stop(); }
+  }
+  function start(atEnd){
+    if(active) return;
+    if(!overlay) build();
+    active=true; document.body.classList.add('presenting');
+    overlay.classList.add('show'); go(atEnd?slides.length-1:0);
+    document.addEventListener('keydown',key);
+    if(overlay.requestFullscreen){ overlay.requestFullscreen().catch(function(){}); }
+    if(CFG.hint){
+      var h=document.createElement('div'); h.className='present-hint'; h.textContent=CFG.hint;
+      overlay.appendChild(h);
+      setTimeout(function(){ h.classList.add('fade'); },1800);
+      setTimeout(function(){ if(h.parentNode) h.parentNode.removeChild(h); },2600);
+    }
+  }
+  function stop(){
+    if(exiting) return;
+    active=false; document.body.classList.remove('presenting');
+    if(overlay) overlay.classList.remove('show');
+    document.removeEventListener('keydown',key);
+    if(document.fullscreenElement&&document.exitFullscreen){ document.exitFullscreen().catch(function(){}); }
+    // land the underlying page on whichever chapter the presentation ended on
+    if(curChapter!==origChapter){ exiting=true; window.location.href=chapterUrl(curChapter); }
+  }
+  if(btn) btn.addEventListener('click',function(){ start(false); });
+  document.addEventListener('keydown',function(e){
+    if(active) return;
+    var tag=(e.target&&e.target.tagName)||'';
+    if((e.key==='p'||e.key==='P')&&!/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) start(false);
+  });
+  document.addEventListener('fullscreenchange',function(){
+    if(active&&!document.fullscreenElement) stop();
+  });
+  // Auto-resume when arriving from an adjacent chapter via the navigation fallback.
+  if(location.hash==='#present'||location.hash==='#present-last'){
+    var resumeEnd=location.hash==='#present-last';
+    try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+    start(resumeEnd);
   }
 })();
 </script>

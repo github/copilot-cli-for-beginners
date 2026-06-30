@@ -114,7 +114,75 @@
         "skip_label": { "type": "string", "description": "Visually-hidden skip-to-content link text." },
         "new_tab_label": { "type": "string", "description": "Appended to the book-icon link aria-label to warn it opens a new tab." },
         "copied_label": { "type": "string", "description": "Screen-reader status announced after a terminal command is copied." },
-        "nav": { "$ref": "#/definitions/nav" }
+        "close_label": { "type": "string", "description": "Accessible label for modal/dialog close buttons (e.g. 'Close')." },
+        "nav": { "$ref": "#/definitions/nav" },
+        "quest": { "$ref": "#/definitions/quest" },
+        "certificate": { "$ref": "#/definitions/certificate" },
+        "present": { "$ref": "#/definitions/present" },
+        "quiz": { "$ref": "#/definitions/quizLabels" }
+      }
+    },
+    "quest": {
+      "type": "object",
+      "description": "Home-page quest map + progress dashboard labels. {xp},{n},{done},{total} are substituted where noted.",
+      "additionalProperties": false,
+      "properties": {
+        "heading": { "type": "string", "description": "Quest section heading." },
+        "subheading": { "type": "string", "description": "Quest section subheading." },
+        "xp_label": { "type": "string", "description": "XP stat. {xp} is substituted." },
+        "level_label": { "type": "string", "description": "Level stat. {n} is substituted." },
+        "streak_label": { "type": "string", "description": "Active streak stat. {n} is substituted." },
+        "streak_zero": { "type": "string", "description": "Streak stat shown when the streak is 0." },
+        "progress_label": { "type": "string", "description": "Chapters-complete stat. {done} and {total} are substituted." },
+        "node_todo": { "type": "string", "description": "Status text for a not-yet-completed chapter node." },
+        "node_done": { "type": "string", "description": "Status text for a completed chapter node." },
+        "badges_heading": { "type": "string", "description": "Heading above the earned-badges row." },
+        "badge_locked_alt": { "type": "string", "description": "Alt/title for a not-yet-earned badge. {n} is substituted with the chapter label." },
+        "reset_label": { "type": "string", "description": "Label for the 'reset my progress' control." },
+        "reset_confirm": { "type": "string", "description": "Confirmation prompt shown before resetting progress." }
+      }
+    },
+    "certificate": {
+      "type": "object",
+      "description": "Completion-certificate labels (home page). {name},{course},{date} are substituted where noted.",
+      "additionalProperties": false,
+      "properties": {
+        "locked_hint": { "type": "string", "description": "Hint shown while the certificate is still locked." },
+        "unlocked_heading": { "type": "string", "description": "Heading shown once all chapters are complete." },
+        "name_prompt": { "type": "string", "description": "Label above the name input." },
+        "name_placeholder": { "type": "string", "description": "Placeholder text for the name input." },
+        "generate_label": { "type": "string", "description": "Button that renders the certificate from the entered name." },
+        "print_label": { "type": "string", "description": "Button that prints / saves the certificate as a PDF." },
+        "title": { "type": "string", "description": "Certificate heading, e.g. 'Certificate of Completion'." },
+        "body": { "type": "string", "description": "Line between the name and course, e.g. 'has successfully completed'." },
+        "course": { "type": "string", "description": "Course name printed on the certificate." },
+        "date_label": { "type": "string", "description": "Label before the completion date. {date} is substituted." },
+        "signature": { "type": "string", "description": "Signature line printed on the certificate." }
+      }
+    },
+    "present": {
+      "type": "object",
+      "description": "Presentation / slideshow mode labels (chapter pages). {n} and {total} are substituted where noted.",
+      "additionalProperties": false,
+      "properties": {
+        "start_label": { "type": "string", "description": "Label of the button that enters presentation mode." },
+        "exit_label": { "type": "string", "description": "Label of the control that exits presentation mode." },
+        "next_label": { "type": "string", "description": "Accessible label for the 'next slide' control." },
+        "prev_label": { "type": "string", "description": "Accessible label for the 'previous slide' control." },
+        "counter_label": { "type": "string", "description": "Slide counter. {n} and {total} are substituted." },
+        "hint": { "type": "string", "description": "Keyboard-hint shown briefly when entering presentation mode." }
+      }
+    },
+    "quizLabels": {
+      "type": "object",
+      "description": "Shared labels for inline knowledge-check (quiz) cards.",
+      "additionalProperties": false,
+      "properties": {
+        "heading": { "type": "string", "description": "Card heading, e.g. 'Quick check'." },
+        "correct_prefix": { "type": "string", "description": "Prefix shown when the chosen answer is correct, e.g. 'Correct!'." },
+        "incorrect_prefix": { "type": "string", "description": "Prefix shown when the chosen answer is wrong, e.g. 'Not quite.'." },
+        "retry_label": { "type": "string", "description": "Hint inviting another attempt after a wrong answer." },
+        "answered_label": { "type": "string", "description": "Screen-reader status announced after an answer is chosen." }
       }
     },
     "nav": {
@@ -215,7 +283,26 @@
             { "type": "string" },
             { "type": "boolean" }
           ]
-        }
+        },
+        "quiz": { "$ref": "#/definitions/quiz" }
+      }
+    },
+    "quiz": {
+      "type": "object",
+      "description": "Inline knowledge-check shown below the panel: a question, multiple-choice options and right/wrong feedback. Pure client-side; choosing an answer reveals instant feedback.",
+      "additionalProperties": false,
+      "required": ["prompt", "options", "answer"],
+      "properties": {
+        "prompt": { "type": "string", "description": "The question text (asked by the mascot)." },
+        "options": {
+          "type": "array",
+          "description": "Answer choices, in order. At least two.",
+          "minItems": 2,
+          "items": { "type": "string" }
+        },
+        "answer": { "type": "number", "description": "Zero-based index of the correct option in 'options'." },
+        "correct": { "type": "string", "description": "Explanation shown when the reader answers correctly." },
+        "incorrect": { "type": "string", "description": "Explanation/nudge shown when the reader answers incorrectly." }
       }
     },
     "bubble": {
