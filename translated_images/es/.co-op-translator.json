@@ -1,0 +1,368 @@
+{
+  "agent-file-placement-decision-tree.d8d4810a5984edc7.webp": {
+    "original_hash": "ce88b9c96bf3728ff5f71a560e97623d",
+    "translation_date": "2026-07-01T03:31:34+00:00",
+    "source_file": "04-agents-custom-instructions/assets/agent-file-placement-decision-tree.png",
+    "language_code": "es"
+  },
+  "auth-device-flow.9a0e754dba878d2e.webp": {
+    "original_hash": "0aff0784cbc9cd963cbc0ede73d75f70",
+    "translation_date": "2026-07-01T03:33:57+00:00",
+    "source_file": "00-quick-start/assets/auth-device-flow.png",
+    "language_code": "es"
+  },
+  "browser-extensions-analogy.95b41c62fc9d09a2.webp": {
+    "original_hash": "8cd7fa5f65d0efee0ee75dd4473db650",
+    "translation_date": "2026-07-01T03:32:49+00:00",
+    "source_file": "06-mcp-servers/assets/browser-extensions-analogy.png",
+    "language_code": "es"
+  },
+  "carpenter-workflow-steps.8b68419bb4018a49.webp": {
+    "original_hash": "f1ccaf91d5438bda0b702e13e84d1b7a",
+    "translation_date": "2026-07-01T03:26:39+00:00",
+    "source_file": "03-development-workflows/assets/carpenter-workflow-steps.png",
+    "language_code": "es"
+  },
+  "chapter-header-bg.56756ae38dd58a91.webp": {
+    "original_hash": "9e3c9b35f5f4c9b6caae0aedaff83ae9",
+    "translation_date": "2026-07-01T03:24:31+00:00",
+    "source_file": "assets/chapter-header-bg.png",
+    "language_code": "es"
+  },
+  "chapter-header.068de5970b5370c5.webp": {
+    "original_hash": "e6d35479ce5d48487738d67eaae8e84e",
+    "translation_date": "2026-07-01T03:34:31+00:00",
+    "source_file": "05-skills/assets/chapter-header.png",
+    "language_code": "es"
+  },
+  "chapter-header.072be406fc63998c.webp": {
+    "original_hash": "76a3fa97ea96ebb9cebf9a424584e7df",
+    "translation_date": "2026-07-01T03:30:39+00:00",
+    "source_file": "01-setup-and-first-steps/assets/chapter-header.png",
+    "language_code": "es"
+  },
+  "chapter-header.0d209053007eadc0.webp": {
+    "original_hash": "c859d099d5aec7d20c5d65f6326bd2ef",
+    "translation_date": "2026-07-01T03:29:35+00:00",
+    "source_file": "07-putting-it-together/assets/chapter-header.png",
+    "language_code": "es"
+  },
+  "chapter-header.4a33d857c6f18860.webp": {
+    "original_hash": "00b003624fc19987e2103741bc284af8",
+    "translation_date": "2026-07-01T03:26:46+00:00",
+    "source_file": "03-development-workflows/assets/chapter-header.png",
+    "language_code": "es"
+  },
+  "chapter-header.5c3c39ec9904be17.webp": {
+    "original_hash": "0fb4cecbd9727aa3246c35858cd11e66",
+    "translation_date": "2026-07-01T03:33:42+00:00",
+    "source_file": "00-quick-start/assets/chapter-header.png",
+    "language_code": "es"
+  },
+  "chapter-header.644b94bc708395d8.webp": {
+    "original_hash": "0c172eba0213f6265b01a9d6d8ba2211",
+    "translation_date": "2026-07-01T03:32:35+00:00",
+    "source_file": "06-mcp-servers/assets/chapter-header.png",
+    "language_code": "es"
+  },
+  "chapter-header.99f9a913bc8808cc.webp": {
+    "original_hash": "c492562a32b93454300deb6bc7aaf091",
+    "translation_date": "2026-07-01T03:31:20+00:00",
+    "source_file": "04-agents-custom-instructions/assets/chapter-header.png",
+    "language_code": "es"
+  },
+  "chapter-header.9e9098f7db433996.webp": {
+    "original_hash": "ae11d44aa41ec843853b56f14d69c82f",
+    "translation_date": "2026-07-01T03:28:20+00:00",
+    "source_file": "02-context-conversations/assets/chapter-header.png",
+    "language_code": "es"
+  },
+  "code-review-swimlane-single.76c892f3c803a942.webp": {
+    "original_hash": "46dc8b4eadf0f569c23f4befb8e1334a",
+    "translation_date": "2026-07-01T03:27:07+00:00",
+    "source_file": "03-development-workflows/assets/code-review-swimlane-single.png",
+    "language_code": "es"
+  },
+  "codebase-understanding.0a084dfeec54119d.webp": {
+    "original_hash": "fb82efe6dfc6deff163214aeda5db964",
+    "translation_date": "2026-07-01T03:29:02+00:00",
+    "source_file": "02-context-conversations/assets/codebase-understanding.png",
+    "language_code": "es"
+  },
+  "colleague-context-analogy.dd8cb6ee73fba16f.webp": {
+    "original_hash": "c879561cf7b6ec87022d3eeab5ddb3ec",
+    "translation_date": "2026-07-01T03:29:23+00:00",
+    "source_file": "02-context-conversations/assets/colleague-context-analogy.png",
+    "language_code": "es"
+  },
+  "combined-workflows.833d1b0f28ee9187.webp": {
+    "original_hash": "953b1777ada1b45c369db582fae8f1d9",
+    "translation_date": "2026-07-01T03:29:29+00:00",
+    "source_file": "07-putting-it-together/assets/combined-workflows.png",
+    "language_code": "es"
+  },
+  "configuring-mcp-servers.d3a6dfc11d514277.webp": {
+    "original_hash": "9e16e65ceecdf98a7cc2dedecc06f2d8",
+    "translation_date": "2026-07-01T03:32:55+00:00",
+    "source_file": "06-mcp-servers/assets/configuring-mcp-servers.png",
+    "language_code": "es"
+  },
+  "context-window-visualization.dc48490ff212d12f.webp": {
+    "original_hash": "c2305c60350131e36873681ea8117d73",
+    "translation_date": "2026-07-01T03:28:31+00:00",
+    "source_file": "02-context-conversations/assets/context-window-visualization.png",
+    "language_code": "es"
+  },
+  "copilot-banner.0f612aa32652bafb.webp": {
+    "original_hash": "fb2dc5aee3dc6723697a2a53504260f9",
+    "translation_date": "2026-07-01T03:24:55+00:00",
+    "source_file": "assets/copilot-banner.png",
+    "language_code": "es"
+  },
+  "copilot-dev-days.aa104ffc4da4844e.webp": {
+    "original_hash": "9b1dde39a0fe60f695857a3d7e6c8547",
+    "translation_date": "2026-07-01T03:26:24+00:00",
+    "source_file": "assets/copilot-dev-days.png",
+    "language_code": "es"
+  },
+  "copilot-trust.f21051666ebb7f13.webp": {
+    "original_hash": "74ff05e67ca332d53370c1970bc73782",
+    "translation_date": "2026-07-01T03:33:33+00:00",
+    "source_file": "00-quick-start/assets/copilot-trust.png",
+    "language_code": "es"
+  },
+  "creating-custom-agents.9433443b252022ef.webp": {
+    "original_hash": "6889fbdcd82f6afd2a1f0f93097e60bf",
+    "translation_date": "2026-07-01T03:31:35+00:00",
+    "source_file": "04-agents-custom-instructions/assets/creating-custom-agents.png",
+    "language_code": "es"
+  },
+  "creating-managing-skills.dfa089ffc37004de.webp": {
+    "original_hash": "eeb6d0103ac737e23dca05881d32c844",
+    "translation_date": "2026-07-01T03:35:04+00:00",
+    "source_file": "05-skills/assets/creating-managing-skills.png",
+    "language_code": "es"
+  },
+  "cross-file-intelligence.06c691a169a72ebf.webp": {
+    "original_hash": "7094d0478f03a53b03c0889a57c6e52c",
+    "translation_date": "2026-07-01T03:28:11+00:00",
+    "source_file": "02-context-conversations/assets/cross-file-intelligence.png",
+    "language_code": "es"
+  },
+  "debugging-swimlane-single.e277602180ccb764.webp": {
+    "original_hash": "c53fc6fb407a6f657737bbbb82409765",
+    "translation_date": "2026-07-01T03:27:30+00:00",
+    "source_file": "03-development-workflows/assets/debugging-swimlane-single.png",
+    "language_code": "es"
+  },
+  "essential-basic-context.928622a2209eb287.webp": {
+    "original_hash": "143fa66f8e98352e4281e2dc528fef2a",
+    "translation_date": "2026-07-01T03:29:11+00:00",
+    "source_file": "02-context-conversations/assets/essential-basic-context.png",
+    "language_code": "es"
+  },
+  "first-copilot-experience.4ebe72574ce5e9fd.webp": {
+    "original_hash": "65f18fcac3328b142041e7cd4b4ab6c9",
+    "translation_date": "2026-07-01T03:30:40+00:00",
+    "source_file": "01-setup-and-first-steps/assets/first-copilot-experience.png",
+    "language_code": "es"
+  },
+  "five-workflows-swimlane.5d5c7ca95363f7a8.webp": {
+    "original_hash": "e78bba3128ebca8e359250d66ba151b4",
+    "translation_date": "2026-07-01T03:27:54+00:00",
+    "source_file": "03-development-workflows/assets/five-workflows-swimlane.png",
+    "language_code": "es"
+  },
+  "five-workflows.79c1125329964d79.webp": {
+    "original_hash": "bc72dbaf1f5ea795e7c89176d4fd68e2",
+    "translation_date": "2026-07-01T03:26:50+00:00",
+    "source_file": "03-development-workflows/assets/five-workflows.png",
+    "language_code": "es"
+  },
+  "git-integration-swimlane-single.48aa7ca7a64cde50.webp": {
+    "original_hash": "63f0fa69534384567e46e28c80d77b8c",
+    "translation_date": "2026-07-01T03:26:59+00:00",
+    "source_file": "03-development-workflows/assets/git-integration-swimlane-single.png",
+    "language_code": "es"
+  },
+  "github-skills-logo.369e18e53c74874d.webp": {
+    "original_hash": "9ff3dbe4de8f0bd4404ecdbd25feceab",
+    "translation_date": "2026-07-01T03:24:57+00:00",
+    "source_file": "assets/github-skills-logo.png",
+    "language_code": "es"
+  },
+  "hiring-specialists-analogy.0559fa250f7bf75e.webp": {
+    "original_hash": "bb2208a734ed0de7f8ab1c169b6a49ac",
+    "translation_date": "2026-07-01T03:31:48+00:00",
+    "source_file": "04-agents-custom-instructions/assets/hiring-specialists-analogy.png",
+    "language_code": "es"
+  },
+  "how-skills-work.d0b288623028d4fc.webp": {
+    "original_hash": "324d2ea7266294202b5b223324286523",
+    "translation_date": "2026-07-01T03:35:04+00:00",
+    "source_file": "05-skills/assets/how-skills-work.png",
+    "language_code": "es"
+  },
+  "integration-pattern.949caacd87d83eda.webp": {
+    "original_hash": "255d5b0ac7745ae151f1319626faa488",
+    "translation_date": "2026-07-01T03:30:11+00:00",
+    "source_file": "07-putting-it-together/assets/integration-pattern.png",
+    "language_code": "es"
+  },
+  "interactive-mode.303237fddcebd5fd.webp": {
+    "original_hash": "710e2c92e99c497b409a24df891ff625",
+    "translation_date": "2026-07-01T03:30:57+00:00",
+    "source_file": "01-setup-and-first-steps/assets/interactive-mode.png",
+    "language_code": "es"
+  },
+  "issue-to-pr-workflow.3283131a7a8c7017.webp": {
+    "original_hash": "14918a4187e5c814a25597bd8b56b57e",
+    "translation_date": "2026-07-01T03:32:27+00:00",
+    "source_file": "06-mcp-servers/assets/issue-to-pr-workflow.png",
+    "language_code": "es"
+  },
+  "learning-path.6c7069656df25927.webp": {
+    "original_hash": "8c79d81f23f7dde3f0acb698a139bb6f",
+    "translation_date": "2026-07-01T03:24:48+00:00",
+    "source_file": "assets/learning-path.png",
+    "language_code": "es"
+  },
+  "managing-sharing-skills.32af99cc9ffca3f2.webp": {
+    "original_hash": "614c9502ee8fb34712e6cd36aaddbedc",
+    "translation_date": "2026-07-01T03:35:04+00:00",
+    "source_file": "05-skills/assets/managing-sharing-skills.png",
+    "language_code": "es"
+  },
+  "mockup.4618d97445bd29b7.webp": {
+    "original_hash": "dd2d6d88e65e9d869554da6b298336cf",
+    "translation_date": "2026-07-01T03:25:53+00:00",
+    "source_file": "assets/mockup.png",
+    "language_code": "es"
+  },
+  "modes-and-commands.6150c011b961166e.webp": {
+    "original_hash": "00341bffac71159445bc313ed1a9c113",
+    "translation_date": "2026-07-01T03:30:40+00:00",
+    "source_file": "01-setup-and-first-steps/assets/modes-and-commands.png",
+    "language_code": "es"
+  },
+  "multi-server-workflow.c44948f3a225e6c9.webp": {
+    "original_hash": "654c129ad56ff48325c105790664fb8d",
+    "translation_date": "2026-07-01T03:32:00+00:00",
+    "source_file": "06-mcp-servers/assets/multi-server-workflow.png",
+    "language_code": "es"
+  },
+  "optional-going-deeper.bdeed7f7838fd922.webp": {
+    "original_hash": "b709a70015a36e616d13d84b191cec8a",
+    "translation_date": "2026-07-01T03:28:12+00:00",
+    "source_file": "02-context-conversations/assets/optional-going-deeper.png",
+    "language_code": "es"
+  },
+  "orchestra-analogy.fff0e1dc0799ec5c.webp": {
+    "original_hash": "ad1d0d18ef7c0f5cef7b7f4b5f1420e9",
+    "translation_date": "2026-07-01T03:29:54+00:00",
+    "source_file": "07-putting-it-together/assets/orchestra-analogy.png",
+    "language_code": "es"
+  },
+  "ordering-food-analogy.248925fdf6fc7241.webp": {
+    "original_hash": "31ccedda9e34732dc710b04e5d92440c",
+    "translation_date": "2026-07-01T03:30:32+00:00",
+    "source_file": "01-setup-and-first-steps/assets/ordering-food-analogy.png",
+    "language_code": "es"
+  },
+  "plan-mode.befa623cdcdcb8ff.webp": {
+    "original_hash": "1018cb44df06735028d197ed6dfb18a2",
+    "translation_date": "2026-07-01T03:31:08+00:00",
+    "source_file": "01-setup-and-first-steps/assets/plan-mode.png",
+    "language_code": "es"
+  },
+  "power-tools-analogy.8b2bcf6fcf1eeb35.webp": {
+    "original_hash": "20b8409665af15c8ce162c22319bc042",
+    "translation_date": "2026-07-01T03:34:46+00:00",
+    "source_file": "05-skills/assets/power-tools-analogy.png",
+    "language_code": "es"
+  },
+  "practice.ca83e957212c4945.webp": {
+    "original_hash": "53de278a98a50827d7698a1ed88ebd28",
+    "translation_date": "2026-07-01T03:24:33+00:00",
+    "source_file": "assets/practice.png",
+    "language_code": "es"
+  },
+  "programmatic-mode.986a0b20f0fa67d4.webp": {
+    "original_hash": "5b4eb0a5ce59dadb6cdc3f6a0188ab59",
+    "translation_date": "2026-07-01T03:30:50+00:00",
+    "source_file": "01-setup-and-first-steps/assets/programmatic-mode.png",
+    "language_code": "es"
+  },
+  "qr.de083a7d935fc8d4.webp": {
+    "original_hash": "6552fe56f0b3d172add19e33f0c80126",
+    "translation_date": "2026-07-01T03:24:57+00:00",
+    "source_file": "assets/qr.png",
+    "language_code": "es"
+  },
+  "quick-reference-header.860a3b7a46b3bfa0.webp": {
+    "original_hash": "065feb773bd998af6018d455ac27ecf1",
+    "translation_date": "2026-07-01T03:24:28+00:00",
+    "source_file": "assets/quick-reference-header.png",
+    "language_code": "es"
+  },
+  "quick-start-mcp.fd090cca49f20565.webp": {
+    "original_hash": "e508f2942556059db4734f7657ada914",
+    "translation_date": "2026-07-01T03:32:38+00:00",
+    "source_file": "06-mcp-servers/assets/quick-start-mcp.png",
+    "language_code": "es"
+  },
+  "refactoring-swimlane-single.66e8e2c5072a1304.webp": {
+    "original_hash": "1f2ed7bba6c0cced04b660fab0a00cd7",
+    "translation_date": "2026-07-01T03:27:22+00:00",
+    "source_file": "03-development-workflows/assets/refactoring-swimlane-single.png",
+    "language_code": "es"
+  },
+  "screenshot.8712f552a008236b.webp": {
+    "original_hash": "31ccedda9e34732dc710b04e5d92440c",
+    "translation_date": "2026-07-01T03:26:13+00:00",
+    "source_file": "assets/screenshot.png",
+    "language_code": "es"
+  },
+  "session-persistence-timeline.2a5a3758ff1d3c16.webp": {
+    "original_hash": "b55b9d9b4e2312a5ba2c58a99f7ed35b",
+    "translation_date": "2026-07-01T03:28:47+00:00",
+    "source_file": "02-context-conversations/assets/session-persistence-timeline.png",
+    "language_code": "es"
+  },
+  "skill-auto-discovery-flow.52644f9f1d8f0bf1.webp": {
+    "original_hash": "d37aa3a4382a9e2b9107e4d1b4d96d84",
+    "translation_date": "2026-07-01T03:34:22+00:00",
+    "source_file": "05-skills/assets/skill-auto-discovery-flow.png",
+    "language_code": "es"
+  },
+  "skills-agents-mcp-comparison.269e280641e1743e.webp": {
+    "original_hash": "1bdf646614c20edb879e4aff8784441e",
+    "translation_date": "2026-07-01T03:35:32+00:00",
+    "source_file": "05-skills/assets/skills-agents-mcp-comparison.png",
+    "language_code": "es"
+  },
+  "specialized-workflows.2ab9b8b540f95f3f.webp": {
+    "original_hash": "bbb3a512e8b3e845e76947254c7cb518",
+    "translation_date": "2026-07-01T03:27:35+00:00",
+    "source_file": "03-development-workflows/assets/specialized-workflows.png",
+    "language_code": "es"
+  },
+  "test-gen-swimlane-single.a5ca2cd4a07b5dbe.webp": {
+    "original_hash": "0a81cf5e319225b3cc16711044aeebef",
+    "translation_date": "2026-07-01T03:27:15+00:00",
+    "source_file": "03-development-workflows/assets/test-gen-swimlane-single.png",
+    "language_code": "es"
+  },
+  "using-agents.bb24c89aebe238a3.webp": {
+    "original_hash": "8942e4cdeb86359fb66b2b76fd3cb181",
+    "translation_date": "2026-07-01T03:31:11+00:00",
+    "source_file": "04-agents-custom-instructions/assets/using-agents.png",
+    "language_code": "es"
+  },
+  "using-mcp-servers.b3ef4e8f334c449c.webp": {
+    "original_hash": "a0ebd353ad2fe04046303a6f2bcc4c82",
+    "translation_date": "2026-07-01T03:33:09+00:00",
+    "source_file": "06-mcp-servers/assets/using-mcp-servers.png",
+    "language_code": "es"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "00-quick-start/README.md": {
+    "original_hash": "19ae3c8d9c941024d1abd4c00977dd53",
+    "translation_date": "2026-07-01T03:09:56+00:00",
+    "source_file": "00-quick-start/README.md",
+    "language_code": "es"
+  },
+  "01-setup-and-first-steps/README.md": {
+    "original_hash": "b219ac90c68fd6d78b20bc0dc5aaf770",
+    "translation_date": "2026-07-01T02:59:41+00:00",
+    "source_file": "01-setup-and-first-steps/README.md",
+    "language_code": "es"
+  },
+  "02-context-conversations/README.md": {
+    "original_hash": "fffcec1e7d5a4cf56bba0e8609ab53dd",
+    "translation_date": "2026-07-01T02:52:06+00:00",
+    "source_file": "02-context-conversations/README.md",
+    "language_code": "es"
+  },
+  "03-development-workflows/README.md": {
+    "original_hash": "35f628ad39880ce5574999c806f36e01",
+    "translation_date": "2026-07-01T02:46:26+00:00",
+    "source_file": "03-development-workflows/README.md",
+    "language_code": "es"
+  },
+  "04-agents-custom-instructions/README.md": {
+    "original_hash": "84c4ab048668b7ecc1b9d05fa463a813",
+    "translation_date": "2026-07-01T03:03:41+00:00",
+    "source_file": "04-agents-custom-instructions/README.md",
+    "language_code": "es"
+  },
+  "05-skills/README.md": {
+    "original_hash": "9f51aee940d8f84e8f49076faf6b336d",
+    "translation_date": "2026-07-01T03:16:53+00:00",
+    "source_file": "05-skills/README.md",
+    "language_code": "es"
+  },
+  "06-mcp-servers/README.md": {
+    "original_hash": "fe163bd287e103882a71c0632acd043e",
+    "translation_date": "2026-07-01T03:08:37+00:00",
+    "source_file": "06-mcp-servers/README.md",
+    "language_code": "es"
+  },
+  "06-mcp-servers/mcp-custom-server.md": {
+    "original_hash": "7947b6e5482c966d51b2b3b853feeeeb",
+    "translation_date": "2026-07-01T03:04:16+00:00",
+    "source_file": "06-mcp-servers/mcp-custom-server.md",
+    "language_code": "es"
+  },
+  "07-putting-it-together/README.md": {
+    "original_hash": "f6e4cc01b3e814d2b7af2ff194d72659",
+    "translation_date": "2026-07-01T02:55:29+00:00",
+    "source_file": "07-putting-it-together/README.md",
+    "language_code": "es"
+  },
+  "AGENTS.md": {
+    "original_hash": "ee92ae79ac3ebc6ad521a1ee273fae41",
+    "translation_date": "2026-07-01T02:39:32+00:00",
+    "source_file": "AGENTS.md",
+    "language_code": "es"
+  },
+  "CODE_OF_CONDUCT.md": {
+    "original_hash": "8b6516f8c2a7f71d51c047f2cf67da7b",
+    "translation_date": "2026-07-01T02:40:08+00:00",
+    "source_file": "CODE_OF_CONDUCT.md",
+    "language_code": "es"
+  },
+  "CONTRIBUTING.md": {
+    "original_hash": "b42221679e9ecaa79509af1242eaab75",
+    "translation_date": "2026-07-01T02:38:59+00:00",
+    "source_file": "CONTRIBUTING.md",
+    "language_code": "es"
+  },
+  "GLOSSARY.md": {
+    "original_hash": "0df506dde6938b83ef8eca2de865d2ac",
+    "translation_date": "2026-07-01T02:38:00+00:00",
+    "source_file": "GLOSSARY.md",
+    "language_code": "es"
+  },
+  "README.md": {
+    "original_hash": "5a929cd1dc7e2d45b1d1d398603447d9",
+    "translation_date": "2026-07-01T02:36:55+00:00",
+    "source_file": "README.md",
+    "language_code": "es"
+  },
+  "SECURITY.md": {
+    "original_hash": "c540a9732501726bf7fff2f58b143ac3",
+    "translation_date": "2026-07-01T02:38:35+00:00",
+    "source_file": "SECURITY.md",
+    "language_code": "es"
+  },
+  "SUPPORT.md": {
+    "original_hash": "3999b38d93fe3d9a90e6ffd908f14cbf",
+    "translation_date": "2026-07-01T02:36:09+00:00",
+    "source_file": "SUPPORT.md",
+    "language_code": "es"
+  },
+  "appendices/README.md": {
+    "original_hash": "fb5794d955fefcbaace78d80a2543720",
+    "translation_date": "2026-07-01T03:10:15+00:00",
+    "source_file": "appendices/README.md",
+    "language_code": "es"
+  },
+  "appendices/additional-context.md": {
+    "original_hash": "26568aa839758755533c1576e07d929c",
+    "translation_date": "2026-07-01T03:11:50+00:00",
+    "source_file": "appendices/additional-context.md",
+    "language_code": "es"
+  },
+  "appendices/ci-cd-integration.md": {
+    "original_hash": "d5c480c342afce29154a81efed641145",
+    "translation_date": "2026-07-01T03:10:48+00:00",
+    "source_file": "appendices/ci-cd-integration.md",
+    "language_code": "es"
+  },
+  "samples/agents/README.md": {
+    "original_hash": "9de7cf939dcf741b2982297ad5cf6581",
+    "translation_date": "2026-07-01T03:20:37+00:00",
+    "source_file": "samples/agents/README.md",
+    "language_code": "es"
+  },
+  "samples/agents/hello-world.agent.md": {
+    "original_hash": "db3c04f3976846c58ddf05144e624b09",
+    "translation_date": "2026-07-01T03:20:52+00:00",
+    "source_file": "samples/agents/hello-world.agent.md",
+    "language_code": "es"
+  },
+  "samples/agents/pytest-helper.agent.md": {
+    "original_hash": "3cfa8198900378848104d6e970aafbf4",
+    "translation_date": "2026-07-01T03:19:53+00:00",
+    "source_file": "samples/agents/pytest-helper.agent.md",
+    "language_code": "es"
+  },
+  "samples/agents/python-reviewer.agent.md": {
+    "original_hash": "f7bd2c6f349fa270519c6d186b8e77f3",
+    "translation_date": "2026-07-01T03:21:14+00:00",
+    "source_file": "samples/agents/python-reviewer.agent.md",
+    "language_code": "es"
+  },
+  "samples/book-app-buggy/README.md": {
+    "original_hash": "969121831d9dba9314f1fd75f29ebfe0",
+    "translation_date": "2026-07-01T03:17:23+00:00",
+    "source_file": "samples/book-app-buggy/README.md",
+    "language_code": "es"
+  },
+  "samples/book-app-project-cs/README.md": {
+    "original_hash": "99c4f97ce8c39547e0a0fede1ab2d400",
+    "translation_date": "2026-07-01T03:21:32+00:00",
+    "source_file": "samples/book-app-project-cs/README.md",
+    "language_code": "es"
+  },
+  "samples/book-app-project-js/README.md": {
+    "original_hash": "98bb7fe8a2cf1d73c31e3911683b8476",
+    "translation_date": "2026-07-01T03:21:46+00:00",
+    "source_file": "samples/book-app-project-js/README.md",
+    "language_code": "es"
+  },
+  "samples/book-app-project/README.md": {
+    "original_hash": "8e014705b00d769d7b1d5954b890fc16",
+    "translation_date": "2026-07-01T03:19:13+00:00",
+    "source_file": "samples/book-app-project/README.md",
+    "language_code": "es"
+  },
+  "samples/buggy-code/README.md": {
+    "original_hash": "15b20ed65bd5136c5ce1e719f88d5d05",
+    "translation_date": "2026-07-01T03:22:27+00:00",
+    "source_file": "samples/buggy-code/README.md",
+    "language_code": "es"
+  },
+  "samples/skills/README.md": {
+    "original_hash": "668a73830bd833ecaf8303615c53342a",
+    "translation_date": "2026-07-01T03:18:47+00:00",
+    "source_file": "samples/skills/README.md",
+    "language_code": "es"
+  },
+  "samples/skills/code-checklist/SKILL.md": {
+    "original_hash": "fa98bdb133a0a3494587b9e1cdb46d22",
+    "translation_date": "2026-07-01T03:23:43+00:00",
+    "source_file": "samples/skills/code-checklist/SKILL.md",
+    "language_code": "es"
+  },
+  "samples/skills/commit-message/SKILL.md": {
+    "original_hash": "b7d664a594d498d95b1d79751f508b3f",
+    "translation_date": "2026-07-01T03:23:15+00:00",
+    "source_file": "samples/skills/commit-message/SKILL.md",
+    "language_code": "es"
+  },
+  "samples/skills/hello-world/SKILL.md": {
+    "original_hash": "37e425f6e5b4a3a0147ff6c4e1f49903",
+    "translation_date": "2026-07-01T03:22:48+00:00",
+    "source_file": "samples/skills/hello-world/SKILL.md",
+    "language_code": "es"
+  },
+  "samples/skills/pytest-gen/SKILL.md": {
+    "original_hash": "ed0dc993c3006abb96495ca309bd9a1f",
+    "translation_date": "2026-07-01T03:24:10+00:00",
+    "source_file": "samples/skills/pytest-gen/SKILL.md",
+    "language_code": "es"
+  },
+  "samples/src/README.md": {
+    "original_hash": "07d30c7bddf8817f7754183573ac9303",
+    "translation_date": "2026-07-01T03:17:48+00:00",
+    "source_file": "samples/src/README.md",
+    "language_code": "es"
+  }
+}
