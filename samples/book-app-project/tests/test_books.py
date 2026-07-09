@@ -20,7 +20,7 @@ def test_add_book():
     initial_count = len(collection.books)
     collection.add_book("1984", "George Orwell", 1949)
     assert len(collection.books) == initial_count + 1
-    book = collection.find_book_by_title("1984")
+    book = collection.find_by_title("1984")
     assert book is not None
     assert book.author == "George Orwell"
     assert book.year == 1949
@@ -31,7 +31,7 @@ def test_mark_book_as_read():
     collection.add_book("Dune", "Frank Herbert", 1965)
     result = collection.mark_as_read("Dune")
     assert result is True
-    book = collection.find_book_by_title("Dune")
+    book = collection.find_by_title("Dune")
     assert book.read is True
 
 def test_mark_book_as_read_invalid():
@@ -44,10 +44,69 @@ def test_remove_book():
     collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
     result = collection.remove_book("The Hobbit")
     assert result is True
-    book = collection.find_book_by_title("The Hobbit")
+    book = collection.find_by_title("The Hobbit")
     assert book is None
 
 def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+
+def test_find_by_title():
+    collection = BookCollection()
+    collection.add_book("The Great Gatsby", "F. Scott Fitzgerald", 1925)
+    book = collection.find_by_title("The Great Gatsby")
+    assert book is not None
+    assert book.author == "F. Scott Fitzgerald"
+
+
+def test_find_by_title_case_insensitive():
+    collection = BookCollection()
+    collection.add_book("The Great Gatsby", "F. Scott Fitzgerald", 1925)
+    book = collection.find_by_title("the great gatsby")
+    assert book is not None
+    assert book.title == "The Great Gatsby"
+
+
+def test_find_by_title_not_found():
+    collection = BookCollection()
+    book = collection.find_by_title("Nonexistent Book")
+    assert book is None
+
+
+def test_find_by_author():
+    collection = BookCollection()
+    collection.add_book("1984", "George Orwell", 1949)
+    collection.add_book("Animal Farm", "George Orwell", 1945)
+    collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
+    
+    orwell_books = collection.find_by_author("George Orwell")
+    assert len(orwell_books) == 2
+    assert all(book.author == "George Orwell" for book in orwell_books)
+
+
+def test_find_by_author_case_insensitive():
+    collection = BookCollection()
+    collection.add_book("1984", "George Orwell", 1949)
+    books = collection.find_by_author("george orwell")
+    assert len(books) == 1
+
+
+def test_find_by_author_not_found():
+    collection = BookCollection()
+    books = collection.find_by_author("Unknown Author")
+    assert len(books) == 0
+
+
+def test_list_books():
+    collection = BookCollection()
+    assert len(collection.list_books()) == 0
+    
+    collection.add_book("Book 1", "Author 1", 2020)
+    collection.add_book("Book 2", "Author 2", 2021)
+    
+    books = collection.list_books()
+    assert len(books) == 2
+    assert books[0].title == "Book 1"
+    assert books[1].title == "Book 2"

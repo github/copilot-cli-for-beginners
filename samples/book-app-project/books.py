@@ -15,6 +15,7 @@ class Book:
 
 class BookCollection:
     def __init__(self):
+        """Initialize the book collection and load books from storage."""
         self.books: List[Book] = []
         self.load_books()
 
@@ -42,16 +43,17 @@ class BookCollection:
         return book
 
     def list_books(self) -> List[Book]:
+        """Return all books in the collection."""
         return self.books
 
-    def find_book_by_title(self, title: str) -> Optional[Book]:
+    def find_by_title(self, title: str) -> Optional[Book]:
         for book in self.books:
             if book.title.lower() == title.lower():
                 return book
         return None
 
     def mark_as_read(self, title: str) -> bool:
-        book = self.find_book_by_title(title)
+        book = self.find_by_title(title)
         if book:
             book.read = True
             self.save_books()
@@ -60,7 +62,7 @@ class BookCollection:
 
     def remove_book(self, title: str) -> bool:
         """Remove a book by title."""
-        book = self.find_book_by_title(title)
+        book = self.find_by_title(title)
         if book:
             self.books.remove(book)
             self.save_books()
