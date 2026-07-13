@@ -383,10 +383,13 @@ These commands are great to learn initially as you're getting started with Copil
 | `/help` | Show all available commands | When you forget a command |
 | `/model` | Show or switch AI model | When you want to change the AI model |
 | `/plan` | Plan your work out before coding | For more complex features |
+| `/refine` | Rewrite a rough, stream-of-consciousness prompt into a clear, focused one | When your prompt feels messy and you want better results |
 | `/research` | Deep research using GitHub and web sources | When you need to investigate a topic before coding |
 | `/exit` | End the session | When you're done |
 
 > 💡 **`/ask` vs regular chat**: Normally every message you send becomes part of the ongoing conversation and affects future responses. `/ask` is an "off the record" shortcut — perfect for quick one-off questions like `/ask What does YAML mean?` without polluting your session context.
+
+> 💡 **`/refine` for better prompts**: Not sure if your prompt is clear enough? Type it out as it comes to mind, then run `/refine` to let Copilot rewrite it into a precise, well-structured prompt before sending. This is especially useful when you're new to AI tools and still learning how to write effective prompts.
 
 > 💡 **Tab-completion**: When typing a slash command, press **Tab** to auto-complete the command name or cycle through available subcommands and arguments. This is especially handy when you can't remember the exact name of a command.
 
