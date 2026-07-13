@@ -1,6 +1,6 @@
 import json
 from dataclasses import dataclass, asdict
-from typing import List, Optional
+from typing import List, Optional, TypedDict
 
 DATA_FILE = "data.json"
 
@@ -11,6 +11,35 @@ class Book:
     author: str
     year: int
     read: bool = False
+
+
+class BookStats(TypedDict):
+    total: int
+    read: int
+    unread: int
+    oldest: Optional[Book]
+    newest: Optional[Book]
+
+
+def get_statistics(books: List[Book]) -> BookStats:
+    """Compute summary statistics for a list of books.
+
+    Returns total count, number read, number unread, and the oldest
+    and newest books by publication year. `oldest`/`newest` are `None`
+    when the list is empty.
+    """
+    if not books:
+        return {"total": 0, "read": 0, "unread": 0, "oldest": None, "newest": None}
+
+    read_count = sum(1 for book in books if book.read)
+
+    return {
+        "total": len(books),
+        "read": read_count,
+        "unread": len(books) - read_count,
+        "oldest": min(books, key=lambda b: b.year),
+        "newest": max(books, key=lambda b: b.year),
+    }
 
 
 class BookCollection:
@@ -70,3 +99,7 @@ class BookCollection:
     def find_by_author(self, author: str) -> List[Book]:
         """Find all books by a given author."""
         return [b for b in self.books if b.author.lower() == author.lower()]
+
+    def list_by_year(self, start: int, end: int) -> List[Book]:
+        """Return books published between start and end year, inclusive."""
+        return [b for b in self.books if start <= b.year <= end]
