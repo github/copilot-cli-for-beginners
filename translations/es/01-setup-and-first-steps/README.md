@@ -61,7 +61,7 @@ Prueba estos prompts amigables para principiantes:
 
 Fíjate lo natural que se siente. Solo haz preguntas como lo harías con un colega. Cuando termines de explorar, escribe `/exit` para salir de la sesión.
 
-**La idea clave**: GitHub Copilot CLI es conversacional. No necesitas una sintaxis especial para empezar. Simplemente haz preguntas en inglés simple.
+**La idea clave**: GitHub Copilot CLI es conversacional. No necesitas una sintaxis especial para empezar. Simplemente haz preguntas en lenguaje natural.
 
 ## Verlo en acción
 

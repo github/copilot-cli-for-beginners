@@ -36,7 +36,7 @@ Ejemplos de comportamiento inaceptable incluyen:
 * Otra conducta que razonablemente podría considerarse inapropiada en un
   entorno profesional
 
-## Enforcement Responsibilities
+## Responsabilidades de cumplimiento
 
 Los líderes de la comunidad son responsables de clarificar y hacer cumplir nuestros estándares de
 comportamiento aceptable y tomarán medidas correctivas apropiadas y justas en
@@ -48,7 +48,7 @@ comentarios, commits, código, ediciones de la wiki, issues y otras contribucion
 alineadas con este Código de Conducta, y comunicarán las razones de las decisiones de moderación
 cuando sea apropiado.
 
-## Scope
+## Ámbito de aplicación
 
 Este Código de Conducta se aplica en todos los espacios de la comunidad, y también se aplica cuando
 un individuo está representando oficialmente a la comunidad en espacios públicos.
@@ -56,7 +56,7 @@ Ejemplos de representar a nuestra comunidad incluyen usar una dirección de corr
 publicar a través de una cuenta oficial de redes sociales, o actuar como un
 representante designado en un evento en línea o presencial.
 
-## Enforcement
+## Aplicación
 
 Los casos de comportamiento abusivo, de acoso o de otra manera inaceptable pueden ser
 reportados a los líderes de la comunidad responsables de la aplicación en
@@ -66,56 +66,55 @@ Todas las denuncias serán revisadas e investigadas de forma pronta y justa.
 Todos los líderes de la comunidad están obligados a respetar la privacidad y la seguridad del
 denunciante de cualquier incidente.
 
-## Enforcement Guidelines
+## Directrices de aplicación
 
-Los líderes de la comunidad seguirán estas Community Impact Guidelines en la determinación
+Los líderes de la comunidad seguirán estas Directrices de Impacto Comunitario en la determinación
 de las consecuencias para cualquier acción que consideren en violación de este Código de Conducta:
 
-### 1. Correction
+### 1. Corrección
 
-**Community Impact**: Use of inappropriate language or other behavior deemed
-unprofessional or unwelcome in the community.
+**Impacto en la comunidad**: Uso de lenguaje inapropiado u otro comportamiento considerado
+no profesional o no bienvenido en la comunidad.
 
-**Consequence**: A private, written warning from community leaders, providing
-clarity around the nature of the violation and an explanation of why the
-behavior was inappropriate. A public apology may be requested.
+**Consecuencia**: Una advertencia privada por escrito de los líderes de la comunidad, que aclara
+la naturaleza de la violación y explica por qué el comportamiento fue inapropiado. Se puede
+solicitar una disculpa pública.
 
-### 2. Warning
+### 2. Advertencia
 
-**Community Impact**: A violation through a single incident or series
-of actions.
+**Impacto en la comunidad**: Una violación mediante un solo incidente o serie de acciones.
 
-**Consequence**: A warning with consequences for continued behavior. No
-interaction with the people involved, including unsolicited interaction with
-those enforcing the Code of Conduct, for a specified period of time. This
-includes avoiding interactions in community spaces as well as external channels
-like social media. Violating these terms may lead to a temporary or
-permanent ban.
+**Consecuencia**: Una advertencia con consecuencias por el comportamiento continuado. Sin
+interacción con las personas involucradas, incluida la interacción no solicitada con
+quienes hacen cumplir el Código de Conducta, durante un período de tiempo determinado. Esto
+incluye evitar interacciones en espacios comunitarios, así como en canales externos
+como las redes sociales. Violar estos términos puede resultar en una prohibición temporal o
+permanente.
 
-### 3. Temporary Ban
+### 3. Prohibición temporal
 
-**Community Impact**: A serious violation of community standards, including
-sustained inappropriate behavior.
+**Impacto en la comunidad**: Una violación grave de los estándares de la comunidad, incluido
+el comportamiento inapropiado sostenido.
 
-**Consequence**: A temporary ban from any sort of interaction or public
-communication with the community for a specified period of time. No public or
-private interaction with the people involved, including unsolicited interaction
-with those enforcing the Code of Conduct, is allowed during this period.
-Violating these terms may lead to a permanent ban.
+**Consecuencia**: Una prohibición temporal de cualquier tipo de interacción o comunicación pública
+con la comunidad durante un período de tiempo determinado. No se permite ninguna interacción pública o
+privada con las personas involucradas, incluida la interacción no solicitada con
+quienes hacen cumplir el Código de Conducta, durante este período.
+Violar estos términos puede resultar en una prohibición permanente.
 
-### 4. Permanent Ban
+### 4. Prohibición permanente
 
-**Community Impact**: Demonstrating a pattern of violation of community
-standards, including sustained inappropriate behavior,  harassment of an
-individual, or aggression toward or disparagement of classes of individuals.
+**Impacto en la comunidad**: Demostrar un patrón de violación de los estándares de la comunidad,
+incluido el comportamiento inapropiado sostenido, el acoso a una persona, o la agresión
+o menosprecio hacia grupos de personas.
 
-**Consequence**: A permanent ban from any sort of public interaction within
-the community.
+**Consecuencia**: Una prohibición permanente de cualquier tipo de interacción pública dentro
+de la comunidad.
 
-## Attribution
+## Atribución
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage],
-version 2.0, available at
+Este Código de Conducta está adaptado del [Contributor Covenant][homepage],
+versión 2.0, disponible en
 https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 
 Las Directrices de Impacto Comunitario fueron inspiradas por [Mozilla's code of conduct

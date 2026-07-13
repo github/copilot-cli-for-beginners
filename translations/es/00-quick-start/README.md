@@ -39,7 +39,7 @@ GitHub Copilot CLI requiere una suscripción activa a Copilot. Puedes comprobar 
 - **Copilot Enterprise** - A través de tu empresa
 - **GitHub Education** - Gratis para estudiantes/profesores verificados
 
-If you see "You don't have access to GitHub Copilot," you'll need to use the free option, subscribe to a plan, or join an organization that provides access.
+Si ves el mensaje "You don't have access to GitHub Copilot," necesitarás usar la opción gratuita, suscribirte a un plan o unirte a una organización que proporcione acceso.
 
 ---
 
@@ -215,9 +215,9 @@ copilot
 
 **Salida esperada**: Un resumen de las funciones principales y comandos de la aplicación del libro.
 
-If you see an error, check the [troubleshooting section](#you-dont-have-access-to-github-copilot) below.
+Si ves un error, consulta la [sección de solución de problemas](#solución-de-problemas) más abajo.
 
-Once you're done you can exit the Copilot CLI:
+Una vez que termines, puedes salir del Copilot CLI:
 
 ```bash
 > /exit
