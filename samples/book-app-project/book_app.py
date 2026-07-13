@@ -1,10 +1,15 @@
 import sys
 from books import BookCollection, get_statistics
-from utils import get_book_details, print_books
+from exceptions import BookAppError
+from utils import get_book_details, parse_year, print_books, print_stats
 
 
-# Global collection instance
-collection = BookCollection()
+try:
+    # Global collection instance
+    collection = BookCollection()
+except BookAppError as e:
+    print(f"\nFailed to load book collection: {e}\n")
+    sys.exit(1)
 
 
 def handle_list() -> None:
@@ -20,7 +25,7 @@ def handle_add() -> None:
     try:
         collection.add_book(title, author, year)
         print("\nBook added successfully.\n")
-    except ValueError as e:
+    except BookAppError as e:
         print(f"\nError: {e}\n")
 
 
@@ -28,9 +33,12 @@ def handle_remove() -> None:
     print("\nRemove a Book\n")
 
     title = input("Enter the title of the book to remove: ").strip()
-    collection.remove_book(title)
 
-    print("\nBook removed if it existed.\n")
+    try:
+        collection.remove_book(title)
+        print("\nBook removed successfully.\n")
+    except BookAppError as e:
+        print(f"\nError: {e}\n")
 
 
 def handle_find() -> None:
@@ -46,10 +54,12 @@ def handle_read() -> None:
     print("\nMark a Book as Read\n")
 
     title = input("Enter the title of the book to mark as read: ").strip()
-    if collection.mark_as_read(title):
+
+    try:
+        collection.mark_as_read(title)
         print("\nBook marked as read.\n")
-    else:
-        print("\nBook not found.\n")
+    except BookAppError as e:
+        print(f"\nError: {e}\n")
 
 
 def handle_by_year() -> None:
@@ -59,11 +69,11 @@ def handle_by_year() -> None:
     end_str = input("End year: ").strip()
 
     try:
-        start = int(start_str) if start_str else 0
-        end = int(end_str) if end_str else 0
+        start = parse_year(start_str) if start_str else 0
+        end = parse_year(end_str) if end_str else 0
         books = collection.list_by_year(start, end)
         print_books(books)
-    except ValueError as e:
+    except BookAppError as e:
         print(f"\nError: {e}\n")
 
 
@@ -71,17 +81,7 @@ def handle_stats() -> None:
     print("\nBook Collection Statistics\n")
 
     stats = get_statistics(collection.list_books())
-
-    print(f"Total books: {stats['total']}")
-    print(f"Read: {stats['read']}")
-    print(f"Unread: {stats['unread']}")
-
-    if stats["oldest"]:
-        print(f"Oldest: {stats['oldest'].title} ({stats['oldest'].year})")
-    if stats["newest"]:
-        print(f"Newest: {stats['newest'].title} ({stats['newest'].year})")
-
-    print()
+    print_stats(stats)
 
 
 def show_help() -> None:
@@ -107,25 +107,24 @@ def main() -> None:
 
     command = sys.argv[1].lower()
 
-    if command == "list":
-        handle_list()
-    elif command == "add":
-        handle_add()
-    elif command == "remove":
-        handle_remove()
-    elif command == "find":
-        handle_find()
-    elif command == "read":
-        handle_read()
-    elif command == "byyear":
-        handle_by_year()
-    elif command == "stats":
-        handle_stats()
-    elif command == "help":
-        show_help()
-    else:
+    commands = {
+        "list": handle_list,
+        "add": handle_add,
+        "remove": handle_remove,
+        "find": handle_find,
+        "read": handle_read,
+        "byyear": handle_by_year,
+        "stats": handle_stats,
+        "help": show_help,
+    }
+
+    handler = commands.get(command)
+    if handler is None:
         print("Unknown command.\n")
         show_help()
+        return
+
+    handler()
 
 
 if __name__ == "__main__":
