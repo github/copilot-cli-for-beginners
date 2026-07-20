@@ -107,6 +107,7 @@ What about the Task Agent? It works behind the scenes to manage and track what i
 | ✅ **Success** | Brief summary (e.g., "All 247 tests passed", "Build succeeded") |
 | ❌ **Failure** | Full output with stack traces, compiler errors, and detailed logs |
 
+> 💡 **Multi-turn subagents**: Subagents (background tasks launched by agents) support follow-up messages. While an agent is running in the background, you can open `/tasks` to view it and send follow-up instructions — you don't have to wait for it to finish before guiding it further. Think of it like being able to tap your assistant on the shoulder mid-task to give extra direction.
 
 > 📚 **Official Documentation**: [GitHub Copilot CLI Agents](https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)
 
