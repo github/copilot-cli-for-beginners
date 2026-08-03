@@ -1,10 +1,15 @@
 import sys
 from typing import List
-from books import Book, BookCollection
+from books import Book, BookCollection, DataFileError
 
 
 # Global collection instance
-collection = BookCollection()
+try:
+    collection = BookCollection()
+    startup_error = None
+except DataFileError as error:
+    collection = None
+    startup_error = str(error)
 
 
 def show_books(books: List[Book]) -> None:
@@ -175,24 +180,31 @@ Commands:
 
 def main() -> None:
     """Main entry point for the CLI application."""
+    if startup_error:
+        print(f"Error: {startup_error}")
+        return
+
     if len(sys.argv) < 2:
         show_help()
         return
 
     command = sys.argv[1].lower()
 
-    if command == "list":
-        handle_list()
-    elif command == "add":
-        handle_add()
-    elif command == "remove":
-        handle_remove()
-    elif command == "find":
-        handle_find()
-    elif command == "mark":
-        handle_mark()
-    elif command == "help":
-        show_help()
+    commands = {
+        "list": handle_list,
+        "add": handle_add,
+        "remove": handle_remove,
+        "find": handle_find,
+        "mark": handle_mark,
+        "help": show_help,
+    }
+
+    handler = commands.get(command)
+    if handler:
+        try:
+            handler()
+        except DataFileError as error:
+            print(f"Error: {error}")
     else:
         print("Error: Unknown command.\n")
         show_help()
