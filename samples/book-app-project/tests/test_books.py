@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 import books
-from books import BookCollection
+from books import Book, BookCollection
 
 
 @pytest.fixture(autouse=True)
@@ -110,3 +110,55 @@ def test_list_books():
     assert len(books) == 2
     assert books[0].title == "Book 1"
     assert books[1].title == "Book 2"
+
+
+class TestGetUnreadBooks:
+    """Tests for get_unread_books."""
+
+    def test_get_unread_books_returns_empty_list_for_empty_collection(self):
+        collection = BookCollection()
+
+        unread_books = collection.get_unread_books()
+
+        assert unread_books == []
+
+    @pytest.mark.parametrize(
+        ("read_states", "expected_titles"),
+        [
+            ([False], ["Book 1"]),
+            ([True, False], ["Book 2"]),
+            ([False, True, False], ["Book 1", "Book 3"]),
+            ([True, True], []),
+            ([False, False], ["Book 1", "Book 2"]),
+        ],
+    )
+    def test_get_unread_books_filters_books_and_preserves_order(
+        self, read_states, expected_titles
+    ):
+        collection = BookCollection()
+        collection.books = [
+            Book(f"Book {index}", "Author", 2020, read)
+            for index, read in enumerate(read_states, start=1)
+        ]
+
+        unread_books = collection.get_unread_books()
+
+        assert [book.title for book in unread_books] == expected_titles
+
+    def test_get_unread_books_reflects_book_marked_as_read(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+
+        collection.mark_as_read("Dune")
+        unread_books = collection.get_unread_books()
+
+        assert unread_books == []
+
+    def test_get_unread_books_excludes_removed_unread_book(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+
+        collection.remove_book("Dune")
+        unread_books = collection.get_unread_books()
+
+        assert unread_books == []

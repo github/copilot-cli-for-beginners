@@ -4,8 +4,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 import books
+import book_app
 from book_app import (
-    show_books, show_books_with_indices, handle_list, handle_add,
+    show_books, show_books_with_indices, handle_list, handle_list_unread, handle_add,
     handle_remove, handle_find, handle_mark, show_help
 )
 from books import BookCollection
@@ -72,6 +73,48 @@ def test_handle_list(capsys):
     
     assert "Your Book Collection:" in captured.out
     assert "1984" in captured.out
+
+
+def test_handle_list_unread_shows_only_unread_books(capsys):
+    """Test list unread command handler."""
+    from book_app import collection
+    collection.add_book("Unread Book", "Author", 2020)
+    collection.add_book("Read Book", "Author", 2021)
+    collection.mark_as_read("Read Book")
+
+    handle_list_unread()
+    captured = capsys.readouterr()
+
+    assert "Unread Book" in captured.out
+    assert "Read Book" not in captured.out
+
+
+def test_handle_list_unread_shows_empty_message_when_all_books_are_read(capsys):
+    """Test list unread command handler when no unread books exist."""
+    from book_app import collection
+    collection.add_book("Read Book", "Author", 2021)
+    collection.mark_as_read("Read Book")
+
+    handle_list_unread()
+    captured = capsys.readouterr()
+
+    assert "No books found." in captured.out
+
+
+@pytest.mark.parametrize("unread_argument", ["unread", "UNREAD"])
+def test_main_list_unread_routes_to_unread_handler(capsys, monkeypatch, unread_argument):
+    """Test list unread command routing."""
+    from book_app import collection
+    collection.add_book("Unread Book", "Author", 2020)
+    collection.add_book("Read Book", "Author", 2021)
+    collection.mark_as_read("Read Book")
+    monkeypatch.setattr(sys, "argv", ["book_app.py", "list", unread_argument])
+
+    book_app.main()
+    captured = capsys.readouterr()
+
+    assert "Unread Book" in captured.out
+    assert "Read Book" not in captured.out
 
 
 def test_handle_add_valid(capsys, monkeypatch):
@@ -226,6 +269,7 @@ def test_show_help(capsys):
     
     assert "Book Collection Helper" in captured.out
     assert "list" in captured.out
+    assert "list unread - Show unread books" in captured.out
     assert "add" in captured.out
     assert "remove" in captured.out
     assert "find" in captured.out

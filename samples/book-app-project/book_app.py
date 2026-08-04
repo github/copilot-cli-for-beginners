@@ -46,6 +46,12 @@ def handle_list() -> None:
     show_books(books)
 
 
+def handle_list_unread() -> None:
+    """List only unread books in the collection."""
+    books = collection.get_unread_books()
+    show_books(books)
+
+
 def handle_add() -> None:
     """Add a new book with validation."""
     print("\nAdd a New Book\n")
@@ -170,6 +176,7 @@ Book Collection Helper
 
 Commands:
   list     - Show all books
+  list unread - Show unread books
   add      - Add a new book
   remove   - Remove a book by title
   find     - Find books by author
@@ -192,12 +199,16 @@ def main() -> None:
 
     commands = {
         "list": handle_list,
+        "list unread": handle_list_unread,
         "add": handle_add,
         "remove": handle_remove,
         "find": handle_find,
         "mark": handle_mark,
         "help": show_help,
     }
+
+    if command == "list" and len(sys.argv) > 2 and sys.argv[2].lower() == "unread":
+        command = "list unread"
 
     handler = commands.get(command)
     if handler:
