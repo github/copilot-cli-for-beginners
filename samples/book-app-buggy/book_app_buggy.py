@@ -6,7 +6,7 @@ from books_buggy import BookCollection
 collection = BookCollection()
 
 
-def show_books(books):
+def show_books(books) -> None:
     """Display books in a user-friendly format."""
     if not books:
         print("No books found.")
@@ -22,17 +22,22 @@ def show_books(books):
     print()
 
 
-def handle_list():
+def handle_list() -> None:
     books = collection.list_books()
     show_books(books)
 
 
-def handle_add():
-    print("\nAdd a New Book\n")
-
+def _prompt_add_inputs():
+    """Collect add-book input fields from the user."""
     title = input("Title: ").strip()
     author = input("Author: ").strip()
     year_str = input("Year: ").strip()
+    return title, author, year_str
+
+
+def handle_add() -> None:
+    print("\nAdd a New Book\n")
+    title, author, year_str = _prompt_add_inputs()
 
     # BUG 8: No validation on empty title or author
     try:
@@ -43,17 +48,17 @@ def handle_add():
         print(f"\nError: {e}\n")
 
 
-def handle_remove():
+def handle_remove() -> None:
     print("\nRemove a Book\n")
 
     title = input("Enter the title of the book to remove: ").strip()
-    result = collection.remove_book(title)
+    _removed = collection.remove_book(title)
 
     # BUG 9: Always says "removed" even when book wasn't found
     print("\nBook removed.\n")
 
 
-def handle_find():
+def handle_find() -> None:
     print("\nFind Books by Author\n")
 
     author = input("Author name: ").strip()
@@ -62,7 +67,7 @@ def handle_find():
     show_books(books)
 
 
-def show_help():
+def show_help() -> None:
     print("""
 Book Collection Helper
 
@@ -75,26 +80,27 @@ Commands:
 """)
 
 
-def main():
+def main() -> None:
+    command_handlers = {
+        "list": handle_list,
+        "add": handle_add,
+        "remove": handle_remove,
+        "find": handle_find,
+        "help": show_help,
+    }
+
     if len(sys.argv) < 2:
         show_help()
         return
 
     command = sys.argv[1].lower()
+    handler = command_handlers.get(command)
+    if handler:
+        handler()
+        return
 
-    if command == "list":
-        handle_list()
-    elif command == "add":
-        handle_add()
-    elif command == "remove":
-        handle_remove()
-    elif command == "find":
-        handle_find()
-    elif command == "help":
-        show_help()
-    else:
-        print("Unknown command.\n")
-        show_help()
+    print("Unknown command.\n")
+    show_help()
 
 
 if __name__ == "__main__":

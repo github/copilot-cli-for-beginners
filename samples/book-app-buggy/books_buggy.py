@@ -58,8 +58,7 @@ class BookCollection:
         # BUG 5: Marks ALL books as read instead of just the matching one
         book = self.find_book_by_title(title)
         if book:
-            for b in self.books:
-                b.read = True
+            book.read = True
             self.save_books()
             return True
         return False
