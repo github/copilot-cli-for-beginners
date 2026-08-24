@@ -104,30 +104,29 @@ Commands:
 """)
 
 
+COMMANDS = {
+    "list": handle_list,
+    "add": handle_add,
+    "remove": handle_remove,
+    "mark-read": handle_mark_read,
+    "find": handle_find,
+    "list-by-year": handle_list_by_year,
+    "stats": handle_stats,
+    "help": show_help,
+}
+
+
 def main():
     if len(sys.argv) < 2:
         show_help()
         return
 
     command = sys.argv[1].lower()
+    handler = COMMANDS.get(command)
 
     try:
-        if command == "list":
-            handle_list()
-        elif command == "add":
-            handle_add()
-        elif command == "remove":
-            handle_remove()
-        elif command == "mark-read":
-            handle_mark_read()
-        elif command == "find":
-            handle_find()
-        elif command == "list-by-year":
-            handle_list_by_year()
-        elif command == "stats":
-            handle_stats()
-        elif command == "help":
-            show_help()
+        if handler is not None:
+            handler()
         else:
             print("Unknown command.\n")
             show_help()
