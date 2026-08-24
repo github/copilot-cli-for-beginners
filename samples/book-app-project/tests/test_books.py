@@ -51,3 +51,40 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+def test_list_by_year_within_range():
+    collection = BookCollection()
+    collection.add_book("1984", "George Orwell", 1949)
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
+    results = collection.list_by_year(1940, 1970)
+    titles = [b.title for b in results]
+    assert titles == ["1984", "Dune"]
+
+def test_list_by_year_excludes_out_of_range():
+    collection = BookCollection()
+    collection.add_book("1984", "George Orwell", 1949)
+    collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
+    results = collection.list_by_year(1940, 1970)
+    titles = [b.title for b in results]
+    assert "The Hobbit" not in titles
+
+def test_list_by_year_boundary_inclusive():
+    collection = BookCollection()
+    collection.add_book("Start Year Book", "Author A", 1950)
+    collection.add_book("End Year Book", "Author B", 1960)
+    results = collection.list_by_year(1950, 1960)
+    titles = [b.title for b in results]
+    assert "Start Year Book" in titles
+    assert "End Year Book" in titles
+
+def test_list_by_year_no_matches():
+    collection = BookCollection()
+    collection.add_book("1984", "George Orwell", 1949)
+    results = collection.list_by_year(2000, 2020)
+    assert results == []
+
+def test_list_by_year_empty_collection():
+    collection = BookCollection()
+    results = collection.list_by_year(1900, 2000)
+    assert results == []
