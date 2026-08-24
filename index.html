@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReviewPilot - Find the best products, faster</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <a href="#" class="logo">Review<span class="logo-accent">Pilot</span></a>
+      <nav class="nav">
+        <a href="#" class="nav-link active">Reviews</a>
+        <a href="#" class="nav-link">Categories</a>
+        <a href="#" class="nav-link">Top Rated</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <div class="search-box">
+        <span class="icon-search">&#128269;</span>
+        <input type="text" placeholder="Search products, brands, categories">
+      </div>
+      <button class="icon-btn" aria-label="Notifications">&#128276;</button>
+      <button class="icon-btn" aria-label="Account">&#128100;</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Find the best products, faster.</h1>
+    <p class="hero-sub">Expert summaries, real user feedback, and side-by-side comparisons.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary">Browse Top Reviews</button>
+      <button class="btn btn-secondary">Compare Products</button>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <span>10,000+ reviews</span>
+    <span class="dot">&middot;</span>
+    <span>Updated weekly</span>
+    <span class="dot">&middot;</span>
+    <span>Transparent scoring</span>
+  </div>
+
+  <!-- Main content -->
+  <main class="content">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Filter &amp; Sort</h2>
+
+      <div class="filter-group">
+        <label for="sort-by">Sort by</label>
+        <select id="sort-by">
+          <option>Best overall</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Highest Rated</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Minimum Rating <span class="stars">&#9733;&#9733;&#9733;&#9734; up</span></label>
+      </div>
+
+      <div class="filter-group price-range">
+        <label>Price Range</label>
+        <div class="price-inputs">
+          <div class="price-input">
+            <span>Min $</span>
+            <input type="number" placeholder="">
+          </div>
+          <div class="price-input">
+            <span>Max $</span>
+            <input type="number" placeholder="">
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group checkboxes">
+        <label><input type="checkbox"> Laptops</label>
+        <label><input type="checkbox"> Headphones</label>
+        <label><input type="checkbox"> Smart Home</label>
+        <label><input type="checkbox"> Kitchen</label>
+        <label><input type="checkbox"> Fitness</label>
+        <label><input type="checkbox"> Gaming</label>
+      </div>
+
+      <div class="filter-group search-review">
+        <div class="search-box small">
+          <input type="text" placeholder="Read review...">
+          <span class="icon-search">&#128269;</span>
+        </div>
+      </div>
+
+      <div class="filter-actions">
+        <button class="btn btn-primary btn-block">Apply</button>
+        <button class="btn btn-outline btn-block">Reset</button>
+      </div>
+    </aside>
+
+    <!-- Results -->
+    <section class="results">
+      <div class="results-header">
+        <h2>Showing 24 results</h2>
+        <div class="results-controls">
+          <div class="view-toggle">
+            <button class="view-btn active" aria-label="Grid view">&#9638;</button>
+            <button class="view-btn" aria-label="List view">&#9776;</button>
+          </div>
+          <button class="btn btn-primary btn-compare">&#128274; Compare (0) &rsaquo;</button>
+        </div>
+      </div>
+
+      <div class="active-filters">
+        <span class="tag">&#9733; 4&#9733; up <a href="#" class="tag-remove">&times;</a></span>
+        <span class="tag">&#128190; Laptops <a href="#" class="tag-remove">&times;</a></span>
+      </div>
+
+      <!-- Product 1 -->
+      <article class="product-card">
+        <div class="product-image">&#128187;</div>
+        <div class="product-info">
+          <h3>ArcLight X15 Laptop</h3>
+          <p class="brand">Zyrella &middot; Laptops</p>
+          <p class="summary"><span class="dot-icon good"></span> Excellent performance and build quality, but battery life is average.</p>
+          <ul class="tags-list">
+            <li><span class="dot-icon good"></span> Fast performance</li>
+            <li><span class="dot-icon good"></span> High-res display</li>
+            <li><span class="dot-icon bad"></span> Poor battery life</li>
+          </ul>
+        </div>
+        <div class="product-rating">
+          <span class="rating-score">4.7</span>
+          <span class="stars-display">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+          <span class="review-count">1,205 reviews</span>
+        </div>
+        <div class="product-price">
+          <span class="price">$1,199</span>
+          <span class="stock in-stock">&#10003; In Store</span>
+          <button class="btn btn-primary btn-sm">Read Review &rsaquo;</button>
+        </div>
+      </article>
+
+      <!-- Product 2 -->
+      <article class="product-card">
+        <div class="product-image">&#128266;</div>
+        <div class="product-info">
+          <h3>Lumina Smart Speaker</h3>
+          <p class="brand">Sonira &middot; Smart Home</p>
+          <p class="summary"><span class="dot-icon good"></span> Rich sound quality and easy setup, but lacks some app integrations.</p>
+          <ul class="tags-list">
+            <li><span class="dot-icon good"></span> Rich sound</li>
+            <li><span class="dot-icon good"></span> Easy setup</li>
+            <li><span class="dot-icon bad"></span> No voice profiles</li>
+          </ul>
+        </div>
+        <div class="product-rating">
+          <span class="rating-score">4.5</span>
+          <span class="stars-display">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+          <span class="review-count">992 reviews</span>
+        </div>
+        <div class="product-price">
+          <span class="price">$129</span>
+          <span class="stock in-stock">&#10003; In Store</span>
+          <button class="btn btn-primary btn-sm">Read Review &rsaquo;</button>
+        </div>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="product-card">
+        <div class="product-image">&#127858;</div>
+        <div class="product-info">
+          <h3>BreezeBlend Air Fryer</h3>
+          <p class="brand">Airviva &middot; Kitchen</p>
+          <p class="summary"><span class="dot-icon good"></span> Great for quick, healthy meals, but small capacity.</p>
+          <ul class="tags-list">
+            <li><span class="dot-icon good"></span> Small capacity</li>
+            <li><span class="dot-icon bad"></span> Gets hot outside</li>
+            <li><span class="dot-icon bad"></span> Loud fan</li>
+          </ul>
+        </div>
+        <div class="product-rating">
+          <span class="rating-score">4.6</span>
+          <span class="stars-display">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+          <span class="review-count">617 reviews</span>
+        </div>
+        <div class="product-price">
+          <span class="price">$89</span>
+          <span class="stock in-stock">&#10003; In Store</span>
+          <button class="btn btn-outline btn-sm">Read Review &rsaquo;</button>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
