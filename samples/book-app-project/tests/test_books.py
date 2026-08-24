@@ -27,6 +27,138 @@ def test_add_book():
     assert book.year == 1949
     assert book.read is False
 
+
+class TestAddBook:
+    """Tests for BookCollection.add_book."""
+
+    def test_add_book_persists_to_disk(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        saved = json.loads(open(books.DATA_FILE).read())
+        assert any(b["title"] == "Dune" for b in saved)
+
+    def test_add_book_strips_whitespace(self):
+        collection = BookCollection()
+        collection.add_book("  Dune  ", "  Frank Herbert  ", 1965)
+        book = collection.find_book_by_title("Dune")
+        assert book is not None
+        assert book.title == "Dune"
+        assert book.author == "Frank Herbert"
+
+    def test_add_book_duplicate_title_case_insensitive_raises(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        with pytest.raises(ValueError, match="already exists"):
+            collection.add_book("dune", "Someone Else", 1970)
+
+    @pytest.mark.parametrize("title,author", [
+        ("", "Frank Herbert"),
+        ("   ", "Frank Herbert"),
+    ])
+    def test_add_book_blank_title_raises(self, title, author):
+        collection = BookCollection()
+        with pytest.raises(ValueError, match="Title cannot be empty"):
+            collection.add_book(title, author, 1965)
+
+    @pytest.mark.parametrize("title,author", [
+        ("Dune", ""),
+        ("Dune", "   "),
+    ])
+    def test_add_book_blank_author_raises(self, title, author):
+        collection = BookCollection()
+        with pytest.raises(ValueError, match="Author cannot be empty"):
+            collection.add_book(title, author, 1965)
+
+    @pytest.mark.parametrize("year", [0, -1, -1965])
+    def test_add_book_non_positive_year_raises(self, year):
+        collection = BookCollection()
+        with pytest.raises(ValueError, match="Year must be a positive integer"):
+            collection.add_book("Dune", "Frank Herbert", year)
+
+    def test_add_book_boolean_year_raises(self):
+        collection = BookCollection()
+        with pytest.raises(ValueError, match="Year must be a positive integer"):
+            collection.add_book("Dune", "Frank Herbert", True)
+
+    def test_add_book_to_empty_collection(self):
+        collection = BookCollection()
+        assert collection.books == []
+        book = collection.add_book("Dune", "Frank Herbert", 1965)
+        assert collection.books == [book]
+
+
+class TestFindBookByTitle:
+    """Tests for BookCollection.find_book_by_title."""
+
+    def test_finds_exact_match(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        found = collection.find_book_by_title("Dune")
+        assert found is not None
+        assert found.author == "Frank Herbert"
+
+    @pytest.mark.parametrize("query", ["dune", "DUNE", "DuNe"])
+    def test_finds_match_case_insensitively(self, query):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        found = collection.find_book_by_title(query)
+        assert found is not None
+        assert found.title == "Dune"
+
+    def test_returns_none_when_not_found(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        assert collection.find_book_by_title("Nonexistent") is None
+
+    def test_returns_none_on_empty_collection(self):
+        collection = BookCollection()
+        assert collection.find_book_by_title("Anything") is None
+
+    def test_does_not_partial_match(self):
+        collection = BookCollection()
+        collection.add_book("Dune Messiah", "Frank Herbert", 1969)
+        assert collection.find_book_by_title("Dune") is None
+
+
+class TestFindByAuthor:
+    """Tests for BookCollection.find_by_author."""
+
+    def test_finds_single_book_by_author(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        results = collection.find_by_author("Frank Herbert")
+        assert [b.title for b in results] == ["Dune"]
+
+    def test_finds_multiple_books_by_same_author(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        collection.add_book("Dune Messiah", "Frank Herbert", 1969)
+        collection.add_book("1984", "George Orwell", 1949)
+        results = collection.find_by_author("Frank Herbert")
+        assert {b.title for b in results} == {"Dune", "Dune Messiah"}
+
+    @pytest.mark.parametrize("query", ["frank herbert", "FRANK HERBERT"])
+    def test_matches_case_insensitively(self, query):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        results = collection.find_by_author(query)
+        assert len(results) == 1
+
+    def test_returns_empty_list_when_no_match(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        assert collection.find_by_author("Unknown Author") == []
+
+    def test_returns_empty_list_on_empty_collection(self):
+        collection = BookCollection()
+        assert collection.find_by_author("Anyone") == []
+
+    def test_does_not_partial_match_author(self):
+        collection = BookCollection()
+        collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
+        assert collection.find_by_author("Tolkien") == []
+
+
 def test_mark_book_as_read():
     collection = BookCollection()
     collection.add_book("Dune", "Frank Herbert", 1965)
@@ -40,6 +172,38 @@ def test_mark_book_as_read_invalid():
     result = collection.mark_as_read("Nonexistent Book")
     assert result is False
 
+
+class TestMarkAsRead:
+    """Tests for BookCollection.mark_as_read."""
+
+    def test_only_marks_the_matching_book(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        collection.add_book("1984", "George Orwell", 1949)
+        collection.mark_as_read("Dune")
+        assert collection.find_book_by_title("Dune").read is True
+        assert collection.find_book_by_title("1984").read is False
+
+    @pytest.mark.parametrize("query", ["dune", "DUNE"])
+    def test_matches_case_insensitively(self, query):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        assert collection.mark_as_read(query) is True
+        assert collection.find_book_by_title("Dune").read is True
+
+    def test_marking_already_read_book_stays_true(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        collection.mark_as_read("Dune")
+        result = collection.mark_as_read("Dune")
+        assert result is True
+        assert collection.find_book_by_title("Dune").read is True
+
+    def test_returns_false_on_empty_collection(self):
+        collection = BookCollection()
+        assert collection.mark_as_read("Anything") is False
+
+
 def test_remove_book():
     collection = BookCollection()
     collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
@@ -52,6 +216,87 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+
+class TestRemoveBook:
+    """Tests for BookCollection.remove_book."""
+
+    def test_removes_only_the_matching_book(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        collection.add_book("Dune Messiah", "Frank Herbert", 1969)
+        collection.remove_book("Dune")
+        remaining = [b.title for b in collection.books]
+        assert remaining == ["Dune Messiah"]
+
+    @pytest.mark.parametrize("query", ["dune", "DUNE"])
+    def test_matches_case_insensitively(self, query):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        assert collection.remove_book(query) is True
+        assert collection.books == []
+
+    def test_does_not_partial_match(self):
+        collection = BookCollection()
+        collection.add_book("Dune Messiah", "Frank Herbert", 1969)
+        result = collection.remove_book("Dune")
+        assert result is False
+        assert len(collection.books) == 1
+
+    def test_returns_false_on_empty_collection(self):
+        collection = BookCollection()
+        assert collection.remove_book("Anything") is False
+
+    def test_remove_persists_change_to_disk(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        collection.remove_book("Dune")
+        saved = json.loads(open(books.DATA_FILE).read())
+        assert saved == []
+
+
+class TestEmptyCollectionEdgeCases:
+    """Edge cases exercising an empty (or freshly-emptied) collection."""
+
+    def test_new_collection_starts_empty(self):
+        collection = BookCollection()
+        assert collection.books == []
+        assert collection.list_books() == []
+
+    def test_list_books_returns_new_empty_list_each_time(self):
+        collection = BookCollection()
+        result1 = collection.list_books()
+        result2 = collection.list_books()
+        assert result1 == result2 == []
+        assert result1 is not result2
+
+    def test_list_by_year_on_empty_collection(self):
+        collection = BookCollection()
+        assert collection.list_by_year(1900, 2100) == []
+
+    def test_find_by_author_on_empty_collection(self):
+        collection = BookCollection()
+        assert collection.find_by_author("Anyone") == []
+
+    def test_find_book_by_title_on_empty_collection(self):
+        collection = BookCollection()
+        assert collection.find_book_by_title("Anything") is None
+
+    def test_remove_from_empty_collection(self):
+        collection = BookCollection()
+        assert collection.remove_book("Anything") is False
+
+    def test_mark_as_read_on_empty_collection(self):
+        collection = BookCollection()
+        assert collection.mark_as_read("Anything") is False
+
+    def test_collection_becomes_empty_after_removing_last_book(self):
+        collection = BookCollection()
+        collection.add_book("Dune", "Frank Herbert", 1965)
+        collection.remove_book("Dune")
+        assert collection.books == []
+        assert collection.list_books() == []
+
 
 def test_list_by_year_within_range():
     collection = BookCollection()
