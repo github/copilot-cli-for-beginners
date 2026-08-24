@@ -465,6 +465,8 @@ Issue #1 (duplicate functions) was fixed on Monday.
 
 No re-explaining. No re-reading files. Just continue working.
 
+> 💡 **Session restore after a crash or restart**: If the CLI crashes or your machine restarts while a session is open, Copilot will offer to restore those sessions the next time you start it. You'll see a prompt asking if you'd like to pick up where you left off — no manual `--resume` needed.
+
 ---
 
 **🎉 You now know the essentials!** The `@` syntax, session management (`--name`/`--continue`/`--resume`/`/rename`), and context commands (`/context`/`/clear`) are enough to be highly productive. Everything below is optional. Return to it when you're ready.

@@ -417,6 +417,8 @@ That's it for getting started! As you become comfortable, you can explore additi
 | `/settings` | Open an interactive dialog to browse and edit all user settings in one place |
 | `/skills` | Manage skills for enhanced capabilities |
 
+> 💡 **Set your default startup mode**: In `/settings`, look for `defaultMode` to choose which mode Copilot opens in by default (interactive, plan, or autopilot). You can also set `defaultPermissionMode` to control how Copilot handles permission prompts across all new sessions — handy if you find yourself changing these settings repeatedly.
+
 > 💡 Agents are covered in [Chapter 04](../04-agents-custom-instructions/README.md), skills are covered in [Chapter 05](../05-skills/README.md), and MCP servers are covered in [Chapter 06](../06-mcp-servers/README.md).
 
 ### Models and Subagents
@@ -481,6 +483,8 @@ That's it for getting started! As you become comfortable, you can explore additi
 | `/theme` | View or set terminal theme |
 | `/voice` | Dictate your prompt using local speech-to-text — speak naturally instead of typing |
 
+> 💡 **Ctrl+Space for voice**: You can also press **Ctrl+Space** as a keyboard shortcut to toggle voice dictation on and off, without having to type `/voice`.
+
 ### Help and Feedback
 
 | Command | What It Does |
@@ -489,6 +493,8 @@ That's it for getting started! As you become comfortable, you can explore additi
 | `/changelog` | Display changelog for CLI versions |
 | `/feedback` | Submit feedback to GitHub |
 | `/help` | Show all available commands |
+
+> 💡 **`copilot app` from the terminal**: You can also run `copilot app` directly from your terminal (before starting a session) to open the GitHub Copilot app in the current directory — no need to start an interactive session first.
 
 ### Quick Shell Commands
 
