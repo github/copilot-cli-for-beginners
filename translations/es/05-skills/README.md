@@ -16,7 +16,7 @@ weight: 6
 En este capítulo aprenderás sobre las Agent Skills: carpetas de instrucciones que Copilot carga automáticamente cuando son relevantes para tu tarea. Mientras los agentes cambian *cómo* piensa Copilot, las skills enseñan a Copilot *maneras específicas de completar tareas*. Crearás una skill de auditoría de seguridad que Copilot aplicará siempre que preguntes sobre seguridad, elaborarás criterios de revisión estandarizados del equipo que aseguren calidad de código consistente y aprenderás cómo funcionan las skills en Copilot CLI, VS Code y el agente en la nube de GitHub Copilot.
 
 
-## 🎯 Learning Objectives
+## 🎯 Objetivos de aprendizaje
 
 Al final de este capítulo, serás capaz de:
 
@@ -29,7 +29,7 @@ Al final de este capítulo, serás capaz de:
 
 ---
 
-## 🧩 Real-World Analogy: Power Tools
+## 🧩 Analogía del mundo real: Herramientas eléctricas
 
 Un taladro de uso general es útil, pero los accesorios especializados lo hacen potente.
 <img src="../../../05-skills/assets/power-tools-analogy.png" alt="Herramientas eléctricas: las habilidades amplían las capacidades de Copilot" width="800"/>
@@ -50,7 +50,7 @@ Las skills funcionan igual. Al igual que cambiar brocas para diferentes trabajos
 
 ---
 
-# How Skills Work
+# Cómo funcionan las Skills
 
 <img src="../../../05-skills/assets/how-skills-work.png" alt="Iconos de habilidades al estilo RPG brillando, conectados por estelas de luz sobre un fondo estrellado que representan las skills de Copilot" width="800"/>
 
@@ -74,7 +74,7 @@ Aprende qué son las skills, por qué importan y en qué se diferencian de los a
 3. **Entiende el concepto principal:** Las skills son instrucciones específicas para tareas que Copilot carga *automáticamente* cuando tu prompt coincide con la descripción de la skill. No necesitas activarlas, solo pregunta de forma natural.
 
 
-## Understanding Skills
+## Entendiendo las Skills
 
 Agent Skills son carpetas que contienen instrucciones, scripts y recursos que Copilot **carga automáticamente cuando son relevantes** para tu tarea. Copilot lee tu prompt, comprueba si alguna skill coincide y aplica las instrucciones relevantes automáticamente.
 
@@ -162,11 +162,11 @@ Usa agentes para experiencia amplia, skills para instrucciones de tareas especí
 
 ---
 
-## From Manual Prompts to Automatic Expertise
+## De prompts manuales a experiencia automática
 
 Antes de profundizar en cómo crear skills, veamos *por qué* vale la pena aprenderlas. Una vez que veas las mejoras en consistencia, el "cómo" tendrá más sentido.
 
-### Before Skills: Inconsistent Reviews
+### Antes de las Skills: Revisiones inconsistentes
 
 En cada revisión de código, podrías olvidar algo:
 
@@ -187,7 +187,7 @@ O escribes un prompt largo cada vez:
 
 Tiempo: **30+ segundos** para escribir. Consistencia: **varía según la memoria**.
 
-### After Skills: Automatic Best Practices
+### Después de las Skills: Mejores prácticas automáticas
 
 Con una skill `code-checklist` instalada, solo pregunta de forma natural:
 
@@ -246,7 +246,7 @@ copilot
 
 ---
 
-## Consistency at Scale: Team PR Review Skill
+## Consistencia a escala: Skill de revisión de PR en equipo
 
 Imagina que tu equipo tiene una lista de verificación de PR de 10 puntos. Sin una skill, cada desarrollador debe recordar los 10 puntos, y siempre alguien olvida uno de ellos. Con una skill `pr-review`, todo el equipo obtiene revisiones consistentes:
 
@@ -284,7 +284,7 @@ PR Review: feature/user-auth
 
 ---
 
-# Creating Custom Skills
+# Creando Skills personalizadas
 
 <img src="../../../05-skills/assets/creating-managing-skills.png" alt="Manos humanas y robóticas construyendo un muro de bloques brillantes tipo LEGO que representan la creación y gestión de skills" width="800"/>
 
@@ -292,7 +292,7 @@ Crea tus propias skills a partir de archivos SKILL.md.
 
 ---
 
-## Skill Locations
+## Ubicaciones de las Skills
 
 Las skills se almacenan en `.github/skills/` (específico del proyecto) o `~/.copilot/skills/` (a nivel de usuario).
 

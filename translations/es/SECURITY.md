@@ -6,7 +6,7 @@ GitHub se toma en serio la seguridad de nuestros productos y servicios de softwa
 
 Aunque [los repositorios de código abierto están fuera del alcance de nuestro programa de recompensas por errores](https://bounty.github.com/index.html#scope) y, por lo tanto, no son elegibles para recompensas, nos aseguraremos de que su hallazgo se transmita a los mantenedores adecuados para su remediación. 
 
-## Reporting Security Issues
+## Reporte de problemas de seguridad
 
 Si cree que ha encontrado una vulnerabilidad de seguridad en algún repositorio propiedad de GitHub, infórmenos a través de divulgación coordinada.
 

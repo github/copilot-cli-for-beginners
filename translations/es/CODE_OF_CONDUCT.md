@@ -97,11 +97,7 @@ permanente.
 **Impacto en la comunidad**: Una violación grave de los estándares de la comunidad, incluyendo
 comportamiento inapropiado sostenido.
 
-**Consecuencia**: Una prohibición temporal de cualquier tipo de interacción o comunicación pública
-con la comunidad por un período de tiempo especificado. No public or
-private interaction with the people involved, including unsolicited interaction
-with those enforcing the Code of Conduct, is allowed during this period.
-Violating these terms may lead to a permanent ban.
+**Consecuencia**: Una prohibición temporal de cualquier tipo de interacción o comunicación pública con la comunidad por un período de tiempo especificado. No se permite ninguna interacción pública ni privada con las personas implicadas, incluida la interacción no solicitada con quienes hacen cumplir el Código de Conducta, durante este período. Violar estos términos puede conllevar una prohibición permanente.
 
 ### 4. Prohibición permanente
 

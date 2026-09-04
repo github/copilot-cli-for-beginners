@@ -39,7 +39,7 @@ GitHub Copilot CLI requiere una suscripción activa a Copilot. Puedes comprobar 
 - **Copilot Enterprise** - A través de tu empresa
 - **GitHub Education** - Gratis para estudiantes/profesores verificados
 
-If you see "You don't have access to GitHub Copilot," you'll need to use the free option, subscribe to a plan, or join an organization that provides access.
+Si ves el mensaje «No tienes acceso a GitHub Copilot», necesitarás usar la opción gratuita, suscribirte a un plan o unirte a una organización que proporcione acceso.
 
 ---
 
