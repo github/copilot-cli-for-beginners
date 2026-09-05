@@ -16,7 +16,7 @@ weight: 0
 [![Official Copilot CLI documentation](https://img.shields.io/badge/GitHub-CLI_Documentation-00a3ee?style=flat-square&logo=github)](https://docs.github.com/en/copilot/how-tos/copilot-cli)&ensp;
 [![Join AI Foundry Discord](https://img.shields.io/badge/Discord-AI_Community-blue?style=flat-square&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
 
-🎯 [What You'll Learn](#what-youll-learn) &ensp; ✅ [Prerequisites](#prerequisites) &ensp; 🤖 [Copilot Family](#understanding-the-github-copilot-family) &ensp; 📚 [Course Structure](#course-structure) &ensp; 📋 [Command Reference](#-github-copilot-cli-command-reference)
+🎯 [What You'll Learn](#-what-youll-learn) &ensp; ✅ [Prerequisites](#-prerequisites) &ensp; 🤖 [Copilot Family](#-understanding-the-github-copilot-family) &ensp; 📚 [Course Structure](#-course-structure) &ensp; 📋 [Command Reference](#-github-copilot-cli-command-reference) &ensp; 🌐 [Your Language](#-use-your-preferred-language)
 
 # GitHub Copilot CLI for Beginners
 
@@ -93,6 +93,12 @@ Each chapter follows the same pattern:
 ## 📋 GitHub Copilot CLI Command Reference
 
 The **[GitHub Copilot CLI command reference](https://docs.github.com/en/copilot/reference/cli-command-reference)** helps you find commands and keyboard shortcuts to help you use Copilot CLI effectively.
+
+## 🌐 Use Your Preferred Language
+
+This material is available in the following languages.
+
+[English](./README.md) | [Español](./localization/es-es/README.md) | [日本語](./localization/ja-jp/README.md) | [한국어](./localization/ko-kr/README.md) | [Português](./localization/pt-br/README.md) | [中文(简体)](./localization/zh-cn/README.md)
 
 ## 🙋 Getting Help
 
