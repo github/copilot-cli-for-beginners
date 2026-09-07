@@ -1,29 +1,23 @@
 import sys
 from books import BookCollection
+from utils import print_books
 
 
 # Global collection instance
 collection = BookCollection()
 
 
-def show_books(books):
-    """Display books in a user-friendly format."""
-    if not books:
-        print("No books found.")
-        return
-
-    print("\nYour Book Collection:\n")
-
-    for index, book in enumerate(books, start=1):
-        status = "✓" if book.read else " "
-        print(f"{index}. [{status}] {book.title} by {book.author} ({book.year})")
-
-    print()
-
-
 def handle_list():
     books = collection.list_books()
-    show_books(books)
+    print_books(books)
+
+
+def handle_unread() -> None:
+    books = collection.list_unread_books()
+    if books:
+        print_books(books)
+    else:
+        print("No unread books in your collection.")
 
 
 def handle_add():
@@ -56,7 +50,7 @@ def handle_find():
     author = input("Author name: ").strip()
     books = collection.find_by_author(author)
 
-    show_books(books)
+    print_books(books)
 
 
 def show_help():
@@ -65,6 +59,7 @@ Book Collection Helper
 
 Commands:
   list     - Show all books
+  unread   - Show unread books
   add      - Add a new book
   remove   - Remove a book by title
   find     - Find books by author
@@ -81,6 +76,8 @@ def main():
 
     if command == "list":
         handle_list()
+    elif command == "unread":
+        handle_unread()
     elif command == "add":
         handle_add()
     elif command == "remove":

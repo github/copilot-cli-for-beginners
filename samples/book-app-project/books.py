@@ -36,6 +36,9 @@ class BookCollection:
             json.dump([asdict(b) for b in self.books], f, indent=2)
 
     def add_book(self, title: str, author: str, year: int) -> Book:
+        if not title.strip():
+            raise ValueError("Book title cannot be empty.")
+
         book = Book(title=title, author=author, year=year)
         self.books.append(book)
         self.save_books()
@@ -44,9 +47,17 @@ class BookCollection:
     def list_books(self) -> List[Book]:
         return self.books
 
+    def list_unread_books(self) -> List[Book]:
+        """Return unread books in their existing collection order."""
+        return [book for book in self.books if not book.read]
+
     def find_book_by_title(self, title: str) -> Optional[Book]:
+        if not isinstance(title, str):
+            return None
+
+        normalized_title = title.strip().casefold()
         for book in self.books:
-            if book.title.lower() == title.lower():
+            if book.title.strip().casefold() == normalized_title:
                 return book
         return None
 
@@ -60,11 +71,22 @@ class BookCollection:
 
     def remove_book(self, title: str) -> bool:
         """Remove a book by title."""
-        book = self.find_book_by_title(title)
+        if not isinstance(title, str):
+            print("Book title must be a string.")
+            return False
+
+        normalized_title = title.strip()
+        if not normalized_title:
+            print("Book title cannot be empty.")
+            return False
+
+        book = self.find_book_by_title(normalized_title)
         if book:
             self.books.remove(book)
             self.save_books()
             return True
+
+        print(f'Book not found: "{normalized_title}"')
         return False
 
     def find_by_author(self, author: str) -> List[Book]:
