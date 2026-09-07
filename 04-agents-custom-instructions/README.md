@@ -582,6 +582,8 @@ You are a Python specialist focused on code quality and best practices.
 | `name` | No | Display name (defaults to filename) |
 | `description` | **Yes** | What the agent does - helps Copilot understand when to suggest it |
 | `tools` | No | List of allowed tools (omit = all tools available). See tool aliases below. |
+| `model` | No | AI model(s) to use. Can be a single model ID or a list tried in order. |
+| `model-policy` | No | Set to `required` to lock model changes to your list. |
 | `target` | No | Limit to `vscode` or `github-copilot` only |
 
 ### Tool Aliases
@@ -593,9 +595,37 @@ Use these names in the `tools` list:
 - `execute` - Run shell commands (also: `shell`, `Bash`)
 - `agent` - Invoke other custom agents
 
+### Specifying Models in an Agent
+
+You can pin an agent to a specific AI model, or give it a prioritized list of models to try:
+
+```yaml
+---
+name: my-agent
+description: An agent that prefers fast models.
+# Single model:
+model: gpt-5.4-mini
+---
+```
+
+Or, for a fallback list:
+
+```yaml
+---
+name: my-agent
+description: An agent with a model fallback list.
+# Tried in order — uses the first one available to you
+model:
+  - claude-sonnet-4.6
+  - gpt-5.4-mini
+# Optional: prevent users from switching to a model outside this list
+model-policy: required
+---
+```
+
+> 💡 **Why list multiple models?** If your preferred model isn't available (e.g., usage limit reached or not enabled for your plan), Copilot automatically tries the next one. This makes your agent more resilient.
+
 > 📖 **Official docs**: [Custom agents configuration](https://docs.github.com/copilot/reference/custom-agents-configuration)
->
-> ⚠️ **VS Code Only**: The `model` property (for selecting AI models) works in VS Code but is not supported in GitHub Copilot CLI. You can safely include it for cross-platform agent files. GitHub Copilot CLI will ignore it.
 
 ### More Agent Templates
 

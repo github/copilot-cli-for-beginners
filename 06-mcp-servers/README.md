@@ -932,6 +932,8 @@ These work when you're already inside `copilot`:
 | `/mcp delete <server-name>` | Remove a server permanently |
 | `/mcp auth <server-name>` | Re-authenticate with an MCP server that uses OAuth (e.g., after switching accounts) |
 
+> 💡 **Plugins Dashboard**: When you run `/mcp add`, `/mcp edit`, or `/mcp auth`, the form opens inside the **plugins dashboard** — a unified panel for managing MCP servers, skills, and plugins. Closing a form returns you to the server list automatically. You can also open the dashboard directly by running `/plugin` or `/mcp`.
+
 ### Option 2: `copilot mcp` command (from your terminal)
 
 You can also manage MCP servers directly from your terminal without starting a chat session first:
