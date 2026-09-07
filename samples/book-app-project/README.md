@@ -3,13 +3,15 @@
 *(This README is intentionally rough so you can improve it with GitHub Copilot CLI)*
 
 A Python app for managing books you have or want to read.
-It can add, remove, and list books. Also mark them as read.
+It can add, remove, list books, and show unread books. Books can also be
+marked as read.
 
 ---
 
 ## Current Features
 
 * Reads books from a JSON file (our database)
+* Lists unread books with the `unread` command
 * Input checking is weak in some areas
 * Some tests exist but probably not enough
 
@@ -29,6 +31,7 @@ It can add, remove, and list books. Also mark them as read.
 
 ```bash
 python book_app.py list
+python book_app.py unread
 python book_app.py add
 python book_app.py find
 python book_app.py remove

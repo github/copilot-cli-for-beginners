@@ -1,3 +1,6 @@
+from books import Book
+
+
 def print_menu():
     print("\n📚 Book Collection App")
     print("1. Add a book")
@@ -8,11 +11,32 @@ def print_menu():
 
 
 def get_user_choice() -> str:
-    return input("Choose an option (1-5): ").strip()
+    """Read and validate a menu choice from the user."""
+    while True:
+        choice = input("Choose an option (1-5): ").strip()
+
+        if not choice:
+            print("Please enter a choice from 1 to 5.")
+            continue
+
+        if not choice.isdigit():
+            print("Please enter a numeric choice from 1 to 5.")
+            continue
+
+        if not 1 <= int(choice) <= 5:
+            print("Please enter a choice from 1 to 5.")
+            continue
+
+        return choice
 
 
 def get_book_details():
-    title = input("Enter book title: ").strip()
+    while True:
+        title = input("Enter book title: ").strip()
+        if title:
+            break
+        print("Book title cannot be empty.")
+
     author = input("Enter author: ").strip()
 
     year_input = input("Enter publication year: ").strip()
@@ -25,12 +49,12 @@ def get_book_details():
     return title, author, year
 
 
-def print_books(books):
+def print_books(books: list[Book]) -> None:
     if not books:
         print("No books in your collection.")
         return
 
     print("\nYour Books:")
     for index, book in enumerate(books, start=1):
-        status = "✅ Read" if book.read else "📖 Unread"
+        status = "Read" if book.read else "Unread"
         print(f"{index}. {book.title} by {book.author} ({book.year}) - {status}")
