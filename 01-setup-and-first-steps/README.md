@@ -481,6 +481,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 |---------|--------------|
 | `/statusline` (or `/footer`) | Customize which items appear in the status bar at the bottom of the session (directory, branch, effort, context window, quota) |
 | `/theme` | View or set terminal theme |
+| `/vim` | Enable or disable Vim mode for modal editing in the composer — type naturally with vim keybindings like `hjkl` for navigation and `i`, `a`, `o` for insert mode |
 | `/voice` | Dictate your prompt using local speech-to-text — speak naturally instead of typing |
 
 ### Help and Feedback
