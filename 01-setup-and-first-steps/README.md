@@ -15,7 +15,7 @@ weight: 2
 
 This chapter is where the magic starts! You'll experience firsthand why developers describe GitHub Copilot CLI as having a senior engineer on speed dial. You'll watch AI find security bugs in seconds, get complex code explained in plain English, and generate working scripts instantly. Then you'll master the three interaction modes (Interactive, Plan, and Programmatic) so you know exactly which one to use for any task.
 
-> ⚠️ **Prerequisites**: Make sure you've completed **[Chapter 00: Quick Start](../00-quick-start/README.md)** first. You'll need GitHub Copilot CLI installed and authenticated before running the demos below.
+> ⚠️ **Prerequisites**: Make sure you've completed [**Chapter 00: Quick Start**](../00-quick-start/README.md) first. You'll need GitHub Copilot CLI installed and authenticated before running the demos below.
 
 ## 🎯 Learning Objectives
 
@@ -213,7 +213,7 @@ You've just seen what Copilot CLI can do. Now let's understand *how* to use thes
 Think of using GitHub Copilot CLI like going out to eat. From planning the trip to placing your order, different situations call for different approaches:
 
 | Mode | Dining Analogy | When to Use |
-|------|----------------|-------------|
+| --- | --- | --- |
 | **Plan** | GPS route to the restaurant | Complex tasks - map out the route, review stops, agree on the plan, then drive |
 | **Interactive** | Talking to the waiter | Exploration and iteration - ask questions, customize, get real-time feedback |
 | **Programmatic** | Drive-through ordering | Quick, specific tasks - stay in your environment, get a result fast |
@@ -288,7 +288,8 @@ Plan mode helps you create a step-by-step plan before writing any code. Use the 
 ```bash
 copilot
 
-> /plan Add a "mark as read" command to the book app
+> 
+
 ```
 
 > 💡 **Tip**: **Shift+Tab** cycles between modes: Interactive → Plan → Autopilot. Press it anytime during an interactive session to switch modes without typing a command.
@@ -377,7 +378,7 @@ copilot --allow-all -p "Review @myfile.py for issues"
 These commands are great to learn initially as you're getting started with Copilot CLI:
 
 | Command | What It Does | When to Use |
-|---------|--------------|-------------|
+| --- | --- | --- |
 | `/ask` | Ask a quick question without it affecting your conversation history | When you want a quick answer without derailing your current task |
 | `/clear` | Clear conversation and start fresh | When switching topics |
 | `/help` | Show all available commands | When you forget a command |
@@ -405,7 +406,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 ### Agent Environment
 
 | Command | What It Does |
-|---------|--------------|
+| --- | --- |
 | `/agent` | Browse and select from available agents |
 | `/env` | Show loaded environment details — what instructions, MCP servers, skills, agents, and plugins are active |
 | `/init` | Initialize Copilot instructions for your repository |
@@ -418,7 +419,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 ### Models and Subagents
 
 | Command | What It Does |
-|---------|--------------|
+| --- | --- |
 | `/delegate` | Hand off task to GitHub Copilot cloud agent |
 | `/fleet` | Split a complex task into parallel subtasks for faster completion |
 | `/model` | Show or switch AI model |
@@ -427,7 +428,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 ### Code
 
 | Command | What It Does |
-|---------|--------------|
+| --- | --- |
 | `/diff` | Review the changes made in the current directory |
 | `/pr` | Operate on pull requests for the current branch |
 | `/research` | Run deep research investigation using GitHub and web sources |
@@ -437,7 +438,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 ### Permissions
 
 | Command | What It Does |
-|---------|--------------|
+| --- | --- |
 | `/add-dir <directory>` | Add a directory to allowed list |
 | `/allow-all [on\|off\|show]` | Auto-approve all permission prompts; use `on` to enable, `off` to disable, `show` to check current status |
 | `/yolo` | Quick alias for `/allow-all on` — auto-approves all permission prompts. |
@@ -449,7 +450,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 ### Session
 
 | Command | What It Does |
-|---------|--------------|
+| --- | --- |
 | `/clear` | Abandons the current session (no history saved) and starts a fresh conversation |
 | `/compact` | Summarize conversation to reduce context usage (optionally add focus instructions, e.g. `/compact focus on the bug list`) |
 | `/context` | Show context window token usage and visualization |
@@ -468,7 +469,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 ### Display
 
 | Command | What It Does |
-|---------|--------------|
+| --- | --- |
 | `/statusline` (or `/footer`) | Customize which items appear in the status bar at the bottom of the session (directory, branch, effort, context window, quota) |
 | `/theme` | View or set terminal theme |
 | `/voice` | Dictate your prompt using local speech-to-text — speak naturally instead of typing |
@@ -476,7 +477,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 ### Help and Feedback
 
 | Command | What It Does |
-|---------|--------------|
+| --- | --- |
 | `/app` | Open the GitHub app (or browser fallback) directly from the CLI |
 | `/changelog` | Display changelog for CLI versions |
 | `/feedback` | Submit feedback to GitHub |
@@ -646,7 +647,8 @@ The hands-on examples focused on reviewing and refactoring `book_app.py`. Now pr
 - The context carries forward, so each prompt builds on the previous
 - Use `/clear` if you want to start over
 
-</details>
+</details>/clear
+
 
 ### Bonus Challenge: Compare the Modes
 
@@ -666,7 +668,7 @@ The examples used `/plan` for a search feature and `-p` for batch reviews. Now t
 ### Common Mistakes
 
 | Mistake | What Happens | Fix |
-|---------|--------------|-----|
+| --- | --- | --- |
 | Typing `exit` instead of `/exit` | Copilot CLI treats "exit" as a prompt, not a command | Slash commands always start with `/` |
 | Using `-p` for multi-turn conversations | Each `-p` call is isolated with no memory of previous calls | Use interactive mode (`copilot`) for conversations that build on context |
 | Forgetting quotes around prompts with `$` or `!` | Shell interprets special characters before Copilot CLI sees them | Wrap prompts in single quotes: `copilot -p 'What does $HOME mean?'` |
@@ -701,7 +703,7 @@ The examples used `/plan` for a search feature and `-p` for batch reviews. Now t
 
 Now that you understand the three modes, let's learn how to give Copilot CLI context about your code.
 
-In **[Chapter 02: Context and Conversations](../02-context-conversations/README.md)**, you'll learn:
+In [**Chapter 02: Context and Conversations**](../02-context-conversations/README.md), you'll learn:
 
 - The `@` syntax for referencing files and directories
 - Session management with `--resume` and `--continue`
@@ -709,4 +711,4 @@ In **[Chapter 02: Context and Conversations](../02-context-conversations/README.
 
 ---
 
-**[← Back to Course Home](../README.md)** | **[Continue to Chapter 02 →](../02-context-conversations/README.md)**
+[**← Back to Course Home**](../README.md) | [**Continue to Chapter 02 →**](../02-context-conversations/README.md)
