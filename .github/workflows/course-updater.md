@@ -17,6 +17,7 @@ safe-outputs:
     labels: [automated-update, copilot-cli-updates]
     title-prefix: "[bot] "
     base-branch: main
+    protected-files: fallback-to-issue
 ---
 
 # Check for Copilot CLI Updates
@@ -58,6 +59,8 @@ If there is nothing new or everything is already up to date, stop here and repor
 If updates are needed, make a decision on which chapter(s) need to be updated.
 
 If the new information can be added to existing chapter(s), edit those chapters to include refinements, new sections, or updated information as needed. Remember that this course targets beginners, so ensure that any new content is explained clearly and simply, with examples if possible.
+
+Only edit course content files — the chapter `README.md` files (00 - 07), the root `README.md`, `GLOSSARY.md`, `appendices/`, and files under `samples/`. Never modify repository configuration, such as anything in the `.github/` folder (including `.github/agents/` and `.github/skills/`), the `.agents/` folder, or package manifests like `package.json`. Those files are protected, and a pull request that changes them will be refused. If a new Copilot CLI feature would require changing one of those files, describe the change in the pull request body instead of editing the file.
 
 ## Step 5 — Open a pull request
 
