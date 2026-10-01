@@ -26,6 +26,53 @@ def test_add_book():
     assert book.year == 1949
     assert book.read is False
 
+
+def test_get_unread_books_returns_only_unread_books():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.add_book("1984", "George Orwell", 1949)
+    collection.mark_as_read("1984")
+
+    assert [book.title for book in collection.get_unread_books()] == ["Dune"]
+
+
+def test_get_unread_books_preserves_order():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.add_book("1984", "George Orwell", 1949)
+    collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
+    collection.mark_as_read("1984")
+
+    assert [book.title for book in collection.get_unread_books()] == [
+        "Dune",
+        "The Hobbit",
+    ]
+
+
+def test_get_unread_books_returns_empty_list_for_empty_collection():
+    collection = BookCollection()
+
+    assert collection.get_unread_books() == []
+
+
+def test_get_unread_books_returns_empty_list_when_all_books_are_read():
+    collection = BookCollection()
+    collection.add_book("1984", "George Orwell", 1949)
+    collection.mark_as_read("1984")
+
+    assert collection.get_unread_books() == []
+
+
+def test_get_unread_books_returns_separate_list():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+
+    unread_books = collection.get_unread_books()
+    unread_books.clear()
+
+    assert len(collection.list_books()) == 1
+
+
 def test_mark_book_as_read():
     collection = BookCollection()
     collection.add_book("Dune", "Frank Herbert", 1965)

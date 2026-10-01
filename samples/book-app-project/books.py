@@ -44,6 +44,9 @@ class BookCollection:
     def list_books(self) -> List[Book]:
         return self.books
 
+    def get_unread_books(self) -> List[Book]:
+        return [book for book in self.books if not book.read]
+
     def find_book_by_title(self, title: str) -> Optional[Book]:
         for book in self.books:
             if book.title.lower() == title.lower():
