@@ -51,3 +51,23 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+
+def test_find_by_author_partial_match():
+    collection = BookCollection()
+    collection.add_book("Dune", "Frank Herbert", 1965)
+    collection.add_book("The Hobbit", "J.R.R. Tolkien", 1937)
+
+    matches = collection.find_by_author("tolkien")
+
+    assert [book.title for book in matches] == ["The Hobbit"]
+
+
+def test_add_book_validates_required_fields():
+    collection = BookCollection()
+
+    with pytest.raises(ValueError, match="Title and author are required"):
+        collection.add_book("   ", "George Orwell", 1949)
+
+    with pytest.raises(ValueError, match="Year must be a positive integer"):
+        collection.add_book("1984", "George Orwell", 0)

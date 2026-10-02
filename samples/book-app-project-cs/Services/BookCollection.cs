@@ -27,7 +27,8 @@ public class BookCollection
         try
         {
             var json = File.ReadAllText(_dataFile);
-            _books = JsonSerializer.Deserialize<List<Book>>(json, JsonOptions) ?? [];
+            var books = JsonSerializer.Deserialize<List<Book>>(json, JsonOptions);
+            _books = books ?? [];
         }
         catch (FileNotFoundException)
         {
@@ -42,13 +43,31 @@ public class BookCollection
 
     private void SaveBooks()
     {
+        var directory = Path.GetDirectoryName(_dataFile);
+        if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
         var json = JsonSerializer.Serialize(_books, JsonOptions);
         File.WriteAllText(_dataFile, json);
     }
 
     public Book AddBook(string title, string author, int year)
     {
-        var book = new Book { Title = title, Author = author, Year = year };
+        var cleanTitle = title.Trim();
+        var cleanAuthor = author.Trim();
+        if (string.IsNullOrWhiteSpace(cleanTitle) || string.IsNullOrWhiteSpace(cleanAuthor))
+        {
+            throw new ArgumentException("Title and author are required.");
+        }
+
+        if (year <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(year), "Year must be a positive integer.");
+        }
+
+        var book = new Book { Title = cleanTitle, Author = cleanAuthor, Year = year };
         _books.Add(book);
         SaveBooks();
         return book;
@@ -58,7 +77,7 @@ public class BookCollection
 
     public Book? FindBookByTitle(string title)
     {
-        return _books.Find(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+        return _books.Find(b => b.Title.Equals(title.Trim(), StringComparison.OrdinalIgnoreCase));
     }
 
     public bool MarkAsRead(string title)
@@ -81,8 +100,14 @@ public class BookCollection
 
     public List<Book> FindByAuthor(string author)
     {
+        var normalized = author.Trim();
+        if (string.IsNullOrWhiteSpace(normalized))
+        {
+            return [];
+        }
+
         return _books
-            .Where(b => b.Author.Equals(author, StringComparison.OrdinalIgnoreCase))
+            .Where(b => b.Author.Contains(normalized, StringComparison.OrdinalIgnoreCase))
             .ToList();
     }
 }

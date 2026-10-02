@@ -82,7 +82,7 @@ copilot
 ### Basic @ Patterns
 
 | Pattern | What It Does | Example Use |
-|---------|--------------|-------------|
+| --- | --- | --- |
 | `@file.py` | Reference a single file | `Review @samples/book-app-project/books.py` |
 | `@folder/` | Reference all files in a directory | `Review @samples/book-app-project/` |
 | `@file1.py @file2.py` | Reference multiple files | `Compare @samples/book-app-project/book_app.py @samples/book-app-project/books.py` |
@@ -475,10 +475,10 @@ No re-explaining. No re-reading files. Just continue working.
 
 <img src="assets/optional-going-deeper.png" alt="Abstract crystal cave in blue and purple tones representing deeper exploration of context concepts" width="800"/>
 
-These topics build on the essentials above. **Pick what interests you, or skip ahead to [Practice](#practice).**
+These topics build on the essentials above. **Pick what interests you, or skip ahead to** [**Practice**](#practice)**.**
 
 | I want to learn about... | Jump to |
-|---|---|
+| --- | --- |
 | Wildcard patterns and advanced session commands | [Additional @ Patterns & Session Commands](#additional-patterns) |
 | Building on context across multiple prompts | [Context-Aware Conversations](#context-aware-conversations) |
 | Token limits and `/compact` | [Understanding Context Windows](#understanding-context-windows) |
@@ -486,7 +486,8 @@ These topics build on the essentials above. **Pick what interests you, or skip a
 | Analyzing screenshots and mockups | [Working with Images](#working-with-images) |
 
 <details>
-<summary><strong>Additional @ Patterns & Session Commands</strong></summary>
+<summary><strong>Additional @ Patterns &amp; Session Commands</strong></summary>
+
 <a id="additional-patterns"></a>
 
 ### Additional @ Patterns
@@ -494,7 +495,7 @@ These topics build on the essentials above. **Pick what interests you, or skip a
 For power users, Copilot CLI supports wildcard patterns and image references:
 
 | Pattern | What It Does |
-|---------|--------------|
+| --- | --- |
 | `@folder/*.py` | All .py files in folder |
 | `@**/test_*.py` | Recursive wildcard: find all test files anywhere |
 | `@image.png` | Image file for UI review |
@@ -537,6 +538,7 @@ copilot
 
 <details>
 <summary><strong>Context-Aware Conversations</strong></summary>
+
 <a id="context-aware-conversations"></a>
 
 ### Context-Aware Conversations
@@ -577,6 +579,7 @@ Notice how each prompt builds on the previous work. This is the power of context
 
 <details>
 <summary><strong>Understanding Context Windows</strong></summary>
+
 <a id="understanding-context-windows"></a>
 
 ### Understanding Context Windows
@@ -637,7 +640,7 @@ copilot
 #### Context Efficiency Tips
 
 | Situation | Action | Why |
-|-----------|--------|-----|
+| --- | --- | --- |
 | Starting new topic | `/clear` | Removes irrelevant context |
 | Went down wrong path | `/rewind` | Roll back conversation (and optionally restore files) to any earlier point |
 | Long conversation | `/compact` | Summarizes history, frees tokens |
@@ -656,6 +659,7 @@ copilot
 
 <details>
 <summary><strong>Choosing What to Reference</strong></summary>
+
 <a id="choosing-what-to-reference"></a>
 
 ### Choosing What to Reference
@@ -665,13 +669,14 @@ Not all files are equal when it comes to context. Here's how to choose wisely:
 #### File Size Considerations
 
 | File Size | Approximate [Tokens](../GLOSSARY.md#token) | Strategy |
-|-----------|-------------------|----------|
+| --- | --- | --- |
 | Small (<100 lines) | ~500-1,500 tokens | Reference freely |
 | Medium (100-500 lines) | ~1,500-7,500 tokens | Reference specific files |
 | Large (500+ lines) | 7,500+ tokens | Be selective, use specific files |
 | Very Large (1000+ lines) | 15,000+ tokens | Consider splitting or targeting sections |
 
 **Concrete examples:**
+
 - The book app's 4 Python files combined ≈ 2,000-3,000 tokens
 - A typical Python module (200 lines) ≈ 3,000 tokens
 - A Flask API file (400 lines) ≈ 6,000 tokens
@@ -683,6 +688,7 @@ Not all files are equal when it comes to context. Here's how to choose wisely:
 #### What to Include vs. Exclude
 
 **High value** (include these):
+
 - Entry points (`book_app.py`, `main.py`, `app.py`)
 - The specific files you're asking about
 - Files directly imported by your target file
@@ -690,6 +696,7 @@ Not all files are equal when it comes to context. Here's how to choose wisely:
 - Data models or dataclasses
 
 **Lower value** (consider excluding):
+
 - Generated files (compiled output, bundled assets)
 - Node modules or vendor directories
 - Large data files or fixtures
@@ -706,11 +713,13 @@ Less specific ──────────────────────
 ```
 
 **When to go broad** (`@samples/book-app-project/`):
+
 - Initial codebase exploration
 - Finding patterns across many files
 - Architecture reviews
 
 **When to go specific** (`@samples/book-app-project/books.py`):
+
 - Debugging a particular issue
 - Code review of a specific file
 - Asking about a single function
@@ -739,6 +748,7 @@ This staged approach keeps context focused and efficient.
 
 <details>
 <summary><strong>Working with Images</strong></summary>
+
 <a id="working-with-images"></a>
 
 ### Working with Images
@@ -847,6 +857,7 @@ The hands-on examples focused on code quality reviews and input validation. Now 
 <summary>💡 Hints (click to expand)</summary>
 
 **Getting started:**
+
 ```bash
 cd /path/to/copilot-cli-for-beginners
 copilot
@@ -859,6 +870,7 @@ copilot
 Then resume with: `copilot --continue`
 
 **Useful commands:**
+
 - `@file.py` - Reference a single file
 - `@folder/` - Reference all files in a folder (note the trailing `/`)
 - `/context` - Check how much context you're using
@@ -877,12 +889,12 @@ Then resume with: `copilot --continue`
 ---
 
 <details>
-<summary>🔧 <strong>Common Mistakes & Troubleshooting</strong> (click to expand)</summary>
+<summary>🔧 <strong>Common Mistakes &amp; Troubleshooting</strong> (click to expand)</summary>
 
 ### Common Mistakes
 
 | Mistake | What Happens | Fix |
-|---------|--------------|-----|
+| --- | --- | --- |
 | Forgetting `@` before filenames | Copilot CLI treats "books.py" as plain text | Use `@samples/book-app-project/books.py` to reference files |
 | Expecting sessions to persist automatically | Starting `copilot` fresh loses all previous context | Use `--continue` (last session) or `--resume` (pick a session) |
 | Referencing files outside current directory | "Permission denied" or "File not found" errors | Use `/add-dir /path/to/directory` to grant access |
@@ -912,6 +924,7 @@ copilot --add-dir /path/to/directory
 ```
 
 **Context fills up too quickly**:
+
 - Be more specific with file references
 - Use `/clear` between different topics
 - Split work across multiple sessions
@@ -942,7 +955,7 @@ copilot --add-dir /path/to/directory
 
 Now that you can give Copilot CLI context, let's put it to work on real development tasks. The context techniques you just learned (file references, cross-file analysis, and session management) are the foundation for the powerful workflows in the next chapter.
 
-In **[Chapter 03: Development Workflows](../03-development-workflows/README.md)**, you'll learn:
+In [**Chapter 03: Development Workflows**](../03-development-workflows/README.md), you'll learn:
 
 - Code review workflows
 - Refactoring patterns
@@ -952,4 +965,4 @@ In **[Chapter 03: Development Workflows](../03-development-workflows/README.md)*
 
 ---
 
-**[← Back to Chapter 01](../01-setup-and-first-steps/README.md)** | **[Continue to Chapter 03 →](../03-development-workflows/README.md)**
+[**← Back to Chapter 01**](../01-setup-and-first-steps/README.md) | [**Continue to Chapter 03 →**](../03-development-workflows/README.md)

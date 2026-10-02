@@ -55,4 +55,21 @@ describe("BookCollection", () => {
     const result = collection.removeBook("Nonexistent Book");
     assert.equal(result, false);
   });
+
+  it("should find books by partial author match", () => {
+    const collection = new BookCollection(tempFile);
+    collection.addBook("Dune", "Frank Herbert", 1965);
+    collection.addBook("The Hobbit", "J.R.R. Tolkien", 1937);
+
+    const matches = collection.findByAuthor("tolkien");
+
+    assert.deepEqual(matches.map((book) => book.title), ["The Hobbit"]);
+  });
+
+  it("should validate required data before adding a book", () => {
+    const collection = new BookCollection(tempFile);
+
+    assert.throws(() => collection.addBook("   ", "George Orwell", 1949), /Title and author are required/);
+    assert.throws(() => collection.addBook("1984", "George Orwell", 0), /Year must be a positive integer/);
+  });
 });
