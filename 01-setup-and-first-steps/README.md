@@ -257,6 +257,8 @@ As you've seen up to this point, you'll see a prompt where you can type naturall
 > /help
 ```
 
+> 💡 **Choose your environment before starting**: When you launch Copilot CLI, you can press **Ctrl+E** to bring up an environment picker that lets you switch between **local** (runs on your machine) and **cloud** (runs on GitHub's servers) modes before beginning your conversation. This is helpful when you want to choose where your session executes without having to restart.
+
 **Key insight**: Interactive mode maintains context. Each message builds on previous ones, just like a real conversation.
 
 #### Interactive Mode Example
@@ -380,7 +382,7 @@ These commands are great to learn initially as you're getting started with Copil
 |---------|--------------|-------------|
 | `/ask` | Ask a quick question without it affecting your conversation history | When you want a quick answer without derailing your current task |
 | `/clear` | Clear conversation and start fresh | When switching topics |
-| `/config` | View or set persistent defaults (e.g., default model) | When you want a setting to apply to all future sessions |
+| `/config` | View or set persistent defaults (list, read, set, and remove settings like model, theme, permissions) | When you want a setting to apply to all future sessions |
 | `/help` | Show all available commands | When you forget a command |
 | `/model` | Show or switch AI model for the current session | When you want to change the AI model |
 | `/plan` | Plan your work out before coding | For more complex features |
@@ -425,7 +427,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 | Command | What It Does |
 |---------|--------------|
-| `/config` | View or set persistent defaults (e.g., `/config model` to set your default model for all future sessions) |
+| `/config` | View or set persistent defaults (e.g., `/config model` to set your default model for all future sessions). Use `/config list` to see all available settings, `/config read <setting>` to view a specific setting, `/config set <setting> <value>` to change it, or `/config remove <setting>` to reset to defaults |
 | `/delegate` | Hand off task to GitHub Copilot cloud agent |
 | `/fleet` | Split a complex task into parallel subtasks for faster completion |
 | `/model` | Show or switch AI model for the current session only |
