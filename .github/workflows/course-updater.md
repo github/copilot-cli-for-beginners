@@ -4,6 +4,9 @@ description: "Weekly check (Mondays) for new GitHub Copilot CLI features and upd
 on:
   schedule: weekly on monday
   workflow_dispatch:
+engine:
+  id: copilot
+  args: ["--allow-url=https://github.com"]
 tools:
   bash: ["curl", "gh"]
   edit:
