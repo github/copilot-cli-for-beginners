@@ -528,6 +528,75 @@ copilot
 
 > 💡 **Model picker navigation**: The model picker now groups models into sections — **Recent**, **Recommended**, and **New** — so you can quickly find the model you used last or try what's newly available. Use **Shift+Tab** inside the picker to switch between grouping views.
 
+### Auto Routing Tier
+
+Copilot CLI includes an **Auto** routing tier that intelligently selects the best model for each task:
+
+```bash
+copilot
+
+> /model
+# Select "Auto" to let Copilot choose the optimal model for speed and cost
+```
+
+Auto routing considers the complexity of your task and chooses between fast (lightweight) and powerful (reasoning-capable) models to balance speed and capability. If your organization has configured managed Auto policies, you may see additional options for **Strict** mode or user-overridable routing preferences.
+
+> 💡 **New models available**: Copilot CLI now supports **GPT-6 Astra**, **GPT-6.1 Sol**, **GPT-6 Luna**, and **Claude Opus 5.5**, in addition to existing models. Try them in the `/model` picker!
+
+### Managing Settings with `copilot config`
+
+Beyond the interactive `/config` slash command, you can manage Copilot CLI settings from your terminal using the `copilot config` command:
+
+```bash
+# List all current settings
+copilot config list
+
+# Read a specific setting
+copilot config read model
+copilot config read editorMode
+
+# Set a default value
+copilot config set model opus        # Set default model to Claude Opus
+copilot config set editorMode vim    # Enable Vim mode by default
+
+# Remove a custom setting (revert to defaults)
+copilot config remove model
+```
+
+This is useful for scripting, setting up new machines, or managing settings outside an interactive session. Settings managed with `copilot config` are stored in `~/.copilot/config.json` and apply to all future sessions.
+
+### Customizing the Transcript View
+
+You can control how Copilot displays tool activity and reasoning by setting the transcript view mode:
+
+```bash
+copilot
+
+> /settings
+# Look for "transcriptView" option and set to "concise"
+
+# OR set it directly in ~/.copilot/config.json:
+# "transcriptView": "concise"
+```
+
+**View options:**
+- **Default**: Shows all tool calls and reasoning steps expanded
+- **Concise**: Groups related tool activity into collapsible work summaries, reducing visual clutter while keeping details accessible
+
+The concise view is great when you want to focus on high-level progress without getting overwhelmed by intermediate steps.
+
+### Pre-Session Environment Selection
+
+When starting Copilot CLI, you can now switch between **local** and **cloud** execution modes before your first prompt:
+
+```bash
+copilot
+# After Copilot launches, press Ctrl+E to open the environment picker
+# Choose: Local (run on your machine) or Cloud (run remotely)
+```
+
+This feature is useful when you're switching between different working styles — interactive work on your machine versus background tasks running in the cloud. Your choice applies to the session and persists until you switch again.
+
 </details>
 
 ---
