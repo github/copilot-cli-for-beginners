@@ -34,6 +34,8 @@ Use `web-fetch` to read the following pages and extract the latest entries from 
 
 Also use `gh` CLI to check the latest releases and commits in the `github/copilot-cli` repo.
 
+Only consider features that have shipped in a stable GitHub release. Use the GitHub Releases API metadata as the source of truth and exclude every release where `draft` or `prerelease` is `true`. Do not use version names, changelog entries, or wording such as "production-ready" to override that metadata. A changelog entry or commit is eligible only if you verify that it is included in a stable release published within the past 7 days. Ignore unreleased changes and changes available only in prerelease versions.
+
 Look for:
 
 - New features or capabilities (e.g., new commands, tools, integrations)
