@@ -721,7 +721,7 @@ jobs:
           }
           GH_AW_MCP_CONFIG_ecdf13a30f302917_EOF
       - name: Download activation artifact
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: activation
           path: /tmp/gh-aw
@@ -982,7 +982,7 @@ jobs:
       - name: Download agent output artifact
         id: download-agent-output
         continue-on-error: true
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: agent
           path: /tmp/gh-aw/
@@ -1090,7 +1090,7 @@ jobs:
       - name: Download agent output artifact
         id: download-agent-output
         continue-on-error: true
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: agent
           path: /tmp/gh-aw/
@@ -1256,7 +1256,7 @@ jobs:
       - name: Download agent output artifact
         id: download-agent-output
         continue-on-error: true
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: agent
           path: /tmp/gh-aw/
@@ -1269,7 +1269,7 @@ jobs:
           echo "GH_AW_AGENT_OUTPUT=/tmp/gh-aw/agent_output.json" >> "$GITHUB_OUTPUT"
       - name: Download patch artifact
         continue-on-error: true
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: agent
           path: /tmp/gh-aw/
