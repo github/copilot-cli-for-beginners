@@ -390,6 +390,8 @@ These commands are great to learn initially as you're getting started with Copil
 
 > 💡 **`/ask` vs regular chat**: Normally every message you send becomes part of the ongoing conversation and affects future responses. `/ask` is an "off the record" shortcut. It's perfect for quick one-off questions like `/ask What does YAML mean?` without polluting your session context.
 
+> 💡 **`/ask` keyboard shortcuts**: Once Copilot answers your `/ask` question, you can press **Ctrl+E** to expand the full answer, **Ctrl+Y** to copy the entire answer to your clipboard, or type `/ask` (or `/btw`) with no arguments to reopen the last completed answer. These shortcuts let you review and reuse answers without losing your place in the conversation.
+
 > 💡 **`/refine` for better prompts**: Not sure if your prompt is clear enough? Type it out as it comes to mind, then run `/refine` to let Copilot rewrite it into a precise, well-structured prompt before sending. This is especially useful when you're new to AI tools and still learning how to write effective prompts.
 
 > 💡 **Tab-completion**: When typing a slash command, press **Tab** to auto-complete the command name or cycle through available subcommands and arguments. This is especially handy when you can't remember the exact name of a command.
@@ -552,7 +554,7 @@ copilot
 
 Auto routing considers the complexity of your task and chooses between fast (lightweight) and powerful (reasoning-capable) models to balance speed and capability. If your organization has configured managed Auto policies, you may see additional options for **Strict** mode or user-overridable routing preferences.
 
-> 💡 **New models available**: Copilot CLI now supports **GPT-6 Astra**, **GPT-6.1 Sol**, **GPT-6 Luna**, and **Claude Opus 5.5**, in addition to existing models. Try them in the `/model` picker!
+> 💡 **New models available**: Copilot CLI now supports **GPT-6 Astra**, **GPT-6.1 Sol**, **GPT-6 Luna**, **Claude Opus 5.5**, and **Gemini 4 Argon**, in addition to existing models. Try them in the `/model` picker!
 
 ### Managing Settings with `copilot config`
 
