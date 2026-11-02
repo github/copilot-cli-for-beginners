@@ -40,7 +40,7 @@ safe-outputs:
     github-token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
   push-to-pull-request-branch:
     target: "*"
-    labels: [translation, automated-pr]
+    required-labels: [translation, automated-pr]
     protected-files: allowed
     allowed-files:
       - "translations/**/*.md"

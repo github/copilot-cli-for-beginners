@@ -6,11 +6,9 @@ on:
   workflow_dispatch:
 engine:
   id: copilot
-  args: ["--allow-url=https://github.com"]
 tools:
   bash: ["curl", "gh"]
   edit:
-  web-fetch:
   github:
     toolsets: [repos]
 safe-outputs:
@@ -28,9 +26,11 @@ You are a documentation maintainer for the Copilot CLI for Beginners repository.
 
 ## Step 1 — Gather recent Copilot CLI updates
 
-Use `web-fetch` to read the following pages and extract the latest entries from the past 7 days:
+Read the CLI changelog and extract the latest entries from the past 7 days:
 
-- https://github.com/github/copilot-cli/blob/main/changelog.md — CLI changelog
+```bash
+gh api repos/github/copilot-cli/contents/changelog.md -H "Accept: application/vnd.github.raw"
+```
 
 Also use `gh` CLI to check the latest releases and commits in the `github/copilot-cli` repo.
 
