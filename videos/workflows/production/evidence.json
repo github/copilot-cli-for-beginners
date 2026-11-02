@@ -1,0 +1,110 @@
+{
+  "scope": "Evidence for the 156.03-second creation-to-report story and its ElevenLabs narration. Claims apply to the recorded example unless explicitly attributed to the feature.",
+  "officialGuide": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows",
+  "featureClaims": [
+    {
+      "claim": "A dynamic workflow defines a reusable process in code, combining commands, agents, and optional human checkpoints.",
+      "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/dynamic-workflows",
+      "section": "About dynamic workflows",
+      "quote": "A dynamic workflow is a program that defines how a task is carried out. It can combine automated steps with the work of one or more agents."
+    },
+    {
+      "claim": "Repeatable release checks and code reviews are appropriate uses; simple questions usually need only a normal prompt.",
+      "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/dynamic-workflows",
+      "section": "When to use a dynamic workflow",
+      "quote": "Use a dynamic workflow when you want to define a process you can reuse, or when a single task needs clear stages, checks, or limits."
+    },
+    {
+      "claim": "Experimental features must be enabled.",
+      "section": "Prerequisite",
+      "quote": "To use dynamic workflows in Copilot CLI, you must enable experimental features by running the CLI with the --experimental command-line option, or by using /experimental on in an interactive session."
+    },
+    {
+      "claim": "The named natural-language request runs an already registered workflow.",
+      "section": "Running a dynamic workflow",
+      "quote": "Use the workflow's registered name, and supply any required inputs."
+    },
+    {
+      "claim": "Creation, registration, and execution are separate.",
+      "section": "Creating a dynamic workflow",
+      "quote": "Creating and registering a workflow does not start a run."
+    },
+    {
+      "claim": "/workflows lists runs; Enter opens details.",
+      "section": "Monitoring and managing dynamic workflow runs",
+      "quote": "In an interactive session, enter /workflows. The currently running and recently completed dynamic workflow runs are listed."
+    },
+    {
+      "claim": "R resumes a resumable run.",
+      "section": "Resuming a run",
+      "quote": "Press R to resume the run."
+    },
+    {
+      "claim": "Saved results can be reused, but unsaved work may rerun.",
+      "section": "Resuming a run",
+      "quote": "The workflow can reuse saved results from completed steps and subagents, rather than starting a new run. Work that was not saved may need to run again."
+    }
+  ],
+  "introductoryScenarios": [
+    { "name": "Prepare a release", "outcome": "Passing checks and missing test coverage", "demonstrated": true },
+    { "name": "Review a pull request", "outcome": "Collected check results and review findings", "demonstrated": false },
+    { "name": "Investigate a failed build", "outcome": "Logs, evidence, and suggested next steps", "demonstrated": false }
+  ],
+  "exampleEvidence": [
+    {
+      "claim": "Copilot creates and registers book-release-check from the actual recorded natural-language request, without preloading or running it.",
+      "artifact": "creation/assets/creation-raw.mp4",
+      "supportingArtifact": "creation/assets/creation-terminal.txt",
+      "mechanism": "The generated project extension uses defineWorkflow and joinSession. The native output confirms creation, registration, and Not run."
+    },
+    {
+      "claim": "The example journals checks and defines a durable human-review checkpoint.",
+      "artifact": "creation/assets/generated-extension.mjs",
+      "mechanism": "ctx.step('pytest-v1', ...), ctx.step('cli-help-v1', ...), and ctx.pause('human-review-v1')."
+    },
+    {
+      "claim": "The run executes the unchanged extension shown being created, and application source files remain unchanged.",
+      "artifact": "creation/assets/workflow-origin.json",
+      "mechanism": "The generated source SHA256 matches both before-run and after-run hashes. The actual report identifies the same run shown in the terminal."
+    },
+    {
+      "claim": "Five tests and CLI help passed in the recorded run.",
+      "artifact": "creation/assets/workflows-raw.mp4",
+      "sourceSeconds": [30, 32],
+      "supportingArtifact": "creation/assets/release-report.md"
+    },
+    {
+      "claim": "One agent is active after resume; the phases then complete.",
+      "artifact": "creation/assets/workflows-raw.mp4",
+      "sourceSeconds": [43.5, 60]
+    },
+    {
+      "claim": "The new report names corrupted-data recovery and case-insensitive author-matching coverage gaps.",
+      "artifact": "creation/assets/release-report.md",
+      "presentation": "A real terminal recording selects the actual header and findings with sed and wraps them with fold -s -w 112. Omitted check-log detail remains in the unchanged report; no assessment is replaced or rewritten."
+    },
+    {
+      "claim": "Tool auto-approval is limited to this disposable recording fixture.",
+      "artifact": "capture/tapes/workflow-created-run.tape",
+      "supportingArtifact": "capture/record-created-workflow.sh",
+      "boundary": "Not a recommendation for live projects. Extension code itself also requires trust."
+    }
+  ],
+  "editorialBoundaries": [
+    "The opening presents three illustrative workflows a user could define, not three built-in commands. Only the book-app release check is executed.",
+    "The story asks what works and what still needs testing, then answers it with the actual report. No release is approved, deployed, or performed.",
+    "Recorded waiting intervals and excess freezes are cut to follow actual narration. The run retains the submitted prompt and started response; resume retains the keypress and live agent; the report retains its real command and output. No source footage is sped up.",
+    "The title asks what dynamic workflows are and why to use them. A separate word-revealed test-results hook explains their reusable process before a spoken lead-in introduces the examples.",
+    "The title includes its question mark. A verified quiet pause separates the examples lead-in from Prepare a release; the closing headline and final spoken sentence invite the viewer to Give dynamic workflows a try.",
+    "Eleven hook words, its definition, four scenario reveals, four workflow cards, two delayed footer lines, and seven drawn console callouts use transformed provider word timing. Encoded audio must have no quiet span longer than 1.8 seconds.",
+    "The focus scene's two footer lines remain hidden until all four cards have been introduced, then enter on the decision and custom-workflow narration. Four existing cues and two new authoring cues are synthesized; eight approved clips are reused.",
+    "Thin unfilled outlines identify existing checkpoint, test, help, assessment-phase, and report text. They do not replace source pixels or imply a live agent when the run has completed.",
+    "Selectable English captions are generated from approved narration and measured alignment, not automatic transcription. The encoded track must reproduce the script and spell pull request correctly.",
+    "This is an end-to-end authoring and run-management demonstration: describe the job, create and register its code, run it, review the checkpoint, resume, and inspect the report. Creating a workflow does not start a run.",
+    "No AI response has been simulated or hand-edited.",
+    "The native 1920x1016 console uses 26px text, filling the screen below a reserved 64px title strip. No footage is cropped, magnified, stretched, or sped up. Cuts and reading holds remain.",
+    "A completed workflow and passing checks do not establish production readiness.",
+    "The picture master stays silent. Separately generated ElevenLabs narration uses actual provider alignment; no music or word timing is fabricated.",
+    "The lower-right QR at x=1660, y=812 encodes the official usage guide, not an invented shortcut URL. It stays fully visible for at least eight seconds and is decoded throughout the hold and from the final frame."
+  ]
+}

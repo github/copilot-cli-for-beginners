@@ -1,0 +1,197 @@
+1
+00:00:00,500 --> 00:00:03,774
+What are dynamic workflows, and why would
+you use them?
+
+2
+00:00:05,050 --> 00:00:08,707
+The tests passed. That's a good start, but
+what's still
+
+3
+00:00:08,707 --> 00:00:12,440
+untested? Dynamic workflows bring commands,
+AI
+
+4
+00:00:12,440 --> 00:00:15,562
+agents, and review checkpoints into one
+reusable
+
+5
+00:00:15,945 --> 00:00:16,629
+process.
+
+6
+00:00:17,700 --> 00:00:20,974
+Here are a few examples of where dynamic
+workflows can help.
+
+7
+00:00:21,885 --> 00:00:25,961
+Prepare a release with tests and a list of
+what's untested. Review
+
+8
+00:00:25,961 --> 00:00:29,692
+a pull request with the checks and findings
+in one place.
+
+9
+00:00:29,796 --> 00:00:33,123
+Investigate a failed build by gathering
+logs and possible next
+
+10
+00:00:33,123 --> 00:00:36,625
+steps. Let's look at a simple example with
+a Python book
+
+11
+00:00:36,628 --> 00:00:37,387
+app.
+
+12
+00:00:38,350 --> 00:00:42,252
+Here's the plan. Run the tests first. Then,
+take a look at the
+
+13
+00:00:42,636 --> 00:00:46,443
+results. Find the gaps with an AI agent.
+We'll save the
+
+14
+00:00:46,560 --> 00:00:50,557
+report so we can decide what needs work.
+This is our own workflow,
+
+15
+00:00:50,560 --> 00:00:54,214
+not a built-in command. Let's create book
+release check.
+
+16
+00:00:55,550 --> 00:00:59,700
+First, tell Copilot what the workflow
+should do. We give it a name,
+
+17
+00:00:59,931 --> 00:01:03,967
+describe the checks and review checkpoint,
+and ask it to save a reusable
+
+18
+00:01:04,007 --> 00:01:07,700
+project extension. Creating it doesn't run
+it.
+
+19
+00:01:08,650 --> 00:01:12,076
+Copilot turns that request into code and
+registers the
+
+20
+00:01:12,460 --> 00:01:16,495
+workflow. The saved extension holds the
+steps, including our pause for
+
+21
+00:01:16,840 --> 00:01:20,190
+review. Now book release check is ready to
+run.
+
+22
+00:01:21,150 --> 00:01:25,226
+Let's ask Copilot to run book release
+check. This starts the workflow
+
+23
+00:01:25,226 --> 00:01:28,881
+we just created, beginning with the tests
+and help check.
+
+24
+00:01:29,850 --> 00:01:33,733
+The checks are done. The workflow's paused
+here, so we can look at the
+
+25
+00:01:33,812 --> 00:01:35,867
+results before going any further.
+
+26
+00:01:36,850 --> 00:01:40,888
+All five tests passed, and the help command
+works. But does
+
+27
+00:01:40,888 --> 00:01:44,695
+it handle damaged data? And can we find
+authors regardless of
+
+28
+00:01:44,736 --> 00:01:47,819
+capitalization? Let's have the agent check.
+
+29
+00:01:48,783 --> 00:01:52,781
+Type slash workflows, pick our paused
+release check, and press
+
+30
+00:01:52,783 --> 00:01:55,752
+Enter. Now we can see what's happened so
+far.
+
+31
+00:01:56,717 --> 00:02:00,717
+Press R to keep going. We don't need to
+rerun those checks; their
+
+32
+00:02:00,717 --> 00:02:04,679
+results are saved. The agent now looks
+through the code and tests for
+
+33
+00:02:04,679 --> 00:02:05,667
+gaps.
+
+34
+00:02:06,617 --> 00:02:10,652
+That's finished. Let's open the report and
+see what needs attention.
+
+35
+00:02:11,617 --> 00:02:15,500
+The report gives us two things to test
+next: handling a damaged
+
+36
+00:02:15,502 --> 00:02:18,319
+data file and finding authors regardless of
+
+37
+00:02:18,360 --> 00:02:22,052
+capitalization. So, before we ship, we know
+where to spend our
+
+38
+00:02:22,312 --> 00:02:22,919
+time.
+
+39
+00:02:23,883 --> 00:02:27,896
+If you keep doing the same checks by hand,
+this is worth trying.
+
+40
+00:02:27,896 --> 00:02:31,883
+The QR code links to the guide. Use slash
+workflows to keep
+
+41
+00:02:31,883 --> 00:02:35,462
+track of your runs. Give dynamic workflows
+a try.

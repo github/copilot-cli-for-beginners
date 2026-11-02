@@ -1,0 +1,70 @@
+@font-face {
+  font-family: Mona;
+  src: url("/assets/production/fonts/MonaSansVF.woff2") format("woff2");
+  font-weight: 200 900;
+}
+@font-face {
+  font-family: MonaMono;
+  src: url("/assets/production/fonts/MonaSansMonoVF.woff2") format("woff2");
+  font-weight: 200 900;
+}
+* { box-sizing: border-box; }
+html, body {
+  width: 1920px; height: 1080px; margin: 0; overflow: hidden;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+body { font-family: Mona, sans-serif; color: #f5f5f5; background: transparent; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+.background {
+  position: absolute; inset: 0; background:
+    radial-gradient(ellipse at 1% 36%, #123c29 0, transparent 59%),
+    radial-gradient(ellipse at 98% 70%, #2b1b47 0, transparent 58%), #0e1116;
+}
+.titlebar { position: absolute; left: 0; top: 0; width: 1920px; height: 64px; background: #0e1116; border-bottom: 1px solid #30363d; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.persistent-title { margin: 0; color: #72e49a; font-size: 28px; font-weight: 650; line-height: 34px; white-space: nowrap; }
+.persistent-title span { color: #e6edf3; }
+.step-label { margin: 0; color: #b1bac4; font-size: 26px; font-weight: 500; line-height: 32px; white-space: nowrap; }
+.intro-copy { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.intro-title { width: 1720px; margin: 0; text-align: center; opacity: 0; }
+.intro-product { display: block; color: #72e49a; font-size: 56px; letter-spacing: .01em; line-height: 1.2; font-weight: 650; margin-bottom: 30px; }
+.intro-subject { display: block; font-size: 124px; line-height: 1.08; font-weight: 810; letter-spacing: -.035em; white-space: pre-line; }
+.intro-rule { width: 860px; height: 6px; margin-top: 56px; background: linear-gradient(90deg, #56d364, #a371f7); transform-origin: 50% 50%; opacity: 0; }
+.brand-mark { width: 98px; height: 96px; object-fit: contain; }
+.intro-mark { margin-top: 36px; opacity: 0; }
+.hook-copy { position: absolute; left: 112px; top: 215px; width: 1696px; }
+.hook-line { font-size: 76px; line-height: 1.2; font-weight: 700; letter-spacing: -.02em; margin: 0 0 28px; max-width: 1560px; }
+.hook-line:first-child { color: #72e49a; font-size: 94px; margin-bottom: 34px; }
+.hook-word { display: inline-block; opacity: 0; margin-right: .22em; }
+.hook-definition { font-size: 38px; line-height: 1.45; color: #d1d9e0; margin: 52px 0 0; white-space: pre-line; opacity: 0; }
+.console-callouts { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+.console-callout { opacity: 0; }
+.console-callout rect { fill: none; stroke: currentColor; stroke-width: 3; }
+.purpose-copy { position: absolute; left: 112px; top: 150px; width: 1696px; }
+.purpose-heading { font-size: 72px; line-height: 1.12; letter-spacing: -.025em; font-weight: 760; margin: 0; opacity: 0; }
+.purpose-definition { font-size: 38px; line-height: 1.3; color: #d1d9e0; margin: 20px 0 32px; opacity: 0; }
+.purpose-point { border-left: 3px solid #72e49a; padding-left: 24px; margin: 0 0 20px; opacity: 0; }
+.scenario-title { font-size: 42px; line-height: 1.2; font-weight: 600; margin: 0; }
+.scenario-detail { font-size: 30px; line-height: 1.3; color: #d1d9e0; margin: 6px 0 0; }
+.purpose-example { font-size: 34px; line-height: 1.3; color: #d1d9e0; margin: 28px 0 0; opacity: 0; }
+.focus-copy { position: absolute; left: 112px; top: 170px; width: 1696px; opacity: 0; }
+.focus-copy h1 { font-size: 72px; line-height: 1.15; letter-spacing: -.025em; margin: 0; }
+.focus-definition { font-size: 38px; line-height: 1.3; color: #d1d9e0; margin: 24px 0 46px; }
+.focus-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.focus-step { --accent: #72e49a; padding: 28px; border: 1px solid #415247; border-top: 3px solid var(--accent); border-radius: 20px; background: linear-gradient(145deg, #1a2b25, #11191c); box-shadow: 0 14px 28px #00000024; opacity: 0; transform-origin: 50% 80%; }
+.focus-step:nth-child(2) { --accent: #85d9c1; }
+.focus-step:nth-child(3) { --accent: #a6b8ef; background: linear-gradient(145deg, #22283c, #141922); }
+.focus-step:nth-child(4) { --accent: #c0a0f5; background: linear-gradient(145deg, #30243e, #191622); }
+.focus-badge { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; color: var(--accent); }
+.focus-badge svg { width: 54px; height: 54px; padding: 10px; border: 1px solid currentColor; border-radius: 15px; }
+.focus-step .focus-number { font-size: 28px; color: var(--accent); margin: 0; }
+.focus-step h2 { font-size: 34px; line-height: 1.2; margin: 0 0 16px; }
+.focus-step p { font-size: 28px; line-height: 1.3; margin: 0; color: #d1d9e0; }
+.focus-registered { font: 500 30px/1.3 MonaMono, monospace; color: #72e49a; margin: 32px 0 0; opacity: 0; }
+.focus-outcome { font-size: 34px; line-height: 1.3; color: #d1d9e0; margin: 42px 0 0; opacity: 0; }
+.closing-heading { position: absolute; left: 100px; top: 250px; width: 1460px; font-size: 112px; line-height: 1.04; font-weight: 790; letter-spacing: -.035em; margin: 0; opacity: 0; }
+.closing-action { position: absolute; left: 100px; top: 560px; width: 1430px; font-size: 52px; line-height: 1.24; color: #d1d9e0; opacity: 0; }
+.closing-command { position: absolute; left: 100px; top: 700px; font: 600 64px/1.2 MonaMono, monospace; color: #72e49a; opacity: 0; }
+.closing-mark { position: absolute; right: 100px; top: 96px; opacity: 0; }
+.qr-group { position: absolute; left: 1590px; top: 812px; width: 320px; text-align: center; opacity: 0; }
+.qr-code { display: block; width: 180px; height: 180px; margin: 0 auto; background: white; image-rendering: pixelated; }
+.qr-label { margin-top: 8px; font-size: 28px; font-weight: 600; line-height: 34px; }

@@ -1,0 +1,226 @@
+{
+  "title": "GitHub Copilot CLI: Dynamic Workflows",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "maximumSeconds": 180,
+  "maximumNarrationWpm": 180,
+  "audioPacing": { "minimumTransitionSeconds": 0.65, "maximumTransitionSeconds": 1.6, "maximumQuietSeconds": 1.8, "minimumSceneLeadSeconds": 0.35, "previewGapSeconds": 0.25 },
+  "console": { "width": 1920, "height": 1016, "top": 64, "fontSize": 26 },
+  "resourceUrl": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows",
+  "qr": { "x": 1660, "y": 812, "size": 180, "quietZoneModules": 4, "minimumHoldSeconds": 8 },
+  "reference": "finops-for-ai.mp4: centered Mona Sans title, clean gradient, expanding underline, and official brand mark",
+  "timingStatus": "Editorial picture targets; measured speech alignment is stored separately with the generated audio",
+  "evidence": {
+    "report": "creation/assets/release-report.md",
+    "transcript": "creation/assets/workflows-terminal.txt",
+    "origin": "creation/assets/workflow-origin.json"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "kind": "intro",
+      "duration": 4.5,
+      "motion": [[0, 2.4]],
+      "headline": "What are\nDynamic Workflows?",
+      "speech": [0.5, 4.45],
+      "narration": "What are dynamic workflows, and why would you use them?"
+    },
+    {
+      "id": "hook",
+      "kind": "hook",
+      "duration": 12.5,
+      "motion": [[0, 0.5]],
+      "cue": "Passing tests are only part of the picture",
+      "wordLines": ["The tests passed.", "That's a good start,", "but what's still untested?"],
+      "definition": "Commands, AI agents, and review checkpoints.\nOne reusable process.",
+      "definitionPhrase": "Dynamic workflows",
+      "speech": [0.55, 12.45],
+      "narration": "The tests passed. That's a good start, but what's still untested? Dynamic workflows bring commands, AI agents, and review checkpoints into one reusable process."
+    },
+    {
+      "id": "purpose",
+      "kind": "purpose",
+      "duration": 20.8,
+      "motion": [[0, 2]],
+      "headline": "A few places this helps",
+      "cue": "Some jobs you can give a workflow",
+      "definition": "Give a repeatable job a workflow of its own.",
+      "points": [
+        { "text": "Prepare a release", "detail": "What passed + what's still untested", "editorialStart": 4 },
+        { "text": "Review a pull request", "detail": "Check results + review findings", "editorialStart": 8 },
+        { "text": "Investigate a failed build", "detail": "Logs + evidence + next steps", "editorialStart": 12 }
+      ],
+      "example": {
+        "text": "Demo: a simple Python book app.",
+        "phrase": "Let's look at a simple example",
+        "editorialStart": 16
+      },
+      "pausesBefore": ["Prepare a release"],
+      "minimumPauseSeconds": 0.6,
+      "speech": [0.7, 20.75],
+      "narration": "Here are a few examples of where dynamic workflows can help. Prepare a release with tests and a list of what's untested. Review a pull request with the checks and findings in one place. Investigate a failed build by gathering logs and possible next steps. Let's look at a simple example with a Python book app."
+    },
+    {
+      "id": "focus",
+      "kind": "focus",
+      "duration": 17.3,
+      "motion": [[0, 1.5]],
+      "headline": "What haven't we tested yet?",
+      "cue": "Let's check the book app",
+      "definition": "Here's the plan for this Python book app.",
+      "steps": [
+        { "title": "Run the tests", "detail": "Commands", "editorialStart": 3 },
+        { "title": "Take a look", "detail": "Your checkpoint", "editorialStart": 6 },
+        { "title": "Find the gaps", "detail": "AI agent", "editorialStart": 9 },
+        { "title": "Save the report", "detail": "release-report.md", "editorialStart": 12 }
+      ],
+      "registered": "Custom workflow: book-release-check",
+      "registeredPhrase": "This is our own workflow",
+      "outcome": "We get a report. We still make the release decision.",
+      "outcomePhrase": "so we can decide",
+      "speech": [0.55, 17.25],
+      "narration": "Here's the plan. Run the tests first. Then, take a look at the results. Find the gaps with an AI agent. We'll save the report so we can decide what needs work. This is our own workflow, not a built-in command. Let's create book release check."
+    },
+    {
+      "id": "create",
+      "kind": "footage",
+      "duration": 13.1,
+      "headline": "Describe the workflow in plain language",
+      "cue": "First: ask Copilot to create the workflow",
+      "source": "creation/assets/creation-raw.mp4",
+      "shots": [
+        { "from": 1, "to": 8.4, "hold": 3.7 },
+        { "from": 8.4, "to": 10.4, "hold": 0 }
+      ],
+      "speech": [0.45, 13.05],
+      "narration": "First, tell Copilot what the workflow should do. We give it a name, describe the checks and review checkpoint, and ask it to save a reusable project extension. Creating it doesn't run it."
+    },
+    {
+      "id": "created",
+      "kind": "footage",
+      "duration": 12.5,
+      "headline": "Inspect the workflow Copilot created",
+      "cue": "Created: a reusable workflow saved as code",
+      "source": "creation/assets/creation-raw.mp4",
+      "shots": [{ "from": 64, "to": 65, "hold": 11.5 }],
+      "callouts": [
+        { "id": "created-extension", "phrase": "code", "rect": [160, 239, 1200, 50], "color": "#72e49a", "holdSeconds": 1.3 },
+        { "id": "created-checkpoint", "phrase": "pause for review", "rect": [60, 660, 1810, 95], "color": "#c0a0f5", "holdSeconds": 1.1 }
+      ],
+      "speech": [0.45, 12.45],
+      "narration": "Copilot turns that request into code and registers the workflow. The saved extension holds the steps, including our pause for review. Now book release check is ready to run."
+    },
+    {
+      "id": "run",
+      "kind": "footage",
+      "duration": 8.7,
+      "headline": "Start the book app's release check",
+      "cue": "Let's run the release check",
+      "source": "creation/assets/workflows-raw.mp4",
+      "shots": [
+        { "from": 1, "to": 4.5, "hold": 0.7 },
+        { "from": 8, "to": 11, "hold": 1.5 }
+      ],
+      "speech": [0.45, 8.65],
+      "narration": "Let's ask Copilot to run book release check. This starts the workflow we just created, beginning with the tests and help check."
+    },
+    {
+      "id": "checkpoint",
+      "kind": "footage",
+      "duration": 7,
+      "headline": "Stop at a human-review checkpoint",
+      "cue": "Release check: your review checkpoint",
+      "source": "creation/assets/workflows-raw.mp4",
+      "shots": [{ "from": 30, "to": 31, "hold": 6 }],
+      "callouts": [
+        { "id": "paused-review", "phrase": "workflow's paused", "rect": [60, 546, 610, 50], "color": "#c0a0f5", "holdSeconds": 2.2 }
+      ],
+      "speech": [0.45, 6.95],
+      "narration": "The checks are done. The workflow's paused here, so we can look at the results before going any further."
+    },
+    {
+      "id": "checks",
+      "kind": "footage",
+      "duration": 11.933333333333334,
+      "headline": "Review the evidence before continuing",
+      "cue": "The tests passed. What might be missing?",
+      "source": "creation/assets/workflows-raw.mp4",
+      "shots": [{ "from": 30, "to": 32, "hold": 9.933333333333334 }],
+      "callouts": [
+        { "id": "five-tests", "phrase": "All five tests passed", "rect": [474, 707, 315, 48], "color": "#72e49a", "holdSeconds": 1.1 },
+        { "id": "help-check", "phrase": "help command works", "rect": [861, 707, 527, 48], "color": "#c0a0f5", "holdSeconds": 1.2 }
+      ],
+      "speech": [0.45, 11.883333],
+      "narration": "All five tests passed, and the help command works. But does it handle damaged data? And can we find authors regardless of capitalization? Let's have the agent check."
+    },
+    {
+      "id": "monitor",
+      "kind": "footage",
+      "duration": 7.933333333333334,
+      "headline": "Open /workflows",
+      "cue": "/workflows > our release check > Enter",
+      "source": "creation/assets/workflows-raw.mp4",
+      "shots": [
+        { "from": 33.2, "to": 35.2, "hold": 0.5 },
+        { "from": 39.5, "to": 43.5, "hold": 1.4333333333333333 }
+      ],
+      "speech": [0.45, 7.883333],
+      "narration": "Type slash workflows, pick our paused release check, and press Enter. Now we can see what's happened so far."
+    },
+    {
+      "id": "resume",
+      "kind": "footage",
+      "duration": 9.9,
+      "headline": "Resume the saved run",
+      "cue": "R: continue to the coverage assessment",
+      "source": "creation/assets/workflows-raw.mp4",
+      "shots": [
+        { "from": 43.5, "to": 45.5, "hold": 1.2 },
+        { "from": 47, "to": 52, "hold": 1.7 }
+      ],
+      "callouts": [
+        { "id": "assessment-agent", "phrase": "The agent now", "rect": [16, 394, 535, 46], "color": "#72e49a", "holdSeconds": 1.6 }
+      ],
+      "speech": [0.45, 9.85],
+      "narration": "Press R to keep going. We don't need to rerun those checks; their results are saved. The agent now looks through the code and tests for gaps."
+    },
+    {
+      "id": "completed",
+      "kind": "footage",
+      "duration": 5,
+      "headline": "Find the completed run",
+      "cue": "Completed: now inspect the findings",
+      "source": "creation/assets/workflows-raw.mp4",
+      "shots": [{ "from": 58, "to": 60, "hold": 3 }],
+      "speech": [0.45, 4.95],
+      "narration": "That's finished. Let's open the report and see what needs attention."
+    },
+    {
+      "id": "report",
+      "kind": "footage",
+      "duration": 12.266666666666667,
+      "headline": "Use the report to choose the next fix",
+      "cue": "The answer: two behaviors still need tests",
+      "source": "creation/assets/report-focused-raw.mp4",
+      "shots": [{ "from": 5.8, "to": 17.1, "hold": 0.9666666666666667 }],
+      "callouts": [
+        { "id": "test-gaps", "phrase": "two things to test next", "rect": [12, 397, 1852, 350], "color": "#c0a0f5", "untilEnd": true },
+        { "id": "damaged-file", "phrase": "handling a damaged data file", "rect": [16, 470, 1846, 121], "color": "#72e49a", "untilEnd": true },
+        { "id": "author-matching", "phrase": "finding authors regardless of capitalization", "rect": [16, 625, 1846, 121], "color": "#72e49a", "untilEnd": true }
+      ],
+      "speech": [0.45, 12.216667],
+      "narration": "The report gives us two things to test next: handling a damaged data file and finding authors regardless of capitalization. So, before we ship, we know where to spend our time."
+    },
+    {
+      "id": "closing",
+      "kind": "closing",
+      "duration": 12.6,
+      "motion": [[0, 2.6]],
+      "headline": "Give dynamic\nworkflows a try.",
+      "definition": "Try it with a process you already repeat.",
+      "speech": [0.45, 12.55],
+      "narration": "If you keep doing the same checks by hand, this is worth trying. The QR code links to the guide. Use slash workflows to keep track of your runs. Give dynamic workflows a try."
+    }
+  ]
+}

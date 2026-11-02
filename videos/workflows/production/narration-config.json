@@ -1,0 +1,12 @@
+{
+  "reference": "ignite-2026/videos/microsoft-finops-for-ai/video.config.json",
+  "voiceId": "gwU7DXdLrTvWCiUTPZG8",
+  "modelId": "eleven_v4",
+  "prosodyRate": "+5%",
+  "tailSeconds": 0.45,
+  "voiceSettings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75
+  },
+  "maxPauseSeconds": 0.4
+}

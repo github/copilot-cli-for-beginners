@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#0e1116"/>
+      <stop offset="1" stop-color="#112536"/>
+    </linearGradient>
+    <linearGradient id="accent">
+      <stop stop-color="#58a6ff"/>
+      <stop offset="1" stop-color="#56d4dd"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#background)"/>
+  <rect x="132" y="160" width="8" height="680" rx="4" fill="url(#accent)"/>
+  <g font-family="Menlo, monospace">
+    <text x="190" y="235" font-size="30" letter-spacing="4" fill="#8b949e">GITHUB COPILOT CLI</text>
+    <text x="180" y="420" font-size="144" font-weight="bold" fill="#e6edf3">/workflows</text>
+    <text x="190" y="535" font-size="48" fill="#56d4dd">A real release-readiness check</text>
+    <text x="190" y="640" font-size="32" fill="#e6edf3">Run tests. Pause for review. Resume and save a report.</text>
+    <rect x="190" y="722" width="1190" height="100" rx="16" fill="#0e1116" stroke="#30363d" stroke-width="2"/>
+    <text x="228" y="786" font-size="32" fill="#58a6ff">$ copilot --experimental</text>
+    <text x="190" y="920" font-size="24" fill="#8b949e">Authentic VHS recording - workflow prepared before recording</text>
+  </g>
+</svg>

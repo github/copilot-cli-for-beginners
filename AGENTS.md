@@ -37,3 +37,10 @@ Beginner-friendly course teaching GitHub Copilot CLI. Educational content, not s
 ```bash
 npm install && npm run release
 ```
+
+The standalone video project under `videos/workflows/` has its own package
+manifest: `npm run build` renders the silent workflow demo and `npm run verify`
+checks its encoding, timing, and closing QR. `npm run narrate` generates cached
+timestamped speech, and `npm run finalize` adds it to the picture and verifies
+the narrated MP4. See that project's README for
+dependency reuse and the recording prerequisites.

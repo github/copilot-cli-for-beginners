@@ -1,0 +1,957 @@
+{
+  "timingStatus": "Editorial picture targets; measured speech alignment is stored separately with the generated audio",
+  "fps": 30,
+  "durationSeconds": 156.03333333333336,
+  "audioGenerated": true,
+  "hookSync": {
+    "timingSource": "elevenlabs-word-alignment",
+    "sceneId": "hook",
+    "sceneStart": 4.5,
+    "fps": 30,
+    "audioSha256": "8edc25f5b620bebcff82064c1058c03c3b76a0c0bdcaaf75a7fdf229603fcea8",
+    "alignmentFile": "assets/narration/segments/hook.json",
+    "reveals": [
+      {
+        "selector": ".hook-word[data-word-index=\"0\"]",
+        "text": "The",
+        "phrase": "The",
+        "wordIndex": 0,
+        "spokenStart": 0.55,
+        "spokenEnd": 0.702381,
+        "revealStart": 0.49000000000000005,
+        "settledAt": 0.6100000000000001,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"1\"]",
+        "text": "tests",
+        "phrase": "tests",
+        "wordIndex": 1,
+        "spokenStart": 0.892857,
+        "spokenEnd": 1.083333,
+        "revealStart": 0.832857,
+        "settledAt": 0.952857,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"2\"]",
+        "text": "passed.",
+        "phrase": "passed.",
+        "wordIndex": 2,
+        "spokenStart": 1.159524,
+        "spokenEnd": 2.07381,
+        "revealStart": 1.099524,
+        "settledAt": 1.2195239999999998,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"3\"]",
+        "text": "That's",
+        "phrase": "That's",
+        "wordIndex": 3,
+        "spokenStart": 2.175714,
+        "spokenEnd": 2.2642860000000002,
+        "revealStart": 2.115714,
+        "settledAt": 2.235714,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"4\"]",
+        "text": "a",
+        "phrase": "a",
+        "wordIndex": 4,
+        "spokenStart": 2.302381,
+        "spokenEnd": 2.340476,
+        "revealStart": 2.242381,
+        "settledAt": 2.362381,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"5\"]",
+        "text": "good",
+        "phrase": "good",
+        "wordIndex": 5,
+        "spokenStart": 2.378571,
+        "spokenEnd": 2.530952,
+        "revealStart": 2.318571,
+        "settledAt": 2.438571,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"6\"]",
+        "text": "start,",
+        "phrase": "start,",
+        "wordIndex": 6,
+        "spokenStart": 2.6071429999999998,
+        "spokenEnd": 3.216667,
+        "revealStart": 2.5471429999999997,
+        "settledAt": 2.667143,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"7\"]",
+        "text": "but",
+        "phrase": "but",
+        "wordIndex": 7,
+        "spokenStart": 3.4709520000000005,
+        "spokenEnd": 3.597619,
+        "revealStart": 3.4109520000000004,
+        "settledAt": 3.5309520000000005,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"8\"]",
+        "text": "what's",
+        "phrase": "what's",
+        "wordIndex": 8,
+        "spokenStart": 3.6738100000000005,
+        "spokenEnd": 3.8261900000000004,
+        "revealStart": 3.6138100000000004,
+        "settledAt": 3.7338100000000005,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"9\"]",
+        "text": "still",
+        "phrase": "still",
+        "wordIndex": 9,
+        "spokenStart": 3.9785709999999996,
+        "spokenEnd": 4.130952,
+        "revealStart": 3.9185709999999996,
+        "settledAt": 4.038570999999999,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-word[data-word-index=\"10\"]",
+        "text": "untested?",
+        "phrase": "untested?",
+        "wordIndex": 10,
+        "spokenStart": 4.207143,
+        "spokenEnd": 5.35,
+        "revealStart": 4.147143000000001,
+        "settledAt": 4.267143000000001,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      },
+      {
+        "selector": ".hook-definition",
+        "text": "Commands, AI agents, and review checkpoints.\nOne reusable process.",
+        "phrase": "Dynamic workflows",
+        "wordIndex": 11,
+        "spokenStart": 5.654762,
+        "spokenEnd": 6.4166669999999995,
+        "revealStart": 5.594762,
+        "settledAt": 5.714762,
+        "leadSeconds": 0.06,
+        "settleSeconds": 0.06
+      }
+    ]
+  },
+  "purposeSync": {
+    "timingSource": "elevenlabs-word-alignment",
+    "sceneId": "purpose",
+    "sceneStart": 17,
+    "fps": 30,
+    "audioSha256": "dcfff5701e7267238c33ecf6bc62a4a177baa5993792fff670e03787ced3dc6b",
+    "alignmentFile": "assets/narration/segments/purpose.json",
+    "reveals": [
+      {
+        "selector": ".purpose-point:nth-child(1)",
+        "text": "Prepare a release",
+        "phrase": "Prepare a release",
+        "wordIndex": 11,
+        "spokenStart": 4.884762,
+        "spokenEnd": 5.684762,
+        "revealStart": 4.804762,
+        "settledAt": 5.044762,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      },
+      {
+        "selector": ".purpose-point:nth-child(2)",
+        "text": "Review a pull request",
+        "phrase": "Review a pull request",
+        "wordIndex": 22,
+        "spokenStart": 8.782857,
+        "spokenEnd": 9.799047999999999,
+        "revealStart": 8.702857,
+        "settledAt": 8.942857,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      },
+      {
+        "selector": ".purpose-point:nth-child(3)",
+        "text": "Investigate a failed build",
+        "phrase": "Investigate a failed build",
+        "wordIndex": 34,
+        "spokenStart": 12.79619,
+        "spokenEnd": 14.141905,
+        "revealStart": 12.71619,
+        "settledAt": 12.95619,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      },
+      {
+        "selector": ".purpose-example",
+        "text": "Demo: a simple Python book app.",
+        "phrase": "Let's look at a simple example",
+        "wordIndex": 45,
+        "spokenStart": 17.037143,
+        "spokenEnd": 18.408571,
+        "revealStart": 16.957143000000002,
+        "settledAt": 17.197143,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      }
+    ]
+  },
+  "focusSync": {
+    "timingSource": "elevenlabs-word-alignment",
+    "sceneId": "focus",
+    "sceneStart": 37.8,
+    "fps": 30,
+    "audioSha256": "224559757eb2ad8301e9aa6074c81d4132abe12f1094c199e7bfc60a9c564281",
+    "alignmentFile": "assets/narration/segments/focus.json",
+    "reveals": [
+      {
+        "selector": ".focus-step:nth-child(1)",
+        "text": "Run the tests",
+        "phrase": "Run the tests",
+        "wordIndex": 3,
+        "spokenStart": 1.692857,
+        "spokenEnd": 2.454762,
+        "revealStart": 1.612857,
+        "settledAt": 1.852857,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      },
+      {
+        "selector": ".focus-step:nth-child(2)",
+        "text": "Take a look",
+        "phrase": "Take a look",
+        "wordIndex": 8,
+        "spokenStart": 3.7947620000000004,
+        "spokenEnd": 4.07381,
+        "revealStart": 3.7147620000000003,
+        "settledAt": 3.9547620000000006,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      },
+      {
+        "selector": ".focus-step:nth-child(3)",
+        "text": "Find the gaps",
+        "phrase": "Find the gaps",
+        "wordIndex": 14,
+        "spokenStart": 5.5214289999999995,
+        "spokenEnd": 6.283333,
+        "revealStart": 5.441428999999999,
+        "settledAt": 5.681429,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      },
+      {
+        "selector": ".focus-step:nth-child(4)",
+        "text": "Save the report",
+        "phrase": "Save the report",
+        "wordIndex": 22,
+        "spokenStart": 8.302381,
+        "spokenEnd": 9.026190000000001,
+        "revealStart": 8.222381,
+        "settledAt": 8.462381,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      },
+      {
+        "selector": ".focus-outcome",
+        "text": "We get a report. We still make the release decision.",
+        "phrase": "so we can decide",
+        "wordIndex": 25,
+        "spokenStart": 9.064286000000001,
+        "spokenEnd": 9.788095,
+        "revealStart": 8.984286,
+        "settledAt": 9.224286000000001,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      },
+      {
+        "selector": ".focus-registered",
+        "text": "Custom workflow: book-release-check",
+        "phrase": "This is our own workflow",
+        "wordIndex": 32,
+        "spokenStart": 11.21,
+        "spokenEnd": 12.607143,
+        "revealStart": 11.13,
+        "settledAt": 11.370000000000001,
+        "leadSeconds": 0.08,
+        "settleSeconds": 0.15999999999999998
+      }
+    ]
+  },
+  "calloutSync": [
+    {
+      "timingSource": "elevenlabs-word-alignment",
+      "sceneId": "created",
+      "sceneStart": 68.19999999999999,
+      "fps": 30,
+      "audioSha256": "da2f1014440eb9874100539f4cb54bdde33f126ec4b141fb3230d857766d9d7e",
+      "alignmentFile": "assets/narration/segments/created.json",
+      "reveals": [
+        {
+          "selector": "#callout-created-extension",
+          "text": "created-extension",
+          "phrase": "code",
+          "wordIndex": 5,
+          "spokenStart": 2.621429,
+          "spokenEnd": 2.8880950000000003,
+          "revealStart": 2.541429,
+          "settledAt": 3.041429,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "created-extension",
+          "rect": [
+            160,
+            239,
+            1200,
+            50
+          ],
+          "color": "#72e49a",
+          "endAt": 4.188095000000001
+        },
+        {
+          "selector": "#callout-created-checkpoint",
+          "text": "created-checkpoint",
+          "phrase": "pause for review",
+          "wordIndex": 18,
+          "spokenStart": 7.840476,
+          "spokenEnd": 9.17381,
+          "revealStart": 7.760476,
+          "settledAt": 8.260476,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "created-checkpoint",
+          "rect": [
+            60,
+            660,
+            1810,
+            95
+          ],
+          "color": "#c0a0f5",
+          "endAt": 10.27381
+        }
+      ]
+    },
+    {
+      "timingSource": "elevenlabs-word-alignment",
+      "sceneId": "checkpoint",
+      "sceneStart": 89.39999999999999,
+      "fps": 30,
+      "audioSha256": "7b6a9d3396310b0732785420872f7bcb531863f1ffb708435976f9ee76936e37",
+      "alignmentFile": "assets/narration/segments/checkpoint.json",
+      "reveals": [
+        {
+          "selector": "#callout-paused-review",
+          "text": "paused-review",
+          "phrase": "workflow's paused",
+          "wordIndex": 5,
+          "spokenStart": 2.164286,
+          "spokenEnd": 2.964286,
+          "revealStart": 2.084286,
+          "settledAt": 2.584286,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "paused-review",
+          "rect": [
+            60,
+            546,
+            610,
+            50
+          ],
+          "color": "#c0a0f5",
+          "endAt": 5.164286000000001
+        }
+      ]
+    },
+    {
+      "timingSource": "elevenlabs-word-alignment",
+      "sceneId": "checks",
+      "sceneStart": 96.39999999999999,
+      "fps": 30,
+      "audioSha256": "fc7abc7d6f7ddf07d73e646c9acdfea8148606e7af11999cbc25eca7269791fe",
+      "alignmentFile": "assets/narration/segments/checks.json",
+      "reveals": [
+        {
+          "selector": "#callout-five-tests",
+          "text": "five-tests",
+          "phrase": "All five tests passed",
+          "wordIndex": 0,
+          "spokenStart": 0.45,
+          "spokenEnd": 2.0500000000000003,
+          "revealStart": 0.37,
+          "settledAt": 0.87,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "five-tests",
+          "rect": [
+            474,
+            707,
+            315,
+            48
+          ],
+          "color": "#72e49a",
+          "endAt": 3.1500000000000004
+        },
+        {
+          "selector": "#callout-help-check",
+          "text": "help-check",
+          "phrase": "help command works",
+          "wordIndex": 6,
+          "spokenStart": 2.430952,
+          "spokenEnd": 3.878571,
+          "revealStart": 2.350952,
+          "settledAt": 2.850952,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "help-check",
+          "rect": [
+            861,
+            707,
+            527,
+            48
+          ],
+          "color": "#c0a0f5",
+          "endAt": 5.078571
+        }
+      ]
+    },
+    {
+      "timingSource": "elevenlabs-word-alignment",
+      "sceneId": "resume",
+      "sceneStart": 116.26666666666667,
+      "fps": 30,
+      "audioSha256": "a27b53a43e678ae0e758d1e3042c7159d6d238b0027c13c10df6a5f2c3ca0fe0",
+      "alignmentFile": "assets/narration/segments/resume.json",
+      "reveals": [
+        {
+          "selector": "#callout-assessment-agent",
+          "text": "assessment-agent",
+          "phrase": "The agent now",
+          "wordIndex": 16,
+          "spokenStart": 5.999524,
+          "spokenEnd": 6.659524,
+          "revealStart": 5.919524,
+          "settledAt": 6.419524,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "assessment-agent",
+          "rect": [
+            16,
+            394,
+            535,
+            46
+          ],
+          "color": "#72e49a",
+          "endAt": 8.259524
+        }
+      ]
+    },
+    {
+      "timingSource": "elevenlabs-word-alignment",
+      "sceneId": "report",
+      "sceneStart": 131.16666666666669,
+      "fps": 30,
+      "audioSha256": "2459e4ef37b67c18c207c6d83619d799fda9e706894f4fdbb68e692daea4fdca",
+      "alignmentFile": "assets/narration/segments/report.json",
+      "reveals": [
+        {
+          "selector": "#callout-test-gaps",
+          "text": "test-gaps",
+          "phrase": "two things to test next",
+          "wordIndex": 4,
+          "spokenStart": 1.440476,
+          "spokenEnd": 3.269048,
+          "revealStart": 1.360476,
+          "settledAt": 1.860476,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "test-gaps",
+          "rect": [
+            12,
+            397,
+            1852,
+            350
+          ],
+          "color": "#c0a0f5",
+          "endAt": 12.266666666666667
+        },
+        {
+          "selector": "#callout-damaged-file",
+          "text": "damaged-file",
+          "phrase": "handling a damaged data file",
+          "wordIndex": 9,
+          "spokenStart": 3.345238,
+          "spokenEnd": 5.021429,
+          "revealStart": 3.265238,
+          "settledAt": 3.765238,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "damaged-file",
+          "rect": [
+            16,
+            470,
+            1846,
+            121
+          ],
+          "color": "#72e49a",
+          "endAt": 12.266666666666667
+        },
+        {
+          "selector": "#callout-author-matching",
+          "text": "author-matching",
+          "phrase": "finding authors regardless of capitalization",
+          "wordIndex": 15,
+          "spokenStart": 5.4785710000000005,
+          "spokenEnd": 8.45,
+          "revealStart": 5.3985710000000005,
+          "settledAt": 5.8985710000000005,
+          "leadSeconds": 0.08,
+          "settleSeconds": 0.42,
+          "id": "author-matching",
+          "rect": [
+            16,
+            625,
+            1846,
+            121
+          ],
+          "color": "#72e49a",
+          "endAt": 12.266666666666667
+        }
+      ]
+    }
+  ],
+  "synthesisNotes": [
+    "Synthesize one cue at a time; timestamps and visual directions are not spoken.",
+    "Speech windows are editorial targets, not provider word alignment.",
+    "Measure the actual ElevenLabs character alignment before assembling final audio.",
+    "Do not speed speech unnaturally to fill a window; use the reserved reading holds.",
+    "Pronounce CLI as C L I, QR as Q R, and R as the letter R. Say /workflows as slash workflows."
+  ],
+  "cues": [
+    {
+      "id": "intro",
+      "sceneStart": 0,
+      "sceneEnd": 4.5,
+      "speechStart": 0.5,
+      "speechEnd": 4.45,
+      "inTimecode": "00:00:00:15",
+      "outTimecode": "00:00:04:14",
+      "text": "What are dynamic workflows, and why would you use them?",
+      "words": 10,
+      "budgetSeconds": 3.95,
+      "requiredWpm": 152,
+      "silentTailSeconds": 0.04999999999999982,
+      "visualCue": "What are\nDynamic Workflows?",
+      "pictureTiming": [],
+      "audioFile": "assets/narration/segments/intro.wav",
+      "audioAlignmentFile": "assets/narration/segments/intro.json",
+      "measuredSpeechStart": 0.5,
+      "measuredSpeechEnd": 3.62381,
+      "audioEnd": 4.2609580000000005
+    },
+    {
+      "id": "hook",
+      "sceneStart": 4.5,
+      "sceneEnd": 17,
+      "speechStart": 5.05,
+      "speechEnd": 16.95,
+      "inTimecode": "00:00:05:02",
+      "outTimecode": "00:00:16:29",
+      "text": "The tests passed. That's a good start, but what's still untested? Dynamic workflows bring commands, AI agents, and review checkpoints into one reusable process.",
+      "words": 24,
+      "budgetSeconds": 11.899999999999999,
+      "requiredWpm": 121,
+      "silentTailSeconds": 0.05000000000000071,
+      "visualCue": "hook",
+      "pictureTiming": [],
+      "audioFile": "assets/narration/segments/hook.wav",
+      "audioAlignmentFile": "assets/narration/segments/hook.json",
+      "measuredSpeechStart": 5.049999999999999,
+      "measuredSpeechEnd": 16.478571000000002,
+      "audioEnd": 16.963458
+    },
+    {
+      "id": "purpose",
+      "sceneStart": 17,
+      "sceneEnd": 37.8,
+      "speechStart": 17.7,
+      "speechEnd": 37.75,
+      "inTimecode": "00:00:17:21",
+      "outTimecode": "00:00:37:23",
+      "text": "Here are a few examples of where dynamic workflows can help. Prepare a release with tests and a list of what's untested. Review a pull request with the checks and findings in one place. Investigate a failed build by gathering logs and possible next steps. Let's look at a simple example with a Python book app.",
+      "words": 56,
+      "budgetSeconds": 20.05,
+      "requiredWpm": 168,
+      "silentTailSeconds": 0.05000000000000071,
+      "visualCue": "A few places this helps",
+      "pictureTiming": [],
+      "audioFile": "assets/narration/segments/purpose.wav",
+      "audioAlignmentFile": "assets/narration/segments/purpose.json",
+      "measuredSpeechStart": 17.699999999999996,
+      "measuredSpeechEnd": 37.237142999999996,
+      "audioEnd": 37.722125
+    },
+    {
+      "id": "focus",
+      "sceneStart": 37.8,
+      "sceneEnd": 55.099999999999994,
+      "speechStart": 38.349999999999994,
+      "speechEnd": 55.05,
+      "inTimecode": "00:00:38:10",
+      "outTimecode": "00:00:55:02",
+      "text": "Here's the plan. Run the tests first. Then, take a look at the results. Find the gaps with an AI agent. We'll save the report so we can decide what needs work. This is our own workflow, not a built-in command. Let's create book release check.",
+      "words": 46,
+      "budgetSeconds": 16.700000000000003,
+      "requiredWpm": 165,
+      "silentTailSeconds": 0.05000000000000071,
+      "visualCue": "What haven't we tested yet?",
+      "pictureTiming": [],
+      "audioFile": "assets/narration/segments/focus.wav",
+      "audioAlignmentFile": "assets/narration/segments/focus.json",
+      "measuredSpeechStart": 38.349999999999994,
+      "measuredSpeechEnd": 54.064285999999996,
+      "audioEnd": 55.08241699999999
+    },
+    {
+      "id": "create",
+      "sceneStart": 55.099999999999994,
+      "sceneEnd": 68.19999999999999,
+      "speechStart": 55.55,
+      "speechEnd": 68.14999999999999,
+      "inTimecode": "00:00:55:17",
+      "outTimecode": "00:01:08:04",
+      "text": "First, tell Copilot what the workflow should do. We give it a name, describe the checks and review checkpoint, and ask it to save a reusable project extension. Creating it doesn't run it.",
+      "words": 33,
+      "budgetSeconds": 12.599999999999994,
+      "requiredWpm": 157,
+      "silentTailSeconds": 0.049999999999998934,
+      "visualCue": "Describe the workflow in plain language",
+      "pictureTiming": [
+        {
+          "playbackStart": 55.099999999999994,
+          "playbackEnd": 62.49999999999999,
+          "holdEnd": 66.19999999999999,
+          "source": "creation/assets/creation-raw.mp4",
+          "sourceStart": 1,
+          "sourceEnd": 8.4
+        },
+        {
+          "playbackStart": 66.19999999999999,
+          "playbackEnd": 68.19999999999999,
+          "holdEnd": 68.19999999999999,
+          "source": "creation/assets/creation-raw.mp4",
+          "sourceStart": 8.4,
+          "sourceEnd": 10.4
+        }
+      ],
+      "audioFile": "assets/narration/segments/create.wav",
+      "audioAlignmentFile": "assets/narration/segments/create.json",
+      "measuredSpeechStart": 55.55,
+      "measuredSpeechEnd": 67.55,
+      "audioEnd": 68.034667
+    },
+    {
+      "id": "created",
+      "sceneStart": 68.19999999999999,
+      "sceneEnd": 80.69999999999999,
+      "speechStart": 68.64999999999999,
+      "speechEnd": 80.64999999999999,
+      "inTimecode": "00:01:08:19",
+      "outTimecode": "00:01:20:19",
+      "text": "Copilot turns that request into code and registers the workflow. The saved extension holds the steps, including our pause for review. Now book release check is ready to run.",
+      "words": 29,
+      "budgetSeconds": 12,
+      "requiredWpm": 145,
+      "silentTailSeconds": 0.05000000000000071,
+      "visualCue": "Inspect the workflow Copilot created",
+      "pictureTiming": [
+        {
+          "playbackStart": 68.19999999999999,
+          "playbackEnd": 69.19999999999999,
+          "holdEnd": 80.69999999999999,
+          "source": "creation/assets/creation-raw.mp4",
+          "sourceStart": 64,
+          "sourceEnd": 65
+        }
+      ],
+      "audioFile": "assets/narration/segments/created.wav",
+      "audioAlignmentFile": "assets/narration/segments/created.json",
+      "measuredSpeechStart": 68.65,
+      "measuredSpeechEnd": 80.04047599999998,
+      "audioEnd": 80.52562499999999
+    },
+    {
+      "id": "run",
+      "sceneStart": 80.69999999999999,
+      "sceneEnd": 89.39999999999999,
+      "speechStart": 81.14999999999999,
+      "speechEnd": 89.35,
+      "inTimecode": "00:01:21:04",
+      "outTimecode": "00:01:29:11",
+      "text": "Let's ask Copilot to run book release check. This starts the workflow we just created, beginning with the tests and help check.",
+      "words": 22,
+      "budgetSeconds": 8.200000000000003,
+      "requiredWpm": 161,
+      "silentTailSeconds": 0.049999999999998934,
+      "visualCue": "Start the book app's release check",
+      "pictureTiming": [
+        {
+          "playbackStart": 80.69999999999999,
+          "playbackEnd": 84.19999999999999,
+          "holdEnd": 84.89999999999999,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 1,
+          "sourceEnd": 4.5
+        },
+        {
+          "playbackStart": 84.89999999999999,
+          "playbackEnd": 87.89999999999999,
+          "holdEnd": 89.39999999999999,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 8,
+          "sourceEnd": 11
+        }
+      ],
+      "audioFile": "assets/narration/segments/run.wav",
+      "audioAlignmentFile": "assets/narration/segments/run.json",
+      "measuredSpeechStart": 81.14999999999999,
+      "measuredSpeechEnd": 88.73095199999999,
+      "audioEnd": 89.21545799999998
+    },
+    {
+      "id": "checkpoint",
+      "sceneStart": 89.39999999999999,
+      "sceneEnd": 96.39999999999999,
+      "speechStart": 89.85,
+      "speechEnd": 96.35,
+      "inTimecode": "00:01:29:26",
+      "outTimecode": "00:01:36:11",
+      "text": "The checks are done. The workflow's paused here, so we can look at the results before going any further.",
+      "words": 19,
+      "budgetSeconds": 6.5,
+      "requiredWpm": 175,
+      "silentTailSeconds": 0.04999999999999982,
+      "visualCue": "Stop at a human-review checkpoint",
+      "pictureTiming": [
+        {
+          "playbackStart": 89.39999999999999,
+          "playbackEnd": 90.39999999999999,
+          "holdEnd": 96.39999999999999,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 30,
+          "sourceEnd": 31
+        }
+      ],
+      "audioFile": "assets/narration/segments/checkpoint.wav",
+      "audioAlignmentFile": "assets/narration/segments/checkpoint.json",
+      "measuredSpeechStart": 89.85,
+      "measuredSpeechEnd": 95.716667,
+      "audioEnd": 96.201875
+    },
+    {
+      "id": "checks",
+      "sceneStart": 96.39999999999999,
+      "sceneEnd": 108.33333333333333,
+      "speechStart": 96.85,
+      "speechEnd": 108.283333,
+      "inTimecode": "00:01:36:26",
+      "outTimecode": "00:01:48:08",
+      "text": "All five tests passed, and the help command works. But does it handle damaged data? And can we find authors regardless of capitalization? Let's have the agent check.",
+      "words": 28,
+      "budgetSeconds": 11.433333000000005,
+      "requiredWpm": 147,
+      "silentTailSeconds": 0.0500003333333332,
+      "visualCue": "Review the evidence before continuing",
+      "pictureTiming": [
+        {
+          "playbackStart": 96.39999999999999,
+          "playbackEnd": 98.39999999999998,
+          "holdEnd": 108.33333333333331,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 30,
+          "sourceEnd": 32
+        }
+      ],
+      "audioFile": "assets/narration/segments/checks.wav",
+      "audioAlignmentFile": "assets/narration/segments/checks.json",
+      "measuredSpeechStart": 96.85,
+      "measuredSpeechEnd": 107.669048,
+      "audioEnd": 108.154417
+    },
+    {
+      "id": "monitor",
+      "sceneStart": 108.33333333333333,
+      "sceneEnd": 116.26666666666667,
+      "speechStart": 108.78333333333333,
+      "speechEnd": 116.21666633333334,
+      "inTimecode": "00:01:48:24",
+      "outTimecode": "00:01:56:06",
+      "text": "Type slash workflows, pick our paused release check, and press Enter. Now we can see what's happened so far.",
+      "words": 19,
+      "budgetSeconds": 7.433333000000005,
+      "requiredWpm": 153,
+      "silentTailSeconds": 0.0500003333333332,
+      "visualCue": "Open /workflows",
+      "pictureTiming": [
+        {
+          "playbackStart": 108.33333333333333,
+          "playbackEnd": 110.33333333333333,
+          "holdEnd": 110.83333333333333,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 33.2,
+          "sourceEnd": 35.2
+        },
+        {
+          "playbackStart": 110.83333333333333,
+          "playbackEnd": 114.83333333333331,
+          "holdEnd": 116.26666666666665,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 39.5,
+          "sourceEnd": 43.5
+        }
+      ],
+      "audioFile": "assets/narration/segments/monitor.wav",
+      "audioAlignmentFile": "assets/narration/segments/monitor.json",
+      "measuredSpeechStart": 108.78333333333333,
+      "measuredSpeechEnd": 115.60238133333334,
+      "audioEnd": 116.08720833333334
+    },
+    {
+      "id": "resume",
+      "sceneStart": 116.26666666666667,
+      "sceneEnd": 126.16666666666667,
+      "speechStart": 116.71666666666667,
+      "speechEnd": 126.11666666666666,
+      "inTimecode": "00:01:56:22",
+      "outTimecode": "00:02:06:04",
+      "text": "Press R to keep going. We don't need to rerun those checks; their results are saved. The agent now looks through the code and tests for gaps.",
+      "words": 27,
+      "budgetSeconds": 9.399999999999991,
+      "requiredWpm": 172,
+      "silentTailSeconds": 0.05000000000000071,
+      "visualCue": "Resume the saved run",
+      "pictureTiming": [
+        {
+          "playbackStart": 116.26666666666667,
+          "playbackEnd": 118.26666666666665,
+          "holdEnd": 119.46666666666665,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 43.5,
+          "sourceEnd": 45.5
+        },
+        {
+          "playbackStart": 119.46666666666665,
+          "playbackEnd": 124.46666666666664,
+          "holdEnd": 126.16666666666664,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 47,
+          "sourceEnd": 52
+        }
+      ],
+      "audioFile": "assets/narration/segments/resume.wav",
+      "audioAlignmentFile": "assets/narration/segments/resume.json",
+      "measuredSpeechStart": 116.71666666666667,
+      "measuredSpeechEnd": 125.51666666666668,
+      "audioEnd": 126.00133366666667
+    },
+    {
+      "id": "completed",
+      "sceneStart": 126.16666666666667,
+      "sceneEnd": 131.16666666666669,
+      "speechStart": 126.61666666666667,
+      "speechEnd": 131.11666666666667,
+      "inTimecode": "00:02:06:19",
+      "outTimecode": "00:02:11:04",
+      "text": "That's finished. Let's open the report and see what needs attention.",
+      "words": 11,
+      "budgetSeconds": 4.5,
+      "requiredWpm": 147,
+      "silentTailSeconds": 0.04999999999999982,
+      "visualCue": "Find the completed run",
+      "pictureTiming": [
+        {
+          "playbackStart": 126.16666666666667,
+          "playbackEnd": 128.16666666666669,
+          "holdEnd": 131.16666666666669,
+          "source": "creation/assets/workflows-raw.mp4",
+          "sourceStart": 58,
+          "sourceEnd": 60
+        }
+      ],
+      "audioFile": "assets/narration/segments/completed.wav",
+      "audioAlignmentFile": "assets/narration/segments/completed.json",
+      "measuredSpeechStart": 126.61666666666666,
+      "measuredSpeechEnd": 130.50238066666668,
+      "audioEnd": 130.98779166666668
+    },
+    {
+      "id": "report",
+      "sceneStart": 131.16666666666669,
+      "sceneEnd": 143.43333333333337,
+      "speechStart": 131.61666666666667,
+      "speechEnd": 143.3833336666667,
+      "inTimecode": "00:02:11:19",
+      "outTimecode": "00:02:23:12",
+      "text": "The report gives us two things to test next: handling a damaged data file and finding authors regardless of capitalization. So, before we ship, we know where to spend our time.",
+      "words": 31,
+      "budgetSeconds": 11.766667000000012,
+      "requiredWpm": 158,
+      "silentTailSeconds": 0.04999966666666822,
+      "visualCue": "Use the report to choose the next fix",
+      "pictureTiming": [
+        {
+          "playbackStart": 131.16666666666669,
+          "playbackEnd": 142.46666666666667,
+          "holdEnd": 143.43333333333334,
+          "source": "creation/assets/report-focused-raw.mp4",
+          "sourceStart": 5.8,
+          "sourceEnd": 17.1
+        }
+      ],
+      "audioFile": "assets/narration/segments/report.wav",
+      "audioAlignmentFile": "assets/narration/segments/report.json",
+      "measuredSpeechStart": 131.61666666666667,
+      "measuredSpeechEnd": 142.76904766666672,
+      "audioEnd": 143.2539996666667
+    },
+    {
+      "id": "closing",
+      "sceneStart": 143.43333333333337,
+      "sceneEnd": 156.03333333333336,
+      "speechStart": 143.88333333333335,
+      "speechEnd": 155.98333333333338,
+      "inTimecode": "00:02:23:27",
+      "outTimecode": "00:02:36:00",
+      "text": "If you keep doing the same checks by hand, this is worth trying. The QR code links to the guide. Use slash workflows to keep track of your runs. Give dynamic workflows a try.",
+      "words": 34,
+      "budgetSeconds": 12.100000000000023,
+      "requiredWpm": 169,
+      "silentTailSeconds": 0.049999999999998934,
+      "visualCue": "Give dynamic\nworkflows a try.",
+      "pictureTiming": [],
+      "audioFile": "assets/narration/segments/closing.wav",
+      "audioAlignmentFile": "assets/narration/segments/closing.json",
+      "measuredSpeechStart": 143.88333333333338,
+      "measuredSpeechEnd": 155.31190433333336,
+      "audioEnd": 155.79679133333335
+    }
+  ]
+}

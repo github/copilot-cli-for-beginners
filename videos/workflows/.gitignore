@@ -1,0 +1,11 @@
+capture-home.txt
+capture.log
+capture-exit.txt
+preflight.*
+assets/
+renders/
+review/
+node_modules/
+console/
+# Copies of capture/tapes made by the recording scripts.
+creation/capture/
