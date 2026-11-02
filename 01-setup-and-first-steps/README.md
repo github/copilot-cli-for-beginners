@@ -390,7 +390,7 @@ These commands are great to learn initially as you're getting started with Copil
 
 > 💡 **`/ask` vs regular chat**: Normally every message you send becomes part of the ongoing conversation and affects future responses. `/ask` is an "off the record" shortcut. It's perfect for quick one-off questions like `/ask What does YAML mean?` without polluting your session context.
 
-> 💡 **`/ask` keyboard shortcuts**: Once Copilot answers your `/ask` question, you can press **Ctrl+E** to expand the full answer, **Ctrl+Y** to copy the entire answer to your clipboard, or type `/ask` (or `/btw`) with no arguments to reopen the last completed answer. These shortcuts let you review and reuse answers without losing your place in the conversation.
+> 💡 **`/ask` keyboard shortcuts**: While an `/ask` answer is showing, press **Ctrl+E** to expand the full answer or **Ctrl+Y** to copy the entire answer to your clipboard. Later, type `/ask` (or `/btw`) with no arguments to reopen the last completed answer. These shortcuts let you review and reuse answers without losing your place in the conversation. (Ctrl+E does different things in other places, such as opening the environment picker before your first prompt.)
 
 > 💡 **`/refine` for better prompts**: Not sure if your prompt is clear enough? Type it out as it comes to mind, then run `/refine` to let Copilot rewrite it into a precise, well-structured prompt before sending. This is especially useful when you're new to AI tools and still learning how to write effective prompts.
 
