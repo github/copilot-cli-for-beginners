@@ -6,7 +6,7 @@ Beginner-friendly course teaching GitHub Copilot CLI. Educational content, not s
 
 | Path | Purpose |
 |------|---------|
-| `00-07/` | Chapters: analogy → concepts → hands-on → assignment → next |
+| `00-quick-start/`–`07-putting-it-together/` | Chapters: analogy → concepts → hands-on → assignment → next |
 | `samples/book-app-project/` | **Primary sample**: Python CLI book collection app used throughout all chapters |
 | `samples/book-app-project-cs/` | C# version of the book collection app |
 | `samples/book-app-project-js/` | JavaScript version of the book collection app |

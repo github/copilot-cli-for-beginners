@@ -9,7 +9,6 @@ This is a **beginner-friendly educational course** teaching GitHub Copilot CLI. 
 ## Writing Conventions
 
 - **Audience**: Beginners with no AI/ML experience. Explain every technical term on first use.
-- **Tone**: Friendly, encouraging, practical. Avoid jargon without explanation.
 - **Examples**: All code blocks and `copilot` commands must be copy-paste ready. Test them mentally before including.
 - **Naming**: Use kebab-case for session names, file names, and identifiers (e.g., `book-app-review`, not `book app review`).
 - **Command syntax**: Standardize flag format — use `--flag=value` consistently when a value is required, `--flag` when boolean.
@@ -30,11 +29,8 @@ These patterns were mined from actual PR review feedback and represent recurring
 - **Primary sample**: Always use `samples/book-app-project/` (Python) for examples in chapters.
 - **Test framework**: pytest — test files go in `samples/book-app-project/tests/` and follow `test_*.py` naming.
 - **Python version**: 3.10+ (per `samples/book-app-project/pyproject.toml`).
-- **Intentional bugs**: Files in `samples/book-app-buggy/` and `samples/buggy-code/` contain **deliberate bugs** for exercises. Never fix them.
 
 ## Chapter Structure
-
-Every chapter (00–07) follows the same pattern in its `README.md`:
 
 1. Real-World Analogy
 2. Core Concepts
@@ -47,7 +43,6 @@ Do not deviate from this structure when editing or adding chapter content.
 ## Markdown Formatting
 
 - Use standard GitHub-Flavored Markdown.
-- Images go in the repo-root `assets/` directory.
 - Use relative links for cross-chapter references (e.g., `../03-development-workflows/README.md`).
 - Emoji usage is encouraged for section headers (matching existing style).
 
@@ -66,5 +61,5 @@ Do not deviate from this structure when editing or adding chapter content.
 | Glossary term introduced | `GLOSSARY.md` — add definition in alphabetical order |
 | npm scripts changed | `package.json`, `AGENTS.md` (build section) |
 | Devcontainer updated | `.devcontainer/devcontainer.json`, Chapter 00 (setup instructions) |
-| Image or banner changed | `assets/` directory, any README referencing the image |
+| Image or banner changed | The image's directory, any README referencing the image |
 | Copilot CLI version requirements change | Chapter 00, Chapter 01, `.devcontainer/devcontainer.json` |
