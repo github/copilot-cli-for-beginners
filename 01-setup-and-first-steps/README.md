@@ -435,6 +435,7 @@ That's it for getting started! As you become comfortable, you can explore additi
 
 | Command | What It Does |
 |---------|--------------|
+| `/code` | Open the current session in VS Code (requires VS Code to be installed) |
 | `/diff` | Review the changes made in the current directory |
 | `/pr` | Operate on pull requests for the current branch |
 | `/research` | Run deep research investigation using GitHub and web sources |
