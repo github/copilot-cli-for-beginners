@@ -45,7 +45,7 @@ Do not deviate from this structure when editing or adding chapter content.
 ## Markdown Formatting
 
 - Use standard GitHub-Flavored Markdown.
-- Images go in the repo-root `assets/` directory.
+- Images go in the repo-root `assets/` directory or the relevant chapter's `assets/` directory.
 - Use relative links for cross-chapter references (e.g., `../03-development-workflows/README.md`).
 - Emoji usage is encouraged for section headers (matching existing style).
 
