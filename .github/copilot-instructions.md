@@ -64,5 +64,5 @@ Do not deviate from this structure when editing or adding chapter content.
 | Glossary term introduced | `GLOSSARY.md` — add definition in alphabetical order |
 | npm scripts changed | `package.json`, `AGENTS.md` (build section) |
 | Devcontainer updated | `.devcontainer/devcontainer.json`, Chapter 00 (setup instructions) |
-| Image or banner changed | `assets/` directory, any README referencing the image |
+| Image or banner changed | `assets/` or the relevant chapter's `assets/` directory, any README referencing the image |
 | Copilot CLI version requirements change | Chapter 00, Chapter 01, `.devcontainer/devcontainer.json` |
