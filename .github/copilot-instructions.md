@@ -11,7 +11,6 @@ This is a **beginner-friendly educational course** teaching GitHub Copilot CLI. 
 - **Audience**: Beginners with no AI/ML experience. Explain every technical term on first use.
 - **Tone**: Friendly, encouraging, practical. Avoid jargon without explanation.
 - **Examples**: All code blocks and `copilot` commands must be copy-paste ready. Test them mentally before including.
-- **Naming**: Use kebab-case for session names, file names, and identifiers (e.g., `book-app-review`, not `book app review`).
 - **Command syntax**: Standardize flag format — use `--flag=value` consistently when a value is required, `--flag` when boolean.
 - **Precision**: Don't over-specify tool behavior that may vary across shells or OS. Describe what the user will see, not implementation details.
 - **Fallbacks**: When referencing tool version requirements (e.g., `gh` CLI version), always include upgrade instructions or a manual alternative.
