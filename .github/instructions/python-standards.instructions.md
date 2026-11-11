@@ -21,5 +21,4 @@ Dockerfile or some JSON stays clutter-free.
 
 ## Testing
 
-- Put pytest tests in `samples/book-app-project/tests/` using `test_*.py` naming.
 - Cover the happy path and edge cases (empty input, missing data).
