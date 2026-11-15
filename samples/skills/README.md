@@ -36,7 +36,7 @@ copilot
 ```
 
 You can also invoke skills directly:
-```bash
+```
 > /code-checklist Check books.py
 > /pytest-gen Generate tests for BookCollection
 > /commit-message

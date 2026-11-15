@@ -143,7 +143,7 @@ copilot
 ```
 
 > 💡 **Advanced Option**: For security-focused cross-file analysis, try the Python security examples:
-> ```bash
+> ```
 > > @samples/buggy-code/python/user_service.py @samples/buggy-code/python/payment_processor.py
 > > Find security vulnerabilities that span BOTH files
 > ```

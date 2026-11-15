@@ -104,14 +104,14 @@ MCP Servers:
 Here's the difference MCP makes in practice:
 
 **Without MCP:**
-```bash
+```
 > What's in GitHub issue #42?
 
 "I don't have access to GitHub. You'll need to copy and paste the issue content."
 ```
 
 **With MCP:**
-```bash
+```
 > What's in GitHub issue #42 of this repository?
 
 Issue #42: Login fails with special characters
