@@ -168,13 +168,13 @@ After trusting the folder, you can sign in with your GitHub account.
 
 Now that you're signed in, let's verify that Copilot CLI is working for you. In the terminal, start the CLI if you haven't already:
 
-```bash
+```
 > Say hello and tell me what you can help with
 ```
 
 After you receive a response, you can exit the CLI:
 
-```bash
+```
 > /exit
 ```
 
@@ -222,7 +222,7 @@ If you see an error, check the [troubleshooting section](#troubleshooting) below
 
 Once you're done you can exit the Copilot CLI:
 
-```bash
+```
 > /exit
 ```
 

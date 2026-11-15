@@ -102,7 +102,7 @@ copilot
 
 While auto-triggering is the primary way skills work, you can also **invoke skills directly** using their name as a slash command:
 
-```bash
+```
 > /generate-tests Create tests for the user authentication module
 
 > /code-checklist Check books.py for code quality issues
@@ -116,7 +116,7 @@ This gives you explicit control when you want to ensure a specific skill is used
 
 You can invoke **more than one skill in a single message**, and the skill slash command can appear anywhere in your prompt — not just at the beginning. This is handy when you want two different checks done in one go:
 
-```bash
+```
 > Check @samples/book-app-project/book_app.py with /code-checklist and also run /generate-tests for it
 
 > Review the auth module /security-audit then /code-checklist the result
@@ -136,7 +136,7 @@ Copilot will apply each named skill in the same response, saving you from sendin
 
 You can ask Copilot directly:
 
-```bash
+```
 > What skills did you use for that response?
 
 > What skills do you have available for security reviews?
@@ -179,7 +179,7 @@ copilot
 
 Or you write a long prompt every time:
 
-```bash
+```
 > Review this code checking for bare except clauses, missing type hints,
 > mutable default arguments, missing context managers for file I/O,
 > functions over 50 lines, print statements in production code...
@@ -576,7 +576,7 @@ Description: Security-focused code review checking OWASP Top 10 vulnerabilities
 
 After creating or editing a skill's SKILL.md file, run `/skills reload` to pick up the changes without restarting Copilot:
 
-```bash
+```
 # Edit your skill file
 # Then in Copilot:
 > /skills reload
@@ -881,7 +881,7 @@ copilot
 Run `/skills reload` after creating or editing skills to ensure changes are picked up.
 
 **Testing if a skill loads** - Ask Copilot directly:
-```bash
+```
 > What skills do you have available for checking code quality?
 # Copilot will describe relevant skills it found
 ```
