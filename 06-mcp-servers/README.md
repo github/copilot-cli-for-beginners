@@ -931,7 +931,7 @@ These work when you're already inside `copilot`:
 | `/mcp edit <server-name>` | Edit an existing server configuration |
 | `/mcp enable <server-name>` | Enable a disabled server (persists across sessions) |
 | `/mcp disable <server-name>` | Disable a server (persists across sessions) |
-| `/mcp delete <server-name>` | Remove a server permanently |
+| `/mcp remove <server-name>` | Remove a server permanently |
 | `/mcp auth <server-name>` | Re-authenticate with an MCP server that uses OAuth (e.g., after switching accounts) |
 
 ### Option 2: `copilot mcp` command (from your terminal)
