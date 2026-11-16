@@ -517,7 +517,7 @@ Once you're in an interactive Copilot session, use `/skills` (or its shortcut `/
 | Command | What It Does |
 |---------|--------------|
 | `/skills list` | Show all installed skills |
-| `/skills info <name>` | Get details about a specific skill |
+| `/skills get <name>` | Get details about a specific skill |
 | `/skills add <name>` | Enable a skill (from a repository or marketplace) |
 | `/skills remove <name>` | Disable or uninstall a skill |
 | `/skills reload` | Reload skills after editing SKILL.md files |
@@ -549,7 +549,7 @@ Project skills:
 - code-checklist: Team code quality checklist (disabled)
 ...
 
-> /skills info security-audit
+> /skills get security-audit
 
 Skill: security-audit
 Source: Project
