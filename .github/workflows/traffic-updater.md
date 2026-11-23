@@ -16,6 +16,7 @@ mcp-scripts:
       gh api repos/$GITHUB_REPOSITORY/traffic/views
     env:
       GH_TOKEN: "${{ secrets.GH_AW_GITHUB_TOKEN }}"
+      GITHUB_REPOSITORY: "${{ github.repository }}"
 safe-outputs:
   allowed-domains:
     - github.com
