@@ -291,7 +291,7 @@ Patterns and habits that make your workflows more effective.
 
 Always gather context before asking for analysis:
 
-```bash
+```
 # Good
 > Get the details of issue #42
 > /agent
@@ -309,7 +309,7 @@ Always gather context before asking for analysis:
 
 Each tool has a sweet spot:
 
-```bash
+```
 # Agents: Specialized personas you explicitly activate
 > /agent
 # Select python-reviewer

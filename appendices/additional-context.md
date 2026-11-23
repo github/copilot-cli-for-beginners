@@ -47,27 +47,27 @@ copilot
 ### Practical Image Use Cases
 
 **1. UI Debugging**
-```bash
+```
 > @bug-screenshot.png The button doesn't align properly. What CSS might cause this?
 ```
 
 **2. Design Implementation**
-```bash
+```
 > @figma-export.png Write the HTML and Tailwind CSS to match this design
 ```
 
 **3. Error Analysis**
-```bash
+```
 > @error-screenshot.png What does this error mean and how do I fix it?
 ```
 
 **4. Architecture Review**
-```bash
+```
 > @whiteboard-diagram.png Convert this architecture diagram to a Mermaid diagram I can put in docs
 ```
 
 **5. Before/After Comparison**
-```bash
+```
 > @before.png @after.png What changed between these two versions of the UI?
 ```
 
