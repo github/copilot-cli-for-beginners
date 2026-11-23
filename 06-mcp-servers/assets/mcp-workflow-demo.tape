@@ -1,4 +1,4 @@
-# 06-mcp-servers: Multi-step MCP workflow with issues and code analysis
+# 06-mcp-servers: Multi-step MCP workflow with repository files and code analysis
 # Auto-generated from demos.json - Real copilot execution
 
 Output mcp-workflow-demo.gif
@@ -24,7 +24,7 @@ Enter
 Sleep 5s
 
 # Prompt 1
-Type "List open issues on this repository"
+Type "Use the GitHub MCP server to list the files in samples/book-app-project"
 Sleep 2s
 Enter
 

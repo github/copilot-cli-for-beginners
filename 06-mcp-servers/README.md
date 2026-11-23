@@ -79,10 +79,20 @@ copilot
 
 > /mcp show
 
-MCP Servers:
-✓ github (enabled) - GitHub integration
-✓ filesystem (enabled) - File system access
+MCP                                                          1/1 enabled
+[Installed (1)]  Online
+/ Filter by name, description, or source…
+
++ Add MCP server…
+  Configure a new MCP server (local command or remote URL)
+
+◉ GitHub MCP Server                                             Built-in
+  mcp:github-mcp-server                                      1.8k tokens
+
+←/→ switch view · ↑/↓ select row · / search · enter add · r refresh · esc close
 ```
+
+`/mcp show` opens a full-screen list of your MCP servers. Press **Esc** to close it and go back to the chat.
 
 > 💡 **Only seeing the GitHub server?** That's expected! If you haven't added any additional MCP servers yet, GitHub is the only one listed. You'll add more in the next section.
 
@@ -426,6 +436,8 @@ copilot
 | **Code search** | Search code across repositories |
 | **Actions** | Query workflow runs and status |
 
+> 💡 **MCP tools or `gh` commands?** To save space in the [context window](../GLOSSARY.md#context-window), the GitHub server gives Copilot only some of its tools by default. When the GitHub CLI (`gh`) is installed, as it is in Codespaces and the course dev container, the server also leaves out the tools that `gh` can replace, such as issues, pull requests, and commits. Copilot runs `gh` commands for those tasks instead. You get the same results, but you will see a `gh` command where you might expect a GitHub MCP tool. To use all of the GitHub MCP tools, start Copilot with `copilot --enable-all-github-mcp-tools`.
+
 ```bash
 copilot
 
@@ -742,7 +754,7 @@ copilot
 > /mcp show
 ```
 
-You should see the GitHub server listed as enabled. If not, run `/login` to authenticate.
+You should see **GitHub MCP Server** in the list. If it isn't there, run `/login` to authenticate. Press **Esc** to close the list.
 
 ---
 
@@ -811,15 +823,17 @@ Practice using MCP servers together on the book app project. Complete these step
    - List all functions in `samples/book-app-project/books.py`
    - Check which functions in `samples/book-app-project/utils.py` are missing type hints
    - Read `samples/book-app-project/data.json` and identify any data quality issues (hint: look at the last entry)
-4. **Check repository activity**: Ask Copilot to use GitHub MCP to:
+4. **Check repository activity**: Ask Copilot to:
    - List recent commits that touched files in `samples/book-app-project/`
    - Check if there are any open issues or pull requests
+
+   If you have the `gh` CLI, Copilot might use `gh` commands for these tasks instead of GitHub MCP tools (see [MCP tools or `gh` commands?](#github-server-built-in)).
 5. **Combine servers**: In a single prompt, ask Copilot to:
    - Read the test file at `samples/book-app-project/tests/test_books.py`
    - Compare the tested functions against all functions in `books.py`
    - Summarize what test coverage is missing
 
-**Success criteria**: You can seamlessly combine filesystem and GitHub MCP data in a single Copilot session, and you can explain what each MCP server contributed to the response.
+**Success criteria**: You can seamlessly combine filesystem and GitHub data in a single Copilot session, and you can explain what each MCP server (or `gh` command) contributed to the response.
 
 <details>
 <summary>💡 Hints (click to expand)</summary>
@@ -828,7 +842,7 @@ Practice using MCP servers together on the book app project. Complete these step
 ```bash
 copilot
 > /mcp show
-# Should show "github" as enabled
+# Should list "GitHub MCP Server" (press Esc to close)
 # If not, run: /login
 ```
 

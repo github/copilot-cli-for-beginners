@@ -6,6 +6,10 @@
  *   - "prompt": "text"              → single prompt
  *   - "prompts": ["a", "b"]         → multi-prompt (default responseWait each)
  *   - "prompts": [{ "text": "a", "responseWait": 10 }, "b"]  → mixed with overrides
+ *   - "setup": ["cmd", "cmd"]       → shell commands that run before copilot
+ *                                     starts. The recording hides them. They
+ *                                     can use $DEMO_SCRATCH_DIR for temporary
+ *                                     files (generate-demos.js sets it).
  *
  * Usage: npm run create:tapes
  */
@@ -79,6 +83,30 @@ ${enterBlock}
 ${waitBlock}`;
 }
 
+// Setup commands run in the tape's shell before copilot starts. The commands
+// join with "&&", so a failed command skips the final "clear" and leaves its
+// error on screen.
+function generateSetupBlock(setup) {
+  if (!Array.isArray(setup) || setup.length === 0) {
+    return '';
+  }
+
+  const command = [...setup, 'clear'].join(' && ');
+  // VHS strings have no escape character, so a single quote would end the string.
+  if (command.includes("'")) {
+    throw new Error(`Setup commands cannot contain single quotes: ${command}`);
+  }
+
+  return `# Setup (hidden from the recording)
+Hide
+Type@5ms '${command}'
+Enter
+Sleep 2s
+Show
+
+`;
+}
+
 function generateTapeContent(demo, settings) {
   const s = { ...settings, ...demo }; // Allow per-demo overrides
 
@@ -110,7 +138,7 @@ Set Framerate ${s.framerate}
 # Human typing speed
 Set TypingSpeed ${s.typingSpeed}
 
-# Launch copilot
+${generateSetupBlock(demo.setup)}# Launch copilot
 Type "copilot"
 Enter
 
