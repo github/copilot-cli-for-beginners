@@ -11,6 +11,9 @@ updates:
       interval: "weekly"
     cooldown:
       default-days: 7
+    ignore:
+      # Managed by `gh aw compile`; these pins must match the gh-aw compiler version.
+      - dependency-name: "github/gh-aw-actions/*"
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
