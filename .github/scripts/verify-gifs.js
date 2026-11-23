@@ -22,15 +22,21 @@ const rootDir = join(__dirname, '..', '..');
 const tmpDir = '/tmp/gif-last-frames';
 const saveFrames = process.argv.includes('--save');
 
+// Every tape ends with one Ctrl+C. If a response is still running, that
+// keypress cancels it and the CLI prints "Operation cancelled by user".
 // Patterns that indicate the response was cut off or incomplete
 const FAILURE_PATTERNS = [
   'operation cancelled by user',
-  'ctrl+c again to exit',
   'thinking (esc to cancel',
+  // git-integration-demo needs a staged change; its setup stages one
+  'no staged changes',
 ];
 
-// Patterns that indicate a completed response (positive signals)
+// Patterns that indicate a completed response (positive signals).
+// After a completed response, the final Ctrl+C reaches an idle prompt and
+// the CLI shows "Ctrl+C again to exit".
 const SUCCESS_PATTERNS = [
+  'ctrl+c again to exit',
   'type @ to mention files',
   'remaining requests',
 ];

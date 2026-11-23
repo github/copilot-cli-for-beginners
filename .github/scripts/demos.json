@@ -62,7 +62,7 @@
       "chapter": "03-development-workflows",
       "name": "code-review-demo",
       "description": "Workflow 1: Code Review - review a file for code quality",
-      "responseWait": 30,
+      "responseWait": 60,
       "prompt": "Review @samples/book-app-project/book_app.py for code quality"
     },
     {
@@ -91,6 +91,11 @@
       "name": "git-integration-demo",
       "description": "Workflow 5: Git Integration - generate a conventional commit message",
       "responseWait": 30,
+      "setup": [
+        "export GIT_INDEX_FILE=${DEMO_SCRATCH_DIR:-$(mktemp -d)}/staged-index",
+        "git read-tree HEAD",
+        "git apply --cached .github/scripts/demo-fixtures/partial-author-search.patch"
+      ],
       "prompt": "Generate a conventional commit message for: $(git diff --staged)"
     },
     {
@@ -123,9 +128,9 @@
     {
       "chapter": "06-mcp-servers",
       "name": "mcp-workflow-demo",
-      "description": "Multi-step MCP workflow with issues and code analysis",
+      "description": "Multi-step MCP workflow with repository files and code analysis",
       "prompts": [
-        "List open issues on this repository",
+        "Use the GitHub MCP server to list the files in samples/book-app-project",
         { "text": "@samples/book-app-project/books.py What code handles the search functionality?", "responseWait": 20 },
         { "text": "Based on the code, suggest improvements for the search feature", "responseWait": 30 }
       ]

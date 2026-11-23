@@ -16,6 +16,13 @@ Set Framerate 10
 # Human typing speed
 Set TypingSpeed 60ms
 
+# Setup (hidden from the recording)
+Hide
+Type@5ms 'export GIT_INDEX_FILE=${DEMO_SCRATCH_DIR:-$(mktemp -d)}/staged-index && git read-tree HEAD && git apply --cached .github/scripts/demo-fixtures/partial-author-search.patch && clear'
+Enter
+Sleep 2s
+Show
+
 # Launch copilot
 Type "copilot"
 Enter

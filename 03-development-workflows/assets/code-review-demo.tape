@@ -75,6 +75,56 @@ Type " "
 Backspace
 Show
 Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
+Hide
+Type " "
+Backspace
+Show
+Sleep 3s
 
 # Nudge TUI to scroll to input area
 Type " "
